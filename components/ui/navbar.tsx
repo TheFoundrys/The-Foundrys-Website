@@ -5,12 +5,16 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { triggerHaptic } from "@/lib/haptics";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom } from "lucide-react";
+import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu } from "lucide-react";
 
 export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false); // Mobile menu state
-  const [isProgramsOpen, setIsProgramsOpen] = useState(false); // Desktop dropdown state
+  const [isSchoolsOpen, setIsSchoolsOpen] = useState(false); // Desktop dropdown state
+  const [mobileSchoolsExpanded, setMobileSchoolsExpanded] = useState(true); // Mobile Schools Accordion State
+  
+  // State for the two-column layout: defaults to 'deep-tech'
+  const [activeCategory, setActiveCategory] = useState<"deep-tech" | "entrepreneurship">("deep-tech");
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -22,38 +26,66 @@ export function Navbar() {
     return () => { document.body.style.overflow = "unset"; };
   }, [isOpen]);
 
-  const links = [
-    { href: "/", label: "School" },
-    { href: "/campus", label: "Campus" },
-    { href: "/admissions", label: "Admissions" },
-  ];
+  // Data Structure for the Categories
+  const SCHOOL_CATEGORIES = [
+      {
+          id: "deep-tech",
+          label: "School of Deep Tech",
+          description: "Engineering & Applied Sciences"
+      },
+      {
+          id: "entrepreneurship",
+          label: "School of Entrepreneurship",
+          description: "Venture Building & Strategy"
+      }
+  ] as const;
 
-  const programLinks = [
-    { 
-        href: "/programs/ai", 
-        label: "Artificial Intelligence", 
-        desc: "The Intelligence Layer",
-        icon: BrainCircuit,
-        color: "text-blue-600",
-        bg: "bg-blue-50"
-    },
-    { 
-        href: "/programs/cyber", 
-        label: "Cyber Security", 
-        desc: "The Defense Layer",
-        icon: ShieldCheck,
-        color: "text-red-600",
-        bg: "bg-red-50"
-    },
-    { 
-        href: "/programs/quantum-computing", 
-        label: "Quantum Computing", 
-        desc: "The Q-Layer",
-        icon: Atom,
-        color: "text-cyan-400",
-        bg: "bg-cyan-950/30"
-    },
-  ];
+  const COURSES = {
+      "deep-tech": [
+        { 
+            href: "/programs/ai", 
+            label: "Artificial Intelligence", 
+            desc: "The Intelligence Layer",
+            icon: BrainCircuit,
+            color: "text-blue-600",
+            bg: "bg-blue-50"
+        },
+        { 
+            href: "/programs/cyber", 
+            label: "Cyber Security", 
+            desc: "The Defense Layer",
+            icon: ShieldCheck,
+            color: "text-red-600",
+            bg: "bg-red-50"
+        },
+        { 
+            href: "/programs/quantum-computing", 
+            label: "Quantum Computing", 
+            desc: "The Q-Layer",
+            icon: Atom,
+            color: "text-cyan-400",
+            bg: "bg-cyan-950/30"
+        },
+      ],
+      "entrepreneurship": [
+          {
+            href: "/programs/venture-building",
+            label: "Venture Building",
+            desc: "Zero to One",
+            icon: Rocket,
+            color: "text-amber-600",
+            bg: "bg-amber-50"
+          },
+          {
+            href: "/programs/strategy",
+            label: "Strategic Innovation",
+            desc: "Market Disruption",
+            icon: Lightbulb,
+            color: "text-yellow-600",
+            bg: "bg-yellow-50"
+          }
+      ]
+  };
 
   const handleHaptic = () => {
     triggerHaptic();
@@ -73,24 +105,16 @@ export function Navbar() {
             >
                 <Link href="/" onClick={handleHaptic} className="font-bold text-xl tracking-tighter flex items-center gap-2 text-slate-900 md:mr-8">
                     <div className="w-5 h-5 bg-slate-900 rounded-md" />
-                    <span>THE FOUNDRY</span>
+                    <span>THE FOUNDRY'S</span>
                 </Link>
 
                 {/* Desktop Links */}
                 <div className="hidden md:flex items-center gap-6">
-                    <Link 
-                        href="/" 
-                        onClick={handleHaptic}
-                        className={cn("text-sm font-medium transition-colors hover:text-blue-600", pathname === "/" ? "text-slate-900 font-bold" : "text-slate-500")}
-                    >
-                        School
-                    </Link>
-
-                    {/* Programs Dropdown Trigger */}
+                    {/* Maps to 'Schools' Dropdown */}
                     <div 
                         className="relative group"
-                        onMouseEnter={() => setIsProgramsOpen(true)}
-                        onMouseLeave={() => setIsProgramsOpen(false)}
+                        onMouseEnter={() => setIsSchoolsOpen(true)}
+                        onMouseLeave={() => setIsSchoolsOpen(false)}
                     >
                         <button 
                             onClick={handleHaptic}
@@ -99,12 +123,12 @@ export function Navbar() {
                                 pathname.startsWith("/programs") ? "text-slate-900 font-bold" : "text-slate-500"
                             )}
                         >
-                            Programs <ChevronDown size={14} className={`transition-transform duration-200 ${isProgramsOpen ? "rotate-180" : ""}`} />
+                            Schools <ChevronDown size={14} className={`transition-transform duration-200 ${isSchoolsOpen ? "rotate-180" : ""}`} />
                         </button>
                         
-                        {/* 3D Holographic Dropdown Menu */}
+                        {/* 3D Holographic Dropdown Menu - Two Column Layout */}
                         <AnimatePresence>
-                            {isProgramsOpen && (
+                            {isSchoolsOpen && (
                                 <motion.div
                                     initial={{ opacity: 0, rotateX: -20, y: 20, scale: 0.9, filter: "blur(10px)" }}
                                     animate={{ opacity: 1, rotateX: 0, y: 0, scale: 1, filter: "blur(0px)" }}
@@ -116,18 +140,42 @@ export function Navbar() {
                                         mass: 0.8
                                     }}
                                     style={{ transformOrigin: "top center" }}
-                                    className="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-80 p-2 bg-white/95 backdrop-blur-3xl rounded-2xl shadow-[0_30px_80px_-12px_rgba(0,0,0,0.25)] border border-white/80 overflow-hidden ring-1 ring-slate-900/5"
+                                    className="absolute top-full left-0 -translate-x-10 mt-6 min-w-[500px] p-1 bg-white/95 backdrop-blur-3xl rounded-2xl shadow-[0_30px_80px_-12px_rgba(0,0,0,0.25)] border border-white/80 overflow-hidden ring-1 ring-slate-900/5 flex"
                                 >
                                     {/* Spotlight Glow Effect inside dropdown */}
                                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-20 bg-blue-500/20 blur-[50px] pointer-events-none" />
 
-                                    <div className="flex flex-col gap-1 relative z-10">
-                                        {programLinks.map((prog, i) => (
+                                    {/* Left Column: Categories */}
+                                    <div className="w-1/2 p-2 bg-slate-50/50 border-r border-slate-100 flex flex-col gap-1 relative z-10">
+                                        {SCHOOL_CATEGORIES.map((category) => (
+                                            <button
+                                                key={category.id}
+                                                onMouseEnter={() => setActiveCategory(category.id as "deep-tech" | "entrepreneurship")}
+                                                className={cn(
+                                                    "text-left p-3 rounded-xl transition-all duration-200 group/cat",
+                                                    activeCategory === category.id 
+                                                        ? "bg-white shadow-sm ring-1 ring-slate-200" 
+                                                        : "hover:bg-white/50 hover:shadow-sm text-slate-500"
+                                                )}
+                                            >
+                                                <div className={cn("font-bold text-sm", activeCategory === category.id ? "text-slate-900" : "text-slate-600 group-hover/cat:text-slate-900")}>
+                                                    {category.label}
+                                                </div>
+                                                <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400 mt-0.5">
+                                                    {category.description}
+                                                </div>
+                                            </button>
+                                        ))}
+                                    </div>
+
+                                    {/* Right Column: Courses */}
+                                    <div className="w-1/2 p-2 flex flex-col gap-1 relative z-10">
+                                        {COURSES[activeCategory].map((prog, i) => (
                                             <motion.div
                                                 key={prog.href}
-                                                initial={{ opacity: 0, x: -20 }}
+                                                initial={{ opacity: 0, x: 10 }}
                                                 animate={{ opacity: 1, x: 0 }}
-                                                transition={{ delay: i * 0.1 }}
+                                                transition={{ delay: i * 0.05 }}
                                             >
                                                 <Link 
                                                     href={prog.href}
@@ -190,11 +238,7 @@ export function Navbar() {
                 {isOpen ? (
                     <X size={24} className="text-slate-900" />
                 ) : (
-                   /* Minimal 2-Line Icon */
-                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-slate-900">
-                        <path d="M4 9H20" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-                        <path d="M4 15H20" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-                   </svg>
+                    <Menu size={24} className="text-slate-900" />
                 )}
             </motion.button>
         </div>
@@ -208,34 +252,122 @@ export function Navbar() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="fixed inset-0 z-40 bg-slate-50/95 backdrop-blur-3xl pt-32 px-6 flex flex-col md:hidden overflow-y-auto"
+                className="fixed inset-0 z-40 bg-slate-50/95 backdrop-blur-3xl flex flex-col md:hidden overflow-hidden"
             >
-                <div className="flex flex-col gap-6 text-center pb-20">
-                    <Link href="/" onClick={() => { setIsOpen(false); handleHaptic(); }} className="text-3xl font-bold tracking-tighter text-slate-900">School</Link>
-                    
-                    <div className="py-4 border-y border-slate-200">
-                        <div className="text-xs font-bold uppercase text-slate-400 mb-4 tracking-widest">Programs</div>
-                        {programLinks.map((prog) => (
-                             <Link 
-                                key={prog.href}
-                                href={prog.href}
-                                onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                className="block py-3 text-2xl font-bold text-slate-800"
-                            >
-                                {prog.label}
-                            </Link>
-                        ))}
-                    </div>
+                {/* Scrollable Content Area */}
+                <div className="flex-1 overflow-y-auto px-6 pt-32 pb-24 touch-pan-y">
+                    <div className="flex flex-col gap-6">
+                        
+                        {/* Schools Accordion */}
+                        <div className="rounded-2xl bg-white/60 p-1 border border-white/50 shadow-sm">
+                             <button 
+                                onClick={() => { setMobileSchoolsExpanded(!mobileSchoolsExpanded); handleHaptic(); }}
+                                className="flex items-center justify-between w-full p-4 rounded-xl hover:bg-white/50 transition-colors"
+                             >
+                                 <span className="text-xl font-bold text-slate-900">Schools</span>
+                                 <ChevronDown size={20} className={cn("text-slate-500 transition-transform", mobileSchoolsExpanded ? "rotate-180" : "")} />
+                             </button>
 
-                    <Link href="/campus" onClick={() => { setIsOpen(false); handleHaptic(); }} className="text-3xl font-bold tracking-tighter text-slate-900">Campus</Link>
-                    <Link href="/admissions" onClick={() => { setIsOpen(false); handleHaptic(); }} className="text-3xl font-bold tracking-tighter text-slate-900">Admissions</Link>
-                    <Link href="/resources" onClick={() => { setIsOpen(false); handleHaptic(); }} className="text-3xl font-bold tracking-tighter text-slate-900">Resources</Link>
-                    
-                    <div className="mt-8">
-                        <button onClick={handleHaptic} className="w-full py-5 bg-slate-900 text-white rounded-2xl font-bold text-xl shadow-xl">
-                            APPLY FOR PROGRAM
-                        </button>
+                             <AnimatePresence>
+                                {mobileSchoolsExpanded && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        className="overflow-hidden"
+                                    >
+                                        <div className="px-2 pb-2 flex flex-col gap-4 pt-2">
+                                            
+                                            {/* Deep Tech Group */}
+                                            <div>
+                                                <div className="px-3 py-2 text-xs font-bold uppercase tracking-widest text-slate-400">School of Deep Tech</div>
+                                                <div className="flex flex-col gap-1">
+                                                    {COURSES["deep-tech"].map(course => (
+                                                        <Link 
+                                                            key={course.href}
+                                                            href={course.href}
+                                                            onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                            className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100/50 transition-colors"
+                                                        >
+                                                            <div className={`w-8 h-8 rounded-md ${course.bg} flex items-center justify-center ${course.color}`}>
+                                                                <course.icon size={16} />
+                                                            </div>
+                                                            <span className="font-semibold text-slate-700">{course.label}</span>
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            {/* Entrepreneurship Group */}
+                                            <div>
+                                                <div className="px-3 py-2 text-xs font-bold uppercase tracking-widest text-slate-400">School of Entrepreneurship</div>
+                                                <div className="flex flex-col gap-1">
+                                                    {COURSES["entrepreneurship"].map(course => (
+                                                        <Link 
+                                                            key={course.href}
+                                                            href={course.href}
+                                                            onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                            className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100/50 transition-colors"
+                                                        >
+                                                            <div className={`w-8 h-8 rounded-md ${course.bg} flex items-center justify-center ${course.color}`}>
+                                                                <course.icon size={16} />
+                                                            </div>
+                                                            <span className="font-semibold text-slate-700">{course.label}</span>
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                )}
+                             </AnimatePresence>
+                        </div>
+
+                        {/* Primary Nav Links */}
+                        <div className="flex flex-col gap-2">
+                            <Link 
+                                href="/campus" 
+                                onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                className="flex items-center gap-4 p-4 rounded-2xl bg-white/40 hover:bg-white/60 border border-white/40 transition-all font-bold text-xl text-slate-900"
+                            >
+                                <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600">
+                                    <Building2 size={20} />
+                                </div>
+                                Campus
+                            </Link>
+
+                            <Link 
+                                href="/admissions" 
+                                onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                className="flex items-center gap-4 p-4 rounded-2xl bg-white/40 hover:bg-white/60 border border-white/40 transition-all font-bold text-xl text-slate-900"
+                            >
+                                <div className="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center text-rose-600">
+                                    <Users size={20} />
+                                </div>
+                                Admissions
+                            </Link>
+
+                            <Link 
+                                href="/resources" 
+                                onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                className="flex items-center gap-4 p-4 rounded-2xl bg-white/40 hover:bg-white/60 border border-white/40 transition-all font-bold text-xl text-slate-900"
+                            >
+                                <div className="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                    <Library size={20} />
+                                </div>
+                                Resources
+                            </Link>
+                        </div>
+
                     </div>
+                </div>
+
+                {/* Sticky Mobile Footer CTA */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-white via-white/95 to-transparent z-20">
+                     <button onClick={handleHaptic} className="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold text-lg shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                        <span>Apply for Program</span>
+                        <Rocket size={18} />
+                    </button>
                 </div>
             </motion.div>
         )}
@@ -243,3 +375,5 @@ export function Navbar() {
     </>
   );
 }
+
+

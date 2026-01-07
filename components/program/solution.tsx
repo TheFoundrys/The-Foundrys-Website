@@ -30,7 +30,7 @@ export function Solution() {
         <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-16">
                  <span className="text-blue-600 font-bold tracking-widest text-sm uppercase mb-4 block">The Solution</span>
-                 <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">The Foundry Method</h2>
+                 <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">The Foundry's Method</h2>
                  <p className="text-xl text-slate-500 max-w-2xl mx-auto">We built the ecosystem we wish we had. An environment designed to maximize your slope.</p>
             </div>
 

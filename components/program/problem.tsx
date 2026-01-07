@@ -83,7 +83,7 @@ export function Problem() {
                             <TrendingUp className="text-blue-500" />
                         </div>
                         <div>
-                            <h3 className="text-xl font-bold text-slate-900 mb-2">The Foundry Advantage</h3>
+                            <h3 className="text-xl font-bold text-slate-900 mb-2">The Foundry's Advantage</h3>
                             <p className="text-slate-600">We align with the asymptote. We optimize for adaptability, first-principles thinking, and raw shipping velocity.</p>
                         </div>
                     </div>

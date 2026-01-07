@@ -22,7 +22,7 @@ export function Footer() {
                 </div>
 
                 <div className="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm font-medium">
-                    <p>&copy; 2026 The Foundry. Hitech City, Hyderabad.</p>
+                    <p>&copy; 2026 The Foundry's. Hitech City, Hyderabad.</p>
                     <div className="flex space-x-8 mt-4 md:mt-0">
                         <Link href="/program" className="hover:text-slate-900 transition-colors">The Program</Link>
                         <Link href="/campus" className="hover:text-slate-900 transition-colors">The Campus</Link>

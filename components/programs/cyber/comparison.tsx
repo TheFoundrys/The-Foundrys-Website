@@ -20,7 +20,7 @@ export function ComparisonSection() {
                     </div>
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
                         <span className="text-red-500 line-through decoration-red-500/50 decoration-4">Standard_Bootcamp</span> <br/>
-                        <span className="text-emerald-500">v.s. The_Foundry_Protocol</span>
+                        <span className="text-emerald-500">v.s. The_Foundry's_Protocol</span>
                     </h2>
                 </div>
 

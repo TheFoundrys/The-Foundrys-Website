@@ -60,7 +60,7 @@ export function Hero() {
         >
             <button className="relative px-10 py-5 bg-slate-900 text-white rounded-full font-bold text-lg overflow-hidden group hover:scale-105 transition-all shadow-xl hover:shadow-2xl">
                  <span className="relative flex items-center gap-2">
-                    ENTER THE FOUNDRY <span className="text-slate-200">↗</span>
+                    ENTER THE FOUNDRY'S <span className="text-slate-200">↗</span>
                  </span>
             </button>
             <button className="px-10 py-5 text-slate-600 font-medium text-lg hover:text-slate-900 transition-colors border border-transparent hover:border-slate-200 rounded-full">

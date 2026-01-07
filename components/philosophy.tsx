@@ -164,7 +164,7 @@ export function Philosophy() {
             
             <div className="text-xl text-slate-600 leading-relaxed mb-12 max-w-lg">
                 <p className="mb-6">The lecture hall is dead. We killed it. Traditional systems measure success by grades. We measure it by what you ship.</p>
-                <p>At The Foundry, we strip away the <span className="line-through decoration-slate-400 text-slate-400">fluff</span> and apply heat, pressure, and real-world problems.</p>
+                <p>At The Foundry's, we strip away the <span className="line-through decoration-slate-400 text-slate-400">fluff</span> and apply heat, pressure, and real-world problems.</p>
             </div>
 
             <ul className="space-y-6 text-2xl font-bold">
