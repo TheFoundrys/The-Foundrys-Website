@@ -53,9 +53,9 @@ export default function QuantumPage() {
                     <button className="px-10 py-5 bg-white text-slate-900 rounded-full font-bold text-sm tracking-widest hover:bg-cyan-50 transition-all hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.3)] w-full md:w-auto">
                         JOIN THE REVOLUTION
                     </button>
-                    <button className="px-10 py-5 bg-transparent border border-white/30 text-white rounded-full font-bold text-sm tracking-widest hover:bg-white/10 hover:border-white transition-all w-full md:w-auto backdrop-blur-sm">
-                        WATCH THE FILM
-                    </button>
+                    <Link href="#syllabus" className="px-10 py-5 bg-transparent border border-white/30 text-white rounded-full font-bold text-sm tracking-widest hover:bg-white/10 hover:border-white transition-all w-full md:w-auto backdrop-blur-sm flex items-center justify-center">
+                        SYLLABUS
+                    </Link>
                 </div>
             </motion.div>
         </div>
@@ -212,7 +212,9 @@ export default function QuantumPage() {
       </section>
 
       {/* CURRICULUM */}
-      <CurriculumAccordion />
+      <div id="syllabus">
+        <CurriculumAccordion />
+      </div>
 
       {/* CTA */}
       <section className="py-32 bg-slate-900 text-center px-4 relative overflow-hidden">
@@ -235,7 +237,7 @@ export default function QuantumPage() {
         </div>
       </section>
 
-      <Footer />
+      <Footer hideCTA={true} />
     </main>
   );
 }

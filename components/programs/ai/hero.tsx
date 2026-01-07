@@ -15,13 +15,7 @@ export function AIHero() {
         </div>
 
         <div className="relative z-10 container mx-auto max-w-6xl">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="inline-block mb-8 px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 font-mono text-sm font-bold uppercase tracking-wider backdrop-blur-md"
-            >
-                Program V.01 // Applications Open
-            </motion.div>
+
 
             <motion.h1 
                 initial={{ opacity: 0, y: 30 }}

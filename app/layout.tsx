@@ -12,23 +12,30 @@ export const viewport: Viewport = {
   themeColor: "#0f172a", // slate-900
 };
 
+// Explicitly forcing no-icon to prevent browser defaults
 export const metadata: Metadata = {
+  icons: {
+    icon: 'data:image/x-icon;base64,',
+    shortcut: 'data:image/x-icon;base64,',
+    apple: 'data:image/x-icon;base64,',
+  },
   metadataBase: new URL("https://thefoundrys.com"),
   title: {
     default: "The Foundry's | India's First Deep Tech & Venture School",
     template: "%s | The Foundry's - Architect Your Future",
   },
-  description: "Don't just study. Build. The Foundry's offers elite programs in AI, Cyber Security, Quantum Computing, and Entrepreneurship for ambitious students and future founders in Hyderabad.",
+  description: "Degrees are printed. Companies are built. Join The Foundry's School of Deep Tech (AI, Cyber, Quantum) and School of Entrepreneurship (Venture Building, Strategy). Architect your future.",
   keywords: [
     "Deep Tech School",
     "AI Course for 12th pass",
     "Cyber Security career",
     "Startup School India",
-    "Entrepreneurship course Hyderabad",
+    "School of Entrepreneurship",
     "Alternative to Engineering College",
     "Upskilling for Engineers",
     "Quantum Computing India",
     "Venture Building",
+    "Strategic Innovation",
     "Coding Bootcamp India",
   ],
   authors: [{ name: "The Foundry's Team" }],
@@ -49,8 +56,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://thefoundrys.com",
-    title: "The Foundry's | Build the Future",
-    description: "Degrees are printed. Skills are forged. Join India's first Deep Tech ecosystem designed for builders, not test-takers.",
+    title: "The Foundry's | School of Deep Tech & Entrepreneurship",
+    description: "Degrees are printed. Companies are built. Join The Foundry's School of Deep Tech (AI, Cyber, Quantum) and School of Entrepreneurship (Venture Building, Strategy). Architect your future.",
     siteName: "The Foundry's",
     images: [
       {
@@ -63,15 +70,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Foundry's | Architect Deep Tech",
-    description: "Where ambitious students become founders. AI, Cyber, Quantum, and Venture Building.",
+    title: "The Foundry's | School of Deep Tech & Entrepreneurship",
+    description: "Degrees are printed. Companies are built. Join The Foundry's School of Deep Tech (AI, Cyber, Quantum) and School of Entrepreneurship (Venture Building, Strategy). Architect your future.",
     images: ["/og-image.jpg"],
     creator: "@thefoundrys", // Placeholder
   },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
+
   category: "education",
 };
 
@@ -83,7 +87,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} antialiased`}>
         {/* Google Analytics */}
         <Script

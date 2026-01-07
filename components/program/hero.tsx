@@ -11,13 +11,7 @@ export function ProgramHero() {
         </div>
 
         <div className="relative z-10 text-center max-w-4xl mx-auto">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="inline-block mb-6 px-4 py-1.5 rounded-full border border-blue-100 bg-blue-50 text-blue-600 font-mono text-xs font-bold uppercase tracking-wider"
-            >
-                Program V.01 // Initializing
-            </motion.div>
+
 
             <motion.h1 
                 initial={{ opacity: 0, scale: 0.95 }}

@@ -205,13 +205,7 @@ export function Navbar() {
                     >
                         Campus
                     </Link>
-                     <Link 
-                        href="/admissions" 
-                        onClick={handleHaptic}
-                        className={cn("text-sm font-medium transition-colors hover:text-blue-600", pathname === "/admissions" ? "text-slate-900 font-bold" : "text-slate-500")}
-                    >
-                        Admissions
-                    </Link>
+
                      <Link 
                         href="/resources" 
                         onClick={handleHaptic}
@@ -222,9 +216,9 @@ export function Navbar() {
                 </div>
 
                 {/* Desktop CTA */}
-                 <button onClick={handleHaptic} className="hidden md:block ml-6 px-5 py-2 bg-slate-900 text-white rounded-full text-sm font-bold hover:bg-slate-800 transition-transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl pointer-events-auto">
+                <Link href="/apply" onClick={handleHaptic} className="hidden md:block ml-6 px-5 py-2 bg-slate-900 text-white rounded-full text-sm font-bold hover:bg-slate-800 transition-transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl pointer-events-auto">
                     Apply Now
-                </button>
+                </Link>
             </motion.div>
 
             {/* 2. Mobile Menu Toggle Bubble (Separate) */}
@@ -336,16 +330,7 @@ export function Navbar() {
                                 Campus
                             </Link>
 
-                            <Link 
-                                href="/admissions" 
-                                onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                className="flex items-center gap-4 p-4 rounded-2xl bg-white/40 hover:bg-white/60 border border-white/40 transition-all font-bold text-xl text-slate-900"
-                            >
-                                <div className="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center text-rose-600">
-                                    <Users size={20} />
-                                </div>
-                                Admissions
-                            </Link>
+
 
                             <Link 
                                 href="/resources" 
@@ -363,12 +348,7 @@ export function Navbar() {
                 </div>
 
                 {/* Sticky Mobile Footer CTA */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-white via-white/95 to-transparent z-20">
-                     <button onClick={handleHaptic} className="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold text-lg shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
-                        <span>Apply for Program</span>
-                        <Rocket size={18} />
-                    </button>
-                </div>
+
             </motion.div>
         )}
       </AnimatePresence>

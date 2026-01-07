@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/ui/navbar";
+import Link from "next/link";
 import { Footer } from "@/components/footer";
 import { AIHero } from "@/components/programs/ai/hero";
 import { WhyUs } from "@/components/programs/ai/why-us";
@@ -18,13 +19,7 @@ export default function AIPage() {
         <ComparisonSection />
         <CurriculumAccordion />
 
-         {/* Admissions CTA */}
-        <section className="py-24 bg-blue-600 text-center px-4">
-            <h2 className="text-4xl font-bold text-white mb-8">Ready to engineer the future?</h2>
-            <button className="px-12 py-5 bg-white text-blue-600 rounded-full font-bold text-lg hover:shadow-xl hover:scale-105 transition-all">
-                APPLY FOR PROGRAM
-            </button>
-        </section>
+
 
         <Footer />
     </main>

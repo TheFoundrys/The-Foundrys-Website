@@ -1,87 +1,122 @@
 export const quantumCurriculum = {
-    duration: "1 Year (2 Semesters)",
-    years: [
+    title: "4-Week Quantum Accelerator",
+    description: "From Linear Algebra to Quantum Hardware in 30 Days.",
+    weeks: [
         {
-            title: "YEAR 1: FOUNDATION PHASE",
-            subtitle: "\"From Linear Algebra to Logic Gates\"",
-            goal: "To move students from classical intuition to quantum intuition by building the necessary mathematical toolkit alongside practical coding skills.",
-            semesters: [
+            number: 1,
+            title: "Foundations of Quantum Computing",
+            focus: "Mathematical postulates, quantum logic, and basic circuit design using Python/Qiskit.",
+            outcomes: ["Calculus", "Linear Algebra", "Qiskit", "Superposition"],
+            modules: [
                 {
-                    id: "sem1",
-                    title: "Semester 1: Quantum Mathematics & Physics Foundations",
-                    theme: "Language of Quantum & The Physical Shift",
-                    modules: [
-                        {
-                            category: "Module 1: The Mathematical Toolkit",
-                            items: [
-                                "Complex Numbers: Algebra, Euler’s formula, Polar representation",
-                                "Linear Algebra: Vectors & Vector Spaces (Hilbert Space)",
-                                "Matrices: Multiplication, Identity, Inverse, Hermitian",
-                                "Eigenvalues & Eigenvectors: Meaning of measurement",
-                                "Inner Products, Orthogonality, Orthonormality (Bra-Ket Basics)"
-                            ]
-                        },
-                        {
-                            category: "Module 2: The Quantum Leap",
-                            items: [
-                                "Why Quantum? Limits of classical physics (Photoelectric, Atomic spectra)",
-                                "The Postulates: Wave-particle duality, Uncertainty Principle, Superposition",
-                                "The Qubit: Conceptual difference from Classical Bit",
-                                "The Sphere of Possibility: Visualizing the Bloch Sphere"
-                            ]
-                        },
-                        {
-                            category: "Lab 1: Scientific Computing & Visualization",
-                            items: [
-                                "Introduction to Python: Variables, Lists, Loops",
-                                "Numpy for Quantum Math: Matrix multiplication, Eigenvalues",
-                                "Visualizing Math: Plotting vectors and complex numbers"
-                            ]
-                        }
-                    ],
-                    project: {
-                        title: "Project 1: \"Simulating Superposition\"",
-                        task: "Build a Python visualizer that demonstrates wave interference and superposition.",
-                        outcome: "Visual intuition of quantum phenomena."
-                    }
+                    title: "Module 1: Mathematical Framework",
+                    topics: [
+                        "Postulates of Quantum Mechanics: Deep dive into state space, unitary evolution, and projective measurement.",
+                        "Linear Algebra for Quantum: Mastery of Hilbert spaces, eigenvectors, spectral theorem, and Dirac notation (Bra-ket).",
+                        "LMS Practical: Hands-on Python exercises focused on complex matrix multiplication and state vector simulation."
+                    ]
                 },
                 {
-                    id: "sem2",
-                    title: "Semester 2: Intro to Quantum Computation",
-                    theme: "The Logic of Quantum: Circuits & Algorithms",
-                    modules: [
-                        {
-                            category: "Module 3: Qubits and Gates",
-                            items: [
-                                "Single Qubit Gates: X, Z, H (Superposition), Matrix representation",
-                                "Multiple Qubits: Tensor products & Entanglement (Bell States)",
-                                "Multi-Qubit Gates: CNOT, Toffoli, Reversible Computing"
-                            ]
-                        },
-                        {
-                            category: "Module 4: Basic Quantum Algorithms",
-                            items: [
-                                "Quantum Teleportation & Superdense Coding",
-                                "Deutsch Algorithm: Proof of advantage",
-                                "Real-World Context: RSA Encryption threat (Shor's) & QKD (BB84)"
-                            ]
-                        },
-                        {
-                            category: "Lab 2: The Quantum Forge",
-                            items: [
-                                "Tools: Qiskit (IBM) or Cirq (Google)",
-                                "Practical 1: Quantum Random Number Generator",
-                                "Practical 2: Creating Superposition on a simulator",
-                                "Practical 3: Implementing Teleportation Circuit",
-                                "Practical 4: Running a job on real IBM Quantum hardware"
-                            ]
-                        }
-                    ],
-                    project: {
-                        title: "Project 2: \"Teleportation Protocol\"",
-                        task: "Implement the Quantum Teleportation protocol using Qiskit.",
-                        outcome: "Moving information using entanglement."
-                    }
+                    title: "Module 2: Qubits and Quantum Gates",
+                    topics: [
+                        "The Qubit: Bloch sphere visualization, physical interpretation of Superposition, and Bell State Entanglement.",
+                        "Quantum Gates: Comprehensive study of single-qubit (H, X, Y, Z, S, T) and multi-qubit control gates (CNOT, SWAP).",
+                        "Reversible Logic: Transitioning from classical Boolean logic to reversible Toffoli and Fredkin gates."
+                    ]
+                },
+                {
+                    title: "Module 3: Basic Algorithms",
+                    topics: [
+                        "Introduction to Quantum Algorithms: Step-by-step derivation of Deutsch-Jozsa and Grover’s Search complexities.",
+                        "LMS Practical: Build, simulate, and debug a Bell State circuit and Teleportation protocol in Qiskit."
+                    ]
+                }
+            ]
+        },
+        {
+            number: 2,
+            title: "Quantum Materials and Hardware",
+            focus: "The physical realization of qubits and material properties, utilizing simulation tools.",
+            outcomes: ["Superconductivity", "Noise Analysis", "Band Structure", "Topological Matter"],
+            modules: [
+                {
+                    title: "Module 1: Realizing the Qubit",
+                    topics: [
+                        "Hardware Architectures: Engineering Superconducting Transmon qubits (Google Sycamore) vs Trapped Ion systems (IonQ).",
+                        "Decoherence and Noise: Analyzing T1 relaxation and T2 dephasing times and their critical impact on gate fidelity."
+                    ]
+                },
+                {
+                    title: "Module 2: Quantum Materials",
+                    topics: [
+                        "Structure-Property Relationships: Understanding electronic band structures and Fermi surfaces in semiconductors.",
+                        "Emerging Materials: Introduction to Topological Insulators, Majoranas, and 2D Van der Waals heterostructures."
+                    ]
+                },
+                {
+                    title: "Module 3: Defects as Qubits",
+                    topics: [
+                        "Nitrogen-Vacancy (NV) Centers: atomic physics, spin properties, and optical initialization for room-temp quantum tech.",
+                        "LMS Practical: Visualization of Electronic Band Structures and Density of States (DOS) using Python/Tight-Binding."
+                    ]
+                }
+            ]
+        },
+        {
+            number: 3,
+            title: "Quantum Communication and Cryptography",
+            focus: "Secure communication protocols and the physics of information transfer.",
+            outcomes: ["QKD Protocols", "BB84", "Entanglement", "Post-Quantum Crypto"],
+            modules: [
+                {
+                    title: "Module 1: Quantum Information Theory",
+                    topics: [
+                        "No-Cloning Theorem: Mathematical proof and its profound implications for classical copying vs quantum transmission.",
+                        "Quantum Teleportation: Detailed protocol analysis for transferring quantum states using pre-shared entanglement."
+                    ]
+                },
+                {
+                    title: "Module 2: Cryptography Protocols",
+                    topics: [
+                        "Quantum Key Distribution (QKD): Security proofs for BB84, E91 (Ekert), and B92 protocols against eavesdropping.",
+                        "Post-Quantum Cryptography: Analyzing threats to RSA/ECC and exploring lattice-based cryptography candidates."
+                    ]
+                },
+                {
+                    title: "Module 3: Optical Systems",
+                    topics: [
+                        "Polarization Optics: Manipulating photon states with waveplates, beam splitters, and interferometers.",
+                        "LMS Practical: Simulating the complete BB84 QKD key exchange and error correction steps in Python."
+                    ]
+                }
+            ]
+        },
+        {
+            number: 4,
+            title: "Quantum Sensing and Metrology",
+            focus: "Precision measurement using quantum phenomena.",
+            outcomes: ["Heisenberg Limit", "LIGO Physics", "Magnetometry", "QuTiP Modeling"],
+            modules: [
+                {
+                    title: "Module 1: Fundamentals of Sensing",
+                    topics: [
+                        "Measurement Sensitivity: Overcoming the Standard Quantum Limit (SQL) to reach the fundamental Heisenberg Limit.",
+                        "Squeezed Light: Generation and application of squeezed states to enhance precision in interferometers (e.g., LIGO)."
+                    ]
+                },
+                {
+                    title: "Module 2: Applications",
+                    topics: [
+                        "Atomic Clocks: Operating principles of Cesium fountains and Optical Lattice clocks for GPS and relativistic geodesy.",
+                        "Magnetometry: Using NV centers in diamond for nano-scale magnetic field detection in biological systems.",
+                        "Quantum Imaging: Ghost imaging, quantum radar, and lithography beyond the diffraction limit."
+                    ]
+                },
+                {
+                    title: "Module 3: Sensor Simulation",
+                    topics: [
+                        "LMS Practical: Modeling Spin Hamiltonian dynamics and Ramsey interferometry fringes using the QuTiP library."
+                    ]
                 }
             ]
         }
