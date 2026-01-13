@@ -6,6 +6,15 @@ import { Triad } from "@/components/triad";
 import { Campus } from "@/components/campus";
 import { Stack } from "@/components/stack";
 import { Footer } from "@/components/footer";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "The Foundry's | India's First Deep Tech & Venture School",
+  description: "Degrees are printed. Companies are built.   We forge Architects in AI, Blockchain, Quantum, and Energy.",
+  alternates: {
+    canonical: "https://thefoundrys.com",
+  },
+};
 
 export default function Home() {
   return (

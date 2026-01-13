@@ -16,7 +16,7 @@ export function Navbar() {
   const [mobileSchoolsExpanded, setMobileSchoolsExpanded] = useState(true); // Mobile Schools Accordion State
   
   // State for the two-column layout: defaults to 'deep-tech'
-  const [activeCategory, setActiveCategory] = useState<"deep-tech" | "entrepreneurship" | "energy" | "sustainability">("deep-tech");
+  const [activeCategory, setActiveCategory] = useState<"deep-tech" | "entrepreneurship" | "sustainability" | "energy">("deep-tech");
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -105,6 +105,16 @@ export function Navbar() {
             bg: "bg-yellow-50"
           }
       ],
+      "sustainability": [
+          {
+            href: "/programs/esg",
+            label: "Environmental, Social, and Governance (ESG)",
+            desc: "Strategic Responsibility",
+            icon: Leaf,
+            color: "text-green-600",
+            bg: "bg-green-50"
+          }
+      ],
       "energy": [
           {
             href: "/programs/renewable-energy",
@@ -113,16 +123,6 @@ export function Navbar() {
             icon: Zap,
             color: "text-emerald-500",
             bg: "bg-emerald-50"
-          }
-      ],
-      "sustainability": [
-          {
-            href: "/programs/esg",
-            label: "ESG & Sustainability",
-            desc: "Environmental, Social, Governance",
-            icon: Leaf,
-            color: "text-green-600",
-            bg: "bg-green-50"
           }
       ]
   };
@@ -194,7 +194,7 @@ export function Navbar() {
                                         {SCHOOL_CATEGORIES.map((category) => (
                                             <button
                                                 key={category.id}
-                                                onMouseEnter={() => setActiveCategory(category.id as "deep-tech" | "entrepreneurship" | "energy" | "sustainability")}
+                                                onMouseEnter={() => setActiveCategory(category.id as "deep-tech" | "entrepreneurship" | "sustainability" | "energy")}
                                                 className={cn(
                                                     "text-left p-3 rounded-xl transition-all duration-200 group/cat",
                                                     activeCategory === category.id 

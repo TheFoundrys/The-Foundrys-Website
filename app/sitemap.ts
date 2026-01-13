@@ -10,10 +10,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/admissions',
         '/resources', // Assuming this exists or will exist
         '/programs/ai',
+        '/programs/blockchain',
         '/programs/cyber',
         '/programs/quantum-computing',
+        '/programs/renewable-energy',
         '/programs/venture-building',
         '/programs/strategy',
+        '/programs/esg',
+        '/contact',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date(),

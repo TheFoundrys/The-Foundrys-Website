@@ -21,24 +21,27 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://thefoundrys.com"),
   title: {
-    default: "The Foundry's | India's First Deep Tech & Venture School",
-    template: "%s | The Foundry's - Architect Your Future",
+    default: "The Foundry's | Best Deep Tech & AI College in Hyderabad",
+    template: "%s | The Foundry's"
   },
-  description: "Degrees are printed. Companies are built. Join The Foundry's School of Deep Tech (AI, Cyber, Quantum) and School of Entrepreneurship (Venture Building, Strategy). Architect your future.",
+  description: "The Foundry's is home to the School of Deep Tech, School of Entrepreneurship, and School of Energy. We offer specialized undergraduate programs in AI, Blockchain, Quantum Computing, and Renewable Energy.",
   keywords: [
-    "Deep Tech School",
-    "AI Course for 12th pass",
-    "Cyber Security career",
-    "Startup School India",
-    "School of Entrepreneurship",
-    "Alternative to Engineering College",
-    "Upskilling for Engineers",
-    "Quantum Computing India",
-    "Venture Building",
-    "Strategic Innovation",
-    "Coding Bootcamp India",
+    // Brand Variations
+    "The Foundry's", "The Foundry", "TheFoundry", "TheFoundrys", "Foundrys", "Foundry School",
+    
+    // Core Segments
+    "School of Deep Tech", "School of Entrepreneurship", "School of Energy",
+    "Venture Building Program", "Applied Engineering College",
+    
+    // Location & Intent
+    "Engineering Colleges in Hitech City", "Study in Hyderabad", "Technology Institute Hyderabad",
+    "Undergraduate Programs in AI", "B.Tech in Artificial Intelligence", "B.Tech in Renewable Energy",
+    
+    // Program Verticals
+    "Artificial Intelligence Engineering", "Blockchain Technology", "Quantum Computing",
+    "Cyber Security", "Renewable Energy Systems", "Strategic Management"
   ],
-  authors: [{ name: "The Foundry's Team" }],
+  authors: [{ name: "The Foundry's" }],
   creator: "The Foundry's",
   publisher: "The Foundry's",
   robots: {
@@ -54,26 +57,26 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_IN",
     url: "https://thefoundrys.com",
-    title: "The Foundry's | School of Deep Tech & Entrepreneurship",
-    description: "Degrees are printed. Companies are built. Join The Foundry's School of Deep Tech (AI, Cyber, Quantum) and School of Entrepreneurship (Venture Building, Strategy). Architect your future.",
+    title: "The Foundry's | School of Deep Tech, Entrepreneurship & Energy",
+    description: "The Foundry's comprises the School of Deep Tech, School of Entrepreneurship, and School of Energy. Join us in Hitech City, Hyderabad.",
     siteName: "The Foundry's",
     images: [
       {
-        url: "/og-image.jpg", // We need to ensure this exists or use a remote fallback
+        url: "/foundry.jpg", 
         width: 1200,
         height: 630,
-        alt: "The Foundry's Campus and Students",
+        alt: "The Foundry's - 4 Specialized Schools",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Foundry's | School of Deep Tech & Entrepreneurship",
-    description: "Degrees are printed. Companies are built. Join The Foundry's School of Deep Tech (AI, Cyber, Quantum) and School of Entrepreneurship (Venture Building, Strategy). Architect your future.",
-    images: ["/og-image.jpg"],
-    creator: "@thefoundrys", // Placeholder
+    title: "The Foundry's | School of Deep Tech, Entrepreneurship & Energy",
+    description: "Home to the School of Deep Tech, School of Entrepreneurship, and School of Energy. Located in Hitech City.",
+    images: ["/foundry.jpg"],
+    creator: "@thefoundrys", 
   },
 
   category: "education",

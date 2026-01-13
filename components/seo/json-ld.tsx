@@ -5,9 +5,21 @@ export function JsonLd() {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization", // Specific type for a school
     "name": "The Foundry's",
-    "alternateName": "The Foundry's School of Deep Tech",
+    "alternateName": [
+        "The Foundry", 
+        "TheFoundry", 
+        "Foundrys", 
+        "The Foundrys", 
+        "The Foundry School",
+        "The Foundry's School of Deep Tech"
+    ],
     "url": "https://thefoundrys.com",
-    "logo": "https://thefoundrys.com/logo.png", // Ensure this exists or use a valid URL
+    "logo": "https://thefoundrys.com/logo.png",
+    "founder": {
+        "@type": "Person",
+        "name": "Vishwanath Akuthota",
+        "alternateName": ["Dr. Pinnacle", "DrPinnacle", "Vishwanath"]
+    },
     "sameAs": [
       "https://twitter.com/thefoundrys",
       "https://instagram.com/thefoundrys",
@@ -21,9 +33,14 @@ export function JsonLd() {
       "postalCode": "500081",
       "addressCountry": "IN"
     },
-    "description": "India's first Deep Tech and Venture Building school located inside a workspace. We forge Architects, not just engineers.",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 17.4435, 
+      "longitude": 78.3772
+    },
+    "description": "India's first Deep Tech and Venture Building school located inside a workspace.   We forge Architects, not just engineers.",
     "foundingDate": "2024",
-    "priceRange": "$$$" // Indicates premium pricing
+    "priceRange": "$$$"
   };
 
   const programData = {
