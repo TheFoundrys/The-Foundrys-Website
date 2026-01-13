@@ -61,7 +61,7 @@ export function Hero() {
         >
             <Link href="/apply" className="relative px-10 py-5 bg-slate-900 text-white rounded-full font-bold text-lg overflow-hidden group hover:scale-105 transition-all shadow-xl hover:shadow-2xl">
                  <span className="relative flex items-center gap-2">
-                    ENTER THE FOUNDRY'S <span className="text-slate-200">↗</span>
+                    Enter The Foundry's <span className="text-slate-200">↗</span>
                  </span>
             </Link>
 

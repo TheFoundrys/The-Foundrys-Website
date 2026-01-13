@@ -119,10 +119,15 @@ export default function ApplyPage() {
                             <div className="relative">
                                 <select name="program" defaultValue="" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all font-medium appearance-none text-slate-700">
                                     <option value="" disabled>Select a Program (Optional)</option>
+                                    <option value="quantum computing">Quantum Computing</option>
+
                                     <option value="AI">Artificial Intelligence</option>
                                     <option value="Cyber Security">Cyber Security</option>
+                                    <option value="blockchain">Blockchain</option>
                                     <option value="Venture Building">Venture Building</option>
                                     <option value="Strategic Innovation">Strategic Innovation</option>
+                                    <option value="ESG">Environmental, Social, and Governance (ESG)</option>
+                                    <option value="renewable-energy">Renewable Energy</option>
                                 </select>
                                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">▼</div>
                             </div>

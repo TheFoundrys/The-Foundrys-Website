@@ -1,20 +1,22 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { triggerHaptic } from "@/lib/haptics";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu } from "lucide-react";
+import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu, Zap, Leaf, Network } from "lucide-react";
 
 export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false); // Mobile menu state
   const [isSchoolsOpen, setIsSchoolsOpen] = useState(false); // Desktop dropdown state
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const [mobileSchoolsExpanded, setMobileSchoolsExpanded] = useState(true); // Mobile Schools Accordion State
   
   // State for the two-column layout: defaults to 'deep-tech'
-  const [activeCategory, setActiveCategory] = useState<"deep-tech" | "entrepreneurship">("deep-tech");
+  const [activeCategory, setActiveCategory] = useState<"deep-tech" | "entrepreneurship" | "energy" | "sustainability">("deep-tech");
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -37,6 +39,16 @@ export function Navbar() {
           id: "entrepreneurship",
           label: "School of Entrepreneurship",
           description: "Venture Building & Strategy"
+      },
+      {
+          id: "sustainability",
+          label: "School of Sustainability",
+          description: "Climate Resilience & ESG"
+      },
+      {
+          id: "energy",
+          label: "School of Energy",
+          description: "Sustainable Power Systems"
       }
   ] as const;
 
@@ -66,6 +78,14 @@ export function Navbar() {
             color: "text-cyan-400",
             bg: "bg-cyan-950/30"
         },
+        { 
+            href: "/programs/blockchain", 
+            label: "Blockchain Development", 
+            desc: "The Trust Layer",
+            icon: Network,
+            color: "text-purple-600",
+            bg: "bg-purple-50"
+        },
       ],
       "entrepreneurship": [
           {
@@ -83,6 +103,26 @@ export function Navbar() {
             icon: Lightbulb,
             color: "text-yellow-600",
             bg: "bg-yellow-50"
+          }
+      ],
+      "energy": [
+          {
+            href: "/programs/renewable-energy",
+            label: "Renewable Energy",
+            desc: "Powering the Future",
+            icon: Zap,
+            color: "text-emerald-500",
+            bg: "bg-emerald-50"
+          }
+      ],
+      "sustainability": [
+          {
+            href: "/programs/esg",
+            label: "ESG & Sustainability",
+            desc: "Environmental, Social, Governance",
+            icon: Leaf,
+            color: "text-green-600",
+            bg: "bg-green-50"
           }
       ]
   };
@@ -104,8 +144,7 @@ export function Navbar() {
                 className="glass px-6 py-3 rounded-full flex items-center gap-2 bg-white/70 backdrop-blur-xl border border-white/50 shadow-sm relative z-50"
             >
                 <Link href="/" onClick={handleHaptic} className="font-bold text-xl tracking-tighter flex items-center gap-2 text-slate-900 md:mr-8">
-                    <div className="w-5 h-5 bg-slate-900 rounded-md" />
-                    <span>THE FOUNDRY'S</span>
+                    <span>The Foundry's</span>
                 </Link>
 
                 {/* Desktop Links */}
@@ -113,8 +152,13 @@ export function Navbar() {
                     {/* Maps to 'Schools' Dropdown */}
                     <div 
                         className="relative group"
-                        onMouseEnter={() => setIsSchoolsOpen(true)}
-                        onMouseLeave={() => setIsSchoolsOpen(false)}
+                        onMouseEnter={() => {
+                            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+                            setIsSchoolsOpen(true);
+                        }}
+                        onMouseLeave={() => {
+                            timeoutRef.current = setTimeout(() => setIsSchoolsOpen(false), 300);
+                        }}
                     >
                         <button 
                             onClick={handleHaptic}
@@ -150,7 +194,7 @@ export function Navbar() {
                                         {SCHOOL_CATEGORIES.map((category) => (
                                             <button
                                                 key={category.id}
-                                                onMouseEnter={() => setActiveCategory(category.id as "deep-tech" | "entrepreneurship")}
+                                                onMouseEnter={() => setActiveCategory(category.id as "deep-tech" | "entrepreneurship" | "energy" | "sustainability")}
                                                 className={cn(
                                                     "text-left p-3 rounded-xl transition-all duration-200 group/cat",
                                                     activeCategory === category.id 
@@ -297,6 +341,46 @@ export function Navbar() {
                                                 <div className="px-3 py-2 text-xs font-bold uppercase tracking-widest text-slate-400">School of Entrepreneurship</div>
                                                 <div className="flex flex-col gap-1">
                                                     {COURSES["entrepreneurship"].map(course => (
+                                                        <Link 
+                                                            key={course.href}
+                                                            href={course.href}
+                                                            onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                            className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100/50 transition-colors"
+                                                        >
+                                                            <div className={`w-8 h-8 rounded-md ${course.bg} flex items-center justify-center ${course.color}`}>
+                                                                <course.icon size={16} />
+                                                            </div>
+                                                            <span className="font-semibold text-slate-700">{course.label}</span>
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            {/* Sustainability Group */}
+                                            <div>
+                                                <div className="px-3 py-2 text-xs font-bold uppercase tracking-widest text-slate-400">School of Sustainability</div>
+                                                <div className="flex flex-col gap-1">
+                                                    {COURSES["sustainability"].map(course => (
+                                                        <Link 
+                                                            key={course.href}
+                                                            href={course.href}
+                                                            onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                            className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100/50 transition-colors"
+                                                        >
+                                                            <div className={`w-8 h-8 rounded-md ${course.bg} flex items-center justify-center ${course.color}`}>
+                                                                <course.icon size={16} />
+                                                            </div>
+                                                            <span className="font-semibold text-slate-700">{course.label}</span>
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            {/* Energy Group */}
+                                            <div>
+                                                <div className="px-3 py-2 text-xs font-bold uppercase tracking-widest text-slate-400">School of Energy</div>
+                                                <div className="flex flex-col gap-1">
+                                                    {COURSES["energy"].map(course => (
                                                         <Link 
                                                             key={course.href}
                                                             href={course.href}
