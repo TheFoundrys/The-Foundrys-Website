@@ -10,13 +10,16 @@ import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Bui
 export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false); // Mobile menu state
-  const [isSchoolsOpen, setIsSchoolsOpen] = useState(false); // Desktop dropdown state
+  const [isSchoolsOpen, setIsSchoolsOpen] = useState(false); // Desktop Schools dropdown state
+  const [isMoreOpen, setIsMoreOpen] = useState(false); // Desktop More dropdown state
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const moreTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [mobileSchoolsExpanded, setMobileSchoolsExpanded] = useState(true); // Mobile Schools Accordion State
+  const [mobileMoreExpanded, setMobileMoreExpanded] = useState(false); // Mobile More Accordion State
   
   // State for the two-column layout: defaults to 'deep-tech'
-  const [activeCategory, setActiveCategory] = useState<"deep-tech" | "entrepreneurship" | "sustainability" | "energy">("deep-tech");
+  const [activeCategory, setActiveCategory] = useState<"deep-tech" | "entrepreneurship" | "sustainability" | "energy" | "online">("deep-tech");
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -108,7 +111,7 @@ export function Navbar() {
       "sustainability": [
           {
             href: "/programs/esg",
-            label: "Environmental, Social, and Governance (ESG)",
+            label: "ESG & Sustainability",
             desc: "Strategic Responsibility",
             icon: Leaf,
             color: "text-green-600",
@@ -124,7 +127,8 @@ export function Navbar() {
             color: "text-emerald-500",
             bg: "bg-emerald-50"
           }
-      ]
+      ],
+      "online": []
   };
 
   const handleHaptic = () => {
@@ -210,6 +214,28 @@ export function Navbar() {
                                                 </div>
                                             </button>
                                         ))}
+
+                                        
+                                        <hr className="my-2 border-slate-100" />
+                                        
+                                        <Link
+                                            href="https://compass.thefoundrys.com"
+                                            target="_blank"
+                                            onClick={handleHaptic}
+                                            onMouseEnter={() => setActiveCategory("online")}
+                                            className={cn(
+                                                "block p-3 rounded-xl hover:bg-white/50 hover:shadow-sm transition-all duration-200 group/online",
+                                                activeCategory === "online" ? "bg-white shadow-sm ring-1 ring-slate-200" : ""
+                                            )}
+                                        >
+                                            <div className="font-bold text-sm text-blue-600 flex items-center gap-2">
+                                                Online Programs
+                                                <div className="bg-blue-100 text-[10px] px-1.5 py-0.5 rounded text-blue-700 font-bold uppercase tracking-wider">Compass</div>
+                                            </div>
+                                            <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400 mt-0.5">
+                                                LMS & Student Portal
+                                            </div>
+                                        </Link>
                                     </div>
 
                                     {/* Right Column: Courses */}
@@ -243,20 +269,68 @@ export function Navbar() {
                     </div>
 
                     <Link 
-                        href="/campus" 
-                        onClick={handleHaptic}
-                        className={cn("text-sm font-medium transition-colors hover:text-blue-600", pathname === "/campus" ? "text-slate-900 font-bold" : "text-slate-500")}
-                    >
-                        Campus
-                    </Link>
-
-                     <Link 
                         href="/resources" 
                         onClick={handleHaptic}
                         className={cn("text-sm font-medium transition-colors hover:text-blue-600", pathname.startsWith("/resources") ? "text-slate-900 font-bold" : "text-slate-500")}
                     >
                         Resources
                     </Link>
+
+                    {/* 'More' Dropdown */}
+                    <div 
+                        className="relative group"
+                        onMouseEnter={() => {
+                            if (moreTimeoutRef.current) clearTimeout(moreTimeoutRef.current);
+                            setIsMoreOpen(true);
+                        }}
+                        onMouseLeave={() => {
+                            moreTimeoutRef.current = setTimeout(() => setIsMoreOpen(false), 300);
+                        }}
+                    >
+                        <button 
+                            onClick={handleHaptic}
+                            className={cn(
+                                "flex items-center gap-1 text-sm font-medium transition-colors hover:text-blue-600 py-2",
+                                (pathname === "/campus") ? "text-slate-900 font-bold" : "text-slate-500"
+                            )}
+                        >
+                            More <ChevronDown size={14} className={`transition-transform duration-200 ${isMoreOpen ? "rotate-180" : ""}`} />
+                        </button>
+                        
+                        <AnimatePresence>
+                            {isMoreOpen && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    exit={{ opacity: 0, y: 5, scale: 0.95 }}
+                                    transition={{ duration: 0.15 }}
+                                    className="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-48 p-1 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-white/80 overflow-hidden ring-1 ring-slate-900/5 flex flex-col gap-1"
+                                >
+                                    <Link 
+                                        href="/campus" 
+                                        onClick={handleHaptic}
+                                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
+                                    >
+                                        <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 group-hover:scale-110 transition-transform">
+                                            <Building2 size={16} />
+                                        </div>
+                                        <span className="text-sm font-bold text-slate-700">Campus</span>
+                                    </Link>
+                                    
+                                     <Link 
+                                        href="/contact" 
+                                        onClick={handleHaptic}
+                                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
+                                    >
+                                        <div className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-600 group-hover:scale-110 transition-transform">
+                                            <Users size={16} />
+                                        </div>
+                                        <span className="text-sm font-bold text-slate-700">Contact</span>
+                                    </Link>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
                 </div>
 
                 {/* Desktop CTA */}
@@ -395,37 +469,84 @@ export function Navbar() {
                                                     ))}
                                                 </div>
                                             </div>
+
+                                            <div className="pt-2 border-t border-slate-100/50 mt-2">
+                                                <Link
+                                                    href="https://compass.thefoundrys.com"
+                                                    target="_blank"
+                                                    onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                    className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100/50 transition-colors"
+                                                >
+                                                    <div className="w-8 h-8 rounded-md bg-blue-50 flex items-center justify-center text-blue-600">
+                                                        <Network size={16} />
+                                                    </div>
+                                                    <div>
+                                                        <span className="font-semibold text-slate-700 block">Online Programs</span>
+                                                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Compass Portal</span>
+                                                    </div>
+                                                </Link>
+                                            </div>
                                         </div>
                                     </motion.div>
                                 )}
                              </AnimatePresence>
                         </div>
 
-                        {/* Primary Nav Links */}
-                        <div className="flex flex-col gap-2">
-                            <Link 
-                                href="/campus" 
-                                onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                className="flex items-center gap-4 p-4 rounded-2xl bg-white/40 hover:bg-white/60 border border-white/40 transition-all font-bold text-xl text-slate-900"
-                            >
-                                <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600">
-                                    <Building2 size={20} />
-                                </div>
-                                Campus
-                            </Link>
+                        <Link 
+                            href="/resources" 
+                            onClick={() => { setIsOpen(false); handleHaptic(); }}
+                            className="flex items-center gap-4 p-4 rounded-2xl bg-white/40 hover:bg-white/60 border border-white/40 transition-all font-bold text-xl text-slate-900"
+                        >
+                            <div className="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                <Library size={20} />
+                            </div>
+                            Resources
+                        </Link>
 
+                        {/* More Accordion */}
+                        <div className="rounded-2xl bg-white/60 p-1 border border-white/50 shadow-sm">
+                             <button 
+                                onClick={() => { setMobileMoreExpanded(!mobileMoreExpanded); handleHaptic(); }}
+                                className="flex items-center justify-between w-full p-4 rounded-xl hover:bg-white/50 transition-colors"
+                             >
+                                 <span className="text-xl font-bold text-slate-900">More</span>
+                                 <ChevronDown size={20} className={cn("text-slate-500 transition-transform", mobileMoreExpanded ? "rotate-180" : "")} />
+                             </button>
 
+                             <AnimatePresence>
+                                {mobileMoreExpanded && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        className="overflow-hidden"
+                                    >
+                                        <div className="px-2 pb-2 flex flex-col gap-2 pt-2">
+                                            <Link 
+                                                href="/campus" 
+                                                onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
+                                            >
+                                                <div className="w-8 h-8 rounded-md bg-indigo-50 flex items-center justify-center text-indigo-600">
+                                                    <Building2 size={16} />
+                                                </div>
+                                                <span className="font-semibold text-slate-700">Campus</span>
+                                            </Link>
 
-                            <Link 
-                                href="/resources" 
-                                onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                className="flex items-center gap-4 p-4 rounded-2xl bg-white/40 hover:bg-white/60 border border-white/40 transition-all font-bold text-xl text-slate-900"
-                            >
-                                <div className="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
-                                    <Library size={20} />
-                                </div>
-                                Resources
-                            </Link>
+                                            <Link 
+                                                href="/contact" 
+                                                onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
+                                            >
+                                                <div className="w-8 h-8 rounded-md bg-slate-100 flex items-center justify-center text-slate-600">
+                                                    <Users size={16} />
+                                                </div>
+                                                <span className="font-semibold text-slate-700">Contact Us</span>
+                                            </Link>
+                                        </div>
+                                    </motion.div>
+                                )}
+                             </AnimatePresence>
                         </div>
 
                     </div>

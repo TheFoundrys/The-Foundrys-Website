@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const routes = [
         '',
         '/campus',
-        '/admissions',
+        '/apply',
         '/resources', // Assuming this exists or will exist
         '/programs/ai',
         '/programs/blockchain',

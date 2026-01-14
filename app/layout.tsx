@@ -26,20 +26,25 @@ export const metadata: Metadata = {
   },
   description: "The Foundry's is home to the School of Deep Tech, School of Entrepreneurship, and School of Energy. We offer specialized undergraduate programs in AI, Blockchain, Quantum Computing, and Renewable Energy.",
   keywords: [
-    // Brand Variations
-    "The Foundry's", "The Foundry", "TheFoundry", "TheFoundrys", "Foundrys", "Foundry School",
+    // Brand Variations & Common Misspellings
+    "The Foundry's", "The Foundry", "TheFoundry", "TheFoundrys", "Foundrys", "Foundry School", "The Foundery", "The Foundries",
     
-    // Core Segments
-    "School of Deep Tech", "School of Entrepreneurship", "School of Energy",
-    "Venture Building Program", "Applied Engineering College",
+    // Competitor & Comparative Keywords (Strategic)
+    "Bower School of Entrepreneurship", "Nextwave Hyderabad", "Nextwave Institute of Advanced Technologies", 
+    "Top Colleges like IIT", "Alternatives to IIT", "Best Engineering Colleges in Hyderabad", "Top NITs", 
+    "Premium Engineering Colleges India", "Comparison with Scaler School of Technology", "Newton School Alternatives",
+
+    // Core Segments & Programs
+    "School of Deep Tech", "School of Entrepreneurship", "School of Energy", "School of Sustainability",
+    "Venture Building Program", "Applied Engineering College", "BBA in Entrepreneurship", "B.Tech in Artificial Intelligence",
     
-    // Location & Intent
-    "Engineering Colleges in Hitech City", "Study in Hyderabad", "Technology Institute Hyderabad",
-    "Undergraduate Programs in AI", "B.Tech in Artificial Intelligence", "B.Tech in Renewable Energy",
-    
+    // Broad Education Keywords
+    "Engineering", "BBA", "MBA Alternatives", "Computer Science Engineering", "B.Tech Computer Science",
+    "Study in Hyderabad", "Technology Institute Hyderabad", "Best College for Startup Founders",
+
     // Program Verticals
-    "Artificial Intelligence Engineering", "Blockchain Technology", "Quantum Computing",
-    "Cyber Security", "Renewable Energy Systems", "Strategic Management"
+    "Artificial Intelligence Engineering", "Blockchain Technology", "Quantum Computing", "Generative AI Course",
+    "Cyber Security", "Renewable Energy Systems", "Strategic Management", "ESG and Sustainability"
   ],
   authors: [{ name: "The Foundry's" }],
   creator: "The Foundry's",
