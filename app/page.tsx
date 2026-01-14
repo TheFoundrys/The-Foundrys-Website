@@ -10,7 +10,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "The Foundry's | India's First Deep Tech & Venture School",
-  description: "Degrees are printed. Companies are built.   We forge Architects in AI, Blockchain, Quantum, and Energy.",
+  description: "Degrees are printed. Companies are built. Founded by Vishwanath Akuthota (Dr. Pinnacle). We forge Architects in AI, Blockchain, Quantum, and Energy.",
   alternates: {
     canonical: "https://thefoundrys.com",
   },

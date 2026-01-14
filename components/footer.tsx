@@ -9,12 +9,12 @@ export function Footer({ hideCTA = false }: FooterProps) {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-slate-50 text-slate-500 text-xs font-medium py-12 border-t border-slate-200 font-sans tracking-tight">
-            <div className="container mx-auto px-6 max-w-5xl">
+        <footer className="bg-slate-50 text-slate-500 font-medium py-12 border-t border-slate-200 font-sans tracking-tight">
+            <div className="container mx-auto px-6">
                 
                 {/* Note / Breadcrumb Style Top */}
                 <div className="mb-8 border-b border-slate-200 pb-6">
-                    <p className="max-w-2xl leading-relaxed">
+                    <p className="max-w-2xl leading-relaxed text-sm">
                         <span className="font-semibold text-slate-700">The Foundry's.</span> 
                         <br />
                          Degrees are printed. Companies are built. 
@@ -23,29 +23,30 @@ export function Footer({ hideCTA = false }: FooterProps) {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-10">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-10 text-sm">
                     
                     {/* Column 1: Deep Tech */}
                     <div className="flex flex-col gap-3">
                         <h3 className="text-slate-900 font-bold mb-1">School of Deep Tech</h3>
-                        <FooterLink href="/programs/ai">Artificial Intelligence</FooterLink>
-                        <FooterLink href="/programs/cyber">Cyber Security</FooterLink>
-                        <FooterLink href="/programs/quantum-computing">Quantum Computing</FooterLink>
-                        <FooterLink href="/programs/blockchain">Blockchain</FooterLink>
+                        <FooterLink href="/schools/ai">Artificial Intelligence</FooterLink>
+                        <FooterLink href="/schools/cyber">Cyber Security</FooterLink>
+                        <FooterLink href="/schools/quantum-computing">Quantum Computing</FooterLink>
+                        <FooterLink href="/schools/blockchain">Blockchain</FooterLink>
                     </div>
 
                     {/* Column 2: Specialized Schools */}
                     <div className="flex flex-col gap-3">
                         <h3 className="text-slate-900 font-bold mb-1">Specialized Schools</h3>
-                        <FooterLink href="/programs/venture-building">School of Entrepreneurship</FooterLink>
-                        <FooterLink href="/programs/esg">School of Sustainability</FooterLink>
-                        <FooterLink href="/programs/renewable-energy">School of Energy</FooterLink>
-                        {/* <FooterLink href="/programs/strategy">Strategic Innovation</FooterLink> */}
+                        <FooterLink href="/schools/venture-building">School of Entrepreneurship</FooterLink>
+                        <FooterLink href="/schools/esg">School of Sustainability</FooterLink>
+                        <FooterLink href="/schools/renewable-energy">School of Energy</FooterLink>
+                        {/* <FooterLink href="/schools/strategy">Strategic Innovation</FooterLink> */}
                     </div>
 
                     {/* Column 3: Explore */}
                     <div className="flex flex-col gap-3">
                         <h3 className="text-slate-900 font-bold mb-1">Explore</h3>
+                        <FooterLink href="/programs">Online Programs</FooterLink>
                         <FooterLink href="/campus">The Campus</FooterLink>
                         <FooterLink href="/contact">Contact Us</FooterLink>
                         <FooterLink href="/faq">FAQs</FooterLink>
@@ -62,7 +63,7 @@ export function Footer({ hideCTA = false }: FooterProps) {
                                 className="hover:underline decoration-slate-400 underline-offset-2 flex items-center gap-1"
                             >
                                 <span>Compass Portal</span>
-                                <ArrowUpRight size={10} className="opacity-50" />
+                                <ArrowUpRight size={14} className="opacity-50" />
                             </Link>
                         </li>
                     </div>
@@ -78,7 +79,7 @@ export function Footer({ hideCTA = false }: FooterProps) {
                 </div>
 
                 {/* Bottom Section */}
-                <div className="pt-6 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div className="pt-6 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
                     <div className="flex flex-col md:flex-row items-center gap-1 md:gap-6">
                         <p>Copyright © {currentYear} The Foundry's. All rights reserved.</p>
                         <div className="hidden md:block h-3 w-px bg-slate-300"></div>

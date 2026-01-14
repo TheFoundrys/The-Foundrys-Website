@@ -27,7 +27,7 @@ export function JsonLd() {
     ],
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Hitech City",
+      // "streetAddress": "Hitech City",
       "addressLocality": "Hyderabad",
       "addressRegion": "Telangana",
       "postalCode": "500081",
@@ -38,7 +38,7 @@ export function JsonLd() {
       "latitude": 17.4435, 
       "longitude": 78.3772
     },
-    "description": "India's first Deep Tech and Venture Building school located inside a workspace.   We forge Architects, not just engineers.",
+    "description": "India's first Deep Tech and Venture Building school located inside a workspace. Founded by Vishwanath Akuthota (Dr. Pinnacle). We forge Architects, not just engineers.",
     "foundingDate": "2024",
     "priceRange": "$$$"
   };

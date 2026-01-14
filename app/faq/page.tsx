@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     question: "Is this program online or offline?",
-    answer: "Our core programs are fully offline and residential at our Hitech City campus in Hyderabad. We believe that deep work and serendipitous innovation happen best when high-agency individuals share a physical space."
+    answer: "Our core programs are fully offline and residential in Hyderabad. We believe that deep work and serendipitous innovation happen best when high-agency individuals share a physical space."
   },
   {
     question: "How does the admissions process work?",

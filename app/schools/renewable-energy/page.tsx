@@ -1,12 +1,12 @@
 
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
-import { RenewableEnergyHero } from "@/components/programs/renewable-energy/hero";
-import { RenewableEnergyWhyUs } from "@/components/programs/renewable-energy/why-us";
-import { RenewableEnergySkills } from "@/components/programs/renewable-energy/founder-skills";
-import { RenewableEnergyStats } from "@/components/programs/renewable-energy/program-stats";
-import { RenewableEnergyComparison } from "@/components/programs/renewable-energy/comparison";
-import { RenewableEnergyCurriculumAccordion } from "@/components/programs/renewable-energy/curriculum-accordion";
+import { RenewableEnergyHero } from "@/components/schools/renewable-energy/hero";
+import { RenewableEnergyWhyUs } from "@/components/schools/renewable-energy/why-us";
+import { RenewableEnergySkills } from "@/components/schools/renewable-energy/founder-skills";
+import { RenewableEnergyStats } from "@/components/schools/renewable-energy/program-stats";
+import { RenewableEnergyComparison } from "@/components/schools/renewable-energy/comparison";
+import { RenewableEnergyCurriculumAccordion } from "@/components/schools/renewable-energy/curriculum-accordion";
 
 import { Metadata } from "next";
 

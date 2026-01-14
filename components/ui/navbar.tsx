@@ -58,7 +58,7 @@ export function Navbar() {
   const COURSES = {
       "deep-tech": [
         { 
-            href: "/programs/ai", 
+            href: "/schools/ai", 
             label: "Artificial Intelligence", 
             desc: "The Intelligence Layer",
             icon: BrainCircuit,
@@ -66,7 +66,7 @@ export function Navbar() {
             bg: "bg-blue-50"
         },
         { 
-            href: "/programs/cyber", 
+            href: "/schools/cyber", 
             label: "Cyber Security", 
             desc: "The Defense Layer",
             icon: ShieldCheck,
@@ -74,7 +74,7 @@ export function Navbar() {
             bg: "bg-red-50"
         },
         { 
-            href: "/programs/quantum-computing", 
+            href: "/schools/quantum-computing", 
             label: "Quantum Computing", 
             desc: "The Q-Layer",
             icon: Atom,
@@ -82,7 +82,7 @@ export function Navbar() {
             bg: "bg-cyan-950/30"
         },
         { 
-            href: "/programs/blockchain", 
+            href: "/schools/blockchain", 
             label: "Blockchain Development", 
             desc: "The Trust Layer",
             icon: Network,
@@ -92,7 +92,7 @@ export function Navbar() {
       ],
       "entrepreneurship": [
           {
-            href: "/programs/venture-building",
+            href: "/schools/venture-building",
             label: "Venture Building",
             desc: "Zero to One",
             icon: Rocket,
@@ -100,7 +100,7 @@ export function Navbar() {
             bg: "bg-amber-50"
           },
           {
-            href: "/programs/strategy",
+            href: "/schools/strategy",
             label: "Strategic Innovation",
             desc: "Market Disruption",
             icon: Lightbulb,
@@ -110,7 +110,7 @@ export function Navbar() {
       ],
       "sustainability": [
           {
-            href: "/programs/esg",
+            href: "/schools/esg",
             label: "ESG & Sustainability",
             desc: "Strategic Responsibility",
             icon: Leaf,
@@ -120,7 +120,7 @@ export function Navbar() {
       ],
       "energy": [
           {
-            href: "/programs/renewable-energy",
+            href: "/schools/renewable-energy",
             label: "Renewable Energy",
             desc: "Powering the Future",
             icon: Zap,
@@ -164,27 +164,28 @@ export function Navbar() {
                             timeoutRef.current = setTimeout(() => setIsSchoolsOpen(false), 300);
                         }}
                     >
-                        <button 
+                        <Link 
+                            href="/schools"
                             onClick={handleHaptic}
                             className={cn(
                                 "flex items-center gap-1 text-sm font-medium transition-colors hover:text-blue-600 py-2",
-                                pathname.startsWith("/programs") ? "text-slate-900 font-bold" : "text-slate-500"
+                                pathname.startsWith("/schools") ? "text-slate-900 font-bold" : "text-slate-500"
                             )}
                         >
                             Schools <ChevronDown size={14} className={`transition-transform duration-200 ${isSchoolsOpen ? "rotate-180" : ""}`} />
-                        </button>
+                        </Link>
                         
                         {/* 3D Holographic Dropdown Menu - Two Column Layout */}
                         <AnimatePresence>
                             {isSchoolsOpen && (
                                 <motion.div
-                                    initial={{ opacity: 0, rotateX: -20, y: 20, scale: 0.9, filter: "blur(10px)" }}
-                                    animate={{ opacity: 1, rotateX: 0, y: 0, scale: 1, filter: "blur(0px)" }}
-                                    exit={{ opacity: 0, rotateX: -10, y: 10, scale: 0.95, filter: "blur(10px)" }}
+                                    initial={{ opacity: 0, y: -20, scaleY: 0.4, scaleX: 0.8, filter: "blur(12px)" }}
+                                    animate={{ opacity: 1, y: 0, scaleY: 1, scaleX: 1, filter: "blur(0px)" }}
+                                    exit={{ opacity: 0, y: -10, scaleY: 0.8, scaleX: 0.9, filter: "blur(10px)" }}
                                     transition={{ 
                                         type: "spring", 
-                                        stiffness: 300, 
-                                        damping: 20,
+                                        stiffness: 500, 
+                                        damping: 30,
                                         mass: 0.8
                                     }}
                                     style={{ transformOrigin: "top center" }}
@@ -216,26 +217,7 @@ export function Navbar() {
                                         ))}
 
                                         
-                                        <hr className="my-2 border-slate-100" />
-                                        
-                                        <Link
-                                            href="https://compass.thefoundrys.com"
-                                            target="_blank"
-                                            onClick={handleHaptic}
-                                            onMouseEnter={() => setActiveCategory("online")}
-                                            className={cn(
-                                                "block p-3 rounded-xl hover:bg-white/50 hover:shadow-sm transition-all duration-200 group/online",
-                                                activeCategory === "online" ? "bg-white shadow-sm ring-1 ring-slate-200" : ""
-                                            )}
-                                        >
-                                            <div className="font-bold text-sm text-blue-600 flex items-center gap-2">
-                                                Online Programs
-                                                <div className="bg-blue-100 text-[10px] px-1.5 py-0.5 rounded text-blue-700 font-bold uppercase tracking-wider">Compass</div>
-                                            </div>
-                                            <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400 mt-0.5">
-                                                LMS & Student Portal
-                                            </div>
-                                        </Link>
+
                                     </div>
 
                                     {/* Right Column: Courses */}
@@ -269,11 +251,11 @@ export function Navbar() {
                     </div>
 
                     <Link 
-                        href="/resources" 
+                        href="/programs" 
                         onClick={handleHaptic}
-                        className={cn("text-sm font-medium transition-colors hover:text-blue-600", pathname.startsWith("/resources") ? "text-slate-900 font-bold" : "text-slate-500")}
+                        className={cn("text-sm font-medium transition-colors hover:text-blue-600", pathname.startsWith("/programs") ? "text-slate-900 font-bold" : "text-slate-500")}
                     >
-                        Resources
+                        Programs
                     </Link>
 
                     {/* 'More' Dropdown */}
@@ -326,6 +308,17 @@ export function Navbar() {
                                             <Users size={16} />
                                         </div>
                                         <span className="text-sm font-bold text-slate-700">Contact</span>
+                                    </Link>
+
+                                    <Link 
+                                        href="/resources" 
+                                        onClick={handleHaptic}
+                                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
+                                    >
+                                        <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:scale-110 transition-transform">
+                                            <Library size={16} />
+                                        </div>
+                                        <span className="text-sm font-bold text-slate-700">Resources</span>
                                     </Link>
                                 </motion.div>
                             )}
@@ -493,14 +486,14 @@ export function Navbar() {
                         </div>
 
                         <Link 
-                            href="/resources" 
+                            href="/programs" 
                             onClick={() => { setIsOpen(false); handleHaptic(); }}
                             className="flex items-center gap-4 p-4 rounded-2xl bg-white/40 hover:bg-white/60 border border-white/40 transition-all font-bold text-xl text-slate-900"
                         >
-                            <div className="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
-                                <Library size={20} />
+                            <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                                <Network size={20} />
                             </div>
-                            Resources
+                            Programs
                         </Link>
 
                         {/* More Accordion */}
@@ -542,6 +535,17 @@ export function Navbar() {
                                                     <Users size={16} />
                                                 </div>
                                                 <span className="font-semibold text-slate-700">Contact Us</span>
+                                            </Link>
+
+                                            <Link 
+                                                href="/resources" 
+                                                onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
+                                            >
+                                                <div className="w-8 h-8 rounded-md bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                                    <Library size={16} />
+                                                </div>
+                                                <span className="font-semibold text-slate-700">Resources</span>
                                             </Link>
                                         </div>
                                     </motion.div>

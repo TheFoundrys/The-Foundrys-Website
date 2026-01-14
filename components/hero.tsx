@@ -12,12 +12,12 @@ export function Hero() {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1.5 }}
             // Abstract architecture/network image
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=80"
+            src="/images/home-hero-bg.jpg"
             alt="Abstract Tech Background"
             className="w-full h-full object-cover"
          />
-         {/* Ethereal Light Overlay */}
-         <div className="absolute inset-0 bg-white/80 backdrop-blur-[2px]" />
+         {/* Ethereal Light Overlay - Increased opacity for full page readability */}
+         <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px]" />
          
          {/* Subtle Moving Gradient Blobs on top of image for that 'Ethereal' feel */}
          <motion.div 
@@ -47,10 +47,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-slate-600 text-lg md:text-2xl font-medium tracking-wide mb-12 max-w-3xl"
+            className="text-slate-700 text-lg md:text-2xl font-medium tracking-wide mb-12 max-w-3xl"
         >
-            We don’t train junior engineers. We build the builders.<br/>
-            <span className="text-slate-400 line-through decoration-slate-400">Not a College.</span> India’s First Deep Tech Ecosystem.
+            We don’t train junior engineers. We forge Founders & Leaders.<br/>
+            <span className="text-slate-500 line-through decoration-slate-500">Not a College.</span> India’s First Deep Tech & Venture Ecosystem.
         </motion.p>
 
         <motion.div

@@ -1,7 +1,7 @@
 "use client";
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
-import { CurriculumAccordion } from "@/components/programs/quantum/curriculum-accordion";
+import { CurriculumAccordion } from "@/components/schools/quantum/curriculum-accordion";
 import { quantumCurriculum } from "@/data/quantum-curriculum";
 import { motion } from "framer-motion";
 import { Atom, Zap, Cpu, ArrowRight, Check } from "lucide-react";

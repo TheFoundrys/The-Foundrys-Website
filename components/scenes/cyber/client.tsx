@@ -2,12 +2,12 @@
 import Link from "next/link";
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
-import { AIHero } from "@/components/programs/cyber/hero";
-import { WhyUs } from "@/components/programs/cyber/why-us";
-import { ProgramStats } from "@/components/programs/cyber/program-stats";
-import { EngineeringSkills } from "@/components/programs/cyber/engineering-skills";
-import { ComparisonSection } from "@/components/programs/cyber/comparison";
-import { CurriculumAccordion } from "@/components/programs/cyber/curriculum-accordion";
+import { AIHero } from "@/components/schools/cyber/hero";
+import { WhyUs } from "@/components/schools/cyber/why-us";
+import { ProgramStats } from "@/components/schools/cyber/program-stats";
+import { EngineeringSkills } from "@/components/schools/cyber/engineering-skills";
+import { ComparisonSection } from "@/components/schools/cyber/comparison";
+import { CurriculumAccordion } from "@/components/schools/cyber/curriculum-accordion";
 import { MoveRight } from "lucide-react";
 
 export function CyberClient() {

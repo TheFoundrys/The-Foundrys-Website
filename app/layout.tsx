@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://thefoundrys.com",
     title: "The Foundry's | School of Deep Tech, Entrepreneurship & Energy",
-    description: "The Foundry's comprises the School of Deep Tech, School of Entrepreneurship, and School of Energy. Join us in Hitech City, Hyderabad.",
+    description: "The Foundry's: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging Architects, not just Graduates.",
     siteName: "The Foundry's",
     images: [
       {
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "The Foundry's | School of Deep Tech, Entrepreneurship & Energy",
-    description: "Home to the School of Deep Tech, School of Entrepreneurship, and School of Energy. Located in Hitech City.",
+    description: "The Foundry's: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging Architects, not just Graduates.",
     images: ["/foundry.jpg"],
     creator: "@thefoundrys", 
   },

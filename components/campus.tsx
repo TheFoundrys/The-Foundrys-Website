@@ -34,7 +34,7 @@ export function Campus() {
 
              <p className="text-xl text-slate-600 mb-10 leading-relaxed font-light">
                 We replaced dusty desks with premium lounges. We replaced professors with active CTOs. 
-                Located inside a premium workspace in the heart of Hitech City, you aren't isolated on a campus. 
+                Located inside a premium workspace in the heart of Hyderabad, you aren't isolated on a campus. 
                 You are embedded in the ecosystem.
              </p>
 

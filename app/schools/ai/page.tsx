@@ -1,12 +1,12 @@
 import { Navbar } from "@/components/ui/navbar";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
-import { AIHero } from "@/components/programs/ai/hero";
-import { WhyUs } from "@/components/programs/ai/why-us";
-import { EngineeringSkills } from "@/components/programs/ai/founder-skills"; // File name kept, component renamed
-import { ProgramStats } from "@/components/programs/ai/program-stats";
-import { ComparisonSection } from "@/components/programs/ai/comparison";
-import { CurriculumAccordion } from "@/components/programs/ai/curriculum-accordion";
+import { AIHero } from "@/components/schools/ai/hero";
+import { WhyUs } from "@/components/schools/ai/why-us";
+import { EngineeringSkills } from "@/components/schools/ai/founder-skills"; // File name kept, component renamed
+import { ProgramStats } from "@/components/schools/ai/program-stats";
+import { ComparisonSection } from "@/components/schools/ai/comparison";
+import { CurriculumAccordion } from "@/components/schools/ai/curriculum-accordion";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
