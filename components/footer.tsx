@@ -1,64 +1,107 @@
 import Link from "next/link";
-import { Twitter, Instagram, Youtube, Linkedin } from "lucide-react";
+import { Twitter, Instagram, Youtube, Linkedin, MapPin, Mail, Phone, ArrowUpRight } from "lucide-react";
 
 interface FooterProps {
     hideCTA?: boolean;
 }
 
 export function Footer({ hideCTA = false }: FooterProps) {
+    const currentYear = new Date().getFullYear();
+
     return (
-        <footer className="py-24 bg-white text-slate-900 border-t border-slate-100 relative overflow-hidden">
-             {/* Ethereal Glow at bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-full bg-gradient-to-t from-slate-50 to-transparent pointer-events-none" />
-
-            <div className="container mx-auto px-6 text-center relative z-10">
+        <footer className="bg-slate-50 text-slate-500 text-xs font-medium py-12 border-t border-slate-200 font-sans tracking-tight">
+            <div className="container mx-auto px-6 max-w-5xl">
                 
-                {!hideCTA && (
-                    <div className="max-w-4xl mx-auto mb-20">
-                        <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-slate-900 mb-6">
-                            AMBITION IS COMMON. <br/>
-                            <span className="text-slate-400">EXECUTION IS RARE.</span>
-                        </h2>
-                        <p className="text-xl text-slate-600 mb-10 font-medium">Are you ready to stop studying and start building?</p>
-                        
-                        <Link href="/apply" className="px-12 py-6 bg-slate-900 text-white rounded-full font-bold text-xl hover:bg-slate-800 transition-all hover:scale-105 shadow-xl hover:shadow-2xl inline-block">
-                            APPLY FOR PROGRAM
-                        </Link>
-                    </div>
-                )}
+                {/* Note / Breadcrumb Style Top */}
+                <div className="mb-8 border-b border-slate-200 pb-6">
+                    <p className="max-w-2xl leading-relaxed">
+                        <span className="font-semibold text-slate-700">The Foundry's.</span> 
+                        <br />
+                         Degrees are printed. Companies are built. 
+                         <br />
+                        We forge Architects in Deep Tech, Entrepreneurship, and Sustainable Energy in Hitech City, Hyderabad.
+                    </p>
+                </div>
 
-                <div className="border-t border-slate-100 pt-12 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm font-medium">
-                    <div className="flex flex-col items-center md:items-start gap-6">
-                        <p>&copy; 2026 The Foundry's. Hitech City, Hyderabad.</p>
-                        
-                        {/* Social Media Links */}
-                        <div className="flex items-center gap-6">
-                            <Link href="https://x.com/thefoundrys" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-all hover:-translate-y-1">
-                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                                <span className="sr-only">X (Twitter)</span>
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-10">
+                    
+                    {/* Column 1: Deep Tech */}
+                    <div className="flex flex-col gap-3">
+                        <h3 className="text-slate-900 font-bold mb-1">School of Deep Tech</h3>
+                        <FooterLink href="/programs/ai">Artificial Intelligence</FooterLink>
+                        <FooterLink href="/programs/cyber">Cyber Security</FooterLink>
+                        <FooterLink href="/programs/quantum-computing">Quantum Computing</FooterLink>
+                        <FooterLink href="/programs/blockchain">Blockchain</FooterLink>
+                    </div>
+
+                    {/* Column 2: Specialized Schools */}
+                    <div className="flex flex-col gap-3">
+                        <h3 className="text-slate-900 font-bold mb-1">Specialized Schools</h3>
+                        <FooterLink href="/programs/venture-building">School of Entrepreneurship</FooterLink>
+                        <FooterLink href="/programs/esg">School of Sustainability</FooterLink>
+                        <FooterLink href="/programs/renewable-energy">School of Energy</FooterLink>
+                        {/* <FooterLink href="/programs/strategy">Strategic Innovation</FooterLink> */}
+                    </div>
+
+                    {/* Column 3: Explore */}
+                    <div className="flex flex-col gap-3">
+                        <h3 className="text-slate-900 font-bold mb-1">Explore</h3>
+                        <FooterLink href="/campus">The Campus</FooterLink>
+                        <FooterLink href="/contact">Contact Us</FooterLink>
+                        <FooterLink href="/faq">FAQs</FooterLink>
+                    </div>
+
+                    {/* Column 4: Account/Student */}
+                    <div className="flex flex-col gap-3">
+                        <h3 className="text-slate-900 font-bold mb-1">For Students</h3>
+                        <FooterLink href="/apply">Apply Now</FooterLink>
+                        <li className="list-none">
+                            <Link 
+                                href="https://compass.thefoundrys.com" 
+                                target="_blank"
+                                className="hover:underline decoration-slate-400 underline-offset-2 flex items-center gap-1"
+                            >
+                                <span>Compass Portal</span>
+                                <ArrowUpRight size={10} className="opacity-50" />
                             </Link>
-                            <Link href="https://www.instagram.com/the.foundrys/" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-all hover:-translate-y-1">
-                                <Instagram size={18} />
-                                <span className="sr-only">Instagram</span>
-                            </Link>
-                            <Link href="https://www.youtube.com/@TheFoundrys" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-all hover:-translate-y-1">
-                                <Youtube size={18} />
-                                <span className="sr-only">YouTube</span>
-                            </Link>
-                            <Link href="https://www.linkedin.com/company/thefoundrys" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-all hover:-translate-y-1">
-                                <Linkedin size={18} />
-                                <span className="sr-only">LinkedIn</span>
-                            </Link>
+                        </li>
+                    </div>
+
+                    {/* Column 5: Connect */}
+                    <div className="flex flex-col gap-3">
+                        <h3 className="text-slate-900 font-bold mb-1">Connect</h3>
+                        <FooterLink href="https://x.com/thefoundrys">X (Twitter)</FooterLink>
+                        <FooterLink href="https://www.linkedin.com/company/thefoundrys">LinkedIn</FooterLink>
+                        <FooterLink href="https://www.instagram.com/the.foundrys/">Instagram</FooterLink>
+                        <FooterLink href="https://www.youtube.com/@TheFoundrys">YouTube</FooterLink>
+                    </div>
+                </div>
+
+                {/* Bottom Section */}
+                <div className="pt-6 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div className="flex flex-col md:flex-row items-center gap-1 md:gap-6">
+                        <p>Copyright © {currentYear} The Foundry's. All rights reserved.</p>
+                        <div className="hidden md:block h-3 w-px bg-slate-300"></div>
+                        <div className="flex gap-4">
+                            <Link href="/privacy" className="hover:underline decoration-slate-400 underline-offset-2">Privacy Policy</Link>
+                            <Link href="/terms" className="hover:underline decoration-slate-400 underline-offset-2">Terms of Use</Link>
+                            <Link href="/legal" className="hover:underline decoration-slate-400 underline-offset-2">Legal</Link>
                         </div>
                     </div>
-
-                    <div className="flex space-x-8 mt-10 md:mt-0">
-                        <Link href="/campus" className="hover:text-slate-900 transition-colors">The Campus</Link>
-                        <Link href="/faq" className="hover:text-slate-900 transition-colors">FAQs</Link>
-                        <Link href="/contact" className="hover:text-slate-900 transition-colors">Contact</Link>
+                    
+                    <div className="font-semibold text-slate-700">
+                        India
                     </div>
                 </div>
             </div>
         </footer>
+    )
+}
+
+function FooterLink({ href, children }: { href: string, children: React.ReactNode }) {
+    return (
+        <Link href={href} className="hover:underline decoration-slate-400 underline-offset-2 hover:text-slate-900 transition-colors">
+            {children}
+        </Link>
     )
 }
