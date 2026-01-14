@@ -23,7 +23,7 @@ export function JsonLd() {
     "sameAs": [
       "https://twitter.com/thefoundrys",
       "https://instagram.com/thefoundrys",
-      "https://linkedin.com/company/thefoundrys"
+      "https://linkedin.com/company/the-foundry-s"
     ],
     "address": {
       "@type": "PostalAddress",

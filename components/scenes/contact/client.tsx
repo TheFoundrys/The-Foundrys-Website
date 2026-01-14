@@ -55,7 +55,7 @@ export function ContactClient() {
                       <Link href="https://www.youtube.com/@TheFoundrys" target="_blank" rel="noopener noreferrer" className="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-all hover:-translate-y-1">
                           <Youtube size={24} />
                       </Link>
-                      <Link href="https://www.linkedin.com/company/thefoundrys" target="_blank" rel="noopener noreferrer" className="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-all hover:-translate-y-1">
+                      <Link href="https://www.linkedin.com/company/the-foundry-s" target="_blank" rel="noopener noreferrer" className="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-all hover:-translate-y-1">
                           <Linkedin size={24} />
                       </Link>
                  </div>

@@ -48,6 +48,7 @@ export function Footer({ hideCTA = false }: FooterProps) {
                         <h3 className="text-slate-900 font-bold mb-1">Explore</h3>
                         <FooterLink href="/programs">Online Programs</FooterLink>
                         <FooterLink href="/campus">The Campus</FooterLink>
+                        <FooterLink href="/about">About Us</FooterLink>
                         <FooterLink href="/contact">Contact Us</FooterLink>
                         <FooterLink href="/faq">FAQs</FooterLink>
                     </div>

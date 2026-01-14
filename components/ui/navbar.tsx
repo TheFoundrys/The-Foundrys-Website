@@ -289,6 +289,16 @@ export function Navbar() {
                                     className="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-48 p-1 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-white/80 overflow-hidden ring-1 ring-slate-900/5 flex flex-col gap-1"
                                 >
                                     <Link 
+                                        href="/about" 
+                                        onClick={handleHaptic}
+                                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
+                                    >
+                                        <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
+                                            <Users size={16} />
+                                        </div>
+                                        <span className="text-sm font-bold text-slate-700">About Us</span>
+                                    </Link>
+                                    <Link 
                                         href="/campus" 
                                         onClick={handleHaptic}
                                         className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"

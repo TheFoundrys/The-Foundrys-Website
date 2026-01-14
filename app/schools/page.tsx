@@ -165,7 +165,8 @@ function SchoolSection({ id, title, subtitle, description, programs, variant, re
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className={`flex flex-col lg:flex-row gap-16 items-center relative py-12 ${reversed ? 'lg:flex-row-reverse' : ''}`}
+            className={`flex flex-col lg:flex-row gap-16 items-center relative py-12 scroll-mt-[25vh] ${reversed ? 'lg:flex-row-reverse' : ''}`}
+            id={variant}
         >
             {/* Tech Background for the Section */}
             <div className={`absolute inset-0 ${theme.bgPattern} opacity-[0.03] pointer-events-none rounded-3xl`} />
