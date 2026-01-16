@@ -14,13 +14,10 @@ export function Footer({ hideCTA = false }: FooterProps) {
                 
                 {/* Note / Breadcrumb Style Top */}
                 <div className="mb-8 border-b border-slate-200 pb-6">
-                    <p className="max-w-2xl leading-relaxed text-sm">
-                        <span className="font-semibold text-slate-700">The Foundry's.</span> 
-                        <br />
-                         Degrees are printed. Companies are built. 
-                         <br />
-                        We forge Architects in Deep Tech, Entrepreneurship, and Sustainable Energy in Hitech City, Hyderabad.
-                    </p>
+                    <div className="max-w-3xl leading-relaxed text-slate-500">
+                        <span className="font-bold text-slate-800 text-xl block mb-2">The Foundry's.</span> 
+                        <span className="text-lg">We forge Architects in Deep Tech, Entrepreneurship, Sustainability and Energy.</span>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-10 text-sm">

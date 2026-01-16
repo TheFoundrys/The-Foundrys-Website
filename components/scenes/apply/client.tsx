@@ -100,17 +100,17 @@ export function ApplyClient() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-900 ml-1">Full Name <span className="text-red-500">*</span></label>
-                            <input required name="name" type="text" placeholder="Elon Musk" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all placeholder:text-slate-400 font-medium" />
+                            <input required name="name" type="text" placeholder="Enter your name" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all placeholder:text-slate-400 font-medium" />
                         </div>
                         <div className="space-y-2">
                             <label className="text-sm font-bold text-slate-900 ml-1">Phone Number <span className="text-red-500">*</span></label>
-                            <input required name="phone" type="tel" placeholder="+91 98765 43210" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all placeholder:text-slate-400 font-medium" />
+                            <input required name="phone" type="tel" placeholder="Enter your phone number" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all placeholder:text-slate-400 font-medium" />
                         </div>
                     </div>
 
                     <div className="space-y-2">
                         <label className="text-sm font-bold text-slate-900 ml-1">Email Address <span className="text-red-500">*</span></label>
-                        <input required name="email" type="email" placeholder="elon@tesla.com" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all placeholder:text-slate-400 font-medium" />
+                        <input required name="email" type="email" placeholder="Enter your email address" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all placeholder:text-slate-400 font-medium" />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -120,7 +120,7 @@ export function ApplyClient() {
                                 <select name="program" defaultValue="" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all font-medium appearance-none text-slate-700">
                                     <option value="" disabled>Select a Program (Optional)</option>
                                     <option value="quantum computing">Quantum Computing</option>
-
+                                    <option value="Blockchain">Blockchain</option>
                                     <option value="AI">Artificial Intelligence</option>
                                     <option value="Cyber Security">Cyber Security</option>
                                     <option value="Venture Building">Venture Building</option>
@@ -147,8 +147,8 @@ export function ApplyClient() {
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-sm font-bold text-slate-900 ml-1">Why do you want to join? <span className="text-red-500">*</span></label>
-                        <textarea required name="motivation" rows={4} placeholder="Tell us about yourself and what you want to build..." className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all placeholder:text-slate-400 font-medium resize-none"></textarea>
+                        <label className="text-sm font-bold text-slate-900 ml-1">Why do you want to join? <span className="text-slate-400 font-normal">(Optional)</span></label>
+                        <textarea name="message" rows={4} placeholder="Tell us about your goals..." className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all placeholder:text-slate-400 font-medium resize-none" />
                     </div>
 
                     {error && (
