@@ -166,7 +166,7 @@ export default function ProfessionalProgramPage() {
                                 <Target size={24} strokeWidth={1.5} />
                             </div>
                         </div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-3">Strategic Command</h3>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">Applied Knowledge</h3>
                         <p className="text-slate-600 leading-relaxed">
                            Transcend functional execution. Master the art of translating technical complexity into actionable business strategy.
                         </p>
@@ -205,7 +205,7 @@ export default function ProfessionalProgramPage() {
                <div className="mb-16">
                    <h2 className="text-4xl font-bold text-slate-900 mb-6">Choose your career transition</h2>
                    <p className="text-lg text-slate-600 leading-relaxed max-w-3xl">
-                       Precision-engineered learning tracks. Each domain is structured as a comprehensive, standalone professional program—allowing you to bypass generalities and build deep, vertical expertise in the technology defining your future.
+                       Precision-engineered learning tracks. Each domain is structured as a comprehensive, standalone professional program allowing you to bypass generalities and build deep, vertical expertise in the technology defining your future.
                    </p>
                </div>
 
@@ -312,7 +312,7 @@ export default function ProfessionalProgramPage() {
                        </div>
                    </div>
                    <div className="md:w-1/2">
-                       <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Industry Recognized Validation.</h2>
+                       <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Industry Recognized Certification</h2>
                        <p className="text-lg text-slate-600 mb-8 leading-relaxed">
                            Your effort deserves recognition. Upon successful completion of the professional track, you will receive a verifiable digital certificate from The Foundry, signaling your readiness to industry partners.
                        </p>

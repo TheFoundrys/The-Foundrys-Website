@@ -293,8 +293,8 @@ export function Navbar() {
                                             <BookOpen size={16} />
                                         </div>
                                         <div>
-                                            <span className="text-sm font-bold text-slate-700 block">Professional Fundamentals Learning</span>
-                                            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Build Your Foundation</span>
+                                            <span className="text-sm font-bold text-slate-700 block">Professional Learning</span>
+                                            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Build Your Feature</span>
                                         </div>
                                     </Link>
                                     <Link 
@@ -306,7 +306,7 @@ export function Navbar() {
                                             <Briefcase size={16} />
                                         </div>
                                         <div>
-                                            <span className="text-sm font-bold text-slate-700 block">Executive Strategic Learning</span>
+                                            <span className="text-sm font-bold text-slate-700 block">Executive Learning</span>
                                             <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Lead with Impact</span>
                                         </div>
                                     </Link>

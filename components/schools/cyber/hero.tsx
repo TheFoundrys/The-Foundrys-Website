@@ -27,9 +27,9 @@ export function AIHero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                 >
-                    <span className="inline-block py-1 px-3 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6 backdrop-blur-sm">
+                    {/* <span className="inline-block py-1 px-3 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6 backdrop-blur-sm">
                         Applications Open for PROGRAM
-                    </span>
+                    </span> */}
                     <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
                         Graduate as a <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
@@ -43,7 +43,7 @@ export function AIHero() {
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <button className="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full font-semibold transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] flex items-center gap-2 group">
-                            Apply for Fellowship
+                            Apply now
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </button>
                         <button 
