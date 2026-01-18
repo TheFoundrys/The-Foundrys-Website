@@ -2,7 +2,7 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { Metadata } from "next";
 import { OnlineHero } from "@/components/online-learning/hero";
-// import { CompassFeature } from "@/components/online-learning/compass-feature";for compass
+import { CompassFeature } from "@/components/online-learning/compass-feature";
 import { ExecutiveCourses } from "@/components/online-learning/executive-courses";
 import { ProgramPathways } from "@/components/online-learning/program-pathways";
 import { ValueProposition } from "@/components/online-learning/value-proposition";
@@ -22,7 +22,7 @@ export default function OnlineProgramsPage() {
       <ValueProposition />
 
       <ExecutiveCourses />
-      {/* <CompassFeature /> for-compass */}
+      <CompassFeature />
 
 
       <Footer />

@@ -209,7 +209,7 @@ export function ExecutiveSpotlight() {
                             A capstone program tailored for C-Suite executives and VP-level leaders. Learn to define, strategize, and implement AI at an organizational scale.
                         </p>
                         
-                        {/* <div className="grid grid-cols-2 gap-6 mb-10">
+                        <div className="grid grid-cols-2 gap-6 mb-10">
                              <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700">
                                 <div className="text-2xl font-bold text-white mb-1">6 Months</div>
                                 <div className="text-xs text-slate-500 uppercase tracking-wider font-bold">Hybrid / Weekend</div>
@@ -218,7 +218,7 @@ export function ExecutiveSpotlight() {
                                 <div className="text-2xl font-bold text-white mb-1">Capstone</div>
                                 <div className="text-xs text-slate-500 uppercase tracking-wider font-bold">Industry Project</div>
                              </div>
-                        </div> */}
+                        </div>
 
                         <Link 
                             href="https://compass.thefoundrys.com/executive/ai-leadership"

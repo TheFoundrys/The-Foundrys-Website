@@ -90,13 +90,13 @@ export default function AboutPage() {
 
                     <div className="space-y-6 text-slate-300 text-lg leading-relaxed">
                         <p>
-                            "Leadership is not just about building technology it is about building trust, resilience, and possibility."
+                            "Leadership is not just about building technology—it is about building trust, resilience, and possibility."
                         </p>
                         <p>
                             With over 15 years at the intersection of Artificial Intelligence, Cybersecurity, and Enterprise Transformation, Vishwanath has witnessed firsthand how bold ideas can reshape industries.
                         </p>
                         <p>
-                            His journey from designing AI solutions that helped Fortune 500 companies scale, to creating platforms that reduce complexity has culminated in the creation of <span className="text-white font-bold">The Foundry's</span>. A place where the next generation of architects is forged.
+                            His journey—from designing AI solutions that helped Fortune 500 companies scale, to creating platforms that reduce complexity—has culminated in the creation of <span className="text-white font-bold">The Foundry's</span>. A place where the next generation of architects is forged.
                         </p>
                     </div>
 

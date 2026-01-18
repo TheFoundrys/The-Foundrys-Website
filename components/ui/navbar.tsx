@@ -5,16 +5,20 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { triggerHaptic } from "@/lib/haptics";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu, Zap, Leaf, Network } from "lucide-react";
+import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu, Zap, Leaf, Network, BookOpen, Briefcase } from "lucide-react";
 
 export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false); // Mobile menu state
   const [isSchoolsOpen, setIsSchoolsOpen] = useState(false); // Desktop Schools dropdown state
+  const [isProgramsOpen, setIsProgramsOpen] = useState(false); // Desktop Programs dropdown state
   const [isMoreOpen, setIsMoreOpen] = useState(false); // Desktop More dropdown state
+
+  const programsTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const moreTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const [mobileProgramsExpanded, setMobileProgramsExpanded] = useState(false); // Mobile Programs Accordion
   const [mobileSchoolsExpanded, setMobileSchoolsExpanded] = useState(true); // Mobile Schools Accordion State
   const [mobileMoreExpanded, setMobileMoreExpanded] = useState(false); // Mobile More Accordion State
   
@@ -250,13 +254,67 @@ export function Navbar() {
                         </AnimatePresence>
                     </div>
 
-                    <Link 
-                        href="/programs" 
-                        onClick={handleHaptic}
-                        className={cn("text-sm font-medium transition-colors hover:text-blue-600", pathname.startsWith("/programs") ? "text-slate-900 font-bold" : "text-slate-500")}
+                    {/* Programs Dropdown */}
+                    <div 
+                        className="relative group"
+                        onMouseEnter={() => {
+                            if (programsTimeoutRef.current) clearTimeout(programsTimeoutRef.current);
+                            setIsProgramsOpen(true);
+                        }}
+                        onMouseLeave={() => {
+                            programsTimeoutRef.current = setTimeout(() => setIsProgramsOpen(false), 300);
+                        }}
                     >
-                        Programs
-                    </Link>
+                         <button 
+                            onClick={(e) => { e.preventDefault(); handleHaptic(); }}
+                            className={cn(
+                                "flex items-center gap-1 text-sm font-medium transition-colors hover:text-blue-600 py-2",
+                                pathname.startsWith("/programs") ? "text-slate-900 font-bold" : "text-slate-500"
+                            )}
+                        >
+                            Programs <ChevronDown size={14} className={`transition-transform duration-200 ${isProgramsOpen ? "rotate-180" : ""}`} />
+                        </button>
+                        
+                         <AnimatePresence>
+                            {isProgramsOpen && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    exit={{ opacity: 0, y: 5, scale: 0.95 }}
+                                    transition={{ duration: 0.15 }}
+                                    className="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-80 p-1 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-white/80 overflow-hidden ring-1 ring-slate-900/5 flex flex-col gap-1"
+                                >
+                                    <Link 
+                                        href="/programs/professional" 
+                                        onClick={handleHaptic}
+                                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
+                                    >
+                                        <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform shrink-0">
+                                            <BookOpen size={16} />
+                                        </div>
+                                        <div>
+                                            <span className="text-sm font-bold text-slate-700 block">Professional Fundamentals Learning</span>
+                                            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Build Your Foundation</span>
+                                        </div>
+                                    </Link>
+                                    <Link 
+                                        href="/programs/executive" 
+                                        onClick={handleHaptic}
+                                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-amber-50 transition-colors group"
+                                    >
+                                        <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-amber-600 group-hover:scale-110 transition-transform shrink-0">
+                                            <Briefcase size={16} />
+                                        </div>
+                                        <div>
+                                            <span className="text-sm font-bold text-slate-700 block">Executive Strategic Learning</span>
+                                            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Lead with Impact</span>
+                                        </div>
+                                    </Link>
+                                    {/* Link removed as per user request */}
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
 
                     {/* 'More' Dropdown */}
                     <div 
@@ -495,16 +553,59 @@ export function Navbar() {
                              </AnimatePresence>
                         </div>
 
-                        <Link 
-                            href="/programs" 
-                            onClick={() => { setIsOpen(false); handleHaptic(); }}
-                            className="flex items-center gap-4 p-4 rounded-2xl bg-white/40 hover:bg-white/60 border border-white/40 transition-all font-bold text-xl text-slate-900"
-                        >
-                            <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
-                                <Network size={20} />
-                            </div>
-                            Programs
-                        </Link>
+                        {/* Programs Accordion (Mobile) */}
+                        <div className="rounded-2xl bg-white/60 p-1 border border-white/50 shadow-sm">
+                             <button 
+                                onClick={() => { setMobileProgramsExpanded(!mobileProgramsExpanded); handleHaptic(); }}
+                                className="flex items-center justify-between w-full p-4 rounded-xl hover:bg-white/50 transition-colors"
+                             >
+                                 <span className="text-xl font-bold text-slate-900">Programs</span>
+                                 <ChevronDown size={20} className={cn("text-slate-500 transition-transform", mobileProgramsExpanded ? "rotate-180" : "")} />
+                             </button>
+
+                             <AnimatePresence>
+                                {mobileProgramsExpanded && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        className="overflow-hidden"
+                                    >
+                                        <div className="px-2 pb-2 flex flex-col gap-2 pt-2">
+                                            <Link 
+                                                href="/programs/professional" 
+                                                onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
+                                            >
+                                                <div className="w-8 h-8 rounded-md bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                                                    <BookOpen size={16} />
+                                                </div>
+                                                <div>
+                                                    <span className="font-semibold text-slate-700 block text-sm">Professional Fundamentals Learning</span>
+                                                    <span className="text-[10px] text-slate-500 font-bold">Build Your Foundation</span>
+                                                </div>
+                                            </Link>
+
+                                            <Link 
+                                                href="/programs/executive" 
+                                                onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
+                                            >
+                                                <div className="w-8 h-8 rounded-md bg-amber-50 flex items-center justify-center text-amber-600 shrink-0">
+                                                    <Briefcase size={16} />
+                                                </div>
+                                                <div>
+                                                    <span className="font-semibold text-slate-700 block text-sm">Executive Strategic Learning</span>
+                                                    <span className="text-[10px] text-slate-500 font-bold">Lead with Impact</span>
+                                                </div>
+                                            </Link>
+
+                                            {/* Link removed as per user request */}
+                                        </div>
+                                    </motion.div>
+                                )}
+                             </AnimatePresence>
+                        </div>
 
                         {/* More Accordion */}
                         <div className="rounded-2xl bg-white/60 p-1 border border-white/50 shadow-sm">
@@ -574,5 +675,3 @@ export function Navbar() {
     </>
   );
 }
-
-
