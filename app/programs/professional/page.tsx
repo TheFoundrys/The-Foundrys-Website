@@ -3,7 +3,7 @@
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
-import { ArrowUpRight, BookOpen, Users, Zap, Briefcase, GraduationCap, CheckCircle2, ChevronRight, Terminal, Cpu, Network, ShieldCheck, BrainCircuit, Globe, Calendar, Wifi, Target, Clock, ArrowDown, ChevronLeft, FileText, UserCheck, Rocket } from "lucide-react";
+import { ArrowUpRight, BookOpen, Users, Zap, Briefcase, GraduationCap, CheckCircle2, ChevronRight, Terminal, Cpu, Network, ShieldCheck, BrainCircuit, Globe, Calendar, Wifi, Target, Clock, ArrowDown, ChevronLeft, FileText, UserCheck, Rocket, Code, Database, Server, Cloud, Lock, Box, Activity, GitMerge, Ship, Smile as SmileIcon, Link2, Bug, Search, Settings, HardHat, Flame, Link as LinkIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import React from "react";
@@ -115,87 +115,69 @@ export default function ProfessionalProgramPage() {
 
       {/* Value Creation - Why The Foundry? */}
       <section className="py-24 px-6 bg-slate-50">
-          <div className="container mx-auto max-w-6xl">
-              <div className="text-center mb-16">
-                  <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Professional Edge</h2>
-                  <p className="text-lg text-slate-600 max-w-2xl mx-auto">Acquire the deep technical expertise and applied skills required to lead in the modern digital economy.</p>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform relative overflow-hidden">
-                            <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
-                            <div className="relative z-10 text-slate-900">
-                                <Target size={24} strokeWidth={1.5} />
-                            </div>
-                        </div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-3">Strategic Clarity</h3>
-                        <p className="text-slate-600 leading-relaxed">
-                            Move from execution to strategy. Learn not just how to implement technology, but how to leverage it for asymmetric business advantage.
-                        </p>
-                  </div>
+           <div className="container mx-auto max-w-6xl">
+               <div className="text-center mb-16">
+                   <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Professional Edge</h2>
+                   <p className="text-lg text-slate-600 max-w-2xl mx-auto">Acquire the deep technical expertise and applied skills required to lead in the modern digital economy.</p>
+               </div>
+               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                    <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform relative overflow-hidden">
-                            <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
-                            <div className="relative z-10 text-slate-900">
-                                <Globe size={24} strokeWidth={1.5} />
-                            </div>
-                        </div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-3">Global Benchmarking</h3>
-                        <p className="text-slate-600 leading-relaxed">
-                            We don't teach to local standards. Our curriculum is calibrated against the world's most competitive technical environments.
-                        </p>
-                  </div>
+                         <div className="flex items-center gap-4 mb-4">
+                             <div className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform relative overflow-hidden shrink-0">
+                                 <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
+                                 <div className="relative z-10 text-slate-900">
+                                     <Target size={24} strokeWidth={1.5} />
+                                 </div>
+                             </div>
+                             <h3 className="text-xl font-bold text-slate-900">Deep Domain Mastery</h3>
+                         </div>
+                         <p className="text-slate-600 leading-relaxed text-sm">
+                             Move beyond surface-level tutorials. We drill down to the core logic and mathematical foundations of emerging tech, giving you the confidence and authority that comes from true understanding.
+                         </p>
+                   </div>
+                    <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
+                         <div className="flex items-center gap-4 mb-4">
+                             <div className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform relative overflow-hidden shrink-0">
+                                 <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
+                                 <div className="relative z-10 text-slate-900">
+                                     <Network size={24} strokeWidth={1.5} />
+                                 </div>
+                             </div>
+                             <h3 className="text-xl font-bold text-slate-900">Your Network is Your Net Worth</h3>
+                         </div>
+                         <p className="text-slate-600 leading-relaxed text-sm">
+                             Learning alone is slow. Join a curated cohort of ambitious peers who are as hungry as you are. "Iron sharpens iron"—you will grow faster by coding, debugging, and launching projects alongside the best.
+                         </p>
+                   </div>
                    <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform relative overflow-hidden">
-                            <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
-                            <div className="relative z-10 text-slate-900">
-                                <Network size={24} strokeWidth={1.5} />
-                            </div>
-                        </div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-3">The Peer Advantage</h3>
-                        <p className="text-slate-600 leading-relaxed">
-                            Iron sharpens iron. Join a curated cohort of high-ambition professionals. Your network is your safety net and your launchpad.
-                        </p>
-                  </div>
-                  
-                  {/* New Premium Tiles */}
-                  <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform relative overflow-hidden">
-                            <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
-                            <div className="relative z-10 text-slate-900">
-                                <Target size={24} strokeWidth={1.5} />
-                            </div>
-                        </div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-3">Applied Knowledge</h3>
-                        <p className="text-slate-600 leading-relaxed">
-                           Transcend functional execution. Master the art of translating technical complexity into actionable business strategy.
-                        </p>
-                  </div>
-                  <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform relative overflow-hidden">
-                            <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
-                            <div className="relative z-10 text-slate-900">
-                                <Globe size={24} strokeWidth={1.5} />
-                            </div>
-                        </div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-3">Architectural Vision</h3>
-                        <p className="text-slate-600 leading-relaxed">
-                            Don't just write code; design systems. Gain the high-level perspective required to architect scalable, resilient enterprise solutions.
-                        </p>
-                  </div>
-                  <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform relative overflow-hidden">
-                            <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
-                            <div className="relative z-10 text-slate-900">
-                                <Briefcase size={24} strokeWidth={1.5} />
-                            </div>
-                        </div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-3">Leadership Velocity</h3>
-                        <p className="text-slate-600 leading-relaxed">
-                            Accelerate your transition from contributor to leader. Equip yourself with the authority that comes from deep domain mastery.
-                        </p>
-                  </div>
-              </div>
+                         <div className="flex items-center gap-4 mb-4">
+                             <div className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform relative overflow-hidden shrink-0">
+                                 <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
+                                 <div className="relative z-10 text-slate-900">
+                                     <Terminal size={24} strokeWidth={1.5} />
+                                 </div>
+                             </div>
+                             <h3 className="text-xl font-bold text-slate-900">Stop Watching, Start Building</h3>
+                         </div>
+                         <p className="text-slate-600 leading-relaxed text-sm">
+                             Theory is free online. Here, you focus on the friction of practice. You will spend 60% of your time in the "Build Loop"—solving real-world problem statements, fixing bugs, and deploying live solutions.
+                         </p>
+                   </div>
+                   <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
+                         <div className="flex items-center gap-4 mb-4">
+                             <div className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform relative overflow-hidden shrink-0">
+                                 <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
+                                 <div className="relative z-10 text-slate-900">
+                                     <BrainCircuit size={24} strokeWidth={1.5} />
+                                 </div>
+                             </div>
+                             <h3 className="text-xl font-bold text-slate-900">Engineer, Don’t Just Code</h3>
+                         </div>
+                         <p className="text-slate-600 leading-relaxed text-sm">
+                             Anyone can memorize syntax. We train you to think like a Senior Engineer. You will learn to deconstruct complex problems, understand why systems work, and architect scalable solutions from the ground up.
+                         </p>
+                   </div>
+               </div>
           </div>
       </section>
 
@@ -209,89 +191,195 @@ export default function ProfessionalProgramPage() {
                    </p>
                </div>
 
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                   <DomainCard 
-                        title="Artificial Intelligence"
-                        desc="Understand the core concepts of ML and Neural Networks. Learn how AI is applied in real-world decision systems."
-                        icon={<BrainCircuit />}
-                        href="/programs/professional/ai"
-                   />
-                   <DomainCard 
-                        title="Cyber Security"
-                        desc="Grasp the fundamentals of digital defense, encryption, and network security in an increasingly hostile cyber landscape."
-                        icon={<ShieldCheck />}
-                        href="/programs/professional/cyber-security"
-                   />
-                   <DomainCard 
-                        title="Quantum Computing"
-                        desc="An introduction to qubits, superposition, and the future of computation. Prepare for the next paradigm shift."
-                        icon={<Cpu />}
-                        href="/programs/professional/quantum-computing"
-                   />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <DomainCard 
-                        title="Blockchain"
-                        desc="Explore decentralized ledgers, smart contracts, and the trust layer of the new internet."
-                        icon={<Network />}
-                        href="/programs/professional/blockchain"
-                   />
-               </div>
+                         title="Artificial Intelligence"
+                         tagline="From Logic to Intelligence."
+                         desc="Move beyond basic Python. Master Neural Networks, NLP, and Computer Vision to build systems that can see, read, and decide."
+                         icon={<BrainCircuit />}
+                         href="/programs/professional/ai"
+                    />
+                    <DomainCard 
+                         title="Cyber Security"
+                         tagline="Defend the Digital Frontier."
+                         desc="The world is digital, and it is under attack. Learn the offensive and defensive strategies required to secure networks and data."
+                         icon={<ShieldCheck />}
+                         href="/programs/professional/cyber-security"
+                    />
+                    <DomainCard 
+                         title="Quantum Computing"
+                         tagline="The Next Computational Revolution."
+                         desc="Prepare for the paradigm shift. Understanding Qubits and Superposition today is like learning the Internet in 1990."
+                         icon={<Cpu />}
+                         href="/programs/professional/quantum-computing"
+                    />
+                     <DomainCard 
+                         title="Blockchain"
+                         tagline="Architect the Trust Layer."
+                         desc="Explore the technology behind Web3. Learn how decentralized ledgers and smart contracts are rewriting the rules of finance and ownership."
+                         icon={<Network />}
+                         href="/programs/professional/blockchain"
+                    />
+                </div>
           </div>
       </section>
 
-      {/* The Learning Journey */}
+      {/* The Progression (Roadmap) */}
       <section className="py-24 px-6 bg-slate-900 text-white overflow-hidden relative">
-          <div className="container mx-auto max-w-6xl relative z-10">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                  <div>
-                      <h2 className="text-4xl font-bold mb-6">Structured Progression.</h2>
-                      <p className="text-lg text-slate-400 mb-8 leading-relaxed">
-                          We don't just dump content. We guide you through a logical progression of learning.
-                      </p>
-                      
-                      <div className="space-y-8">
-                          <ProgressionStep 
-                            title="1. Conceptual Clarity" 
-                            desc="Master the core terminology and theory. No black boxes." 
-                          />
-                          <ProgressionStep 
-                            title="2. Applied Understanding" 
-                            desc="Guided exercises and examples to see technology in action." 
-                          />
-                          <ProgressionStep 
-                            title="3. Industry Context" 
-                            desc="Connect theory with real-world application." 
-                          />
-                          <ProgressionStep 
-                            title="4. Assessment & Certification" 
-                            desc="Evaluate your domain familiarity and readiness for specialization." 
-                          />
-                      </div>
-                  </div>
-                  <div className="relative flex justify-center">
-                      <div className="relative w-full max-w-md aspect-square">
-                           {/* Gradient Orb */}
-                           <div style={{ background: customGradient }} className="absolute inset-0 rounded-full blur-[100px] opacity-30 animate-pulse" />
-                           <div className="relative z-10 grid grid-cols-2 gap-4 p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-md">
-                                <div className="p-4 bg-white/10 rounded-xl">
-                                    <div style={{ backgroundImage: customGradient }} className={`${textGradientClass} text-2xl font-bold mb-1`}>Hybrid</div>
-                                    <div className="text-xs text-slate-400 uppercase tracking-widest">Learning Format</div>
-                                </div>
-                                <div className="p-4 bg-white/10 rounded-xl">
-                                    <div style={{ backgroundImage: customGradient }} className={`${textGradientClass} text-2xl font-bold mb-1`}>Guided</div>
-                                    <div className="text-xs text-slate-400 uppercase tracking-widest">Exercises</div>
-                                </div>
-                                <div className="p-4 bg-white/10 rounded-xl col-span-2">
-                                    <div style={{ backgroundImage: customGradient }} className={`${textGradientClass} text-2xl font-bold mb-1`}>Certified</div>
-                                    <div className="text-xs text-slate-400 uppercase tracking-widest">Upon Completion</div>
-                                </div>
-                           </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+           <div className="container mx-auto max-w-6xl relative z-10">
+               <div className="text-center mb-16">
+                   <h2 className="text-4xl font-bold mb-6">The Progression</h2>
+                   <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                       Architected for Domain Authority. Our 3-month methodology is designed to bridge the gap between academic theory and professional application.
+                   </p>
+               </div>
+               
+               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                   {/* Connector Line (Desktop) */}
+                   <div className="hidden md:block absolute top-8 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-blue-500/50 via-purple-500/50 to-emerald-500/50 z-0"></div>
+
+                    {/* Phase I */}
+                   <div className="relative z-10 group">
+                       <div className="w-16 h-16 mx-auto rounded-full bg-slate-800 border-4 border-slate-900 shadow-[0_0_0_4px_rgba(59,130,246,0.5)] flex items-center justify-center mb-8 bg-gradient-to-br from-blue-600 to-blue-800 group-hover:scale-110 transition-transform">
+                            <span className="font-bold text-xl">01</span>
+                       </div>
+                       <div className="text-center px-4">
+                           <div className="text-blue-400 font-bold tracking-wider uppercase text-sm mb-2">Weeks 1-4</div>
+                           <h3 className="text-2xl font-bold mb-3">The Bedrock</h3>
+                           <p className="text-slate-400 leading-relaxed text-sm">
+                               First Principles & Core Protocols. We strip away abstraction to focus on the mathematical and logical foundations. Deconstruct the underlying theories that govern the technology.
+                           </p>
+                       </div>
+                   </div>
+
+                   {/* Phase II */}
+                   <div className="relative z-10 group">
+                       <div className="w-16 h-16 mx-auto rounded-full bg-slate-800 border-4 border-slate-900 shadow-[0_0_0_4px_rgba(168,85,247,0.5)] flex items-center justify-center mb-8 bg-gradient-to-br from-purple-600 to-purple-800 group-hover:scale-110 transition-transform">
+                            <span className="font-bold text-xl">02</span>
+                       </div>
+                       <div className="text-center px-4">
+                           <div className="text-purple-400 font-bold tracking-wider uppercase text-sm mb-2">Weeks 5-8</div>
+                           <h3 className="text-2xl font-bold mb-3">Vertical Immersion</h3>
+                           <p className="text-slate-400 leading-relaxed text-sm">
+                               Tools, Tactics, & Simulation. Theory transitions into practice. Enter a "high-fidelity" environment—utilizing industry tools, running simulations, and dissecting case studies.
+                           </p>
+                       </div>
+                   </div>
+
+                   {/* Phase III */}
+                   <div className="relative z-10 group">
+                       <div className="w-16 h-16 mx-auto rounded-full bg-slate-800 border-4 border-slate-900 shadow-[0_0_0_4px_rgba(16,185,129,0.5)] flex items-center justify-center mb-8 bg-gradient-to-br from-emerald-600 to-emerald-800 group-hover:scale-110 transition-transform">
+                            <span className="font-bold text-xl">03</span>
+                       </div>
+                       <div className="text-center px-4">
+                           <div className="text-emerald-400 font-bold tracking-wider uppercase text-sm mb-2">Weeks 9-12</div>
+                           <h3 className="text-2xl font-bold mb-3">The Capstone Defense</h3>
+                           <p className="text-slate-400 leading-relaxed text-sm">
+                               Proof of Competence. Define and deliver a comprehensive final output—a deployed system, audit, or research implementation. Document and defend your work.
+                           </p>
+                       </div>
+                   </div>
+               </div>
+           </div>
       </section>
 
+      {/* The Career Impact */}
+      <section className="py-24 px-6 bg-white border-b border-slate-200">
+           <div className="container mx-auto max-w-6xl">
+               <div className="text-center mb-16">
+                   <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Career Impact</h2>
+                   <p className="text-lg text-slate-600 max-w-2xl mx-auto">We don't just offer knowledge. We equip you with the assets you need to accelerate your trajectory.</p>
+               </div>
+               
+               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                   <div className="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-slate-200 transition-colors group">
+                       <div className="text-6xl font-black text-slate-200 mb-6 group-hover:text-blue-100 transition-colors">01</div>
+                       <h3 className="text-xl font-bold text-slate-900 mb-3">The Production Portfolio</h3>
+                       <p className="text-slate-600 leading-relaxed text-sm">
+                           <strong className="text-slate-900">Your Proof of Competence.</strong> You will finish the track with a GitHub portfolio of 3-5 distinct projects and one major Capstone. When a recruiter asks, "Can you do this?", you won't just say "Yes"—you will show them the code.
+                       </p>
+                   </div>
+                   
+                   <div className="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-slate-200 transition-colors group">
+                       <div className="text-6xl font-black text-slate-200 mb-6 group-hover:text-purple-100 transition-colors">02</div>
+                       <h3 className="text-xl font-bold text-slate-900 mb-3">The Verified Credential</h3>
+                       <p className="text-slate-600 leading-relaxed text-sm">
+                           <strong className="text-slate-900">Your Signal of Quality.</strong> Upon successful assessment, you earn a Certified Professional Credential from The Foundry. This is a digitally verifiable asset that signals your technical rigor to employers and clients worldwide.
+                       </p>
+                   </div>
+                   
+                   <div className="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-slate-200 transition-colors group">
+                       <div className="text-6xl font-black text-slate-200 mb-6 group-hover:text-emerald-100 transition-colors">03</div>
+                       <h3 className="text-xl font-bold text-slate-900 mb-3">The Foundry Network</h3>
+                       <p className="text-slate-600 leading-relaxed text-sm">
+                           <strong className="text-slate-900">Your Access.</strong> Certification is not the exit; it is the entry. You gain access to The Foundry’s professional community, mentorship channels, and exclusive industry events in Hyderabad—connecting you with the people who are building the future.
+                       </p>
+                   </div>
+               </div>
+           </div>
+      </section>
 
+      {/* Tech Stack Section - Scrolling Ticker */}
+      <section className="py-20 bg-slate-50 border-b border-slate-200 overflow-hidden">
+           <div className="container mx-auto max-w-5xl mb-12 px-6">
+                <div className="text-center">
+                   <h2 className="text-3xl font-bold text-slate-900">Tools You Will Master</h2>
+                   <p className="text-slate-500 mt-2">Industry-standard languages, frameworks, and platforms.</p>
+                </div>
+           </div>
+           
+           {/* Scrolling Container */}
+           <div className="relative w-full flex overflow-hidden mask-gradient-x">
+                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-slate-50 to-transparent z-10"></div>
+                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-50 to-transparent z-10"></div>
+                
+                <motion.div 
+                    className="flex gap-12 items-center whitespace-nowrap py-4"
+                    animate={{ x: "-50%" }}
+                    transition={{ 
+                        repeat: Infinity, 
+                        ease: "linear", 
+                        duration: 60 // Slower duration for longer list
+                    }}
+                >
+                    {/* Tool List */}
+                    <ToolItem name="Python" icon={<Terminal size={24}/>} color="text-blue-500" />
+                    <ToolItem name="TensorFlow" icon={<BrainCircuit size={24}/>} color="text-orange-500" />
+                    <ToolItem name="PyTorch" icon={<Flame size={24}/>} color="text-red-500" />
+                    <ToolItem name="OpenAI" icon={<Cpu size={24}/>} color="text-green-500" />
+                    <ToolItem name="LangChain" icon={<LinkIcon size={24}/>} color="text-slate-500" />
+                    <ToolItem name="Pandas" icon={<Database size={24}/>} color="text-indigo-500" />
+                    <ToolItem name="NumPy" icon={<Code size={24}/>} color="text-blue-400" />
+                    <ToolItem name="ScikitLearn" icon={<Activity size={24}/>} color="text-orange-400" />
+                    <ToolItem name="Docker" icon={<Box size={24}/>} color="text-blue-600" />
+                    <ToolItem name="Kubernetes" icon={<Ship size={24}/>} color="text-blue-700" />
+                    <ToolItem name="AWS" icon={<Cloud size={24}/>} color="text-slate-600" />
+                    <ToolItem name="Git" icon={<GitMerge size={24}/>} color="text-red-600" />
+                    <ToolItem name="React" icon={<Code size={24}/>} color="text-cyan-400" />
+                    <ToolItem name="Next.js" icon={<Globe size={24}/>} color="text-slate-900" />
+                    <ToolItem name="Node.js" icon={<Server size={24}/>} color="text-green-600" />
+                    <ToolItem name="Linux" icon={<Terminal size={24}/>} color="text-slate-800" />
+                    
+                    {/* Tool List - Duplicate for seamless loop */}
+                    <ToolItem name="Python" icon={<Terminal size={24}/>} color="text-blue-500" />
+                    <ToolItem name="TensorFlow" icon={<BrainCircuit size={24}/>} color="text-orange-500" />
+                    <ToolItem name="PyTorch" icon={<Flame size={24}/>} color="text-red-500" />
+                    <ToolItem name="OpenAI" icon={<Cpu size={24}/>} color="text-green-500" />
+                    <ToolItem name="LangChain" icon={<LinkIcon size={24}/>} color="text-slate-500" />
+                    <ToolItem name="Pandas" icon={<Database size={24}/>} color="text-indigo-500" />
+                    <ToolItem name="NumPy" icon={<Code size={24}/>} color="text-blue-400" />
+                    <ToolItem name="ScikitLearn" icon={<Activity size={24}/>} color="text-orange-400" />
+                    <ToolItem name="Docker" icon={<Box size={24}/>} color="text-blue-600" />
+                    <ToolItem name="Kubernetes" icon={<Ship size={24}/>} color="text-blue-700" />
+                    <ToolItem name="AWS" icon={<Cloud size={24}/>} color="text-slate-600" />
+                    <ToolItem name="Git" icon={<GitMerge size={24}/>} color="text-red-600" />
+                    <ToolItem name="React" icon={<Code size={24}/>} color="text-cyan-400" />
+                    <ToolItem name="Next.js" icon={<Globe size={24}/>} color="text-slate-900" />
+                    <ToolItem name="Node.js" icon={<Server size={24}/>} color="text-green-600" />
+                    <ToolItem name="Linux" icon={<Terminal size={24}/>} color="text-slate-800" />
+                </motion.div>
+           </div>
+      </section>
 
       {/* Certification Section */}
       <section className="py-24 px-6 bg-white border-y border-slate-200">
@@ -330,8 +418,6 @@ export default function ProfessionalProgramPage() {
                </div>
           </div>
       </section>
-
-
 
       {/* Admissions Process */}
       <section className="py-24 px-6 bg-slate-900 text-white relative overflow-hidden">
@@ -472,7 +558,7 @@ function TargetCard({ icon, title, desc }: { icon: any, title: string, desc: str
     )
 }
 
-function DomainCard({ title, desc, icon, href }: { title: string, desc: string, icon: any, href: string }) {
+function DomainCard({ title, tagline, desc, icon, href }: { title: string, tagline?: string, desc: string, icon: any, href: string }) {
     return (
         <div className="p-8 rounded-2xl border border-slate-100 bg-white hover:bg-slate-50 transition-all group flex flex-col items-start gap-6 h-full relative">
             <div className="flex items-start gap-6">
@@ -483,8 +569,9 @@ function DomainCard({ title, desc, icon, href }: { title: string, desc: string, 
                      </div>
                 </div>
                 <div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">{title}</h3>
-                    <p className="text-slate-600 leading-relaxed">{desc}</p>
+                    <h3 className="text-xl font-bold text-slate-900 mb-1">{title}</h3>
+                    <div className="text-sm font-semibold text-blue-600 mb-2">{tagline}</div>
+                    <p className="text-slate-600 leading-relaxed text-sm">{desc}</p>
                 </div>
             </div>
             
@@ -539,6 +626,15 @@ function FAQItem({ question, children }: { question: string, children: React.Rea
                     {children}
                 </div>
             </div>
+        </div>
+    )
+}
+
+function ToolItem({ name, icon, color }: { name: string, icon: any, color: string }) {
+    return (
+        <div className={`flex items-center gap-3 font-bold text-xl opacity-70 hover:opacity-100 transition-all cursor-default ${color}`}>
+            {icon}
+            <span className="text-slate-600">{name}</span>
         </div>
     )
 }

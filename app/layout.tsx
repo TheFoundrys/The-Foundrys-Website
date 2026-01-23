@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     default: "The Foundry's | Best Deep Tech & AI College in Hyderabad",
     template: "%s | The Foundry's"
   },
-  description: "The Foundry's: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging Architects, not just Graduates.",
+  description: "The Foundry's: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging innovators, not just Graduates.",
   keywords: [
     // Brand Variations & Common Misspellings
     "The Foundry's", "The Foundry", "TheFoundry", "TheFoundrys", "Foundrys", "Foundry School", "The Foundery", "The Foundries",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://thefoundrys.com",
     title: "The Foundry's | School of Deep Tech, Entrepreneurship & Energy",
-    description: "The Foundry's: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging Architects, not just Graduates.",
+    description: "The Foundry's: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging innovators, not just Graduates.",
     siteName: "The Foundry's",
     images: [
       {
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "The Foundry's | School of Deep Tech, Entrepreneurship & Energy",
-    description: "The Foundry's: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging Architects, not just Graduates.",
+    description: "The Foundry's: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging innovators, not just Graduates.",
     images: ["/foundry.jpg"],
     creator: "@thefoundrys", 
   },

@@ -4,15 +4,15 @@ import { InfiniteLogoScroll } from "@/components/ui/infinite-logo-scroll";
 import { Philosophy } from "@/components/philosophy";
 import { Triad } from "@/components/triad";
 import { Campus } from "@/components/campus";
-import { Stack } from "@/components/stack";
 import { Footer } from "@/components/footer";
 import { Metadata } from "next";
 import { ArchetypeColumns } from "@/components/home/archetype-columns";
 import { TheForging } from "@/components/home/the-forging";
+import { UniqueNeeds } from "@/components/home/unique-needs";
 
 export const metadata: Metadata = {
   title: "The Foundry's | India's First Deep Tech & Venture School",
-  description: "The Foundry's: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging Architects, not just Graduates.",
+  description: "The Foundry's: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging innovators, not just Graduates.",
   alternates: {
     canonical: "https://thefoundrys.com",
   },
@@ -26,7 +26,7 @@ export default function Home() {
         <Philosophy />
         <Triad />
         <Campus />
-        <Stack />
+        <UniqueNeeds />
         
         {/* Section 2: The Archetypes */}
         <ArchetypeColumns />

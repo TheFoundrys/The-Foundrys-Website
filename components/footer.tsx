@@ -40,39 +40,52 @@ export function Footer({ hideCTA = false }: FooterProps) {
                         {/* <FooterLink href="/schools/strategy">Strategic Innovation</FooterLink> */}
                     </div>
 
-                    {/* Column 3: Explore */}
+                    {/* Column 3: Programs */}
+                    <div className="flex flex-col gap-3">
+                        <h3 className="text-slate-900 font-bold mb-1">Programs</h3>
+                        <FooterLink href="/programs/professional">Professional Learning</FooterLink>
+                        <FooterLink href="/programs/executive">Executive Learning</FooterLink>
+                        <FooterLink href="/programs/educators">Educators and Faculty</FooterLink>
+                    </div>
+
+                    {/* Column 4: Explore */}
                     <div className="flex flex-col gap-3">
                         <h3 className="text-slate-900 font-bold mb-1">Explore</h3>
-                        <FooterLink href="/programs">Online Programs</FooterLink>
+                        {/* <FooterLink href="/programs">Online Programs</FooterLink> */}
                         <FooterLink href="/campus">Campus</FooterLink>
                         <FooterLink href="/about">About Us</FooterLink>
                         <FooterLink href="/contact">Contact Us</FooterLink>
                         <FooterLink href="/faq">FAQs</FooterLink>
                     </div>
 
-                    {/* Column 4: Account/Student */}
-                    <div className="flex flex-col gap-3">
-                        <h3 className="text-slate-900 font-bold mb-1">For Students</h3>
-                        <FooterLink href="/apply">Apply Now</FooterLink>
-                        <li className="list-none">
-                            <Link 
-                                href="https://compass.thefoundrys.com" 
-                                target="_blank"
-                                className="hover:underline decoration-slate-400 underline-offset-2 flex items-center gap-1"
-                            >
-                                <span>Compass Portal</span>
-                                <ArrowUpRight size={14} className="opacity-50" />
-                            </Link>
-                        </li>
-                    </div>
+                    {/* Column 5: Contact */}
+                    <div className="flex flex-col gap-4">
+                        <h3 className="text-slate-900 font-bold mb-1">Contact</h3>
+                        
+                        <div className="flex flex-col gap-3 text-sm">
+                            <a href="mailto:info@thefoundrys.com" className="flex items-center gap-2 hover:text-slate-900 transition-colors">
+                                <Mail size={16} />
+                                <span>info@thefoundrys.com</span>
+                            </a>
+                            
+                            <div className="flex items-start gap-2 leading-relaxed">
+                                <MapPin size={16} className="shrink-0 mt-1" />
+                                <span>
+                                    QHUB, Beside Madhapur Metro Station,<br/>
+                                    Jubilee Hills, Road No 36 & 37,<br/>
+                                    Hyderabad, Telangana - 500033.
+                                </span>
+                            </div>
+                        </div>
 
-                    {/* Column 5: Connect */}
-                    <div className="flex flex-col gap-3">
-                        <h3 className="text-slate-900 font-bold mb-1">Connect</h3>
-                        <FooterLink href="https://x.com/thefoundrys">X (Twitter)</FooterLink>
-                        <FooterLink href="https://www.linkedin.com/company/thefoundrys">LinkedIn</FooterLink>
-                        <FooterLink href="https://www.instagram.com/the.foundrys/">Instagram</FooterLink>
-                        <FooterLink href="https://www.youtube.com/@TheFoundrys">YouTube</FooterLink>
+                        <div className="h-px bg-slate-200 my-1" />
+
+                        <div className="flex gap-4">
+                             <Link href="https://x.com/thefoundrys" className="hover:text-slate-900 transition-colors"><Twitter size={18} /></Link>
+                             <Link href="https://www.linkedin.com/company/the-foundry-s" className="hover:text-slate-900 transition-colors"><Linkedin size={18} /></Link>
+                             <Link href="https://www.instagram.com/the.foundrys/" className="hover:text-slate-900 transition-colors"><Instagram size={18} /></Link>
+                             <Link href="https://www.youtube.com/@TheFoundrys" className="hover:text-slate-900 transition-colors"><Youtube size={18} /></Link>
+                        </div>
                     </div>
                 </div>
 

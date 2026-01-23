@@ -38,9 +38,9 @@ export function Campus() {
                 You are embedded in the ecosystem.
              </p>
 
-             <div className="inline-flex items-center space-x-2 bg-white px-6 py-3 rounded-full border border-slate-100 text-slate-600 shadow-sm">
+             {/* <div className="inline-flex items-center space-x-2 bg-white px-6 py-3 rounded-full border border-slate-100 text-slate-600 shadow-sm">
                 <span className="font-semibold">📍 Neighbors: Google, Amazon, T-Hub</span>
-             </div>
+             </div> */}
         </div>
       </div>
     </section>

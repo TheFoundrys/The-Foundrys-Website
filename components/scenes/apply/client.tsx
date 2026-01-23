@@ -80,15 +80,15 @@ export function ApplyClient() {
             className="w-full max-w-2xl"
         >
             <div className="text-center mb-10">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-wider mb-4">
+                {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-wider mb-4">
                     <Sparkles size={14} />
-                    <span>Join the Waitlist</span>
-                </div>
+                    <span>Apply Now</span>
+                </div> */}
                 <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
-                    Express Your Interest.
+                    Apply Now
                 </h1>
                 <p className="text-lg text-slate-600 max-w-lg mx-auto">
-                    We are currently accepting expressions of interest for our upcoming programs. Be the first to know when we launch.
+                    Applications are now open for our upcoming programs. Apply today and begin your journey with us.
                 </p>
             </div>
 

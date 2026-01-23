@@ -6,7 +6,7 @@ import { RenewableEnergyWhyUs } from "@/components/schools/renewable-energy/why-
 import { RenewableEnergySkills } from "@/components/schools/renewable-energy/founder-skills";
 import { RenewableEnergyStats } from "@/components/schools/renewable-energy/program-stats";
 import { RenewableEnergyComparison } from "@/components/schools/renewable-energy/comparison";
-import { RenewableEnergyCurriculumAccordion } from "@/components/schools/renewable-energy/curriculum-accordion";
+// import { RenewableEnergyCurriculumAccordion } from "@/components/schools/renewable-energy/curriculum-accordion";
 
 import { Metadata } from "next";
 
@@ -25,7 +25,7 @@ export default function RenewableEnergyPage() {
         <RenewableEnergyStats />
         <RenewableEnergySkills />
         <RenewableEnergyComparison />
-        <RenewableEnergyCurriculumAccordion />
+
         <Footer />
     </main>
   );

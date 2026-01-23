@@ -43,8 +43,36 @@ export function ContactClient() {
               className="bg-white p-8 md:p-12 rounded-3xl border border-slate-100 shadow-xl hover:shadow-2xl transition-all duration-300"
             >
               <div className="flex flex-col justify-center h-full">
-                 <h2 className="text-2xl font-bold mb-6">Connect with us</h2>
-                 <p className="text-slate-500 mb-8">Follow our journey and stay updated with the latest news from The Foundry's.</p>
+                 <h2 className="text-2xl font-bold mb-8">Visit The Campus</h2>
+                 
+                 <div className="space-y-6 mb-10">
+                    <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center text-slate-600 shrink-0">
+                            <MapPin size={20} />
+                        </div>
+                        <div>
+                            <h3 className="font-bold text-slate-900 mb-1">Address</h3>
+                            <p className="text-slate-500 leading-relaxed">
+                                QHUB, Beside Madhapur Metro Station,<br/>
+                                Jubilee Hills, Road No 36 & 37,<br/>
+                                Hyderabad, Telangana - 500033.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center text-slate-600 shrink-0">
+                            <Mail size={20} />
+                        </div>
+                        <div>
+                            <h3 className="font-bold text-slate-900 mb-1">Email</h3>
+                            <a href="mailto:info@thefoundrys.com" className="text-slate-500 hover:text-blue-600 transition-colors">
+                                info@thefoundrys.com
+                            </a>
+                        </div>
+                    </div>
+                 </div>
+
                  <div className="flex items-center gap-4">
                       <Link href="https://x.com/thefoundrys" target="_blank" rel="noopener noreferrer" className="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-all hover:-translate-y-1">
                           <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>

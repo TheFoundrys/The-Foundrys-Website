@@ -90,13 +90,13 @@ export default function AboutPage() {
 
                     <div className="space-y-6 text-slate-300 text-lg leading-relaxed">
                         <p>
-                            "Leadership is not just about building technology—it is about building trust, resilience, and possibility."
+                            "Leadership is not just about building technology it is about building trust, resilience, and possibility."
                         </p>
                         <p>
-                            With over 15 years at the intersection of Artificial Intelligence, Cybersecurity, and Enterprise Transformation, Vishwanath has witnessed firsthand how bold ideas can reshape industries.
+                            With over 15 years at the intersection of Artificial Intelligence, Cybersecurity, Quantum Computing, Blockchain and Enterprise Transformation, Vishwanath has witnessed firsthand how bold ideas can reshape industries.
                         </p>
                         <p>
-                            His journey—from designing AI solutions that helped Fortune 500 companies scale, to creating platforms that reduce complexity—has culminated in the creation of <span className="text-white font-bold">The Foundry's</span>. A place where the next generation of architects is forged.
+                            His journey from designing AI solutions that helped Fortune 500 companies scale, to creating platforms that reduce complexity has culminated in the creation of <span className="text-white font-bold">The Foundry's</span>. A place where the next generation of architects is forged.
                         </p>
                     </div>
 
@@ -120,6 +120,22 @@ export default function AboutPage() {
 
             </div>
          </div>
+      </section>
+
+      {/* Meet the Team CTA */}
+      <section className="py-24 px-6 bg-slate-900 border-t border-slate-800">
+          <div className="container mx-auto max-w-4xl text-center">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Built by Builders.</h2>
+              <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                  We are a collective of Engineers, Researchers, and Founders who have built systems that impact millions.
+              </p>
+              <Link 
+                  href="/about/team"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-500 transition-all hover:scale-105"
+              >
+                  Meet the Team <ArrowUpRight size={20} />
+              </Link>
+          </div>
       </section>
 
       <Footer />

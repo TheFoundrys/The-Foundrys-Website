@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { triggerHaptic } from "@/lib/haptics";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu, Zap, Leaf, Network, BookOpen, Briefcase } from "lucide-react";
+import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu, Zap, Leaf, Network, BookOpen, Briefcase, GraduationCap } from "lucide-react";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -115,7 +115,7 @@ export function Navbar() {
       "sustainability": [
           {
             href: "/schools/esg",
-            label: "ESG & Sustainability",
+            label: "Environmental, Social, and Governance",
             desc: "Strategic Responsibility",
             icon: Leaf,
             color: "text-green-600",
@@ -310,7 +310,19 @@ export function Navbar() {
                                             <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Lead with Impact</span>
                                         </div>
                                     </Link>
-                                    {/* Link removed as per user request */}
+                                    <Link 
+                                        href="/programs/educators" 
+                                        onClick={handleHaptic}
+                                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-purple-50 transition-colors group"
+                                    >
+                                        <div className="w-8 h-8 rounded-lg bg-purple-50 flex items-center justify-center text-purple-600 group-hover:scale-110 transition-transform shrink-0">
+                                            <GraduationCap size={16} />
+                                        </div>
+                                        <div>
+                                            <span className="text-sm font-bold text-slate-700 block">Educators & Faculty</span>
+                                            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Empower Your Teaching</span>
+                                        </div>
+                                    </Link>
                                 </motion.div>
                             )}
                         </AnimatePresence>
@@ -531,7 +543,7 @@ export function Navbar() {
                                                 </div>
                                             </div>
 
-                                            <div className="pt-2 border-t border-slate-100/50 mt-2">
+                                            {/* <div className="pt-2 border-t border-slate-100/50 mt-2">
                                                 <Link
                                                     href="https://compass.thefoundrys.com"
                                                     target="_blank"
@@ -546,7 +558,7 @@ export function Navbar() {
                                                         <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Compass Portal</span>
                                                     </div>
                                                 </Link>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </motion.div>
                                 )}
@@ -581,8 +593,8 @@ export function Navbar() {
                                                     <BookOpen size={16} />
                                                 </div>
                                                 <div>
-                                                    <span className="font-semibold text-slate-700 block text-sm">Professional Fundamentals Learning</span>
-                                                    <span className="text-[10px] text-slate-500 font-bold">Build Your Foundation</span>
+                                                    <span className="font-semibold text-slate-700 block text-sm">Professional Learning</span>
+                                                    <span className="text-[10px] text-slate-500 font-bold">Build Your Future</span>
                                                 </div>
                                             </Link>
 
@@ -595,12 +607,24 @@ export function Navbar() {
                                                     <Briefcase size={16} />
                                                 </div>
                                                 <div>
-                                                    <span className="font-semibold text-slate-700 block text-sm">Executive Strategic Learning</span>
+                                                    <span className="font-semibold text-slate-700 block text-sm">Executive Learning</span>
                                                     <span className="text-[10px] text-slate-500 font-bold">Lead with Impact</span>
                                                 </div>
                                             </Link>
 
-                                            {/* Link removed as per user request */}
+                                            <Link 
+                                                href="/programs/educators" 
+                                                onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
+                                            >
+                                                <div className="w-8 h-8 rounded-md bg-purple-50 flex items-center justify-center text-purple-600 shrink-0">
+                                                    <GraduationCap size={16} />
+                                                </div>
+                                                <div>
+                                                    <span className="font-semibold text-slate-700 block text-sm">Educators & Faculty</span>
+                                                    <span className="text-[10px] text-slate-500 font-bold">Empower Your Teaching</span>
+                                                </div>
+                                            </Link>
                                         </div>
                                     </motion.div>
                                 )}
@@ -626,6 +650,16 @@ export function Navbar() {
                                         className="overflow-hidden"
                                     >
                                         <div className="px-2 pb-2 flex flex-col gap-2 pt-2">
+                                            <Link 
+                                                href="/about" 
+                                                onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
+                                            >
+                                                <div className="w-8 h-8 rounded-md bg-blue-50 flex items-center justify-center text-blue-600">
+                                                    <Users size={16} />
+                                                </div>
+                                                <span className="font-semibold text-slate-700">About Us</span>
+                                            </Link>
                                             <Link 
                                                 href="/campus" 
                                                 onClick={() => { setIsOpen(false); handleHaptic(); }}
