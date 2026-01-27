@@ -661,48 +661,30 @@ export function Navbar() {
                                                 exit={{ height: 0, opacity: 0 }}
                                                 className="overflow-hidden"
                                             >
-                                                <div className="px-2 pb-2 flex flex-col gap-2 pt-2">
-                                                    <Link
-                                                        href="/programs/professional"
-                                                        onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
-                                                    >
-                                                        <div className="w-8 h-8 rounded-md bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
-                                                            <BookOpen size={16} />
+                                                <div className="px-2 pb-2 flex flex-col gap-4 pt-2">
+                                                    {PROGRAM_CATEGORIES.map((category) => (
+                                                        <div key={category.id}>
+                                                            <div className="px-3 py-2 text-xs font-bold uppercase tracking-widest text-slate-400">{category.label}</div>
+                                                            <div className="flex flex-col gap-1">
+                                                                {PROGRAM_COURSES[category.id].map((prog) => (
+                                                                    <Link
+                                                                        key={prog.href}
+                                                                        href={prog.href}
+                                                                        onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                                        className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100/50 transition-colors"
+                                                                    >
+                                                                        <div className={`w-8 h-8 rounded-md ${prog.bg} flex items-center justify-center ${prog.color} shrink-0`}>
+                                                                            <prog.icon size={16} />
+                                                                        </div>
+                                                                        <div>
+                                                                            <span className="font-semibold text-slate-700 block text-sm">{prog.label}</span>
+                                                                            <span className="text-[10px] text-slate-500 font-bold">{prog.desc}</span>
+                                                                        </div>
+                                                                    </Link>
+                                                                ))}
+                                                            </div>
                                                         </div>
-                                                        <div>
-                                                            <span className="font-semibold text-slate-700 block text-sm">Professional Learning</span>
-                                                            <span className="text-[10px] text-slate-500 font-bold">Build Your Future</span>
-                                                        </div>
-                                                    </Link>
-
-                                                    <Link
-                                                        href="/programs/executive"
-                                                        onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
-                                                    >
-                                                        <div className="w-8 h-8 rounded-md bg-amber-50 flex items-center justify-center text-amber-600 shrink-0">
-                                                            <Briefcase size={16} />
-                                                        </div>
-                                                        <div>
-                                                            <span className="font-semibold text-slate-700 block text-sm">Executive Learning</span>
-                                                            <span className="text-[10px] text-slate-500 font-bold">Lead with Impact</span>
-                                                        </div>
-                                                    </Link>
-
-                                                    <Link
-                                                        href="/programs/educators"
-                                                        onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
-                                                    >
-                                                        <div className="w-8 h-8 rounded-md bg-purple-50 flex items-center justify-center text-purple-600 shrink-0">
-                                                            <GraduationCap size={16} />
-                                                        </div>
-                                                        <div>
-                                                            <span className="font-semibold text-slate-700 block text-sm">Educators & Faculty</span>
-                                                            <span className="text-[10px] text-slate-500 font-bold">Empower Your Teaching</span>
-                                                        </div>
-                                                    </Link>
+                                                    ))}
                                                 </div>
                                             </motion.div>
                                         )}

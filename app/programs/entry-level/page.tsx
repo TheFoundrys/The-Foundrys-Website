@@ -198,7 +198,7 @@ export default function EntryLevelProgramPage() {
                             tagline="From Logic to Intelligence."
                             desc="Move beyond basic Python. Master Neural Networks, NLP, and Computer Vision to build systems that can see, read, and decide."
                             icon={<BrainCircuit />}
-                            href="/programs/professional/ai"
+                            href="/programs/entry-level/ai"
                         />
                         <DomainCard
                             title="Cyber Security"
