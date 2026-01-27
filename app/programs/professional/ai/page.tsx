@@ -31,28 +31,34 @@ export default function AIPage() {
       <section className="py-24 px-6">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-            <CourseCard
-              sku="AI 001"
-              title="Certified Professional in AI Foundations"
-              originalPrice="100,000"
-              discountedPrice="50,000"
-              duration="45 Days"
-              desc="Build the mathematical and logical bedrock required to understand and work with intelligent systems."
-            />
+
             <CourseCard
               sku="AI 002"
               title="Certified Professional in AI Research"
               originalPrice="150,000"
               discountedPrice="75,000"
               desc="Dive deep into algorithms and model architectures. Learn how to push the boundaries of what's possible."
+              persona="Data & ML Professionals"
             />
             <CourseCard
               sku="AI 003"
               title="Certified Professional in AI Engineering"
               originalPrice="150,000"
               discountedPrice="75,000"
+              duration="45 Days"
               desc="Focus on the engineering lifecycle. Learn to build, scale, and optimize production-grade AI applications."
               href="/programs/professional/ai/certified-professional-in-ai-engineering"
+              persona="Software Developers (Full-stack, Backend, MERN, etc)"
+            />
+            <CourseCard
+              sku="AI 003"
+              title="Certified Professional in AI Engineering in Telugu"
+              originalPrice="150,000"
+              discountedPrice="75,000"
+              duration="45 Days"
+              desc="Focus on the engineering lifecycle. Learn to build, scale, and optimize production-grade AI applications."
+              href="/programs/professional/ai/certified-professional-in-ai-engineering"
+              persona="Software Developers (Full-stack, Backend, MERN, etc)"
             />
             <CourseCard
               sku="AI 004"
@@ -60,15 +66,9 @@ export default function AIPage() {
               originalPrice="200,000"
               discountedPrice="100,000"
               desc="Master the art of MLOps. Learn deployment strategies, monitoring, and maintaining AI at scale."
+              persona="DevOps & Cloud Engineers"
             />
-            <CourseCard
-              sku="AI 005"
-              title="Certified Professional in Prompt Engineering"
-              originalPrice="100,000"
-              discountedPrice="30,000"
-              desc="Master the art of communicating with AI. Learn to design and optimize prompts to unlock the full potential of Large Language Models."
-              discountLabel="70% Discount"
-            />
+
           </div>
         </div>
       </section>
@@ -78,7 +78,7 @@ export default function AIPage() {
   );
 }
 
-function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discountLabel = "50% Discount", href = "/apply", duration = "3 Months" }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string, discountLabel?: string, href?: string, duration?: string }) {
+function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discountLabel = "50% Discount", href = "/apply", duration = "3 Months", persona = "Students / Working professionals" }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string, discountLabel?: string, href?: string, duration?: string, persona?: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -110,6 +110,10 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
           <div className="flex items-center gap-2">
             <CheckCircle2 size={16} className="text-blue-500" />
             Industry Recognized Certification
+          </div>
+          <div className="flex items-center gap-2">
+            <CheckCircle2 size={16} className="text-blue-500" />
+            {persona}
           </div>
         </div>
       </div>

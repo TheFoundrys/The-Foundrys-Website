@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { RoleDetailsContent } from "@/components/role-details-content";
 
 // Project Data
 const ALL_PROJECTS = [
@@ -527,75 +528,78 @@ export default function AIEngineeringCoursePage() {
                     </div>
 
                     <div className="flex flex-col lg:flex-row gap-8 items-start">
-                        {/* Left Column: Role List */}
-                        <div className="w-full lg:w-1/3 flex flex-col gap-2">
+                        {/* Mobile Layout (Accordion) - Visible only on small screens */}
+                        <div className="w-full lg:hidden flex flex-col gap-4">
                             {CAREER_ROLES.map((role) => (
-                                <button
-                                    key={role.id}
-                                    onMouseEnter={() => setActiveRole(role)}
-                                    onClick={() => setActiveRole(role)}
-                                    className={`text-left p-4 rounded-xl transition-all duration-200 border ${activeRole.id === role.id
-                                        ? "bg-white border-blue-200 shadow-md translate-x-2"
-                                        : "bg-transparent border-transparent hover:bg-white/50 hover:border-slate-200 text-slate-500"
-                                        }`}
-                                >
-                                    <h3 className={`font-bold text-lg ${activeRole.id === role.id ? "text-blue-600" : "text-slate-700"}`}>
-                                        {role.label}
-                                    </h3>
-                                </button>
+                                <div key={role.id} className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                                    <button
+                                        onClick={() => setActiveRole(activeRole.id === role.id ? activeRole : role)}
+                                        className={`w-full text-left p-4 flex items-center justify-between transition-colors ${activeRole.id === role.id ? "bg-blue-50/50" : "bg-white"}`}
+                                    >
+                                        <h3 className={`font-bold text-lg ${activeRole.id === role.id ? "text-blue-600" : "text-slate-700"}`}>
+                                            {role.label}
+                                        </h3>
+                                        <ChevronDown
+                                            size={20}
+                                            className={`text-slate-400 transition-transform duration-300 ${activeRole.id === role.id ? "rotate-180 text-blue-500" : ""}`}
+                                        />
+                                    </button>
+                                    <AnimatePresence>
+                                        {activeRole.id === role.id && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: "auto", opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.3 }}
+                                            >
+                                                <div className="p-4 pt-0 border-t border-slate-100">
+                                                    <div className="pt-4">
+                                                        <RoleDetailsContent role={role} />
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
                             ))}
                         </div>
 
-                        {/* Right Column: Detailed View */}
-                        <div className="w-full lg:w-2/3">
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={activeRole.id}
-                                    initial={{ opacity: 0, x: 20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: -20 }}
-                                    transition={{ duration: 0.2 }}
-                                    className="bg-white rounded-3xl p-6 border border-slate-200 shadow-xl min-h-[420px]"
-                                >
-                                    <div className="flex flex-col md:flex-row gap-6 mb-6">
-                                        <div className="flex-1">
-                                            <h3 className="text-2xl font-bold text-slate-900 mb-2">{activeRole.title}</h3>
-                                            <p className="text-slate-600 leading-relaxed text-base mb-4">
-                                                {activeRole.desc}
-                                            </p>
-                                            <div className="flex flex-wrap gap-2">
-                                                {activeRole.skills.map(skill => (
-                                                    <span key={skill} className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-semibold">
-                                                        {skill}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                        <div className="w-full md:w-48 shrink-0 flex flex-col gap-3">
-                                            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-100">
-                                                <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Avg. Salary</div>
-                                                <div className="text-xl font-bold text-slate-900">{activeRole.salary}</div>
-                                            </div>
-                                            <div className="p-3 rounded-2xl bg-emerald-50 border border-emerald-100">
-                                                <div className="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-1">Growth</div>
-                                                <div className="text-xl font-bold text-emerald-700">{activeRole.growth}</div>
-                                            </div>
-                                        </div>
-                                    </div>
+                        {/* Desktop Layout - Visible only on lg screens and up */}
+                        <div className="hidden lg:flex w-full flex-row gap-8 items-start">
+                            {/* Left Column: Role List */}
+                            <div className="w-1/3 flex flex-col gap-2">
+                                {CAREER_ROLES.map((role) => (
+                                    <button
+                                        key={role.id}
+                                        onMouseEnter={() => setActiveRole(role)}
+                                        onClick={() => setActiveRole(role)}
+                                        className={`text-left p-4 rounded-xl transition-all duration-200 border ${activeRole.id === role.id
+                                            ? "bg-white border-blue-200 shadow-md translate-x-2"
+                                            : "bg-transparent border-transparent hover:bg-white/50 hover:border-slate-200 text-slate-500"
+                                            }`}
+                                    >
+                                        <h3 className={`font-bold text-lg ${activeRole.id === role.id ? "text-blue-600" : "text-slate-700"}`}>
+                                            {role.label}
+                                        </h3>
+                                    </button>
+                                ))}
+                            </div>
 
-                                    <div className="border-t border-slate-100 pt-4">
-                                        <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3">Core Responsibilities</h4>
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                            {activeRole.responsibilities.map((resp, i) => (
-                                                <div key={i} className="flex items-start gap-3">
-                                                    <CheckCircle2 size={18} className="text-blue-500 mt-0.5 shrink-0" />
-                                                    <span className="text-slate-600 text-sm font-medium">{resp}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            </AnimatePresence>
+                            {/* Right Column: Detailed View */}
+                            <div className="w-2/3">
+                                <AnimatePresence mode="wait">
+                                    <motion.div
+                                        key={activeRole.id}
+                                        initial={{ opacity: 0, x: 20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{ opacity: 0, x: -20 }}
+                                        transition={{ duration: 0.2 }}
+                                        className="bg-white rounded-3xl p-6 border border-slate-200 shadow-xl min-h-[420px]"
+                                    >
+                                        <RoleDetailsContent role={activeRole} />
+                                    </motion.div>
+                                </AnimatePresence>
+                            </div>
                         </div>
                     </div>
                 </div>
