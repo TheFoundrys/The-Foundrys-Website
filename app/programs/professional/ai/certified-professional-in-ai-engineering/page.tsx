@@ -430,15 +430,15 @@ export default function AIEngineeringCoursePage() {
                             <div className="flex items-center gap-4 mb-6">
                                 <span className="text-4xl font-bold text-blue-100">01</span>
                                 <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Foundations & API Mastery</h3>
-                                    <p className="text-slate-500">Focus: Mastering the core &quot;Engine&quot; of modern AI.</p>
+                                    <h3 className="text-2xl font-bold text-slate-900">Fundamentals & The OpenAI Ecosystem</h3>
+                                    <p className="text-slate-500">Focus: Mastering the core &quot;Engine&quot; and API-first development.</p>
                                 </div>
                             </div>
                             <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 1" title="AI Landscape & Environment Setup" topics={["AI vs ML vs Data Science", "LLM Core Concepts", "Dev Environment & API Keys"]} />
-                                <WeekCard week="Week 2" title="The OpenAI Ecosystem" topics={["GPT-4 & GPT-3.5 Deep Dive", "Chat Completions API & Tokenomics", "Project 1: Python CLI Chatbot"]} />
-                                <WeekCard week="Week 3" title="Advanced Prompt Engineering" topics={["Chain-of-Thought & Few-Shot", "Defense against Injection Attacks", "Project 2: Code-Morpher Tool"]} />
-                                <WeekCard week="Week 4" title="AI Safety & Ethics" topics={["Bias & Hallucinations", "OpenAI Moderation API", "Intro to Fine-Tuning"]} />
+                                <WeekCard week="Week 1" title="Introduction & Fundamentals" topics={["AI vs ML vs DL", "LLM Architecture (Transformers)", "Tokenization & Context Windows"]} />
+                                <WeekCard week="Week 2" title="The OpenAI Platform" topics={["Chat Completions API", "Prompt Engineering Strategies", "Function Calling & Tools"]} />
+                                <WeekCard week="Week 3" title="Advanced API Usage" topics={["Structured Outputs", "Vision & Audio APIs", "Project 1: Multi-Turn Chatbot"]} />
+                                <WeekCard week="Week 4" title="Embeddings & Semantic Search" topics={["Vector Embeddings 101", "Cosine Similarity", "Building a Semantic Search Engine"]} />
                             </div>
                         </div>
 
@@ -447,15 +447,15 @@ export default function AIEngineeringCoursePage() {
                             <div className="flex items-center gap-4 mb-6">
                                 <span className="text-4xl font-bold text-blue-100">02</span>
                                 <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">RAG & Open Source Architecture</h3>
-                                    <p className="text-slate-500">Focus: Breaking free from APIs. Building private systems.</p>
+                                    <h3 className="text-2xl font-bold text-slate-900">RAG, Vector DBs & Open Source</h3>
+                                    <p className="text-slate-500">Focus: Building private, data-grounded AI systems.</p>
                                 </div>
                             </div>
                             <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 5" title="Open Source Models & Hugging Face" topics={["Llama 3, Mistral, Cohere", "Running models locally with Ollama"]} />
-                                <WeekCard week="Week 6" title="Embeddings & Vector Databases" topics={["Semantic Search", "Chroma, Pinecone, FAISS", "Project 3: Semantic Book Search"]} />
-                                <WeekCard week="Week 7" title="Retrieval Augmented Generation (RAG)" topics={["RAG Architecture", "Chunking & Retrieval Strategies", "RAG vs Fine-tuning"]} />
-                                <WeekCard week="Week 8" title="Orchestration Frameworks" topics={["LangChain & LlamaIndex", "Building Chains", "Project 4: Docu-Chat Analysis Tool"]} />
+                                <WeekCard week="Week 5" title="Vector Databases Deep Dive" topics={["Pinecone, ChromaDB & Weaviate", "Indexing Strategies", "Hybrid Search"]} />
+                                <WeekCard week="Week 6" title="Retrieval Augmented Generation (RAG)" topics={["Naive RAG vs Advanced RAG", "Chunking Strategies", "Project 2: Document Q&A System"]} />
+                                <WeekCard week="Week 7" title="Advanced RAG Techniques" topics={["Re-ranking", "Query Expansion", "Contextual Compression"]} />
+                                <WeekCard week="Week 8" title="Open Source Models" topics={["Hugging Face Hub", "Llama 3 & Mistral", "Running Models Locally (Ollama)"]} />
                             </div>
                         </div>
 
@@ -464,15 +464,15 @@ export default function AIEngineeringCoursePage() {
                             <div className="flex items-center gap-4 mb-6">
                                 <span className="text-4xl font-bold text-blue-100">03</span>
                                 <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Agents, Multimodal & Production</h3>
-                                    <p className="text-slate-500">Focus: Autonomous systems that see, hear, and act.</p>
+                                    <h3 className="text-2xl font-bold text-slate-900">Agents, Fine-Tuning & Production</h3>
+                                    <p className="text-slate-500">Focus: Autonomous systems and production engineering.</p>
                                 </div>
                             </div>
                             <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 9" title="AI Agents" topics={["Reasoning + Acting (ReAct)", "Function Calling & Tools", "Project 5: News-Hound Agent"]} />
-                                <WeekCard week="Week 10" title="Multimodal AI" topics={["GPT-4V & DALL-E", "Whisper (Speech-to-Text)", "Audio & Image Generation"]} />
-                                <WeekCard week="Week 11" title="Production & Deployment" topics={["Deploying to Streamlit/Vercel", "Monitoring & Caching", "Cost Optimization"]} />
-                                <WeekCard week="Week 12" title="Capstone Project" topics={["Final Build", "Documentation", "Capstone: Multi-Modal Workplace Assistant"]} />
+                                <WeekCard week="Week 9" title="Building AI Agents" topics={["ReAct Pattern", "LangChain Agents", "Project 3: Autonomous Research Agent"]} />
+                                <WeekCard week="Week 10" title="Fine-Tuning & Custom Models" topics={["PEFT & LoRA", "Fine-tuning Llama 3", "Data Preparation"]} />
+                                <WeekCard week="Week 11" title="Multimodal AI" topics={["GPT-4V & Gemini Pro Vision", "Text-to-Speech & Speech-to-Text", "Image Generation Pipelines"]} />
+                                <WeekCard week="Week 12" title="Production Engineering" topics={["Eval & Monitoring (LangSmith)", "Deployment Strategies", "Capstone Project Defense"]} />
                             </div>
                         </div>
                     </div>
