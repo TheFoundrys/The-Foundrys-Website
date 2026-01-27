@@ -372,7 +372,7 @@ export default function AIEngineeringCoursePage() {
                             <span>Backpropagation</span> <span>&bull;</span>
                             <span>Gradient descent</span> <span>&bull;</span>
                             <span>Regularization</span> <span>&bull;</span>
-                            <span>Hyperparameter tuning</span>
+                            <span>Hyperparameter tuning</span> <span>&bull;</span>
                         </div>
                     ))}
                 </motion.div>
@@ -409,7 +409,7 @@ export default function AIEngineeringCoursePage() {
                             <span>Naive Bayes</span> <span>&bull;</span>
                             <span>SVM</span> <span>&bull;</span>
                             <span>Neural Networks</span> <span>&bull;</span>
-                            <span>Deep Learning</span>
+                            <span>Deep Learning</span> <span>&bull;</span>
                         </div>
                     ))}
                 </motion.div>
