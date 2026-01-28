@@ -3,7 +3,7 @@
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
-import { ArrowUpRight, BookOpen, Users, Zap, Briefcase, GraduationCap, CheckCircle2, ChevronRight, Terminal, Cpu, Network, ShieldCheck, BrainCircuit, Globe, Calendar, Wifi, Target, Clock, ArrowDown, ChevronLeft, FileText, UserCheck, Rocket, Code, Database, Server, Cloud, Lock, Box, Activity, GitMerge, Ship, Smile as SmileIcon, Link2, Bug, Search, Settings, HardHat, Flame, Link as LinkIcon } from "lucide-react";
+import { ArrowUpRight, Zap, Terminal, Cpu, Network, ShieldCheck, BrainCircuit, Calendar, Wifi, Target, ArrowDown, FileText, UserCheck, Rocket, Code, Database, Server, Cloud, Box, Activity, GitMerge, Ship, Flame, Link as LinkIcon, Globe, CheckCircle2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import React from "react";
@@ -13,12 +13,13 @@ import Image from "next/image";
 const customGradient = "linear-gradient(to right, lab(44.0605 29.0279 -86.0352) 0%, lab(38.4009 52.6132 -92.3857) 100%)";
 const textGradientClass = "text-transparent bg-clip-text";
 
-export default function ProfessionalProgramPage() {
+const domains = ["Artificial Intelligence", "Cyber Security", "Blockchain", "Quantum Computing"];
+
+export default function EntryLevelProgramPage() {
     const [currentDomainIndex, setCurrentDomainIndex] = useState(0);
-    const domains = ["Artificial Intelligence", "Cyber Security", "Blockchain", "Quantum Computing"];
 
     useEffect(() => {
-        document.title = "Professional Certification Programs | The Foundry";
+        document.title = "Entry Level Programs | The Foundry";
     }, []);
 
     useEffect(() => {
@@ -39,7 +40,7 @@ export default function ProfessionalProgramPage() {
                 <div className="absolute inset-0 z-0">
                     <Image
                         src="/pfl_hero_bg.png"
-                        alt="Professional Learning"
+                        alt="Entry Level Learning"
                         fill
                         className="object-cover opacity-40 mix-blend-overlay"
                         priority
@@ -55,9 +56,9 @@ export default function ProfessionalProgramPage() {
                             transition={{ duration: 0.8 }}
                         >
                             <div className="space-y-2">
-                                <p className="text-3xl md:text-4xl text-slate-400 font-medium tracking-wide">Become a</p>
+                                <p className="text-3xl md:text-4xl text-slate-400 font-medium tracking-wide">Start Your Journey in</p>
                                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
-                                    Certified Professional in
+                                    Entry Level
                                     <br />
                                     <span className="inline-block relative min-h-[1.2em] mt-2">
                                         {domains.map((domain, index) => (
@@ -79,7 +80,7 @@ export default function ProfessionalProgramPage() {
                                 </h1>
                             </div>
                             <p className="text-xl md:text-2xl text-slate-300 mb-10 leading-relaxed max-w-3xl font-medium">
-                                Build deep expertise in emerging technologies. A structured introduction to Artificial Intelligence, Cyber Security, Quantum Computing, and Blockchain designed for clarity and application.
+                                Build a strong foundation in emerging technologies. Designed for beginners to understand the core concepts of Artificial Intelligence, Cyber Security, Quantum Computing, and Blockchain.
                             </p>
                             <div className="flex flex-wrap gap-4">
                                 <Link
@@ -117,8 +118,8 @@ export default function ProfessionalProgramPage() {
             <section className="py-24 px-6 bg-slate-50">
                 <div className="container mx-auto max-w-6xl">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Professional Edge</h2>
-                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">Acquire the deep technical expertise and applied skills required to lead in the modern digital economy.</p>
+                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Entry Level Edge</h2>
+                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">Acquire the fundamental technical expertise and applied skills required to start your career in the modern digital economy.</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
@@ -146,7 +147,7 @@ export default function ProfessionalProgramPage() {
                                 <h3 className="text-xl font-bold text-slate-900">Your Network is Your Net Worth</h3>
                             </div>
                             <p className="text-slate-600 leading-relaxed text-sm">
-                                Learning alone is slow. Join a curated cohort of ambitious peers who are as hungry as you are. "Iron sharpens iron"—you will grow faster by coding, debugging, and launching projects alongside the best.
+                                Learning alone is slow. Join a curated cohort of ambitious peers who are as hungry as you are. &quot;Iron sharpens iron&quot;—you will grow faster by coding, debugging, and launching projects alongside the best.
                             </p>
                         </div>
                         <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
@@ -160,7 +161,7 @@ export default function ProfessionalProgramPage() {
                                 <h3 className="text-xl font-bold text-slate-900">Stop Watching, Start Building</h3>
                             </div>
                             <p className="text-slate-600 leading-relaxed text-sm">
-                                Theory is free online. Here, you focus on the friction of practice. You will spend 60% of your time in the "Build Loop"—solving real-world problem statements, fixing bugs, and deploying live solutions.
+                                Theory is free online. Here, you focus on the friction of practice. You will spend 60% of your time in the &quot;Build Loop&quot;—solving real-world problem statements, fixing bugs, and deploying live solutions.
                             </p>
                         </div>
                         <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
@@ -185,9 +186,9 @@ export default function ProfessionalProgramPage() {
             <section className="py-24 px-6 bg-white border-y border-slate-200" id="curriculum">
                 <div className="container mx-auto max-w-6xl">
                     <div className="mb-16">
-                        <h2 className="text-4xl font-bold text-slate-900 mb-6">Choose your career transition</h2>
+                        <h2 className="text-4xl font-bold text-slate-900 mb-6">Choose your career path</h2>
                         <p className="text-lg text-slate-600 leading-relaxed max-w-3xl">
-                            Precision-engineered learning tracks. Each domain is structured as a comprehensive, standalone professional program allowing you to bypass generalities and build deep, vertical expertise in the technology defining your future.
+                            Precision-engineered learning tracks. Each domain is structured as a comprehensive, standalone entry-level program allowing you to build a strong foundation in the technology defining your future.
                         </p>
                     </div>
 
@@ -197,7 +198,7 @@ export default function ProfessionalProgramPage() {
                             tagline="From Logic to Intelligence."
                             desc="Move beyond basic Python. Master Neural Networks, NLP, and Computer Vision to build systems that can see, read, and decide."
                             icon={<BrainCircuit />}
-                            href="/programs/professional/ai"
+                            href="/programs/entry-level/ai"
                         />
                         <DomainCard
                             title="Cyber Security"
@@ -261,7 +262,7 @@ export default function ProfessionalProgramPage() {
                                 <div className="text-purple-400 font-bold tracking-wider uppercase text-sm mb-2">Weeks 5-8</div>
                                 <h3 className="text-2xl font-bold mb-3">Vertical Immersion</h3>
                                 <p className="text-slate-400 leading-relaxed text-sm">
-                                    Tools, Tactics, & Simulation. Theory transitions into practice. Enter a "high-fidelity" environment—utilizing industry tools, running simulations, and dissecting case studies.
+                                    Tools, Tactics, & Simulation. Theory transitions into practice. Enter a &quot;high-fidelity&quot; environment—utilizing industry tools, running simulations, and dissecting case studies.
                                 </p>
                             </div>
                         </div>
@@ -288,7 +289,7 @@ export default function ProfessionalProgramPage() {
                 <div className="container mx-auto max-w-6xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Career Impact</h2>
-                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">We don't just offer knowledge. We equip you with the assets you need to accelerate your trajectory.</p>
+                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">We don&apos;t just offer knowledge. We equip you with the assets you need to accelerate your trajectory.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -296,7 +297,7 @@ export default function ProfessionalProgramPage() {
                             <div className="text-6xl font-black text-slate-200 mb-6 group-hover:text-blue-100 transition-colors">01</div>
                             <h3 className="text-xl font-bold text-slate-900 mb-3">The Production Portfolio</h3>
                             <p className="text-slate-600 leading-relaxed text-sm">
-                                <strong className="text-slate-900">Your Proof of Competence.</strong> You will finish the track with a GitHub portfolio of 3-5 distinct projects and one major Capstone. When a recruiter asks, "Can you do this?", you won't just say "Yes"—you will show them the code.
+                                <strong className="text-slate-900">Your Proof of Competence.</strong> You will finish the track with a GitHub portfolio of 3-5 distinct projects and one major Capstone. When a recruiter asks, &quot;Can you do this?&quot;, you won&apos;t just say &quot;Yes&quot;—you will show them the code.
                             </p>
                         </div>
 
@@ -389,7 +390,7 @@ export default function ProfessionalProgramPage() {
                             <div className="relative p-4 bg-slate-50 border border-slate-100 rounded-2xl shadow-xl">
                                 <Image
                                     src="/sample-certificate.png"
-                                    alt="Foundry Professional Certificate Sample"
+                                    alt="Foundry Entry Level Certificate Sample"
                                     width={600}
                                     height={400}
                                     className="rounded-lg shadow-sm"
@@ -402,7 +403,7 @@ export default function ProfessionalProgramPage() {
                         <div className="md:w-1/2">
                             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Industry Recognized Certification</h2>
                             <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                                Your effort deserves recognition. Upon successful completion of the professional track, you will receive a verifiable digital certificate from The Foundry, signaling your readiness to industry partners.
+                                Your effort deserves recognition. Upon successful completion of the entry level track, you will receive a verifiable digital certificate from The Foundry, signaling your readiness to industry partners.
                             </p>
                             <ul className="space-y-4">
                                 <li className="flex items-center gap-3 text-slate-700 font-medium">
@@ -489,7 +490,7 @@ export default function ProfessionalProgramPage() {
                 <div className="container mx-auto max-w-3xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>
-                        <p className="text-lg text-slate-600">Common queries about the professional foundation tracks.</p>
+                        <p className="text-lg text-slate-600">Common queries about the entry level foundation tracks.</p>
                     </div>
 
                     <div className="space-y-4">
@@ -524,7 +525,7 @@ export default function ProfessionalProgramPage() {
 
 
 // Optimized Stat Component for Hero
-function HeroStat({ icon, label, value, sub }: { icon: any, label: string, value: string, sub: string }) {
+function HeroStat({ icon, label, value, sub }: { icon: React.ReactNode, label: string, value: string, sub: string }) {
     return (
         <div className="flex items-start gap-4 group">
             <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-slate-400 shrink-0 group-hover:text-white transition-colors">
@@ -540,32 +541,17 @@ function HeroStat({ icon, label, value, sub }: { icon: any, label: string, value
     )
 }
 
-function TargetCard({ icon, title, desc }: { icon: any, title: string, desc: string }) {
-    return (
-        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
-            {/* Custom Icon Container */}
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform relative overflow-hidden">
-                <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
-                <div style={{ color: "black" }} className="relative z-10 text-slate-900">
-                    {React.cloneElement(icon, { size: 24, strokeWidth: 1.5 })}
-                </div>
-            </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">{title}</h3>
-            <p className="text-slate-600 leading-relaxed">
-                {desc}
-            </p>
-        </div>
-    )
-}
 
-function DomainCard({ title, tagline, desc, icon, href }: { title: string, tagline?: string, desc: string, icon: any, href: string }) {
+
+function DomainCard({ title, tagline, desc, icon, href }: { title: string, tagline?: string, desc: string, icon: React.ReactElement, href: string }) {
     return (
         <div className="p-8 rounded-2xl border border-slate-100 bg-white hover:bg-slate-50 transition-all group flex flex-col items-start gap-6 h-full relative">
             <div className="flex items-start gap-6">
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform shrink-0 relative overflow-hidden">
                     <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
                     <div className="relative z-10 text-slate-900">
-                        {React.cloneElement(icon, { size: 28, strokeWidth: 1.5 })}
+                        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                        {React.cloneElement(icon as any, { size: 28, strokeWidth: 1.5 })}
                     </div>
                 </div>
                 <div>
@@ -604,23 +590,7 @@ function DomainCard({ title, tagline, desc, icon, href }: { title: string, tagli
     )
 }
 
-function ProgressionStep({ title, desc }: { title: string, desc: string }) {
-    return (
-        <div className="flex items-start gap-4">
-            <div className="mt-1">
-                {/* Gradient Icon */}
-                <div className="relative">
-                    <CheckCircle2 size={24} className="text-slate-700" />
-                    <div style={{ background: customGradient }} className="absolute inset-0 mix-blend-screen opacity-50" />
-                </div>
-            </div>
-            <div>
-                <h4 className="text-xl font-bold text-white mb-2">{title}</h4>
-                <p className="text-slate-400 leading-relaxed">{desc}</p>
-            </div>
-        </div>
-    )
-}
+
 
 function FAQItem({ question, children }: { question: string, children: React.ReactNode }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -647,7 +617,7 @@ function FAQItem({ question, children }: { question: string, children: React.Rea
     )
 }
 
-function ToolItem({ name, icon, color }: { name: string, icon: any, color: string }) {
+function ToolItem({ name, icon, color }: { name: string, icon: React.ReactNode, color: string }) {
     return (
         <div className={`flex items-center gap-3 font-bold text-xl opacity-70 hover:opacity-100 transition-all cursor-default ${color}`}>
             {icon}
