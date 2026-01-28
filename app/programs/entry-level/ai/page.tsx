@@ -39,6 +39,7 @@ export default function EntryLevelAIPage() {
                             duration="45 Days"
                             desc="Build the mathematical and logical bedrock required to understand and work with intelligent systems."
                             persona="Students & AI enthusiasts"
+                            href="/programs/entry-level/ai/certified-professional-in-ai-foundations"
                         />
                         <CourseCard
                             sku="AI 002"
@@ -48,16 +49,18 @@ export default function EntryLevelAIPage() {
                             duration="45 Days"
                             desc="Build the mathematical and logical bedrock required to understand and work with intelligent systems."
                             persona="Students & AI enthusiasts"
+                            href="/programs/entry-level/ai/certified-professional-in-ai-foundations-in-telugu"
                         />
                         <CourseCard
                             sku="AI 005"
                             title="Certified Professional in Prompt Engineering"
                             originalPrice="100,000"
-                            discountedPrice="30,000"
-                            duration="45 Days"
+                            discountedPrice="50,000"
+                            duration="12 Weeks"
                             desc="Master the art of communicating with AI. Learn to design and optimize prompts to unlock the full potential of Large Language Models."
-                            discountLabel="70% Discount"
+                            discountLabel="50% Discount"
                             persona="Students & AI enthusiasts"
+                            href="/programs/entry-level/ai/certified-professional-in-prompt-engineering"
                         />
                     </div>
                 </div>
@@ -108,7 +111,7 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
                 </div>
             </div>
 
-            <div className="p-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <div className="p-6 bg-slate-50 border-t border-slate-100 flex flex-col sm:flex-row md:flex-col lg:flex-row items-start sm:items-center md:items-start lg:items-center justify-between gap-4">
                 <div>
                     <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
                     <div className="flex flex-col">
@@ -121,7 +124,7 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
                 </div>
                 <Link
                     href={href}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 transition-colors shadow-lg hover:shadow-blue-500/25"
+                    className="w-full sm:w-auto md:w-full lg:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 transition-colors shadow-lg hover:shadow-blue-500/25"
                 >
                     Enroll Now <ArrowUpRight size={18} />
                 </Link>

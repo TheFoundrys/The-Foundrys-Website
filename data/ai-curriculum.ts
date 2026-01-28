@@ -1,5 +1,5 @@
 export const aiCurriculum = {
-    duration: "3 Years (6 Semesters)",
+    duration: "4 Years (3 Years AI + 1 Year Entrepreneurship)",
     years: [
         {
             title: "YEAR 1: FOUNDATION PHASE",
@@ -199,6 +199,85 @@ export const aiCurriculum = {
                         title: "Project 6: \"The Capstone\"",
                         task: "Track A: Startup Launch (B2B AI SaaS) OR Track B: Research Thesis (Novel Architecture)",
                         outcome: "Production-grade deployment or published research."
+                    }
+                }
+            ]
+        },
+        {
+            title: "YEAR 4: ENTREPRENEURSHIP PHASE (OPTIONAL)",
+            subtitle: "\"The Founder\"",
+            goal: "From Engineer to Entrepreneur. Build, Launch, and Scale your own AI Venture.",
+            semesters: [
+                {
+                    id: "sem7",
+                    title: "Semester 7: Venture Creation & Fundamentals",
+                    theme: "Innovation, Strategy & Business Models",
+                    modules: [
+                        {
+                            category: "Discipline Specific Modules",
+                            items: [
+                                "Entrepreneurship Theory & Practice: From Idea to Execution",
+                                "Business Innovation Fundamentals: Design Thinking & Opportunity Sensing",
+                                "Entrepreneurial Economics: Micro/Macro Economics for Startups",
+                                "Fundamentals of Marketing: Customer Insights & Value Proposition",
+                                "Basics of Financial Accounting: Reading Balance Sheets & Cash Flow"
+                            ]
+                        },
+                        {
+                            category: "Value Added Module",
+                            items: [
+                                "Financial Literacy: Investment Planning & Personal Wealth",
+                                "Mindfulness & Resilience: Mental Health for Founders"
+                            ]
+                        },
+                        {
+                            category: "Ability Enhancement Module",
+                            items: [
+                                "Designing with Figma: Prototyping for Entrepreneurs",
+                                "Professional English: Pitching & Business Communication"
+                            ]
+                        }
+                    ],
+                    project: {
+                        title: "Project 7: \"IGNITE - Startup Lab\"",
+                        task: "Form a team, identify a problem, validate the market, and build a low-fidelity prototype.",
+                        outcome: "Validated Business Idea & Prototype."
+                    }
+                },
+                {
+                    id: "sem8",
+                    title: "Semester 8: Launch, Growth & Funding",
+                    theme: "Go-To-Market, Finance & Scaling",
+                    modules: [
+                        {
+                            category: "Discipline Specific Modules",
+                            items: [
+                                "Go-To-Market Strategy: Digital Marketing & Customer Acquisition",
+                                "Managerial Accounting: Budgeting, Forecasting & Unit Economics",
+                                "AI in Business: Leveraging AI for Customer Insights & Operations",
+                                "Legal & Governance: Incorporation, IP Rights, and Contracts",
+                                "Venture Capital & Fundraising: Valuation, Term Sheets & Pitching"
+                            ]
+                        },
+                        {
+                            category: "Value Added Module",
+                            items: [
+                                "Ethics & Social Responsibility: Building Sustainable Ventures",
+                                "Decision Making in Age of AI: Strategic Leadership"
+                            ]
+                        },
+                        {
+                            category: "Ability Enhancement Module",
+                            items: [
+                                "Startup Valuation: Cap Tables & Financial Modeling",
+                                "Growth Hacking: Data-Driven Scaling Strategies"
+                            ]
+                        }
+                    ],
+                    project: {
+                        title: "Project 8: \"Venture Launch\"",
+                        task: "Build the MVP, acquire first customers, and pitch to a panel of investors.",
+                        outcome: "Live Product & Investor Pitch Deck."
                     }
                 }
             ]
