@@ -649,7 +649,7 @@ function InfoRow({ text }: { text: string }) {
     )
 }
 
-function HighlightCard({ icon: Icon, title, desc }: { icon: React.ElementType, title: string, desc: string }) {
+function HighlightCard({ icon: Icon, title, desc }: { icon: any, title: string, desc: string }) {
     return (
         <div className="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
             <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 mb-4">
