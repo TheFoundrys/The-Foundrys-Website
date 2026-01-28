@@ -55,9 +55,9 @@ export default function AIPage() {
               title="Certified Professional in AI Engineering in Telugu"
               originalPrice="150,000"
               discountedPrice="75,000"
-              duration="45 Days"
+              duration="12 Weeks"
               desc="Focus on the engineering lifecycle. Learn to build, scale, and optimize production-grade AI applications."
-              href="/programs/professional/ai/certified-professional-in-ai-engineering"
+              href="/programs/professional/ai/certified-professional-in-ai-engineering-in-telugu"
               persona="Software Developers (Full-stack, Backend, MERN, etc)"
             />
             <CourseCard
@@ -65,7 +65,9 @@ export default function AIPage() {
               title="Certified Professional in AI Operations"
               originalPrice="200,000"
               discountedPrice="100,000"
+              duration="12 Weeks"
               desc="Master the art of MLOps. Learn deployment strategies, monitoring, and maintaining AI at scale."
+              href="/programs/professional/ai/certified-professional-in-ai-operations"
               persona="DevOps & Cloud Engineers"
             />
 
@@ -118,7 +120,7 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
         </div>
       </div>
 
-      <div className="p-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+      <div className="p-6 bg-slate-50 border-t border-slate-100 flex flex-col sm:flex-row md:flex-col lg:flex-row items-start sm:items-center md:items-start lg:items-center justify-between gap-4">
         <div>
           <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
           <div className="flex flex-col">
@@ -131,7 +133,7 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
         </div>
         <Link
           href={href}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 transition-colors shadow-lg hover:shadow-blue-500/25"
+          className="w-full sm:w-auto md:w-full lg:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 transition-colors shadow-lg hover:shadow-blue-500/25"
         >
           Enroll Now <ArrowUpRight size={18} />
         </Link>
