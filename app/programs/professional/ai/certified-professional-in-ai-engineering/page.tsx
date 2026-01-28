@@ -649,6 +649,7 @@ function InfoRow({ text }: { text: string }) {
     )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function HighlightCard({ icon: Icon, title, desc }: { icon: any, title: string, desc: string }) {
     return (
         <div className="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow">

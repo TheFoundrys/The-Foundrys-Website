@@ -238,6 +238,7 @@ export default function EducatorsPage() {
     );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function AudienceCard({ icon: Icon, title, desc, delay }: { icon: any, title: string, desc: string, delay: number }) {
     return (
         <motion.div
@@ -261,6 +262,7 @@ function AudienceCard({ icon: Icon, title, desc, delay }: { icon: any, title: st
     )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function MethodologyItem({ icon: Icon, title, desc, index }: { icon: any, title: string, desc: string, index: number }) {
     return (
         <motion.div
