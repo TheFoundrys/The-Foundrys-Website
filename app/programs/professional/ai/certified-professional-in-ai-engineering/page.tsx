@@ -151,7 +151,7 @@ export default function AIEngineeringCoursePage() {
                         <InfoRow text="Live Weekend Classes (Sat & Sun)" />
                         <InfoRow text="Hands-on Capstone Project" />
                         <InfoRow text="Industry Recognized Certification" />
-                        {/* <InfoRow text="Career Support & Placement Assistance" /> */}
+                        {/* <InfoRo w text="Career Support & Placement Assistance" /> */}
                      </div>
 
                      <p className="text-slate-500 text-sm font-medium leading-relaxed text-center mt-4">
