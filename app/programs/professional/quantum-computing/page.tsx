@@ -32,6 +32,15 @@ export default function QuantumPage() {
           <div className="container mx-auto max-w-6xl">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                   <CourseCard 
+                    sku="Q 008"
+                    title="Certified Professional in Quantum Fundamentals"
+                    originalPrice="10,000"
+                    discountedPrice="5,000"
+                    desc="A 4-week course focusing on the 4 pillars of the National Quantum Mission: Quantum Computing, Materials, Communication, and Sensing."
+                    duration="4 Weeks"
+                    href="/programs/professional/quantum-computing/certified-professional-in-quantum-fundamentals"
+                  />
+                  <CourseCard 
                     sku="Q 001"
                     title="Certified Professional in Quantum Engineering"
                     originalPrice="150,000"
@@ -89,7 +98,7 @@ export default function QuantumPage() {
   );
 }
 
-function CourseCard({ sku, title, originalPrice, discountedPrice, desc }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string }) {
+function CourseCard({ sku, title, originalPrice, discountedPrice, desc, duration = "Professional 3 Month Course", href = "/apply" }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string, duration?: string, href?: string }) {
     return (
         <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -101,7 +110,7 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc }: { sku:
                 <div className="flex justify-between items-start mb-4">
                     <span className="text-xs font-bold text-slate-400 tracking-wider uppercase bg-slate-100 px-2 py-1 rounded">{sku}</span>
                     <div className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100">
-                        Professional 3 Month Course
+                        {duration}
                     </div>
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors">{title}</h3>
@@ -126,7 +135,7 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc }: { sku:
                      </div>
                 </div>
                 <Link 
-                    href="/apply"
+                    href={href}
                     className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-purple-600 transition-colors shadow-lg hover:shadow-purple-500/25"
                 >
                     Enroll Now <ArrowUpRight size={18} />
