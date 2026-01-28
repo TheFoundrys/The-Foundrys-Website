@@ -88,7 +88,8 @@ export function EntrepreneurshipHighlight() {
     );
 }
 
-function FeatureRow({ icon: Icon, title, desc }: { icon: React.ElementType, title: string, desc: string }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function FeatureRow({ icon: Icon, title, desc }: { icon: any, title: string, desc: string }) {
     return (
         <div className="flex gap-4">
             <div className="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 shrink-0">
