@@ -16,6 +16,7 @@ import {
     Activity,
     Database,
     ChevronDown,
+    ClipboardCheck,
     Workflow
 } from "lucide-react";
 import Link from "next/link";
@@ -137,6 +138,9 @@ export default function MLOpsCoursePage() {
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
 
     useEffect(() => {
+        // Scroll to top on page load
+        window.scrollTo(0, 0);
+
         const shuffled = [...ALL_PROJECTS].sort(() => 0.5 - Math.random());
         setTimeout(() => setVisibleProjects(shuffled.slice(0, 3)), 0);
     }, []);
@@ -175,7 +179,7 @@ export default function MLOpsCoursePage() {
                                     </div>
                                     <div>
                                         <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Duration</div>
-                                        <div className="font-semibold">12 Weeks</div>
+                                        <div className="font-semibold">45 Days</div>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3 text-slate-300">
@@ -230,7 +234,7 @@ export default function MLOpsCoursePage() {
                     <div className="prose prose-lg prose-slate mx-auto mb-16">
                         <h2 className="text-3xl font-bold text-slate-900 mb-6 font-sans">Bridge the gap between code and production.</h2>
                         <p className="text-lg text-slate-600 leading-relaxed">
-                            A model on a laptop is an experiment; a model in production is a product. The Certified Professional in AI Operations is an intensive <span className="font-bold text-slate-900">12-week program</span> designed to teach you the engineering discipline required to run AI at scale.
+                            A model on a laptop is an experiment; a model in production is a product. The Certified Professional in AI Operations is an intensive <span className="font-bold text-slate-900">45-day program</span> designed to teach you the engineering discipline required to run AI at scale.
                         </p>
                         <p className="text-lg text-slate-600 leading-relaxed mt-4">
                             You will move beyond Jupyter notebooks to mastering <span className="font-bold text-slate-900">CI/CD pipelines, Kubernetes orchestration, and real-time monitoring</span>. Whether you are a Data Scientist wanting to deploy or a DevOps engineer entering AI, this course is your bridge.
@@ -243,6 +247,11 @@ export default function MLOpsCoursePage() {
                         <HighlightCard icon={Activity} title="Monitoring" desc="Detect data drift and model decay in real-time using Prometheus and Grafana." />
                         <HighlightCard icon={Database} title="Feature Stores" desc="Manage and serve features consistently for training and inference using Feast." />
                         <HighlightCard icon={Workflow} title="Orchestration" desc="Build complex, reproducible ML workflows with Apache Airflow and Kubeflow." />
+                        <HighlightCard
+                            icon={ClipboardCheck}
+                            title="Model Lifecycle & Governance"
+                            desc="Track, version, validate, and govern models from experimentation to production and retirement."
+                        />
                     </div>
                 </div>
             </section>
@@ -330,54 +339,35 @@ export default function MLOpsCoursePage() {
                     </div>
 
                     <div className="space-y-12">
-                        {/* Month 1 */}
+                        {/* Phase 1 */}
                         <div>
                             <div className="flex items-center gap-4 mb-6">
                                 <span className="text-4xl font-bold text-cyan-100">01</span>
                                 <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Foundations & Experiment Tracking</h3>
+                                    <h3 className="text-2xl font-bold text-slate-900">Foundations & Pipeline Automation</h3>
                                     <p className="text-slate-500">Focus: Versioning data, code, and models for reproducibility.</p>
                                 </div>
                             </div>
                             <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 1" title="MLOps Prerequisites" topics={["Linux & Bash Scripting", "Docker Fundamentals", "Git for ML", "Python Packaging"]} />
-                                <WeekCard week="Week 2" title="Experiment Tracking" topics={["ML Lifecycle", "MLflow Tracking Server", "Logging Metrics & Artifacts", "Model Registry"]} />
-                                <WeekCard week="Week 3" title="Data Versioning" topics={["Data Version Control (DVC)", "S3 Integration", "Data Lineage", "Reproducible Pipelines"]} />
-                                <WeekCard week="Week 4" title="Project 1: Tracking Pipeline" topics={["Building an End-to-End Tracking System", "Integrating DVC & MLflow", "Pipeline Automation"]} />
+                                <WeekCard week="Week 1" title="MLOps Foundations & Experiment Tracking" topics={["Linux & Bash Scripting", "Docker Fundamentals", "ML Lifecycle", "MLflow Tracking Server"]} />
+                                <WeekCard week="Week 2" title="Data Versioning & Workflow Orchestration" topics={["Data Version Control (DVC)", "S3 Integration", "Apache Airflow Basics", "DAGs & Operators"]} />
+                                <WeekCard week="Week 3" title="Model Serving & CI/CD for ML" topics={["REST APIs with FastAPI", "Containerizing Models", "GitHub Actions", "Automated Testing (PyTest)"]} />
                             </div>
                         </div>
 
-                        {/* Month 2 */}
+                        {/* Phase 2 */}
                         <div>
                             <div className="flex items-center gap-4 mb-6">
                                 <span className="text-4xl font-bold text-cyan-100">02</span>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Orchestration & CI/CD</h3>
-                                    <p className="text-slate-500">Focus: Automating workflows and deployment pipelines.</p>
-                                </div>
-                            </div>
-                            <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 5" title="Workflow Orchestration" topics={["Apache Airflow Basics", "DAGs & Operators", "Scheduling ML Tasks", "Error Handling"]} />
-                                <WeekCard week="Week 6" title="Model Serving" topics={["REST APIs with FastAPI", "Containerizing Models", "Batch vs Real-time Inference", "gRPC"]} />
-                                <WeekCard week="Week 7" title="CI/CD for ML" topics={["GitHub Actions", "Automated Testing (PyTest)", "Continuous Training (CT)", "Model Promotion"]} />
-                                <WeekCard week="Week 8" title="Project 2: Automated Pipeline" topics={["Full CI/CD Implementation", "Automated Retraining Triggers", "Deployment to Staging"]} />
-                            </div>
-                        </div>
-
-                        {/* Month 3 */}
-                        <div>
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl font-bold text-cyan-100">03</span>
                                 <div>
                                     <h3 className="text-2xl font-bold text-slate-900">Deployment, Monitoring & Scale</h3>
                                     <p className="text-slate-500">Focus: Production infrastructure, observability, and scaling.</p>
                                 </div>
                             </div>
                             <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 9" title="Kubernetes & Kubeflow" topics={["K8s Architecture", "Deploying Models on K8s", "Kubeflow Pipelines", "Helm Charts"]} />
-                                <WeekCard week="Week 10" title="Monitoring & Observability" topics={["Data Drift & Concept Drift", "Evidently AI", "Prometheus & Grafana Dashboards", "Alerting"]} />
-                                <WeekCard week="Week 11" title="Advanced Deployment" topics={["Canary Deployments", "A/B Testing", "Shadow Deployment", "Feature Stores (Feast)"]} />
-                                <WeekCard week="Week 12" title="Capstone Project" topics={["Scalable MLOps Platform", "Defense & Code Review", "Final Certification"]} />
+                                <WeekCard week="Week 4" title="Kubernetes & Kubeflow" topics={["K8s Architecture", "Deploying Models on K8s", "Kubeflow Pipelines", "Helm Charts"]} />
+                                <WeekCard week="Week 5" title="Monitoring & Observability" topics={["Data Drift & Concept Drift", "Evidently AI", "Prometheus & Grafana Dashboards", "Alerting"]} />
+                                <WeekCard week="Week 6" title="Advanced Deployment & Capstone" topics={["Canary & Shadow Deployments", "Feature Stores (Feast)", "Scalable MLOps Platform", "Final Certification"]} />
                             </div>
                         </div>
                     </div>

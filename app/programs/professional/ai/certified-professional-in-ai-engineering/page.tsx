@@ -16,6 +16,7 @@ import {
     ShieldCheck,
     Code2,
     Briefcase,
+    ServerCog,
     ChevronDown
 } from "lucide-react";
 import Link from "next/link";
@@ -181,6 +182,9 @@ export default function AIEngineeringCoursePage() {
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
 
     useEffect(() => {
+        // Scroll to top on page load
+        window.scrollTo(0, 0);
+
         // Random shuffle on mount (client-side only) to ensure dynamic rotation
         const shuffled = [...ALL_PROJECTS].sort(() => 0.5 - Math.random());
         setTimeout(() => setVisibleProjects(shuffled.slice(0, 3)), 0);
@@ -221,7 +225,7 @@ export default function AIEngineeringCoursePage() {
                                     </div>
                                     <div>
                                         <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Duration</div>
-                                        <div className="font-semibold">12 Weeks</div>
+                                        <div className="font-semibold">45 Days</div>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3 text-slate-300">
@@ -277,7 +281,7 @@ export default function AIEngineeringCoursePage() {
                     <div className="prose prose-lg prose-slate mx-auto mb-16">
                         <h2 className="text-3xl font-bold text-slate-900 mb-6 font-sans">The AI revolution is here. Don&apos;t just watch it happen.</h2>
                         <p className="text-lg text-slate-600 leading-relaxed">
-                            Companies are scrambling for engineers who can build, not just theorize. The Certified Professional in AI Engineering is an intensive, <span className="font-bold text-slate-900">12-week bootcamp</span> designed to take you from a standard developer to an AI specialist.
+                            Companies are scrambling for engineers who can build, not just theorize. The Certified Professional in AI Engineering is an intensive, <span className="font-bold text-slate-900">45-day bootcamp</span> designed to take you from a standard developer to an AI specialist.
                         </p>
                         <p className="text-lg text-slate-600 leading-relaxed mt-4">
                             Whether you are a fresh graduate or a professional looking to switch domains, this program bridges the gap between basic Python scripting and building autonomous, large-scale AI applications. You won’t just learn about AI; you will build <span className="font-bold text-slate-900">agents, Retrieval Augmented Generation (RAG) systems, and multimodal apps</span> that solve real-world problems.
@@ -290,6 +294,11 @@ export default function AIEngineeringCoursePage() {
                         <HighlightCard icon={Briefcase} title="Real Portfolio" desc="Build and deploy 6 production-grade projects that you can show off on GitHub and LinkedIn." />
                         <HighlightCard icon={ShieldCheck} title="AI Safety" desc="Learn responsible AI: prompt injection attacks, bias mitigation, and privacy." />
                         <HighlightCard icon={Cpu} title="Hybrid Model" desc="Deep dives into proprietary models (GPT-4) and running local models using Ollama." />
+                        <HighlightCard
+                            icon={ServerCog}
+                            title="Production AI Systems & Deployment"
+                            desc="Design, deploy, monitor, and scale real-world AI systems used in production environments."
+                        />
                     </div>
                 </div>
             </section>
@@ -421,58 +430,39 @@ export default function AIEngineeringCoursePage() {
                 <div className="container mx-auto max-w-4xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl font-bold text-slate-900 mb-4">Course Curriculum</h2>
-                        <p className="text-lg text-slate-600">A comprehensive 12-week journey from foundations to production.</p>
+                        <p className="text-lg text-slate-600">A comprehensive 45-day journey from foundations to production.</p>
                     </div>
 
                     <div className="space-y-12">
-                        {/* Month 1 */}
+                        {/* Phase 1 */}
                         <div>
                             <div className="flex items-center gap-4 mb-6">
                                 <span className="text-4xl font-bold text-blue-100">01</span>
                                 <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Fundamentals & The OpenAI Ecosystem</h3>
+                                    <h3 className="text-2xl font-bold text-slate-900">Foundations & OpenAI Ecosystem</h3>
                                     <p className="text-slate-500">Focus: Mastering the core &quot;Engine&quot; and API-first development.</p>
                                 </div>
                             </div>
                             <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 1" title="Introduction & Fundamentals" topics={["AI vs ML vs DL", "LLM Architecture (Transformers)", "Tokenization & Context Windows"]} />
-                                <WeekCard week="Week 2" title="The OpenAI Platform" topics={["Chat Completions API", "Prompt Engineering Strategies", "Function Calling & Tools"]} />
-                                <WeekCard week="Week 3" title="Advanced API Usage" topics={["Structured Outputs", "Vision & Audio APIs", "Project 1: Multi-Turn Chatbot"]} />
-                                <WeekCard week="Week 4" title="Embeddings & Semantic Search" topics={["Vector Embeddings 101", "Cosine Similarity", "Building a Semantic Search Engine"]} />
+                                <WeekCard week="Week 1" title="Fundamentals & OpenAI Platform" topics={["AI vs ML vs DL", "LLM Architecture (Transformers)", "Chat Completions API", "Prompt Engineering Strategies"]} />
+                                <WeekCard week="Week 2" title="Advanced API & Embeddings" topics={["Function Calling & Tools", "Structured Outputs", "Vision & Audio APIs", "Vector Embeddings 101"]} />
+                                <WeekCard week="Week 3" title="Vector DBs & RAG Foundations" topics={["Pinecone & ChromaDB", "Indexing Strategies", "Naive RAG vs Advanced RAG", "Chunking Strategies"]} />
                             </div>
                         </div>
 
-                        {/* Month 2 */}
+                        {/* Phase 2 */}
                         <div>
                             <div className="flex items-center gap-4 mb-6">
                                 <span className="text-4xl font-bold text-blue-100">02</span>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">RAG, Vector DBs & Open Source</h3>
-                                    <p className="text-slate-500">Focus: Building private, data-grounded AI systems.</p>
-                                </div>
-                            </div>
-                            <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 5" title="Vector Databases Deep Dive" topics={["Pinecone, ChromaDB & Weaviate", "Indexing Strategies", "Hybrid Search"]} />
-                                <WeekCard week="Week 6" title="Retrieval Augmented Generation (RAG)" topics={["Naive RAG vs Advanced RAG", "Chunking Strategies", "Project 2: Document Q&A System"]} />
-                                <WeekCard week="Week 7" title="Advanced RAG Techniques" topics={["Re-ranking", "Query Expansion", "Contextual Compression"]} />
-                                <WeekCard week="Week 8" title="Open Source Models" topics={["Hugging Face Hub", "Llama 3 & Mistral", "Running Models Locally (Ollama)"]} />
-                            </div>
-                        </div>
-
-                        {/* Month 3 */}
-                        <div>
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl font-bold text-blue-100">03</span>
                                 <div>
                                     <h3 className="text-2xl font-bold text-slate-900">Agents, Fine-Tuning & Production</h3>
                                     <p className="text-slate-500">Focus: Autonomous systems and production engineering.</p>
                                 </div>
                             </div>
                             <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 9" title="Building AI Agents" topics={["ReAct Pattern", "LangChain Agents", "Project 3: Autonomous Research Agent"]} />
-                                <WeekCard week="Week 10" title="Fine-Tuning & Custom Models" topics={["PEFT & LoRA", "Fine-tuning Llama 3", "Data Preparation"]} />
-                                <WeekCard week="Week 11" title="Multimodal AI" topics={["GPT-4V & Gemini Pro Vision", "Text-to-Speech & Speech-to-Text", "Image Generation Pipelines"]} />
-                                <WeekCard week="Week 12" title="Production Engineering" topics={["Eval & Monitoring (LangSmith)", "Deployment Strategies", "Capstone Project Defense"]} />
+                                <WeekCard week="Week 4" title="Advanced RAG & Open Source" topics={["Re-ranking & Query Expansion", "Hugging Face Hub", "Llama 3 & Mistral", "Running Models Locally (Ollama)"]} />
+                                <WeekCard week="Week 5" title="AI Agents & Fine-Tuning" topics={["ReAct Pattern", "LangChain Agents", "PEFT & LoRA", "Fine-tuning Llama 3"]} />
+                                <WeekCard week="Week 6" title="Multimodal AI & Production" topics={["Vision & Speech Pipelines", "Eval & Monitoring (LangSmith)", "Deployment Strategies", "Capstone Project Defense"]} />
                             </div>
                         </div>
                     </div>

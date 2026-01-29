@@ -58,8 +58,8 @@ export default function EntryLevelProgramPage() {
                             <div className="space-y-2">
                                 <p className="text-3xl md:text-4xl text-slate-400 font-medium tracking-wide">Start Your Journey in</p>
                                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
-                                    Entry Level
-                                    <br />
+
+
                                     <span className="inline-block relative min-h-[1.2em] mt-2">
                                         {domains.map((domain, index) => (
                                             <motion.span
@@ -103,11 +103,11 @@ export default function EntryLevelProgramPage() {
                             </div>
 
                             {/* Strategic Program Specs - Integrated into Hero */}
-                            <div className="mt-16 pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-8">
-                                <HeroStat icon={<Calendar size={20} />} label="Duration" value="3 Months" sub="Intensive Cohort" />
+                            <div className="mt-16 pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-12">
                                 <HeroStat icon={<Wifi size={20} />} label="Format" value="Hybrid" sub="In-Person + Virtual" />
                                 <HeroStat icon={<Zap size={20} />} label="Approach" value="Applied" sub="Concept + Practice" />
                                 <HeroStat icon={<Target size={20} />} label="Outcome" value="Ready" sub="For Specialization" />
+                                <HeroStat icon={<Calendar size={20} />} label="Duration" value="Program-dependent" sub="Intensive Cohort" extraGap />
                             </div>
                         </motion.div>
                     </div>
@@ -525,16 +525,21 @@ export default function EntryLevelProgramPage() {
 
 
 // Optimized Stat Component for Hero
-function HeroStat({ icon, label, value, sub }: { icon: React.ReactNode, label: string, value: string, sub: string }) {
+function HeroStat({ icon, label, value, sub, extraGap = false }: { icon: React.ReactNode, label: string, value: string, sub: string, extraGap?: boolean }) {
     return (
-        <div className="flex items-start gap-4 group">
+        <div className={`flex items-start ${extraGap ? "gap-1" : "gap-4"} group`}>
             <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-slate-400 shrink-0 group-hover:text-white transition-colors">
                 {/* Icon with potential gradient or just white/slate */}
                 {icon}
             </div>
             <div>
                 <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">{label}</div>
-                <div style={{ backgroundImage: customGradient }} className={`${textGradientClass} text-lg font-bold leading-tight`}>{value}</div>
+                <div
+                    style={{ backgroundImage: customGradient }}
+                    className={`${textGradientClass} font-bold whitespace-nowrap text-base md:text-lg`}
+                >
+                    {value}
+                </div>
                 <div className="text-xs text-slate-400 font-medium">{sub}</div>
             </div>
         </div>
@@ -578,7 +583,7 @@ function DomainCard({ title, tagline, desc, icon, href }: { title: string, tagli
                     group/link
                     "
                 >
-                    View Curriculum
+                    View Programs
                     <ArrowUpRight
                         size={16}
                         className="rotate-45 group-hover/link:rotate-12 transition-transform"

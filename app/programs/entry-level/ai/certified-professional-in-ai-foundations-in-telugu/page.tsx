@@ -17,7 +17,8 @@ import {
     ShieldAlert,
     ChevronDown,
     GraduationCap,
-    Languages
+    Languages,
+    Puzzle
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -137,6 +138,9 @@ export default function AIFoundationsTeluguCoursePage() {
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
 
     useEffect(() => {
+        // Scroll to top on page load
+        window.scrollTo(0, 0);
+
         const shuffled = [...ALL_PROJECTS].sort(() => 0.5 - Math.random());
         setTimeout(() => setVisibleProjects(shuffled.slice(0, 3)), 0);
     }, []);
@@ -255,9 +259,10 @@ export default function AIFoundationsTeluguCoursePage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <HighlightCard icon={BookOpen} title="Conceptual Clarity" desc="Understand the 'Why' and 'How' of AI without getting lost in complex math." />
                         <HighlightCard icon={Database} title="Data Fluency" desc="Learn how data is collected, cleaned, and used to train intelligent systems." />
-                        <HighlightCard icon={BrainCircuit} title="ML & DL Basics" desc="Grasp the core concepts of Machine Learning and Deep Learning algorithms." />
+                        <HighlightCard icon={BrainCircuit} title="ML & DL Foundation" desc="Grasp the core concepts of Machine Learning and Deep Learning algorithms." />
                         <HighlightCard icon={Lightbulb} title="Generative AI" desc="Explore the latest in LLMs, prompt engineering, and creative AI tools." />
                         <HighlightCard icon={ShieldAlert} title="Ethics & Safety" desc="Understand the societal impact, bias, and ethical considerations of AI." />
+                        <HighlightCard icon={Puzzle} title="AI Thinking & Problem Solving" desc="Develop the mindset to break down real-world problems and identify meaningful AI solutions." />
                     </div>
                 </div>
             </section>

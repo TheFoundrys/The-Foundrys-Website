@@ -16,7 +16,7 @@ export default function EntryLevelAIPage() {
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/40 via-slate-900 to-slate-900 z-0" />
                 <div className="container mx-auto max-w-6xl relative z-10 text-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6">
-                        <BrainCircuit size={16} /> Entry Level Certification Track
+                        <BrainCircuit size={16} /> Entry Level Certification Program
                     </div>
                     <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
                         AI Foundations
@@ -38,17 +38,17 @@ export default function EntryLevelAIPage() {
                             discountedPrice="50,000"
                             duration="45 Days"
                             desc="Build the mathematical and logical bedrock required to understand and work with intelligent systems."
-                            persona="Students & AI enthusiasts"
+                            persona="For Students & AI enthusiasts"
                             href="/programs/entry-level/ai/certified-professional-in-ai-foundations"
                         />
                         <CourseCard
                             sku="AI 002"
-                            title="Certified Professional in AI Foundations in Telugu"
+                            title="Certified Professional in AI Foundations (Telugu)"
                             originalPrice="100,000"
                             discountedPrice="50,000"
                             duration="45 Days"
                             desc="Build the mathematical and logical bedrock required to understand and work with intelligent systems."
-                            persona="Students & AI enthusiasts"
+                            persona="For Students & AI enthusiasts"
                             href="/programs/entry-level/ai/certified-professional-in-ai-foundations-in-telugu"
                         />
                         <CourseCard
@@ -56,10 +56,10 @@ export default function EntryLevelAIPage() {
                             title="Certified Professional in Prompt Engineering"
                             originalPrice="100,000"
                             discountedPrice="50,000"
-                            duration="12 Weeks"
+                            duration="45 Days"
                             desc="Master the art of communicating with AI. Learn to design and optimize prompts to unlock the full potential of Large Language Models."
                             discountLabel="50% Discount"
-                            persona="Students & AI enthusiasts"
+                            persona="For Students & AI enthusiasts"
                             href="/programs/entry-level/ai/certified-professional-in-prompt-engineering"
                         />
                     </div>
@@ -126,7 +126,7 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
                     href={href}
                     className="w-full sm:w-auto md:w-full lg:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 transition-colors shadow-lg hover:shadow-blue-500/25"
                 >
-                    Enroll Now <ArrowUpRight size={18} />
+                    View Curriculum <ArrowUpRight size={18} />
                 </Link>
             </div>
         </motion.div>

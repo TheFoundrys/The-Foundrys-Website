@@ -16,7 +16,7 @@ export default function AIClient() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/40 via-slate-900 to-slate-900 z-0" />
         <div className="container mx-auto max-w-6xl relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6">
-            <BrainCircuit size={16} /> Professional Certification Track
+            <BrainCircuit size={16} /> Professional Certification Program
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
             Artificial Intelligence
@@ -32,14 +32,14 @@ export default function AIClient() {
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
 
-            <CourseCard
+            {/* <CourseCard
               sku="AI 002"
               title="Certified Professional in AI Research"
               originalPrice="150,000"
               discountedPrice="75,000"
               desc="Dive deep into algorithms and model architectures. Learn how to push the boundaries of what's possible."
-              persona="Data & ML Professionals"
-            />
+              persona="For Data & ML Professionals"
+            /> */}
             <CourseCard
               sku="AI 003"
               title="Certified Professional in AI Engineering"
@@ -48,29 +48,36 @@ export default function AIClient() {
               duration="45 Days"
               desc="Focus on the engineering lifecycle. Learn to build, scale, and optimize production-grade AI applications."
               href="/programs/professional/ai/certified-professional-in-ai-engineering"
-              persona="Software Developers (Full-stack, Backend, MERN, etc)"
+              persona="For Software Developers (Full-stack, Backend, MERN ...)"
             />
             <CourseCard
-              sku="AI 003"
-              title="Certified Professional in AI Engineering in Telugu"
+              sku="AI 003 T"
+              title="Certified Professional in AI Engineering (Telugu)"
               originalPrice="150,000"
               discountedPrice="75,000"
-              duration="12 Weeks"
+              duration="45 days"
               desc="Focus on the engineering lifecycle. Learn to build, scale, and optimize production-grade AI applications."
               href="/programs/professional/ai/certified-professional-in-ai-engineering-in-telugu"
-              persona="Software Developers (Full-stack, Backend, MERN, etc)"
+              persona="For Software Developers (Full-stack, Backend, MERN ...)"
             />
             <CourseCard
               sku="AI 004"
               title="Certified Professional in AI Operations"
               originalPrice="200,000"
               discountedPrice="100,000"
-              duration="12 Weeks"
+              duration="45 Days"
               desc="Master the art of MLOps. Learn deployment strategies, monitoring, and maintaining AI at scale."
               href="/programs/professional/ai/certified-professional-in-ai-operations"
-              persona="DevOps & Cloud Engineers"
+              persona="For DevOps & Cloud Engineers"
             />
-
+            <CourseCard
+              sku="AI 002"
+              title="Certified Professional in AI Research"
+              originalPrice="150,000"
+              discountedPrice="75,000"
+              desc="Dive deep into algorithms and model architectures. Learn how to push the boundaries of what's possible."
+              persona="For Data & ML Professionals"
+            />
           </div>
         </div>
       </section>
@@ -100,21 +107,21 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
 
         <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-slate-500 mb-6 font-medium">
           <div className="flex items-center gap-2">
-            <CheckCircle2 size={16} className="text-blue-500" />
+            <CheckCircle2 size={16} className="text-blue-500 shrink-0" />
             Weekend / Hybrid
           </div>
 
           <div className="flex items-center gap-2">
-            <CheckCircle2 size={16} className="text-blue-500" />
+            <CheckCircle2 size={16} className="text-blue-500 shrink-0" />
             Hands-on Capstone Project
           </div>
 
           <div className="flex items-center gap-2">
-            <CheckCircle2 size={16} className="text-blue-500" />
+            <CheckCircle2 size={16} className="text-blue-500 shrink-0" />
             Industry Recognized Certification
           </div>
           <div className="flex items-center gap-2">
-            <CheckCircle2 size={16} className="text-blue-500" />
+            <CheckCircle2 size={16} className="text-blue-500 shrink-0" />
             {persona}
           </div>
         </div>
@@ -135,7 +142,7 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
           href={href}
           className="w-full sm:w-auto md:w-full lg:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 transition-colors shadow-lg hover:shadow-blue-500/25"
         >
-          Enroll Now <ArrowUpRight size={18} />
+          View Curriculum <ArrowUpRight size={18} />
         </Link>
       </div>
     </motion.div>
