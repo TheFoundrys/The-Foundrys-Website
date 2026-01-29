@@ -1,20 +1,19 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function Campus() {
   return (
     <section className="relative py-32 overflow-hidden bg-slate-50 border-y border-slate-100">
          {/* Background Simulation - Real Image */}
          <div className="absolute inset-0 z-0">
-             <motion.img 
-                initial={{ scale: 1.1 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5 }}
-                // Modern Coffee Shop/Coding environment
-                src="https://images.unsplash.com/photo-1559523182-a284c3fb7cff?auto=format&fit=crop&w=2000&q=80"
+             <Image 
+                src="https://images.unsplash.com/photo-1559523182-a284c3fb7cff?auto=format&fit=crop&w=1200&q=80"
                 alt="Coffee Shop Coding"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="100vw"
+                priority={false}
              />
              <div className="absolute inset-0 bg-white/70 backdrop-blur-sm" />
          </div>

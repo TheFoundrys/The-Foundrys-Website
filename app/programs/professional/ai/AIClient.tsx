@@ -102,7 +102,7 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
             Professional {duration} Course
           </div>
         </div>
-        <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">{title}</h3>
+        <h2 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">{title}</h2>
         <p className="text-slate-600 leading-relaxed mb-6">{desc}</p>
 
         <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-slate-500 mb-6 font-medium">

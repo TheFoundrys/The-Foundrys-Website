@@ -1,10 +1,32 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowLeft, Activity, ShieldAlert, ScanLine } from "lucide-react";
+import { ArrowLeft, Activity, ShieldAlert, ScanLine, RotateCw } from "lucide-react";
 
 export default function NotFound() {
+  const router = useRouter();
+  const [countdown, setCountdown] = useState(3);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const timer = setInterval(() => {
+      setCountdown((prev) => prev - 1);
+    }, 1000);
+
+    const redirect = setTimeout(() => {
+      router.push("/");
+    }, 3000);
+
+    return () => {
+      clearInterval(timer);
+      clearTimeout(redirect);
+    };
+  }, [router]);
+
+  if (!mounted) return null; // Prevent hydration mismatch by deferring render until client-side
   return (
     <main className="min-h-screen relative overflow-hidden bg-slate-50 flex items-center justify-center font-mono selection:bg-slate-300 transform-gpu perspective-[2000px]">
       
@@ -143,8 +165,8 @@ export default function NotFound() {
                 <button className="group relative px-10 py-4 bg-slate-900 text-white overflow-hidden rounded-full font-bold tracking-widest text-sm uppercase transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(15,23,42,0.3)]">
                     <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                     <span className="relative flex items-center justify-center gap-3">
-                        <Activity className="w-4 h-4 animate-pulse" />
-                        Re-Initialize System
+                        <RotateCw className="w-4 h-4 animate-spin" />
+                        Redirecting in {countdown}s...
                     </span>
                 </button>
               </Link>

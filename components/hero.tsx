@@ -147,12 +147,7 @@ export function Hero() {
 
         {/* Text Content - Mobile: Centered, Desktop: Left Aligned */}
         <div className="max-w-5xl pointer-events-auto sm:mt-28 lg:mt-40 flex flex-col items-center lg:items-start px-4 sm:px-0">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="mb-6 sm:mb-8 relative w-full"
-          >
+          <div className="mb-6 sm:mb-8 relative w-full">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[7.5rem] font-bold tracking-tighter text-white leading-[1.1] sm:leading-[0.9] select-none uppercase drop-shadow-lg text-center lg:text-left">
               FORGING INNOVATORS
             </h1>
@@ -166,7 +161,7 @@ export function Hero() {
                 IN THE AGE OF AI
               </motion.div>
             </div>
-          </motion.div>
+          </div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
