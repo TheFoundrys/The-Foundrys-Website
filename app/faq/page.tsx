@@ -2,57 +2,92 @@
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { FaqJsonLd } from "@/components/seo/faq-json-ld";
 import { useState } from "react";
+import { Plus, Minus, HelpCircle } from "lucide-react";
 
-const faqs = [
+const allFaqs = [
   {
-    question: "What exactly is The Foundry?",
-    answer: "The Foundry is an alternative to traditional engineering colleges. We are a school for Deep Tech (AI, Cyber, Quantum) and Entrepreneurship. We don't just print degrees; we build companies and careers. Our curriculum is designed for the top 1% of builders who want to skip the fluff and get straight to building the future."
+    category: "Academics & Degree",
+    items: [
+      {
+        q: "Do you provide a recognized Degree?",
+        a: "Yes. We offer a **3-Year Degree** program. Unlike a traditional 4-year B.Tech, our model is accelerated and focused purely on high-impact skills. You graduate one year early with a portfolio of real-world products."
+      },
+      {
+        q: "Is this better than a B.Tech?",
+        a: "It depends on your goal. If you want a government stamp and theory, B.Tech is fine. If you want to **build products**, launch startups, and master AI/Cybersecurity, The Foundry's is the superior choice. We replace exams with product shipping."
+      },
+      {
+        q: "Who are the faculty?",
+        a: "We don't have 'professors'. We have 'Forgers'. Our mentors are CTOs, Founders, and Senior Engineers from the industry who teach what is actually used in the market today."
+      }
+    ]
   },
   {
-    question: "Do I need a degree to join?",
-    answer: "No. We value skills, portfolio, and hunger over paper credentials. Whether you are a college dropout, a 12th-grade pass-out, or a working professional looking to pivot, if you have the drive to build, you belong here."
+    category: "Admissions & Eligibility",
+    items: [
+      {
+        q: "Can I join after Intermediate / Class 12?",
+        a: "Yes. This program is designed specifically for students finishing Class 12 (MPC/MEC) who are passionate about technology."
+      },
+      {
+        q: "Do I need an EAMCET/JEE Rank?",
+        a: "No. We believe standardized tests measure memory, not intelligence. Our admission is based on your passion, logic, and potential to build."
+      }
+    ]
   },
   {
-    question: "Is this program online or offline?",
-    answer: "Our core programs are fully offline and residential in Hyderabad. We believe that deep work and serendipitous innovation happen best when high-agency individuals share a physical space."
-  },
-  {
-    question: "How does the admissions process work?",
-    answer: "We are currently in a 'Waitlist' phase. You can express your interest via the form. When admissions open, we select candidates based on a challenge/hackathon rather than a standard exam. We look for proof of work, not memorization skills."
-  },
-  {
-    question: "What is the fee structure?",
-    answer: "Our fees vary by program and cohort. We offer various financial models, including income-share agreements (ISA) for select high-potential candidates, ensuring that money is never a barrier to talent."
-  },
-  {
-    question: "Can I build a startup while studying?",
-    answer: "Absolutely. In fact, it's encouraged. Our 'Venture Building' track is specifically designed for this. You will have access to mentorship, legal support, and potentially pre-seed funding if your idea shows promise."
+    category: "Career & Placements",
+    items: [
+      {
+        q: "Do you guarantee a job placement?",
+        a: "We guarantee **competence**, not a job offer. In the age of AI, a 'placement guarantee' is often a marketing gimmick. We forge you to be so technically dominant and future-ready that jobs chase you, not the other way around."
+      },
+      {
+        q: "What is the average package?",
+        a: "Since our students graduate with 3 years of building experience, they enter the market as 'Lateral Hires' (Experienced Professionals) rather than freshers, often commanding significantly higher starting packages."
+      }
+    ]
   }
 ];
 
 export default function FAQPage() {
+  const flatFaqs = allFaqs.flatMap(c => c.items.map(i => ({ question: i.q, answer: i.a })));
+
   return (
-    <main className="min-h-screen bg-slate-50 selection:bg-blue-200">
+    <main className="min-h-screen bg-slate-50 font-sans">
+      <FaqJsonLd questions={flatFaqs} />
       <Navbar />
-
-      <section className="pt-40 pb-20 px-4">
+      
+      <section className="pt-32 pb-20 px-6">
         <div className="container mx-auto max-w-4xl">
-            <div className="text-center mb-16">
-                <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
-                    Frequently Asked Questions
-                </h1>
-                <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-                    Everything you need to know about The Foundry, our philosophy, and how we are redesigning education.
-                </p>
-            </div>
+           <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-600 text-sm font-bold mb-6">
+                  <HelpCircle size={16} /> Common Queries
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+                  Frequently Asked Questions
+              </h1>
+              <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                  Everything you need to know about The Foundry's, our philosophy, and your future.
+              </p>
+           </div>
 
-            <div className="space-y-4">
-                {faqs.map((faq, index) => (
-                    <FAQItem key={index} question={faq.question} answer={faq.answer} />
-                ))}
-            </div>
+           <div className="space-y-12">
+              {allFaqs.map((section, idx) => (
+                <div key={idx}>
+                   <h2 className="text-2xl font-bold text-slate-900 mb-6 border-b border-slate-200 pb-2">
+                      {section.category}
+                   </h2>
+                   <div className="space-y-4">
+                      {section.items.map((item, i) => (
+                        <FaqItem key={i} question={item.q} answer={item.a} />
+                      ))}
+                   </div>
+                </div>
+              ))}
+           </div>
         </div>
       </section>
 
@@ -61,35 +96,30 @@ export default function FAQPage() {
   );
 }
 
-function FAQItem({ question, answer }: { question: string; answer: string }) {
-    const [isOpen, setIsOpen] = useState(false);
+function FaqItem({ question, answer }: { question: string, answer: string }) {
+  const [isOpen, setIsOpen] = useState(false);
 
-    return (
-        <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="border border-slate-200 rounded-2xl bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-        >
-            <button 
-                onClick={() => setIsOpen(!isOpen)}
-                className="w-full flex items-center justify-between p-6 text-left"
-            >
-                <span className="text-lg font-bold text-slate-900">{question}</span>
-                <div className={`p-2 rounded-full ${isOpen ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-900'} transition-colors`}>
-                    {isOpen ? <Minus size={20} /> : <Plus size={20} />}
-                </div>
-            </button>
-            
-            <motion.div 
-                initial={false}
-                animate={{ height: isOpen ? "auto" : 0 }}
-                className="overflow-hidden"
-            >
-                <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100/50">
-                    {answer}
-                </div>
-            </motion.div>
-        </motion.div>
-    )
+  return (
+    <div className="bg-white rounded-xl border border-slate-200 overflow-hidden hover:border-blue-300 transition-colors">
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between p-6 text-left"
+      >
+        <span className="font-bold text-slate-800 text-lg">{question}</span>
+        <span className={`p-1 rounded-full bg-slate-100 text-slate-500 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+            {isOpen ? <Minus size={20} /> : <Plus size={20} />}
+        </span>
+      </button>
+      <motion.div 
+        initial={false}
+        animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className="overflow-hidden"
+      >
+        <div className="p-6 pt-0 text-slate-600 leading-relaxed">
+           {answer}
+        </div>
+      </motion.div>
+    </div>
+  )
 }

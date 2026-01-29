@@ -43,6 +43,19 @@ export const metadata: Metadata = {
     "Engineering", "BBA", "MBA Alternatives", "Computer Science Engineering", "B.Tech Computer Science",
     "Study in Hyderabad", "Technology Institute Hyderabad", "Best College for Startup Founders",
 
+    // Targeted Local Trends (Hyderabad/Telangana Students)
+    "Intermediate 2nd Year Students", "Class 12 MPC", "After 12th Best Courses", "Engineering Colleges in Hyderabad with High Placement",
+    "EAMCET Alternatives", "Best Private Engineering College Hyderabad", "New Age Engineering", "Practical Engineering College",
+    "Parents Guide to Engineering 2026", "Future Proof Career for Child",
+    
+    // Career & Outcome Focused (High Intent)
+    "High paying jobs after 12th MPC", "Guaranteed placement engineering colleges", "Startup incubation centers in Hyderabad colleges",
+    "Colleges for Entrepreneurship in India", "How to become an AI Engineer after 12th", "Cyber Security Careers India",
+    
+    // Comparison & Decision Support
+    "Better than B.Tech", "Practical engineering degrees", "New age tech schools India", "Is B.Tech worth it in 2026",
+    "Alternative to IIT for bright students", "Best college for coding in Hyderabad", "No theory only practical college",
+
     // Program Verticals
     "Artificial Intelligence Engineering", "Blockchain Technology", "Quantum Computing", "Generative AI Course",
     "Cyber Security", "Renewable Energy Systems", "Strategic Management", "ESG and Sustainability"

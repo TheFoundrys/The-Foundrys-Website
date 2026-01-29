@@ -469,7 +469,7 @@ export function Navbar() {
                                             </Link>
 
                                             <Link
-                                                href="/resources"
+                                                href="/blog"
                                                 onClick={handleHaptic}
                                                 className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
                                             >
@@ -743,7 +743,7 @@ export function Navbar() {
                                                     </Link>
 
                                                     <Link
-                                                        href="/resources"
+                                                        href="/blog"
                                                         onClick={() => { setIsOpen(false); handleHaptic(); }}
                                                         className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
                                                     >
