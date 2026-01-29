@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             type: 'article',
             publishedTime: post.publishedAt,
             authors: [post.author?.name || "The Foundry's"],
-            images: post.mainImage ? [{ url: `https://cdn.sanity.io/images/${client.config().projectId}/${client.config().dataset}/${post.mainImage.asset._ref}` }] : [],
+            // Images handled by opengraph-image.tsx
         },
         alternates: {
             canonical: `https://thefoundrys.com/blog/${slug}`,

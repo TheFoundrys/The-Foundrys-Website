@@ -20,9 +20,10 @@ interface OgImageProps {
     title: string;
     category?: string;
     author?: string;
+    slug?: string;
 }
 
-export async function GenerateOgImage({ title, category = "The Foundry's", author = "The Foundry's Team" }: OgImageProps) {
+export async function GenerateOgImage({ title, category = "The Foundry's", author = "The Foundry's Team", slug }: OgImageProps) {
   // Load Font (Ubuntu Sans Bold)
   const fontData = await loadGoogleFont('Ubuntu+Sans:wght@700', title + category + author + "The Foundry's");
 

@@ -81,20 +81,11 @@ export const metadata: Metadata = {
     title: "The Foundry's | School of Deep Tech, Entrepreneurship & Energy",
     description: "The Foundry's: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging innovators, not just Graduates.",
     siteName: "The Foundry's",
-    images: [
-      {
-        url: "/foundry.jpg", 
-        width: 1200,
-        height: 630,
-        alt: "The Foundry's - 4 Specialized Schools",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "The Foundry's | School of Deep Tech, Entrepreneurship & Energy",
     description: "The Foundry's: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging innovators, not just Graduates.",
-    images: ["/foundry.jpg"],
     creator: "@thefoundrys", 
   },
 
