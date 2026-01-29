@@ -70,7 +70,7 @@ export default function ExecutiveClient() {
                                     </div>
                                     <div>
                                         <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Format</div>
-                                        <div className="font-semibold">Hybrid/In-person</div>
+                                        <div className="font-semibold">In-person</div>
                                     </div>
                                 </div>
                             </div>
