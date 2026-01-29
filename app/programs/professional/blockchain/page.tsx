@@ -7,63 +7,63 @@ import { ArrowUpRight, CheckCircle2, Network } from "lucide-react";
 import Link from "next/link";
 
 export default function BlockchainPage() {
-  return (
-    <main className="min-h-screen bg-slate-50 font-sans">
-      <Navbar />
-      
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-slate-900 border-b border-slate-800 relative overflow-hidden">
-         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/40 via-slate-900 to-slate-900 z-0" />
-         <div className="container mx-auto max-w-6xl relative z-10 text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-6">
-                <Network size={16} /> Professional Certification Track
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-                Blockchain
-            </h1>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                Architect the trust layer. Explore the technologies rewriting the rules of finance and ownership.
-            </p>
-         </div>
-      </section>
+    return (
+        <main className="min-h-screen bg-slate-50 font-sans">
+            <Navbar />
 
-      {/* Course Listing */}
-      <section className="py-24 px-6">
-          <div className="container mx-auto max-w-6xl">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-                  <CourseCard 
-                    sku="BC 001"
-                    title="Certified Professional in Block Chain"
-                    originalPrice="100,000"
-                    discountedPrice="50,000"
-                    desc="Fundamentals of distributed ledger technology, consensus mechanisms, and blockchain architecture."
-                  />
-                  <CourseCard 
-                    sku="BC 002"
-                    title="Certified Professional in NFT"
-                    originalPrice="150,000"
-                    discountedPrice="75,000"
-                    desc="Deep dive into Non-Fungible Tokens, standards (ERC-721/1155), and building marketplace dApps."
-                  />
-                  <CourseCard 
-                    sku="BC 003"
-                    title="Certified Professional in Decentralized Systems"
-                    originalPrice="200,000"
-                    discountedPrice="100,000"
-                    desc="Architecting robust, scalable decentralized applications and understanding the broader ecosystem."
-                  />
-              </div>
-          </div>
-      </section>
+            {/* Hero Section */}
+            <section className="pt-32 pb-20 px-6 bg-slate-900 border-b border-slate-800 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/40 via-slate-900 to-slate-900 z-0" />
+                <div className="container mx-auto max-w-6xl relative z-10 text-center">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-6">
+                        <Network size={16} /> Professional Certification Program
+                    </div>
+                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+                        Blockchain
+                    </h1>
+                    <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                        Architect the trust layer. Explore the technologies rewriting the rules of finance and ownership.
+                    </p>
+                </div>
+            </section>
 
-      <Footer />
-    </main>
-  );
+            {/* Course Listing */}
+            <section className="py-24 px-6">
+                <div className="container mx-auto max-w-6xl">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                        <CourseCard
+                            sku="BC 001"
+                            title="Certified Professional in Block Chain"
+                            originalPrice="100,000"
+                            discountedPrice="50,000"
+                            desc="Fundamentals of distributed ledger technology, consensus mechanisms, and blockchain architecture."
+                        />
+                        <CourseCard
+                            sku="BC 002"
+                            title="Certified Professional in NFT"
+                            originalPrice="150,000"
+                            discountedPrice="75,000"
+                            desc="Deep dive into Non-Fungible Tokens, standards (ERC-721/1155), and building marketplace dApps."
+                        />
+                        <CourseCard
+                            sku="BC 003"
+                            title="Certified Professional in Decentralized Systems"
+                            originalPrice="200,000"
+                            discountedPrice="100,000"
+                            desc="Architecting robust, scalable decentralized applications and understanding the broader ecosystem."
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <Footer />
+        </main>
+    );
 }
 
 function CourseCard({ sku, title, originalPrice, discountedPrice, desc }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string }) {
     return (
-        <motion.div 
+        <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -78,30 +78,30 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc }: { sku:
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">{title}</h3>
                 <p className="text-slate-600 leading-relaxed mb-6">{desc}</p>
-                
+
                 <div className="flex items-center gap-2 text-sm text-slate-500 mb-6 font-medium">
-                     <CheckCircle2 size={16} className="text-indigo-500" /> Hybrid Format
-                     <span className="mx-2">•</span>
-                     <CheckCircle2 size={16} className="text-indigo-500" /> Weekend compatible
+                    <CheckCircle2 size={16} className="text-indigo-500" /> Hybrid Format
+                    <span className="mx-2">•</span>
+                    <CheckCircle2 size={16} className="text-indigo-500" /> Weekend compatible
                 </div>
             </div>
-            
+
             <div className="p-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
                 <div>
-                     <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
-                     <div className="flex flex-col">
+                    <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
+                    <div className="flex flex-col">
                         <span className="text-sm text-slate-400 line-through font-medium">₹{originalPrice}</span>
                         <div className="flex items-baseline gap-2">
-                             <span className="text-2xl font-bold text-slate-900">₹{discountedPrice}</span>
-                             <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">50% Discount</span>
+                            <span className="text-2xl font-bold text-slate-900">₹{discountedPrice}</span>
+                            <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">50% Discount</span>
                         </div>
-                     </div>
+                    </div>
                 </div>
-                <Link 
+                <Link
                     href="/apply"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-indigo-600 transition-colors shadow-lg hover:shadow-indigo-500/25"
                 >
-                    Enroll Now <ArrowUpRight size={18} />
+                    View Curriculum <ArrowUpRight size={18} />
                 </Link>
             </div>
         </motion.div>

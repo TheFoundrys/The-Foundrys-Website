@@ -3,12 +3,12 @@ import { FaqJsonLd } from "@/components/seo/faq-json-ld";
 import CyberClient from "./CyberClient";
 
 export const metadata: Metadata = {
-  title: "Best Cyber Security College in Hyderabad | Ethical Hacking & VAPT",
-  description: "Become a certified Cyber Security Professional. Learn Offensive Security, Red Teaming, and AI Defense. Better than a traditional theory degree.",
-  keywords: ["Cyber Security Course Hyderabad", "Ethical Hacking College", "VAPT Certification", "Cyber Defense Career"],
-  alternates: {
-      canonical: "https://thefoundrys.com/programs/professional/cyber-security",
-  },
+    title: "Best Cyber Security College in Hyderabad | Ethical Hacking & VAPT",
+    description: "Become a certified Cyber Security Professional. Learn Offensive Security, Red Teaming, and AI Defense. Better than a traditional theory degree.",
+    keywords: ["Cyber Security Course Hyderabad", "Ethical Hacking College", "VAPT Certification", "Cyber Defense Career"],
+    alternates: {
+        canonical: "https://thefoundrys.com/programs/professional/cyber-security",
+    },
 };
 
 const cyberFaqs = [
@@ -23,10 +23,10 @@ const cyberFaqs = [
 ];
 
 export default function CyberPage() {
-  return (
-    <>
-      <FaqJsonLd questions={cyberFaqs} />
-      <CyberClient />
-    </>
-  );
+    return (
+        <>
+            <CyberClient />
+            <FaqJsonLd questions={cyberFaqs} />
+        </>
+    );
 }

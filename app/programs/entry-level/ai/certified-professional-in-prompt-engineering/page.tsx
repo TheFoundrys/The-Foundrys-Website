@@ -16,7 +16,8 @@ import {
     ChevronDown,
     MessageSquare,
     Sparkles,
-    Zap
+    Zap,
+    Workflow
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -137,6 +138,9 @@ export default function PromptEngineeringCoursePage() {
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
 
     useEffect(() => {
+        // Scroll to top on page load
+        window.scrollTo(0, 0);
+
         const shuffled = [...ALL_PROJECTS].sort(() => 0.5 - Math.random());
         setTimeout(() => setVisibleProjects(shuffled.slice(0, 3)), 0);
     }, []);
@@ -175,7 +179,7 @@ export default function PromptEngineeringCoursePage() {
                                     </div>
                                     <div>
                                         <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Duration</div>
-                                        <div className="font-semibold">12 Weeks</div>
+                                        <div className="font-semibold">45 Days</div>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3 text-slate-300">
@@ -230,7 +234,7 @@ export default function PromptEngineeringCoursePage() {
                     <div className="prose prose-lg prose-slate mx-auto mb-16">
                         <h2 className="text-3xl font-bold text-slate-900 mb-6 font-sans">Unlock the true potential of AI.</h2>
                         <p className="text-lg text-slate-600 leading-relaxed">
-                            AI models are only as good as the instructions you give them. The Certified Professional in Prompt Engineering is a comprehensive <span className="font-bold text-slate-900">12-week program</span> designed to turn you into an expert AI communicator.
+                            AI models are only as good as the instructions you give them. The Certified Professional in Prompt Engineering is a comprehensive <span className="font-bold text-slate-900">45-day program</span> designed to turn you into an expert AI communicator.
                         </p>
                         <p className="text-lg text-slate-600 leading-relaxed mt-4">
                             You will move beyond simple queries to mastering <span className="font-bold text-slate-900">Chain-of-Thought reasoning, few-shot prompting, and agentic workflows</span>. Whether you are a developer, writer, or product manager, this course will empower you to build reliable, high-quality AI systems.
@@ -243,6 +247,11 @@ export default function PromptEngineeringCoursePage() {
                         <HighlightCard icon={Briefcase} title="Build a Portfolio" desc="Create 6 real-world projects, from chatbots to automated content engines." />
                         <HighlightCard icon={ShieldCheck} title="AI Safety & Ethics" desc="Understand bias mitigation, prompt injection defense, and responsible AI." />
                         <HighlightCard icon={Sparkles} title="Multi-Modal AI" desc="Work with image generation (Midjourney, DALL-E) and audio models." />
+                        <HighlightCard
+                            icon={Workflow}
+                            title="Agentic Thinking & Workflow Design"
+                            desc="Design multi-step, goal-driven AI workflows using agents, tools, and structured reasoning."
+                        />
                     </div>
                 </div>
             </section>
@@ -328,7 +337,7 @@ export default function PromptEngineeringCoursePage() {
                     </div>
 
                     <div className="space-y-12">
-                        {/* Month 1 */}
+                        {/* Phase 1 */}
                         <div>
                             <div className="flex items-center gap-4 mb-6">
                                 <span className="text-4xl font-bold text-purple-100">01</span>
@@ -338,44 +347,25 @@ export default function PromptEngineeringCoursePage() {
                                 </div>
                             </div>
                             <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 1" title="Introduction to LLMs" topics={["How LLMs Work", "Capabilities & Limitations", "Tokenization", "Basic Prompt Structure"]} />
-                                <WeekCard week="Week 2" title="Core Prompting Techniques" topics={["Zero-shot & One-shot", "Few-shot Prompting", "Role Prompting", "Instruction Tuning"]} />
-                                <WeekCard week="Week 3" title="Advanced Reasoning" topics={["Chain-of-Thought (CoT)", "Tree-of-Thoughts", "Self-Consistency", "Generated Knowledge"]} />
-                                <WeekCard week="Week 4" title="Project 1: Specialized Chatbot" topics={["Building a Persona-based Bot", "Handling Edge Cases", "Testing & Iteration"]} />
+                                <WeekCard week="Week 1" title="Foundations & Core Prompting" topics={["How LLMs Work", "Capabilities & Limitations", "Zero-shot & Few-shot", "Role Prompting"]} />
+                                <WeekCard week="Week 2" title="Advanced Reasoning & Reliability" topics={["Chain-of-Thought (CoT)", "Tree-of-Thoughts", "Hallucination Mitigation", "Prompt Injection Defense"]} />
+                                <WeekCard week="Week 3" title="Formatting, Tools & APIs" topics={["Structured Outputs (JSON/XML)", "OpenAI API Basics", "Parameters (Temp, Top P)", "Introduction to LangChain"]} />
                             </div>
                         </div>
 
-                        {/* Month 2 */}
+                        {/* Phase 2 */}
                         <div>
                             <div className="flex items-center gap-4 mb-6">
                                 <span className="text-4xl font-bold text-purple-100">02</span>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Reliability, Optimization & Tools</h3>
-                                    <p className="text-slate-500">Focus: Building reliable systems and using developer tools.</p>
-                                </div>
-                            </div>
-                            <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 5" title="Reliability & Safety" topics={["Hallucination Mitigation", "Bias Detection", "Prompt Injection Defense", "Guardrails"]} />
-                                <WeekCard week="Week 6" title="Advanced Formatting" topics={["Structured Outputs (JSON/XML)", "Markdown Generation", "Data Extraction Strategies"]} />
-                                <WeekCard week="Week 7" title="Tools & APIs" topics={["OpenAI API Basics", "Parameters (Temp, Top P)", "Introduction to LangChain"]} />
-                                <WeekCard week="Week 8" title="Project 2: Content Engine" topics={["Automated Blog Generator", "SEO Optimization Prompts", "API Integration"]} />
-                            </div>
-                        </div>
-
-                        {/* Month 3 */}
-                        <div>
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl font-bold text-purple-100">03</span>
                                 <div>
                                     <h3 className="text-2xl font-bold text-slate-900">Advanced Applications & Production</h3>
                                     <p className="text-slate-500">Focus: Multi-modal AI, Agents, and Real-world Deployment.</p>
                                 </div>
                             </div>
                             <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 9" title="Agents & Workflows" topics={["ReAct Pattern", "Tool Use", "Multi-Agent Systems", "Planning & Execution"]} />
-                                <WeekCard week="Week 10" title="Multi-Modal AI" topics={["Image Generation (Midjourney)", "Vision Models (GPT-4V)", "Audio Prompts"]} />
-                                <WeekCard week="Week 11" title="Evaluation & Ops" topics={["Prompt Evaluation Frameworks", "A/B Testing Prompts", "Prompt Management"]} />
-                                <WeekCard week="Week 12" title="Capstone Project" topics={["End-to-End Application", "Final Presentation", "Certification"]} />
+                                <WeekCard week="Week 4" title="Content Engines & Multi-Modal AI" topics={["Automated Content Generation", "Image Generation (Midjourney)", "Vision Models (GPT-4V)", "Audio Prompts"]} />
+                                <WeekCard week="Week 5" title="Agents & Workflows" topics={["ReAct Pattern", "Tool Use", "Multi-Agent Systems", "Planning & Execution"]} />
+                                <WeekCard week="Week 6" title="Evaluation, Ops & Capstone" topics={["Prompt Evaluation Frameworks", "A/B Testing Prompts", "End-to-End Application", "Final Certification"]} />
                             </div>
                         </div>
                     </div>
