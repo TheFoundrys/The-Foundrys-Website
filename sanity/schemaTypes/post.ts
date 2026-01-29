@@ -44,6 +44,7 @@ export default defineType({
                     { title: 'Cyber Security', value: 'Cyber Security' },
                     { title: 'Philosophy', value: 'Philosophy' },
                     { title: 'AI', value: 'AI' },
+                    { title: "The Foundry's", value: "The Foundry's" },
                 ]
             }
         }),

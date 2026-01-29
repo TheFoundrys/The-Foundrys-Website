@@ -59,6 +59,70 @@ const ptComponents = {
     }
 }
 
+function ShareButton({ post }: { post: any }) {
+    const [shared, setShared] = React.useState(false);
+
+    const handleShare = async () => {
+        const cta = "Read full article here:";
+        const shareData = {
+            title: post.title,
+            text: `${post.title}\n\n${post.excerpt || `Read "${post.title}" on The Foundry's`}\n\n${cta}`,
+            url: window.location.href,
+        };
+
+        // Feature detection for Web Share API
+        if (typeof navigator.share === 'function') {
+            try {
+                await navigator.share(shareData);
+                return; // Share initiated successfully
+            } catch (err: any) {
+                // Ignore user cancellation, only log real errors
+                if (err.name !== 'AbortError') {
+                    console.error("Share failed:", err);
+                } else {
+                    return; // User cancelled, don't copy to clipboard
+                }
+                // If native share fails for other reasons, we can fall through to clipboard
+            }
+        }
+
+        // Fallback to clipboard
+        const clipboardContent = `${post.title}\n\n${post.excerpt || ''}\n\n${cta} ${window.location.href}`;
+        
+        try {
+            if (navigator.clipboard) {
+                 await navigator.clipboard.writeText(clipboardContent);
+            } else {
+                // Legacy fallback for insecure contexts (testing on IP)
+                const textArea = document.createElement("textarea");
+                textArea.value = clipboardContent;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                } catch (err) {
+                    console.error('Fallback copy failed', err);
+                }
+                document.body.removeChild(textArea);
+            }
+            setShared(true);
+            setTimeout(() => setShared(false), 2000);
+        } catch (err) {
+            console.error("Clipboard failed", err);
+        }
+    };
+
+    return (
+        <button 
+            onClick={handleShare}
+            className="flex items-center gap-2 text-slate-600 hover:text-white hover:bg-slate-900 transition-all font-bold px-6 py-3 rounded-full bg-slate-100/50 active:scale-95 duration-200 shadow-sm hover:shadow-lg"
+        >
+            <Share2 size={16} />
+            {shared ? "Link Copied!" : "Share"}
+        </button>
+    );
+}
+
 export default function BlogClient({ post }: { post: any }) {
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
@@ -103,7 +167,7 @@ export default function BlogClient({ post }: { post: any }) {
             />
 
             {/* Article Container with Glass Effect */}
-            <div className="relative z-10 pt-32 pb-24 px-4 container mx-auto max-w-4xl">
+            <div className="relative z-10 pt-32 pb-24 px-4 container mx-auto max-w-6xl">
                 
                 {/* Header Section */}
                 <header className="mb-12 text-center relative">
@@ -182,9 +246,7 @@ export default function BlogClient({ post }: { post: any }) {
                             // END OF TRANSMISSION
                         </div>
                         <div className="flex gap-4">
-                            <button className="flex items-center gap-2 text-slate-600 hover:text-white hover:bg-slate-900 transition-all font-bold px-6 py-3 rounded-full bg-slate-100/50 active:scale-95 duration-200 shadow-sm hover:shadow-lg">
-                                <Share2 size={16} /> Share Protocol
-                            </button>
+                            <ShareButton post={post} />
                         </div>
                     </div>
                 </article>
