@@ -19,7 +19,7 @@ export default function EntryLevelAIPage() {
                         <BrainCircuit size={16} /> Entry Level Certification Program
                     </div>
                     <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-                        AI Foundations
+                        AI Launchpad
                     </h1>
                     <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
                         Start your journey into Artificial Intelligence. Master the basics and build a strong foundation for your career.
@@ -37,26 +37,25 @@ export default function EntryLevelAIPage() {
                             originalPrice="100,000"
                             discountedPrice="50,000"
                             duration="45 Days"
-                            desc="Build the mathematical and logical bedrock required to understand and work with intelligent systems."
+                            desc="Build a strong foundation in the mathematics, logic, and core principles of Artificial Intelligence. Learn how intelligent systems use data and algorithms to make decisions."
                             persona="For Students & AI enthusiasts"
                             href="/programs/entry-level/ai/certified-professional-in-ai-foundations"
                         />
                         <CourseCard
                             sku="AI 002"
-                            title="Certified Professional in AI Foundations (Telugu)"
-                            originalPrice="100,000"
-                            discountedPrice="50,000"
+                            title="Certified Professional in AI Research"
+                            originalPrice="150,000"
+                            discountedPrice="75,000"
                             duration="45 Days"
-                            desc="Build the mathematical and logical bedrock required to understand and work with intelligent systems."
-                            persona="For Students & AI enthusiasts"
-                            href="/programs/entry-level/ai/certified-professional-in-ai-foundations-in-telugu"
+                            desc="Dive deep into algorithms and model architectures that power modern AI. Learn how to push the boundaries of intelligent systems through research and experimentation."
+                            persona="For Data & ML Professionals"
                         />
                         <CourseCard
                             sku="AI 005"
                             title="Certified Professional in Prompt Engineering"
-                            originalPrice="100,000"
-                            discountedPrice="50,000"
-                            duration="45 Days"
+                            originalPrice="20,000"
+                            discountedPrice="10,000"
+                            duration="2 weeks"
                             desc="Master the art of communicating with AI. Learn to design and optimize prompts to unlock the full potential of Large Language Models."
                             discountLabel="50% Discount"
                             persona="For Students & AI enthusiasts"
@@ -92,7 +91,7 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
                 <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-slate-500 mb-6 font-medium">
                     <div className="flex items-center gap-2">
                         <CheckCircle2 size={16} className="text-blue-500" />
-                        Weekend / Hybrid
+                        Hybrid
                     </div>
 
                     <div className="flex items-center gap-2">
@@ -126,7 +125,7 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
                     href={href}
                     className="w-full sm:w-auto md:w-full lg:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 transition-colors shadow-lg hover:shadow-blue-500/25"
                 >
-                    View Curriculum <ArrowUpRight size={18} />
+                    View Program <ArrowUpRight size={18} />
                 </Link>
             </div>
         </motion.div>

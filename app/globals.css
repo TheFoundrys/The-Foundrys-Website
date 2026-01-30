@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-    --font-sans: var(--font-ubuntu-sans);
+    --font-sans: var(--font-ubuntu), ui-sans-serif, system-ui, sans-serif;
 
     --color-electric-purple: #7c3aed;
     --color-neon-blue: #0ea5e9;

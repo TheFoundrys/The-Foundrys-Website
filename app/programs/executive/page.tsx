@@ -1,36 +1,17 @@
 import { Metadata } from "next";
-import { FaqJsonLd } from "@/components/seo/faq-json-ld";
-import ExecutiveClient from "./ExecutiveClient";
+import ExecutiveLandingClient from "./ExecutiveLandingClient";
 
 export const metadata: Metadata = {
     title: "Executive Leadership Programs | The Foundry's",
-    description: "Where Senior Tech Leaders become System Owners. Forge innovation as a framework to design, engineer, deploy, and govern critical systems in an AI-driven world.",
-    keywords: ["Executive Leadership", "AI Governance", "Tech Leadership", "System Ownership", "AI Strategy for Executives"],
+    description: "Executive education for the age of AI. Programs designed for CTOs, VPs, and Senior Technical Leaders to master systems-level authority.",
+    keywords: ["Executive Leadership", "CTO Training", "Tech Leadership", "AI Strategy", "System Design"],
     alternates: {
         canonical: "https://thefoundrys.com/programs/executive",
     },
 };
 
-const executiveFaqs = [
-    {
-        question: "Who is this program designed for?",
-        answer: "This program is strictly designed for Senior Technology Leaders (Delivery, Program Managers, Architects, senior engineers and security leads), Founders & CTOs, and Technical Product Leaders operating in regulated domains."
-    },
-    {
-        question: "Do I need a technical background?",
-        answer: "While the program is for tech leaders, the focus is on systems-level authority, governance, and strategic architecture rather than hands-on coding. A deep conceptual understanding of technology is required."
-    },
-    {
-        question: "What is the time commitment?",
-        answer: "The cohort structure is designed for busy executives, consisting of a 2-day intensive hybrid or in-person session, followed by modular, execution-driven work."
-    }
-];
-
-export default function ExecutiveProgramPage() {
+export default function ExecutivePage() {
     return (
-        <>
-            <FaqJsonLd questions={executiveFaqs} />
-            <ExecutiveClient />
-        </>
+        <ExecutiveLandingClient />
     );
 }

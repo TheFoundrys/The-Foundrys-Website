@@ -179,7 +179,7 @@ export default function PromptEngineeringCoursePage() {
                                     </div>
                                     <div>
                                         <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Duration</div>
-                                        <div className="font-semibold">45 Days</div>
+                                        <div className="font-semibold">2 Weeks</div>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3 text-slate-300">
@@ -188,7 +188,7 @@ export default function PromptEngineeringCoursePage() {
                                     </div>
                                     <div>
                                         <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Format</div>
-                                        <div className="font-semibold">Weekend Hybrid</div>
+                                        <div className="font-semibold">Hybrid</div>
                                     </div>
                                 </div>
                             </div>
@@ -215,7 +215,7 @@ export default function PromptEngineeringCoursePage() {
                             </div>
 
                             <div className="space-y-4 mb-8">
-                                <InfoRow text="Live Weekend Classes (Sat & Sun)" />
+                                <InfoRow text="Hybrid" />
                                 <InfoRow text="Hands-on Projects & Portfolio" />
                                 <InfoRow text="Industry Recognized Certification" />
                             </div>
@@ -234,7 +234,7 @@ export default function PromptEngineeringCoursePage() {
                     <div className="prose prose-lg prose-slate mx-auto mb-16">
                         <h2 className="text-3xl font-bold text-slate-900 mb-6 font-sans">Unlock the true potential of AI.</h2>
                         <p className="text-lg text-slate-600 leading-relaxed">
-                            AI models are only as good as the instructions you give them. The Certified Professional in Prompt Engineering is a comprehensive <span className="font-bold text-slate-900">45-day program</span> designed to turn you into an expert AI communicator.
+                            AI models are only as good as the instructions you give them. The Certified Professional in Prompt Engineering is a comprehensive <span className="font-bold text-slate-900">2 Weeks program</span> designed to turn you into an expert AI communicator.
                         </p>
                         <p className="text-lg text-slate-600 leading-relaxed mt-4">
                             You will move beyond simple queries to mastering <span className="font-bold text-slate-900">Chain-of-Thought reasoning, few-shot prompting, and agentic workflows</span>. Whether you are a developer, writer, or product manager, this course will empower you to build reliable, high-quality AI systems.
@@ -342,14 +342,13 @@ export default function PromptEngineeringCoursePage() {
                             <div className="flex items-center gap-4 mb-6">
                                 <span className="text-4xl font-bold text-purple-100">01</span>
                                 <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Foundations & Core Techniques</h3>
-                                    <p className="text-slate-500">Focus: Understanding LLMs and mastering basic to intermediate prompting.</p>
+                                    <h3 className="text-2xl font-bold text-slate-900">Foundations, Reasoning & Advanced Techniques</h3>
+                                    <p className="text-slate-500">Focus: Mastering the core mechanics of prompting, reliability, and technical integration.</p>
                                 </div>
                             </div>
                             <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 1" title="Foundations & Core Prompting" topics={["How LLMs Work", "Capabilities & Limitations", "Zero-shot & Few-shot", "Role Prompting"]} />
-                                <WeekCard week="Week 2" title="Advanced Reasoning & Reliability" topics={["Chain-of-Thought (CoT)", "Tree-of-Thoughts", "Hallucination Mitigation", "Prompt Injection Defense"]} />
-                                <WeekCard week="Week 3" title="Formatting, Tools & APIs" topics={["Structured Outputs (JSON/XML)", "OpenAI API Basics", "Parameters (Temp, Top P)", "Introduction to LangChain"]} />
+                                <WeekCard week="Week 1 - Part 1" title="Foundations & Core Mechanics" topics={["How LLMs Work & Capabilities", "Zero-shot & Few-shot Prompting", "Role-Based Prompting Strategies"]} />
+                                <WeekCard week="Week 1 - Part 2" title="Advanced Reasoning & Reliability" topics={["Chain-of-Thought (CoT) & Tree-of-Thoughts", "Hallucination Mitigation & Defense", "Structured Outputs (JSON/XML) & APIs"]} />
                             </div>
                         </div>
 
@@ -358,14 +357,13 @@ export default function PromptEngineeringCoursePage() {
                             <div className="flex items-center gap-4 mb-6">
                                 <span className="text-4xl font-bold text-purple-100">02</span>
                                 <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Advanced Applications & Production</h3>
-                                    <p className="text-slate-500">Focus: Multi-modal AI, Agents, and Real-world Deployment.</p>
+                                    <h3 className="text-2xl font-bold text-slate-900">Production Systems, Agents & Multi-Modal AI</h3>
+                                    <p className="text-slate-500">Focus: Building autonomous systems and deploying to production.</p>
                                 </div>
                             </div>
                             <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 4" title="Content Engines & Multi-Modal AI" topics={["Automated Content Generation", "Image Generation (Midjourney)", "Vision Models (GPT-4V)", "Audio Prompts"]} />
-                                <WeekCard week="Week 5" title="Agents & Workflows" topics={["ReAct Pattern", "Tool Use", "Multi-Agent Systems", "Planning & Execution"]} />
-                                <WeekCard week="Week 6" title="Evaluation, Ops & Capstone" topics={["Prompt Evaluation Frameworks", "A/B Testing Prompts", "End-to-End Application", "Final Certification"]} />
+                                <WeekCard week="Week 2 - Part 1" title="Multi-Modal AI & Operations" topics={["Vision Models & Image Generation", "Evaluation Frameworks & A/B Testing", "Optimizing Prompts for Cost & Speed"]} />
+                                <WeekCard week="Week 2 - Part 2" title="Agents & Capstone Deployment" topics={["Agentic Workflows (ReAct, Planning)", "Tool Use & Function Calling", "End-to-End Application Deployment"]} />
                             </div>
                         </div>
                     </div>

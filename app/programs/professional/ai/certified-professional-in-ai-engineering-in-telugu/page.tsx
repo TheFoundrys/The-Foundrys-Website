@@ -267,7 +267,7 @@ export default function AIEngineeringTeluguCoursePage() {
                             </div>
 
                             <div className="space-y-4 mb-8">
-                                <InfoRow text="Live Weekend Classes in Telugu" />
+                                <InfoRow text="Hybrid" />
                                 <InfoRow text="Hands-on Capstone Project" />
                                 <InfoRow text="Industry Recognized Certification" />
                                 {/* <InfoRow text="Career Support & Placement Assistance" /> */}

@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Ubuntu_Sans } from "next/font/google";
+import { Ubuntu } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-const ubuntuSans = Ubuntu_Sans({
-  variable: "--font-ubuntu-sans",
+const ubuntu = Ubuntu({
+  variable: "--font-ubuntu",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700", "800"], // Including weights for design flexibility
+  weight: ["300", "400", "500", "700"], // Ubuntu classic weights
+  display: "swap",
 });
 
 export const viewport: Viewport = {
@@ -29,16 +30,16 @@ export const metadata: Metadata = {
   keywords: [
     // Brand Variations & Common Misspellings
     "The Foundry's", "The Foundry", "TheFoundry", "TheFoundrys", "Foundrys", "Foundry School", "The Foundery", "The Foundries",
-    
+
     // Competitor & Comparative Keywords (Strategic)
-    "Bower School of Entrepreneurship", "Nextwave Hyderabad", "Nextwave Institute of Advanced Technologies", 
-    "Top Colleges like IIT", "Alternatives to IIT", "Best Engineering Colleges in Hyderabad", "Top NITs", 
+    "Bower School of Entrepreneurship", "Nextwave Hyderabad", "Nextwave Institute of Advanced Technologies",
+    "Top Colleges like IIT", "Alternatives to IIT", "Best Engineering Colleges in Hyderabad", "Top NITs",
     "Premium Engineering Colleges India", "Comparison with Scaler School of Technology", "Newton School Alternatives",
 
     // Core Segments & Programs
     "School of Deep Tech", "School of Entrepreneurship", "School of Energy", "School of Sustainability",
     "Venture Building Program", "Applied Engineering College", "BBA in Entrepreneurship", "B.Tech in Artificial Intelligence",
-    
+
     // Broad Education Keywords
     "Engineering", "BBA", "MBA Alternatives", "Computer Science Engineering", "B.Tech Computer Science",
     "Study in Hyderabad", "Technology Institute Hyderabad", "Best College for Startup Founders",
@@ -47,11 +48,11 @@ export const metadata: Metadata = {
     "Intermediate 2nd Year Students", "Class 12 MPC", "After 12th Best Courses", "Engineering Colleges in Hyderabad with High Placement",
     "EAMCET Alternatives", "Best Private Engineering College Hyderabad", "New Age Engineering", "Practical Engineering College",
     "Parents Guide to Engineering 2026", "Future Proof Career for Child",
-    
+
     // Career & Outcome Focused (High Intent)
     "High paying jobs after 12th MPC", "Guaranteed placement engineering colleges", "Startup incubation centers in Hyderabad colleges",
     "Colleges for Entrepreneurship in India", "How to become an AI Engineer after 12th", "Cyber Security Careers India",
-    
+
     // Comparison & Decision Support
     "Better than B.Tech", "Practical engineering degrees", "New age tech schools India", "Is B.Tech worth it in 2026",
     "Alternative to IIT for bright students", "Best college for coding in Hyderabad", "No theory only practical college",
@@ -86,7 +87,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The Foundry's | School of Deep Tech, Entrepreneurship & Energy",
     description: "The Foundry's: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging innovators, not just Graduates.",
-    creator: "@thefoundrys", 
+    creator: "@thefoundrys",
   },
 
   category: "education",
@@ -101,7 +102,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${ubuntuSans.variable} antialiased`}>
+      <body className={`${ubuntu.variable} antialiased`}>
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XQCKK6L717"
@@ -116,10 +117,10 @@ export default function RootLayout({
             gtag('config', 'G-XQCKK6L717');
           `}
         </Script>
-        
+
         {/* Structured Data */}
         <JsonLd />
-        
+
         {children}
       </body>
     </html>

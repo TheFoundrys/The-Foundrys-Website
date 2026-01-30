@@ -9,15 +9,16 @@ import {
     CheckCircle2,
     Calendar,
     Clock,
+    Award,
     ArrowUpRight,
-    BookOpen,
     BrainCircuit,
-    Database,
-    Lightbulb,
-    ShieldAlert,
+    Microscope,
+    Sigma,
+    Network,
+    Sparkles,
+    FileText,
     ChevronDown,
-    GraduationCap,
-    Puzzle
+    FlaskConical
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -26,113 +27,101 @@ import { RoleDetailsContent } from "@/components/role-details-content";
 // Project Data
 const ALL_PROJECTS = [
     {
-        title: "Data Storyteller",
-        tag: "Data Analysis",
-        desc: "Analyze a real-world dataset (e.g., sales or weather) to uncover trends and visualize insights using charts.",
-        tech: ["Excel/Sheets", "Basic Statistics", "Data Visualization"]
-    },
-    {
-        title: "House Price Predictor",
-        tag: "Machine Learning",
-        desc: "Build a simple supervised learning model to predict house prices based on features like size and location.",
-        tech: ["Regression", "Scikit-learn (No-code/Low-code)", "Python Basics"]
-    },
-    {
-        title: "Image Classifier Demo",
+        title: "Novel Architecture Implementation",
         tag: "Deep Learning",
-        desc: "Train a basic neural network to recognize handwritten digits or clothing items.",
-        tech: ["Neural Networks", "Computer Vision", "MNIST Dataset"]
+        desc: "Implement a state-of-the-art transformer variant from scratch based on a recent research paper, reproducing reported results.",
+        tech: ["PyTorch", "Transformers", "arXiv", "Python"]
     },
     {
-        title: "AI Ethics Auditor",
-        tag: "Responsible AI",
-        desc: "Analyze a hypothetical AI system for bias and fairness issues, proposing mitigation strategies.",
-        tech: ["Ethics Frameworks", "Bias Detection", "Case Study"]
+        title: "Model Ablation Study",
+        tag: "Experimentation",
+        desc: "Design and execute a rigorous ablation study to isolate the contribution of specific architectural components to model performance.",
+        tech: ["WandB", "Experiment Design", "Statistical Analysis", "Matplotlib"]
     },
     {
-        title: "Smart Content Generator",
-        tag: "Generative AI",
-        desc: "Use LLMs to generate marketing copy and images, applying prompt engineering best practices.",
-        tech: ["ChatGPT/Claude", "Prompt Engineering", "Image Gen"]
+        title: "Generative Model Exploration",
+        tag: "GenAI Research",
+        desc: "Investigate the latent space of a VAE or GAN, analyzing disentanglement and generation quality metrics.",
+        tech: ["Generative Models", "Latent Space Analysis", "FID Score", "PyTorch"]
     },
     {
-        title: "Business AI Proposal",
-        tag: "AI Strategy",
-        desc: "Identify a business problem and propose an AI-based solution, calculating potential ROI and feasibility.",
-        tech: ["Business Strategy", "ROI Analysis", "Feasibility Study"]
+        title: "RL Agent Benchmarking",
+        tag: "Reinforcement Learning",
+        desc: "Benchmark standard RL algorithms (PPO, DQN) on custom environments, analyzing sample efficiency and convergence properties.",
+        tech: ["Gymnasium", "Stable Baselines", "RL Theory", "Benchmarking"]
     }
 ];
 
 const CAREER_ROLES = [
     {
-        "id": "junior-ai-associate",
-        "label": "Junior AI Associate",
-        "title": "Junior AI Associate",
-        "desc": "Supports AI teams by preparing data, running basic models, and documenting results. A perfect entry point into the field.",
-        "salary": "₹6L - ₹12L",
-        "growth": "+30% YoY",
+        "id": "ai-researcher",
+        "label": "AI Researcher",
+        "title": "AI Researcher",
+        "desc": "Conducts original research to advance the state of the art in artificial intelligence. Publishes papers and develops novel algorithms.",
+        "salary": "₹25L - ₹60L",
+        "growth": "+45% YoY",
         "skills": [
-            "AI Fundamentals",
-            "Data Handling",
-            "Basic Python",
-            "Model Evaluation",
-            "Documentation"
+            "Deep Learning Theory",
+            "Mathematics (Linear Algebra, Prob)",
+            "Paper Writing",
+            "Experiment Design",
+            "PyTorch/JAX"
         ],
         "responsibilities": [
-            "Data cleaning and preparation",
-            "Running baseline models",
-            "Documenting experiments",
-            "Assisting senior engineers",
-            "Monitoring model performance"
+            "Reading and critiquing research papers",
+            "Designing and running experiments",
+            "Developing new model architectures",
+            "Publishing research findings",
+            "Staying current with SOTA"
         ]
     },
     {
-        "id": "data-analyst",
-        "label": "Data Analyst (Entry)",
-        "title": "Data Analyst",
-        "desc": "Interprets data and turns it into information which can offer ways to improve a business, thus affecting business decisions.",
-        "salary": "₹5L - ₹10L",
-        "growth": "+25% YoY",
+        "id": "research-engineer",
+        "label": "Research Engineer",
+        "title": "Research Engineer",
+        "desc": "Bridges the gap between theoretical research and practical implementation. Scales research prototypes to working systems.",
+        "salary": "₹20L - ₹50L",
+        "growth": "+50% YoY",
         "skills": [
-            "Data Visualization",
-            "Statistical Analysis",
-            "SQL Basics",
-            "Excel/Sheets",
-            "Reporting"
+            "Model Optimization",
+            "Distributed Training",
+            "Software Engineering",
+            "Reproducibility",
+            "High Performance Computing"
         ],
         "responsibilities": [
-            "Collecting and interpreting data",
-            "Analyzing results",
-            "Reporting results back to the relevant members of the business",
-            "Identifying patterns and trends in data sets",
-            "Defining new data collection and analysis processes"
+            "Implementing research papers",
+            "Optimizing training pipelines",
+            "Managing experiment infrastructure",
+            "Collaborating with researchers",
+            "Benchmarking models"
         ]
     },
     {
-        "id": "ai-product-coordinator",
-        "label": "AI Product Coordinator",
-        "title": "AI Product Coordinator",
-        "desc": "Bridges the gap between business needs and technical AI capabilities, helping to manage AI product roadmaps.",
-        "salary": "₹8L - ₹15L",
+        "id": "applied-scientist",
+        "label": "Applied Scientist",
+        "title": "Applied Scientist",
+        "desc": "Applies advanced research techniques to solve specific business or product problems. Adapts SOTA models for real-world constraints.",
+        "salary": "₹22L - ₹55L",
         "growth": "+40% YoY",
         "skills": [
-            "Product Management Basics",
-            "AI Use Case Identification",
-            "Communication",
-            "Agile Methodologies",
-            "User Research"
+            "Applied ML",
+            "Domain Adaptation",
+            "Problem Formulation",
+            "Data Analysis",
+            "Prototyping"
         ],
         "responsibilities": [
-            "Gathering requirements for AI features",
-            "Coordinating between stakeholders and dev teams",
-            "Tracking project timelines",
-            "Conducting user acceptance testing",
-            "Market research"
+            "Translating business needs to ML problems",
+            "Adapting research models to production",
+            "Validating model performance",
+            "Iterating on solutions",
+            "Technical leadership"
         ]
     }
 ];
 
-export default function AIFoundationsCoursePage() {
+export default function AIResearchCoursePage() {
     const [visibleProjects, setVisibleProjects] = useState(ALL_PROJECTS.slice(0, 3));
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
 
@@ -145,35 +134,35 @@ export default function AIFoundationsCoursePage() {
     }, []);
 
     return (
-        <main className="min-h-screen bg-slate-50 font-sans selection:bg-amber-100">
+        <main className="min-h-screen bg-slate-50 font-sans selection:bg-purple-100">
             <Navbar />
 
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 px-6 bg-slate-900 border-b border-slate-800 overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-amber-900/40 via-slate-900 to-slate-900 z-0" />
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-purple-900/40 via-slate-900 to-slate-900 z-0" />
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px] pointer-events-none" />
 
                 <div className="container mx-auto max-w-6xl relative z-10">
-                    <Link href="/programs/entry-level/ai" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8 text-sm font-medium">
-                        <ArrowLeft size={16} /> Back to Entry Level Programs
+                    <Link href="/programs/professional/ai" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8 text-sm font-medium">
+                        <ArrowLeft size={16} /> Back to AI Programs
                     </Link>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm font-bold mb-6">
-                                <GraduationCap size={16} /> Entry Level Certification
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-sm font-bold mb-6">
+                                <Microscope size={16} /> Professional Certification
                             </div>
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
                                 Certified Professional in <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">AI Foundations</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">AI Research</span>
                             </h1>
                             <p className="text-xl text-slate-400 max-w-xl leading-relaxed mb-8">
-                                Start your AI journey here. Build a strong conceptual foundation in AI, Machine Learning, and Data Science. No prior coding experience required.
+                                This roadmap represents a focused research-ready subset of the broader AI Research Professional Path. It is intentionally curated to build AI research thinking, paper literacy, and experimental rigor.
                             </p>
 
                             <div className="flex flex-wrap gap-6 mb-10">
                                 <div className="flex items-center gap-3 text-slate-300">
-                                    <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-amber-400">
+                                    <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-purple-400">
                                         <Clock size={20} />
                                     </div>
                                     <div>
@@ -182,7 +171,7 @@ export default function AIFoundationsCoursePage() {
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3 text-slate-300">
-                                    <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-amber-400">
+                                    <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-purple-400">
                                         <Calendar size={20} />
                                     </div>
                                     <div>
@@ -193,7 +182,7 @@ export default function AIFoundationsCoursePage() {
                             </div>
 
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <Link href="/apply" className="px-8 py-4 bg-amber-600 text-white rounded-full font-bold text-lg hover:bg-amber-500 transition-all shadow-lg hover:shadow-amber-500/25 text-center">
+                                <Link href="/apply" className="px-8 py-4 bg-purple-600 text-white rounded-full font-bold text-lg hover:bg-purple-500 transition-all shadow-lg hover:shadow-purple-500/25 text-center">
                                     Enroll Now
                                 </Link>
                                 <Link href="#overview" className="px-8 py-4 bg-slate-800 text-white rounded-full font-bold text-lg hover:bg-slate-700 transition-all border border-slate-700 text-center">
@@ -205,17 +194,17 @@ export default function AIFoundationsCoursePage() {
                         <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-3xl p-8 lg:p-10">
                             <h3 className="text-white text-xl font-bold mb-6">Program Fee</h3>
                             <div className="flex items-baseline gap-3 mb-2">
-                                <span className="text-4xl lg:text-5xl font-bold text-white">₹50,000</span>
-                                <span className="text-xl text-slate-500 line-through">₹100,000</span>
+                                <span className="text-4xl lg:text-5xl font-bold text-white">₹75,000</span>
+                                <span className="text-xl text-slate-500 line-through">₹150,000</span>
                             </div>
                             <div className="flex items-center gap-2 mb-8">
-                                <span className="bg-amber-500/20 text-amber-400 text-xs font-bold px-2 py-1 rounded uppercase">50% Scholarship</span>
+                                <span className="bg-purple-500/20 text-purple-400 text-xs font-bold px-2 py-1 rounded uppercase">50% Scholarship</span>
                                 <span className="text-slate-400 text-sm">Limited time offer</span>
                             </div>
 
                             <div className="space-y-4 mb-8">
                                 <InfoRow text="Hybrid" />
-                                <InfoRow text="Beginner Friendly - No Coding Req." />
+                                <InfoRow text="Research Paper Analysis Labs" />
                                 <InfoRow text="Industry Recognized Certification" />
                             </div>
 
@@ -231,22 +220,26 @@ export default function AIFoundationsCoursePage() {
             <section id="overview" className="py-24 px-6 bg-white">
                 <div className="container mx-auto max-w-4xl">
                     <div className="prose prose-lg prose-slate mx-auto mb-16">
-                        <h2 className="text-3xl font-bold text-slate-900 mb-6 font-sans">Demystify Artificial Intelligence.</h2>
+                        <h2 className="text-3xl font-bold text-slate-900 mb-6 font-sans">Think like a researcher, not just a model user.</h2>
                         <p className="text-lg text-slate-600 leading-relaxed">
-                            AI is transforming every industry. The Certified Professional in AI Foundations is a <span className="font-bold text-slate-900">45-day program</span> designed for students, fresh graduates, and professionals who want to understand the &quot;Magic&quot; behind the machines.
+                            The Certified Professional in AI Research (CP-AIR) is an intensive <span className="font-bold text-slate-900">45-day program</span> designed to bridge the gap between engineering and research.
                         </p>
                         <p className="text-lg text-slate-600 leading-relaxed mt-4">
-                            You will move from basic definitions to understanding <span className="font-bold text-slate-900">Neural Networks, Data Science, and Generative AI</span>. This course focuses on building a strong conceptual understanding and practical application, ensuring you are ready for the AI-driven future.
+                            You will move beyond simply using APIs to understanding the <span className="font-bold text-slate-900">mathematical foundations, experimental rigor, and theoretical underpinnings</span> of modern AI. Whether you aim for a PhD or a Research Engineer role, this course builds your research DNA.
                         </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <HighlightCard icon={BookOpen} title="Conceptual Clarity" desc="Understand the 'Why' and 'How' of AI without getting lost in complex math." />
-                        <HighlightCard icon={Database} title="Data Fluency" desc="Learn how data is collected, cleaned, and used to train intelligent systems." />
-                        <HighlightCard icon={BrainCircuit} title="ML & DL Foundation" desc="Grasp the core concepts of Machine Learning and Deep Learning algorithms." />
-                        <HighlightCard icon={Lightbulb} title="Generative AI" desc="Explore the latest in LLMs, prompt engineering, and creative AI tools." />
-                        <HighlightCard icon={ShieldAlert} title="Ethics & Safety" desc="Understand the societal impact, bias, and ethical considerations of AI." />
-                        <HighlightCard icon={Puzzle} title="AI Thinking & Problem Solving" desc="Develop the mindset to break down real-world problems and identify meaningful AI solutions." />
+                        <HighlightCard icon={BrainCircuit} title="Research Mindset" desc="Understand the difference between research and engineering. Learn research ethics and lifecycle." />
+                        <HighlightCard icon={Sigma} title="Mathematics for AI" desc="Build intuition for Linear Algebra, Probability, Statistics, and Optimization for reading papers." />
+                        <HighlightCard icon={FlaskConical} title="Machine Learning Core" desc="Master learning theory, supervised/unsupervised learning, and rigorous model evaluation." />
+                        <HighlightCard icon={Network} title="Deep Learning" desc="Analyze modern architectures like CNNs, RNNs, and Transformers. Understand backpropagation." />
+                        <HighlightCard icon={Sparkles} title="Research Frontiers" desc="Explore cutting-edge domains: Generative Models (VAEs, GANs), LLMs, and Reinforcement Learning." />
+                        <HighlightCard
+                            icon={FileText}
+                            title="Research Methodology"
+                            desc="Learn to design experiments, formulate hypotheses, ensure reproducibility, and write papers."
+                        />
                     </div>
                 </div>
             </section>
@@ -256,12 +249,12 @@ export default function AIFoundationsCoursePage() {
                 <div className="container mx-auto max-w-6xl">
                     <div className="flex flex-col md:flex-row gap-12 items-center mb-16">
                         <div className="md:w-1/2">
-                            <h2 className="text-3xl md:text-4xl font-bold mb-4">Learn by <br /><span className="text-amber-400">Doing.</span></h2>
-                            <p className="text-slate-400 text-lg">Theory is important, but practice makes perfect. Apply your knowledge in hands-on mini-projects.</p>
+                            <h2 className="text-3xl md:text-4xl font-bold mb-4">Conduct Original <br /><span className="text-purple-400">AI Research.</span></h2>
+                            <p className="text-slate-400 text-lg">Don&apos;t just implement. Hypothesize, experiment, analyze, and validate novel ideas.</p>
                         </div>
                         <div className="md:w-1/2 flex justify-end">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-700 bg-slate-800/50 text-slate-300 text-sm font-medium">
-                                <CheckCircle2 size={16} className="text-amber-500" /> Practical Experience
+                                <CheckCircle2 size={16} className="text-purple-500" /> Research-Grade Portfolio
                             </div>
                         </div>
                     </div>
@@ -285,10 +278,10 @@ export default function AIFoundationsCoursePage() {
             <section className="py-20 bg-slate-50 border-y border-slate-200 overflow-hidden">
                 <div className="container mx-auto px-6 mb-16 text-center max-w-3xl">
                     <h2 className="text-3xl font-bold text-slate-900 mb-4">
-                        Concepts You&apos;ll Master
+                        Tools & Technologies
                     </h2>
                     <p className="text-slate-400">
-                        The building blocks of modern AI
+                        Master the modern AI Research stack
                     </p>
                 </div>
 
@@ -308,16 +301,18 @@ export default function AIFoundationsCoursePage() {
                             key={i}
                             className="flex items-center gap-12 text-slate-400 font-bold text-2xl uppercase tracking-widest"
                         >
-                            <span>Machine Learning</span> <span>&bull;</span>
-                            <span>Deep Learning</span> <span>&bull;</span>
-                            <span>Neural Networks</span> <span>&bull;</span>
-                            <span>Data Science</span> <span>&bull;</span>
-                            <span>Statistics</span> <span>&bull;</span>
-                            <span>Python Basics</span> <span>&bull;</span>
-                            <span>Computer Vision</span> <span>&bull;</span>
-                            <span>NLP</span> <span>&bull;</span>
-                            <span>Generative AI</span> <span>&bull;</span>
-                            <span>Prompt Engineering</span> <span>&bull;</span>
+                            <span>PyTorch</span> <span>&bull;</span>
+                            <span>TensorFlow</span> <span>&bull;</span>
+                            <span>JAX</span> <span>&bull;</span>
+                            <span>Hugging Face</span> <span>&bull;</span>
+                            <span>LaTeX</span> <span>&bull;</span>
+                            <span>ArXiv</span> <span>&bull;</span>
+                            <span>Weights & Biases</span> <span>&bull;</span>
+                            <span>Google Colab</span> <span>&bull;</span>
+                            <span>Papers with Code</span> <span>&bull;</span>
+                            <span>Overleaf</span> <span>&bull;</span>
+                            <span>Zotero</span> <span>&bull;</span>
+                            <span>NumPy</span> <span>&bull;</span>
                         </div>
                     ))}
                 </motion.div>
@@ -328,40 +323,53 @@ export default function AIFoundationsCoursePage() {
                 <div className="container mx-auto max-w-4xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl font-bold text-slate-900 mb-4">Course Curriculum</h2>
-                        <p className="text-lg text-slate-600">A structured 45-day journey from basics to capstone.</p>
+                        <p className="text-lg text-slate-600">A structured path to AI Research mastery.</p>
                     </div>
 
                     <div className="space-y-12">
                         {/* Phase 1 */}
                         <div>
                             <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl font-bold text-amber-100">01</span>
+                                <span className="text-4xl font-bold text-purple-100">01</span>
                                 <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Foundations of AI & Data</h3>
-                                    <p className="text-slate-500">Focus: Understanding the core concepts of AI, Computing, and Data.</p>
+                                    <h3 className="text-2xl font-bold text-slate-900">Foundations & Mathematics</h3>
+                                    <p className="text-slate-500">Focus: Research mindset and mathematical intuition.</p>
                                 </div>
                             </div>
                             <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 1" title="Foundations of AI & Computing" topics={["Introduction to AI & History", "How Computers Think (Algorithms)", "Types of AI (Narrow vs General)", "AI in Everyday Life"]} />
-                                <WeekCard week="Week 2" title="Data Foundations for AI" topics={["Structured vs Unstructured Data", "Data Collection & Quality", "Introduction to Statistics", "Data Visualization"]} />
-                                <WeekCard week="Week 3" title="Machine Learning Fundamentals" topics={["Supervised vs Unsupervised Learning", "Regression & Classification", "Clustering", "Model Evaluation Metrics"]} />
+                                <WeekCard week="Phase 1" title="Foundations of AI Research" topics={["Defining AI & History", "Research Mindset vs Engineering", "Research Ethics & Integrity", "Future Trends"]} />
+                                <WeekCard week="Phase 2" title="Mathematics for AI Research" topics={["Linear Algebra Foundations", "Probability & Statistics", "Optimization Basics", "Information Theory"]} />
                             </div>
                         </div>
 
                         {/* Phase 2 */}
                         <div>
                             <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl font-bold text-amber-100">02</span>
+                                <span className="text-4xl font-bold text-purple-100">02</span>
                                 <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Deep Learning & Applications</h3>
-                                    <p className="text-slate-500">Focus: Neural Networks, Modern Tools, and Responsible AI.</p>
+                                    <h3 className="text-2xl font-bold text-slate-900">Core ML & Deep Learning</h3>
+                                    <p className="text-slate-500">Focus: Learning theory and modern architectures.</p>
                                 </div>
                             </div>
                             <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 4" title="Deep Learning & Neural Networks" topics={["Biological vs Artificial Neurons", "CNNs & RNNs", "Intro to Transformers", "Limitations of Deep Learning"]} />
-                                <WeekCard week="Week 5" title="AI Applications & Tools" topics={["AI Development Stack", "Generative AI & LLMs", "Prompt Engineering Basics", "AI in Business & ROI"]} />
-                                <WeekCard week="Week 6" title="Ethics, Governance & Responsible AI" topics={["Bias & Fairness", "Privacy & Security", "Explainable AI", "Future of AI & Careers"]} />
-                                <WeekCard week="Final Phase" title="Capstone & Certification" topics={["Capstone Project Planning", "Execution & Solution Design", "Final Presentation & Certification Exam"]} />
+                                <WeekCard week="Phase 3" title="Machine Learning Core" topics={["Supervised & Unsupervised Learning", "Model Evaluation & Benchmarking", "Bias-Variance Tradeoff", "Hyperparameter Tuning"]} />
+                                <WeekCard week="Phase 4" title="Deep Learning & Modern Architectures" topics={["Neural Networks Basics", "CNNs, RNNs & LSTMs", "Transformers & Attention", "Foundation Models"]} />
+                            </div>
+                        </div>
+
+                        {/* Phase 3 */}
+                        <div>
+                            <div className="flex items-center gap-4 mb-6">
+                                <span className="text-4xl font-bold text-purple-100">03</span>
+                                <div>
+                                    <h3 className="text-2xl font-bold text-slate-900">Frontiers & Methodology</h3>
+                                    <p className="text-slate-500">Focus: Advanced topics and conducting research.</p>
+                                </div>
+                            </div>
+                            <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
+                                <WeekCard week="Phase 5" title="Research Frontiers" topics={["Generative Models (VAEs, GANs)", "Large Language Models", "Reinforcement Learning", "Multimodal AI"]} />
+                                <WeekCard week="Phase 6" title="AI Research Methodology" topics={["Research Design & Hypothesis", "Experimentation & Analysis", "Reproducibility", "Scientific Communication"]} />
+                                <WeekCard week="Phase 7" title="Capstone Research Project" topics={["Problem Statement & Literature Survey", "Experiment Design", "Proposal Defense", "Final Evaluation"]} />
                             </div>
                         </div>
                     </div>
@@ -381,23 +389,23 @@ export default function AIFoundationsCoursePage() {
                                     height={400}
                                     className="rounded-lg shadow-sm"
                                 />
-                                <div className="absolute -top-6 -left-6 w-24 h-24 bg-amber-500/10 rounded-full blur-2xl" />
-                                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl" />
+                                <div className="absolute -top-6 -left-6 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl" />
+                                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-pink-500/10 rounded-full blur-3xl" />
                             </div>
                         </div>
                         <div className="md:w-1/2">
                             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Industry Recognized Certification</h2>
                             <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                                Prove your knowledge. Earn a certificate that validates your understanding of AI fundamentals and your ability to apply them in real-world scenarios.
+                                Validate your research capability. Earn a certificate that proves you can critique papers, design experiments, and contribute to the scientific community.
                             </p>
                             <ul className="space-y-4">
                                 <li className="flex items-center gap-3 text-slate-700 font-medium">
-                                    <div className="p-1 rounded-full bg-amber-100 text-amber-600"><CheckCircle2 size={16} /></div>
+                                    <div className="p-1 rounded-full bg-purple-100 text-purple-600"><CheckCircle2 size={16} /></div>
                                     Shareable on LinkedIn & Resumes
                                 </li>
                                 <li className="flex items-center gap-3 text-slate-700 font-medium">
-                                    <div className="p-1 rounded-full bg-orange-100 text-orange-600"><CheckCircle2 size={16} /></div>
-                                    Gateway to Advanced AI Careers
+                                    <div className="p-1 rounded-full bg-pink-100 text-pink-600"><CheckCircle2 size={16} /></div>
+                                    Demonstrates Research Rigor
                                 </li>
                             </ul>
                         </div>
@@ -411,7 +419,7 @@ export default function AIFoundationsCoursePage() {
                     <div className="text-center mb-16">
                         <h2 className="text-3xl font-bold text-slate-900 mb-4">Who you can become</h2>
                         <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                            This course opens doors to entry-level roles and prepares you for further specialization.
+                            AI Research is the frontier of innovation. Prepare for roles that define the future.
                         </p>
                     </div>
 
@@ -422,14 +430,14 @@ export default function AIFoundationsCoursePage() {
                                 <div key={role.id} className="bg-white rounded-xl border border-slate-200 overflow-hidden">
                                     <button
                                         onClick={() => setActiveRole(activeRole.id === role.id ? activeRole : role)}
-                                        className={`w-full text-left p-4 flex items-center justify-between transition-colors ${activeRole.id === role.id ? "bg-amber-50/50" : "bg-white"}`}
+                                        className={`w-full text-left p-4 flex items-center justify-between transition-colors ${activeRole.id === role.id ? "bg-purple-50/50" : "bg-white"}`}
                                     >
-                                        <h3 className={`font-bold text-lg ${activeRole.id === role.id ? "text-amber-600" : "text-slate-700"}`}>
+                                        <h3 className={`font-bold text-lg ${activeRole.id === role.id ? "text-purple-600" : "text-slate-700"}`}>
                                             {role.label}
                                         </h3>
                                         <ChevronDown
                                             size={20}
-                                            className={`text-slate-400 transition-transform duration-300 ${activeRole.id === role.id ? "rotate-180 text-amber-500" : ""}`}
+                                            className={`text-slate-400 transition-transform duration-300 ${activeRole.id === role.id ? "rotate-180 text-purple-500" : ""}`}
                                         />
                                     </button>
                                     <AnimatePresence>
@@ -461,11 +469,11 @@ export default function AIFoundationsCoursePage() {
                                         onMouseEnter={() => setActiveRole(role)}
                                         onClick={() => setActiveRole(role)}
                                         className={`text-left p-4 rounded-xl transition-all duration-200 border ${activeRole.id === role.id
-                                            ? "bg-white border-amber-200 shadow-md translate-x-2"
+                                            ? "bg-white border-purple-200 shadow-md translate-x-2"
                                             : "bg-transparent border-transparent hover:bg-white/50 hover:border-slate-200 text-slate-500"
                                             }`}
                                     >
-                                        <h3 className={`font-bold text-lg ${activeRole.id === role.id ? "text-amber-600" : "text-slate-700"}`}>
+                                        <h3 className={`font-bold text-lg ${activeRole.id === role.id ? "text-purple-600" : "text-slate-700"}`}>
                                             {role.label}
                                         </h3>
                                     </button>
@@ -496,10 +504,10 @@ export default function AIFoundationsCoursePage() {
                 <div className="container mx-auto max-w-3xl">
                     <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Frequently Asked Questions</h2>
                     <div className="space-y-6">
-                        <FAQItem question="Do I need any programming experience?" answer="No. This course is designed for absolute beginners. We introduce programming concepts conceptually and use no-code/low-code tools where possible." />
-                        <FAQItem question="Is this course suitable for non-technical backgrounds?" answer="Yes! Whether you are in marketing, sales, HR, or finance, understanding AI is crucial. This course explains AI in plain English." />
-                        <FAQItem question="What is the difference between this and the Engineering course?" answer="This 'Foundations' course focuses on the CONCEPTS and 'What/Why' of AI. The 'Engineering' course focuses on the CODE and 'How' to build complex systems. Start here if you are new." />
-                        <FAQItem question="Will I build anything?" answer="Yes. You will work on mini-projects like analyzing data, training a simple model, and generating content using AI tools." />
+                        <FAQItem question="Do I need a PhD to take this course?" answer="No. This course is designed to build the research mindset and skills that are typically acquired during a PhD, but in a compressed, intensive format." />
+                        <FAQItem question="What prerequisites are needed?" answer="A strong foundation in Python programming and basic familiarity with Machine Learning concepts. We will cover the necessary mathematics, but prior exposure to Linear Algebra and Calculus is helpful." />
+                        <FAQItem question="Will we cover MLOps and Deployment?" answer="No. This course is strictly focused on research, experimentation, and modeling. We explicitly exclude cloud infrastructure, Kubernetes, and production deployment to preserve the research focus." />
+                        <FAQItem question="What is the outcome of this roadmap?" answer="You will be able to confidently read and critique AI research papers, design reproducible experiments, identify research gaps, and prepare for research roles or PhD programs." />
                     </div>
                 </div>
             </section>
@@ -507,13 +515,13 @@ export default function AIFoundationsCoursePage() {
             {/* CTA Section */}
             <section className="py-24 px-6 bg-slate-900 border-t border-slate-800">
                 <div className="container mx-auto max-w-4xl text-center">
-                    <h2 className="text-4xl font-bold text-white mb-6">Ready to start your AI journey?</h2>
+                    <h2 className="text-4xl font-bold text-white mb-6">Ready to push the boundaries of AI?</h2>
                     <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
-                        Join the next cohort and build your foundation in Artificial Intelligence.
+                        Join the next cohort and become a Certified Professional in AI Research.
                     </p>
                     <Link
                         href="/apply"
-                        className="inline-flex items-center gap-2 px-10 py-5 bg-amber-600 text-white rounded-full font-bold text-xl hover:bg-amber-500 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
+                        className="inline-flex items-center gap-2 px-10 py-5 bg-purple-600 text-white rounded-full font-bold text-xl hover:bg-purple-500 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
                     >
                         Start Application <ArrowUpRight size={20} />
                     </Link>
@@ -528,7 +536,7 @@ export default function AIFoundationsCoursePage() {
 function InfoRow({ text }: { text: string }) {
     return (
         <div className="flex items-center gap-3">
-            <CheckCircle2 size={18} className="text-amber-500 shrink-0" />
+            <CheckCircle2 size={18} className="text-purple-500 shrink-0" />
             <span className="text-slate-300 text-sm font-medium">{text}</span>
         </div>
     )
@@ -538,7 +546,7 @@ function InfoRow({ text }: { text: string }) {
 function HighlightCard({ icon: Icon, title, desc }: { icon: any, title: string, desc: string }) {
     return (
         <div className="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600 mb-4">
+            <div className="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 mb-4">
                 <Icon size={24} />
             </div>
             <h3 className="text-xl font-bold text-slate-900 mb-2">{title}</h3>
@@ -549,8 +557,8 @@ function HighlightCard({ icon: Icon, title, desc }: { icon: any, title: string, 
 
 function WeekCard({ week, title, topics }: { week: string, title: string, topics: string[] }) {
     return (
-        <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:border-amber-200 transition-colors">
-            <div className="text-xs font-bold text-amber-600 uppercase tracking-wider mb-1">{week}</div>
+        <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:border-purple-200 transition-colors">
+            <div className="text-xs font-bold text-purple-600 uppercase tracking-wider mb-1">{week}</div>
             <h4 className="text-lg font-bold text-slate-900 mb-3">{title}</h4>
             <ul className="space-y-2">
                 {topics.map((topic, i) => (
@@ -571,10 +579,10 @@ function ProjectCard({ number, title, tag, desc, tech }: { number: string, title
                 {number}
             </div>
             <div className="relative z-10">
-                <div className="inline-block px-3 py-1 rounded-full bg-amber-900/30 text-amber-400 text-xs font-bold mb-4 border border-amber-500/20">
+                <div className="inline-block px-3 py-1 rounded-full bg-purple-900/30 text-purple-400 text-xs font-bold mb-4 border border-purple-500/20">
                     {tag}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-amber-400 transition-colors">{title}</h3>
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">{title}</h3>
                 <p className="text-slate-400 mb-6 leading-relaxed text-sm h-20">
                     {desc}
                 </p>

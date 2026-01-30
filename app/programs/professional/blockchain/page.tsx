@@ -101,7 +101,7 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc }: { sku:
                     href="/apply"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-indigo-600 transition-colors shadow-lg hover:shadow-indigo-500/25"
                 >
-                    View Curriculum <ArrowUpRight size={18} />
+                    View Program <ArrowUpRight size={18} />
                 </Link>
             </div>
         </motion.div>

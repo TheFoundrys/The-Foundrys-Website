@@ -30,7 +30,7 @@ import Image from "next/image";
 const customGradient = "linear-gradient(to right, #0f172a 0%, #1e293b 100%)";
 const textGradientClass = "text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400";
 
-export default function ExecutiveClient() {
+export default function DeliveringClient() {
     return (
         <main className="min-h-screen bg-slate-50 font-sans selection:bg-blue-100 selection:text-blue-900">
             <Navbar />
@@ -47,8 +47,7 @@ export default function ExecutiveClient() {
                                 <ShieldCheck size={16} /> Executive Leadership Program
                             </div>
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-                                Where Senior Tech Leaders become <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">System Owners.</span>
+                                Delivering In the Age of AI <br />
                             </h1>
                             <p className="text-xl text-slate-400 max-w-xl leading-relaxed mb-8">
                                 We forge innovation as a framework into people trusted to design, engineer, deploy, and govern critical systems in an AI-driven world.

@@ -234,7 +234,7 @@ export default function AIEngineeringCoursePage() {
                                     </div>
                                     <div>
                                         <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Format</div>
-                                        <div className="font-semibold">Weekend Hybrid</div>
+                                        <div className="font-semibold">Hybrid</div>
                                     </div>
                                 </div>
                             </div>
@@ -261,7 +261,7 @@ export default function AIEngineeringCoursePage() {
                             </div>
 
                             <div className="space-y-4 mb-8">
-                                <InfoRow text="Live Weekend Classes (Sat & Sun)" />
+                                <InfoRow text="Hybrid" />
                                 <InfoRow text="Hands-on Capstone Project" />
                                 <InfoRow text="Industry Recognized Certification" />
                                 {/* <InfoRow text="Career Support & Placement Assistance" /> */}
