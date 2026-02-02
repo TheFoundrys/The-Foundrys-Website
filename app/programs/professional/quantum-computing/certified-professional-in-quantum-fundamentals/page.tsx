@@ -186,13 +186,13 @@ export default function QuantumFundamentalsCoursePage() {
 
             {/* Curriculum */}
             <section className="py-24 px-6 bg-slate-50">
-                <div className="container mx-auto max-w-4xl">
+                <div className="container mx-auto max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl font-bold text-slate-900 mb-4">Course Curriculum</h2>
                         <p className="text-lg text-slate-600">A structured 4-week journey through the quantum landscape.</p>
                     </div>
 
-                    <div className="space-y-8">
+                    <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6">
                         <WeekCard
                             week="Week 1"
                             title="What is Quantum Computing?"

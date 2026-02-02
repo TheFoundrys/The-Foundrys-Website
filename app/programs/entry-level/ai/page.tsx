@@ -31,7 +31,7 @@ export default function EntryLevelAIPage() {
             <section className="py-24 px-6">
                 <div className="container mx-auto max-w-6xl">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-                        <CourseCard
+                        {/* <CourseCard
                             sku="AI 001"
                             title="Certified Professional in AI Foundations"
                             originalPrice="100,000"
@@ -40,6 +40,16 @@ export default function EntryLevelAIPage() {
                             desc="Build a strong foundation in the mathematics, logic, and core principles of Artificial Intelligence. Learn how intelligent systems use data and algorithms to make decisions."
                             persona="For Students & AI enthusiasts"
                             href="/programs/entry-level/ai/certified-professional-in-ai-foundations"
+                        /> */}
+                        <CourseCard
+                            sku="AI 003"
+                            title="Certified Professional in AI Engineering"
+                            originalPrice="100,000"
+                            discountedPrice="50,000"
+                            duration="45 Days"
+                            desc="Focus on the engineering lifecycle. Learn to build, scale, and optimize production-grade AI applications."
+                            href="/programs/entry-level/ai/certified-professional-in-ai-engineering"
+                            persona="For Software Developers (Full-stack, Backend, MERN ...)"
                         />
                         <CourseCard
                             sku="AI 002"
@@ -53,7 +63,7 @@ export default function EntryLevelAIPage() {
                         <CourseCard
                             sku="AI 005"
                             title="Certified Professional in Prompt Engineering"
-                            originalPrice="20,000"
+                            originalPrice="20,000"  
                             discountedPrice="10,000"
                             duration="2 weeks"
                             desc="Master the art of communicating with AI. Learn to design and optimize prompts to unlock the full potential of Large Language Models."

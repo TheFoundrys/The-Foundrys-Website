@@ -565,47 +565,59 @@ function TargetCard({ icon, title, desc }: { icon: any, title: string, desc: str
 
 function DomainCard({ title, tagline, desc, icon, href }: { title: string, tagline?: string, desc: string, icon: any, href: string }) {
     return (
-        <div className="p-8 rounded-2xl border border-slate-100 bg-white hover:bg-slate-50 transition-all group flex flex-col items-start gap-6 h-full relative">
-            <div className="flex items-start gap-6">
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform shrink-0 relative overflow-hidden">
-                    <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
-                    <div className="relative z-10 text-slate-900">
-                        {React.cloneElement(icon, { size: 28, strokeWidth: 1.5 })}
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group"
+        >
+            <div className="p-8 flex-grow">
+                <div className="flex items-start gap-4 mb-6">
+                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform shrink-0 relative overflow-hidden bg-slate-50">
+                        <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
+                        <div className="relative z-10 text-slate-900">
+                            {React.cloneElement(icon, { size: 28, strokeWidth: 1.5 })}
+                        </div>
+                    </div>
+                    <div className="flex-1">
+                        <h3 className="text-2xl font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">{title}</h3>
+                        <div className="text-sm font-semibold text-blue-600">{tagline}</div>
                     </div>
                 </div>
-                <div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-1">{title}</h3>
-                    <div className="text-sm font-semibold text-blue-600 mb-2">{tagline}</div>
-                    <p className="text-slate-600 leading-relaxed text-sm">{desc}</p>
+                <p className="text-slate-600 leading-relaxed mb-6">{desc}</p>
+
+                <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-slate-500 font-medium">
+                    <div className="flex items-center gap-2">
+                        <CheckCircle2 size={16} className="text-blue-500" />
+                        Hybrid Learning
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <CheckCircle2 size={16} className="text-blue-500" />
+                        Hands-on Projects
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <CheckCircle2 size={16} className="text-blue-500" />
+                        Industry Certification
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <CheckCircle2 size={16} className="text-blue-500" />
+                        Expert Mentorship
+                    </div>
                 </div>
             </div>
 
-            <div className="mt-auto w-full pt-4 border-t border-slate-100 flex justify-end">
+            <div className="p-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-4">
+                <div className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100">
+                    Professional Program
+                </div>
                 <Link
                     href={href}
-                    className="
-                    inline-flex items-center gap-2
-                    px-4 py-2
-                    rounded-full
-                    border border-slate-200
-                    text-sm font-semibold
-                    text-slate-500
-                    hover:text-blue-600
-                    hover:border-blue-200
-                    hover:bg-blue-50
-                    transition-all
-                    group/link
-                    "
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 transition-colors shadow-lg hover:shadow-blue-500/25"
                 >
-                    View Programs
-                    <ArrowUpRight
-                        size={16}
-                        className="rotate-45 group-hover/link:rotate-12 transition-transform"
-                    />
+                    View Programs <ArrowUpRight size={18} />
                 </Link>
             </div>
-
-        </div>
+        </motion.div>
     )
 }
 

@@ -221,7 +221,7 @@ export default function AIEngineeringTeluguCoursePage() {
                                 <span className="block text-2xl md:text-3xl mt-2 text-slate-400 font-normal">(Telugu Medium)</span>
                             </h1>
                             <p className="text-xl text-slate-400 max-w-xl leading-relaxed mb-8">
-                                Become a Production-Ready AI Engineer in 90 Days. Build autonomous agents, RAG systems, and multimodal apps that solve real-world problems. <span className="text-blue-400 font-semibold">Taught entirely in Telugu.</span>
+                                Become a Production-Ready AI Engineer in 45 Days. Build autonomous agents, RAG systems, and multimodal apps that solve real-world problems. <span className="text-blue-400 font-semibold">Taught entirely in Telugu.</span>
                             </p>
 
                             <div className="flex flex-wrap gap-6 mb-10">
@@ -442,44 +442,19 @@ export default function AIEngineeringTeluguCoursePage() {
 
             {/* Curriculum */}
             <section className="py-24 px-6 bg-white">
-                <div className="container mx-auto max-w-4xl">
+                <div className="container mx-auto max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl font-bold text-slate-900 mb-4">Course Curriculum</h2>
                         <p className="text-lg text-slate-600">A comprehensive 45-day journey from foundations to production.</p>
                     </div>
 
-                    <div className="space-y-12">
-                        {/* Phase 1 */}
-                        <div>
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl font-bold text-blue-100">01</span>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Foundations & OpenAI Ecosystem</h3>
-                                    <p className="text-slate-500">Focus: Mastering the core &quot;Engine&quot; and API-first development.</p>
-                                </div>
-                            </div>
-                            <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 1" title="Fundamentals & OpenAI Platform" topics={["AI vs ML vs DL", "LLM Architecture (Transformers)", "Chat Completions API", "Prompt Engineering Strategies"]} />
-                                <WeekCard week="Week 2" title="Advanced API & Embeddings" topics={["Function Calling & Tools", "Structured Outputs", "Vision & Audio APIs", "Vector Embeddings 101"]} />
-                                <WeekCard week="Week 3" title="Vector DBs & RAG Foundations" topics={["Pinecone & ChromaDB", "Indexing Strategies", "Naive RAG vs Advanced RAG", "Chunking Strategies"]} />
-                            </div>
-                        </div>
-
-                        {/* Phase 2 */}
-                        <div>
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl font-bold text-blue-100">02</span>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Agents, Fine-Tuning & Production</h3>
-                                    <p className="text-slate-500">Focus: Autonomous systems and production engineering.</p>
-                                </div>
-                            </div>
-                            <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 4" title="Advanced RAG & Open Source" topics={["Re-ranking & Query Expansion", "Hugging Face Hub", "Llama 3 & Mistral", "Running Models Locally (Ollama)"]} />
-                                <WeekCard week="Week 5" title="AI Agents & Fine-Tuning" topics={["ReAct Pattern", "LangChain Agents", "PEFT & LoRA", "Fine-tuning Llama 3"]} />
-                                <WeekCard week="Week 6" title="Multimodal AI & Production" topics={["Vision & Speech Pipelines", "Eval & Monitoring (LangSmith)", "Deployment Strategies", "Capstone Project Defense"]} />
-                            </div>
-                        </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <WeekCard week="Week 1" title="Fundamentals & OpenAI Platform" topics={["AI vs ML vs DL", "LLM Architecture (Transformers)", "Chat Completions API", "Prompt Engineering Strategies"]} />
+                        <WeekCard week="Week 2" title="Advanced API & Embeddings" topics={["Function Calling & Tools", "Structured Outputs", "Vision & Audio APIs", "Vector Embeddings 101"]} />
+                        <WeekCard week="Week 3" title="Vector DBs & RAG Foundations" topics={["Pinecone & ChromaDB", "Indexing Strategies", "Naive RAG vs Advanced RAG", "Chunking Strategies"]} />
+                        <WeekCard week="Week 4" title="Advanced RAG & Open Source" topics={["Re-ranking & Query Expansion", "Hugging Face Hub", "Llama 3 & Mistral", "Running Models Locally (Ollama)"]} />
+                        <WeekCard week="Week 5" title="AI Agents & Fine-Tuning" topics={["ReAct Pattern", "LangChain Agents", "PEFT & LoRA", "Fine-tuning Llama 3"]} />
+                        <WeekCard week="Week 6" title="Multimodal AI & Production" topics={["Vision & Speech Pipelines", "Eval & Monitoring (LangSmith)", "Deployment Strategies", "Capstone Project Defense"]} />
                     </div>
                 </div>
             </section>

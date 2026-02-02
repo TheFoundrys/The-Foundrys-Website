@@ -330,42 +330,17 @@ export default function PromptEngineeringCoursePage() {
 
             {/* Curriculum */}
             <section className="py-24 px-6 bg-white">
-                <div className="container mx-auto max-w-4xl">
+                <div className="container mx-auto max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl font-bold text-slate-900 mb-4">Course Curriculum</h2>
                         <p className="text-lg text-slate-600">A structured path to prompt engineering mastery.</p>
                     </div>
 
-                    <div className="space-y-12">
-                        {/* Phase 1 */}
-                        <div>
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl font-bold text-purple-100">01</span>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Foundations, Reasoning & Advanced Techniques</h3>
-                                    <p className="text-slate-500">Focus: Mastering the core mechanics of prompting, reliability, and technical integration.</p>
-                                </div>
-                            </div>
-                            <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 1 - Part 1" title="Foundations & Core Mechanics" topics={["How LLMs Work & Capabilities", "Zero-shot & Few-shot Prompting", "Role-Based Prompting Strategies"]} />
-                                <WeekCard week="Week 1 - Part 2" title="Advanced Reasoning & Reliability" topics={["Chain-of-Thought (CoT) & Tree-of-Thoughts", "Hallucination Mitigation & Defense", "Structured Outputs (JSON/XML) & APIs"]} />
-                            </div>
-                        </div>
-
-                        {/* Phase 2 */}
-                        <div>
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl font-bold text-purple-100">02</span>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Production Systems, Agents & Multi-Modal AI</h3>
-                                    <p className="text-slate-500">Focus: Building autonomous systems and deploying to production.</p>
-                                </div>
-                            </div>
-                            <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 2 - Part 1" title="Multi-Modal AI & Operations" topics={["Vision Models & Image Generation", "Evaluation Frameworks & A/B Testing", "Optimizing Prompts for Cost & Speed"]} />
-                                <WeekCard week="Week 2 - Part 2" title="Agents & Capstone Deployment" topics={["Agentic Workflows (ReAct, Planning)", "Tool Use & Function Calling", "End-to-End Application Deployment"]} />
-                            </div>
-                        </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <WeekCard week="Week 1 - Part 1" title="Foundations & Core Mechanics" topics={["How LLMs Work & Capabilities", "Zero-shot & Few-shot Prompting", "Role-Based Prompting Strategies"]} />
+                        <WeekCard week="Week 1 - Part 2" title="Advanced Reasoning & Reliability" topics={["Chain-of-Thought (CoT) & Tree-of-Thoughts", "Hallucination Mitigation & Defense", "Structured Outputs (JSON/XML) & APIs"]} />
+                        <WeekCard week="Week 2 - Part 1" title="Multi-Modal AI & Operations" topics={["Vision Models & Image Generation", "Evaluation Frameworks & A/B Testing", "Optimizing Prompts for Cost & Speed"]} />
+                        <WeekCard week="Week 2 - Part 2" title="Agents & Capstone Deployment" topics={["Agentic Workflows (ReAct, Planning)", "Tool Use & Function Calling", "End-to-End Application Deployment"]} />
                     </div>
                 </div>
             </section>

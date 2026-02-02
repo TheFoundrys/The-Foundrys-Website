@@ -38,6 +38,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/programs/executive/strategic-impact',
         '/programs/professional',
         '/programs/professional/ai',
+        '/programs/entry-level/ai/certified-professional-in-ai-engineering',
         '/programs/professional/ai/certified-professional-in-ai-engineering',
         '/programs/professional/ai/certified-professional-in-ai-engineering-in-telugu',
         '/programs/professional/ai/certified-professional-in-ai-operations',

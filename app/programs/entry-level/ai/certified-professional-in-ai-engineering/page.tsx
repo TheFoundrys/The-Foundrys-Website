@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Navbar } from "@/components/ui/navbar";
@@ -252,8 +253,8 @@ export default function AIEngineeringCoursePage() {
                         <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-3xl p-8 lg:p-10">
                             <h3 className="text-white text-xl font-bold mb-6">Program Fee</h3>
                             <div className="flex items-baseline gap-3 mb-2">
-                                <span className="text-4xl lg:text-5xl font-bold text-white">₹75,000</span>
-                                <span className="text-xl text-slate-500 line-through">₹150,000</span>
+                                <span className="text-4xl lg:text-5xl font-bold text-white">₹50,000</span>
+                                <span className="text-xl text-slate-500 line-through">₹100,000</span>
                             </div>
                             <div className="flex items-center gap-2 mb-8">
                                 <span className="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-2 py-1 rounded uppercase">50% Scholarship</span>

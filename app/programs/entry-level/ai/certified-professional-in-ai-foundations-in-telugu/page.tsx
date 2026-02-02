@@ -256,7 +256,7 @@ export default function AIFoundationsTeluguCoursePage() {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-6 gap-8">
                         <HighlightCard icon={BookOpen} title="Conceptual Clarity" desc="Understand the 'Why' and 'How' of AI without getting lost in complex math." />
                         <HighlightCard icon={Database} title="Data Fluency" desc="Learn how data is collected, cleaned, and used to train intelligent systems." />
                         <HighlightCard icon={BrainCircuit} title="ML & DL Foundation" desc="Grasp the core concepts of Machine Learning and Deep Learning algorithms." />
@@ -351,7 +351,7 @@ export default function AIFoundationsTeluguCoursePage() {
                         {/* Phase 1 */}
                         <div>
                             <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl font-bold text-amber-100">01</span>
+                                <span className="text-4xl font-bold text-amber-500">01</span>
                                 <div>
                                     <h3 className="text-2xl font-bold text-slate-900">Foundations of AI & Data</h3>
                                     <p className="text-slate-500">Focus: Understanding the core concepts of AI, Computing, and Data.</p>
@@ -367,7 +367,7 @@ export default function AIFoundationsTeluguCoursePage() {
                         {/* Phase 2 */}
                         <div>
                             <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl font-bold text-amber-100">02</span>
+                                <span className="text-4xl font-bold text-amber-500">02</span>
                                 <div>
                                     <h3 className="text-2xl font-bold text-slate-900">Deep Learning & Applications</h3>
                                     <p className="text-slate-500">Focus: Neural Networks, Modern Tools, and Responsible AI.</p>

@@ -332,44 +332,19 @@ export default function MLOpsCoursePage() {
 
             {/* Curriculum */}
             <section className="py-24 px-6 bg-white">
-                <div className="container mx-auto max-w-4xl">
+                <div className="container mx-auto max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl font-bold text-slate-900 mb-4">Course Curriculum</h2>
                         <p className="text-lg text-slate-600">A structured path to MLOps mastery.</p>
                     </div>
 
-                    <div className="space-y-12">
-                        {/* Phase 1 */}
-                        <div>
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl font-bold text-cyan-100">01</span>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Foundations & Pipeline Automation</h3>
-                                    <p className="text-slate-500">Focus: Versioning data, code, and models for reproducibility.</p>
-                                </div>
-                            </div>
-                            <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 1" title="MLOps Foundations & Experiment Tracking" topics={["Linux & Bash Scripting", "Docker Fundamentals", "ML Lifecycle", "MLflow Tracking Server"]} />
-                                <WeekCard week="Week 2" title="Data Versioning & Workflow Orchestration" topics={["Data Version Control (DVC)", "S3 Integration", "Apache Airflow Basics", "DAGs & Operators"]} />
-                                <WeekCard week="Week 3" title="Model Serving & CI/CD for ML" topics={["REST APIs with FastAPI", "Containerizing Models", "GitHub Actions", "Automated Testing (PyTest)"]} />
-                            </div>
-                        </div>
-
-                        {/* Phase 2 */}
-                        <div>
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl font-bold text-cyan-100">02</span>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Deployment, Monitoring & Scale</h3>
-                                    <p className="text-slate-500">Focus: Production infrastructure, observability, and scaling.</p>
-                                </div>
-                            </div>
-                            <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Week 4" title="Kubernetes & Kubeflow" topics={["K8s Architecture", "Deploying Models on K8s", "Kubeflow Pipelines", "Helm Charts"]} />
-                                <WeekCard week="Week 5" title="Monitoring & Observability" topics={["Data Drift & Concept Drift", "Evidently AI", "Prometheus & Grafana Dashboards", "Alerting"]} />
-                                <WeekCard week="Week 6" title="Advanced Deployment & Capstone" topics={["Canary & Shadow Deployments", "Feature Stores (Feast)", "Scalable MLOps Platform", "Final Certification"]} />
-                            </div>
-                        </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <WeekCard week="Week 1" title="MLOps Foundations & Experiment Tracking" topics={["Linux & Bash Scripting", "Docker Fundamentals", "ML Lifecycle", "MLflow Tracking Server"]} />
+                        <WeekCard week="Week 2" title="Data Versioning & Workflow Orchestration" topics={["Data Version Control (DVC)", "S3 Integration", "Apache Airflow Basics", "DAGs & Operators"]} />
+                        <WeekCard week="Week 3" title="Model Serving & CI/CD for ML" topics={["REST APIs with FastAPI", "Containerizing Models", "GitHub Actions", "Automated Testing (PyTest)"]} />
+                        <WeekCard week="Week 4" title="Kubernetes & Kubeflow" topics={["K8s Architecture", "Deploying Models on K8s", "Kubeflow Pipelines", "Helm Charts"]} />
+                        <WeekCard week="Week 5" title="Monitoring & Observability" topics={["Data Drift & Concept Drift", "Evidently AI", "Prometheus & Grafana Dashboards", "Alerting"]} />
+                        <WeekCard week="Week 6" title="Advanced Deployment & Capstone" topics={["Canary & Shadow Deployments", "Feature Stores (Feast)", "Scalable MLOps Platform", "Final Certification"]} />
                     </div>
                 </div>
             </section>

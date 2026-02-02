@@ -320,58 +320,20 @@ export default function AIResearchCoursePage() {
 
             {/* Curriculum */}
             <section className="py-24 px-6 bg-white">
-                <div className="container mx-auto max-w-4xl">
+                <div className="container mx-auto max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl font-bold text-slate-900 mb-4">Course Curriculum</h2>
                         <p className="text-lg text-slate-600">A structured path to AI Research mastery.</p>
                     </div>
 
-                    <div className="space-y-12">
-                        {/* Phase 1 */}
-                        <div>
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl font-bold text-purple-100">01</span>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Foundations & Mathematics</h3>
-                                    <p className="text-slate-500">Focus: Research mindset and mathematical intuition.</p>
-                                </div>
-                            </div>
-                            <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Phase 1" title="Foundations of AI Research" topics={["Defining AI & History", "Research Mindset vs Engineering", "Research Ethics & Integrity", "Future Trends"]} />
-                                <WeekCard week="Phase 2" title="Mathematics for AI Research" topics={["Linear Algebra Foundations", "Probability & Statistics", "Optimization Basics", "Information Theory"]} />
-                            </div>
-                        </div>
-
-                        {/* Phase 2 */}
-                        <div>
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl font-bold text-purple-100">02</span>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Core ML & Deep Learning</h3>
-                                    <p className="text-slate-500">Focus: Learning theory and modern architectures.</p>
-                                </div>
-                            </div>
-                            <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Phase 3" title="Machine Learning Core" topics={["Supervised & Unsupervised Learning", "Model Evaluation & Benchmarking", "Bias-Variance Tradeoff", "Hyperparameter Tuning"]} />
-                                <WeekCard week="Phase 4" title="Deep Learning & Modern Architectures" topics={["Neural Networks Basics", "CNNs, RNNs & LSTMs", "Transformers & Attention", "Foundation Models"]} />
-                            </div>
-                        </div>
-
-                        {/* Phase 3 */}
-                        <div>
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl font-bold text-purple-100">03</span>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-slate-900">Frontiers & Methodology</h3>
-                                    <p className="text-slate-500">Focus: Advanced topics and conducting research.</p>
-                                </div>
-                            </div>
-                            <div className="space-y-4 pl-4 md:pl-12 border-l-2 border-slate-100">
-                                <WeekCard week="Phase 5" title="Research Frontiers" topics={["Generative Models (VAEs, GANs)", "Large Language Models", "Reinforcement Learning", "Multimodal AI"]} />
-                                <WeekCard week="Phase 6" title="AI Research Methodology" topics={["Research Design & Hypothesis", "Experimentation & Analysis", "Reproducibility", "Scientific Communication"]} />
-                                <WeekCard week="Phase 7" title="Capstone Research Project" topics={["Problem Statement & Literature Survey", "Experiment Design", "Proposal Defense", "Final Evaluation"]} />
-                            </div>
-                        </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <WeekCard week="Phase 1" title="Foundations of AI Research" topics={["Defining AI & History", "Research Mindset vs Engineering", "Research Ethics & Integrity", "Future Trends"]} />
+                        <WeekCard week="Phase 2" title="Mathematics for AI Research" topics={["Linear Algebra Foundations", "Probability & Statistics", "Optimization Basics", "Information Theory"]} />
+                        <WeekCard week="Phase 3" title="Machine Learning Core" topics={["Supervised & Unsupervised Learning", "Model Evaluation & Benchmarking", "Bias-Variance Tradeoff", "Hyperparameter Tuning"]} />
+                        <WeekCard week="Phase 4" title="Deep Learning & Modern Architectures" topics={["Neural Networks Basics", "CNNs, RNNs & LSTMs", "Transformers & Attention", "Foundation Models"]} />
+                        <WeekCard week="Phase 5" title="Research Frontiers" topics={["Generative Models (VAEs, GANs)", "Large Language Models", "Reinforcement Learning", "Multimodal AI"]} />
+                        <WeekCard week="Phase 6" title="AI Research Methodology" topics={["Research Design & Hypothesis", "Experimentation & Analysis", "Reproducibility", "Scientific Communication"]} />
+                        <WeekCard week="Phase 7" title="Capstone Research Project" topics={["Problem Statement & Literature Survey", "Experiment Design", "Proposal Defense", "Final Evaluation"]} />
                     </div>
                 </div>
             </section>
