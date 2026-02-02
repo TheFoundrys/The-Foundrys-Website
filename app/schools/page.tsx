@@ -75,7 +75,7 @@ export default function SchoolsPage() {
             reversed
             programs={[
                 { title: "Venture Building", desc: "Zero to One", href: "/schools/venture-building", icon: Rocket, color: "text-amber-400", bg: "bg-amber-950/30", border: "border-amber-500/20" },
-                { title: "Certified Innovator", desc: "Systems Thinkers", href: "/schools/strategy", icon: Lightbulb, color: "text-yellow-400", bg: "bg-yellow-950/30", border: "border-yellow-500/20" },
+                { title: "Certified Innovator", desc: "Systems Thinkers", href: "/schools/certified-innovator", icon: Lightbulb, color: "text-yellow-400", bg: "bg-yellow-950/30", border: "border-yellow-500/20" },
             ]}
         />
 

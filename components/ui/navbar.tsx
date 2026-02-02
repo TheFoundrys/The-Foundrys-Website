@@ -105,7 +105,7 @@ export function Navbar() {
                 bg: "bg-amber-50"
             },
             {
-                href: "/schools/strategy",
+                href: "/schools/certified-innovator",
                 label: "Certified Innovator",
                 desc: "Systems Thinkers",
                 icon: Lightbulb,
