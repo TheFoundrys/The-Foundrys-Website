@@ -7,7 +7,7 @@ import { Campus } from "@/components/campus";
 import { Footer } from "@/components/footer";
 import { Metadata } from "next";
 import { ArchetypeColumns } from "@/components/home/archetype-columns";
-import { FaqPreview } from "@/components/home/faq-preview";
+// import { FaqPreview } from "@/components/home/faq-preview";
 import { TheForging } from "@/components/home/the-forging";
 import { UniqueNeeds } from "@/components/home/unique-needs";
 import { FaqJsonLd } from "@/components/seo/faq-json-ld";
@@ -64,7 +64,7 @@ export default function Home() {
         {/* Section 3: The Forging */}
         <TheForging />
 
-        <FaqPreview />
+        {/* <FaqPreview /> */}
         <InfiniteLogoScroll />
         <Footer />
     </main>

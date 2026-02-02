@@ -75,7 +75,7 @@ export default function SchoolsPage() {
             reversed
             programs={[
                 { title: "Venture Building", desc: "Zero to One", href: "/schools/venture-building", icon: Rocket, color: "text-amber-400", bg: "bg-amber-950/30", border: "border-amber-500/20" },
-                { title: "Strategic Innovation", desc: "Market Disruption", href: "/schools/strategy", icon: Lightbulb, color: "text-yellow-400", bg: "bg-yellow-950/30", border: "border-yellow-500/20" },
+                { title: "Certified Innovator", desc: "Systems Thinkers", href: "/schools/strategy", icon: Lightbulb, color: "text-yellow-400", bg: "bg-yellow-950/30", border: "border-yellow-500/20" },
             ]}
         />
 
@@ -88,6 +88,7 @@ export default function SchoolsPage() {
             variant="sustainability"
             programs={[
                 { title: "ESG & Sustainability", desc: "Strategic Responsibility", href: "/schools/esg", icon: Leaf, color: "text-emerald-400", bg: "bg-emerald-950/30", border: "border-emerald-500/20" },
+                { title: "Sustainability in the Age of AI", desc: "Engineering Responsibility", href: "/programs/sustainability-in-the-age-of-ai", icon: Leaf, color: "text-emerald-400", bg: "bg-emerald-950/30", border: "border-emerald-500/20" },
             ]}
         />
 

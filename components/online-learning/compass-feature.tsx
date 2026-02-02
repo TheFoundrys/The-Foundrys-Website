@@ -23,7 +23,7 @@ export function CompassFeature() {
                         Meet <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Compass.</span>
                     </h2>
                     <p className="text-lg text-slate-400 mb-8 leading-relaxed max-w-xl">
-                        A unified platform for your entire academic journey. From live lectures and assignments to peer collaboration and career support—Compass is your digital campus.
+                        A unified platform for your entire academic journey. From live lectures and assignments to peer collaboration and career support Compass is your digital campus.
                     </p>
 
                     <div className="flex flex-col gap-6 mb-10">

@@ -106,8 +106,8 @@ export function Navbar() {
             },
             {
                 href: "/schools/strategy",
-                label: "Strategic Innovation",
-                desc: "Market Disruption",
+                label: "Certified Innovator",
+                desc: "Systems Thinkers",
                 icon: Lightbulb,
                 color: "text-yellow-600",
                 bg: "bg-yellow-50"
@@ -121,6 +121,14 @@ export function Navbar() {
                 icon: Leaf,
                 color: "text-green-600",
                 bg: "bg-green-50"
+            },
+            {
+                href: "/programs/sustainability-in-the-age-of-ai",
+                label: "Sustainability in the Age of AI",
+                desc: "Engineering Responsibility",
+                icon: Leaf,
+                color: "text-emerald-600",
+                bg: "bg-emerald-50"
             }
         ],
         "energy": [

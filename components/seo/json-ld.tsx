@@ -39,7 +39,7 @@ export function JsonLd() {
       "longitude": 78.3772
     },
     "description": "India's first Deep Tech and Venture Building school located inside a workspace. Founded by Vishwanath Akuthota (Dr. Pinnacle). We forge Architects, not just engineers.",
-    "foundingDate": "2024",
+    "foundingDate": "2025",
     "priceRange": "$$$"
   };
 
