@@ -23,6 +23,7 @@ import { Footer } from "@/components/footer";
 
 export default function SustainabilityClient() {
    const containerRef = useRef(null);
+
    useScroll({
       target: containerRef,
       offset: ["start start", "end end"]
@@ -179,7 +180,7 @@ export default function SustainabilityClient() {
          </section>
 
          {/* COHORT FORMAT */}
-         <section className="py-24 bg-white">
+         {/* <section className="py-24 bg-white">
             <div className="container mx-auto px-6 max-w-5xl">
                <h2 className="text-3xl md:text-4xl font-serif text-stone-900 mb-12 text-center">Cohort Format</h2>
 
@@ -197,7 +198,7 @@ export default function SustainabilityClient() {
                   ))}
                </div>
             </div>
-         </section>
+         </section> */}
 
          {/* CURRICULUM: WEEK BY WEEK */}
          <section className="py-24 bg-stone-50 border-y border-stone-200">
