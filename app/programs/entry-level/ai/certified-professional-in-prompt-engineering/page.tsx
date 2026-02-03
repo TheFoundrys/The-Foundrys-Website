@@ -206,8 +206,8 @@ export default function PromptEngineeringCoursePage() {
                         <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-3xl p-8 lg:p-10">
                             <h3 className="text-white text-xl font-bold mb-6">Program Fee</h3>
                             <div className="flex items-baseline gap-3 mb-2">
-                                <span className="text-4xl lg:text-5xl font-bold text-white">₹50,000</span>
-                                <span className="text-xl text-slate-500 line-through">₹100,000</span>
+                                <span className="text-4xl lg:text-5xl font-bold text-white">₹10,000</span>
+                                <span className="text-xl text-slate-500 line-through">₹20,000</span>
                             </div>
                             <div className="flex items-center gap-2 mb-8">
                                 <span className="bg-purple-500/20 text-purple-400 text-xs font-bold px-2 py-1 rounded uppercase">50% Scholarship</span>
@@ -220,9 +220,7 @@ export default function PromptEngineeringCoursePage() {
                                 <InfoRow text="Industry Recognized Certification" />
                             </div>
 
-                            <p className="text-slate-500 text-sm font-medium leading-relaxed text-center mt-4">
-                                *Flexible EMI options available.
-                            </p>
+                            
                         </div>
                     </div>
                 </div>

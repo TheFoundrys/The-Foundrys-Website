@@ -226,9 +226,7 @@ export default function AIFoundationsTeluguCoursePage() {
                                 <InfoRow text="Industry Recognized Certification" />
                             </div>
 
-                            <p className="text-slate-500 text-sm font-medium leading-relaxed text-center mt-4">
-                                *Flexible EMI options available.
-                            </p>
+                            
                         </div>
                     </div>
                 </div>

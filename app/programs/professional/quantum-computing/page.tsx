@@ -33,7 +33,7 @@ export default function QuantumPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             <CourseCard
               sku="Q 008"
-              title="Certified Professional in Quantum Fundamentals"
+              title="Certified  in Quantum Fundamentals"
               originalPrice="10,000"
               discountedPrice="5,000"
               desc="A 4-week course focusing on the 4 pillars of the National Quantum Mission: Quantum Computing, Materials, Communication, and Sensing."
@@ -42,49 +42,49 @@ export default function QuantumPage() {
             />
             <CourseCard
               sku="Q 001"
-              title="Certified Professional in Quantum Engineering"
+              title="Certified in Quantum Engineering"
               originalPrice="150,000"
               discountedPrice="75,000"
               desc="Hardware-focused track covering quantum gates, circuitry, and the physical implementation of qubits."
             />
             <CourseCard
               sku="Q 002"
-              title="Certified Professional in Quantum Computing"
+              title="Certified in Quantum Computing"
               originalPrice="150,000"
               discountedPrice="75,000"
               desc="Core algorithm track including Shor's, Grover's, and quantum simulation techniques."
             />
             <CourseCard
               sku="Q 003"
-              title="Certified Professional in Quantum Sensing"
+              title="Certified in Quantum Sensing"
               originalPrice="150,000"
               discountedPrice="75,000"
               desc="Explore high-precision metrology and imaging using quantum properties."
             />
             <CourseCard
               sku="Q 004"
-              title="Certified Professional in Quantum Communication"
+              title="Certified in Quantum Communication"
               originalPrice="150,000"
               discountedPrice="75,000"
               desc="Secure communication protocols, quantum key distribution (QKD), and the quantum internet."
             />
             <CourseCard
               sku="Q 005"
-              title="Certified Professional in Quantum Information"
+              title="Certified in Quantum Information"
               originalPrice="150,000"
               discountedPrice="75,000"
               desc="Information theory re-imagined. Entropy, entanglement, and density matrices."
             />
             <CourseCard
               sku="Q 006"
-              title="Certified Professional in Post Quantum Cryptography"
+              title="Certified in Post Quantum Cryptography"
               originalPrice="150,000"
               discountedPrice="75,000"
               desc="Preparing classical systems to withstand quantum attacks. Lattice-based cryptography and more."
             />
             <CourseCard
               sku="QAI 001"
-              title="Certified Professional in Quantum AI"
+              title="Certified in Quantum AI"
               originalPrice="400,000"
               discountedPrice="200,000"
               desc="The intersection of two frontiers. Quantum machine learning algorithms and neural networks."

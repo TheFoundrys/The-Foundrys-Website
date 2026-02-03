@@ -43,7 +43,7 @@ export default function EntryLevelAIPage() {
                         /> */}
                         <CourseCard
                             sku="AI 003"
-                            title="Certified Professional in AI Engineering"
+                            title="Certified in AI Engineering"
                             originalPrice="100,000"
                             discountedPrice="50,000"
                             duration="45 Days"
@@ -53,17 +53,17 @@ export default function EntryLevelAIPage() {
                         />
                         <CourseCard
                             sku="AI 002"
-                            title="Certified Professional in AI Research"
+                            title="Certified in AI Research"
                             originalPrice="150,000"
                             discountedPrice="75,000"
                             duration="45 Days"
                             desc="Dive deep into algorithms and model architectures that power modern AI. Learn how to push the boundaries of intelligent systems through research and experimentation."
-                            persona="For Data & ML Professionals"
+                            persona="For Data & ML Researchers"
                         />
                         <CourseCard
                             sku="AI 005"
-                            title="Certified Professional in Prompt Engineering"
-                            originalPrice="20,000"  
+                            title="Certified in Prompt Engineering"
+                            originalPrice="20,000"
                             discountedPrice="10,000"
                             duration="2 weeks"
                             desc="Master the art of communicating with AI. Learn to design and optimize prompts to unlock the full potential of Large Language Models."

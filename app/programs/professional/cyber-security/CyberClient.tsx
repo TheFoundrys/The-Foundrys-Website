@@ -33,28 +33,28 @@ export default function CyberClient() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                         <CourseCard
                             sku="CS 001"
-                            title="Certified Professional in Cyber Security"
+                            title="Certified in Cyber Security"
                             originalPrice="300,000"
                             discountedPrice="150,000"
                             desc="Comprehensive coverage of network security, ethical hacking, and incident response for the enterprise."
                         />
                         <CourseCard
                             sku="CS 002"
-                            title="Certified Professional in VAPT for AI"
+                            title="Certified in VAPT for AI"
                             originalPrice="300,000"
                             discountedPrice="150,000"
                             desc="Specialized track focusing on Vulnerability Assessment and Penetration Testing specifically for AI systems."
                         />
                         <CourseCard
                             sku="CS 003"
-                            title="Certified Professional in Security for AI"
+                            title="Certified in Security for AI"
                             originalPrice="300,000"
                             discountedPrice="150,000"
                             desc="Learn to secure AI pipelines, training data, and model endpoints against adversarial attacks."
                         />
                         <CourseCard
                             sku="CS 004"
-                            title="Certified Professional in AI Security"
+                            title="Certified in AI Security"
                             originalPrice="300,000"
                             discountedPrice="150,000"
                             desc="Advanced studies in securing the AI lifecycle, from data ingestion to inference."

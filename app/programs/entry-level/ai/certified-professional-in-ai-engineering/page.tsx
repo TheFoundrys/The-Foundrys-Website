@@ -268,9 +268,7 @@ export default function AIEngineeringCoursePage() {
                                 {/* <InfoRow text="Career Support & Placement Assistance" /> */}
                             </div>
 
-                            <p className="text-slate-500 text-sm font-medium leading-relaxed text-center mt-4">
-                                *Flexible EMI options available.
-                            </p>
+                            
                         </div>
                     </div>
                 </div>
@@ -282,7 +280,7 @@ export default function AIEngineeringCoursePage() {
                     <div className="prose prose-lg prose-slate mx-auto mb-16">
                         <h2 className="text-3xl font-bold text-slate-900 mb-6 font-sans">The AI revolution is here. Don&apos;t just watch it happen.</h2>
                         <p className="text-lg text-slate-600 leading-relaxed">
-                            Companies are scrambling for engineers who can build, not just theorize. The Certified Professional in AI Engineering is an intensive, <span className="font-bold text-slate-900">45-day bootcamp</span> designed to take you from a standard developer to an AI specialist.
+                            Companies are scrambling for engineers who can build, not just theorize. The Certified Professional in AI Engineering is an intensive program designed to take you from a standard developer to an AI specialist.
                         </p>
                         <p className="text-lg text-slate-600 leading-relaxed mt-4">
                             Whether you are a fresh graduate or a professional looking to switch domains, this program bridges the gap between basic Python scripting and building autonomous, large-scale AI applications. You won’t just learn about AI; you will build <span className="font-bold text-slate-900">agents, Retrieval Augmented Generation (RAG) systems, and multimodal apps</span> that solve real-world problems.

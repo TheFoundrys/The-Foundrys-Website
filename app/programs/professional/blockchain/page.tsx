@@ -33,21 +33,21 @@ export default function BlockchainPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                         <CourseCard
                             sku="BC 001"
-                            title="Certified Professional in Block Chain"
+                            title="Certified in Block Chain"
                             originalPrice="100,000"
                             discountedPrice="50,000"
                             desc="Fundamentals of distributed ledger technology, consensus mechanisms, and blockchain architecture."
                         />
                         <CourseCard
                             sku="BC 002"
-                            title="Certified Professional in NFT"
+                            title="Certified in NFT"
                             originalPrice="150,000"
                             discountedPrice="75,000"
                             desc="Deep dive into Non-Fungible Tokens, standards (ERC-721/1155), and building marketplace dApps."
                         />
                         <CourseCard
                             sku="BC 003"
-                            title="Certified Professional in Decentralized Systems"
+                            title="Certified in Decentralized Systems"
                             originalPrice="200,000"
                             discountedPrice="100,000"
                             desc="Architecting robust, scalable decentralized applications and understanding the broader ecosystem."

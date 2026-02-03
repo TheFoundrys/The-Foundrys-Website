@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useScroll } from "framer-motion";
 import {
@@ -16,13 +16,18 @@ import {
    Layers,
    BarChart,
    BookOpen,
-   Anchor
+   Anchor,
+   ChevronLeft,
+   ChevronRight,
+   BrainCircuit
 } from "lucide-react";
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 
 export default function SustainabilityClient() {
    const containerRef = useRef(null);
+   const [activeSlide, setActiveSlide] = useState(0);
+   const [selectedCareer, setSelectedCareer] = useState(0);
 
    useScroll({
       target: containerRef,
@@ -33,60 +38,62 @@ export default function SustainabilityClient() {
       <div ref={containerRef} className="bg-stone-50 text-stone-900 min-h-screen selection:bg-emerald-200 selection:text-emerald-900 font-sans">
          <Navbar />
 
-         {/* HERO SECTION: DARK THEME (Preserved) */}
-         <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden bg-neutral-950 pb-40 md:pb-0">
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0">
-               <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center grayscale brightness-[0.4]"></div>
-               <div className="absolute inset-0 bg-neutral-950/50"></div>
-               <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
-            </div>
+         {/* HERO SECTION: FULL PAGE DARK DESIGN */}
+         <section className="relative py-32 px-6 bg-gradient-to-br from-emerald-950 via-stone-900 to-emerald-900 overflow-hidden">
+            {/* Radial Gradient Overlay */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-600/20 via-transparent to-transparent"></div>
 
-            <div className="relative z-10 container mx-auto px-6 pt-20">
-               <div className="max-w-4xl mx-auto text-center">
-                  {/* Minimalist Crest */}
-                  <motion.div
-                     initial={{ opacity: 0, y: 20 }}
-                     animate={{ opacity: 1, y: 0 }}
-                     transition={{ duration: 0.8 }}
-                     className="mb-8 flex justify-center"
-                  >
-                     <div className="w-16 h-16 border border-emerald-500/30 rounded-full flex items-center justify-center backdrop-blur-sm bg-emerald-950/30 shadow-lg">
-                        <Leaf className="text-emerald-400" size={24} strokeWidth={1} />
+            {/* Subtle Background Pattern */}
+            <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+
+            {/* Animated Gradient Orbs */}
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl animate-pulse"></div>
+
+            <div className="container mx-auto max-w-5xl relative z-10">
+               <div className="text-center">
+                  {/* Badge */}
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-sm font-medium mb-8 backdrop-blur-sm">
+                     <Leaf size={16} />
+                     <span>Professional Certification Program</span>
+                  </div>
+
+                  {/* Main Heading */}
+                  <h1 className="text-7xl md:text-5xl lg:text-8xl font-serif text-white mb-6 leading-tight">
+                     Sustainability in the <br />
+                     <span className="text-emerald-400 italic">Age of AI</span>
+                  </h1>
+
+                  {/* Program Description */}
+                  <p className="text-lg md:text-xl text-emerald-100/80 font-light leading-relaxed max-w-3xl mx-auto mb-12">
+                     A text-intensive program designed for professionals shaping the future of technology, climate, and governance.
+                  </p>
+
+                  {/* Quick Highlights */}
+                  <div className="flex flex-wrap gap-6 justify-center text-sm text-emerald-100">
+                     <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
+                        <CheckCircle2 size={18} className="text-emerald-400" />
+                        <span>Industry-Recognized Certificate</span>
                      </div>
-                  </motion.div>
-
-                  {/* Title */}
-                  <motion.h1
-                     initial={{ opacity: 0, y: 30 }}
-                     animate={{ opacity: 1, y: 0 }}
-                     transition={{ duration: 0.8, delay: 0.3 }}
-                     className="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-8 tracking-tight leading-none"
-                  >
-                     Engineering <br />
-                     <span className="italic text-emerald-100/90">Responsibility</span>
-                  </motion.h1>
-
-                  <motion.p
-                     initial={{ opacity: 0, y: 30 }}
-                     animate={{ opacity: 1, y: 0 }}
-                     transition={{ duration: 0.8, delay: 0.4 }}
-                     className="text-xl md:text-2xl text-neutral-300 font-light max-w-2xl mx-auto mb-12 leading-relaxed"
-                  >
-                     Sustainability in the Age of AI
-                     <span className="block text-sm md:text-base mt-4 text-neutral-400 font-sans tracking-wide">
-                        A 4-week systems program for professionals shaping the future of technology, climate, and governance.
-                     </span>
-                  </motion.p>
+                     <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
+                        <CheckCircle2 size={18} className="text-emerald-400" />
+                        <span>Hands-on Capstone Project</span>
+                     </div>
+                     <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
+                        <CheckCircle2 size={18} className="text-emerald-400" />
+                        <span>Expert-Led Sessions</span>
+                     </div>
+                  </div>
                </div>
             </div>
          </section>
 
-         {/* Program Details Block */}
+
+         {/* Program Details Block*/}
          <div className="relative z-20">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl px-4">
                <div className="bg-white rounded-2xl shadow-xl border border-stone-200 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12">
-                  {/* Details Grid */}
+
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 flex-1 text-center md:text-left w-full">
                      <div className="border-r border-stone-100 last:border-0 pr-4">
                         <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1">Duration</p>
@@ -98,7 +105,7 @@ export default function SustainabilityClient() {
                      </div>
                      <div className="border-r border-stone-100 last:border-0 pr-4">
                         <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1">Starts</p>
-                        <p className="text-lg font-bold text-stone-900">16 February 2026</p>
+                        <p className="text-lg font-bold text-stone-900">February 2026</p>
                      </div>
                      <div className="pr-4">
                         <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>
@@ -109,7 +116,7 @@ export default function SustainabilityClient() {
                      </div>
                   </div>
 
-                  {/* CTA */}
+
                   <div className="w-full md:w-auto">
                      <Link href="/apply" className="block w-full text-center px-8 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
                         Apply Now
@@ -119,31 +126,82 @@ export default function SustainabilityClient() {
             </div>
          </div>
 
-         {/* WHY THIS COHORT EXISTS */}
-         <section className="pt-40 pb-24 md:py-24 bg-white relative overflow-hidden border-t border-stone-200">
-            <div className="container mx-auto px-6 max-w-5xl">
-               <div className="border-l border-emerald-200 pl-8 md:pl-16 relative">
-                  <div className="absolute top-0 left-0 -translate-x-1/2 w-3 h-3 bg-emerald-600 rounded-full shadow-[0_0_0_4px_rgba(255,255,255,1)] ring-1 ring-emerald-200"></div>
+         {/* WHY THIS COHORT EXISTS + WHO IT'S FOR - IMPROVED LAYOUT */}
+         <section className="py-24 bg-white relative overflow-hidden border-t border-stone-200">
+            <div className="container mx-auto px-6 max-w-7xl">
+               <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
+                  {/* Left: Why This Cohort Exists */}
+                  <div>
+                     <h2 className="text-3xl md:text-4xl font-serif text-stone-900 mb-6">Why This Cohort Exists</h2>
 
-                  <h2 className="text-4xl md:text-5xl font-serif text-stone-900 mb-12">Why This Cohort Exists</h2>
+                     <p className="text-xl text-stone-800 mb-8 font-light italic leading-snug">
+                        The tension between acceleration and sustainability will define the next decade.
+                     </p>
 
-                  <div className="grid md:grid-cols-12 gap-12">
-                     <div className="md:col-span-8">
-                        <h3 className="text-2xl text-stone-800 mb-8 font-light italic leading-snug">
-                           The tension between acceleration and sustainability will define the next decade.
-                        </h3>
-
-                        <div className="space-y-6 text-lg text-stone-600 font-light leading-relaxed">
-                           <p>
-                              AI is accelerating everything growth, efficiency, consumption, extraction.
-                              Sustainability is trying to slow things down emissions, waste, inequality, collapse.
+                     {/* Problem Cards */}
+                     <div className="space-y-4">
+                        <div className="border-l-4 border-red-400 bg-red-50/50 p-5">
+                           <h4 className="text-sm font-bold text-red-900 uppercase tracking-wider mb-2">The Acceleration</h4>
+                           <p className="text-base text-stone-700 font-light">
+                              AI is accelerating everything—growth, efficiency, consumption, extraction.
                            </p>
-                           <p>
-                              Most professionals are trained in either technology or sustainability.
-                              Very few are trained to <span className="text-emerald-700 font-medium">think in systems</span>, understand trade-offs, and make AI-era decisions responsibly.
+                        </div>
+
+                        <div className="border-l-4 border-blue-400 bg-blue-50/50 p-5">
+                           <h4 className="text-sm font-bold text-blue-900 uppercase tracking-wider mb-2">The Slowdown</h4>
+                           <p className="text-base text-stone-700 font-light">
+                              Sustainability is trying to slow things down—emissions, waste, inequality, collapse.
                            </p>
-                           <p className="font-medium text-stone-900">
-                              This cohort exists to close that gap.
+                        </div>
+
+                        <div className="border-l-4 border-amber-400 bg-amber-50/50 p-5">
+                           <h4 className="text-sm font-bold text-amber-900 uppercase tracking-wider mb-2">The Gap</h4>
+                           <p className="text-base text-stone-700 font-light">
+                              Most professionals are trained in either technology or sustainability. Very few are trained to <span className="font-semibold text-amber-900">think in systems</span>, understand trade-offs, and make AI-era decisions responsibly.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+
+                  {/* Right: Who This Cohort Is For */}
+                  <div>
+                     <h2 className="text-3xl md:text-4xl font-serif text-stone-900 mb-6">Who This Cohort Is For</h2>
+                     <p className="text-xl text-stone-800 mb-8 font-light italic leading-snug">
+                        No deep coding background required. Deep thinking required and trained.
+                     </p>
+
+                     <div className="space-y-2">
+                        {[
+                           { title: "Future-Ready Careers", desc: "Entry-level professionals building future-ready careers.", icon: Users },
+                           { title: "Mid-Career Navigators", desc: "Mid-career professionals navigating AI-driven disruption.", icon: Anchor },
+                           { title: "Upgraders", desc: "Sustainability, ESG, policy, and climate professionals upgrading into AI literacy.", icon: Leaf },
+                           { title: "Cross-Functional", desc: "Engineers, analysts, consultants, and managers moving into cross-functional roles.", icon: Layers }
+                        ].map((item, i) => (
+                           <div key={i} className="flex items-start gap-6 bg-stone-50 p-4 border border-stone-200 rounded-xl shadow-sm hover:border-emerald-300 transition-all hover:shadow-md group">
+                              <div className="shrink-0">
+                                 <item.icon size={24} className="text-emerald-600 group-hover:scale-110 transition-transform" />
+                              </div>
+                              <div>
+                                 <h3 className="text-base font-serif text-stone-900 mb-1">{item.title}</h3>
+                                 <p className="text-sm text-stone-600 font-light leading-relaxed">{item.desc}</p>
+                              </div>
+                           </div>
+                        ))}
+                     </div>
+                  </div>
+               </div>
+
+               {/* Centered Solution Card */}
+               <div className="max-w-4xl mx-auto">
+                  <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 text-white p-8 rounded-xl shadow-xl">
+                     <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center shrink-0">
+                           <CheckCircle2 size={24} className="text-white" />
+                        </div>
+                        <div>
+                           <h3 className="text-2xl font-serif mb-3">Our Solution</h3>
+                           <p className="text-emerald-50 font-light leading-relaxed text-lg">
+                              This cohort exists to close that gap—training professionals to navigate the intersection of AI and sustainability with systems thinking, strategic foresight, and responsible decision-making.
                            </p>
                         </div>
                      </div>
@@ -152,53 +210,7 @@ export default function SustainabilityClient() {
             </div>
          </section>
 
-         {/* WHO THIS COHORT IS FOR */}
-         <section className="py-24 bg-stone-50 border-y border-stone-200">
-            <div className="container mx-auto px-6 max-w-6xl">
-               <div className="text-center mb-16">
-                  <h2 className="text-3xl md:text-4xl font-serif text-stone-900 mb-6">Who This Cohort Is For</h2>
-                  <p className="text-stone-500 max-w-2xl mx-auto">
-                     No deep coding background required. Systems thinking required and trained.
-                  </p>
-               </div>
 
-               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {[
-                     { title: "Future-Ready Careers", desc: "Entry-level professionals building future-ready careers.", icon: Users },
-                     { title: "Mid-Career Navigators", desc: "Mid-career professionals navigating AI-driven disruption.", icon: Anchor },
-                     { title: "Upgraders", desc: "Sustainability, ESG, policy, and climate professionals upgrading into AI literacy.", icon: Leaf },
-                     { title: "Cross-Functional", desc: "Engineers, analysts, consultants, and managers moving into cross-functional roles.", icon: Layers }
-                  ].map((item, i) => (
-                     <div key={i} className="bg-white p-8 border border-stone-200 shadow-sm hover:border-emerald-300 transition-all hover:shadow-md group">
-                        <item.icon size={28} className="text-emerald-600 mb-6 group-hover:scale-110 transition-transform" />
-                        <h3 className="text-lg font-serif text-stone-900 mb-3">{item.title}</h3>
-                        <p className="text-sm text-stone-600 font-light leading-relaxed">{item.desc}</p>
-                     </div>
-                  ))}
-               </div>
-            </div>
-         </section>
-
-         {/* COHORT FORMAT */}
-         {/* <section className="py-24 bg-white">
-            <div className="container mx-auto px-6 max-w-5xl">
-               <h2 className="text-3xl md:text-4xl font-serif text-stone-900 mb-12 text-center">Cohort Format</h2>
-
-               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-stone-100">
-                  {[
-                     { label: "Duration", value: "4 Weeks" },
-                     { label: "Commitment", value: "~8–11 hrs/week" },
-                     { label: "Mode", value: "Hybrid" },
-                     { label: "Style", value: "20% Theory, 80% Applied" }
-                  ].map((stat, i) => (
-                     <div key={i} className="px-4">
-                        <p className="text-3xl text-emerald-700 font-serif mb-2">{stat.value}</p>
-                        <p className="text-xs text-stone-500 uppercase tracking-widest">{stat.label}</p>
-                     </div>
-                  ))}
-               </div>
-            </div>
-         </section> */}
 
          {/* CURRICULUM: WEEK BY WEEK */}
          <section className="py-24 bg-stone-50 border-y border-stone-200">
@@ -256,57 +268,361 @@ export default function SustainabilityClient() {
             </div>
          </section>
 
-         {/* CAPSTONE & TOOLS */}
-         <section className="py-24 bg-white relative">
+         <section className="py-5 bg-slate-50 border-y border-slate-200 overflow-hidden">
+            {/* Centered heading + description */}
+            <div className="container mx-auto px-2 mb-6 text-center max-w-3xl">
+               <h2 className="text-4xl md:text-5xl font-serif text-stone-900 mb-4">
+                  Tools & Frameworks
+               </h2>
+            </div>
+
+            {/* Marquee row 1 */}
+            <motion.div
+               className="flex items-center gap-12 whitespace-nowrap will-change-transform mb-8"
+               animate={{ x: ["0%", "-50%"] }}
+               transition={{
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 120,
+                  ease: "linear",
+               }}
+               style={{ width: "max-content" }}
+            >
+               {[1, 2, 3, 4].map((i) => (
+                  <div
+                     key={i}
+                     className="flex items-center gap-12 text-slate-400 font-bold text-2xl uppercase tracking-widest"
+                  >
+                     <span>UN Sustainable Development Goals (SDGs)</span> <span>&bull;</span>
+                     <span>Global Reporting Initiative (GRI)</span> <span>&bull;</span>
+                     <span>ESG</span> <span>&bull;</span>
+                     <span>Science Based Targets initiative (SBTi)</span> <span>&bull;</span>
+                     <span>Carbon Disclosure Project (CDP)</span> <span>&bull;</span>
+                     <span>ISO 14001</span> <span>&bull;</span>
+                     <span>OpenLCA</span> <span>&bull;</span>
+                     <span>Brightway</span> <span>&bull;</span>
+                     <span>OpenGHG</span> <span>&bull;</span>
+                     <span>Climate TRACE</span> <span>&bull;</span>
+                     <span>Open Energy Platform</span> <span>&bull;</span>
+                     <span>EnergyPlus</span> <span>&bull;</span>
+                     <span>OpenFOAM</span> <span>&bull;</span>
+                     <span>QGIS</span> <span>&bull;</span>
+                     <span>OSeMOSYS</span> <span>&bull;</span>
+                     <span>Calliope</span> <span>&bull;</span>
+                     <span>World Bank Open Data</span> <span>&bull;</span>
+                     <span>OpenStreetMap</span> <span>&bull;</span>
+                     <span>Global Carbon Atlas</span> <span>&bull;</span>
+                     <span>Our World in Data</span> <span>&bull;</span>
+                     <span>OpenAQ</span>
+
+                  </div>
+               ))}
+            </motion.div>
+
+            {/* Marquee row 2 */}
+            <motion.div
+               className="flex items-center gap-12 whitespace-nowrap will-change-transform"
+               animate={{ x: ["-50%", "0%"] }}
+               transition={{
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 120,
+                  ease: "linear",
+               }}
+               style={{ width: "max-content" }}
+            >
+               {[1, 2, 3, 4].map((i) => (
+                  <div
+                     key={i}
+                     className="flex items-center gap-12 text-slate-400 font-bold text-2xl uppercase tracking-widest"
+                  >
+                     <span>UN Sustainable Development Goals (SDGs)</span> <span>&bull;</span>
+                     <span>Global Reporting Initiative (GRI)</span> <span>&bull;</span>
+                     <span>ESG</span> <span>&bull;</span>
+                     <span>Science Based Targets initiative (SBTi)</span> <span>&bull;</span>
+                     <span>Carbon Disclosure Project (CDP)</span> <span>&bull;</span>
+                     <span>ISO 14001</span> <span>&bull;</span>
+                     <span>OpenLCA</span> <span>&bull;</span>
+                     <span>Brightway</span> <span>&bull;</span>
+                     <span>OpenGHG</span> <span>&bull;</span>
+                     <span>Climate TRACE</span> <span>&bull;</span>
+                     <span>Open Energy Platform</span> <span>&bull;</span>
+                     <span>EnergyPlus</span> <span>&bull;</span>
+                     <span>OpenFOAM</span> <span>&bull;</span>
+                     <span>QGIS</span> <span>&bull;</span>
+                     <span>OSeMOSYS</span> <span>&bull;</span>
+                     <span>Calliope</span> <span>&bull;</span>
+                     <span>World Bank Open Data</span> <span>&bull;</span>
+                     <span>OpenStreetMap</span> <span>&bull;</span>
+                     <span>Global Carbon Atlas</span> <span>&bull;</span>
+                     <span>Our World in Data</span> <span>&bull;</span>
+                     <span>OpenAQ</span>
+                  </div>
+               ))}
+            </motion.div>
+         </section>
+
+
+         {/* CAPSTONE & TOOLS - CAROUSEL */}
+
+
+         {/* WHAT YOU'LL BECOME - REDESIGNED */}
+         <section className="py-20 bg-gradient-to-b from-white to-stone-50 border-y border-stone-200">
             <div className="container mx-auto px-6 max-w-6xl">
-               <div className="grid lg:grid-cols-2 gap-16 items-start">
-                  {/* Capstone */}
-                  <div>
-                     <h2 className="text-3xl font-serif text-stone-900 mb-8">Capstone Project</h2>
-                     <div className="bg-stone-900 text-stone-300 p-8 rounded-sm shadow-xl relative overflow-hidden">
-                        <div className="absolute top-0 right-0 p-4 opacity-20">
-                           <ShieldCheck size={64} className="text-emerald-500" />
-                        </div>
-                        <h3 className="text-xl text-white font-medium mb-4 relative z-10">Designing a Sustainable AI System</h3>
-                        <p className="text-sm font-light mb-6 opacity-80 leading-relaxed relative z-10">
-                           Each participant designs a real-world solution including problem framing, AI justification, impact assessment, and a governance model.
-                        </p>
-                        <p className="text-xs text-emerald-400 uppercase tracking-widest mb-4">Themes</p>
-                        <div className="flex flex-wrap gap-2 relative z-10">
-                           {["Climate Risk", "Water Mgmt", "Energy Opt", "Supply Chains", "ESG Analytics"].map((tag, t) => (
-                              <span key={t} className="px-2 py-1 bg-stone-800 text-stone-400 text-xs border border-stone-700">{tag}</span>
-                           ))}
-                        </div>
-                     </div>
+               {/* Header */}
+               <div className="text-center mb-16">
+                  <h2 className="text-4xl md:text-5xl font-serif text-stone-900 mb-4">What You'll Become</h2>
+                  <p className="text-lg text-stone-600 font-light max-w-2xl mx-auto">
+                     Explore career paths at the intersection of AI and sustainability
+                  </p>
+               </div>
+
+               {/* Side-by-Side Layout */}
+               <div className="grid lg:grid-cols-2 gap-8">
+                  {/* Left: Roles List */}
+                  <div className="space-y-3">
+                     {(() => {
+                        const roles = [
+                           {
+                              icon: Layers,
+                              title: "Sustainability Systems Architect",
+                              salary: "₹12-25 LPA",
+                              avgSalary: "₹18.5 LPA",
+                              growth: "+15-20% annually",
+                              description: "Design and implement comprehensive sustainability frameworks for organizations. Bridge technology, policy, and environmental impact.",
+                              skills: ["Systems Thinking", "ESG Frameworks", "Data Analysis", "Stakeholder Management"],
+                              demand: "High"
+                           },
+                           {
+                              icon: BarChart,
+                              title: "ESG & AI Strategy Consultant",
+                              salary: "₹15-30 LPA",
+                              avgSalary: "₹22.5 LPA",
+                              growth: "+18-25% annually",
+                              description: "Guide organizations in integrating AI solutions with ESG goals. Develop strategies that balance innovation with responsibility.",
+                              skills: ["ESG Reporting", "AI Strategy", "Risk Assessment", "Regulatory Compliance"],
+                              demand: "Very High"
+                           },
+                           {
+                              icon: Globe,
+                              title: "Climate Tech Product Leader",
+                              salary: "₹18-35 LPA",
+                              avgSalary: "₹26.5 LPA",
+                              growth: "+20-30% annually",
+                              description: "Lead development of climate-focused technology products. Drive innovation in renewable energy, carbon tracking, and environmental monitoring.",
+                              skills: ["Product Management", "Climate Science", "Tech Innovation", "Market Analysis"],
+                              demand: "Very High"
+                           },
+                           {
+                              icon: Scale,
+                              title: "AI Governance Specialist",
+                              salary: "₹14-28 LPA",
+                              avgSalary: "₹21 LPA",
+                              growth: "+16-22% annually",
+                              description: "Ensure AI systems comply with ethical standards and regulations. Develop governance frameworks for responsible AI deployment.",
+                              skills: ["AI Ethics", "Policy Development", "Compliance", "Risk Management"],
+                              demand: "High"
+                           },
+                           {
+                              icon: Zap,
+                              title: "Energy & Resource Optimizer",
+                              salary: "₹12-24 LPA",
+                              avgSalary: "₹18 LPA",
+                              growth: "+14-18% annually",
+                              description: "Optimize energy consumption and resource utilization using AI and data analytics. Drive efficiency in operations and reduce environmental footprint.",
+                              skills: ["Energy Systems", "Optimization", "IoT", "Data Analytics"],
+                              demand: "Medium-High"
+                           },
+                           {
+                              icon: BookOpen,
+                              title: "Sustainability Educator & Advisor",
+                              salary: "₹10-20 LPA",
+                              avgSalary: "₹15 LPA",
+                              growth: "+12-16% annually",
+                              description: "Train professionals and advise organizations on sustainability practices. Build capacity for sustainable transformation across industries.",
+                              skills: ["Training & Development", "Sustainability Practices", "Communication", "Advisory"],
+                              demand: "Medium"
+                           },
+                           {
+                              icon: BrainCircuit,
+                              title: "Circular Economy Strategist",
+                              salary: "₹16-32 LPA",
+                              avgSalary: "₹24 LPA",
+                              growth: "+17-23% annually",
+                              description: "Design and implement circular economy models that eliminate waste and maximize resource efficiency. Transform linear business models into sustainable, regenerative systems.",
+                              skills: ["Circular Design", "Waste Management", "Business Model Innovation", "Life Cycle Assessment"],
+                              demand: "Very High"
+                           }
+                        ];
+
+                        return (
+                           <>
+                              {roles.map((role, i) => (
+                                 <button
+                                    key={i}
+                                    onClick={() => setSelectedCareer(i)}
+                                    className={`w-full p-5 rounded-lg transition-all text-left ${selectedCareer === i
+                                       ? 'bg-emerald-600 text-white shadow-lg'
+                                       : 'bg-white border-2 border-stone-200 hover:border-emerald-300 hover:shadow-md'
+                                       }`}
+                                 >
+                                    <div className="flex items-start gap-4">
+                                       <div className={`w-11 h-11 rounded-lg flex items-center justify-center shrink-0 ${selectedCareer === i ? 'bg-white/20' : 'bg-emerald-100'
+                                          }`}>
+                                          <role.icon size={22} className={selectedCareer === i ? 'text-white' : 'text-emerald-600'} />
+                                       </div>
+                                       <div className="flex-1">
+                                          <h3 className={`text-base font-serif leading-tight mb-1.5 ${selectedCareer === i ? 'text-white' : 'text-stone-900'
+                                             }`}>
+                                             {role.title}
+                                          </h3>
+                                          <div className={`text-sm font-bold ${selectedCareer === i ? 'text-emerald-100' : 'text-emerald-600'
+                                             }`}>
+                                             {role.salary}
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </button>
+                              ))}
+                           </>
+                        );
+                     })()}
                   </div>
 
-                  {/* Tools */}
-                  <div>
-                     <h2 className="text-3xl font-serif text-stone-900 mb-8">Tools & Frameworks</h2>
-                     <div className="grid grid-cols-1 gap-4">
-                        {[
-                           "Systems mapping (Miro / FigJam)",
-                           "Sustainability datasets (IPCC, World Bank)",
-                           "AI impact estimation (CodeCarbon)",
-                           "Python notebooks for applied analysis",
-                           "ESG and governance frameworks"
-                        ].map((tool, i) => (
-                           <div key={i} className="flex items-center gap-4 p-4 border border-stone-200 bg-stone-50">
-                              <div className="w-8 h-8 flex items-center justify-center bg-white border border-stone-200 rounded text-emerald-600">
-                                 <Cpu size={16} />
-                              </div>
-                              <span className="text-stone-700 text-sm font-light">{tool}</span>
-                           </div>
-                        ))}
+                  {/* Right: Selected Role Details */}
+                  <div className="lg:sticky lg:top-6 h-fit">
+                     <div className="bg-white border-2 border-stone-200 rounded-2xl p-8 md:p-10">
+                        {(() => {
+                           const roles = [
+                              {
+                                 icon: Layers,
+                                 title: "Sustainability Systems Architect",
+                                 salary: "₹12-25 LPA",
+                                 avgSalary: "₹18.5 LPA",
+                                 growth: "+15-20% annually",
+                                 description: "Design and implement comprehensive sustainability frameworks for organizations. Bridge technology, policy, and environmental impact.",
+                                 skills: ["Systems Thinking", "ESG Frameworks", "Data Analysis", "Stakeholder Management"],
+                                 demand: "High"
+                              },
+                              {
+                                 icon: BarChart,
+                                 title: "ESG & AI Strategy Consultant",
+                                 salary: "₹15-30 LPA",
+                                 avgSalary: "₹22.5 LPA",
+                                 growth: "+18-25% annually",
+                                 description: "Guide organizations in integrating AI solutions with ESG goals. Develop strategies that balance innovation with responsibility.",
+                                 skills: ["ESG Reporting", "AI Strategy", "Risk Assessment", "Regulatory Compliance"],
+                                 demand: "Very High"
+                              },
+                              {
+                                 icon: Globe,
+                                 title: "Climate Tech Product Leader",
+                                 salary: "₹18-35 LPA",
+                                 avgSalary: "₹26.5 LPA",
+                                 growth: "+20-30% annually",
+                                 description: "Lead development of climate-focused technology products. Drive innovation in renewable energy, carbon tracking, and environmental monitoring.",
+                                 skills: ["Product Management", "Climate Science", "Tech Innovation", "Market Analysis"],
+                                 demand: "Very High"
+                              },
+                              {
+                                 icon: Scale,
+                                 title: "AI Governance Specialist",
+                                 salary: "₹14-28 LPA",
+                                 avgSalary: "₹21 LPA",
+                                 growth: "+16-22% annually",
+                                 description: "Ensure AI systems comply with ethical standards and regulations. Develop governance frameworks for responsible AI deployment.",
+                                 skills: ["AI Ethics", "Policy Development", "Compliance", "Risk Management"],
+                                 demand: "High"
+                              },
+                              {
+                                 icon: Zap,
+                                 title: "Energy & Resource Optimizer",
+                                 salary: "₹12-24 LPA",
+                                 avgSalary: "₹18 LPA",
+                                 growth: "+14-18% annually",
+                                 description: "Optimize energy consumption and resource utilization using AI and data analytics. Drive efficiency in operations and reduce environmental footprint.",
+                                 skills: ["Energy Systems", "Optimization", "IoT", "Data Analytics"],
+                                 demand: "Medium-High"
+                              },
+                              {
+                                 icon: BookOpen,
+                                 title: "Sustainability Educator & Advisor",
+                                 salary: "₹10-20 LPA",
+                                 avgSalary: "₹15 LPA",
+                                 growth: "+12-16% annually",
+                                 description: "Train professionals and advise organizations on sustainability practices. Build capacity for sustainable transformation across industries.",
+                                 skills: ["Training & Development", "Sustainability Practices", "Communication", "Advisory"],
+                                 demand: "Medium"
+                              },
+                              {
+                                 icon: BrainCircuit,
+                                 title: "Circular Economy Strategist",
+                                 salary: "₹16-32 LPA",
+                                 avgSalary: "₹24 LPA",
+                                 growth: "+17-23% annually",
+                                 description: "Design and implement circular economy models that eliminate waste and maximize resource efficiency. Transform linear business models into sustainable, regenerative systems.",
+                                 skills: ["Circular Design", "Waste Management", "Business Model Innovation", "Life Cycle Assessment"],
+                                 demand: "Very High"
+                              }
+                           ];
+                           const selected = roles[selectedCareer];
+
+                           return (
+                              <>
+                                 {/* Role Header */}
+                                 <div className="mb-8">
+                                    <h3 className="text-2xl md:text-3xl font-serif text-stone-900 mb-4">{selected.title}</h3>
+                                    <p className="text-base text-stone-600 leading-relaxed">{selected.description}</p>
+                                 </div>
+
+                                 {/* Stats Grid */}
+                                 <div className="grid md:grid-cols-3 gap-4 mb-8">
+                                    <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-5 text-center">
+                                       <div className="text-sm text-emerald-700 font-semibold uppercase tracking-wider mb-2">Average Salary</div>
+                                       <div className="text-2xl font-bold text-emerald-600">{selected.avgSalary}</div>
+                                    </div>
+                                    <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-5 text-center">
+                                       <div className="text-sm text-emerald-700 font-semibold uppercase tracking-wider mb-2">Annual Growth</div>
+                                       <div className="text-2xl font-bold text-emerald-600">{selected.growth}</div>
+                                    </div>
+                                    <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-5 text-center">
+                                       <div className="text-sm text-emerald-700 font-semibold uppercase tracking-wider mb-2">Market Demand</div>
+                                       <div className="text-2xl font-bold text-emerald-600">{selected.demand}</div>
+                                    </div>
+                                 </div>
+
+                                 {/* Skills */}
+                                 <div>
+                                    <h4 className="text-sm font-bold text-stone-900 uppercase tracking-wider mb-4">Key Skills Required</h4>
+                                    <div className="flex flex-wrap gap-3">
+                                       {selected.skills.map((skill, i) => (
+                                          <span
+                                             key={i}
+                                             className="px-4 py-2 bg-stone-100 border border-stone-200 text-stone-700 text-sm font-medium rounded-lg"
+                                          >
+                                             {skill}
+                                          </span>
+                                       ))}
+                                    </div>
+                                 </div>
+
+                                 {/* Disclaimer */}
+                                 <div className="mt-8 pt-6 border-t border-stone-200">
+                                    <p className="text-xs text-stone-500 leading-relaxed">
+                                       * Salary data is indicative and based on industry averages. Actual compensation may vary based on experience, location, company size, and individual performance.
+                                    </p>
+                                 </div>
+                              </>
+                           );
+                        })()}
                      </div>
-                     <p className="mt-4 text-xs text-stone-400 italic text-center">This is tool usage in service of thinking, not tool worship.</p>
                   </div>
                </div>
             </div>
          </section>
 
          {/* WHAT YOU WALK AWAY WITH */}
-         <section className="py-24 bg-stone-50 border-t border-stone-200">
+         {/* <section className="py-24 bg-stone-50 border-t border-stone-200">
             <div className="container mx-auto px-6 max-w-5xl">
                <div className="text-center mb-16">
                   <h2 className="text-3xl md:text-5xl font-serif text-stone-900 mb-6">What You Walk Away With</h2>
@@ -349,59 +665,49 @@ export default function SustainabilityClient() {
                   </div>
                </div>
             </div>
-         </section>
+         </section> */}
 
-         {/* Sample Certificate */}
-         <section className="py-24 bg-white border-t border-stone-200">
-            <div className="container mx-auto px-6 max-w-4xl text-center">
-               <h2 className="text-3xl md:text-4xl font-serif text-stone-900 mb-8">Certification of Competence</h2>
-
-               <div className="max-w-2xl mx-auto">
-                  <div className="relative p-3 bg-stone-50 border border-stone-100 rounded-2xl shadow-xl">
-                     <img
-                        src="/sample-certificate.png"
-                        alt="Sample Certificate"
-                        className="w-full h-auto rounded-lg shadow-sm relative z-10"
-                     />
-                     {/* Decorative Elements */}
-                     <div className="absolute -top-6 -left-6 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl" />
-                     <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-stone-500/10 rounded-full blur-3xl" />
-                  </div>
-               </div>
-
-               <p className="mt-8 text-stone-500 font-light text-sm max-w-2xl mx-auto">
-                  Upon passing the capstone review, you will be awarded a Certificate of Competence in Sustainable AI Systems, verifiable via our industry partners.
-               </p>
-            </div>
-         </section>
-
-         {/* ABOUT THE FOUNDRY & CTA */}
-         <section className="py-32 bg-emerald-950 text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-
-            <div className="container mx-auto px-6 relative z-10 max-w-4xl text-center">
-               <h2 className="text-3xl font-serif text-white mb-6">About The Foundry’s</h2>
-               <div className="text-lg text-emerald-100/80 font-light leading-relaxed mb-12 space-y-4">
-                  <p>The Foundry’s is not a school. It is a systems institution.</p>
-                  <p>We design learning experiences at the intersection of deep technology, real-world economics, and societal impact.</p>
-                  <p className="text-white font-medium">Our cohorts are built for people who want to shape systems, not just operate inside them.</p>
-               </div>
-
-               <div className="pt-8 border-t border-emerald-800/50">
-                  <div className="flex flex-col items-center mb-8">
-                     <div className="flex items-center gap-3 mb-2">
-                        <span className="text-emerald-200/50 line-through text-2xl font-light">₹30,000</span>
-                        <span className="bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-emerald-500/30">Early Access Offer</span>
+         {/* CERTIFICATION - COMPACT */}
+         <section className="py-16 bg-stone-50 border-t border-stone-200">
+            <div className="container mx-auto px-6 max-w-6xl">
+               <div className="grid lg:grid-cols-2 gap-12 items-center">
+                  {/* Left: Certificate Image */}
+                  <div className="relative">
+                     <div className="relative p-3 bg-white border border-stone-200 rounded-xl shadow-lg">
+                        <img
+                           src="/sample-certificate.png"
+                           alt="Sample Certificate"
+                           className="w-full h-auto rounded-lg relative z-10"
+                        />
+                        {/* Decorative Elements */}
+                        <div className="absolute -top-4 -left-4 w-20 h-20 bg-emerald-500/10 rounded-full blur-2xl" />
+                        <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-stone-500/10 rounded-full blur-2xl" />
                      </div>
-                     <div className="text-6xl font-serif text-white mb-2">₹25,000</div>
-                     <p className="text-emerald-200/60 text-sm font-light">Inclusive of all taxes & certification fees</p>
                   </div>
 
-                  <h3 className="text-4xl md:text-5xl font-serif text-white mb-10">Build the Future. Responsibly.</h3>
-                  <Link href="/apply" className="px-10 py-5 bg-white text-emerald-950 font-medium tracking-wide hover:bg-emerald-50 transition-colors shadow-lg inline-block">
-                     APPLY NOW
-                  </Link>
+                  {/* Right: Description */}
+                  <div>
+                     <h2 className="text-3xl md:text-4xl font-serif text-stone-900 mb-4">Certification of Competence</h2>
+                     <p className="text-base text-stone-600 font-light mb-6 leading-relaxed">
+                        Upon passing the capstone review, you will be awarded a Certificate of Competence in Sustainable AI Systems, verifiable via our industry partners.
+                     </p>
+
+                     <div className="space-y-3">
+                        {[
+                           "Industry-recognized credential",
+                           "Verifiable digital certificate",
+                           "Lifetime access to alumni network",
+                           "Portfolio-ready capstone project"
+                        ].map((item, i) => (
+                           <div key={i} className="flex items-center gap-3">
+                              <div className="w-5 h-5 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
+                                 <CheckCircle2 size={14} className="text-emerald-600" />
+                              </div>
+                              <span className="text-sm text-stone-700">{item}</span>
+                           </div>
+                        ))}
+                     </div>
+                  </div>
                </div>
             </div>
          </section>
