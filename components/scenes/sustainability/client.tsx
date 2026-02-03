@@ -66,7 +66,7 @@ export default function SustainabilityClient() {
 
                   {/* Program Description */}
                   <p className="text-lg md:text-xl text-emerald-100/80 font-light leading-relaxed max-w-3xl mx-auto mb-12">
-                     A text-intensive program designed for professionals shaping the future of technology, climate, and governance.
+                     A Intensive program designed for professionals shaping the future of technology, climate, and governance.
                   </p>
 
                   {/* Quick Highlights */}
