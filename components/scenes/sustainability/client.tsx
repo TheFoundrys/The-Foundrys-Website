@@ -204,7 +204,7 @@ export default function SustainabilityClient() {
             <div className="container mx-auto px-6 max-w-6xl">
                <h2 className="text-3xl md:text-5xl font-serif text-stone-900 mb-16 text-center">What You'll Learn</h2>
 
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                   {[
                      {
                         week: "Week 1",
