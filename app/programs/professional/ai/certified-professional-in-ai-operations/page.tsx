@@ -219,8 +219,6 @@ export default function MLOpsCoursePage() {
                                 <InfoRow text="Hands-on Infrastructure Labs" />
                                 <InfoRow text="Industry Recognized Certification" />
                             </div>
-
-                            <
                         </div>
                     </div>
                 </div>
