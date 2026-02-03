@@ -146,7 +146,7 @@ export default function ProfessionalProgramPage() {
                                 <h3 className="text-xl font-bold text-slate-900">Your Network is Your Net Worth</h3>
                             </div>
                             <p className="text-slate-600 leading-relaxed text-sm">
-                                Learning alone is slow. Join a curated cohort of ambitious peers who are as hungry as you are. "Iron sharpens iron"—you will grow faster by coding, debugging, and launching projects alongside the best.
+                                Learning alone is slow. Join a curated cohort of ambitious peers who are as hungry as you are. "Iron sharpens iron" you will grow faster by coding, debugging, and launching projects alongside the best.
                             </p>
                         </div>
                         <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
@@ -296,7 +296,7 @@ export default function ProfessionalProgramPage() {
                             <div className="text-6xl font-black text-slate-200 mb-6 group-hover:text-blue-100 transition-colors">01</div>
                             <h3 className="text-xl font-bold text-slate-900 mb-3">The Production Portfolio</h3>
                             <p className="text-slate-600 leading-relaxed text-sm">
-                                <strong className="text-slate-900">Your Proof of Competence.</strong> You will finish the track with a GitHub portfolio of 3-5 distinct projects and one major Capstone. When a recruiter asks, "Can you do this?", you won't just say "Yes"—you will show them the code.
+                                <strong className="text-slate-900">Your Proof of Competence.</strong> You will finish the track with a GitHub portfolio of 3-5 distinct projects and one major Capstone. When a recruiter asks, "Can you do this?", you won't just say "Yes" you will show them the code.
                             </p>
                         </div>
 

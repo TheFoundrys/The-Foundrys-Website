@@ -147,7 +147,7 @@ export default function EntryLevelProgramPage() {
                                 <h3 className="text-xl font-bold text-slate-900">Your Network is Your Net Worth</h3>
                             </div>
                             <p className="text-slate-600 leading-relaxed text-sm">
-                                Learning alone is slow. Join a curated cohort of ambitious peers who are as hungry as you are. &quot;Iron sharpens iron&quot;—you will grow faster by coding, debugging, and launching projects alongside the best.
+                                Learning alone is slow. Join a curated cohort of ambitious peers who are as hungry as you are. &quot;Iron sharpens iron&quot; you will grow faster by coding, debugging, and launching projects alongside the best.
                             </p>
                         </div>
                         <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
