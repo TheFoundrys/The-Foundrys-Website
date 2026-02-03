@@ -96,7 +96,7 @@ export default function SustainabilityClient() {
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 flex-1 text-center md:text-left w-full">
                      <div className="border-r border-stone-100 last:border-0 pr-4">
-                        <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1">Duration</p>
+                        <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1"> Duration</p>
                         <p className="text-lg font-bold text-stone-900">4 Weeks</p>
                      </div>
                      <div className="border-r border-stone-100 last:border-0 pr-4">
