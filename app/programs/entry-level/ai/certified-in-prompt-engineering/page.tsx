@@ -194,7 +194,7 @@ export default function PromptEngineeringCoursePage() {
                             </div>
 
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <Link href="/apply" className="px-8 py-4 bg-purple-600 text-white rounded-full font-bold text-lg hover:bg-purple-500 transition-all shadow-lg hover:shadow-purple-500/25 text-center">
+                                <Link href="https://compass.thefoundrys.com/courses/ai/certified-in-prompt-engineering" className="px-8 py-4 bg-purple-600 text-white rounded-full font-bold text-lg hover:bg-purple-500 transition-all shadow-lg hover:shadow-purple-500/25 text-center">
                                     Enroll Now
                                 </Link>
                                 <Link href="#overview" className="px-8 py-4 bg-slate-800 text-white rounded-full font-bold text-lg hover:bg-slate-700 transition-all border border-slate-700 text-center">
