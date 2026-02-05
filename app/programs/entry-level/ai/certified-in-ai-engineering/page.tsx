@@ -213,7 +213,7 @@ export default function AIEngineeringCoursePage() {
                                 <Award size={16} /> Professional Certification
                             </div>
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-                                Certified Professional in <br />
+                                Certified in <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">AI Engineering</span>
                             </h1>
                             <p className="text-xl text-slate-400 max-w-xl leading-relaxed mb-8">

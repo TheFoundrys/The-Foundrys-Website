@@ -165,7 +165,7 @@ export default function PromptEngineeringCoursePage() {
                                 <Award size={16} /> Professional Certification
                             </div>
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-                                Certified Professional in <br />
+                                Certified in <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Prompt Engineering</span>
                             </h1>
                             <p className="text-xl text-slate-400 max-w-xl leading-relaxed mb-8">
@@ -220,7 +220,7 @@ export default function PromptEngineeringCoursePage() {
                                 <InfoRow text="Industry Recognized Certification" />
                             </div>
 
-                            
+
                         </div>
                     </div>
                 </div>
