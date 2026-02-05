@@ -3,7 +3,7 @@
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
-import { ArrowUpRight, CheckCircle2, BrainCircuit } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, BrainCircuit, Star } from "lucide-react";
 import Link from "next/link";
 
 export default function AIClient() {
@@ -41,6 +41,7 @@ export default function AIClient() {
               desc="Focus on the engineering lifecycle. Learn to build, scale, and optimize production-grade AI applications."
               href="/programs/professional/ai/certified-professional-in-ai-engineering"
               persona="For Software Developers (Full-stack, Backend, MERN ...)"
+              isBestSeller={true}
             />
             <CourseCard
               sku="AI 004"
@@ -61,17 +62,31 @@ export default function AIClient() {
   );
 }
 
-function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discountLabel = "50% Discount", href = "/apply", duration = "3 Months", persona = "Students / Working professionals" }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string, discountLabel?: string, href?: string, duration?: string, persona?: string }) {
+function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discountLabel = "50% Discount", href = "/apply", duration = "3 Months", persona = "Students / Working professionals", isBestSeller = false }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string, discountLabel?: string, href?: string, duration?: string, persona?: string, isBestSeller?: boolean }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group"
+      className="flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group relative"
     >
+      {isBestSeller && (
+        <div className="absolute top-6 right-0 z-10">
+          <div className="bg-gradient-to-r from-orange-400 to-orange-500 text-white px-6 py-3 font-bold text-sm shadow-lg" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%, 10% 50%)' }}>
+            BEST<br />SELLER
+          </div>
+        </div>
+      )}
       <div className="p-8 flex-grow">
         <div className="flex justify-between items-start mb-4">
-          <span className="text-xs font-bold text-slate-400 tracking-wider uppercase bg-slate-100 px-2 py-1 rounded">{sku}</span>
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-bold text-slate-400 tracking-wider uppercase bg-slate-100 px-2 py-1 rounded">{sku}</span>
+            {isBestSeller && (
+              <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 text-white text-xs font-bold">
+                <Star size={12} fill="white" /> Best Seller
+              </div>
+            )}
+          </div>
           <div className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100">
             Professional {duration} Course
           </div>

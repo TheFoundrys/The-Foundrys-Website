@@ -267,7 +267,7 @@ export default function AIEngineeringCoursePage() {
                                 {/* <InfoRow text="Career Support & Placement Assistance" /> */}
                             </div>
 
-                            
+
                         </div>
                     </div>
                 </div>
