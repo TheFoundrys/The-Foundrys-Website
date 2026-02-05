@@ -4,7 +4,7 @@
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
     ArrowLeft,
     CheckCircle2,
@@ -181,6 +181,7 @@ const CAREER_ROLES = [
 export default function AIEngineeringCoursePage() {
     const [visibleProjects, setVisibleProjects] = useState(ALL_PROJECTS.slice(0, 3));
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
+    const roleRefs = useRef<(HTMLDivElement | null)[]>([]);
 
     useEffect(() => {
         // Scroll to top on page load
@@ -268,7 +269,7 @@ export default function AIEngineeringCoursePage() {
                                 {/* <InfoRow text="Career Support & Placement Assistance" /> */}
                             </div>
 
-                            
+
                         </div>
                     </div>
                 </div>
@@ -494,10 +495,26 @@ export default function AIEngineeringCoursePage() {
                     <div className="flex flex-col lg:flex-row gap-8 items-start">
                         {/* Mobile Layout (Accordion) - Visible only on small screens */}
                         <div className="w-full lg:hidden flex flex-col gap-4">
-                            {CAREER_ROLES.map((role) => (
-                                <div key={role.id} className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                            {CAREER_ROLES.map((role, index) => (
+                                <div
+                                    key={role.id}
+                                    ref={(el) => {
+                                        if (el) roleRefs.current[index] = el;
+                                    }}
+                                    className="bg-white rounded-xl border border-stone-200 overflow-hidden scroll-mt-32"
+                                >
                                     <button
-                                        onClick={() => setActiveRole(activeRole.id === role.id ? activeRole : role)}
+                                        onClick={() => {
+                                            setActiveRole(activeRole.id === role.id ? activeRole : role);
+                                            // Only scroll if we are switching to this role (not if we are already on it, though clicking it again keeps it active so maybe fine)
+                                            // Or just always scroll to make sure user sees it.
+                                            setTimeout(() => {
+                                                roleRefs.current[index]?.scrollIntoView({
+                                                    behavior: "smooth",
+                                                    block: "start"
+                                                });
+                                            }, 100);
+                                        }}
                                         className={`w-full text-left p-4 flex items-center justify-between transition-colors ${activeRole.id === role.id ? "bg-blue-50/50" : "bg-white"}`}
                                     >
                                         <h3 className={`font-bold text-lg ${activeRole.id === role.id ? "text-blue-600" : "text-slate-700"}`}>

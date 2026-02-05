@@ -40,7 +40,9 @@ export default function EntryLevelAIPage() {
                             desc="Build a strong foundation in the mathematics, logic, and core principles of Artificial Intelligence. Learn how intelligent systems use data and algorithms to make decisions."
                             persona="For Students & AI enthusiasts"
                             href="/programs/entry-level/ai/certified-professional-in-ai-foundations"
-                        /> */}
+                        /> 
+                       
+                        */}
                         <CourseCard
                             sku="AI 003"
                             title="Certified in AI Engineering"
@@ -48,17 +50,8 @@ export default function EntryLevelAIPage() {
                             discountedPrice="50,000"
                             duration="45 Days"
                             desc="Focus on the engineering lifecycle. Learn to build, scale, and optimize production-grade AI applications."
-                            href="/programs/entry-level/ai/certified-professional-in-ai-engineering"
+                            href="/programs/entry-level/ai/certified-in-ai-engineering"
                             persona="For Software Developers (Full-stack, Backend, MERN ...)"
-                        />
-                        <CourseCard
-                            sku="AI 002"
-                            title="Certified in AI Research"
-                            originalPrice="150,000"
-                            discountedPrice="75,000"
-                            duration="45 Days"
-                            desc="Dive deep into algorithms and model architectures that power modern AI. Learn how to push the boundaries of intelligent systems through research and experimentation."
-                            persona="For Data & ML Researchers"
                         />
                         <CourseCard
                             sku="AI 005"
@@ -69,7 +62,16 @@ export default function EntryLevelAIPage() {
                             desc="Master the art of communicating with AI. Learn to design and optimize prompts to unlock the full potential of Large Language Models."
                             discountLabel="50% Discount"
                             persona="For Students & AI enthusiasts"
-                            href="/programs/entry-level/ai/certified-professional-in-prompt-engineering"
+                            href="/programs/entry-level/ai/certified-in-prompt-engineering"
+                        />
+                        <CourseCard
+                            sku="AI 002"
+                            title="Certified in AI Research"
+                            originalPrice="150,000"
+                            discountedPrice="75,000"
+                            duration="45 Days"
+                            desc="Dive deep into algorithms and model architectures that power modern AI. Learn how to push the boundaries of intelligent systems through research and experimentation."
+                            persona="For Data & ML Researchers"
                         />
                     </div>
                 </div>

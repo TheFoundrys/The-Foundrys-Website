@@ -4,29 +4,130 @@ import React, { useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useScroll } from "framer-motion";
 import {
-   ArrowRight,
-   Globe,
-   Cpu,
-   Scale,
-   Zap,
-   CheckCircle2,
-   ShieldCheck,
-   Users,
    Leaf,
    Layers,
    BarChart,
    BookOpen,
    Anchor,
-   ChevronLeft,
-   ChevronRight,
-   BrainCircuit
+   BrainCircuit,
+   ChevronDown,
+   Globe,
+   Scale,
+   Zap,
+   CheckCircle2,
+   Users
 } from "lucide-react";
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
+import { AnimatePresence } from "framer-motion";
+
+import { RoleDetailsContent } from "@/components/role-details-content";
+
+// CAREER ROLES DATA
+const CAREER_ROLES = [
+   {
+      icon: Layers,
+      title: "Sustainability Systems Architect",
+      salary: "₹18-25 LPA",
+      growth: "+15-20% YoY",
+      desc: "Design and implement comprehensive sustainability frameworks for organizations. Bridge technology, policy, and environmental impact.",
+      skills: ["Systems Thinking", "ESG Frameworks", "Data Analysis", "Stakeholder Management"],
+      responsibilities: [
+         "Architect end-to-end sustainability monitoring systems",
+         " Integrate IoT and AI data streams for real-time tracking",
+         "Develop carbon reduction roadmaps",
+         "Align technical architecture with ESG goals"
+      ]
+   },
+   {
+      icon: BarChart,
+      title: "ESG & AI Strategy Consultant",
+      salary: "₹15-30 LPA",
+      growth: "+18-25% YoY",
+      desc: "Guide organizations in integrating AI solutions with ESG goals. Develop strategies that balance innovation with responsibility.",
+      skills: ["ESG Reporting", "AI Strategy", "Risk Assessment", "Regulatory Compliance"],
+      responsibilities: [
+         "Advise C-suite on AI-driven sustainability strategies",
+         "Ensure compliance with global ESG standards",
+         "Conduct algorithmic impact assessments",
+         "Develop responsible AI governance frameworks"
+      ]
+   },
+   {
+      icon: Globe,
+      title: "Climate Tech Product Leader",
+      salary: "₹18-35 LPA",
+      growth: "+20-30% YoY",
+      desc: "Lead development of climate-focused technology products. Drive innovation in renewable energy, carbon tracking, and environmental monitoring.",
+      skills: ["Product Management", "Climate Science", "Tech Innovation", "Market Analysis"],
+      responsibilities: [
+         "Define product vision for climate-tech solutions",
+         "Manage product lifecycle from concept to launch",
+         "Analyze market trends in green technology",
+         "Collaborate with engineering and data teams"
+      ]
+   },
+   {
+      icon: Scale,
+      title: "AI Governance Specialist",
+      salary: "₹14-28 LPA",
+      growth: "+16-22% YoY",
+      desc: "Ensure AI systems comply with ethical standards and regulations. Develop governance frameworks for responsible AI deployment.",
+      skills: ["AI Ethics", "Policy Development", "Compliance", "Risk Management"],
+      responsibilities: [
+         "Audit AI models for bias and fairness",
+         "Develop internal AI use policies",
+         "Monitor regulatory landscape for AI",
+         "Conduct risk assessments for new AI deployments"
+      ]
+   },
+   {
+      icon: Zap,
+      title: "Energy & Resource Optimizer",
+      salary: "₹12-24 LPA",
+      growth: "+14-18% YoY",
+      desc: "Optimize energy consumption and resource utilization using AI and data analytics. Drive efficiency in operations and reduce environmental footprint.",
+      skills: ["Energy Systems", "Optimization", "IoT", "Data Analytics"],
+      responsibilities: [
+         "Analyze energy usage patterns using AI",
+         "Implement predictive maintenance for infrastructure",
+         "Optimize resource allocation algorithms",
+         "Report on energy savings and efficiency gains"
+      ]
+   },
+   {
+      icon: BookOpen,
+      title: "Sustainability Educator & Advisor",
+      salary: "₹10-20 LPA",
+      growth: "+12-16% YoY",
+      desc: "Train professionals and advise organizations on sustainability practices. Build capacity for sustainable transformation across industries.",
+      skills: ["Training & Development", "Sustainability Practices", "Communication", "Advisory"],
+      responsibilities: [
+         "Develop curriculum for sustainability workshops",
+         "Mentor teams on sustainable coding practices",
+         "Create awareness campaigns for green tech",
+         "Facilitate knowledge sharing across departments"
+      ]
+   },
+   {
+      icon: BrainCircuit,
+      title: "Circular Economy Strategist",
+      salary: "₹16-32 LPA",
+      growth: "+17-23% YoY",
+      desc: "Design and implement circular economy models that eliminate waste and maximize resource efficiency. Transform linear business models into sustainable, regenerative systems.",
+      skills: ["Circular Design", "Waste Management", "Business Model Innovation", "Life Cycle Assessment"],
+      responsibilities: [
+         "Design closed-loop product lifecycles",
+         "Identify opportunities for waste reduction",
+         "Collaborate with supply chain partners",
+         "Measure impact of circular initiatives"
+      ]
+   }
+];
 
 export default function SustainabilityClient() {
    const containerRef = useRef(null);
-   const [activeSlide, setActiveSlide] = useState(0);
+   const roleRefs = useRef<(HTMLDivElement | null)[]>([]);
    const [selectedCareer, setSelectedCareer] = useState(0);
 
    useScroll({
@@ -39,7 +140,7 @@ export default function SustainabilityClient() {
          <Navbar />
 
          {/* HERO SECTION: FULL PAGE DARK DESIGN */}
-         <section className="relative py-32 px-6 bg-gradient-to-br from-emerald-950 via-stone-900 to-emerald-900 overflow-hidden">
+         <section className="relative pt-32 pb-48 px-6 bg-gradient-to-br from-emerald-950 via-stone-900 to-emerald-900 overflow-hidden">
             {/* Radial Gradient Overlay */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-600/20 via-transparent to-transparent"></div>
 
@@ -59,7 +160,7 @@ export default function SustainabilityClient() {
                   </div>
 
                   {/* Main Heading */}
-                  <h1 className="text-7xl md:text-5xl lg:text-8xl font-serif text-white mb-6 leading-tight">
+                  <h1 className="text-5xl md:text-6xl lg:text-8xl font-serif text-white mb-6 leading-tight">
                      Sustainability in the <br />
                      <span className="text-emerald-400 italic">Age of AI</span>
                   </h1>
@@ -70,7 +171,7 @@ export default function SustainabilityClient() {
                   </p>
 
                   {/* Quick Highlights */}
-                  <div className="flex flex-wrap gap-6 justify-center text-sm text-emerald-100">
+                  <div className="flex flex-wrap gap-4 md:gap-6 justify-center text-sm text-emerald-100">
                      <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
                         <CheckCircle2 size={18} className="text-emerald-400" />
                         <span>Industry-Recognized Certificate</span>
@@ -89,27 +190,27 @@ export default function SustainabilityClient() {
          </section>
 
 
-         {/* Program Details Block*/}
-         <div className="relative z-20">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl px-4">
-               <div className="bg-white rounded-2xl shadow-xl border border-stone-200 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12">
+         {/* Program Details Block - Relative with negative margin for overlap */}
+         <div className="relative z-20 px-4 -mt-24 mb-12">
+            <div className="mx-auto max-w-5xl">
+               <div className="bg-white rounded-2xl shadow-xl border border-stone-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
 
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 flex-1 text-center md:text-left w-full">
-                     <div className="border-r border-stone-100 last:border-0 pr-4">
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
+                     <div className="border-r-0 border-stone-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                         <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1"> Duration</p>
                         <p className="text-lg font-bold text-stone-900">4 Weeks</p>
                      </div>
-                     <div className="border-r border-stone-100 last:border-0 pr-4">
+                     <div className="border-r-0 border-stone-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                         <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1">Mode</p>
                         <p className="text-lg font-bold text-stone-900">Hybrid</p>
                      </div>
-                     <div className="border-r border-stone-100 last:border-0 pr-4">
+                     <div className="border-r-0 border-stone-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                         <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1">Starts</p>
                         <p className="text-lg font-bold text-stone-900">February 2026</p>
                      </div>
-                     <div className="pr-4">
+                     <div className="lg:pr-4">
                         <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>
-                        <div className="flex items-center gap-2 justify-center md:justify-start">
+                        <div className="flex items-center gap-2 justify-center lg:justify-start">
                            <span className="text-sm text-stone-400 line-through">₹35,000</span>
                            <span className="text-lg font-bold text-stone-900">₹25,000</span>
                         </div>
@@ -117,7 +218,7 @@ export default function SustainabilityClient() {
                   </div>
 
 
-                  <div className="w-full md:w-auto">
+                  <div className="w-full lg:w-auto">
                      <Link href="/apply" className="block w-full text-center px-8 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
                         Apply Now
                      </Link>
@@ -127,7 +228,7 @@ export default function SustainabilityClient() {
          </div>
 
          {/* WHY THIS COHORT EXISTS + WHO IT'S FOR - IMPROVED LAYOUT */}
-         <section className="py-24 bg-white relative overflow-hidden border-t border-stone-200">
+         <section className="py-12 md:py-24 bg-white relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-7xl">
                <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
                   {/* Left: Why This Cohort Exists */}
@@ -181,7 +282,7 @@ export default function SustainabilityClient() {
                               <div className="shrink-0">
                                  <item.icon size={24} className="text-emerald-600 group-hover:scale-110 transition-transform" />
                               </div>
-                              <div>
+                              <div className="flex-1">
                                  <h3 className="text-base font-serif text-stone-900 mb-1">{item.title}</h3>
                                  <p className="text-sm text-stone-600 font-light leading-relaxed">{item.desc}</p>
                               </div>
@@ -215,9 +316,9 @@ export default function SustainabilityClient() {
          {/* CURRICULUM: WEEK BY WEEK */}
          <section className="py-24 bg-stone-50 border-y border-stone-200">
             <div className="container mx-auto px-6 max-w-6xl">
-               <h2 className="text-3xl md:text-5xl font-serif text-stone-900 mb-16 text-center">What You'll Learn</h2>
+               <h2 className="text-3xl md:text-5xl font-serif text-stone-900 mb-16 text-center">What You&apos;ll Learn</h2>
 
-               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {[
                      {
                         week: "Week 1",
@@ -371,250 +472,111 @@ export default function SustainabilityClient() {
             <div className="container mx-auto px-6 max-w-6xl">
                {/* Header */}
                <div className="text-center mb-16">
-                  <h2 className="text-4xl md:text-5xl font-serif text-stone-900 mb-4">What You'll Become</h2>
+                  <h2 className="text-4xl md:text-5xl font-serif text-stone-900 mb-4">What You&apos;ll Become</h2>
                   <p className="text-lg text-stone-600 font-light max-w-2xl mx-auto">
                      Explore career paths at the intersection of AI and sustainability
                   </p>
                </div>
 
-               {/* Side-by-Side Layout */}
-               <div className="grid lg:grid-cols-2 gap-8">
-                  {/* Left: Roles List */}
-                  <div className="space-y-3">
-                     {(() => {
-                        const roles = [
-                           {
-                              icon: Layers,
-                              title: "Sustainability Systems Architect",
-                              salary: "₹12-25 LPA",
-                              avgSalary: "₹18.5 LPA",
-                              growth: "+15-20% annually",
-                              description: "Design and implement comprehensive sustainability frameworks for organizations. Bridge technology, policy, and environmental impact.",
-                              skills: ["Systems Thinking", "ESG Frameworks", "Data Analysis", "Stakeholder Management"],
-                              demand: "High"
-                           },
-                           {
-                              icon: BarChart,
-                              title: "ESG & AI Strategy Consultant",
-                              salary: "₹15-30 LPA",
-                              avgSalary: "₹22.5 LPA",
-                              growth: "+18-25% annually",
-                              description: "Guide organizations in integrating AI solutions with ESG goals. Develop strategies that balance innovation with responsibility.",
-                              skills: ["ESG Reporting", "AI Strategy", "Risk Assessment", "Regulatory Compliance"],
-                              demand: "Very High"
-                           },
-                           {
-                              icon: Globe,
-                              title: "Climate Tech Product Leader",
-                              salary: "₹18-35 LPA",
-                              avgSalary: "₹26.5 LPA",
-                              growth: "+20-30% annually",
-                              description: "Lead development of climate-focused technology products. Drive innovation in renewable energy, carbon tracking, and environmental monitoring.",
-                              skills: ["Product Management", "Climate Science", "Tech Innovation", "Market Analysis"],
-                              demand: "Very High"
-                           },
-                           {
-                              icon: Scale,
-                              title: "AI Governance Specialist",
-                              salary: "₹14-28 LPA",
-                              avgSalary: "₹21 LPA",
-                              growth: "+16-22% annually",
-                              description: "Ensure AI systems comply with ethical standards and regulations. Develop governance frameworks for responsible AI deployment.",
-                              skills: ["AI Ethics", "Policy Development", "Compliance", "Risk Management"],
-                              demand: "High"
-                           },
-                           {
-                              icon: Zap,
-                              title: "Energy & Resource Optimizer",
-                              salary: "₹12-24 LPA",
-                              avgSalary: "₹18 LPA",
-                              growth: "+14-18% annually",
-                              description: "Optimize energy consumption and resource utilization using AI and data analytics. Drive efficiency in operations and reduce environmental footprint.",
-                              skills: ["Energy Systems", "Optimization", "IoT", "Data Analytics"],
-                              demand: "Medium-High"
-                           },
-                           {
-                              icon: BookOpen,
-                              title: "Sustainability Educator & Advisor",
-                              salary: "₹10-20 LPA",
-                              avgSalary: "₹15 LPA",
-                              growth: "+12-16% annually",
-                              description: "Train professionals and advise organizations on sustainability practices. Build capacity for sustainable transformation across industries.",
-                              skills: ["Training & Development", "Sustainability Practices", "Communication", "Advisory"],
-                              demand: "Medium"
-                           },
-                           {
-                              icon: BrainCircuit,
-                              title: "Circular Economy Strategist",
-                              salary: "₹16-32 LPA",
-                              avgSalary: "₹24 LPA",
-                              growth: "+17-23% annually",
-                              description: "Design and implement circular economy models that eliminate waste and maximize resource efficiency. Transform linear business models into sustainable, regenerative systems.",
-                              skills: ["Circular Design", "Waste Management", "Business Model Innovation", "Life Cycle Assessment"],
-                              demand: "Very High"
-                           }
-                        ];
-
-                        return (
-                           <>
-                              {roles.map((role, i) => (
-                                 <button
-                                    key={i}
-                                    onClick={() => setSelectedCareer(i)}
-                                    className={`w-full p-5 rounded-lg transition-all text-left ${selectedCareer === i
-                                       ? 'bg-emerald-600 text-white shadow-lg'
-                                       : 'bg-white border-2 border-stone-200 hover:border-emerald-300 hover:shadow-md'
-                                       }`}
+               <div className="flex flex-col lg:flex-row gap-8 items-start">
+                  {/* Mobile Layout (Accordion) - Visible only on small screens */}
+                  <div className="w-full lg:hidden flex flex-col gap-4">
+                     {CAREER_ROLES.map((role, index) => (
+                        <div
+                           key={index}
+                           ref={(el) => {
+                              if (el) roleRefs.current[index] = el;
+                           }}
+                           className="bg-white rounded-xl border border-stone-200 overflow-hidden scroll-mt-32"
+                        >
+                           <button
+                              onClick={() => {
+                                 setSelectedCareer(index);
+                                 setTimeout(() => {
+                                    roleRefs.current[index]?.scrollIntoView({
+                                       behavior: "smooth",
+                                       block: "start"
+                                    });
+                                 }, 100);
+                              }}
+                              className={`w-full text-left p-4 flex items-center justify-between transition-colors ${selectedCareer === index ? "bg-emerald-50/50" : "bg-white"}`}
+                           >
+                              <div className="flex items-center gap-4">
+                                 <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${selectedCareer === index ? 'bg-emerald-100' : 'bg-emerald-50'}`}>
+                                    <role.icon size={20} className="text-emerald-600" />
+                                 </div>
+                                 <div>
+                                    <h3 className={`font-serif text-lg ${selectedCareer === index ? "text-emerald-800" : "text-stone-900"}`}>
+                                       {role.title}
+                                    </h3>
+                                    <div className="text-sm font-bold text-emerald-600">
+                                       {role.salary}
+                                    </div>
+                                 </div>
+                              </div>
+                              <ChevronDown
+                                 size={20}
+                                 className={`text-stone-400 transition-transform duration-300 ${selectedCareer === index ? "rotate-180 text-emerald-500" : ""}`}
+                              />
+                           </button>
+                           <AnimatePresence>
+                              {selectedCareer === index && (
+                                 <motion.div
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: "auto", opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    transition={{ duration: 0.3 }}
                                  >
-                                    <div className="flex items-start gap-4">
-                                       <div className={`w-11 h-11 rounded-lg flex items-center justify-center shrink-0 ${selectedCareer === i ? 'bg-white/20' : 'bg-emerald-100'
-                                          }`}>
-                                          <role.icon size={22} className={selectedCareer === i ? 'text-white' : 'text-emerald-600'} />
-                                       </div>
-                                       <div className="flex-1">
-                                          <h3 className={`text-base font-serif leading-tight mb-1.5 ${selectedCareer === i ? 'text-white' : 'text-stone-900'
-                                             }`}>
-                                             {role.title}
-                                          </h3>
-                                          <div className={`text-sm font-bold ${selectedCareer === i ? 'text-emerald-100' : 'text-emerald-600'
-                                             }`}>
-                                             {role.salary}
-                                          </div>
+                                    <div className="p-4 pt-0 border-t border-stone-100">
+                                       <div className="pt-4">
+                                          <RoleDetailsContent role={role} />
                                        </div>
                                     </div>
-                                 </button>
-                              ))}
-                           </>
-                        );
-                     })()}
+                                 </motion.div>
+                              )}
+                           </AnimatePresence>
+                        </div>
+                     ))}
                   </div>
 
-                  {/* Right: Selected Role Details */}
-                  <div className="lg:sticky lg:top-6 h-fit">
-                     <div className="bg-white border-2 border-stone-200 rounded-2xl p-8 md:p-10">
-                        {(() => {
-                           const roles = [
-                              {
-                                 icon: Layers,
-                                 title: "Sustainability Systems Architect",
-                                 salary: "₹12-25 LPA",
-                                 avgSalary: "₹18.5 LPA",
-                                 growth: "+15-20% annually",
-                                 description: "Design and implement comprehensive sustainability frameworks for organizations. Bridge technology, policy, and environmental impact.",
-                                 skills: ["Systems Thinking", "ESG Frameworks", "Data Analysis", "Stakeholder Management"],
-                                 demand: "High"
-                              },
-                              {
-                                 icon: BarChart,
-                                 title: "ESG & AI Strategy Consultant",
-                                 salary: "₹15-30 LPA",
-                                 avgSalary: "₹22.5 LPA",
-                                 growth: "+18-25% annually",
-                                 description: "Guide organizations in integrating AI solutions with ESG goals. Develop strategies that balance innovation with responsibility.",
-                                 skills: ["ESG Reporting", "AI Strategy", "Risk Assessment", "Regulatory Compliance"],
-                                 demand: "Very High"
-                              },
-                              {
-                                 icon: Globe,
-                                 title: "Climate Tech Product Leader",
-                                 salary: "₹18-35 LPA",
-                                 avgSalary: "₹26.5 LPA",
-                                 growth: "+20-30% annually",
-                                 description: "Lead development of climate-focused technology products. Drive innovation in renewable energy, carbon tracking, and environmental monitoring.",
-                                 skills: ["Product Management", "Climate Science", "Tech Innovation", "Market Analysis"],
-                                 demand: "Very High"
-                              },
-                              {
-                                 icon: Scale,
-                                 title: "AI Governance Specialist",
-                                 salary: "₹14-28 LPA",
-                                 avgSalary: "₹21 LPA",
-                                 growth: "+16-22% annually",
-                                 description: "Ensure AI systems comply with ethical standards and regulations. Develop governance frameworks for responsible AI deployment.",
-                                 skills: ["AI Ethics", "Policy Development", "Compliance", "Risk Management"],
-                                 demand: "High"
-                              },
-                              {
-                                 icon: Zap,
-                                 title: "Energy & Resource Optimizer",
-                                 salary: "₹12-24 LPA",
-                                 avgSalary: "₹18 LPA",
-                                 growth: "+14-18% annually",
-                                 description: "Optimize energy consumption and resource utilization using AI and data analytics. Drive efficiency in operations and reduce environmental footprint.",
-                                 skills: ["Energy Systems", "Optimization", "IoT", "Data Analytics"],
-                                 demand: "Medium-High"
-                              },
-                              {
-                                 icon: BookOpen,
-                                 title: "Sustainability Educator & Advisor",
-                                 salary: "₹10-20 LPA",
-                                 avgSalary: "₹15 LPA",
-                                 growth: "+12-16% annually",
-                                 description: "Train professionals and advise organizations on sustainability practices. Build capacity for sustainable transformation across industries.",
-                                 skills: ["Training & Development", "Sustainability Practices", "Communication", "Advisory"],
-                                 demand: "Medium"
-                              },
-                              {
-                                 icon: BrainCircuit,
-                                 title: "Circular Economy Strategist",
-                                 salary: "₹16-32 LPA",
-                                 avgSalary: "₹24 LPA",
-                                 growth: "+17-23% annually",
-                                 description: "Design and implement circular economy models that eliminate waste and maximize resource efficiency. Transform linear business models into sustainable, regenerative systems.",
-                                 skills: ["Circular Design", "Waste Management", "Business Model Innovation", "Life Cycle Assessment"],
-                                 demand: "Very High"
-                              }
-                           ];
-                           const selected = roles[selectedCareer];
-
-                           return (
-                              <>
-                                 {/* Role Header */}
-                                 <div className="mb-8">
-                                    <h3 className="text-2xl md:text-3xl font-serif text-stone-900 mb-4">{selected.title}</h3>
-                                    <p className="text-base text-stone-600 leading-relaxed">{selected.description}</p>
+                  {/* Desktop Layout - Visible only on lg screens and up */}
+                  <div className="hidden lg:grid lg:grid-cols-2 gap-8 w-full">
+                     {/* Left: Roles List */}
+                     <div className="space-y-3">
+                        {CAREER_ROLES.map((role, i) => (
+                           <button
+                              key={i}
+                              onClick={() => setSelectedCareer(i)}
+                              className={`w-full p-5 rounded-lg transition-all text-left ${selectedCareer === i
+                                 ? 'bg-emerald-600 text-white shadow-lg'
+                                 : 'bg-white border-2 border-stone-200 hover:border-emerald-300 hover:shadow-md'
+                                 }`}
+                           >
+                              <div className="flex items-start gap-4">
+                                 <div className={`w-11 h-11 rounded-lg flex items-center justify-center shrink-0 ${selectedCareer === i ? 'bg-white/20' : 'bg-emerald-100'
+                                    }`}>
+                                    <role.icon size={22} className={selectedCareer === i ? 'text-white' : 'text-emerald-600'} />
                                  </div>
-
-                                 {/* Stats Grid */}
-                                 <div className="grid md:grid-cols-3 gap-4 mb-8">
-                                    <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-5 text-center">
-                                       <div className="text-sm text-emerald-700 font-semibold uppercase tracking-wider mb-2">Average Salary</div>
-                                       <div className="text-2xl font-bold text-emerald-600">{selected.avgSalary}</div>
-                                    </div>
-                                    <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-5 text-center">
-                                       <div className="text-sm text-emerald-700 font-semibold uppercase tracking-wider mb-2">Annual Growth</div>
-                                       <div className="text-2xl font-bold text-emerald-600">{selected.growth}</div>
-                                    </div>
-                                    <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-5 text-center">
-                                       <div className="text-sm text-emerald-700 font-semibold uppercase tracking-wider mb-2">Market Demand</div>
-                                       <div className="text-2xl font-bold text-emerald-600">{selected.demand}</div>
+                                 <div className="flex-1">
+                                    <h3 className={`text-base font-serif leading-tight mb-1.5 ${selectedCareer === i ? 'text-white' : 'text-stone-900'
+                                       }`}>
+                                       {role.title}
+                                    </h3>
+                                    <div className={`text-sm font-bold ${selectedCareer === i ? 'text-emerald-100' : 'text-emerald-600'
+                                       }`}>
+                                       {role.salary}
                                     </div>
                                  </div>
+                              </div>
+                           </button>
+                        ))}
+                     </div>
 
-                                 {/* Skills */}
-                                 <div>
-                                    <h4 className="text-sm font-bold text-stone-900 uppercase tracking-wider mb-4">Key Skills Required</h4>
-                                    <div className="flex flex-wrap gap-3">
-                                       {selected.skills.map((skill, i) => (
-                                          <span
-                                             key={i}
-                                             className="px-4 py-2 bg-stone-100 border border-stone-200 text-stone-700 text-sm font-medium rounded-lg"
-                                          >
-                                             {skill}
-                                          </span>
-                                       ))}
-                                    </div>
-                                 </div>
-
-                                 {/* Disclaimer */}
-                                 <div className="mt-8 pt-6 border-t border-stone-200">
-                                    <p className="text-xs text-stone-500 leading-relaxed">
-                                       * Salary data is indicative and based on industry averages. Actual compensation may vary based on experience, location, company size, and individual performance.
-                                    </p>
-                                 </div>
-                              </>
-                           );
-                        })()}
+                     {/* Right: Selected Role Details */}
+                     <div className="lg:sticky lg:top-6 h-fit">
+                        <div className="bg-white border-2 border-stone-200 rounded-2xl p-8 md:p-10">
+                           <RoleDetailsContent role={CAREER_ROLES[selectedCareer]} />
+                        </div>
                      </div>
                   </div>
                </div>
