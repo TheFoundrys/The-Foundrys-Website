@@ -3,7 +3,7 @@
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
-import { ArrowUpRight, CheckCircle2, BrainCircuit, Star } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, BrainCircuit } from "lucide-react";
 import Link from "next/link";
 
 export default function EntryLevelAIPage() {
@@ -89,25 +89,11 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group relative"
+            className="flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group"
         >
-            {isBestSeller && (
-                <div className="absolute top-6 right-0 z-10">
-                    <div className="bg-gradient-to-r from-orange-400 to-orange-500 text-white px-6 py-3 font-bold text-sm shadow-lg" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%, 10% 50%)' }}>
-                        BEST<br />SELLER
-                    </div>
-                </div>
-            )}
             <div className="p-8 flex-grow">
                 <div className="flex justify-between items-start mb-4">
-                    <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-slate-400 tracking-wider uppercase bg-slate-100 px-2 py-1 rounded">{sku}</span>
-                        {isBestSeller && (
-                            <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 text-white text-xs font-bold">
-                                <Star size={12} fill="white" /> Best Seller
-                            </div>
-                        )}
-                    </div>
+                    <span className="text-xs font-bold text-slate-400 tracking-wider uppercase bg-slate-100 px-2 py-1 rounded">{sku}</span>
                     <div className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100">
                         Professional {duration} Course
                     </div>
@@ -139,6 +125,11 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
 
             <div className="p-6 bg-slate-50 border-t border-slate-100 flex flex-col sm:flex-row md:flex-col lg:flex-row items-start sm:items-center md:items-start lg:items-center justify-between gap-4">
                 <div>
+                    {isBestSeller && (
+                        <div className="inline-block px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-bold uppercase tracking-wide mb-2 rounded">
+                            Bestseller
+                        </div>
+                    )}
                     <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
                     <div className="flex flex-col">
                         <span className="text-sm text-slate-400 line-through font-medium">₹{originalPrice}</span>
