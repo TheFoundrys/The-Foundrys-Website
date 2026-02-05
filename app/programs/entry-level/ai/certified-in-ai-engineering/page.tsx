@@ -242,7 +242,7 @@ export default function AIEngineeringCoursePage() {
                             </div>
 
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <Link href="/apply" className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-500 transition-all shadow-lg hover:shadow-blue-500/25 text-center">
+                                <Link href="https://compass.thefoundrys.com/courses/ai/certified-in-ai-engineering" className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-500 transition-all shadow-lg hover:shadow-blue-500/25 text-center">
                                     Enroll Now
                                 </Link>
                                 <Link href="#overview" className="px-8 py-4 bg-slate-800 text-white rounded-full font-bold text-lg hover:bg-slate-700 transition-all border border-slate-700 text-center">
