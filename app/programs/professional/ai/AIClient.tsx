@@ -34,10 +34,10 @@ export default function AIClient() {
 
             <CourseCard
               sku="AI 003"
-              title="Certified Professional in AI Engineering"
+              title="Certified Professional AI Engineering"
               originalPrice="150,000"
               discountedPrice="75,000"
-              duration="45 Days"
+              duration="6 Weeks"
               desc="Focus on the engineering lifecycle. Learn to build, scale, and optimize production-grade AI applications."
               href="/programs/professional/ai/certified-professional-in-ai-engineering"
               persona="For Software Developers (Full-stack, Backend, MERN ...)"
@@ -45,10 +45,10 @@ export default function AIClient() {
             />
             <CourseCard
               sku="AI 004"
-              title="Certified Professional in AI Operations"
+              title="Certified Professional AI Operations"
               originalPrice="200,000"
               discountedPrice="100,000"
-              duration="45 Days"
+              duration="6 Weeks"
               desc="Master the art of MLOps. Learn deployment strategies, monitoring, and maintaining AI at scale."
               href="/programs/professional/ai/certified-professional-in-ai-operations"
               persona="For DevOps & Cloud Engineers"

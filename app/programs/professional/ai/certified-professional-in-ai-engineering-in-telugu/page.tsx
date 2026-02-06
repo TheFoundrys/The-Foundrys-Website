@@ -367,13 +367,13 @@ export default function AIEngineeringTeluguCoursePage() {
                         </div>
 
                         <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 leading-tight">
-                            Certified Professional in <br />
-                            <span className="text-blue-400 italic">AI Engineering</span>
+                            Certified Professional AI <br />
+                            <span className="text-blue-400 italic">Engineering</span>
                         </h1>
                         <p className="text-2xl md:text-3xl text-slate-400 font-light mb-8">(Telugu Medium)</p>
 
                         <p className="text-lg md:text-xl text-blue-100/80 font-light leading-relaxed max-w-3xl mx-auto mb-12">
-                            Become a Production-Ready AI Engineer in 45 Days. Build autonomous agents, RAG systems, and multimodal apps that solve real-world problems.
+                            Become a Production-Ready AI Engineer in 6 Weeks. Build autonomous agents, RAG systems, and multimodal apps that solve real-world problems.
                         </p>
 
                         <div className="flex flex-wrap gap-4 md:gap-6 justify-center text-sm text-blue-100">
@@ -401,7 +401,7 @@ export default function AIEngineeringTeluguCoursePage() {
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
                             <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Duration</p>
-                                <p className="text-lg font-bold text-slate-900">45 Days</p>
+                                <p className="text-lg font-bold text-slate-900">6 Weeks</p>
                             </div>
                             <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Mode</p>
@@ -437,7 +437,7 @@ export default function AIEngineeringTeluguCoursePage() {
                         <div>
                             <h2 className="text-3xl font-bold text-slate-900 mb-6 font-sans">The AI revolution is here. Don&apos;t just watch it happen.</h2>
                             <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                                Companies are scrambling for engineers who can build, not just theorize. The Certified Professional in AI Engineering is an intensive program designed to take you from a standard developer to an AI specialist.
+                                Companies are scrambling for engineers who can build, not just theorize. The Certified Professional AI Engineering is an intensive program designed to take you from a standard developer to an AI specialist.
                             </p>
                             <div className="p-6 bg-blue-50 border border-blue-100 rounded-xl flex items-start gap-4 mb-8">
                                 <Languages className="text-blue-600 shrink-0 mt-1" size={24} />

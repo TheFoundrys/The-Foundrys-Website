@@ -320,12 +320,12 @@ export default function AIEngineeringCoursePage() {
                         </div>
 
                         <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 leading-tight">
-                            Certified in <br />
+                            Certified <br />
                             <span className="text-blue-400 italic">AI Engineering</span>
                         </h1>
 
                         <p className="text-lg md:text-xl text-blue-100/80 font-light leading-relaxed max-w-3xl mx-auto mb-12">
-                            Become a Production-Ready AI Engineer in 45 Days. Build autonomous agents, RAG systems, and multimodal apps that solve real-world problems.
+                            Become a Production-Ready AI Engineer in 6 Weeks. Build autonomous agents, RAG systems, and multimodal apps that solve real-world problems.
                         </p>
 
                         <div className="flex flex-wrap gap-4 md:gap-6 justify-center text-sm text-blue-100">
@@ -353,7 +353,7 @@ export default function AIEngineeringCoursePage() {
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
                             <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Duration</p>
-                                <p className="text-lg font-bold text-slate-900">45 Days</p>
+                                <p className="text-lg font-bold text-slate-900">6 Weeks</p>
                             </div>
                             <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Mode</p>

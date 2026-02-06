@@ -170,7 +170,7 @@ export default function AIFoundationsTeluguCoursePage() {
                                 </div>
                             </div>
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-                                Certified Professional in <br />
+                                Certified Professional <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">AI Foundations</span>
                                 <span className="block text-2xl md:text-3xl mt-2 text-slate-400 font-normal">(Telugu Medium)</span>
                             </h1>
@@ -185,7 +185,7 @@ export default function AIFoundationsTeluguCoursePage() {
                                     </div>
                                     <div>
                                         <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Duration</div>
-                                        <div className="font-semibold">45 Days</div>
+                                        <div className="font-semibold">6 Weeks</div>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3 text-slate-300">
@@ -226,7 +226,7 @@ export default function AIFoundationsTeluguCoursePage() {
                                 <InfoRow text="Industry Recognized Certification" />
                             </div>
 
-                            
+
                         </div>
                     </div>
                 </div>
@@ -238,7 +238,7 @@ export default function AIFoundationsTeluguCoursePage() {
                     <div className="prose prose-lg prose-slate mx-auto mb-16">
                         <h2 className="text-3xl font-bold text-slate-900 mb-6 font-sans">Demystify Artificial Intelligence.</h2>
                         <p className="text-lg text-slate-600 leading-relaxed">
-                            AI is transforming every industry. The Certified Professional in AI Foundations is a <span className="font-bold text-slate-900">45-day program</span> designed for students, fresh graduates, and professionals who want to understand the &quot;Magic&quot; behind the machines.
+                            AI is transforming every industry. The Certified Professional AI Foundations is a <span className="font-bold text-slate-900">45-day program</span> designed for students, fresh graduates, and professionals who want to understand the &quot;Magic&quot; behind the machines.
                         </p>
                         <p className="text-lg text-slate-600 leading-relaxed mt-4">
                             You will move from basic definitions to understanding <span className="font-bold text-slate-900">Neural Networks, Data Science, and Generative AI</span>. This course focuses on building a strong conceptual understanding and practical application, ensuring you are ready for the AI-driven future.

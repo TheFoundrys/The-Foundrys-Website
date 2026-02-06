@@ -274,7 +274,7 @@ export default function MLOpsCoursePage() {
                         </div>
 
                         <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 leading-tight">
-                            Certified Professional in <br />
+                            Certified Professional <br />
                             <span className="text-cyan-400 italic">AI Operations</span>
                         </h1>
 
@@ -307,7 +307,7 @@ export default function MLOpsCoursePage() {
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
                             <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Duration</p>
-                                <p className="text-lg font-bold text-slate-900">45 Days</p>
+                                <p className="text-lg font-bold text-slate-900">6 Weeks</p>
                             </div>
                             <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Mode</p>

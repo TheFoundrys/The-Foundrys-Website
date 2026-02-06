@@ -344,7 +344,7 @@ export default function AIEngineeringCoursePage() {
 
                         {/* Main Heading */}
                         <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 leading-tight">
-                            Certified Professional in <br />
+                            Certified Professional <br />
                             <span className="text-blue-400 italic">AI Engineering</span>
                         </h1>
 
@@ -379,7 +379,7 @@ export default function AIEngineeringCoursePage() {
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
                             <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Duration</p>
-                                <p className="text-lg font-bold text-slate-900">45 Days</p>
+                                <p className="text-lg font-bold text-slate-900">6 Weeks</p>
                             </div>
                             <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Mode</p>
@@ -497,7 +497,7 @@ export default function AIEngineeringCoursePage() {
                     {/* <div className="prose prose-lg prose-slate mx-auto mb-16">
                         <h2 className="text-3xl font-bold text-slate-900 mb-6 font-sans">The AI revolution is here. Don&apos;t just watch it happen.</h2>
                         <p className="text-lg text-slate-600 leading-relaxed">
-                            Companies are scrambling for engineers who can build, not just theorize. The Certified Professional in AI Engineering is an intensive program designed to take you from a standard developer to an AI specialist.
+                            Companies are scrambling for engineers who can build, not just theorize. The Certified Professional AI Engineering is an intensive program designed to take you from a standard developer to an AI specialist.
                         </p>
                         <p className="text-lg text-slate-600 leading-relaxed mt-4">
                             Whether you are a fresh graduate or a professional looking to switch domains, this program bridges the gap between basic Python scripting and building autonomous, large-scale AI applications. You won’t just learn about AI; you will build <span className="font-bold text-slate-900">agents, Retrieval Augmented Generation (RAG) systems, and multimodal apps</span> that solve real-world problems.
@@ -880,7 +880,7 @@ export default function AIEngineeringCoursePage() {
                 </div>
             </section >
 
-        
+
 
             <Footer />
         </main >

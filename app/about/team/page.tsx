@@ -20,7 +20,7 @@ const teamMembers = [
     },
     {
         name: "Dr. Srikanth Itapu",
-        role: "Director, E-Spin Lab",
+        role: "SME in the Quantum Technologies",
         bio: "Subject matter expert in quantum technologies, advanced materials, and semiconductor devices with over 12 years of research experience.",
         image: "/images/dr-itapu-srikanth.jpg",
         profileLink: "/about/faculty/dr-srikanth-itapu",

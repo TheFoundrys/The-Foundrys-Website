@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Twitter, Instagram, Youtube, Linkedin, MapPin, Mail, Phone, ArrowUpRight } from "lucide-react";
+import { Twitter, Instagram, Youtube, Linkedin, Facebook, MapPin, Mail, Phone, ArrowUpRight } from "lucide-react";
 
 interface FooterProps {
     hideCTA?: boolean;
@@ -11,17 +11,17 @@ export function Footer({ hideCTA = false }: FooterProps) {
     return (
         <footer className="bg-slate-50 text-slate-500 font-medium py-12 border-t border-slate-200 font-sans tracking-tight">
             <div className="container mx-auto px-6">
-                
+
                 {/* Note / Breadcrumb Style Top */}
                 <div className="mb-8 border-b border-slate-200 pb-6">
                     <div className="max-w-3xl leading-relaxed text-slate-500">
-                        <span className="font-bold text-slate-800 text-xl block mb-2">The Foundry's.</span> 
+                        <span className="font-bold text-slate-800 text-xl block mb-2">The Foundry's.</span>
                         <span className="text-lg">We forge Architects in Deep Tech, Entrepreneurship, Sustainability and Energy.</span>
                     </div>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-10 text-sm">
-                    
+
                     {/* Column 1: Deep Tech */}
                     <div className="flex flex-col gap-3">
                         <h3 className="text-slate-900 font-bold mb-1">School of Deep Tech</h3>
@@ -61,18 +61,18 @@ export function Footer({ hideCTA = false }: FooterProps) {
                     {/* Column 5: Contact */}
                     <div className="flex flex-col gap-4">
                         <h3 className="text-slate-900 font-bold mb-1">Contact</h3>
-                        
+
                         <div className="flex flex-col gap-3 text-sm">
                             <a href="mailto:info@thefoundrys.com" className="flex items-center gap-2 hover:text-slate-900 transition-colors">
                                 <Mail size={16} />
                                 <span>info@thefoundrys.com</span>
                             </a>
-                            
+
                             <div className="flex items-start gap-2 leading-relaxed">
                                 <MapPin size={16} className="shrink-0 mt-1" />
                                 <span>
-                                    QHUB, Beside Madhapur Metro Station,<br/>
-                                    Jubilee Hills, Road No 36 & 37,<br/>
+                                    QHUB, Beside Madhapur Metro Station,<br />
+                                    Jubilee Hills, Road No 36 & 37,<br />
                                     Hyderabad, Telangana - 500033.
                                 </span>
                             </div>
@@ -81,10 +81,11 @@ export function Footer({ hideCTA = false }: FooterProps) {
                         <div className="h-px bg-slate-200 my-1" />
 
                         <div className="flex gap-4">
-                             <Link href="https://x.com/thefoundrys" className="hover:text-slate-900 transition-colors"><Twitter size={18} /></Link>
-                             <Link href="https://www.linkedin.com/company/the-foundry-s" className="hover:text-slate-900 transition-colors"><Linkedin size={18} /></Link>
-                             <Link href="https://www.instagram.com/the.foundrys/" className="hover:text-slate-900 transition-colors"><Instagram size={18} /></Link>
-                             <Link href="https://www.youtube.com/@TheFoundrys" className="hover:text-slate-900 transition-colors"><Youtube size={18} /></Link>
+                            <Link href="https://x.com/thefoundrys" className="hover:text-slate-900 transition-colors"><Twitter size={18} /></Link>
+                            <Link href="https://www.linkedin.com/company/the-foundry-s" className="hover:text-slate-900 transition-colors"><Linkedin size={18} /></Link>
+                            <Link href="https://www.instagram.com/the.foundrys/" className="hover:text-slate-900 transition-colors"><Instagram size={18} /></Link>
+                            <Link href="https://www.youtube.com/@TheFoundrys" className="hover:text-slate-900 transition-colors"><Youtube size={18} /></Link>
+                            <Link href="https://www.facebook.com/profile.php?id=61587055543711" className="hover:text-slate-900 transition-colors"><Facebook size={18} /></Link>
                         </div>
                     </div>
                 </div>
@@ -98,9 +99,10 @@ export function Footer({ hideCTA = false }: FooterProps) {
                             <Link href="/privacy" className="hover:underline decoration-slate-400 underline-offset-2">Privacy Policy</Link>
                             <Link href="/terms" className="hover:underline decoration-slate-400 underline-offset-2">Terms of Use</Link>
                             <Link href="/legal" className="hover:underline decoration-slate-400 underline-offset-2">Legal</Link>
+                            <Link href="/refund-policy" className="hover:underline decoration-slate-400 underline-offset-2">Refund Policy</Link>
                         </div>
                     </div>
-                    
+
                     <div className="font-semibold text-slate-700">
                         India
                     </div>

@@ -57,7 +57,7 @@ export default function ProfessionalProgramPage() {
                             <div className="space-y-2">
                                 <p className="text-3xl md:text-4xl text-slate-400 font-medium tracking-wide">Become a</p>
                                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
-                                    Certified Professional in
+                                    Certified Professional
                                     <br />
                                     <span className="inline-block relative min-h-[1.2em] mt-2">
                                         {domains.map((domain, index) => (

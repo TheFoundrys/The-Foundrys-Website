@@ -301,7 +301,7 @@ export default function PromptEngineeringCoursePage() {
                         </div>
 
                         <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 leading-tight">
-                            Certified in <br />
+                            Certified <br />
                             <span className="text-purple-400 italic">Prompt Engineering</span>
                         </h1>
 

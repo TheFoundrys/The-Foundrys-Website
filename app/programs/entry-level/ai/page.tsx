@@ -33,10 +33,10 @@ export default function EntryLevelAIPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                         {/* <CourseCard
                             sku="AI 001"
-                            title="Certified Professional in AI Foundations"
+                            title="Certified Professional AI Foundations"
                             originalPrice="100,000"
                             discountedPrice="50,000"
-                            duration="45 Days"
+                            duration="6 Weeks"
                             desc="Build a strong foundation in the mathematics, logic, and core principles of Artificial Intelligence. Learn how intelligent systems use data and algorithms to make decisions."
                             persona="For Students & AI enthusiasts"
                             href="/programs/entry-level/ai/certified-professional-in-ai-foundations"
@@ -45,10 +45,10 @@ export default function EntryLevelAIPage() {
                         */}
                         <CourseCard
                             sku="AI 003"
-                            title="Certified in AI Engineering"
+                            title="Certified AI Engineering"
                             originalPrice="100,000"
                             discountedPrice="50,000"
-                            duration="45 Days"
+                            duration="6 Weeks"
                             desc="Focus on the engineering lifecycle. Learn to build, scale, and optimize production-grade AI applications."
                             href="/programs/entry-level/ai/certified-in-ai-engineering"
                             persona="For Software Developers (Full-stack, Backend, MERN ...)"
@@ -56,7 +56,7 @@ export default function EntryLevelAIPage() {
                         />
                         <CourseCard
                             sku="AI 005"
-                            title="Certified in Prompt Engineering"
+                            title="Certified Prompt Engineering"
                             originalPrice="20,000"
                             discountedPrice="10,000"
                             duration="2 weeks"
@@ -67,10 +67,10 @@ export default function EntryLevelAIPage() {
                         />
                         <CourseCard
                             sku="AI 002"
-                            title="Certified in AI Research"
+                            title="Certified AI Research"
                             originalPrice="150,000"
                             discountedPrice="75,000"
-                            duration="45 Days"
+                            duration="6 Weeks"
                             desc="Dive deep into algorithms and model architectures that power modern AI. Learn how to push the boundaries of intelligent systems through research and experimentation."
                             persona="For Data & ML Researchers"
                         />
