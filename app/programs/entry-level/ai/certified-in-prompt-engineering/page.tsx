@@ -8,16 +8,20 @@ import {
     ArrowLeft,
     CheckCircle2,
     Calendar,
-    Clock,
     Award,
     ArrowUpRight,
+    Terminal,
+    Cpu,
     ShieldCheck,
+    Code2,
     Briefcase,
+    ServerCog,
     ChevronDown,
     MessageSquare,
     Sparkles,
     Zap,
-    Workflow
+    Workflow,
+    BookOpen
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -133,14 +137,146 @@ const CAREER_ROLES = [
     }
 ];
 
+const CURRICULUM_DATA = [
+    {
+        week: 1,
+        title: "Foundations of AI Communication",
+        topics: [
+            "How LLMs Work & Capabilities",
+            "Zero-shot & Few-shot Prompting",
+            "Role-Based Prompting Strategies",
+            "Chain-of-Thought (CoT) & Tree-of-Thoughts",
+            "Hallucination Mitigation & Defense",
+            "Structured Outputs (JSON/XML) & APIs"
+        ]
+    },
+    {
+        week: 2,
+        title: "Advanced Applications & Agents",
+        topics: [
+            "Vision Models & Image Generation",
+            "Evaluation Frameworks & A/B Testing",
+            "Optimizing Prompts for Cost & Speed",
+            "Agentic Workflows (ReAct, Planning)",
+            "Tool Use & Function Calling",
+            "End-to-End Application Deployment"
+        ]
+    }
+];
+
+function CurriculumTabs() {
+    const [activeWeek, setActiveWeek] = useState(1);
+    const activeContent = CURRICULUM_DATA.find(item => item.week === activeWeek);
+
+    return (
+        <div className="space-y-8">
+            {/* Week Tabs */}
+            <div className="flex flex-wrap justify-center gap-3">
+                {CURRICULUM_DATA.map((item) => (
+                    <button
+                        key={item.week}
+                        onClick={() => setActiveWeek(item.week)}
+                        className={`px-6 py-3 rounded-full font-bold text-sm transition-all ${activeWeek === item.week
+                            ? 'bg-purple-600 text-white shadow-lg scale-105'
+                            : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                            }`}
+                    >
+                        Week {item.week}
+                    </button>
+                ))}
+            </div>
+
+            {/* Content Display */}
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={activeWeek}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-200"
+                >
+                    <div className="flex items-center gap-4 mb-6">
+                        <div className="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-bold">
+                            Week {activeContent?.week}
+                        </div>
+                        <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
+                            {activeContent?.title}
+                        </h3>
+                    </div>
+
+                    <div className="grid md:grid-cols-1 gap-4">
+                        {activeContent?.topics.map((topic, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                className="flex items-start gap-3 p-4 rounded-xl bg-slate-50 hover:bg-purple-50 transition-colors"
+                            >
+                                <CheckCircle2 size={20} className="text-purple-600 shrink-0 mt-0.5" />
+                                <span className="text-slate-700 font-medium">{topic}</span>
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.div>
+            </AnimatePresence>
+        </div>
+    );
+}
+
+function HighlightCard({ icon: Icon, title, desc }: { icon: any, title: string, desc: string }) {
+    return (
+        <div className="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+            <div className="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 mb-4">
+                <Icon size={24} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-2">{title}</h3>
+            <p className="text-slate-600 text-sm leading-relaxed">{desc}</p>
+        </div>
+    )
+}
+
+function FAQItem({ question, answer }: { question: string, answer: string }) {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div className="border border-slate-200 rounded-2xl bg-slate-50 overflow-hidden">
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-100 transition-colors"
+                aria-expanded={isOpen}
+            >
+                <h4 className="text-lg font-bold text-slate-900 pr-8">{question}</h4>
+                <ChevronDown
+                    className={`text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                    size={20}
+                />
+            </button>
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                        <div className="px-6 pb-6 text-slate-600 leading-relaxed border-t border-slate-200/50 pt-4">
+                            {answer}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    )
+}
+
 export default function PromptEngineeringCoursePage() {
     const [visibleProjects, setVisibleProjects] = useState(ALL_PROJECTS.slice(0, 3));
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
 
     useEffect(() => {
-        // Scroll to top on page load
         window.scrollTo(0, 0);
-
         const shuffled = [...ALL_PROJECTS].sort(() => 0.5 - Math.random());
         setTimeout(() => setVisibleProjects(shuffled.slice(0, 3)), 0);
     }, []);
@@ -150,93 +286,131 @@ export default function PromptEngineeringCoursePage() {
             <Navbar />
 
             {/* Hero Section */}
-            <section className="relative pt-32 pb-20 px-6 bg-slate-900 border-b border-slate-800 overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-purple-900/40 via-slate-900 to-slate-900 z-0" />
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px] pointer-events-none" />
+            <section className="relative pt-32 pb-48 px-6 bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-600/20 via-transparent to-transparent" />
+                <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
-                <div className="container mx-auto max-w-6xl relative z-10">
-                    <Link href="/programs/entry-level/ai" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8 text-sm font-medium">
-                        <ArrowLeft size={16} /> Back to AI Programs
-                    </Link>
+                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
+                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse" />
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-sm font-bold mb-6">
-                                <Award size={16} /> Professional Certification
-                            </div>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-                                Certified in <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Prompt Engineering</span>
-                            </h1>
-                            <p className="text-xl text-slate-400 max-w-xl leading-relaxed mb-8">
-                                Master the language of AI. Learn to design, optimize, and deploy advanced prompts to build powerful applications and workflows.
-                            </p>
-
-                            <div className="flex flex-wrap gap-6 mb-10">
-                                <div className="flex items-center gap-3 text-slate-300">
-                                    <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-purple-400">
-                                        <Clock size={20} />
-                                    </div>
-                                    <div>
-                                        <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Duration</div>
-                                        <div className="font-semibold">2 Weeks</div>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-3 text-slate-300">
-                                    <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-purple-400">
-                                        <Calendar size={20} />
-                                    </div>
-                                    <div>
-                                        <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Format</div>
-                                        <div className="font-semibold">Hybrid</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col sm:flex-row gap-4">
-                                <Link href="https://compass.thefoundrys.com/courses/ai/certified-in-prompt-engineering" className="px-8 py-4 bg-purple-600 text-white rounded-full font-bold text-lg hover:bg-purple-500 transition-all shadow-lg hover:shadow-purple-500/25 text-center">
-                                    Enroll Now
-                                </Link>
-                                <Link href="#overview" className="px-8 py-4 bg-slate-800 text-white rounded-full font-bold text-lg hover:bg-slate-700 transition-all border border-slate-700 text-center">
-                                    Explore Course
-                                </Link>
-                            </div>
+                <div className="container mx-auto max-w-5xl relative z-10">
+                    <div className="text-center">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-400/30 text-purple-300 text-sm font-medium mb-8 backdrop-blur-sm">
+                            <Award size={16} />
+                            <span>Professional Certification Program</span>
                         </div>
 
-                        <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-3xl p-8 lg:p-10">
-                            <h3 className="text-white text-xl font-bold mb-6">Program Fee</h3>
-                            <div className="flex items-baseline gap-3 mb-2">
-                                <span className="text-4xl lg:text-5xl font-bold text-white">₹10,000</span>
-                                <span className="text-xl text-slate-500 line-through">₹20,000</span>
-                            </div>
-                            <div className="flex items-center gap-2 mb-8">
-                                <span className="bg-purple-500/20 text-purple-400 text-xs font-bold px-2 py-1 rounded uppercase">50% Scholarship</span>
-                                <span className="text-slate-400 text-sm">Limited time offer</span>
-                            </div>
+                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 leading-tight">
+                            Certified in <br />
+                            <span className="text-purple-400 italic">Prompt Engineering</span>
+                        </h1>
 
-                            <div className="space-y-4 mb-8">
-                                <InfoRow text="Hybrid" />
-                                <InfoRow text="Hands-on Projects & Portfolio" />
-                                <InfoRow text="Industry Recognized Certification" />
+                        <p className="text-lg md:text-xl text-purple-100/80 font-light leading-relaxed max-w-3xl mx-auto mb-12">
+                            Master the language of AI. From zero-shot prompting to building complex agentic workflows, learn how to control Large Language Models with precision and confidence.
+                        </p>
+
+                        <div className="flex flex-wrap gap-4 md:gap-6 justify-center text-sm text-purple-100">
+                            <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
+                                <CheckCircle2 size={18} className="text-purple-400" />
+                                <span>Industry-Recognized Certificate</span>
                             </div>
-
-
+                            <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
+                                <CheckCircle2 size={18} className="text-purple-400" />
+                                <span>Hands-on Portfolio</span>
+                            </div>
+                            <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
+                                <CheckCircle2 size={18} className="text-purple-400" />
+                                <span>Expert-Led Sessions</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Course Overview */}
-            <section id="overview" className="py-24 px-6 bg-white">
-                <div className="container mx-auto max-w-4xl">
-                    <div className="prose prose-lg prose-slate mx-auto mb-16">
-                        <h2 className="text-3xl font-bold text-slate-900 mb-6 font-sans">Unlock the true potential of AI.</h2>
-                        <p className="text-lg text-slate-600 leading-relaxed">
-                            AI models are only as good as the instructions you give them. The Certified Professional in Prompt Engineering is a comprehensive <span className="font-bold text-slate-900">2 Weeks program</span> designed to turn you into an expert AI communicator.
-                        </p>
-                        <p className="text-lg text-slate-600 leading-relaxed mt-4">
-                            You will move beyond simple queries to mastering <span className="font-bold text-slate-900">Chain-of-Thought reasoning, few-shot prompting, and agentic workflows</span>. Whether you are a developer, writer, or product manager, this course will empower you to build reliable, high-quality AI systems.
-                        </p>
+            {/* Program Details Card */}
+            <div className="relative z-20 px-4 -mt-24 mb-12">
+                <div className="mx-auto max-w-5xl">
+                    <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
+                            <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
+                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Duration</p>
+                                <p className="text-lg font-bold text-slate-900">2 Weeks</p>
+                            </div>
+                            <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
+                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Mode</p>
+                                <p className="text-lg font-bold text-slate-900">Hybrid</p>
+                            </div>
+                            <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
+                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Starts</p>
+                                <p className="text-lg font-bold text-slate-900">Immediate</p>
+                            </div>
+                            <div className="lg:pr-4">
+                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>
+                                <div className="flex items-center gap-2 justify-center lg:justify-start">
+                                    <span className="text-sm text-slate-400 line-through">₹20,000</span>
+                                    <span className="text-lg font-bold text-slate-900">₹10,000</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="w-full lg:w-auto">
+                            <Link href="/apply" className="block w-full text-center px-8 py-3 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
+                                Enroll Now
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Why This Program Exists */}
+            <section className="py-12 md:py-24 bg-white relative overflow-hidden">
+                <div className="container mx-auto px-6 max-w-7xl">
+                    <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
+                        {/* Left: Why This Program Exists */}
+                        <div>
+                            <h2 className="text-3xl md:text-4xl font-serif text-slate-900 mb-6">Unlock the true potential of AI.</h2>
+                            <p className="text-xl text-slate-800 mb-8 font-light italic leading-snug">
+                                AI models are only as good as the instructions you give them.
+                            </p>
+
+                            <div className="space-y-4">
+                                <div className="border-l-4 border-purple-400 bg-purple-50/50 p-5">
+                                    <h4 className="text-sm font-bold text-purple-900 uppercase tracking-wider mb-2">The Skill</h4>
+                                    <p className="text-base text-slate-700 font-light">
+                                        Prompt engineering is not about "magic words". It's about systematic reasoning, structured inputs, and understanding model architecture.
+                                    </p>
+                                </div>
+                                <div className="border-l-4 border-pink-400 bg-pink-50/50 p-5">
+                                    <h4 className="text-sm font-bold text-pink-900 uppercase tracking-wider mb-2">The Outcome</h4>
+                                    <p className="text-base text-slate-700 font-light">
+                                        You will move beyond simple chat to building reliable, high-quality AI systems and workflows that save hours of work.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Right: Who This Program Is For */}
+                        <div>
+                            <h2 className="text-3xl md:text-4xl font-serif text-slate-900 mb-6">Who This Program Is For</h2>
+                            <p className="text-xl text-slate-800 mb-8 font-light italic leading-snug">
+                                No coding background required. Just logical thinking.
+                            </p>
+
+                            <div className="space-y-2">
+                                <div className="flex items-start gap-6 bg-slate-50 p-4 border border-slate-200 rounded-xl shadow-sm hover:border-purple-300 transition-all hover:shadow-md group">
+                                    <div className="shrink-0"><Briefcase size={24} className="text-purple-600 group-hover:scale-110 transition-transform" /></div>
+                                    <div className="flex-1"><h3 className="text-base font-serif text-slate-900 mb-1">Product Managers</h3><p className="text-sm text-slate-600 font-light">Integrate AI features into your products effectively.</p></div>
+                                </div>
+                                <div className="flex items-start gap-6 bg-slate-50 p-4 border border-slate-200 rounded-xl shadow-sm hover:border-purple-300 transition-all hover:shadow-md group">
+                                    <div className="shrink-0"><MessageSquare size={24} className="text-purple-600 group-hover:scale-110 transition-transform" /></div>
+                                    <div className="flex-1"><h3 className="text-base font-serif text-slate-900 mb-1">Marketers & Writers</h3><p className="text-sm text-slate-600 font-light">Scale content creation while maintaining unique brand voice.</p></div>
+                                </div>
+                                <div className="flex items-start gap-6 bg-slate-50 p-4 border border-slate-200 rounded-xl shadow-sm hover:border-purple-300 transition-all hover:shadow-md group">
+                                    <div className="shrink-0"><Code2 size={24} className="text-purple-600 group-hover:scale-110 transition-transform" /></div>
+                                    <div className="flex-1"><h3 className="text-base font-serif text-slate-900 mb-1">Developers</h3><p className="text-sm text-slate-600 font-light">Learn to better instruct copilot tools and build AI-powered apps.</p></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -247,98 +421,93 @@ export default function PromptEngineeringCoursePage() {
                         <HighlightCard icon={Sparkles} title="Multi-Modal AI" desc="Work with image generation (Midjourney, DALL-E) and audio models." />
                         <HighlightCard
                             icon={Workflow}
-                            title="Agentic Thinking & Workflow Design"
+                            title="Agentic Thinking"
                             desc="Design multi-step, goal-driven AI workflows using agents, tools, and structured reasoning."
                         />
                     </div>
                 </div>
             </section>
 
-            {/* Project Portfolio */}
-            <section className="py-24 px-6 bg-slate-900 text-white overflow-hidden">
-                <div className="container mx-auto max-w-6xl">
-                    <div className="flex flex-col md:flex-row gap-12 items-center mb-16">
-                        <div className="md:w-1/2">
-                            <h2 className="text-3xl md:text-4xl font-bold mb-4">Build Real <br /><span className="text-purple-400">AI Applications.</span></h2>
-                            <p className="text-slate-400 text-lg">Theory is not enough. You will build and deploy functional AI tools that solve real problems.</p>
-                        </div>
-                        <div className="md:w-1/2 flex justify-end">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-700 bg-slate-800/50 text-slate-300 text-sm font-medium">
-                                <CheckCircle2 size={16} className="text-purple-500" /> Production-Ready Skills
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {visibleProjects.map((project, index) => (
-                            <ProjectCard
-                                key={index}
-                                number={`0${index + 1}`}
-                                title={project.title}
-                                tag={project.tag}
-                                desc={project.desc}
-                                tech={project.tech}
-                            />
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Skills */}
-            <section className="py-20 bg-slate-50 border-y border-slate-200 overflow-hidden">
-                <div className="container mx-auto px-6 mb-16 text-center max-w-3xl">
-                    <h2 className="text-3xl font-bold text-slate-900 mb-4">
-                        Tools & Technologies
-                    </h2>
-                    <p className="text-slate-400">
-                        Master the modern AI stack
-                    </p>
-                </div>
-
-                <motion.div
-                    className="flex items-center gap-12 whitespace-nowrap will-change-transform mb-8"
-                    animate={{ x: ["0%", "-50%"] }}
-                    transition={{
-                        repeat: Infinity,
-                        repeatType: "loop",
-                        duration: 120,
-                        ease: "linear",
-                    }}
-                    style={{ width: "max-content" }}
-                >
-                    {[1, 2, 3, 4].map((i) => (
-                        <div
-                            key={i}
-                            className="flex items-center gap-12 text-slate-400 font-bold text-2xl uppercase tracking-widest"
-                        >
-                            <span>OpenAI API</span> <span>&bull;</span>
-                            <span>Anthropic Claude</span> <span>&bull;</span>
-                            <span>Midjourney</span> <span>&bull;</span>
-                            <span>LangChain</span> <span>&bull;</span>
-                            <span>Hugging Face</span> <span>&bull;</span>
-                            <span>Python</span> <span>&bull;</span>
-                            <span>Streamlit</span> <span>&bull;</span>
-                            <span>JSON Mode</span> <span>&bull;</span>
-                            <span>Playground</span> <span>&bull;</span>
-                            <span>Llama 3</span> <span>&bull;</span>
-                        </div>
-                    ))}
-                </motion.div>
-            </section>
-
             {/* Curriculum */}
-            <section className="py-24 px-6 bg-white">
-                <div className="container mx-auto max-w-7xl">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold text-slate-900 mb-4">Course Curriculum</h2>
-                        <p className="text-lg text-slate-600">A structured path to prompt engineering mastery.</p>
+            <section className="py-24 bg-gradient-to-br from-slate-50 via-purple-50/20 to-slate-50">
+                <div className="container mx-auto px-6 max-w-6xl">
+                    <div className="text-center mb-12">
+                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+                            What You&apos;ll Learn
+                        </h2>
+                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                            A structured path to prompt engineering mastery
+                        </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <WeekCard week="Week 1 - Part 1" title="Foundations & Core Mechanics" topics={["How LLMs Work & Capabilities", "Zero-shot & Few-shot Prompting", "Role-Based Prompting Strategies"]} />
-                        <WeekCard week="Week 1 - Part 2" title="Advanced Reasoning & Reliability" topics={["Chain-of-Thought (CoT) & Tree-of-Thoughts", "Hallucination Mitigation & Defense", "Structured Outputs (JSON/XML) & APIs"]} />
-                        <WeekCard week="Week 2 - Part 1" title="Multi-Modal AI & Operations" topics={["Vision Models & Image Generation", "Evaluation Frameworks & A/B Testing", "Optimizing Prompts for Cost & Speed"]} />
-                        <WeekCard week="Week 2 - Part 2" title="Agents & Capstone Deployment" topics={["Agentic Workflows (ReAct, Planning)", "Tool Use & Function Calling", "End-to-End Application Deployment"]} />
+                    <CurriculumTabs />
+                </div>
+            </section>
+
+            {/* Skills We Will Master */}
+            <section className="py-2 px-1 bg-slate-900">
+                <div className="container mx-auto max-w-9xl">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                            Tools You Will Master
+                        </h2>
+                        <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+                            The essential toolkit for modern AI interaction
+                        </p>
+                    </div>
+
+                    <div className="space-y-8 overflow-hidden">
+                        {[
+                            {
+                                logos: [
+                                    { url: "https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg", name: "OpenAI" },
+                                    { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Claude_AI_symbol.svg/640px-Claude_AI_symbol.svg.png", name: "Anthropic" },
+                                    { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/LangChain_Logo.svg/640px-LangChain_Logo.svg.png", name: "LangChain" },
+                                    { url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", name: "Python" },
+                                    { url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/streamlit/streamlit-original.svg", name: "Streamlit" },
+                                    { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/ChatGPT-Logo.svg/640px-ChatGPT-Logo.svg.png", name: "ChatGPT" },
+                                    { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Claude_AI_symbol.svg/640px-Claude_AI_symbol.svg.png", name: "Claude 3" },
+                                    { url: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg", name: "Python" },
+                                    { url: "https://avatars.githubusercontent.com/u/126733545?s=200&v=4", name: "LangSmith" }
+                                ],
+                                direction: "left"
+                            },
+                        ].map((row, i) => (
+                            <div key={i} className="mb-8">
+                                <div className="relative overflow-hidden">
+                                    <motion.div
+                                        className="flex gap-8 items-center"
+                                        animate={{
+                                            x: row.direction === "left" ? ["0%", "-50%"] : ["-50%", "0%"]
+                                        }}
+                                        transition={{
+                                            repeat: Infinity,
+                                            repeatType: "loop",
+                                            duration: 30,
+                                            ease: "linear"
+                                        }}
+                                        style={{ width: "max-content" }}
+                                    >
+                                        {[...row.logos, ...row.logos, ...row.logos, ...row.logos].map((logo, idx) => (
+                                            <div
+                                                key={idx}
+                                                className="bg-white rounded-xl h-32 w-36 flex flex-col items-center justify-center p-4 gap-2
+                                                    hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex-shrink-0"
+                                            >
+                                                <img
+                                                    src={logo.url}
+                                                    className="h-12 w-auto object-contain"
+                                                    alt={logo.name}
+                                                />
+                                                <span className="text-xs font-semibold text-slate-700 text-center">
+                                                    {logo.name}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </motion.div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -380,18 +549,18 @@ export default function PromptEngineeringCoursePage() {
                 </div>
             </section>
 
-            {/* Career Roles */}
+            {/* Career Roles - Redesigned Split View */}
             <section className="py-24 px-6 bg-slate-50">
                 <div className="container mx-auto max-w-6xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl font-bold text-slate-900 mb-4">Who you can become</h2>
                         <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                            Prompt Engineering is one of the fastest-growing skill sets. Prepare for the roles of tomorrow.
+                            The industry is evolving. Start your journey towards high-demand roles.
                         </p>
                     </div>
 
                     <div className="flex flex-col lg:flex-row gap-8 items-start">
-                        {/* Mobile Layout */}
+                        {/* Mobile Layout (Accordion) */}
                         <div className="w-full lg:hidden flex flex-col gap-4">
                             {CAREER_ROLES.map((role) => (
                                 <div key={role.id} className="bg-white rounded-xl border border-slate-200 overflow-hidden">
@@ -479,64 +648,39 @@ export default function PromptEngineeringCoursePage() {
                 </div>
             </section>
 
-            {/* CTA Section */}
-            <section className="py-24 px-6 bg-slate-900 border-t border-slate-800">
-                <div className="container mx-auto max-w-4xl text-center">
-                    <h2 className="text-4xl font-bold text-white mb-6">Ready to master the future of work?</h2>
-                    <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
-                        Join the next cohort and become a Certified Professional in Prompt Engineering.
-                    </p>
-                    <Link
-                        href="/apply"
-                        className="inline-flex items-center gap-2 px-10 py-5 bg-purple-600 text-white rounded-full font-bold text-xl hover:bg-purple-500 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
-                    >
-                        Start Application <ArrowUpRight size={20} />
-                    </Link>
+            {/* Project Portfolio */}
+            <section className="py-24 px-6 bg-slate-900 text-white overflow-hidden">
+                <div className="container mx-auto max-w-6xl">
+                    <div className="flex flex-col md:flex-row gap-12 items-center mb-16">
+                        <div className="md:w-1/2">
+                            <h2 className="text-3xl md:text-4xl font-bold mb-4">Build Real <br /><span className="text-purple-400">AI Applications.</span></h2>
+                            <p className="text-slate-400 text-lg">Theory is not enough. You will build and deploy functional AI tools that solve real problems.</p>
+                        </div>
+                        <div className="md:w-1/2 flex justify-end">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-700 bg-slate-800/50 text-slate-300 text-sm font-medium">
+                                <CheckCircle2 size={16} className="text-purple-500" /> Production-Ready Skills
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {visibleProjects.map((project, index) => (
+                            <ProjectCard
+                                key={index}
+                                number={`0${index + 1}`}
+                                title={project.title}
+                                tag={project.tag}
+                                desc={project.desc}
+                                tech={project.tech}
+                            />
+                        ))}
+                    </div>
                 </div>
             </section>
 
             <Footer />
         </main>
     );
-}
-
-function InfoRow({ text }: { text: string }) {
-    return (
-        <div className="flex items-center gap-3">
-            <CheckCircle2 size={18} className="text-purple-500 shrink-0" />
-            <span className="text-slate-300 text-sm font-medium">{text}</span>
-        </div>
-    )
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function HighlightCard({ icon: Icon, title, desc }: { icon: any, title: string, desc: string }) {
-    return (
-        <div className="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 mb-4">
-                <Icon size={24} />
-            </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-2">{title}</h3>
-            <p className="text-slate-600 text-sm leading-relaxed">{desc}</p>
-        </div>
-    )
-}
-
-function WeekCard({ week, title, topics }: { week: string, title: string, topics: string[] }) {
-    return (
-        <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:border-purple-200 transition-colors">
-            <div className="text-xs font-bold text-purple-600 uppercase tracking-wider mb-1">{week}</div>
-            <h4 className="text-lg font-bold text-slate-900 mb-3">{title}</h4>
-            <ul className="space-y-2">
-                {topics.map((topic, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
-                        <span className="mt-1.5 w-1 h-1 rounded-full bg-slate-400 shrink-0" />
-                        {topic}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    )
 }
 
 function ProjectCard({ number, title, tag, desc, tech }: { number: string, title: string, tag: string, desc: string, tech: string[] }) {
@@ -561,40 +705,6 @@ function ProjectCard({ number, title, tag, desc, tech }: { number: string, title
                     ))}
                 </div>
             </div>
-        </div>
-    )
-}
-
-function FAQItem({ question, answer }: { question: string, answer: string }) {
-    const [isOpen, setIsOpen] = useState(false);
-
-    return (
-        <div className="border border-slate-200 rounded-2xl bg-slate-50 overflow-hidden">
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-100 transition-colors"
-                aria-expanded={isOpen}
-            >
-                <h4 className="text-lg font-bold text-slate-900 pr-8">{question}</h4>
-                <ChevronDown
-                    className={`text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-                    size={20}
-                />
-            </button>
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                    >
-                        <div className="px-6 pb-6 text-slate-600 leading-relaxed border-t border-slate-200/50 pt-4">
-                            {answer}
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
         </div>
     )
 }
