@@ -347,7 +347,7 @@ export default function AIEngineeringCoursePage() {
             </section>
 
             {/* Program Details Card */}
-            <div className="relative z-20 px-4 -mt-24 mb-12">
+            <div className="relative z-20 px-4 -mt-14 mb-12">
                 <div className="mx-auto max-w-5xl">
                     <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
@@ -382,7 +382,7 @@ export default function AIEngineeringCoursePage() {
             </div>
 
             {/* Why This Program Exists + Who It's For */}
-            <section className="py-12 md:py-24 bg-white relative overflow-hidden">
+            <section className="py-12 md:py-4 bg-white relative overflow-hidden">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
                         {/* Left: Why This Program Exists */}
