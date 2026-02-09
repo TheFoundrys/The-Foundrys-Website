@@ -53,7 +53,7 @@ export function ContactClient() {
                         <div>
                             <h3 className="font-bold text-slate-900 mb-1">Address</h3>
                             <p className="text-slate-500 leading-relaxed">
-                                QHUB, Beside Madhapur Metro Station,<br/>
+                                QHUB,Beside Madhapur Metro Station,<br/>
                                 Jubilee Hills, Road No 36 & 37,<br/>
                                 Hyderabad, Telangana - 500033.
                             </p>

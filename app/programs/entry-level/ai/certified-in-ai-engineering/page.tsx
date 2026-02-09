@@ -464,14 +464,11 @@ export default function AIEngineeringCoursePage() {
 
             {/* Skills We Will Master */}
             <section className="py-2 px-1 bg-slate-900">
-                <div className="container mx-auto max-w-9xl">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                            Tools You Will Master
+                <div className="container mx-auto max-w-auto">
+                    <div className="text-center mb-6">
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+                            Technologies you'll learn
                         </h2>
-                        <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-                            The definitive modern stack for AI Engineering
-                        </p>
                     </div>
 
                     <div className="space-y-8 overflow-hidden">
@@ -687,6 +684,20 @@ export default function AIEngineeringCoursePage() {
                 </div>
             </section>
 
+            {/* FAQs */}
+            <section className="py-24 px-6 bg-white">
+                <div className="container mx-auto max-w-3xl">
+                    <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Frequently Asked Questions</h2>
+                    <div className="space-y-6">
+                        <FAQItem question="I only know basic Python. Is this course for me?" answer="Yes! The only prerequisite is basic programming knowledge (functions, loops, variables). We teach you the specific AI libraries and frameworks from scratch." />
+                        <FAQItem question="Do I need a high-end expensive laptop?" answer="No. For most of the course, we use cloud APIs (like OpenAI) which run on remote servers. For the local model section, a standard laptop is sufficient, though a Mac (M1/M2/M3) or a laptop with an NVIDIA GPU is a bonus." />
+                        <FAQItem question="Will this help me get a job if I have a gap in my career?" answer="Absolutely. The AI field is new enough that 'years of experience' matter less than 'what you have built.' The 6 projects in your portfolio are designed to prove your skills to employers immediately." />
+                        <FAQItem question="What is the difference between this and a Data Science course?" answer="Data Science focuses on statistics, cleaning data, and training models from scratch. AI Engineering focuses on using existing powerful models to build applications. It is more about software engineering and product building than math and statistics." />
+                        <FAQItem question="Do I need to be good at Math (Calculus/Algebra)?" answer="No. Unlike traditional Machine Learning, AI Engineering relies on using pre-trained models via APIs and code. You need logic and coding skills, not advanced calculus." />
+                    </div>
+                </div>
+            </section>
+
             <Footer />
         </main>
     );
@@ -714,6 +725,40 @@ function ProjectCard({ number, title, tag, desc, tech }: { number: string, title
                     ))}
                 </div>
             </div>
+        </div>
+    )
+}
+
+function FAQItem({ question, answer }: { question: string, answer: string }) {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div className="border border-slate-200 rounded-2xl bg-slate-50 overflow-hidden">
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-100 transition-colors"
+                aria-expanded={isOpen}
+            >
+                <h4 className="text-lg font-bold text-slate-900 pr-8">{question}</h4>
+                <ChevronDown
+                    className={`text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                    size={20}
+                />
+            </button>
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                        <div className="px-6 pb-6 text-slate-600 leading-relaxed border-t border-slate-200/50 pt-4">
+                            {answer}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     )
 }

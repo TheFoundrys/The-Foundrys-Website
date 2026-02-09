@@ -276,7 +276,7 @@ export default function AIResearchCoursePage() {
             <section className="py-20 bg-slate-50 border-y border-slate-200 overflow-hidden">
                 <div className="container mx-auto px-6 mb-16 text-center max-w-3xl">
                     <h2 className="text-3xl font-bold text-slate-900 mb-4">
-                        Tools & Technologies
+                        Technologies you&apos;ll learn
                     </h2>
                     <p className="text-slate-400">
                         Master the modern AI Research stack

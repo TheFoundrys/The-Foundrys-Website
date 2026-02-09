@@ -380,23 +380,18 @@ export default function QuantumFundamentalsCoursePage() {
 
             {/* Skills We Will Master */}
             <section className="py-2 px-1 bg-slate-900">
-                <div className="container mx-auto max-w-9xl">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                            Technologies You Will Explore
+                <div className="container mx-auto max-w-12xl">
+                    <div className="text-center mb-6">
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+                            Technologies you'll learn
                         </h2>
-                        <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-                            The future of computing stack
-                        </p>
                     </div>
 
-                    <div className="space-y-8 overflow-hidden">
+                    <div className="space-y-10 overflow-hidden">
                         {[
                             {
                                 logos: [
-                                    { url: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Qiskit-Logo.svg", name: "Qiskit" },
-                                    { url: "https://upload.wikimedia.org/wikipedia/commons/8/87/Cirq_Logo.svg", name: "Cirq" },
-                                    { url: "https://upload.wikimedia.org/wikipedia/commons/9/91/IBM_Quantum_Platform_logo.svg", name: "IBM Quantum" },
+                                    { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Qiskit-Logo.svg/640px-Qiskit-Logo.svg.png", name: "Qiskit" },
                                     { url: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg", name: "Python" },
                                     { url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original-wordmark.svg", name: "Jupyter" },
                                     { url: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg", name: "AWS Braket" },

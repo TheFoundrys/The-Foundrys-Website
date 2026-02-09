@@ -223,7 +223,7 @@ export default function EntryLevelProgramPage() {
                         />
                     </div>
                 </div>
-            </section>     
+            </section>
 
             {/* The Career Impact */}
             <section className="py-24 px-6 bg-white border-b border-slate-200">
@@ -262,10 +262,10 @@ export default function EntryLevelProgramPage() {
             </section>
 
             {/* Tech Stack Section - Scrolling Ticker */}
-            <section className="py-20 bg-slate-50 border-b border-slate-200 overflow-hidden">
+            <section className="py-10 bg-slate-50 border-b border-slate-200 overflow-hidden">
                 <div className="container mx-auto max-w-5xl mb-12 px-6">
                     <div className="text-center">
-                        <h2 className="text-3xl font-bold text-slate-900">Tools You Will Master</h2>
+                        <h2 className="text-4xl font-bold text-slate-900">Technologies you&apos;ll learn</h2>
                         <p className="text-slate-500 mt-2">Industry-standard languages, frameworks, and platforms.</p>
                     </div>
                 </div>
@@ -276,7 +276,7 @@ export default function EntryLevelProgramPage() {
                     <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-50 to-transparent z-10"></div>
 
                     <motion.div
-                        className="flex gap-12 items-center whitespace-nowrap py-4"
+                        className="flex gap-12 items-center whitespace-nowrap py-1"
                         animate={{ x: "-50%" }}
                         transition={{
                             repeat: Infinity,
@@ -361,7 +361,7 @@ export default function EntryLevelProgramPage() {
                 </div>
             </section>
 
-           
+
 
             {/* FAQ Section */}
             <section className="py-24 px-6 bg-slate-50 border-t border-slate-200">

@@ -527,13 +527,10 @@ export default function AIEngineeringTeluguCoursePage() {
             {/* Skills We Will Master */}
             <section className="py-2 px-1 bg-slate-900">
                 <div className="container mx-auto max-w-9xl">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                            Tools You Will Master
+                    <div className="text-center mb-6">
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+                            Technologies you'll learn
                         </h2>
-                        <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-                            The definitive modern stack for AI Engineering
-                        </p>
                     </div>
 
                     <div className="space-y-8 overflow-hidden">

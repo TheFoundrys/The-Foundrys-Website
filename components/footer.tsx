@@ -71,8 +71,7 @@ export function Footer({ hideCTA = false }: FooterProps) {
                             <div className="flex items-start gap-2 leading-relaxed">
                                 <MapPin size={16} className="shrink-0 mt-1" />
                                 <p>(INDIA)</p>
-                            </div>
-                            <div>
+                            
                                 <span>
                                     QHUB, Beside Madhapur Metro Station,
                                     Jubilee Hills, Road No 36 & 37,
@@ -82,10 +81,10 @@ export function Footer({ hideCTA = false }: FooterProps) {
                             <div className="flex items-start gap-2 leading-relaxed">
                                 <MapPin size={16} className="shrink-0 mt-1" />
                                 <p>(USA)</p>
-                            </div>
-                            <div>
-                                <span>2343 Dulles Station Blvd, Apt 256,
-                                    Herndon, Virginia 20171</span>
+                            
+                                <span>
+                                    2343 Dulles Station Blvd, Apt 256, Herndon, Virginia 20171
+                                </span>
                             </div>
                         </div>
 

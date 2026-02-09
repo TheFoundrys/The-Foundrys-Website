@@ -50,7 +50,7 @@ export default function AboutPage() {
                             </p>
                         </div>
 
-                        <div className="h-px w-24 bg-slate-200 mx-auto" />
+                        <div className="h-px w-24 bg-slate-300 mx-auto" />
 
                         <div className="space-y-6">
                             <h3 className="text-indigo-600 font-bold uppercase tracking-widest text-sm">The Mission</h3>
@@ -100,28 +100,33 @@ export default function AboutPage() {
                                 </p>
                             </div>
 
-                            <div className="flex flex-wrap gap-4 pt-4">
-                                <Link
-                                    href="https://www.drpinnacle.com"
-                                    target="_blank"
-                                    className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-950 rounded-full font-bold hover:bg-slate-200 transition-colors"
-                                >
-                                    Visit Dr.Pinnacle <ArrowUpRight size={18} />
-                                </Link>
+                            <div className="flex items-center justify-center gap-4 pt-4">
                                 <Link
                                     href="https://www.linkedin.com/in/vishwanathakuthota/"
                                     target="_blank"
-                                    className="inline-flex items-center gap-2 px-6 py-3 border border-slate-700 text-slate-300 rounded-full font-bold hover:bg-slate-800 hover:text-white transition-colors"
+                                    className="inline-flex items-center gap-2 px-6 py-3 border border-slate-700 text-slate-300 rounded-full font-bold hover:bg-slate-800 hover:text-white transition-colors whitespace-nowrap"
                                 >
                                     Connect on LinkedIn <ArrowUpRight size={18} />
                                 </Link>
+
+                                <Link
+                                    href="https://www.drpinnacle.com"
+                                    target="_blank"
+                                    className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-950 rounded-full font-bold hover:bg-slate-200 transition-colors whitespace-nowrap"
+                                >
+                                    Visit Dr.Pinnacle <ArrowUpRight size={18} />
+                                </Link>
+
                                 <Link
                                     href="/about/team"
-                                    className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-500 transition-all hover:scale-105"
+                                    className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-500 transition-all hover:scale-105 whitespace-nowrap"
                                 >
                                     Meet the Team <ArrowUpRight size={20} />
                                 </Link>
+
+
                             </div>
+
                         </div>
 
                     </div>

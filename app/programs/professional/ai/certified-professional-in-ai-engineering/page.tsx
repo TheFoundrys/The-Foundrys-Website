@@ -522,41 +522,14 @@ export default function AIEngineeringCoursePage() {
 
 
             {/* Project Portfolio */}
-            < section className="py-24 px-6 bg-slate-900 text-white overflow-hidden" >
-                <div className="container mx-auto max-w-6xl">
-                    <div className="flex flex-col md:flex-row gap-12 items-center mb-16">
-                        <div className="md:w-1/2">
-                            <h2 className="text-3xl md:text-4xl font-bold mb-4">Engineer Intelligent <br /><span className="text-blue-400">Production Systems.</span></h2>
-                            <p className="text-slate-400 text-lg">Go beyond tutorials. Architect and deploy 6 complex applications that solve actual business problems.</p>
-                        </div>
-                        <div className="md:w-1/2 flex justify-end">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-700 bg-slate-800/50 text-slate-300 text-sm font-medium">
-                                <CheckCircle2 size={16} className="text-emerald-500" /> Real-World Architecture
-                            </div>
-                        </div>
-                    </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {visibleProjects.map((project, index) => (
-                            <ProjectCard
-                                key={index}
-                                number={`0${index + 1}`}
-                                title={project.title}
-                                tag={project.tag}
-                                desc={project.desc}
-                                tech={project.tech}
-                            />
-                        ))}
-                    </div>
-                </div>
-            </section >
 
             {/* Skills */}
             < section className="py-20 bg-slate-50 border-y border-slate-200 overflow-hidden" >
                 {/* Centered heading + description */}
                 < div className="container mx-auto px-6 mb-16 text-center max-w-3xl" >
                     <h2 className="text-3xl font-bold text-slate-900 mb-4">
-                        Skills You&apos;ll Master
+                        Technologies you&apos;ll learn
                     </h2>
                     <p className="text-slate-400">
                         Industry standard technologies powered by modern AI stack
@@ -667,13 +640,13 @@ export default function AIEngineeringCoursePage() {
                 <div className="container mx-auto max-w-9xl">
 
                     {/* Heading */}
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                            Platforms
+                    <div className="text-center mb-6">
+                        {/* <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                            What You’ll Learn
                         </h2>
                         <p className="text-lg text-slate-400 max-w-2xl mx-auto">
                             Industry-standard technologies and frameworks across the AI engineering stack
-                        </p>
+                        </p> */}
                     </div>
 
                     {/* Infinite Scrolling Logo Rows */}
@@ -865,6 +838,36 @@ export default function AIEngineeringCoursePage() {
                     </div>
                 </div>
             </section >
+
+            < section className="py-24 px-6 bg-slate-900 text-white overflow-hidden" >
+                <div className="container mx-auto max-w-6xl">
+                    <div className="flex flex-col md:flex-row gap-12 items-center mb-16">
+                        <div className="md:w-1/2">
+                            <h2 className="text-3xl md:text-4xl font-bold mb-4">Engineer Intelligent <br /><span className="text-blue-400">Production Systems.</span></h2>
+                            <p className="text-slate-400 text-lg">Go beyond tutorials. Architect and deploy 6 complex applications that solve actual business problems.</p>
+                        </div>
+                        <div className="md:w-1/2 flex justify-end">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-700 bg-slate-800/50 text-slate-300 text-sm font-medium">
+                                <CheckCircle2 size={16} className="text-emerald-500" /> Real-World Architecture
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {visibleProjects.map((project, index) => (
+                            <ProjectCard
+                                key={index}
+                                number={`0${index + 1}`}
+                                title={project.title}
+                                tag={project.tag}
+                                desc={project.desc}
+                                tech={project.tech}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </section >
+
 
             {/* FAQs */}
             < section className="py-24 px-6 bg-white" >

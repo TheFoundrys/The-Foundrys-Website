@@ -264,7 +264,7 @@ export default function ProfessionalProgramPage() {
             <section className="py-20 bg-slate-50 border-b border-slate-200 overflow-hidden">
                 <div className="container mx-auto max-w-5xl mb-12 px-6">
                     <div className="text-center">
-                        <h2 className="text-3xl font-bold text-slate-900">Tools You Will Master</h2>
+                        <h2 className="text-3xl font-bold text-slate-900">What You’ll Learn</h2>
                         <p className="text-slate-500 mt-2">Industry-standard languages, frameworks, and platforms.</p>
                     </div>
                 </div>
