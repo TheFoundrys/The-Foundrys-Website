@@ -224,65 +224,6 @@ export default function ProfessionalProgramPage() {
                 </div>
             </section>
 
-            {/* The Progression (Roadmap) */}
-            <section className="py-24 px-6 bg-slate-900 text-white overflow-hidden relative">
-                <div className="container mx-auto max-w-6xl relative z-10">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold mb-6">The Progression</h2>
-                        <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                            Architected for Domain Authority. Our 3-month methodology is designed to bridge the gap between academic theory and professional application.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-                        {/* Connector Line (Desktop) */}
-                        <div className="hidden md:block absolute top-8 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-blue-500/50 via-purple-500/50 to-emerald-500/50 z-0"></div>
-
-                        {/* Phase I */}
-                        <div className="relative z-10 group">
-                            <div className="w-16 h-16 mx-auto rounded-full bg-slate-800 border-4 border-slate-900 shadow-[0_0_0_4px_rgba(59,130,246,0.5)] flex items-center justify-center mb-8 bg-gradient-to-br from-blue-600 to-blue-800 group-hover:scale-110 transition-transform">
-                                <span className="font-bold text-xl">01</span>
-                            </div>
-                            <div className="text-center px-4">
-                                <div className="text-blue-400 font-bold tracking-wider uppercase text-sm mb-2">Weeks 1-4</div>
-                                <h3 className="text-2xl font-bold mb-3">The Bedrock</h3>
-                                <p className="text-slate-400 leading-relaxed text-sm">
-                                    First Principles & Core Protocols. We strip away abstraction to focus on the mathematical and logical foundations. Deconstruct the underlying theories that govern the technology.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Phase II */}
-                        <div className="relative z-10 group">
-                            <div className="w-16 h-16 mx-auto rounded-full bg-slate-800 border-4 border-slate-900 shadow-[0_0_0_4px_rgba(168,85,247,0.5)] flex items-center justify-center mb-8 bg-gradient-to-br from-purple-600 to-purple-800 group-hover:scale-110 transition-transform">
-                                <span className="font-bold text-xl">02</span>
-                            </div>
-                            <div className="text-center px-4">
-                                <div className="text-purple-400 font-bold tracking-wider uppercase text-sm mb-2">Weeks 5-8</div>
-                                <h3 className="text-2xl font-bold mb-3">Vertical Immersion</h3>
-                                <p className="text-slate-400 leading-relaxed text-sm">
-                                    Tools, Tactics, & Simulation. Theory transitions into practice. Enter a "high-fidelity" environment—utilizing industry tools, running simulations, and dissecting case studies.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Phase III */}
-                        <div className="relative z-10 group">
-                            <div className="w-16 h-16 mx-auto rounded-full bg-slate-800 border-4 border-slate-900 shadow-[0_0_0_4px_rgba(16,185,129,0.5)] flex items-center justify-center mb-8 bg-gradient-to-br from-emerald-600 to-emerald-800 group-hover:scale-110 transition-transform">
-                                <span className="font-bold text-xl">03</span>
-                            </div>
-                            <div className="text-center px-4">
-                                <div className="text-emerald-400 font-bold tracking-wider uppercase text-sm mb-2">Weeks 9-12</div>
-                                <h3 className="text-2xl font-bold mb-3">The Capstone Defense</h3>
-                                <p className="text-slate-400 leading-relaxed text-sm">
-                                    Proof of Competence. Define and deliver a comprehensive final output—a deployed system, audit, or research implementation. Document and defend your work.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             {/* The Career Impact */}
             <section className="py-24 px-6 bg-white border-b border-slate-200">
                 <div className="container mx-auto max-w-6xl">
@@ -419,70 +360,7 @@ export default function ProfessionalProgramPage() {
                 </div>
             </section>
 
-            {/* Admissions Process */}
-            <section className="py-24 px-6 bg-slate-900 text-white relative overflow-hidden">
-                {/* Background Accents */}
-                <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-                    <div className="absolute top-20 left-10 w-64 h-64 bg-blue-600/20 rounded-full blur-[100px]" />
-                    <div className="absolute bottom-20 right-10 w-64 h-64 bg-indigo-600/20 rounded-full blur-[100px]" />
-                </div>
 
-                <div className="container mx-auto max-w-6xl relative z-10">
-                    <div className="text-center mb-20">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6">Admissions Process</h2>
-                        <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-                            We select high-potential candidates who are ready to commit to rigorous learning.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-                        {/* Connector Line (Desktop) */}
-                        <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-slate-700 via-slate-500 to-slate-700 z-0"></div>
-
-                        {/* Step 1 */}
-                        <div className="relative z-10 text-center group">
-                            <div className="w-24 h-24 mx-auto rounded-3xl bg-slate-800 border border-slate-700 flex items-center justify-center mb-8 shadow-2xl group-hover:scale-110 transition-transform duration-300">
-                                <div className="relative">
-                                    <FileText size={40} className="text-blue-400" />
-                                    <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm border-2 border-slate-800">1</div>
-                                </div>
-                            </div>
-                            <h3 className="text-xl font-bold mb-3">Application</h3>
-                            <p className="text-slate-400 leading-relaxed px-4">
-                                Submit your profile and statement of purpose. Tell us why you want to build this expertise.
-                            </p>
-                        </div>
-
-                        {/* Step 2 */}
-                        <div className="relative z-10 text-center group">
-                            <div className="w-24 h-24 mx-auto rounded-3xl bg-slate-800 border border-slate-700 flex items-center justify-center mb-8 shadow-2xl group-hover:scale-110 transition-transform duration-300 delay-100">
-                                <div className="relative">
-                                    <UserCheck size={40} className="text-amber-400" />
-                                    <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-sm border-2 border-slate-800">2</div>
-                                </div>
-                            </div>
-                            <h3 className="text-xl font-bold mb-3">Screening</h3>
-                            <p className="text-slate-400 leading-relaxed px-4">
-                                Our interactive assessment evaluates your aptitude and logical reasoning capabilities.
-                            </p>
-                        </div>
-
-                        {/* Step 3 */}
-                        <div className="relative z-10 text-center group">
-                            <div className="w-24 h-24 mx-auto rounded-3xl bg-slate-800 border border-slate-700 flex items-center justify-center mb-8 shadow-2xl group-hover:scale-110 transition-transform duration-300 delay-200">
-                                <div className="relative">
-                                    <Rocket size={40} className="text-green-400" />
-                                    <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm border-2 border-slate-800">3</div>
-                                </div>
-                            </div>
-                            <h3 className="text-xl font-bold mb-3">Onboarding</h3>
-                            <p className="text-slate-400 leading-relaxed px-4">
-                                Successful candidates receive an offer letter and access to the pre-course modules.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             {/* FAQ Section */}
             <section className="py-24 px-6 bg-slate-50 border-t border-slate-200">
