@@ -219,8 +219,8 @@ export default function SustainabilityClient() {
 
 
                   <div className="w-full lg:w-auto">
-                     <Link href="/apply" className="block w-full text-center px-8 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
-                        Apply Now
+                     <Link href="https://compass.thefoundrys.com/courses/sustainability/sustainability-in-the-age-of-ai" className="block w-full text-center px-8 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
+                        Enroll Now
                      </Link>
                   </div>
                </div>

@@ -354,7 +354,7 @@ export default function PromptEngineeringCoursePage() {
                         </div>
 
                         <div className="w-full lg:w-auto">
-                            <Link href="/apply" className="block w-full text-center px-8 py-3 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
+                            <Link href="https://compass.thefoundrys.com/courses/ai/certified-in-prompt-engineering" className="block w-full text-center px-8 py-3 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
                                 Enroll Now
                             </Link>
                         </div>
