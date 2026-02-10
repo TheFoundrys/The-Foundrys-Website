@@ -187,46 +187,71 @@ const CAREER_ROLES = [
 const CURRICULUM_DATA = [
     {
         week: 1,
-        title: "Fundamentals & OpenAI Platform",
+        title: "Foundations of Systems Thinking",
         topics: [
-            "AI vs ML vs DL", "LLM Architecture (Transformers)", "Chat Completions API", "Prompt Engineering Strategies"
+            "Transition to Ownership: From task completion to end-to-end responsibility",
+            "Architecting Non-Deterministic Systems",
+            "Beyond the Notebook: Production-ready ML pipelines",
+            "The Utility Principle: Usefulness over theoretical correctness",
+            "Deconstructing Software Thinking & Real-World AI Failures"
         ]
     },
     {
         week: 2,
-        title: "Advanced API & Embeddings",
+        title: "Data Architecture & Orchestration",
         topics: [
-            "Function Calling & Tools", "Structured Outputs", "Vision & Audio APIs", "Vector Embeddings 101"
+            "Systems-First Data Design",
+            "Engineering Against Failures: Bias, Leakage & Data Drift",
+            "Vectorized Knowledge Bases with Vector Databases",
+            "The Logic of Assumptions in Data Labeling",
+            "Information Retrieval Optimization: Chunking & Re-ranking"
         ]
     },
     {
         week: 3,
-        title: "Vector DBs & RAG Foundations",
+        title: "The Mechanics of Intelligence",
         topics: [
-            "Pinecone & ChromaDB", "Indexing Strategies", "Naive RAG vs Advanced RAG", "Chunking Strategies"
+            "Interchangeable Component Philosophy (ML vs LLMs)",
+            "The Language of Vectors: Tokenization & Embeddings",
+            "Attention & Contextual Logic in LLMs",
+            "The Iron Triangle of AI: Accuracy, Cost & Latency",
+            "Foundation Model Selection: Proprietary vs Open Source"
         ]
     },
     {
         week: 4,
-        title: "Advanced RAG & Open Source",
+        title: "Engineering for Production Reality",
         topics: [
-            "Re-ranking & Query Expansion", "Hugging Face Hub", "Llama 3 & Mistral", "Running Models Locally (Ollama)"
+            "Operational Observability & Evaluation Loops",
+            "Systemic Guardrails & Safety Boundaries",
+            "Adversarial Resilience & Edge-Case Handling",
+            "Optimization Techniques: KV Cache & Quantization",
+            "Strategic Fallbacks & Failure Recovery Design"
         ]
     },
     {
         week: 5,
-        title: "AI Agents & Fine-Tuning",
+        title: "Agentic Systems & Risk Management",
         topics: [
-            "ReAct Pattern", "LangChain Agents", "PEFT & LoRA", "Fine-tuning Llama 3"
+            "Agentic Orchestration & ReAct Reasoning",
+            "Context Engineering & Memory Systems",
+            "Risk Amplification in Automated AI Systems",
+            "Security by Design for AI Infrastructure",
+            "Practical Red-Teaming & Stress Testing"
         ]
     },
     {
         week: 6,
-        title: "Multimodal AI & Production",
+        title: "Professional Judgment & Capstone Defense",
         topics: [
-            "Vision & Speech Pipelines", "Eval & Monitoring (LangSmith)", "Deployment Strategies", "Capstone Project Defense"
+            "Engineering Restraint: When Not to Use AI",
+            "System Justification & Shutdown Criteria",
+            "Technical Diplomacy with Stakeholders",
+            "Enterprise-Grade Capstone System Defense",
+            "Identity Shift to Production-Aware AI Engineer"
         ]
     }
+
 ];
 
 function CurriculumTabs() {
