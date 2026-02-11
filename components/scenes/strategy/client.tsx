@@ -5,9 +5,14 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, ChevronRight, Clock, Target, Users, Zap } from "lucide-react";
+import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
 
 export function StrategyClient() {
     const [selectedCareer, setSelectedCareer] = useState(0);
+    const { symbol, currency } = useRegionalPricing();
+
+    const originalPrice = COURSE_PRICING.certifiedInnovator.original[currency];
+    const discountedPrice = COURSE_PRICING.certifiedInnovator.discounted[currency];
 
     return (
         <main className="min-h-screen bg-neutral-50 font-sans selection:bg-black selection:text-white">
@@ -116,8 +121,8 @@ export function StrategyClient() {
                             <div className="pr-4">
                                 <p className="text-xs text-neutral-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>
                                 <div className="flex items-center gap-2 justify-center md:justify-start">
-                                    <span className="text-sm text-neutral-400 line-through">₹30,000</span>
-                                    <span className="text-lg font-bold text-neutral-900">₹20,000</span>
+                                    <span className="text-sm text-neutral-400 line-through">{symbol}{originalPrice}</span>
+                                    <span className="text-lg font-bold text-neutral-900">{symbol}{discountedPrice}</span>
                                 </div>
                             </div>
                         </div>

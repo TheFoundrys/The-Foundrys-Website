@@ -25,12 +25,17 @@ import {
 import Link from "next/link";
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
 
 // Custom Gradient (matching professional page)
 const customGradient = "linear-gradient(to right, #0f172a 0%, #1e293b 100%)";
 const textGradientClass = "text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400";
 
 export default function DeliveringClient() {
+    const { currency, symbol } = useRegionalPricing();
+    const originalPrice = COURSE_PRICING.deliveringAgeOfAI.original[currency];
+    const discountedPrice = COURSE_PRICING.deliveringAgeOfAI.discounted[currency];
+
     return (
         <main className="min-h-screen bg-slate-50 font-sans selection:bg-blue-100 selection:text-blue-900">
             <Navbar />
@@ -87,8 +92,8 @@ export default function DeliveringClient() {
                         <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-3xl p-8 lg:p-10">
                             <h3 className="text-white text-xl font-bold mb-6">Program Investment</h3>
                             <div className="flex items-baseline gap-3 mb-2">
-                                <span className="text-4xl lg:text-5xl font-bold text-white">₹75,000</span>
-                                <span className="text-xl text-slate-500 line-through">₹1,00,000</span>
+                                <span className="text-4xl lg:text-5xl font-bold text-white">{symbol}{discountedPrice}</span>
+                                <span className="text-xl text-slate-500 line-through">{symbol}{originalPrice}</span>
                             </div>
                             <div className="flex items-center gap-2 mb-8">
                                 <span className="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-2 py-1 rounded uppercase">25% Scholarship</span>

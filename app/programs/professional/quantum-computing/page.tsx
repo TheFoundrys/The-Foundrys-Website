@@ -5,8 +5,11 @@ import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import { ArrowUpRight, CheckCircle2, Cpu } from "lucide-react";
 import Link from "next/link";
+import { useRegionalPricing } from "@/lib/useRegionalPricing";
 
 export default function QuantumPage() {
+  const { symbol, currency } = useRegionalPricing();
+
   return (
     <main className="min-h-screen bg-slate-50 font-sans">
       <Navbar />
@@ -34,60 +37,76 @@ export default function QuantumPage() {
             <CourseCard
               sku="Q 008"
               title="Certified  in Quantum Fundamentals"
-              originalPrice="10,000"
-              discountedPrice="5,000"
+              priceINR={{ original: "10,000", discounted: "5,000" }}
+              priceUSD={{ original: "200", discounted: "100" }}
               desc="A 4-week course focusing on the 4 pillars of the National Quantum Mission: Quantum Computing, Materials, Communication, and Sensing."
               duration="4 Weeks"
               href="/programs/professional/quantum-computing/certified-professional-in-quantum-fundamentals"
+              symbol={symbol}
+              currency={currency}
             />
             <CourseCard
               sku="Q 001"
               title="Certified in Quantum Engineering"
-              originalPrice="150,000"
-              discountedPrice="75,000"
+              priceINR={{ original: "150,000", discounted: "75,000" }}
+              priceUSD={{ original: "3,000", discounted: "1,500" }}
               desc="Hardware-focused track covering quantum gates, circuitry, and the physical implementation of qubits."
+              symbol={symbol}
+              currency={currency}
             />
             <CourseCard
               sku="Q 002"
               title="Certified in Quantum Computing"
-              originalPrice="150,000"
-              discountedPrice="75,000"
+              priceINR={{ original: "150,000", discounted: "75,000" }}
+              priceUSD={{ original: "3,000", discounted: "1,500" }}
               desc="Core algorithm track including Shor's, Grover's, and quantum simulation techniques."
+              symbol={symbol}
+              currency={currency}
             />
             <CourseCard
               sku="Q 003"
               title="Certified in Quantum Sensing"
-              originalPrice="150,000"
-              discountedPrice="75,000"
+              priceINR={{ original: "150,000", discounted: "75,000" }}
+              priceUSD={{ original: "3,000", discounted: "1,500" }}
               desc="Explore high-precision metrology and imaging using quantum properties."
+              symbol={symbol}
+              currency={currency}
             />
             <CourseCard
               sku="Q 004"
               title="Certified in Quantum Communication"
-              originalPrice="150,000"
-              discountedPrice="75,000"
+              priceINR={{ original: "150,000", discounted: "75,000" }}
+              priceUSD={{ original: "3,000", discounted: "1,500" }}
               desc="Secure communication protocols, quantum key distribution (QKD), and the quantum internet."
+              symbol={symbol}
+              currency={currency}
             />
             <CourseCard
               sku="Q 005"
               title="Certified in Quantum Information"
-              originalPrice="150,000"
-              discountedPrice="75,000"
+              priceINR={{ original: "150,000", discounted: "75,000" }}
+              priceUSD={{ original: "3,000", discounted: "1,500" }}
               desc="Information theory re-imagined. Entropy, entanglement, and density matrices."
+              symbol={symbol}
+              currency={currency}
             />
             <CourseCard
               sku="Q 006"
               title="Certified in Post Quantum Cryptography"
-              originalPrice="150,000"
-              discountedPrice="75,000"
+              priceINR={{ original: "150,000", discounted: "75,000" }}
+              priceUSD={{ original: "3,000", discounted: "1,500" }}
               desc="Preparing classical systems to withstand quantum attacks. Lattice-based cryptography and more."
+              symbol={symbol}
+              currency={currency}
             />
             <CourseCard
               sku="QAI 001"
               title="Certified in Quantum AI"
-              originalPrice="400,000"
-              discountedPrice="200,000"
+              priceINR={{ original: "400,000", discounted: "200,000" }}
+              priceUSD={{ original: "8,000", discounted: "4,000" }}
               desc="The intersection of two frontiers. Quantum machine learning algorithms and neural networks."
+              symbol={symbol}
+              currency={currency}
             />
           </div>
         </div>
@@ -98,7 +117,15 @@ export default function QuantumPage() {
   );
 }
 
-function CourseCard({ sku, title, originalPrice, discountedPrice, desc, duration = "Professional 3 Month Course", href = "/apply" }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string, duration?: string, href?: string }) {
+interface PricePair {
+  original: string;
+  discounted: string;
+}
+
+function CourseCard({ sku, title, priceINR, priceUSD, desc, duration = "Professional 3 Month Course", href = "/apply", symbol, currency }: { sku: string, title: string, priceINR: PricePair, priceUSD: PricePair, desc: string, duration?: string, href?: string, symbol: string, currency: 'INR' | 'USD' }) {
+  const originalPrice = currency === 'USD' ? priceUSD.original : priceINR.original;
+  const discountedPrice = currency === 'USD' ? priceUSD.discounted : priceINR.discounted;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -127,9 +154,9 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, duration
         <div>
           <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
           <div className="flex flex-col">
-            <span className="text-sm text-slate-400 line-through font-medium">₹{originalPrice}</span>
+            <span className="text-sm text-slate-400 line-through font-medium">{symbol}{originalPrice}</span>
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-bold text-slate-900">₹{discountedPrice}</span>
+              <span className="text-2xl font-bold text-slate-900">{symbol}{discountedPrice}</span>
               <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">50% Discount</span>
             </div>
           </div>

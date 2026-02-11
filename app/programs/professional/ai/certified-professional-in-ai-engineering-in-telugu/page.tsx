@@ -30,6 +30,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { RoleDetailsContent } from "@/components/role-details-content";
+import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
 
 // Project Data
 const ALL_PROJECTS = [
@@ -340,6 +341,9 @@ function FAQItem({ question, answer }: { question: string, answer: string }) {
 export default function AIEngineeringTeluguCoursePage() {
     const [visibleProjects, setVisibleProjects] = useState(ALL_PROJECTS.slice(0, 3));
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
+    const { currency, symbol } = useRegionalPricing();
+    const originalPrice = COURSE_PRICING.aiEngineeringTelugu.original[currency];
+    const discountedPrice = COURSE_PRICING.aiEngineeringTelugu.discounted[currency];
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -414,8 +418,8 @@ export default function AIEngineeringTeluguCoursePage() {
                             <div className="lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>
                                 <div className="flex items-center gap-2 justify-center lg:justify-start">
-                                    <span className="text-sm text-slate-400 line-through">₹150,000</span>
-                                    <span className="text-lg font-bold text-slate-900">₹75,000</span>
+                                    <span className="text-sm text-slate-400 line-through">{symbol}{originalPrice}</span>
+                                    <span className="text-lg font-bold text-slate-900">{symbol}{discountedPrice}</span>
                                 </div>
                             </div>
                         </div>

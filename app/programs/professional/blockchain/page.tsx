@@ -5,8 +5,11 @@ import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import { ArrowUpRight, CheckCircle2, Network } from "lucide-react";
 import Link from "next/link";
+import { useRegionalPricing } from "@/lib/useRegionalPricing";
 
 export default function BlockchainPage() {
+    const { symbol, currency } = useRegionalPricing();
+
     return (
         <main className="min-h-screen bg-slate-50 font-sans">
             <Navbar />
@@ -34,23 +37,29 @@ export default function BlockchainPage() {
                         <CourseCard
                             sku="BC 001"
                             title="Certified in Block Chain"
-                            originalPrice="100,000"
-                            discountedPrice="50,000"
+                            priceINR={{ original: "100,000", discounted: "50,000" }}
+                            priceUSD={{ original: "2,000", discounted: "1,000" }}
                             desc="Fundamentals of distributed ledger technology, consensus mechanisms, and blockchain architecture."
+                            symbol={symbol}
+                            currency={currency}
                         />
                         <CourseCard
                             sku="BC 002"
                             title="Certified in NFT"
-                            originalPrice="150,000"
-                            discountedPrice="75,000"
+                            priceINR={{ original: "150,000", discounted: "75,000" }}
+                            priceUSD={{ original: "3,000", discounted: "1,500" }}
                             desc="Deep dive into Non-Fungible Tokens, standards (ERC-721/1155), and building marketplace dApps."
+                            symbol={symbol}
+                            currency={currency}
                         />
                         <CourseCard
                             sku="BC 003"
                             title="Certified in Decentralized Systems"
-                            originalPrice="200,000"
-                            discountedPrice="100,000"
+                            priceINR={{ original: "200,000", discounted: "100,000" }}
+                            priceUSD={{ original: "4,000", discounted: "2,000" }}
                             desc="Architecting robust, scalable decentralized applications and understanding the broader ecosystem."
+                            symbol={symbol}
+                            currency={currency}
                         />
                     </div>
                 </div>
@@ -61,7 +70,15 @@ export default function BlockchainPage() {
     );
 }
 
-function CourseCard({ sku, title, originalPrice, discountedPrice, desc }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string }) {
+interface PricePair {
+    original: string;
+    discounted: string;
+}
+
+function CourseCard({ sku, title, priceINR, priceUSD, desc, symbol, currency }: { sku: string, title: string, priceINR: PricePair, priceUSD: PricePair, desc: string, symbol: string, currency: 'INR' | 'USD' }) {
+    const originalPrice = currency === 'USD' ? priceUSD.original : priceINR.original;
+    const discountedPrice = currency === 'USD' ? priceUSD.discounted : priceINR.discounted;
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -90,9 +107,9 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc }: { sku:
                 <div>
                     <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
                     <div className="flex flex-col">
-                        <span className="text-sm text-slate-400 line-through font-medium">₹{originalPrice}</span>
+                        <span className="text-sm text-slate-400 line-through font-medium">{symbol}{originalPrice}</span>
                         <div className="flex items-baseline gap-2">
-                            <span className="text-2xl font-bold text-slate-900">₹{discountedPrice}</span>
+                            <span className="text-2xl font-bold text-slate-900">{symbol}{discountedPrice}</span>
                             <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">50% Discount</span>
                         </div>
                     </div>

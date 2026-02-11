@@ -6,11 +6,13 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, CheckCircle2, ShieldCheck, Users, Target, Zap, Brain, Globe, Building2, TrendingUp, Radio, Sparkles, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
+import { useRegionalPricing } from "@/lib/useRegionalPricing";
 
 export default function ExecutiveLandingClient() {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: containerRef });
     const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+    const { symbol, currency } = useRegionalPricing();
 
     return (
         <main className="min-h-screen bg-white font-sans selection:bg-blue-100 selection:text-blue-900" ref={containerRef}>
@@ -200,12 +202,14 @@ export default function ExecutiveLandingClient() {
                             <CourseCard
                                 sku="EXE 001"
                                 title="Delivering In the Age of AI"
-                                originalPrice="1,00,000"
-                                discountedPrice="75,000"
+                                priceINR={{ original: "1,00,000", discounted: "75,000" }}
+                                priceUSD={{ original: "2,000", discounted: "1,500" }}
                                 desc="Where Senior Tech Leaders become System Owners. Design, engineer, deploy, and govern critical systems in an AI-driven world."
                                 link="/programs/executive/delivering-in-age-of-ai"
                                 delay={0}
                                 active={true}
+                                symbol={symbol}
+                                currency={currency}
                             />
                         </div>
                     </div>
@@ -283,7 +287,10 @@ function MethodologyItem({ icon: Icon, title, desc, index }: { icon: any, title:
     )
 }
 
-function CourseCard({ sku, title, originalPrice, discountedPrice, desc, link, delay, active }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string, link: string, delay: number, active: boolean }) {
+function CourseCard({ sku, title, priceINR, priceUSD, desc, link, delay, active, symbol, currency }: { sku: string, title: string, priceINR: { original: string, discounted: string }, priceUSD: { original: string, discounted: string }, desc: string, link: string, delay: number, active: boolean, symbol: string, currency: 'INR' | 'USD' }) {
+    const originalPrice = currency === 'USD' ? priceUSD.original : priceINR.original;
+    const discountedPrice = currency === 'USD' ? priceUSD.discounted : priceINR.discounted;
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -318,8 +325,8 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, link, de
                 <div>
                     <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">Tuition Fee</div>
                     <div className="flex items-baseline gap-2">
-                        {originalPrice !== "TBA" && <span className="text-sm text-slate-400 line-through decoration-slate-400">₹{originalPrice}</span>}
-                        <span className="text-xl font-black text-slate-900">{originalPrice === "TBA" ? discountedPrice : `₹${discountedPrice}`}</span>
+                        <span className="text-sm text-slate-400 line-through decoration-slate-400">{symbol}{originalPrice}</span>
+                        <span className="text-xl font-black text-slate-900">{symbol}{discountedPrice}</span>
                     </div>
                 </div>
                 {active ? (

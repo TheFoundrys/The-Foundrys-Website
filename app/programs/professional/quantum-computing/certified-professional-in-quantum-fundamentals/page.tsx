@@ -26,6 +26,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { RoleDetailsContent } from "@/components/role-details-content";
+import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
 
 // Curriculum Data
 const CURRICULUM_DATA = [
@@ -198,6 +199,9 @@ function FAQItem({ question, answer }: { question: string, answer: string }) {
 }
 
 export default function QuantumFundamentalsCoursePage() {
+    const { currency, symbol } = useRegionalPricing();
+    const originalPrice = COURSE_PRICING.quantumFundamentals.original[currency];
+    const discountedPrice = COURSE_PRICING.quantumFundamentals.discounted[currency];
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -269,8 +273,8 @@ export default function QuantumFundamentalsCoursePage() {
                             <div className="lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>
                                 <div className="flex items-center gap-2 justify-center lg:justify-start">
-                                    <span className="text-sm text-slate-400 line-through">₹10,000</span>
-                                    <span className="text-lg font-bold text-slate-900">₹5,000</span>
+                                    <span className="text-sm text-slate-400 line-through">{symbol}{originalPrice}</span>
+                                    <span className="text-lg font-bold text-slate-900">{symbol}{discountedPrice}</span>
                                 </div>
                             </div>
                         </div>

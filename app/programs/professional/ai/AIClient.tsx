@@ -5,8 +5,11 @@ import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import { ArrowUpRight, CheckCircle2, BrainCircuit } from "lucide-react";
 import Link from "next/link";
+import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
 
 export default function AIClient() {
+  const { currency, symbol } = useRegionalPricing();
+
   return (
     <main className="min-h-screen bg-slate-50 font-sans">
       <Navbar />
@@ -35,8 +38,9 @@ export default function AIClient() {
             <CourseCard
               sku="AI 003"
               title="Certified Professional AI Engineering"
-              originalPrice="150,000"
-              discountedPrice="75,000"
+              originalPrice={COURSE_PRICING.professionalAIEngineer.original[currency]}
+              discountedPrice={COURSE_PRICING.professionalAIEngineer.discounted[currency]}
+              currencySymbol={symbol}
               duration="6 Weeks"
               desc="Focus on the engineering lifecycle. Learn to build, scale, and optimize production-grade AI applications."
               href="/programs/professional/ai/certified-professional-in-ai-engineering"
@@ -46,8 +50,9 @@ export default function AIClient() {
             <CourseCard
               sku="AI 004"
               title="Certified Professional AI Operations"
-              originalPrice="200,000"
-              discountedPrice="100,000"
+              originalPrice={COURSE_PRICING.professionalAIOperations.original[currency]}
+              discountedPrice={COURSE_PRICING.professionalAIOperations.discounted[currency]}
+              currencySymbol={symbol}
               duration="6 Weeks"
               desc="Master the art of MLOps. Learn deployment strategies, monitoring, and maintaining AI at scale."
               href="/programs/professional/ai/certified-professional-in-ai-operations"
@@ -62,7 +67,7 @@ export default function AIClient() {
   );
 }
 
-function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discountLabel = "50% Discount", href = "/apply", duration = "3 Months", persona = "Students / Working professionals", isBestSeller = false }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string, discountLabel?: string, href?: string, duration?: string, persona?: string, isBestSeller?: boolean }) {
+function CourseCard({ sku, title, originalPrice, discountedPrice, currencySymbol = "₹", desc, discountLabel = "50% Discount", href = "/apply", duration = "3 Months", persona = "Students / Working professionals", isBestSeller = false }: { sku: string, title: string, originalPrice: string, discountedPrice: string, currencySymbol?: string, desc: string, discountLabel?: string, href?: string, duration?: string, persona?: string, isBestSeller?: boolean }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -111,9 +116,9 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
           )}
           <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
           <div className="flex flex-col">
-            <span className="text-sm text-slate-400 line-through font-medium">₹{originalPrice}</span>
+            <span className="text-sm text-slate-400 line-through font-medium">{currencySymbol}{originalPrice}</span>
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-bold text-slate-900">₹{discountedPrice}</span>
+              <span className="text-2xl font-bold text-slate-900">{currencySymbol}{discountedPrice}</span>
               <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">{discountLabel}</span>
             </div>
           </div>

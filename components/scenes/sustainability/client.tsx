@@ -3,6 +3,7 @@
 import React, { useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useScroll } from "framer-motion";
+import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
 import {
    Leaf,
    Layers,
@@ -129,6 +130,10 @@ export default function SustainabilityClient() {
    const containerRef = useRef(null);
    const roleRefs = useRef<(HTMLDivElement | null)[]>([]);
    const [selectedCareer, setSelectedCareer] = useState(0);
+   const { symbol, currency } = useRegionalPricing();
+
+   const originalPrice = COURSE_PRICING.sustainability.original[currency];
+   const discountedPrice = COURSE_PRICING.sustainability.discounted[currency];
 
    useScroll({
       target: containerRef,
@@ -211,8 +216,8 @@ export default function SustainabilityClient() {
                      <div className="lg:pr-4">
                         <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>
                         <div className="flex items-center gap-2 justify-center lg:justify-start">
-                           <span className="text-sm text-stone-400 line-through">₹35,000</span>
-                           <span className="text-lg font-bold text-stone-900">₹25,000</span>
+                           <span className="text-sm text-stone-400 line-through">{symbol}{originalPrice}</span>
+                           <span className="text-lg font-bold text-stone-900">{symbol}{discountedPrice}</span>
                         </div>
                      </div>
                   </div>

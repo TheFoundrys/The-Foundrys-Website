@@ -6,11 +6,13 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, CheckCircle2, GraduationCap, Users, Lightbulb, PenTool, Radio, Sparkles, Target, Zap } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
+import { useRegionalPricing } from "@/lib/useRegionalPricing";
 
 export default function EducatorsPage() {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: containerRef });
     const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+    const { symbol, currency } = useRegionalPricing();
 
     return (
         <main className="min-h-screen bg-white font-sans selection:bg-blue-100 selection:text-blue-900" ref={containerRef}>
@@ -200,34 +202,42 @@ export default function EducatorsPage() {
                         <CourseCard
                             sku="EDU 001"
                             title="AI for Educators: Foundation & Practice"
-                            originalPrice="45,000"
-                            discountedPrice="25,000"
+                            priceINR={{ original: "45,000", discounted: "25,000" }}
+                            priceUSD={{ original: "900", discounted: "500" }}
                             desc="Understand Generative AI and how to use it to create lesson plans, grade assessments, and personalize learning."
                             delay={0}
+                            symbol={symbol}
+                            currency={currency}
                         />
                         <CourseCard
                             sku="EDU 002"
                             title="Integrating Deep Tech in Curriculum"
-                            originalPrice="50,000"
-                            discountedPrice="25,000"
+                            priceINR={{ original: "50,000", discounted: "25,000" }}
+                            priceUSD={{ original: "1,000", discounted: "500" }}
                             desc="Learn how to weave concepts of Quantum and Blockchain into standard STEM subjects."
                             delay={0.2}
+                            symbol={symbol}
+                            currency={currency}
                         />
                         <CourseCard
                             sku="EDU 003"
                             title="Project-Based Learning & Maker Culture"
-                            originalPrice="40,000"
-                            discountedPrice="20,000"
+                            priceINR={{ original: "40,000", discounted: "20,000" }}
+                            priceUSD={{ original: "800", discounted: "400" }}
                             desc="Master the art of facilitating hands-on, project-based learning environments that foster innovation."
                             delay={0.4}
+                            symbol={symbol}
+                            currency={currency}
                         />
                         <CourseCard
                             sku="EDU 004"
                             title="Digital Leadership for School Heads"
-                            originalPrice="60,000"
-                            discountedPrice="30,000"
+                            priceINR={{ original: "60,000", discounted: "30,000" }}
+                            priceUSD={{ original: "1,200", discounted: "600" }}
                             desc="Strategic training for principals and HODs on managing digital transformation and tech-first pedagogy."
                             delay={0.6}
+                            symbol={symbol}
+                            currency={currency}
                         />
                     </div>
                 </div>
@@ -285,7 +295,10 @@ function MethodologyItem({ icon: Icon, title, desc, index }: { icon: any, title:
     )
 }
 
-function CourseCard({ sku, title, originalPrice, discountedPrice, desc, delay }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string, delay: number }) {
+function CourseCard({ sku, title, priceINR, priceUSD, desc, delay, symbol, currency }: { sku: string, title: string, priceINR: { original: string, discounted: string }, priceUSD: { original: string, discounted: string }, desc: string, delay: number, symbol: string, currency: 'INR' | 'USD' }) {
+    const originalPrice = currency === 'USD' ? priceUSD.original : priceINR.original;
+    const discountedPrice = currency === 'USD' ? priceUSD.discounted : priceINR.discounted;
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -320,8 +333,8 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, delay }:
                 <div>
                     <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">Tuition Fee</div>
                     <div className="flex items-baseline gap-2">
-                        <span className="text-sm text-slate-400 line-through decoration-slate-400">₹{originalPrice}</span>
-                        <span className="text-2xl font-black text-slate-900">₹{discountedPrice}</span>
+                        <span className="text-sm text-slate-400 line-through decoration-slate-400">{symbol}{originalPrice}</span>
+                        <span className="text-2xl font-black text-slate-900">{symbol}{discountedPrice}</span>
                     </div>
                 </div>
                 <Link
