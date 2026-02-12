@@ -233,7 +233,7 @@ export function Navbar() {
                                     setIsSchoolsOpen(true);
                                 }}
                                 onMouseLeave={() => {
-                                    timeoutRef.current = setTimeout(() => setIsSchoolsOpen(false), 300);
+                                    timeoutRef.current = setTimeout(() => setIsSchoolsOpen(false), 150);
                                 }}
                             >
                                 <Link
@@ -256,66 +256,69 @@ export function Navbar() {
                                             exit={{ opacity: 0, y: -10, scaleY: 0.8, scaleX: 0.9, filter: "blur(10px)" }}
                                             transition={{
                                                 type: "spring",
-                                                stiffness: 500,
-                                                damping: 30,
-                                                mass: 0.8
+                                                stiffness: 800,
+                                                damping: 40,
+                                                mass: 0.5
                                             }}
                                             style={{ transformOrigin: "top center" }}
-                                            className="absolute top-full left-0 -translate-x-10 mt-6 min-w-[500px] p-1 bg-white/95 backdrop-blur-3xl rounded-2xl shadow-[0_30px_80px_-12px_rgba(0,0,0,0.25)] border border-white/80 overflow-hidden ring-1 ring-slate-900/5 flex"
+                                            className="absolute top-full left-0 -translate-x-10 pt-4 min-w-[500px]"
                                         >
-                                            {/* Spotlight Glow Effect inside dropdown */}
-                                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-20 bg-blue-500/20 blur-[50px] pointer-events-none" />
+                                            <div className="p-1 bg-white/95 backdrop-blur-3xl rounded-2xl shadow-[0_30px_80px_-12px_rgba(0,0,0,0.25)] border border-white/80 overflow-hidden ring-1 ring-slate-900/5 flex"
+                                            >
+                                                {/* Spotlight Glow Effect inside dropdown */}
+                                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-20 bg-blue-500/20 blur-[50px] pointer-events-none" />
 
-                                            {/* Left Column: Categories */}
-                                            <div className="w-1/2 p-2 bg-slate-50/50 border-r border-slate-100 flex flex-col gap-1 relative z-10">
-                                                {SCHOOL_CATEGORIES.map((category) => (
-                                                    <button
-                                                        key={category.id}
-                                                        onMouseEnter={() => setActiveCategory(category.id as "deep-tech" | "entrepreneurship" | "sustainability" | "energy")}
-                                                        className={cn(
-                                                            "text-left p-3 rounded-xl transition-all duration-200 group/cat",
-                                                            activeCategory === category.id
-                                                                ? "bg-white shadow-sm ring-1 ring-slate-200"
-                                                                : "hover:bg-white/50 hover:shadow-sm text-slate-500"
-                                                        )}
-                                                    >
-                                                        <div className={cn("font-bold text-sm", activeCategory === category.id ? "text-slate-900" : "text-slate-600 group-hover/cat:text-slate-900")}>
-                                                            {category.label}
-                                                        </div>
-                                                        <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400 mt-0.5">
-                                                            {category.description}
-                                                        </div>
-                                                    </button>
-                                                ))}
-
-
-
-                                            </div>
-
-                                            {/* Right Column: Courses */}
-                                            <div className="w-1/2 p-2 flex flex-col gap-1 relative z-10">
-                                                {COURSES[activeCategory].map((prog, i) => (
-                                                    <motion.div
-                                                        key={prog.href}
-                                                        initial={{ opacity: 0, x: 10 }}
-                                                        animate={{ opacity: 1, x: 0 }}
-                                                        transition={{ delay: i * 0.05 }}
-                                                    >
-                                                        <Link
-                                                            href={prog.href}
-                                                            onClick={handleHaptic}
-                                                            className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/60 transition-colors group/item relative overflow-hidden"
+                                                {/* Left Column: Categories */}
+                                                <div className="w-1/2 p-2 bg-slate-50/50 border-r border-slate-100 flex flex-col gap-1 relative z-10">
+                                                    {SCHOOL_CATEGORIES.map((category) => (
+                                                        <button
+                                                            key={category.id}
+                                                            onMouseEnter={() => setActiveCategory(category.id as "deep-tech" | "entrepreneurship" | "sustainability" | "energy")}
+                                                            className={cn(
+                                                                "text-left p-3 rounded-xl transition-all duration-200 group/cat",
+                                                                activeCategory === category.id
+                                                                    ? "bg-white shadow-sm ring-1 ring-slate-200"
+                                                                    : "hover:bg-white/50 hover:shadow-sm text-slate-500"
+                                                            )}
                                                         >
-                                                            <div className={`w-10 h-10 rounded-lg ${prog.bg} flex items-center justify-center ${prog.color} group-hover/item:scale-110 transition-transform shadow-sm`}>
-                                                                <prog.icon size={18} />
+                                                            <div className={cn("font-bold text-sm", activeCategory === category.id ? "text-slate-900" : "text-slate-600 group-hover/cat:text-slate-900")}>
+                                                                {category.label}
                                                             </div>
-                                                            <div>
-                                                                <div className="font-bold text-slate-900 text-sm">{prog.label}</div>
-                                                                <div className="text-[10px] uppercase font-bold tracking-wider text-slate-500/80">{prog.desc}</div>
+                                                            <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400 mt-0.5">
+                                                                {category.description}
                                                             </div>
-                                                        </Link>
-                                                    </motion.div>
-                                                ))}
+                                                        </button>
+                                                    ))}
+
+
+
+                                                </div>
+
+                                                {/* Right Column: Courses */}
+                                                <div className="w-1/2 p-2 flex flex-col gap-1 relative z-10">
+                                                    {COURSES[activeCategory].map((prog, i) => (
+                                                        <motion.div
+                                                            key={prog.href}
+                                                            initial={{ opacity: 0, x: 10 }}
+                                                            animate={{ opacity: 1, x: 0 }}
+                                                            transition={{ delay: i * 0.05 }}
+                                                        >
+                                                            <Link
+                                                                href={prog.href}
+                                                                onClick={handleHaptic}
+                                                                className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/60 transition-colors group/item relative overflow-hidden"
+                                                            >
+                                                                <div className={`w-10 h-10 rounded-lg ${prog.bg} flex items-center justify-center ${prog.color} group-hover/item:scale-110 transition-transform shadow-sm`}>
+                                                                    <prog.icon size={18} />
+                                                                </div>
+                                                                <div>
+                                                                    <div className="font-bold text-slate-900 text-sm">{prog.label}</div>
+                                                                    <div className="text-[10px] uppercase font-bold tracking-wider text-slate-500/80">{prog.desc}</div>
+                                                                </div>
+                                                            </Link>
+                                                        </motion.div>
+                                                    ))}
+                                                </div>
                                             </div>
                                         </motion.div>
                                     )}
@@ -330,7 +333,7 @@ export function Navbar() {
                                     setIsProgramsOpen(true);
                                 }}
                                 onMouseLeave={() => {
-                                    programsTimeoutRef.current = setTimeout(() => setIsProgramsOpen(false), 300);
+                                    programsTimeoutRef.current = setTimeout(() => setIsProgramsOpen(false), 150);
                                 }}
                             >
                                 <button
@@ -356,58 +359,61 @@ export function Navbar() {
                                                 mass: 0.8
                                             }}
                                             style={{ transformOrigin: "top center" }}
-                                            className="absolute top-full left-1/2 -translate-x-1/2 mt-6 min-w-[500px] p-1 bg-white/95 backdrop-blur-3xl rounded-2xl shadow-[0_30px_80px_-12px_rgba(0,0,0,0.25)] border border-white/80 overflow-hidden ring-1 ring-slate-900/5 flex"
+                                            className="absolute top-full left-1/2 -translate-x-1/2 pt-4 min-w-[500px]"
                                         >
-                                            {/* Spotlight Glow Effect inside dropdown */}
-                                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-20 bg-blue-500/20 blur-[50px] pointer-events-none" />
+                                            <div className="p-1 bg-white/95 backdrop-blur-3xl rounded-2xl shadow-[0_30px_80px_-12px_rgba(0,0,0,0.25)] border border-white/80 overflow-hidden ring-1 ring-slate-900/5 flex"
+                                            >
+                                                {/* Spotlight Glow Effect inside dropdown */}
+                                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-20 bg-blue-500/20 blur-[50px] pointer-events-none" />
 
-                                            {/* Left Column: Categories */}
-                                            <div className="w-1/2 p-2 bg-slate-50/50 border-r border-slate-100 flex flex-col gap-1 relative z-10">
-                                                {PROGRAM_CATEGORIES.map((category) => (
-                                                    <button
-                                                        key={category.id}
-                                                        onMouseEnter={() => setActiveProgramCategory(category.id as "career-transformation" | "executive-leadership" | "educators-faculty")}
-                                                        className={cn(
-                                                            "text-left p-3 rounded-xl transition-all duration-200 group/cat",
-                                                            activeProgramCategory === category.id
-                                                                ? "bg-white shadow-sm ring-1 ring-slate-200"
-                                                                : "hover:bg-white/50 hover:shadow-sm text-slate-500"
-                                                        )}
-                                                    >
-                                                        <div className={cn("font-bold text-sm", activeProgramCategory === category.id ? "text-slate-900" : "text-slate-600 group-hover/cat:text-slate-900")}>
-                                                            {category.label}
-                                                        </div>
-                                                        <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400 mt-0.5">
-                                                            {category.description}
-                                                        </div>
-                                                    </button>
-                                                ))}
-                                            </div>
-
-                                            {/* Right Column: Courses */}
-                                            <div className="w-1/2 p-2 flex flex-col gap-1 relative z-10">
-                                                {PROGRAM_COURSES[activeProgramCategory].map((prog, i) => (
-                                                    <motion.div
-                                                        key={prog.href}
-                                                        initial={{ opacity: 0, x: 10 }}
-                                                        animate={{ opacity: 1, x: 0 }}
-                                                        transition={{ delay: i * 0.05 }}
-                                                    >
-                                                        <Link
-                                                            href={prog.href}
-                                                            onClick={handleHaptic}
-                                                            className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/60 transition-colors group/item relative overflow-hidden"
+                                                {/* Left Column: Categories */}
+                                                <div className="w-1/2 p-2 bg-slate-50/50 border-r border-slate-100 flex flex-col gap-1 relative z-10">
+                                                    {PROGRAM_CATEGORIES.map((category) => (
+                                                        <button
+                                                            key={category.id}
+                                                            onMouseEnter={() => setActiveProgramCategory(category.id as "career-transformation" | "executive-leadership" | "educators-faculty")}
+                                                            className={cn(
+                                                                "text-left p-3 rounded-xl transition-all duration-200 group/cat",
+                                                                activeProgramCategory === category.id
+                                                                    ? "bg-white shadow-sm ring-1 ring-slate-200"
+                                                                    : "hover:bg-white/50 hover:shadow-sm text-slate-500"
+                                                            )}
                                                         >
-                                                            <div className={`w-10 h-10 rounded-lg ${prog.bg} flex items-center justify-center ${prog.color} group-hover/item:scale-110 transition-transform shadow-sm`}>
-                                                                <prog.icon size={18} />
+                                                            <div className={cn("font-bold text-sm", activeProgramCategory === category.id ? "text-slate-900" : "text-slate-600 group-hover/cat:text-slate-900")}>
+                                                                {category.label}
                                                             </div>
-                                                            <div>
-                                                                <div className="font-bold text-slate-900 text-sm">{prog.label}</div>
-                                                                <div className="text-[10px] uppercase font-bold tracking-wider text-slate-500/80">{prog.desc}</div>
+                                                            <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400 mt-0.5">
+                                                                {category.description}
                                                             </div>
-                                                        </Link>
-                                                    </motion.div>
-                                                ))}
+                                                        </button>
+                                                    ))}
+                                                </div>
+
+                                                {/* Right Column: Courses */}
+                                                <div className="w-1/2 p-2 flex flex-col gap-1 relative z-10">
+                                                    {PROGRAM_COURSES[activeProgramCategory].map((prog, i) => (
+                                                        <motion.div
+                                                            key={prog.href}
+                                                            initial={{ opacity: 0, x: 10 }}
+                                                            animate={{ opacity: 1, x: 0 }}
+                                                            transition={{ delay: i * 0.05 }}
+                                                        >
+                                                            <Link
+                                                                href={prog.href}
+                                                                onClick={handleHaptic}
+                                                                className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/60 transition-colors group/item relative overflow-hidden"
+                                                            >
+                                                                <div className={`w-10 h-10 rounded-lg ${prog.bg} flex items-center justify-center ${prog.color} group-hover/item:scale-110 transition-transform shadow-sm`}>
+                                                                    <prog.icon size={18} />
+                                                                </div>
+                                                                <div>
+                                                                    <div className="font-bold text-slate-900 text-sm">{prog.label}</div>
+                                                                    <div className="text-[10px] uppercase font-bold tracking-wider text-slate-500/80">{prog.desc}</div>
+                                                                </div>
+                                                            </Link>
+                                                        </motion.div>
+                                                    ))}
+                                                </div>
                                             </div>
                                         </motion.div>
                                     )}
@@ -422,7 +428,7 @@ export function Navbar() {
                                     setIsMoreOpen(true);
                                 }}
                                 onMouseLeave={() => {
-                                    moreTimeoutRef.current = setTimeout(() => setIsMoreOpen(false), 300);
+                                    moreTimeoutRef.current = setTimeout(() => setIsMoreOpen(false), 150);
                                 }}
                             >
                                 <button
@@ -441,51 +447,54 @@ export function Navbar() {
                                             initial={{ opacity: 0, y: 10, scale: 0.95 }}
                                             animate={{ opacity: 1, y: 0, scale: 1 }}
                                             exit={{ opacity: 0, y: 5, scale: 0.95 }}
-                                            transition={{ duration: 0.15 }}
-                                            className="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-48 p-1 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-white/80 overflow-hidden ring-1 ring-slate-900/5 flex flex-col gap-1"
+                                            transition={{ duration: 0.08 }}
+                                            className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-48"
                                         >
-                                            <Link
-                                                href="/about"
-                                                onClick={handleHaptic}
-                                                className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
+                                            <div className="p-1 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-white/80 overflow-hidden ring-1 ring-slate-900/5 flex flex-col gap-1"
                                             >
-                                                <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
-                                                    <Users size={16} />
-                                                </div>
-                                                <span className="text-sm font-bold text-slate-700">About Us</span>
-                                            </Link>
-                                            <Link
-                                                href="/campus"
-                                                onClick={handleHaptic}
-                                                className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
-                                            >
-                                                <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 group-hover:scale-110 transition-transform">
-                                                    <Building2 size={16} />
-                                                </div>
-                                                <span className="text-sm font-bold text-slate-700">Campus</span>
-                                            </Link>
+                                                <Link
+                                                    href="/about"
+                                                    onClick={handleHaptic}
+                                                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
+                                                >
+                                                    <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
+                                                        <Users size={16} />
+                                                    </div>
+                                                    <span className="text-sm font-bold text-slate-700">About Us</span>
+                                                </Link>
+                                                <Link
+                                                    href="/campus"
+                                                    onClick={handleHaptic}
+                                                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
+                                                >
+                                                    <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 group-hover:scale-110 transition-transform">
+                                                        <Building2 size={16} />
+                                                    </div>
+                                                    <span className="text-sm font-bold text-slate-700">Campus</span>
+                                                </Link>
 
-                                            <Link
-                                                href="/contact"
-                                                onClick={handleHaptic}
-                                                className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
-                                            >
-                                                <div className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-600 group-hover:scale-110 transition-transform">
-                                                    <Users size={16} />
-                                                </div>
-                                                <span className="text-sm font-bold text-slate-700">Contact</span>
-                                            </Link>
+                                                <Link
+                                                    href="/contact"
+                                                    onClick={handleHaptic}
+                                                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
+                                                >
+                                                    <div className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-600 group-hover:scale-110 transition-transform">
+                                                        <Users size={16} />
+                                                    </div>
+                                                    <span className="text-sm font-bold text-slate-700">Contact</span>
+                                                </Link>
 
-                                            <Link
-                                                href="/blog"
-                                                onClick={handleHaptic}
-                                                className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
-                                            >
-                                                <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:scale-110 transition-transform">
-                                                    <Library size={16} />
-                                                </div>
-                                                <span className="text-sm font-bold text-slate-700">Resources</span>
-                                            </Link>
+                                                <Link
+                                                    href="/blog"
+                                                    onClick={handleHaptic}
+                                                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
+                                                >
+                                                    <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:scale-110 transition-transform">
+                                                        <Library size={16} />
+                                                    </div>
+                                                    <span className="text-sm font-bold text-slate-700">Resources</span>
+                                                </Link>
+                                            </div>
                                         </motion.div>
                                     )}
                                 </AnimatePresence>
