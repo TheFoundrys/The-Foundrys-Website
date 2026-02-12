@@ -115,7 +115,7 @@ export function ApplyClient() {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
-                                    <label className="text-sm font-bold text-slate-900 ml-1">Program of Interest</label>
+                                    <label className="text-sm font-bold text-slate-900 ml-1">Program of Interest<span className="text-red-500">*</span></label>
                                     <div className="relative">
                                         <select name="program" defaultValue="" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all font-medium appearance-none text-slate-700">
                                             <option value="" disabled>Select a Program</option>
@@ -132,10 +132,10 @@ export function ApplyClient() {
                                     </div>
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-sm font-bold text-slate-900 ml-1">Current Status <span className="text-red-500">*</span></label>
+                                    <label className="text-sm font-bold text-slate-900 ml-1">Current Occupation <span className="text-red-500">*</span></label>
                                     <div className="relative">
-                                        <select required name="status" defaultValue="" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all font-medium appearance-none text-slate-700">
-                                            <option value="" disabled>Select Status</option>
+                                        <select required name="occupation" defaultValue="" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all font-medium appearance-none text-slate-700">
+                                            <option value="" disabled>Select Occupation</option>
                                             <option value="Student">Student (High School/College)</option>
                                             <option value="Professional">Working Professional</option>
                                             <option value="Founder">Founder</option>
