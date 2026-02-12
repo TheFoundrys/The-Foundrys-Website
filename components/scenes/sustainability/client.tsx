@@ -165,9 +165,9 @@ export default function SustainabilityClient() {
                   </div>
 
                   {/* Main Heading */}
-                  <h1 className="text-5xl md:text-6xl lg:text-8xl font-serif text-white mb-6 leading-tight">
+                  <h1 className="text-emerald-400 font-bold">
                      Sustainability in the <br />
-                     <span className="text-emerald-400 italic">Age of AI</span>
+                     <span className="text-5xl md:text-6xl lg:text-8xl font-serif text-white mb-6 leading-tight">Age of AI</span>
                   </h1>
 
                   {/* Program Description */}
@@ -442,7 +442,7 @@ export default function SustainabilityClient() {
                      key={i}
                      className="flex items-center gap-12 text-slate-400 font-bold text-2xl uppercase tracking-widest"
                   >
-                     <span>UN Sustainable Development Goals (SDGs)</span> <span>&bull;</span>
+                     <span>UnSustainable Development Goals (SDGs)</span> <span>&bull;</span>
                      <span>Global Reporting Initiative (GRI)</span> <span>&bull;</span>
                      <span>ESG</span> <span>&bull;</span>
                      <span>Science Based Targets initiative (SBTi)</span> <span>&bull;</span>
