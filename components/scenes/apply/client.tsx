@@ -118,7 +118,7 @@ export function ApplyClient() {
                                     <label className="text-sm font-bold text-slate-900 ml-1">Program of Interest</label>
                                     <div className="relative">
                                         <select name="program" defaultValue="" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all font-medium appearance-none text-slate-700">
-                                            <option value="" disabled>Select a Program (Optional)</option>
+                                            <option value="" disabled>Select a Program</option>
                                             <option value="quantum computing">Quantum Computing</option>
                                             <option value="Blockchain">Blockchain</option>
                                             <option value="AI">Artificial Intelligence</option>

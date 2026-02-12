@@ -165,9 +165,9 @@ export default function SustainabilityClient() {
                   </div>
 
                   {/* Main Heading */}
-                  <h1 className="text-3xl md:text-4xl lg:text-5xl text-emerald-400 font-bold">
+                  <h1 className="text-5xl md:text-6xl lg:text-8xl font-serif text-white mb-6 leading-tight">
                      Sustainability in the <br />
-                     <span className="text-5xl md:text-6xl lg:text-8xl font-serif text-white mb-6 leading-tight">Age of AI</span>
+                     <span className="text-emerald-400 italic">Age of AI</span>
                   </h1>
 
                   {/* Program Description */}
