@@ -59,43 +59,52 @@ export function Footer({ hideCTA = false }: FooterProps) {
                     </div>
 
                     {/* Column 5: Contact */}
-                    <div className="flex flex-col gap-4">
-                        <h3 className="text-slate-900 font-bold mb-1">Contact</h3>
+                    <div className="flex flex-col gap-4 items-center text-center col-span-2 md:col-span-1">
+                        <h3 className="text-slate-900 font-bold mb-1 w-full text-center">Contact</h3>
 
-                        <div className="flex flex-col gap-3 text-sm">
-                            <a href="mailto:info@thefoundrys.com" className="flex items-center gap-2 hover:text-slate-900 transition-colors">
-                                <Mail size={16} />
+                        <div className="flex flex-col gap-4 text-sm w-full items-center">
+                            <a href="mailto:info@thefoundrys.com" className="flex flex-col items-center gap-2 hover:text-slate-900 transition-colors text-center">
+                                <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+                                    <Mail size={14} className="text-slate-600" />
+                                </div>
                                 <span>info@thefoundrys.com</span>
                             </a>
 
-                            <div className="flex items-start gap-2 leading-relaxed">
-                                <MapPin size={16} className="shrink-0 mt-1" />
-                                <p>(INDIA)</p>
-                            
-                                <span>
-                                    QHUB, Beside Madhapur Metro Station,
-                                    Jubilee Hills, Road No 36 & 37,
-                                    Hyderabad, Telangana - 500033.
-                                </span>
+                            <div className="flex flex-col items-center gap-2 leading-relaxed text-center">
+                                <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 mt-0.5">
+                                    <MapPin size={14} className="text-slate-600" />
+                                </div>
+                                <div>
+                                    <span className="font-bold text-slate-800 block text-xs tracking-wider mb-1">INDIA</span>
+                                    <span className="block text-slate-500">
+                                        QHUB, Beside Madhapur Metro Station,<br />
+                                        Jubilee Hills, Road No 36 & 37,<br />
+                                        Hyderabad, Telangana - 500033.
+                                    </span>
+                                </div>
                             </div>
-                            <div className="flex items-start gap-2 leading-relaxed">
-                                <MapPin size={16} className="shrink-0 mt-1" />
-                                <p>(USA)</p>
-                            
-                                <span>
-                                    2343 Dulles Station Blvd, Apt 256, Herndon, Virginia 20171
-                                </span>
+                            <div className="flex flex-col items-center gap-2 leading-relaxed text-center">
+                                <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 mt-0.5">
+                                    <MapPin size={14} className="text-slate-600" />
+                                </div>
+                                <div>
+                                    <span className="font-bold text-slate-800 block text-xs tracking-wider mb-1">USA</span>
+                                    <span className="block text-slate-500">
+                                        2343 Dulles Station Blvd, Apt 256,<br />
+                                        Herndon, Virginia 20171
+                                    </span>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="h-px bg-slate-200 my-1" />
+                        <div className="h-px bg-slate-200 my-2 w-full" />
 
-                        <div className="flex gap-4">
-                            <Link href="https://x.com/thefoundrys" className="hover:text-slate-900 transition-colors"><Twitter size={18} /></Link>
-                            <Link href="https://www.linkedin.com/company/the-foundry-s" className="hover:text-slate-900 transition-colors"><Linkedin size={18} /></Link>
-                            <Link href="https://www.instagram.com/the.foundrys/" className="hover:text-slate-900 transition-colors"><Instagram size={18} /></Link>
-                            <Link href="https://www.youtube.com/@TheFoundrys" className="hover:text-slate-900 transition-colors"><Youtube size={18} /></Link>
-                            <Link href="https://www.facebook.com/profile.php?id=61587055543711" className="hover:text-slate-900 transition-colors"><Facebook size={18} /></Link>
+                        <div className="flex justify-center gap-4 w-full">
+                            <Link href="https://x.com/thefoundrys" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Twitter size={16} /></Link>
+                            <Link href="https://www.linkedin.com/company/the-foundry-s" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Linkedin size={16} /></Link>
+                            <Link href="https://www.instagram.com/the.foundrys/" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Instagram size={16} /></Link>
+                            <Link href="https://www.youtube.com/@TheFoundrys" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Youtube size={16} /></Link>
+                            <Link href="https://www.facebook.com/profile.php?id=61587055543711" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Facebook size={16} /></Link>
                         </div>
                     </div>
                 </div>
