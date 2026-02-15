@@ -59,18 +59,18 @@ export function Footer({ hideCTA = false }: FooterProps) {
                     </div>
 
                     {/* Column 5: Contact */}
-                    <div className="flex flex-col gap-4 items-center text-center col-span-2 md:col-span-1">
-                        <h3 className="text-slate-900 font-bold mb-1 w-full text-center">Contact</h3>
+                    <div className="flex flex-col gap-4 items-center text-center md:items-start md:text-left col-span-2 md:col-span-1">
+                        <h3 className="text-slate-900 font-bold mb-1 w-full text-center md:text-left">Contact</h3>
 
-                        <div className="flex flex-col gap-4 text-sm w-full items-center">
-                            <a href="mailto:info@thefoundrys.com" className="flex flex-col items-center gap-2 hover:text-slate-900 transition-colors text-center">
+                        <div className="flex flex-col gap-4 text-sm w-full items-center md:items-start">
+                            <a href="mailto:info@thefoundrys.com" className="flex flex-col items-center gap-2 hover:text-slate-900 transition-colors text-center md:flex-row md:text-left md:gap-3">
                                 <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
                                     <Mail size={14} className="text-slate-600" />
                                 </div>
                                 <span>info@thefoundrys.com</span>
                             </a>
 
-                            <div className="flex flex-col items-center gap-2 leading-relaxed text-center">
+                            <div className="flex flex-col items-center gap-2 leading-relaxed text-center md:flex-row md:items-start md:text-left md:gap-3">
                                 <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 mt-0.5">
                                     <MapPin size={14} className="text-slate-600" />
                                 </div>
@@ -83,7 +83,7 @@ export function Footer({ hideCTA = false }: FooterProps) {
                                     </span>
                                 </div>
                             </div>
-                            <div className="flex flex-col items-center gap-2 leading-relaxed text-center">
+                            <div className="flex flex-col items-center gap-2 leading-relaxed text-center md:flex-row md:items-start md:text-left md:gap-3">
                                 <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 mt-0.5">
                                     <MapPin size={14} className="text-slate-600" />
                                 </div>
@@ -99,7 +99,7 @@ export function Footer({ hideCTA = false }: FooterProps) {
 
                         <div className="h-px bg-slate-200 my-2 w-full" />
 
-                        <div className="flex justify-center gap-4 w-full">
+                        <div className="flex justify-center gap-4 w-full md:justify-start">
                             <Link href="https://x.com/thefoundrys" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Twitter size={16} /></Link>
                             <Link href="https://www.linkedin.com/company/the-foundry-s" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Linkedin size={16} /></Link>
                             <Link href="https://www.instagram.com/the.foundrys/" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Instagram size={16} /></Link>
