@@ -2,7 +2,8 @@
 
 import React, { useRef, useState } from "react";
 import Link from "next/link";
-import { motion, useScroll } from "framer-motion";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
 import {
    Leaf,
@@ -135,26 +136,21 @@ export default function SustainabilityClient() {
    const originalPrice = COURSE_PRICING.sustainability.original[currency];
    const discountedPrice = COURSE_PRICING.sustainability.discounted[currency];
 
-   useScroll({
-      target: containerRef,
-      offset: ["start start", "end end"]
-   });
-
    return (
       <div ref={containerRef} className="bg-stone-50 text-stone-900 min-h-screen selection:bg-emerald-200 selection:text-emerald-900 font-sans">
          <Navbar />
 
          {/* HERO SECTION: FULL PAGE DARK DESIGN */}
-         <section className="relative pt-32 pb-48 px-6 bg-gradient-to-br from-emerald-950 via-stone-900 to-emerald-900 overflow-hidden">
+         <section className="relative pt-32 pb-32 md:pb-48 px-6 bg-gradient-to-br from-emerald-950 via-stone-900 to-emerald-900 overflow-hidden">
             {/* Radial Gradient Overlay */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-600/20 via-transparent to-transparent"></div>
 
             {/* Subtle Background Pattern */}
-            <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+            <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC43IiBudW1PY3RhdmVzPSI0IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNuKSIgb3BhY2l0eT0iMC41Ii8+PC9zdmc+')]"></div>
 
             {/* Animated Gradient Orbs */}
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute top-1/4 left-1/4 w-48 h-48 md:w-96 md:h-96 bg-emerald-500/20 rounded-full blur-3xl animate-pulse will-change-transform"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-emerald-400/10 rounded-full blur-3xl animate-pulse will-change-transform"></div>
 
             <div className="container mx-auto max-w-5xl relative z-10">
                <div className="text-center">
@@ -165,8 +161,8 @@ export default function SustainabilityClient() {
                   </div>
 
                   {/* Main Heading */}
-                  <h1 className="text-5xl md:text-6xl lg:text-8xl font-serif text-white mb-6 leading-tight">
-                     Sustainability in the <br />
+                  <h1 className="text-4xl md:text-6xl lg:text-8xl font-serif text-white mb-6 leading-tight">
+                     Sustainability in the <br className="hidden md:block" />
                      <span className="text-emerald-400 italic">Age of AI</span>
                   </h1>
 
@@ -200,7 +196,7 @@ export default function SustainabilityClient() {
             <div className="mx-auto max-w-5xl">
                <div className="bg-white rounded-2xl shadow-xl border border-stone-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
 
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
                      <div className="border-r-0 border-stone-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                         <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1"> Duration</p>
                         <p className="text-lg font-bold text-stone-900">4 Weeks</p>
@@ -233,7 +229,7 @@ export default function SustainabilityClient() {
          </div>
 
          {/* WHY THIS COHORT EXISTS + WHO IT'S FOR - IMPROVED LAYOUT */}
-         <section className="py-12 md:py-4 bg-white relative overflow-hidden">
+         <section className="py-12 md:py-20 bg-white relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-7xl">
                <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
                   {/* Left: Why This Cohort Exists */}
@@ -394,10 +390,10 @@ export default function SustainabilityClient() {
                }}
                style={{ width: "max-content" }}
             >
-               {[1, 2, 3, 4].map((i) => (
+               {[1, 2].map((i) => (
                   <div
                      key={i}
-                     className="flex items-center gap-12 text-slate-400 font-bold text-2xl uppercase tracking-widest"
+                     className="flex items-center gap-12 text-slate-400 font-bold text-base md:text-2xl uppercase tracking-widest"
                   >
                      <span>UN Sustainable Development Goals (SDGs)</span> <span>&bull;</span>
                      <span>Global Reporting Initiative (GRI)</span> <span>&bull;</span>
@@ -437,12 +433,12 @@ export default function SustainabilityClient() {
                }}
                style={{ width: "max-content" }}
             >
-               {[1, 2, 3, 4].map((i) => (
+               {[1, 2].map((i) => (
                   <div
                      key={i}
-                     className="flex items-center gap-12 text-slate-400 font-bold text-2xl uppercase tracking-widest"
+                     className="flex items-center gap-12 text-slate-400 font-bold text-base md:text-2xl uppercase tracking-widest"
                   >
-                     <span>UnSustainable Development Goals (SDGs)</span> <span>&bull;</span>
+                     <span>UN Sustainable Development Goals (SDGs)</span> <span>&bull;</span>
                      <span>Global Reporting Initiative (GRI)</span> <span>&bull;</span>
                      <span>ESG</span> <span>&bull;</span>
                      <span>Science Based Targets initiative (SBTi)</span> <span>&bull;</span>
@@ -504,7 +500,7 @@ export default function SustainabilityClient() {
                                     });
                                  }, 100);
                               }}
-                              className={`w-full text-left p-4 flex items-center justify-between transition-colors ${selectedCareer === index ? "bg-emerald-50/50" : "bg-white"}`}
+                              className={`w-full text-left p-4 min-h-[48px] flex items-center justify-between transition-colors ${selectedCareer === index ? "bg-emerald-50/50" : "bg-white"}`}
                            >
                               <div className="flex items-center gap-4">
                                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${selectedCareer === index ? 'bg-emerald-100' : 'bg-emerald-50'}`}>
@@ -641,11 +637,7 @@ export default function SustainabilityClient() {
                   {/* Left: Certificate Image */}
                   <div className="relative">
                      <div className="relative p-3 bg-white border border-stone-200 rounded-xl shadow-lg">
-                        <img
-                           src="/sample-certificate.png"
-                           alt="Sample Certificate"
-                           className="w-full h-auto rounded-lg relative z-10"
-                        />
+                        <Image src="/sample-certificate.png" alt="Sample Certificate" width={600} height={400} className="w-full h-auto rounded-lg relative z-10" />
                         {/* Decorative Elements */}
                         <div className="absolute -top-4 -left-4 w-20 h-20 bg-emerald-500/10 rounded-full blur-2xl" />
                         <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-stone-500/10 rounded-full blur-2xl" />
