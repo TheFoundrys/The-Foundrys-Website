@@ -390,7 +390,7 @@ export default function AIEngineeringCoursePage() {
                             </div>
                             <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Starts</p>
-                                <p className="text-lg font-bold text-slate-900">February 2026</p>
+                                <p className="text-lg font-bold text-slate-900">March 2026</p>
                             </div>
                             <div className="lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>

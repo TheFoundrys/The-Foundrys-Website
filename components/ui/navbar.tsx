@@ -256,9 +256,9 @@ export function Navbar() {
                                             exit={{ opacity: 0, y: -10, scaleY: 0.8, scaleX: 0.9, filter: "blur(10px)" }}
                                             transition={{
                                                 type: "spring",
-                                                stiffness: 800,
-                                                damping: 40,
-                                                mass: 0.5
+                                                stiffness: 220,
+                                                damping: 20,
+                                                mass: 0.8
                                             }}
                                             style={{ transformOrigin: "top center" }}
                                             className="absolute top-full left-0 -translate-x-10 pt-4 min-w-[500px]"
@@ -333,7 +333,7 @@ export function Navbar() {
                                     setIsProgramsOpen(true);
                                 }}
                                 onMouseLeave={() => {
-                                    programsTimeoutRef.current = setTimeout(() => setIsProgramsOpen(false), 150);
+                                    programsTimeoutRef.current = setTimeout(() => setIsProgramsOpen(false), 50);
                                 }}
                             >
                                 <button
@@ -428,7 +428,7 @@ export function Navbar() {
                                     setIsMoreOpen(true);
                                 }}
                                 onMouseLeave={() => {
-                                    moreTimeoutRef.current = setTimeout(() => setIsMoreOpen(false), 150);
+                                    moreTimeoutRef.current = setTimeout(() => setIsMoreOpen(false), 50);
                                 }}
                             >
                                 <button
