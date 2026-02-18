@@ -9,15 +9,15 @@ import Link from "next/link";
 const upcomingEvents = [
     {
         id: 1,
-        title: "How the Deep Tech Landscape is Changing in India",
-        type: "Guest Speaker Session",
-        date: "Thu, Feb 19, 2026",
-        time: "11:00 AM to 04:00 PM",
-        venue: "Taj Krishna, Hyderabad",
-        mapsUrl: "https://maps.google.com/?q=Taj+Krishna+Hyderabad",
+        title: "Join Us for the AI @GenZ",
+        type: "Community Event",
+        date: "Sat, Feb 28, 2026",
+        time: "10:30 AM",
+        venue: "Lamakan, Hyderabad",
+        mapsUrl: "https://maps.google.com/?q=Lamakan+Hyderabad",
         description:
-            "An exclusive session exploring how AI, Quantum Computing, and Blockchain are reshaping India's technology ecosystem. Join industry leaders and visionaries for an afternoon of insights, networking, and inspiration.",
-        tags: ["AI", "Deep Tech", "Networking", "Industry Leaders"],
+            "Bridging the gap between analogue and AI. Join us for an exciting event designed for the GenZ generation, exploring how AI is transforming the way we live, learn, and create.",
+        tags: ["AI", "GenZ", "Community", "Innovation"],
         featured: true,
     },
 ];
@@ -178,6 +178,13 @@ export default function EventsPage() {
 
                                         {/* Action Buttons */}
                                         <div className="flex flex-col sm:flex-row gap-3">
+                                            <Link
+                                                href="/apply"
+                                                className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+                                            >
+                                                Register Now
+                                                <ArrowUpRight size={16} />
+                                            </Link>
                                             <a
                                                 href={event.mapsUrl}
                                                 target="_blank"
