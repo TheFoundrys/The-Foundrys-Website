@@ -178,13 +178,15 @@ export default function EventsPage() {
 
                                         {/* Action Buttons */}
                                         <div className="flex flex-col sm:flex-row gap-3">
-                                            <Link
-                                                href="/apply"
+                                            <a
+                                                href="https://luma.com/cp4d1w4b"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
                                                 className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
                                             >
                                                 Register Now
                                                 <ArrowUpRight size={16} />
-                                            </Link>
+                                            </a>
                                             <a
                                                 href={event.mapsUrl}
                                                 target="_blank"
