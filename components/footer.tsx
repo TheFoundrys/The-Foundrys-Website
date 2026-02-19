@@ -76,10 +76,10 @@ export function Footer({ hideCTA = false }: FooterProps) {
                                     <MapPin size={14} className="text-slate-600" />
                                 </div>
                                 <div>
-                                    <span className="font-bold text-slate-800 block text-xs tracking-wider mb-1">INDIA</span>
+                                    <span className="font-bold text-slate-800 block text-xs tracking-wider mb-1">HeadQuarters</span>
                                     <span className="block text-slate-500">
-                                        SASI ICON, Beside Madhapur Metro Station,<br />
-                                        Jubilee Hills, Road No 36 &amp; 37, Hyderabad, Telangana - 500033.
+                                        2343 Dulles Station Blvd, Apt 256,<br />
+                                        Herndon, Virginia 20171
                                     </span>
                                 </div>
                             </div>
@@ -88,13 +88,14 @@ export function Footer({ hideCTA = false }: FooterProps) {
                                     <MapPin size={14} className="text-slate-600" />
                                 </div>
                                 <div>
-                                    <span className="font-bold text-slate-800 block text-xs tracking-wider mb-1">USA</span>
+                                    <span className="font-bold text-slate-800 block text-xs tracking-wider mb-1">INDIA</span>
                                     <span className="block text-slate-500">
-                                        2343 Dulles Station Blvd, Apt 256,<br />
-                                        Herndon, Virginia 20171
+                                        SASI ICON, Beside Madhapur Metro Station,
+                                        Jubilee Hills, Road No 36 &amp; 37, Hyderabad, Telangana - 500033.
                                     </span>
                                 </div>
                             </div>
+                            
                         </div>
 
                         <div className="h-px bg-slate-200 my-2 w-full" />

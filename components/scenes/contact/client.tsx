@@ -34,41 +34,41 @@ export function ContactClient() {
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="max-w-2xl mx-auto">
             {/* Contact Info Card */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
               className="bg-white p-8 md:p-12 rounded-3xl border border-slate-100 shadow-xl hover:shadow-2xl transition-all duration-300"
             >
-              <div className="flex flex-col justify-center h-full">
-                <h2 className="text-2xl font-bold mb-8">Visit The Campus</h2>
-
-                <div className="space-y-6 mb-10">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center text-slate-600 shrink-0">
-                      <MapPin size={20} />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-slate-900 mb-1">Address</h3>
-                      <p className="text-slate-500 leading-relaxed">
-                        SASI ICON, Beside Madhapur Metro Station,<br />
-                        Jubilee Hills, Road No 36 &amp; 37, Hyderabad, Telangana - 500033.
-                      </p>
-                    </div>
+              <div className="flex flex-col">
+                <div className="flex items-center justify-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center text-slate-600">
+                    <MapPin size={20} />
                   </div>
+                  <h2 className="text-2xl font-bold">Visit Us</h2>
+                </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center text-slate-600 shrink-0">
-                      <Mail size={20} />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-slate-900 mb-1">Email</h3>
-                      <a href="mailto:info@thefoundrys.com" className="text-slate-500 hover:text-blue-600 transition-colors">
-                        info@thefoundrys.com
-                      </a>
-                    </div>
+                <div className="space-y-5 mb-8 w-full">
+                  <div>
+                    <h3 className="font-bold text-slate-900 mb-1">HeadQuarters</h3>
+                    <p className="text-slate-500 leading-relaxed">
+                      2343 Dulles Station Blvd, Apt 256, Herndon, Virginia 20171
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 mb-1">INDIA</h3>
+                    <p className="text-slate-500 leading-relaxed">
+                      SASI ICON, Beside Madhapur Metro Station,<br />
+                      Jubilee Hills, Road No 36 &amp; 37, Hyderabad, Telangana - 500033.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 mb-1">Email</h3>
+                    <a href="mailto:info@thefoundrys.com" className="text-slate-500 hover:text-blue-600 transition-colors">
+                      info@thefoundrys.com
+                    </a>
                   </div>
                 </div>
 
@@ -87,31 +87,6 @@ export function ContactClient() {
                   </Link>
                 </div>
               </div>
-            </motion.div>
-
-            {/* Application Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-              className="bg-slate-900 p-8 md:p-12 rounded-3xl text-white shadow-2xl relative overflow-hidden flex flex-col justify-between"
-            >
-              {/* Decorative Glow */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full blur-[80px] opacity-20 pointer-events-none" />
-
-              <div>
-                <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-8 backdrop-blur-sm border border-white/10">
-                  <Calendar className="text-blue-400" />
-                </div>
-                <h2 className="text-3xl font-bold mb-4">Admissions Open</h2>
-                <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-                  Ready to start your journey? Our admissions team is currently reviewing applications for the upcoming cohort.
-                </p>
-              </div>
-
-              <Link href="/apply" className="w-full py-4 bg-white text-slate-900 rounded-xl font-bold hover:bg-blue-50 transition-colors block text-center">
-                Apply Now
-              </Link>
             </motion.div>
           </div>
         </div>
