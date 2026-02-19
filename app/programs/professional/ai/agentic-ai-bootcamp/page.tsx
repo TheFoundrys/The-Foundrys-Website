@@ -291,15 +291,7 @@ export default function AgenticAIBootcampPage() {
                             </div>
                             <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
                                 <Calendar size={16} className="text-violet-400" />
-                                <span>Starts Feb 23, 2026</span>
-                            </div>
-                            <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
-                                <Clock size={16} className="text-violet-400" />
-                                <span>8 Hours / Day</span>
-                            </div>
-                            <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
-                                <Users size={16} className="text-violet-400" />
-                                <span>Batch Size: 15</span>
+                                <span>Starting March 2026</span>
                             </div>
                             <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
                                 <Award size={16} className="text-violet-400" />
@@ -325,7 +317,7 @@ export default function AgenticAIBootcampPage() {
                             </div>
                             <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Starts</p>
-                                <p className="text-lg font-bold text-slate-900">Feb 23, 2026</p>
+                                <p className="text-lg font-bold text-slate-900">March 2026</p>
                             </div>
                             <div className="lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>
@@ -383,7 +375,7 @@ export default function AgenticAIBootcampPage() {
                                 <div className="flex-1">
                                     <h3 className="text-2xl font-bold mb-3">Who Is This For?</h3>
                                     <p className="text-violet-100 leading-relaxed">
-                                        This bootcamp is designed for a mixed audience — both <strong className="text-white">engineering</strong> and <strong className="text-white">non-engineering</strong> professionals. Whether you&apos;re a developer wanting to build agents or a business professional wanting to understand and leverage AI automation, this program meets you where you are with optional split tracks.
+                                        This bootcamp is designed for a mixed audience — both <strong className="text-white">engineering</strong> and <strong className="text-white">non-engineering</strong> professionals. Whether you&apos;re a developer wanting to build agents or a business professional wanting to understand and leverage AI automation, this program meets you where you are with optional split tracks. Limited batch size for personalized learning.
                                     </p>
                                 </div>
                             </div>
@@ -511,7 +503,7 @@ export default function AgenticAIBootcampPage() {
                         <FAQItem question="Is this an online or in-person bootcamp?" answer="This is a fully in-person bootcamp conducted in Hyderabad. All 5 days are instructor-led, 8 hours per day." />
                         <FAQItem question="Will I receive a certificate?" answer="Yes. Upon successful completion of the bootcamp and your capstone presentation, you will receive a verifiable digital certificate from The Foundry." />
                         <FAQItem question="What will I build during the bootcamp?" answer="You will build multiple AI agents throughout the week — from single research and summarizer agents to multi-agent teams. On Day 5, you'll present a capstone project solving a real business or engineering problem." />
-                        <FAQItem question="When does the bootcamp start?" answer="The tentative start date is February 23, 2026 (Week 4 of February). The bootcamp runs for 5 consecutive days." />
+                        <FAQItem question="When does the bootcamp start?" answer="The bootcamp is scheduled to start in March 2026. The bootcamp runs for 5 consecutive days." />
                     </div>
                 </div>
             </section>
@@ -523,7 +515,7 @@ export default function AgenticAIBootcampPage() {
                         Ready to Build Autonomous AI Agents?
                     </h2>
                     <p className="text-lg text-violet-200 mb-10 max-w-2xl mx-auto leading-relaxed">
-                        Join a curated batch of 15 professionals in Hyderabad for an intensive, hands-on week of Agentic AI. Limited seats available.
+                        Join a curated batch of professionals in Hyderabad for an intensive, hands-on week of Agentic AI. Limited seats available.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link
@@ -534,7 +526,7 @@ export default function AgenticAIBootcampPage() {
                         </Link>
                         <div className="flex items-center gap-2 text-violet-300 text-sm">
                             <Users size={16} />
-                            <span>Only 15 seats per batch</span>
+                            <span>Limited seats available</span>
                         </div>
                     </div>
                 </div>

@@ -65,10 +65,10 @@ export default function AIClient() {
               discountedPrice={COURSE_PRICING.agenticAIBootcamp.discounted[currency]}
               currencySymbol={symbol}
               duration="5 Days"
-              desc="An intensive 5-day in-person bootcamp in Hyderabad. Build autonomous AI agents with hands-on, instructor-led training. Batch size limited to 15 participants for personalized learning."
+              desc="An intensive 5-day in-person bootcamp in Hyderabad. Build autonomous AI agents with hands-on, instructor-led training. Limited batch size for personalized learning."
               href="/programs/professional/ai/agentic-ai-bootcamp"
               persona="Engineering + Non-Engineering Backgrounds"
-              badges={["In-Person @ Hyderabad", "Starts Feb 23, 2026", "8 Hrs/Day", "Batch: 15"]}
+              badges={["In-Person @ Hyderabad", "March 2026"]}
             />
           </div>
         </div>
