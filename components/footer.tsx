@@ -78,7 +78,8 @@ export function Footer({ hideCTA = false }: FooterProps) {
                                 <div>
                                     <span className="font-bold text-slate-800 block text-xs tracking-wider mb-1">INDIA</span>
                                     <span className="block text-slate-500">
-                                        Sasiicon Mall, Jubilee Hills, Hyderabad, Telangana.
+                                        SASI ICON, Beside Madhapur Metro Station,<br />
+                                        Jubilee Hills, Road No 36 &amp; 37, Hyderabad, Telangana - 500033.
                                     </span>
                                 </div>
                             </div>

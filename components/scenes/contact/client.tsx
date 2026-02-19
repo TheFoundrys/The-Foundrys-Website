@@ -53,9 +53,8 @@ export function ContactClient() {
                     <div>
                       <h3 className="font-bold text-slate-900 mb-1">Address</h3>
                       <p className="text-slate-500 leading-relaxed">
-                        Sasiicon Mall,<br />
-                        Jubilee Hills,<br />
-                        Hyderabad, Telangana.
+                        SASI ICON, Beside Madhapur Metro Station,<br />
+                        Jubilee Hills, Road No 36 &amp; 37, Hyderabad, Telangana - 500033.
                       </p>
                     </div>
                   </div>
