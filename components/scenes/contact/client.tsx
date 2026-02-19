@@ -58,10 +58,9 @@ export function ContactClient() {
                     </p>
                   </div>
                   <div>
-                    <h3 className="font-bold text-slate-900 mb-1">INDIA</h3>
+                    <h3 className="font-bold text-slate-900 mb-1">Hyderabad Office</h3>
                     <p className="text-slate-500 leading-relaxed">
-                      SASI ICON, Beside Madhapur Metro Station,<br />
-                      Jubilee Hills, Road No 36 &amp; 37, Hyderabad, Telangana - 500033.
+                      SASI ICON,Beside Madhapur Metro Station, Jubilee Hills, Road No 36 &amp; 37, Hyderabad, Telangana - 500033.
                     </p>
                   </div>
                   <div>

@@ -88,7 +88,7 @@ export function Footer({ hideCTA = false }: FooterProps) {
                                     <MapPin size={14} className="text-slate-600" />
                                 </div>
                                 <div>
-                                    <span className="font-bold text-slate-800 block text-xs tracking-wider mb-1">INDIA</span>
+                                    <span className="font-bold text-slate-800 block text-xs tracking-wider mb-1">Hyderabad Office</span>
                                     <span className="block text-slate-500">
                                         SASI ICON, Beside Madhapur Metro Station,
                                         Jubilee Hills, Road No 36 &amp; 37, Hyderabad, Telangana - 500033.
