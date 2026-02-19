@@ -139,7 +139,7 @@ export default function AIFoundationsTeluguCoursePage() {
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
     const { currency, symbol } = useRegionalPricing();
     const originalPrice = COURSE_PRICING.aiFoundationsTelugu.original[currency];
-    const discountedPrice = COURSE_PRICING.aiFoundationsTelugu.discounted[currency];
+    const discountedPrice = COURSE_PRICING.aiFoundationsTelugu.freshers[currency];
 
     useEffect(() => {
         // Scroll to top on page load

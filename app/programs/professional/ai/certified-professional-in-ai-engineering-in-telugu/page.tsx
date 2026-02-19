@@ -343,7 +343,7 @@ export default function AIEngineeringTeluguCoursePage() {
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
     const { currency, symbol } = useRegionalPricing();
     const originalPrice = COURSE_PRICING.aiEngineeringTelugu.original[currency];
-    const discountedPrice = COURSE_PRICING.aiEngineeringTelugu.discounted[currency];
+    const discountedPrice = COURSE_PRICING.aiEngineeringTelugu.freshers[currency];
 
     useEffect(() => {
         window.scrollTo(0, 0);

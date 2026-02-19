@@ -39,7 +39,7 @@ export default function AIClient() {
               sku="AI 003"
               title="Certified Professional AI Engineering"
               originalPrice={COURSE_PRICING.professionalAIEngineer.original[currency]}
-              discountedPrice={COURSE_PRICING.professionalAIEngineer.discounted[currency]}
+              discountedPrice={COURSE_PRICING.professionalAIEngineer.freshers[currency]}
               currencySymbol={symbol}
               duration="6 Weeks"
               desc="Focus on the engineering lifecycle. Learn to build, scale, and optimize production-grade AI applications."
@@ -51,7 +51,7 @@ export default function AIClient() {
               sku="AI 004"
               title="Certified Professional AI Operations"
               originalPrice={COURSE_PRICING.professionalAIOperations.original[currency]}
-              discountedPrice={COURSE_PRICING.professionalAIOperations.discounted[currency]}
+              discountedPrice={COURSE_PRICING.professionalAIOperations.freshers[currency]}
               currencySymbol={symbol}
               duration="6 Weeks"
               desc="Master the art of MLOps. Learn deployment strategies, monitoring, and maintaining AI at scale."
@@ -62,7 +62,7 @@ export default function AIClient() {
               sku="AI 006"
               title="Agentic AI Bootcamp (Instructor-Led Training)"
               originalPrice={COURSE_PRICING.agenticAIBootcamp.original[currency]}
-              discountedPrice={COURSE_PRICING.agenticAIBootcamp.discounted[currency]}
+              discountedPrice={COURSE_PRICING.agenticAIBootcamp.freshers[currency]}
               currencySymbol={symbol}
               duration="5 Days"
               desc="An intensive 5-day in-person bootcamp in Hyderabad. Build autonomous AI agents with hands-on, instructor-led training. Limited batch size for personalized learning."

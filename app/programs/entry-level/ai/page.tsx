@@ -49,7 +49,7 @@ export default function EntryLevelAIPage() {
                             sku="AI 003"
                             title="Certified AI Engineering"
                             originalPrice={COURSE_PRICING.aiEngineer.original[currency]}
-                            discountedPrice={COURSE_PRICING.aiEngineer.discounted[currency]}
+                            discountedPrice={COURSE_PRICING.aiEngineer.freshers[currency]}
                             duration="6 Weeks"
                             desc="Focus on the engineering lifecycle. Learn to build, scale, and optimize production-grade AI applications."
                             href="/programs/entry-level/ai/certified-in-ai-engineering"
@@ -61,7 +61,7 @@ export default function EntryLevelAIPage() {
                             sku="AI 005"
                             title="Certified Prompt Engineering"
                             originalPrice={COURSE_PRICING.promptEngineering.original[currency]}
-                            discountedPrice={COURSE_PRICING.promptEngineering.discounted[currency]}
+                            discountedPrice={COURSE_PRICING.promptEngineering.freshers[currency]}
                             duration="2 weeks"
                             desc="Master the art of communicating with AI. Learn to design and optimize prompts to unlock the full potential of Large Language Models."
                             discountLabel="50% Discount"
@@ -73,7 +73,7 @@ export default function EntryLevelAIPage() {
                             sku="AI 002"
                             title="Certified AI Research"
                             originalPrice={COURSE_PRICING.aiResearch.original[currency]}
-                            discountedPrice={COURSE_PRICING.aiResearch.discounted[currency]}
+                            discountedPrice={COURSE_PRICING.aiResearch.freshers[currency]}
                             duration="6 Weeks"
                             desc="Dive deep into algorithms and model architectures that power modern AI. Learn how to push the boundaries of intelligent systems through research and experimentation."
                             persona="For Data & ML Researchers"

@@ -78,9 +78,7 @@ export function Footer({ hideCTA = false }: FooterProps) {
                                 <div>
                                     <span className="font-bold text-slate-800 block text-xs tracking-wider mb-1">INDIA</span>
                                     <span className="block text-slate-500">
-                                        QHUB, Beside Madhapur Metro Station,<br />
-                                        Jubilee Hills, Road No 36 & 37,<br />
-                                        Hyderabad, Telangana - 500033.
+                                        Sasiicon Mall, Jubilee Hills, Hyderabad, Telangana.
                                     </span>
                                 </div>
                             </div>

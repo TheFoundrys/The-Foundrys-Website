@@ -197,7 +197,7 @@ export default function AIResearchCoursePage() {
                         <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-3xl p-8 lg:p-10">
                             <h3 className="text-white text-xl font-bold mb-6">Program Fee</h3>
                             <div className="flex items-baseline gap-3 mb-2">
-                                <span className="text-4xl lg:text-5xl font-bold text-white">{symbol}{pricing.discounted[currency]}</span>
+                                <span className="text-4xl lg:text-5xl font-bold text-white">{symbol}{pricing.freshers[currency]}</span>
                                 <span className="text-xl text-slate-500 line-through">{symbol}{pricing.original[currency]}</span>
                             </div>
                             <div className="flex items-center gap-2 mb-8">

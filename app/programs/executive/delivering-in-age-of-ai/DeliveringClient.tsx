@@ -34,7 +34,7 @@ const textGradientClass = "text-transparent bg-clip-text bg-gradient-to-r from-b
 export default function DeliveringClient() {
     const { currency, symbol } = useRegionalPricing();
     const originalPrice = COURSE_PRICING.deliveringAgeOfAI.original[currency];
-    const discountedPrice = COURSE_PRICING.deliveringAgeOfAI.discounted[currency];
+    const discountedPrice = COURSE_PRICING.deliveringAgeOfAI.freshers[currency];
 
     return (
         <main className="min-h-screen bg-slate-50 font-sans selection:bg-blue-100 selection:text-blue-900">

@@ -12,7 +12,7 @@ export function StrategyClient() {
     const { symbol, currency } = useRegionalPricing();
 
     const originalPrice = COURSE_PRICING.certifiedInnovator.original[currency];
-    const discountedPrice = COURSE_PRICING.certifiedInnovator.discounted[currency];
+    const discountedPrice = COURSE_PRICING.certifiedInnovator.freshers[currency];
 
     return (
         <main className="min-h-screen bg-neutral-50 font-sans selection:bg-black selection:text-white">

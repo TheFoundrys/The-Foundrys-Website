@@ -74,112 +74,106 @@ export function useRegionalPricing(): PricingData {
     return pricingData;
 }
 
+interface PriceTier {
+    original: { INR: string; USD: string };
+    freshers: { INR: string; USD: string };
+    zeroToTwo: { INR: string; USD: string };
+    twoToFive: { INR: string; USD: string };
+}
+
 export interface CoursePricing {
-    promptEngineering: {
-        original: { INR: string; USD: string };
-        discounted: { INR: string; USD: string };
-    };
-    aiEngineer: {
-        original: { INR: string; USD: string };
-        discounted: { INR: string; USD: string };
-    };
-    aiResearch: {
-        original: { INR: string; USD: string };
-        discounted: { INR: string; USD: string };
-    };
-    professionalAIEngineer: {
-        original: { INR: string; USD: string };
-        discounted: { INR: string; USD: string };
-    };
-    professionalAIOperations: {
-        original: { INR: string; USD: string };
-        discounted: { INR: string; USD: string };
-    };
-    professionalAIResearch: {
-        original: { INR: string; USD: string };
-        discounted: { INR: string; USD: string };
-    };
-    quantumFundamentals: {
-        original: { INR: string; USD: string };
-        discounted: { INR: string; USD: string };
-    };
-    deliveringAgeOfAI: {
-        original: { INR: string; USD: string };
-        discounted: { INR: string; USD: string };
-    };
-    aiEngineeringTelugu: {
-        original: { INR: string; USD: string };
-        discounted: { INR: string; USD: string };
-    };
-    aiFoundationsTelugu: {
-        original: { INR: string; USD: string };
-        discounted: { INR: string; USD: string };
-    };
-    sustainability: {
-        original: { INR: string; USD: string };
-        discounted: { INR: string; USD: string };
-    };
-    certifiedInnovator: {
-        original: { INR: string; USD: string };
-        discounted: { INR: string; USD: string };
-    };
-    agenticAIBootcamp: {
-        original: { INR: string; USD: string };
-        discounted: { INR: string; USD: string };
-    };
+    promptEngineering: PriceTier;
+    aiEngineer: PriceTier;
+    aiResearch: PriceTier;
+    professionalAIEngineer: PriceTier;
+    professionalAIOperations: PriceTier;
+    professionalAIResearch: PriceTier;
+    quantumFundamentals: PriceTier;
+    deliveringAgeOfAI: PriceTier;
+    aiEngineeringTelugu: PriceTier;
+    aiFoundationsTelugu: PriceTier;
+    sustainability: PriceTier;
+    certifiedInnovator: PriceTier;
+    agenticAIBootcamp: PriceTier;
 }
 
 export const COURSE_PRICING: CoursePricing = {
     promptEngineering: {
         original: { INR: '20,000', USD: '500' },
-        discounted: { INR: '10,000', USD: '250' },
+        freshers: { INR: '10,000', USD: '250' },
+        zeroToTwo: { INR: '15,000', USD: '375' },
+        twoToFive: { INR: '18,000', USD: '450' },
     },
     aiEngineer: {
-        original: { INR: '100,000', USD: '2000' },
-        discounted: { INR: '50,000', USD: '1000' },
+        original: { INR: '1,00,000', USD: '2,000' },
+        freshers: { INR: '50,000', USD: '1,000' },
+        zeroToTwo: { INR: '75,000', USD: '1,500' },
+        twoToFive: { INR: '90,000', USD: '1,800' },
     },
     aiResearch: {
-        original: { INR: '150,000', USD: '3000' },
-        discounted: { INR: '75,000', USD: '1500' },
+        original: { INR: '1,50,000', USD: '3,000' },
+        freshers: { INR: '75,000', USD: '1,500' },
+        zeroToTwo: { INR: '1,12,500', USD: '2,250' },
+        twoToFive: { INR: '1,35,000', USD: '2,700' },
     },
     professionalAIEngineer: {
-        original: { INR: '150,000', USD: '3000' },
-        discounted: { INR: '75,000', USD: '1500' },
+        original: { INR: '1,50,000', USD: '3,000' },
+        freshers: { INR: '75,000', USD: '1,500' },
+        zeroToTwo: { INR: '1,12,500', USD: '2,250' },
+        twoToFive: { INR: '1,35,000', USD: '2,700' },
     },
     professionalAIOperations: {
-        original: { INR: '200,000', USD: '4000' },
-        discounted: { INR: '100,000', USD: '2000' },
+        original: { INR: '2,00,000', USD: '4,000' },
+        freshers: { INR: '1,00,000', USD: '2,000' },
+        zeroToTwo: { INR: '1,50,000', USD: '3,000' },
+        twoToFive: { INR: '1,80,000', USD: '3,600' },
     },
     professionalAIResearch: {
-        original: { INR: '150,000', USD: '3000' },
-        discounted: { INR: '75,000', USD: '1500' },
+        original: { INR: '1,50,000', USD: '3,000' },
+        freshers: { INR: '75,000', USD: '1,500' },
+        zeroToTwo: { INR: '1,12,500', USD: '2,250' },
+        twoToFive: { INR: '1,35,000', USD: '2,700' },
     },
     quantumFundamentals: {
         original: { INR: '10,000', USD: '200' },
-        discounted: { INR: '5,000', USD: '100' },
+        freshers: { INR: '5,000', USD: '100' },
+        zeroToTwo: { INR: '7,500', USD: '150' },
+        twoToFive: { INR: '9,000', USD: '180' },
     },
     deliveringAgeOfAI: {
-        original: { INR: '1,00,000', USD: '2000' },
-        discounted: { INR: '75,000', USD: '1500' },
+        original: { INR: '1,00,000', USD: '2,000' },
+        freshers: { INR: '50,000', USD: '1,000' },
+        zeroToTwo: { INR: '75,000', USD: '1,500' },
+        twoToFive: { INR: '90,000', USD: '1,800' },
     },
     aiEngineeringTelugu: {
-        original: { INR: '150,000', USD: '3000' },
-        discounted: { INR: '75,000', USD: '1500' },
+        original: { INR: '1,50,000', USD: '3,000' },
+        freshers: { INR: '75,000', USD: '1,500' },
+        zeroToTwo: { INR: '1,12,500', USD: '2,250' },
+        twoToFive: { INR: '1,35,000', USD: '2,700' },
     },
     aiFoundationsTelugu: {
-        original: { INR: '100,000', USD: '2000' },
-        discounted: { INR: '50,000', USD: '1000' },
+        original: { INR: '1,00,000', USD: '2,000' },
+        freshers: { INR: '50,000', USD: '1,000' },
+        zeroToTwo: { INR: '75,000', USD: '1,500' },
+        twoToFive: { INR: '90,000', USD: '1,800' },
     },
     sustainability: {
         original: { INR: '35,000', USD: '700' },
-        discounted: { INR: '25,000', USD: '500' },
+        freshers: { INR: '25,000', USD: '500' },
+        zeroToTwo: { INR: '26,250', USD: '525' },
+        twoToFive: { INR: '31,500', USD: '630' },
     },
     certifiedInnovator: {
         original: { INR: '30,000', USD: '600' },
-        discounted: { INR: '20,000', USD: '400' },
+        freshers: { INR: '20,000', USD: '400' },
+        zeroToTwo: { INR: '22,500', USD: '450' },
+        twoToFive: { INR: '27,000', USD: '540' },
     },
     agenticAIBootcamp: {
         original: { INR: '30,000', USD: '600' },
-        discounted: { INR: '20,000', USD: '400' },
+        freshers: { INR: '20,000', USD: '400' },
+        zeroToTwo: { INR: '22,500', USD: '450' },
+        twoToFive: { INR: '27,000', USD: '540' },
     },
 };

@@ -134,7 +134,7 @@ export default function SustainabilityClient() {
    const { symbol, currency } = useRegionalPricing();
 
    const originalPrice = COURSE_PRICING.sustainability.original[currency];
-   const discountedPrice = COURSE_PRICING.sustainability.discounted[currency];
+   const discountedPrice = COURSE_PRICING.sustainability.freshers[currency];
 
    return (
       <div ref={containerRef} className="bg-stone-50 text-stone-900 min-h-screen selection:bg-emerald-200 selection:text-emerald-900 font-sans">

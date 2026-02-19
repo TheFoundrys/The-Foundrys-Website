@@ -201,7 +201,7 @@ function FAQItem({ question, answer }: { question: string, answer: string }) {
 export default function QuantumFundamentalsCoursePage() {
     const { currency, symbol } = useRegionalPricing();
     const originalPrice = COURSE_PRICING.quantumFundamentals.original[currency];
-    const discountedPrice = COURSE_PRICING.quantumFundamentals.discounted[currency];
+    const discountedPrice = COURSE_PRICING.quantumFundamentals.freshers[currency];
 
     useEffect(() => {
         window.scrollTo(0, 0);
