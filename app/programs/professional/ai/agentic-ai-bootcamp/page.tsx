@@ -248,6 +248,15 @@ export default function AgenticAIBootcampPage() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+
+        // Load Luma checkout script
+        if (!document.getElementById('luma-checkout')) {
+            const script = document.createElement('script');
+            script.id = 'luma-checkout';
+            script.src = 'https://embed.lu.ma/checkout-button.js';
+            script.async = true;
+            document.body.appendChild(script);
+        }
     }, []);
 
     return (
@@ -329,9 +338,14 @@ export default function AgenticAIBootcampPage() {
                         </div>
 
                         <div className="w-full lg:w-auto">
-                            <Link href="/apply" className="block w-full text-center px-8 py-3 bg-violet-600 text-white font-bold rounded-lg hover:bg-violet-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
-                                Enroll Now
-                            </Link>
+                            <a
+                                href="https://luma.com/event/evt-VzHfauvGi5icsNK"
+                                className="luma-checkout--button block w-full text-center px-8 py-3 bg-violet-600 text-white font-bold rounded-lg hover:bg-violet-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap"
+                                data-luma-action="checkout"
+                                data-luma-event-id="evt-VzHfauvGi5icsNK"
+                            >
+                                Register Now
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -518,12 +532,14 @@ export default function AgenticAIBootcampPage() {
                         Join a curated batch of professionals in Hyderabad for an intensive, hands-on week of Agentic AI. Limited seats available.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link
-                            href="/apply"
-                            className="inline-flex items-center gap-2 px-8 py-4 bg-violet-600 text-white rounded-full font-bold hover:bg-violet-500 transition-all shadow-lg hover:shadow-xl active:scale-95"
+                        <a
+                            href="https://luma.com/event/evt-VzHfauvGi5icsNK"
+                            className="luma-checkout--button inline-flex items-center gap-2 px-8 py-4 bg-violet-600 text-white rounded-full font-bold hover:bg-violet-500 transition-all shadow-lg hover:shadow-xl active:scale-95"
+                            data-luma-action="checkout"
+                            data-luma-event-id="evt-VzHfauvGi5icsNK"
                         >
-                            Apply Now <ArrowUpRight size={18} />
-                        </Link>
+                            Register Now <ArrowUpRight size={18} />
+                        </a>
                         <div className="flex items-center gap-2 text-violet-300 text-sm">
                             <Users size={16} />
                             <span>Limited seats available</span>
