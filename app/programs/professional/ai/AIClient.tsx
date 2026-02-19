@@ -58,6 +58,18 @@ export default function AIClient() {
               href="/programs/professional/ai/certified-professional-in-ai-operations"
               persona="For DevOps & Cloud Engineers"
             />
+            <CourseCard
+              sku="AI 006"
+              title="Agentic AI Bootcamp (Instructor-Led Training)"
+              originalPrice={COURSE_PRICING.agenticAIBootcamp.original[currency]}
+              discountedPrice={COURSE_PRICING.agenticAIBootcamp.discounted[currency]}
+              currencySymbol={symbol}
+              duration="5 Days"
+              desc="An intensive 5-day in-person bootcamp in Hyderabad. Build autonomous AI agents with hands-on, instructor-led training. Batch size limited to 15 participants for personalized learning."
+              href="/programs/professional/ai/agentic-ai-bootcamp"
+              persona="Engineering + Non-Engineering Backgrounds"
+              badges={["In-Person @ Hyderabad", "Starts Feb 23, 2026", "8 Hrs/Day", "Batch: 15"]}
+            />
           </div>
         </div>
       </section>
@@ -67,7 +79,7 @@ export default function AIClient() {
   );
 }
 
-function CourseCard({ sku, title, originalPrice, discountedPrice, currencySymbol = "₹", desc, discountLabel = "50% Discount", href = "/apply", duration = "3 Months", persona = "Students / Working professionals", isBestSeller = false }: { sku: string, title: string, originalPrice: string, discountedPrice: string, currencySymbol?: string, desc: string, discountLabel?: string, href?: string, duration?: string, persona?: string, isBestSeller?: boolean }) {
+function CourseCard({ sku, title, originalPrice, discountedPrice, currencySymbol = "₹", desc, discountLabel = "50% Discount", href = "/apply", duration = "3 Months", persona = "Students / Working professionals", isBestSeller = false, badges }: { sku: string, title: string, originalPrice: string, discountedPrice: string, currencySymbol?: string, desc: string, discountLabel?: string, href?: string, duration?: string, persona?: string, isBestSeller?: boolean, badges?: string[] }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -105,6 +117,16 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, currencySymbol
             {persona}
           </div>
         </div>
+
+        {badges && badges.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {badges.map((badge, index) => (
+              <span key={index} className="inline-flex items-center px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold border border-blue-100">
+                {badge}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="p-6 bg-slate-50 border-t border-slate-100 flex flex-col sm:flex-row md:flex-col lg:flex-row items-start sm:items-center md:items-start lg:items-center justify-between gap-4">

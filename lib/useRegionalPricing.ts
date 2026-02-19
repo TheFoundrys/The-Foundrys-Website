@@ -123,6 +123,10 @@ export interface CoursePricing {
         original: { INR: string; USD: string };
         discounted: { INR: string; USD: string };
     };
+    agenticAIBootcamp: {
+        original: { INR: string; USD: string };
+        discounted: { INR: string; USD: string };
+    };
 }
 
 export const COURSE_PRICING: CoursePricing = {
@@ -171,6 +175,10 @@ export const COURSE_PRICING: CoursePricing = {
         discounted: { INR: '25,000', USD: '500' },
     },
     certifiedInnovator: {
+        original: { INR: '30,000', USD: '600' },
+        discounted: { INR: '20,000', USD: '400' },
+    },
+    agenticAIBootcamp: {
         original: { INR: '30,000', USD: '600' },
         discounted: { INR: '20,000', USD: '400' },
     },
