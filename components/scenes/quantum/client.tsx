@@ -50,8 +50,8 @@ export function QuantumClient() {
                         </p>
 
                         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-                            <Link href="https://compass.thefoundrys.com/courses/quantum-computing/fundamentals-of-quantum-technologies" className="px-10 py-5 bg-white text-slate-900 rounded-full font-bold text-sm tracking-widest hover:bg-cyan-50 transition-all hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.3)] w-full md:w-auto text-center flex items-center justify-center">
-                                JOIN THE REVOLUTION
+                            <Link href="/programs/professional/quantum-computing" className="px-10 py-5 bg-white text-slate-900 rounded-full font-bold text-sm tracking-widest hover:bg-cyan-50 transition-all hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.3)] w-full md:w-auto text-center flex items-center justify-center">
+                                Enroll Now
                             </Link>
                             <Link href="#syllabus" className="px-10 py-5 bg-transparent border border-white/30 text-white rounded-full font-bold text-sm tracking-widest hover:bg-white/10 hover:border-white transition-all w-full md:w-auto backdrop-blur-sm flex items-center justify-center">
                                 SYLLABUS
@@ -215,27 +215,6 @@ export function QuantumClient() {
             <div id="syllabus">
                 <CurriculumAccordion />
             </div>
-
-            {/* CTA */}
-            <section className="py-32 bg-slate-900 text-center px-4 relative overflow-hidden">
-                {/* Abstract Quantum Background */}
-                <div className="absolute inset-0 opacity-20">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-violet-600 blur-[120px] rounded-full animate-pulse" />
-                </div>
-
-                <div className="relative z-10 max-w-3xl mx-auto">
-                    <h2 className="text-5xl md:text-6xl font-bold text-white mb-8 tracking-tight">
-                        Enter the Superposition.
-                    </h2>
-                    <p className="text-xl text-slate-400 mb-10 leading-relaxed">
-                        The next 50 years of computing will be written in quantum states. <br />
-                        Be the one holding the pen.
-                    </p>
-                    <Link href="/apply" className="px-12 py-5 bg-violet-600 text-white rounded-full font-bold text-lg hover:bg-violet-500 hover:scale-105 transition-all shadow-[0_0_40px_rgba(124,58,237,0.5)] inline-block">
-                        APPLY FOR PROGRAM
-                    </Link>
-                </div>
-            </section>
 
             <Footer hideCTA={true} />
         </main>
