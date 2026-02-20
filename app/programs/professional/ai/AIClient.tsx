@@ -59,6 +59,17 @@ export default function AIClient() {
               persona="For DevOps & Cloud Engineers"
             />
             <CourseCard
+              sku="AI 007"
+              title="AI Fluency (VILT)"
+              originalPrice={COURSE_PRICING.aiFluency.original[currency]}
+              discountedPrice={COURSE_PRICING.aiFluency.twoToFive[currency]}
+              currencySymbol={symbol}
+              duration="20 Days"
+              desc="Enable experienced Java developers to build practical AI capabilities using Python by covering core language fundamentals, AI frameworks, data preparation, model training, and deployment workflows."
+              href="/programs/professional/ai/ai-fluency"
+              persona="For Java Developers (4+ years experience) & Tech Cross Functional"
+            />
+            <CourseCard
               sku="AI 006"
               title="Agentic AI Bootcamp (Instructor-Led Training)"
               originalPrice={COURSE_PRICING.agenticAIBootcamp.original[currency]}

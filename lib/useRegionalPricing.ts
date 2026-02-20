@@ -95,6 +95,7 @@ export interface CoursePricing {
     sustainability: PriceTier;
     certifiedInnovator: PriceTier;
     agenticAIBootcamp: PriceTier;
+    aiFluency: PriceTier;
 }
 
 export const COURSE_PRICING: CoursePricing = {
@@ -175,5 +176,11 @@ export const COURSE_PRICING: CoursePricing = {
         freshers: { INR: '20,000', USD: '400' },
         zeroToTwo: { INR: '22,500', USD: '450' },
         twoToFive: { INR: '27,000', USD: '540' },
+    },
+    aiFluency: {
+        original: { INR: '1,00,000', USD: '2,000' },
+        freshers: { INR: '50,000', USD: '1,000' },
+        zeroToTwo: { INR: '75,000', USD: '1,500' },
+        twoToFive: { INR: '50,000', USD: '1,000' },
     },
 };
