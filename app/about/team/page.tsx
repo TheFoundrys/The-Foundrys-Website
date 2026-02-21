@@ -28,6 +28,16 @@ const teamMembers = [
             linkedin: "https://www.linkedin.com/in/sitapu/",
         }
     },
+    {
+        name: "P. Venkata Nagendra Reddy",
+        role: "Head of the School of Sustainability",
+        bio: "Veteran operator and Sustainability Architect with 19+ years of experience. Leading the transition to a 'Cultivation Economy' through tech-driven ESG compliance and biological scaling principles.",
+        image: "/images/venkat-reddy.jpg",
+        profileLink: "/about/faculty/p-venkata-nagendra-reddy",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/pvenkatanreddy",
+        }
+    },
     // Add more team members here
 ];
 

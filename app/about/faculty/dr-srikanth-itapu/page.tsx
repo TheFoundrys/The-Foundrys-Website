@@ -90,7 +90,7 @@ export default function DrSrikanthProfile() {
                 </div>
             </section>
 
-            {/* Biography Content */}
+            {/* Biography & Research Content */}
             <section className="py-20 px-6">
                 <div className="container mx-auto max-w-4xl">
                     <div className="prose prose-lg prose-slate max-w-none">
@@ -98,23 +98,81 @@ export default function DrSrikanthProfile() {
                             Dr. Srikanth Itapu is a subject matter expert in quantum technologies, advanced materials, and semiconductor devices, with over 12 years of international research experience and significant leadership roles in academia and innovation ecosystems.
                         </p>
 
-                        <h3 className="text-2xl font-bold text-slate-900 mt-12 mb-6">Research & Technical Expertise</h3>
-                        <p className="text-slate-600 leading-relaxed mb-6">
-                            His expertise spans quantum materials, spintronics, solid-state qubits, nano-fabrication, and energy-efficient quantum hardware, with a strong emphasis on translational research and technology readiness. He has led and contributed to interdisciplinary research programs integrating quantum physics, materials science, micro/nano-electronics, and sustainable energy technologies, bridging fundamental science with scalable device engineering. His work includes materials synthesis, thin films, device characterization, and system-level considerations relevant to quantum sensing, neuromorphic computing, and next-generation computing platforms.
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 my-12">
+                            <div>
+                                <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                                    <BookOpen className="text-blue-600" size={24} /> Research Expertise
+                                </h3>
+                                <p className="text-slate-600 leading-relaxed text-base">
+                                    His expertise spans quantum materials, spintronics, solid-state qubits, nano-fabrication, and energy-efficient quantum hardware. He has led interdisciplinary programs integrating quantum physics, materials science, and sustainable energy technologies.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                                    <Award className="text-blue-600" size={24} /> Leadership
+                                </h3>
+                                <p className="text-slate-600 leading-relaxed text-base">
+                                    Director of E-Spin Lab and Chair of ECE at Alliance University. Extensive experience in curriculum design, workforce development, and mentoring talent in quantum engineering and VLSI domains.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Publications Section */}
+                        <h3 className="text-2xl font-bold text-slate-900 mt-16 mb-8 flex items-center gap-2">
+                            Select Publications
+                        </h3>
+                        <div className="space-y-6 bg-white rounded-3xl p-8 border border-slate-100 shadow-sm mb-16">
+                            {[
+                                "Vamsi Borra, Srikanth Itapu, et al., \"Modification of Metal Surfaces by Surface Plasmon Polariton Excitation\", IEEE Transactions on Materials and Device Reliability, 2021.",
+                                "Selvendran S, I. Srikanth, et al., \"Impact of different types of modulators on optical hybrid FSO/Fiber communication\", Optical and Quantum Electronics, 2021.",
+                                "P. Manoj Reddy, Srikanth Itapu, et al., \"Tuning the electrical parameters of p-NiOx based TFTs by pulsed laser irradiation\", Condensed Matter, 2021.",
+                                "I B Madhuri and Srikanth Itapu, \"Rationally designed graphene-PVA composite fillers for modern manufacturing applications\", Journal of Materials Science Research and Reviews, 2020.",
+                                "Srikanth Itapu, et al., \"Laser-based fabrication of microstructures on nickel thin films and its application in on-chip spiral inductors\", IEEE Transactions on Nanotechnology, 2020.",
+                                "Kamruzzaman Khan, Srikanth Itapu, et al., \"Negative Differential Resistance (NDR) behavior Nickel Oxide (NiO) based MIS Structures\", Journal of Electronic Materials, 2020.",
+                                "Srikanth Itapu, et al., \"A computational study of native defects in non-stoichimetric NiO and doping Pd, Pt in stoichiometric NiO\", Condensed Matter, 2018.",
+                                "Vamsi Borra, Srikanth Itapu, et al., \"Sn whisker mitigation by using NiO sublayer\", Journal of Physics D: Applied Physics, 2017.",
+                                "Srikanth Itapu, et al., \"Modification of reactively sputtered NiOx thin films by pulsed laser irradiation\", Physica Status Solidi A, 2017.",
+                                "Srikanth Itapu, et al., \"Effect of UV laser irradiation on the properties of NiO and NiO/ZnO heterostructures\", MRS Advances, 2016."
+                            ].map((pub, idx) => (
+                                <div key={idx} className="flex gap-4 group">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2.5 flex-shrink-0 group-hover:scale-125 transition-transform" />
+                                    <p className="text-sm text-slate-600 leading-relaxed m-0">{pub}</p>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Patents Section */}
+                        <h3 className="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2">
+                            Patents
+                        </h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                            <div className="p-6 rounded-2xl bg-slate-900 text-white border border-slate-800">
+                                <span className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2 block">US Patent 10,967,463</span>
+                                <h4 className="text-lg font-bold mb-2">Sn whisker growth mitigation by using NiO sublayers</h4>
+                                <p className="text-sm text-slate-400 leading-relaxed">April 2021 • Inventors: Vamsi Borra, Daniel G Georgiev, Srikanth Itapu</p>
+                            </div>
+                            <div className="p-6 rounded-2xl bg-slate-900 text-white border border-slate-800">
+                                <span className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2 block">India Patent 202041003461A</span>
+                                <h4 className="text-lg font-bold mb-2">Intelligent medicinal and aromatic plant specimen detection system</h4>
+                                <p className="text-sm text-slate-400 leading-relaxed">January 2020 • Integrated IoT solutions for medicinal botany.</p>
+                            </div>
+                        </div>
+
+                        {/* Research Network */}
+                        <h3 className="text-2xl font-bold text-slate-900 mb-8">Research Network & Collaborators</h3>
+                        <p className="text-slate-600 leading-relaxed mb-10">
+                            Dr. Itapu maintains a robust global research network, frequently collaborating with leading experts in micro-electronics and materials science, including colleagues from the <span className="text-blue-600 font-semibold">University of Toledo (USA)</span> and <span className="text-blue-600 font-semibold">Alliance University</span>. His work bridges fundamental science with scalable device engineering through industry–academia partnerships.
                         </p>
 
-                        <h3 className="text-2xl font-bold text-slate-900 mt-12 mb-6">Leadership & Ecosystem Building</h3>
-                        <p className="text-slate-600 leading-relaxed mb-6">
-                            Dr. Itapu currently serves as Director of E-Spin Lab, where he drives research and industry-aligned initiatives in quantum materials, spin-based devices, and emerging semiconductor technologies. He also holds senior academic appointments and has extensive experience in curriculum design, workforce development, and mentoring talent in quantum engineering and VLSI domains.
-                        </p>
-                        <p className="text-slate-600 leading-relaxed mb-6">
-                            Beyond research, he actively engages with quantum policy, science diplomacy, and ecosystem building, aligning startup innovation with national and international missions such as the National Quantum Mission (India) and global quantum initiatives. His strengths include technology roadmap development, industry–academia partnerships, grant strategy, and deep-tech commercialization support.
-                        </p>
-
-                        <h3 className="text-2xl font-bold text-slate-900 mt-12 mb-6">Strategic Advisory</h3>
-                        <p className="text-slate-600 leading-relaxed mb-6">
-                            As a SME, Dr. Itapu provides strategic guidance on quantum technology validation, materials and device selection, scalability challenges, sustainability considerations, and regulatory alignment, enabling early-stage ventures to move efficiently from concept to prototype and market relevance.
-                        </p>
+                        <div className="bg-blue-600 rounded-3xl p-10 text-center text-white">
+                            <h3 className="text-2xl font-bold mb-4">Explore Deep Tech at The Foundry</h3>
+                            <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+                                Join Dr. Srikanth Itapu and our team of architects as we build the next generation of Quantum and Semiconductor systems.
+                            </p>
+                            <Link href="/schools/quantum-computing" className="inline-block px-8 py-4 bg-white text-blue-600 font-bold rounded-xl transition-all hover:scale-105 active:scale-95">
+                                Join the Program
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -123,3 +181,6 @@ export default function DrSrikanthProfile() {
         </main>
     );
 }
+
+// Add these imports at the top
+import { BookOpen, Award } from "lucide-react";
