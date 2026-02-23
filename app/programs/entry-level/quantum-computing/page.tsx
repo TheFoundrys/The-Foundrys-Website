@@ -36,13 +36,76 @@ export default function EntryLevelQuantumPage() {
                         <CourseCard
                             sku="QC 001"
                             title="Certified in Quantum Fundamentals"
-                            originalPrice={COURSE_PRICING.quantumFundamentals.original[currency]}
-                            discountedPrice={COURSE_PRICING.quantumFundamentals.freshers[currency]}
+                            originalPrice="10,000"
+                            discountedPrice="5,000"
                             duration="4 Weeks"
                             desc="From Linear Algebra to Quantum Hardware in 30 Days. Master the mathematical postulates, quantum logic, and basic circuit design."
                             href="/programs/professional/quantum-computing/certified-professional-in-quantum-fundamentals"
                             persona="For Students & Quantum enthusiasts"
                             isBestSeller={true}
+                            symbol={symbol}
+                        />
+                        <CourseCard
+                            sku="Q 001"
+                            title="Certified in Quantum Engineering"
+                            originalPrice="150,000"
+                            discountedPrice="75,000"
+                            duration="4 Weeks"
+                            desc="Master the physical implementation of qubits and quantum circuitry."
+                            symbol={symbol}
+                        />
+                        <CourseCard
+                            sku="Q 003"
+                            title="Certified in Quantum Computing"
+                            originalPrice="150,000"
+                            discountedPrice="75,000"
+                            duration="4 Weeks"
+                            desc="Learn core quantum algorithms and simulation techniques."
+                            symbol={symbol}
+                        />
+                        <CourseCard
+                            sku="Q 005"
+                            title="Certified in Quantum Sensing"
+                            originalPrice="150,000"
+                            discountedPrice="75,000"
+                            duration="4 Weeks"
+                            desc="Explore high-precision metrology using quantum properties."
+                            symbol={symbol}
+                        />
+                        <CourseCard
+                            sku="Q 007"
+                            title="Certified in Quantum Communication"
+                            originalPrice="150,000"
+                            discountedPrice="75,000"
+                            duration="4 Weeks"
+                            desc="Learn secure communication protocols and QKD."
+                            symbol={symbol}
+                        />
+                        <CourseCard
+                            sku="Q 009"
+                            title="Certified in Quantum Information"
+                            originalPrice="150,000"
+                            discountedPrice="75,000"
+                            duration="4 Weeks"
+                            desc="Information theory re-imagined with entanglement and entropy."
+                            symbol={symbol}
+                        />
+                        <CourseCard
+                            sku="Q 011"
+                            title="Certified in Post Quantum Cryptography"
+                            originalPrice="150,000"
+                            discountedPrice="75,000"
+                            duration="4 Weeks"
+                            desc="Preparing classical systems to withstand quantum attacks."
+                            symbol={symbol}
+                        />
+                        <CourseCard
+                            sku="QAI 001"
+                            title="Certified in Quantum AI"
+                            originalPrice="400,000"
+                            discountedPrice="200,000"
+                            duration="4 Weeks"
+                            desc="The intersection of quantum computing and machine learning."
                             symbol={symbol}
                         />
                     </div>

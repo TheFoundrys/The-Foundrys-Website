@@ -7,7 +7,7 @@ import { ArrowUpRight, CheckCircle2, Network } from "lucide-react";
 import Link from "next/link";
 import { useRegionalPricing } from "@/lib/useRegionalPricing";
 
-export default function BlockchainPage() {
+export default function EntryLevelBlockchainPage() {
     const { symbol, currency } = useRegionalPricing();
 
     return (
@@ -19,13 +19,13 @@ export default function BlockchainPage() {
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/40 via-slate-900 to-slate-900 z-0" />
                 <div className="container mx-auto max-w-6xl relative z-10 text-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-6">
-                        <Network size={16} /> Professional Certification Program
+                        <Network size={16} /> Entry Level Certification Program
                     </div>
                     <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-                        Blockchain
+                        Blockchain Launchpad
                     </h1>
                     <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                        Architect the trust layer. Explore the technologies rewriting the rules of finance and ownership.
+                        Start your journey into Decentralized Technologies. Master the fundamentals of Blockchain and Web3.
                     </p>
                 </div>
             </section>
@@ -35,29 +35,29 @@ export default function BlockchainPage() {
                 <div className="container mx-auto max-w-6xl">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                         <CourseCard
-                            sku="BC 002"
-                            title="Certified Professional in Block Chain"
+                            sku="BC 001"
+                            title="Certified in Block Chain"
+                            priceINR={{ original: "50,000", discounted: "25,000" }}
+                            priceUSD={{ original: "1,000", discounted: "500" }}
+                            desc="Fundamentals of distributed ledger technology, consensus mechanisms, and blockchain architecture basics."
+                            symbol={symbol}
+                            currency={currency}
+                        />
+                        <CourseCard
+                            sku="BC 003"
+                            title="Certified in NFT"
+                            priceINR={{ original: "75,000", discounted: "37,500" }}
+                            priceUSD={{ original: "1,500", discounted: "750" }}
+                            desc="Introduction to Non-Fungible Tokens, standards, and the creative economy on the blockchain."
+                            symbol={symbol}
+                            currency={currency}
+                        />
+                        <CourseCard
+                            sku="BC 005"
+                            title="Certified in Decentralized Systems"
                             priceINR={{ original: "100,000", discounted: "50,000" }}
                             priceUSD={{ original: "2,000", discounted: "1,000" }}
-                            desc="Fundamentals of distributed ledger technology, consensus mechanisms, and blockchain architecture."
-                            symbol={symbol}
-                            currency={currency}
-                        />
-                        <CourseCard
-                            sku="BC 004"
-                            title="Certified Professional in NFT"
-                            priceINR={{ original: "150,000", discounted: "75,000" }}
-                            priceUSD={{ original: "3,000", discounted: "1,500" }}
-                            desc="Deep dive into Non-Fungible Tokens, standards (ERC-721/1155), and building marketplace dApps."
-                            symbol={symbol}
-                            currency={currency}
-                        />
-                        <CourseCard
-                            sku="BC 006"
-                            title="Certified Professional in Decentralized Systems"
-                            priceINR={{ original: "200,000", discounted: "100,000" }}
-                            priceUSD={{ original: "4,000", discounted: "2,000" }}
-                            desc="Architecting robust, scalable decentralized applications and understanding the broader ecosystem."
+                            desc="Understanding decentralized architectures, peer-to-peer networks, and distributed computing models."
                             symbol={symbol}
                             currency={currency}
                         />
@@ -90,7 +90,7 @@ function CourseCard({ sku, title, priceINR, priceUSD, desc, symbol, currency }: 
                 <div className="flex justify-between items-start mb-4">
                     <span className="text-xs font-bold text-slate-400 tracking-wider uppercase bg-slate-100 px-2 py-1 rounded">{sku}</span>
                     <div className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100">
-                        Professional 3 Month Course
+                        Entry-Level Course
                     </div>
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">{title}</h3>

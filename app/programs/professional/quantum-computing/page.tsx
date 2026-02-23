@@ -35,18 +35,7 @@ export default function QuantumPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             <CourseCard
-              sku="Q 008"
-              title="Certified Professional in Quantum Fundamentals"
-              priceINR={{ original: "10,000", discounted: "5,000" }}
-              priceUSD={{ original: "200", discounted: "100" }}
-              desc="A 4-week course focusing on the 4 pillars of the National Quantum Mission: Quantum Computing, Materials, Communication, and Sensing."
-              duration="4 Weeks"
-              href="/programs/professional/quantum-computing/certified-professional-in-quantum-fundamentals"
-              symbol={symbol}
-              currency={currency}
-            />
-            <CourseCard
-              sku="Q 001"
+              sku="Q 002"
               title="Certified Professional in Quantum Engineering"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}
@@ -55,7 +44,7 @@ export default function QuantumPage() {
               currency={currency}
             />
             <CourseCard
-              sku="Q 002"
+              sku="Q 004"
               title="Certified Professional in Quantum Computing"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}
@@ -64,7 +53,7 @@ export default function QuantumPage() {
               currency={currency}
             />
             <CourseCard
-              sku="Q 003"
+              sku="Q 006"
               title="Certified Professional in Quantum Sensing"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}
@@ -73,7 +62,7 @@ export default function QuantumPage() {
               currency={currency}
             />
             <CourseCard
-              sku="Q 004"
+              sku="Q 008"
               title="Certified Professional in Quantum Communication"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}
@@ -82,7 +71,7 @@ export default function QuantumPage() {
               currency={currency}
             />
             <CourseCard
-              sku="Q 005"
+              sku="Q 010"
               title="Certified Professional in Quantum Information"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}
@@ -91,7 +80,7 @@ export default function QuantumPage() {
               currency={currency}
             />
             <CourseCard
-              sku="Q 006"
+              sku="Q 012"
               title="Certified Professional in Post Quantum Cryptography"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}
@@ -100,7 +89,7 @@ export default function QuantumPage() {
               currency={currency}
             />
             <CourseCard
-              sku="QAI 001"
+              sku="QAI 002"
               title="Certified Professional in Quantum AI"
               priceINR={{ original: "400,000", discounted: "200,000" }}
               priceUSD={{ original: "8,000", discounted: "4,000" }}

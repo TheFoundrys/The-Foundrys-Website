@@ -3,11 +3,11 @@
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
-import { ArrowUpRight, CheckCircle2, Network } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { useRegionalPricing } from "@/lib/useRegionalPricing";
 
-export default function BlockchainPage() {
+export default function EntryLevelCyberSecurityPage() {
     const { symbol, currency } = useRegionalPricing();
 
     return (
@@ -16,16 +16,16 @@ export default function BlockchainPage() {
 
             {/* Hero Section */}
             <section className="pt-32 pb-20 px-6 bg-slate-900 border-b border-slate-800 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/40 via-slate-900 to-slate-900 z-0" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-teal-900/40 via-slate-900 to-slate-900 z-0" />
                 <div className="container mx-auto max-w-6xl relative z-10 text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-6">
-                        <Network size={16} /> Professional Certification Program
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-sm font-medium mb-6">
+                        <ShieldCheck size={16} /> Entry Level Certification Program
                     </div>
                     <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-                        Blockchain
+                        Cyber Launchpad
                     </h1>
                     <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                        Architect the trust layer. Explore the technologies rewriting the rules of finance and ownership.
+                        Start your journey into Cyber Security. Master the fundamentals of digital defense and secure the future.
                     </p>
                 </div>
             </section>
@@ -35,29 +35,38 @@ export default function BlockchainPage() {
                 <div className="container mx-auto max-w-6xl">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                         <CourseCard
-                            sku="BC 002"
-                            title="Certified Professional in Block Chain"
-                            priceINR={{ original: "100,000", discounted: "50,000" }}
-                            priceUSD={{ original: "2,000", discounted: "1,000" }}
-                            desc="Fundamentals of distributed ledger technology, consensus mechanisms, and blockchain architecture."
-                            symbol={symbol}
-                            currency={currency}
-                        />
-                        <CourseCard
-                            sku="BC 004"
-                            title="Certified Professional in NFT"
+                            sku="CS 001"
+                            title="Certified in Cyber Security"
                             priceINR={{ original: "150,000", discounted: "75,000" }}
                             priceUSD={{ original: "3,000", discounted: "1,500" }}
-                            desc="Deep dive into Non-Fungible Tokens, standards (ERC-721/1155), and building marketplace dApps."
+                            desc="Foundational concepts of network security, ethical hacking basics, and digital defense principles."
                             symbol={symbol}
                             currency={currency}
                         />
                         <CourseCard
-                            sku="BC 006"
-                            title="Certified Professional in Decentralized Systems"
-                            priceINR={{ original: "200,000", discounted: "100,000" }}
-                            priceUSD={{ original: "4,000", discounted: "2,000" }}
-                            desc="Architecting robust, scalable decentralized applications and understanding the broader ecosystem."
+                            sku="CS 003"
+                            title="Certified in VAPT for AI"
+                            priceINR={{ original: "150,000", discounted: "75,000" }}
+                            priceUSD={{ original: "3,000", discounted: "1,500" }}
+                            desc="Introduction to Vulnerability Assessment and Penetration Testing with a focus on AI components."
+                            symbol={symbol}
+                            currency={currency}
+                        />
+                        <CourseCard
+                            sku="CS 005"
+                            title="Certified in Security for AI"
+                            priceINR={{ original: "150,000", discounted: "75,000" }}
+                            priceUSD={{ original: "3,000", discounted: "1,500" }}
+                            desc="Understanding the unique security challenges posed by artificial intelligence and how to mitigate them."
+                            symbol={symbol}
+                            currency={currency}
+                        />
+                        <CourseCard
+                            sku="CS 007"
+                            title="Certified in AI Security"
+                            priceINR={{ original: "150,000", discounted: "75,000" }}
+                            priceUSD={{ original: "3,000", discounted: "1,500" }}
+                            desc="Master the core protocols for securing AI systems and protecting neural networks."
                             symbol={symbol}
                             currency={currency}
                         />
@@ -90,16 +99,16 @@ function CourseCard({ sku, title, priceINR, priceUSD, desc, symbol, currency }: 
                 <div className="flex justify-between items-start mb-4">
                     <span className="text-xs font-bold text-slate-400 tracking-wider uppercase bg-slate-100 px-2 py-1 rounded">{sku}</span>
                     <div className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100">
-                        Professional 3 Month Course
+                        Entry-Level Course
                     </div>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">{title}</h3>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-teal-600 transition-colors">{title}</h3>
                 <p className="text-slate-600 leading-relaxed mb-6">{desc}</p>
 
                 <div className="flex items-center gap-2 text-sm text-slate-500 mb-6 font-medium">
-                    <CheckCircle2 size={16} className="text-indigo-500" /> Hybrid Format
+                    <CheckCircle2 size={16} className="text-teal-500" /> Hybrid Format
                     <span className="mx-2">•</span>
-                    <CheckCircle2 size={16} className="text-indigo-500" /> Weekend compatible
+                    <CheckCircle2 size={16} className="text-teal-500" /> Weekend compatible
                 </div>
             </div>
 
@@ -116,7 +125,7 @@ function CourseCard({ sku, title, priceINR, priceUSD, desc, symbol, currency }: 
                 </div>
                 <Link
                     href="/apply"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-indigo-600 transition-colors shadow-lg hover:shadow-indigo-500/25"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-teal-600 transition-colors shadow-lg hover:shadow-teal-500/25"
                 >
                     View Program <ArrowUpRight size={18} />
                 </Link>

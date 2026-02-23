@@ -205,7 +205,7 @@ export default function EntryLevelProgramPage() {
                             tagline="Defend the Digital Frontier."
                             desc="The world is digital, and it is under attack. Learn the offensive and defensive strategies required to secure networks and data."
                             icon={<ShieldCheck />}
-                            href="/programs/professional/cyber-security"
+                            href="/programs/entry-level/cyber-security"
                         />
                         <DomainCard
                             title="Quantum Computing"
@@ -219,7 +219,7 @@ export default function EntryLevelProgramPage() {
                             tagline="Architect the Trust Layer."
                             desc="Explore the technology behind Web3. Learn how decentralized ledgers and smart contracts are rewriting the rules of finance and ownership."
                             icon={<Network />}
-                            href="/programs/professional/blockchain"
+                            href="/programs/entry-level/blockchain"
                         />
                     </div>
                 </div>

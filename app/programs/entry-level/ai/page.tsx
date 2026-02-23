@@ -46,8 +46,19 @@ export default function EntryLevelAIPage() {
                        
                         */}
                         <CourseCard
+                            sku="AI 001"
+                            title="Certified in AI Research"
+                            originalPrice={COURSE_PRICING.aiResearch.original[currency]}
+                            discountedPrice={COURSE_PRICING.aiResearch.freshers[currency]}
+                            duration="6 Weeks"
+                            desc="Dive deep into algorithms and model architectures that power modern AI. Learn how to push the boundaries of intelligent systems through research and experimentation."
+                            persona="For Data & ML Researchers"
+                            symbol={symbol}
+                            href="/programs/entry-level/ai/certified-in-ai-research"
+                        />
+                        <CourseCard
                             sku="AI 003"
-                            title="Certified AI Engineering"
+                            title="Certified in AI Engineering"
                             originalPrice={COURSE_PRICING.aiEngineer.original[currency]}
                             discountedPrice={COURSE_PRICING.aiEngineer.freshers[currency]}
                             duration="6 Weeks"
@@ -70,13 +81,14 @@ export default function EntryLevelAIPage() {
                             symbol={symbol}
                         />
                         <CourseCard
-                            sku="AI 002"
-                            title="Certified AI Research"
-                            originalPrice={COURSE_PRICING.aiResearch.original[currency]}
-                            discountedPrice={COURSE_PRICING.aiResearch.freshers[currency]}
-                            duration="6 Weeks"
-                            desc="Dive deep into algorithms and model architectures that power modern AI. Learn how to push the boundaries of intelligent systems through research and experimentation."
-                            persona="For Data & ML Researchers"
+                            sku="AI 003"
+                            title="AI Fluency (VILT)"
+                            originalPrice={COURSE_PRICING.aiFluency.original[currency]}
+                            discountedPrice={COURSE_PRICING.aiFluency.twoToFive[currency]}
+                            duration="20 Days"
+                            desc="Enable experienced Java developers to build practical AI capabilities using Python by covering core language fundamentals, AI frameworks, data preparation, model training, and deployment workflows."
+                            persona="For Java Developers (4+ years experience) & Tech Cross Functional"
+                            href="/programs/professional/ai/ai-fluency"
                             symbol={symbol}
                         />
                     </div>

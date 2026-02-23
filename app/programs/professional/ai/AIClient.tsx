@@ -36,8 +36,19 @@ export default function AIClient() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
 
             <CourseCard
-              sku="AI 003"
-              title="Certified Professional AI Engineering"
+              sku="AI 002"
+              title="Certified Professional in AI Research"
+              originalPrice={COURSE_PRICING.professionalAIResearch.original[currency]}
+              discountedPrice={COURSE_PRICING.professionalAIResearch.freshers[currency]}
+              currencySymbol={symbol}
+              duration="6 Weeks"
+              desc="Dive deep into algorithms and model architectures that power modern AI. Learn how to push the boundaries of intelligent systems through research and experimentation."
+              href="/programs/professional/ai/certified-professional-in-ai-research"
+              persona="For Data & ML Researchers"
+            />
+            <CourseCard
+              sku="AI 004"
+              title="Certified Professional in AI Engineering"
               originalPrice={COURSE_PRICING.professionalAIEngineer.original[currency]}
               discountedPrice={COURSE_PRICING.professionalAIEngineer.freshers[currency]}
               currencySymbol={symbol}
@@ -48,8 +59,8 @@ export default function AIClient() {
               isBestSeller={true}
             />
             <CourseCard
-              sku="AI 004"
-              title="Certified Professional AI Operations"
+              sku="AI 005"
+              title="Certified Professional in AI Operations"
               originalPrice={COURSE_PRICING.professionalAIOperations.original[currency]}
               discountedPrice={COURSE_PRICING.professionalAIOperations.freshers[currency]}
               currencySymbol={symbol}

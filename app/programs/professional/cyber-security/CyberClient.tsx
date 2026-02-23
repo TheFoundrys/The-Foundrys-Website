@@ -35,7 +35,7 @@ export default function CyberClient() {
                 <div className="container mx-auto max-w-6xl">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                         <CourseCard
-                            sku="CS 001"
+                            sku="CS 002"
                             title="Certified Professional in Cyber Security"
                             priceINR={{ original: "300,000", discounted: "150,000" }}
                             priceUSD={{ original: "6,000", discounted: "3,000" }}
@@ -44,7 +44,7 @@ export default function CyberClient() {
                             currency={currency}
                         />
                         <CourseCard
-                            sku="CS 002"
+                            sku="CS 004"
                             title="Certified Professional in VAPT for AI"
                             priceINR={{ original: "300,000", discounted: "150,000" }}
                             priceUSD={{ original: "6,000", discounted: "3,000" }}
@@ -53,7 +53,7 @@ export default function CyberClient() {
                             currency={currency}
                         />
                         <CourseCard
-                            sku="CS 003"
+                            sku="CS 006"
                             title="Certified Professional in Security for AI"
                             priceINR={{ original: "300,000", discounted: "150,000" }}
                             priceUSD={{ original: "6,000", discounted: "3,000" }}
@@ -62,7 +62,7 @@ export default function CyberClient() {
                             currency={currency}
                         />
                         <CourseCard
-                            sku="CS 004"
+                            sku="CS 008"
                             title="Certified Professional in AI Security"
                             priceINR={{ original: "300,000", discounted: "150,000" }}
                             priceUSD={{ original: "6,000", discounted: "3,000" }}
