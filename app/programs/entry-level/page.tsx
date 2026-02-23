@@ -212,7 +212,7 @@ export default function EntryLevelProgramPage() {
                             tagline="The Next Computational Revolution."
                             desc="Prepare for the paradigm shift. Understanding Qubits and Superposition today is like learning the Internet in 1990."
                             icon={<Cpu />}
-                            href="/programs/professional/quantum-computing"
+                            href="/programs/entry-level/quantum-computing"
                         />
                         <DomainCard
                             title="Blockchain"

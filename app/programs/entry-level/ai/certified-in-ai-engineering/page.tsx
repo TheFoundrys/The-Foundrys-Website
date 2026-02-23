@@ -243,10 +243,11 @@ const CURRICULUM_DATA = [
     },
     {
         week: 6,
-        title: "Professional Judgment & Capstone Defense",
+        title: "Multimodal AI & Production",
         topics: [
-            "Engineering Restraint: When Not to Use AI",
-            "System Justification & Shutdown Criteria",
+            "Vision & Audio: Beyond text-based Intelligence",
+            "Production-Grade AI lifecycle",
+            "Advanced Retrieval strategies",
             "Technical Diplomacy with Stakeholders",
             "Enterprise-Grade Capstone System Defense",
             "Identity Shift to Production-Aware AI Engineer"

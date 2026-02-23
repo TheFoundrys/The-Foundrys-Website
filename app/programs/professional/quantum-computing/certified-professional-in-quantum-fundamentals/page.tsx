@@ -46,7 +46,7 @@ const CURRICULUM_DATA = [
     },
     {
         week: 2,
-        title: "Quantum Communication",
+        title: "Quantum Communication (Secure Connections)",
         topics: [
             "Information as Physical (Photons & No-Cloning)",
             "The 'Eavesdropping' Detection",
@@ -57,7 +57,7 @@ const CURRICULUM_DATA = [
     },
     {
         week: 3,
-        title: "Quantum Sensing",
+        title: "Quantum Sensing (Seeing the Invisible)",
         topics: [
             "Limits of Classical Measurement",
             "Quantum Sensitivity (Spins & Atoms)",
@@ -68,7 +68,7 @@ const CURRICULUM_DATA = [
     },
     {
         week: 4,
-        title: "Quantum Materials & Devices",
+        title: "Quantum Materials & Devices (The Hidden Heroes)",
         topics: [
             "Why Ordinary Materials Fail (Noise & Defects)",
             "Key Materials (Superconductors, Semiconductors, Diamonds)",

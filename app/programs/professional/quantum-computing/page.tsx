@@ -36,7 +36,7 @@ export default function QuantumPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             <CourseCard
               sku="Q 008"
-              title="Certified  in Quantum Fundamentals"
+              title="Certified Professional in Quantum Fundamentals"
               priceINR={{ original: "10,000", discounted: "5,000" }}
               priceUSD={{ original: "200", discounted: "100" }}
               desc="A 4-week course focusing on the 4 pillars of the National Quantum Mission: Quantum Computing, Materials, Communication, and Sensing."
@@ -47,7 +47,7 @@ export default function QuantumPage() {
             />
             <CourseCard
               sku="Q 001"
-              title="Certified in Quantum Engineering"
+              title="Certified Professional in Quantum Engineering"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}
               desc="Hardware-focused track covering quantum gates, circuitry, and the physical implementation of qubits."
@@ -56,7 +56,7 @@ export default function QuantumPage() {
             />
             <CourseCard
               sku="Q 002"
-              title="Certified in Quantum Computing"
+              title="Certified Professional in Quantum Computing"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}
               desc="Core algorithm track including Shor's, Grover's, and quantum simulation techniques."
@@ -65,7 +65,7 @@ export default function QuantumPage() {
             />
             <CourseCard
               sku="Q 003"
-              title="Certified in Quantum Sensing"
+              title="Certified Professional in Quantum Sensing"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}
               desc="Explore high-precision metrology and imaging using quantum properties."
@@ -74,7 +74,7 @@ export default function QuantumPage() {
             />
             <CourseCard
               sku="Q 004"
-              title="Certified in Quantum Communication"
+              title="Certified Professional in Quantum Communication"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}
               desc="Secure communication protocols, quantum key distribution (QKD), and the quantum internet."
@@ -83,7 +83,7 @@ export default function QuantumPage() {
             />
             <CourseCard
               sku="Q 005"
-              title="Certified in Quantum Information"
+              title="Certified Professional in Quantum Information"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}
               desc="Information theory re-imagined. Entropy, entanglement, and density matrices."
@@ -92,7 +92,7 @@ export default function QuantumPage() {
             />
             <CourseCard
               sku="Q 006"
-              title="Certified in Post Quantum Cryptography"
+              title="Certified Professional in Post Quantum Cryptography"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}
               desc="Preparing classical systems to withstand quantum attacks. Lattice-based cryptography and more."
@@ -101,7 +101,7 @@ export default function QuantumPage() {
             />
             <CourseCard
               sku="QAI 001"
-              title="Certified in Quantum AI"
+              title="Certified Professional in Quantum AI"
               priceINR={{ original: "400,000", discounted: "200,000" }}
               priceUSD={{ original: "8,000", discounted: "4,000" }}
               desc="The intersection of two frontiers. Quantum machine learning algorithms and neural networks."

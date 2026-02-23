@@ -36,7 +36,7 @@ export default function CyberClient() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                         <CourseCard
                             sku="CS 001"
-                            title="Certified in Cyber Security"
+                            title="Certified Professional in Cyber Security"
                             priceINR={{ original: "300,000", discounted: "150,000" }}
                             priceUSD={{ original: "6,000", discounted: "3,000" }}
                             desc="Comprehensive coverage of network security, ethical hacking, and incident response for the enterprise."
@@ -45,7 +45,7 @@ export default function CyberClient() {
                         />
                         <CourseCard
                             sku="CS 002"
-                            title="Certified in VAPT for AI"
+                            title="Certified Professional in VAPT for AI"
                             priceINR={{ original: "300,000", discounted: "150,000" }}
                             priceUSD={{ original: "6,000", discounted: "3,000" }}
                             desc="Specialized track focusing on Vulnerability Assessment and Penetration Testing specifically for AI systems."
@@ -54,7 +54,7 @@ export default function CyberClient() {
                         />
                         <CourseCard
                             sku="CS 003"
-                            title="Certified in Security for AI"
+                            title="Certified Professional in Security for AI"
                             priceINR={{ original: "300,000", discounted: "150,000" }}
                             priceUSD={{ original: "6,000", discounted: "3,000" }}
                             desc="Learn to secure AI pipelines, training data, and model endpoints against adversarial attacks."
@@ -63,7 +63,7 @@ export default function CyberClient() {
                         />
                         <CourseCard
                             sku="CS 004"
-                            title="Certified in AI Security"
+                            title="Certified Professional in AI Security"
                             priceINR={{ original: "300,000", discounted: "150,000" }}
                             priceUSD={{ original: "6,000", discounted: "3,000" }}
                             desc="Advanced studies in securing the AI lifecycle, from data ingestion to inference."

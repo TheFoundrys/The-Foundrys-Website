@@ -4,7 +4,7 @@ export const quantumCurriculum = {
     weeks: [
         {
             number: 1,
-            title: "Foundations of Quantum Computing",
+            title: "What is Quantum Computing?",
             focus: "Mathematical postulates, quantum logic, and basic circuit design using Python/Qiskit.",
             outcomes: ["Calculus", "Linear Algebra", "Qiskit", "Superposition"],
             modules: [
@@ -35,36 +35,7 @@ export const quantumCurriculum = {
         },
         {
             number: 2,
-            title: "Quantum Materials and Hardware",
-            focus: "The physical realization of qubits and material properties, utilizing simulation tools.",
-            outcomes: ["Superconductivity", "Noise Analysis", "Band Structure", "Topological Matter"],
-            modules: [
-                {
-                    title: "Module 1: Realizing the Qubit",
-                    topics: [
-                        "Hardware Architectures: Engineering Superconducting Transmon qubits (Google Sycamore) vs Trapped Ion systems (IonQ).",
-                        "Decoherence and Noise: Analyzing T1 relaxation and T2 dephasing times and their critical impact on gate fidelity."
-                    ]
-                },
-                {
-                    title: "Module 2: Quantum Materials",
-                    topics: [
-                        "Structure-Property Relationships: Understanding electronic band structures and Fermi surfaces in semiconductors.",
-                        "Emerging Materials: Introduction to Topological Insulators, Majoranas, and 2D Van der Waals heterostructures."
-                    ]
-                },
-                {
-                    title: "Module 3: Defects as Qubits",
-                    topics: [
-                        "Nitrogen-Vacancy (NV) Centers: atomic physics, spin properties, and optical initialization for room-temp quantum tech.",
-                        "LMS Practical: Visualization of Electronic Band Structures and Density of States (DOS) using Python/Tight-Binding."
-                    ]
-                }
-            ]
-        },
-        {
-            number: 3,
-            title: "Quantum Communication and Cryptography",
+            title: "Quantum Communication (Secure Connections)",
             focus: "Secure communication protocols and the physics of information transfer.",
             outcomes: ["QKD Protocols", "BB84", "Entanglement", "Post-Quantum Crypto"],
             modules: [
@@ -92,8 +63,8 @@ export const quantumCurriculum = {
             ]
         },
         {
-            number: 4,
-            title: "Quantum Sensing and Metrology",
+            number: 3,
+            title: "Quantum Sensing (Seeing the Invisible)",
             focus: "Precision measurement using quantum phenomena.",
             outcomes: ["Heisenberg Limit", "LIGO Physics", "Magnetometry", "QuTiP Modeling"],
             modules: [
@@ -109,13 +80,42 @@ export const quantumCurriculum = {
                     topics: [
                         "Atomic Clocks: Operating principles of Cesium fountains and Optical Lattice clocks for GPS and relativistic geodesy.",
                         "Magnetometry: Using NV centers in diamond for nano-scale magnetic field detection in biological systems.",
-                        "Quantum Imaging: Ghost imaging, quantum radar, and lithography beyond the diffraction limit."
+                        "Quantum Imaging: Ghost imaging, quantum radar, and lithography beyond the divergence limit."
                     ]
                 },
                 {
                     title: "Module 3: Sensor Simulation",
                     topics: [
                         "LMS Practical: Modeling Spin Hamiltonian dynamics and Ramsey interferometry fringes using the QuTiP library."
+                    ]
+                }
+            ]
+        },
+        {
+            number: 4,
+            title: "Quantum Materials & Devices (The Hidden Heroes)",
+            focus: "The physical realization of qubits and material properties, utilizing simulation tools.",
+            outcomes: ["Superconductivity", "Noise Analysis", "Band Structure", "Topological Matter"],
+            modules: [
+                {
+                    title: "Module 1: Realizing the Qubit",
+                    topics: [
+                        "Hardware Architectures: Engineering Superconducting Transmon qubits (Google Sycamore) vs Trapped Ion systems (IonQ).",
+                        "Decoherence and Noise: Analyzing T1 relaxation and T2 dephasing times and their critical impact on gate fidelity."
+                    ]
+                },
+                {
+                    title: "Module 2: Quantum Materials",
+                    topics: [
+                        "Structure-Property Relationships: Understanding electronic band structures and Fermi surfaces in semiconductors.",
+                        "Emerging Materials: Introduction to Topological Insulators, Majoranas, and 2D Van der Waals heterostructures."
+                    ]
+                },
+                {
+                    title: "Module 3: Defects as Qubits",
+                    topics: [
+                        "Nitrogen-Vacancy (NV) Centers: atomic physics, spin properties, and optical initialization for room-temp quantum tech.",
+                        "LMS Practical: Visualization of Electronic Band Structures and Density of States (DOS) using Python/Tight-Binding."
                     ]
                 }
             ]

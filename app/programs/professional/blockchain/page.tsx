@@ -36,7 +36,7 @@ export default function BlockchainPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                         <CourseCard
                             sku="BC 001"
-                            title="Certified in Block Chain"
+                            title="Certified Professional in Block Chain"
                             priceINR={{ original: "100,000", discounted: "50,000" }}
                             priceUSD={{ original: "2,000", discounted: "1,000" }}
                             desc="Fundamentals of distributed ledger technology, consensus mechanisms, and blockchain architecture."
@@ -45,7 +45,7 @@ export default function BlockchainPage() {
                         />
                         <CourseCard
                             sku="BC 002"
-                            title="Certified in NFT"
+                            title="Certified Professional in NFT"
                             priceINR={{ original: "150,000", discounted: "75,000" }}
                             priceUSD={{ original: "3,000", discounted: "1,500" }}
                             desc="Deep dive into Non-Fungible Tokens, standards (ERC-721/1155), and building marketplace dApps."
@@ -54,7 +54,7 @@ export default function BlockchainPage() {
                         />
                         <CourseCard
                             sku="BC 003"
-                            title="Certified in Decentralized Systems"
+                            title="Certified Professional in Decentralized Systems"
                             priceINR={{ original: "200,000", discounted: "100,000" }}
                             priceUSD={{ original: "4,000", discounted: "2,000" }}
                             desc="Architecting robust, scalable decentralized applications and understanding the broader ecosystem."

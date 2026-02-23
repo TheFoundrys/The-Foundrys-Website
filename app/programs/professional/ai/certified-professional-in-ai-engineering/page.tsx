@@ -184,62 +184,62 @@ const CAREER_ROLES = [
 const CURRICULUM_DATA = [
     {
         week: 1,
-        title: "Deconstructing Software Thinking",
+        title: "Advanced System Architecture & High-Dimensional Logic",
         topics: [
-            "Unlearn deterministic programming assumptions",
-            "Transition from logic-first to data-driven reasoning",
-            "Build first ML pipeline to understand uncertainty",
-            "Master probabilistic reasoning and non-binary correctness"
+            "Advanced Multi-Agent Architectures",
+            "High-Dimensional Vector Space logic",
+            "Systemic Reasoning Beyond Determinism",
+            "Architecting for Scale & Reliability"
         ]
     },
     {
         week: 2,
-        title: "Data as the Product",
+        title: "Data Engineering & Vectorized Intelligence at Scale",
         topics: [
-            "Design datasets as first-class systems",
-            "Address bias, leakage, and data quality as engineering failures",
-            "Create and label datasets with explicit assumptions",
-            "Document exclusions and edge cases"
+            "Vectorized Knowledge Bases at Scale",
+            "Data Orchestration Pipelines for AI",
+            "Managing Data Drift & Leakage in Production",
+            "High-Performance Retrieval Systems"
         ]
     },
     {
         week: 3,
-        title: "Models as Engineering Components",
+        title: "Deep Model Mechanics & Performance Tuning",
         topics: [
-            "Evaluate classical ML, deep learning, and LLMs",
-            "Compare trade-offs across accuracy, cost, and latency",
-            "Analyze failure modes for different model types",
-            "Select appropriate models for specific use cases"
+            "In-depth Transformer Mechanics",
+            "Model Selection: Latency vs. Cost vs. Performance",
+            "Fine-Tuning Strategies (LoRA, QLoRA)",
+            "Quantization & Optimization for Edge/Cloud"
         ]
     },
     {
         week: 4,
-        title: "Building AI Systems That Survive Reality",
+        title: "Enterprise Production & MLOps 2.0",
         topics: [
-            "Design production-ready AI services with observability",
-            "Implement evaluation loops and guardrails",
-            "Engineer for failure, drift, and adversarial inputs",
-            "Build fallback strategies and monitoring systems"
+            "Advanced Observability & Evaluation Loops",
+            "CI/CD for AI: Automated Testing & Deployment",
+            "Governance, Security & Guardrails",
+            "Scaling Inference with Kubernetes & Docker"
         ]
     },
     {
         week: 5,
-        title: "Trust, Risk, and Responsibility",
+        title: "Agentic Systems & Autonomous Reasoning",
         topics: [
-            "Assess AI systems as risk amplifiers",
-            "Implement explainability and security controls",
-            "Conduct red-team exercises on self-built systems",
-            "Design misuse mitigation strategies"
+            "Building Autonomous Research Agents",
+            "ReAct & Chain-of-Thought Reasoning Frameworks",
+            "Multi-Agent Swarm Orchestration",
+            "Long-term Memory & State Management"
         ]
     },
     {
         week: 6,
-        title: "AI Engineer Identity & Capstone",
+        title: "The Future of AI Infrastructure & Frontier Research",
         topics: [
-            "Deliver and defend a full AI system",
-            "Justify system existence and failure boundaries",
-            "Define shutdown criteria and risk thresholds",
-            "Demonstrate engineering restraint and professional judgment"
+            "Frontier Research: Multimodal & World Models",
+            "Future-proofing AI Infrastructure",
+            "Next-Gen Vector Databases & Graph Neural Networks",
+            "Professional Judgment & Strategic AI Shutdown"
         ]
     }
 ];
