@@ -9,6 +9,7 @@ const LOGOS = [
   "/logos/Faba.png",
   "/logos/gs.png",
   "/logos/redshelid1.png",
+  "/logos/csi.png"
 ];
 
 export function InfiniteLogoScroll() {

@@ -669,7 +669,9 @@ export default function AIEngineeringCoursePage() {
                                     { url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg", name: "pandas" },
                                     { url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original-wordmark.svg", name: "Jupyter" },
                                     { url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg", name: "PyTorch" },
-                                    { url: "https://avatars.githubusercontent.com/u/54333248?s=200&v=4", name: "Pinecone" }
+                                    { url: "https://avatars.githubusercontent.com/u/54333248?s=200&v=4", name: "Pinecone" },
+                                    { url: "/logos/csi.png", name: "CSI" }
+
                                 ],
                                 direction: "left"
                             }
