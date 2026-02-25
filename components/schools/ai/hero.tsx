@@ -37,7 +37,7 @@ export function AIHero() {
                     transition={{ delay: 0.2 }}
                     className="text-xl md:text-2xl text-slate-300 max-w-2xl leading-relaxed mb-10"
                 >
-                    Not just code. A 3+1 year degree program merging AI Engineering with Entrepreneurship.
+                    Not just code. A 3 year degree program merging AI Engineering with Entrepreneurship.
                     Built by Engineers & Founders, for future Architects.
                 </motion.p>
 

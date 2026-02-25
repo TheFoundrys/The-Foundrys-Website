@@ -6,7 +6,7 @@ import { WhyUs } from "@/components/schools/ai/why-us";
 import { EngineeringSkills } from "@/components/schools/ai/founder-skills"; // File name kept, component renamed
 import { ProgramStats } from "@/components/schools/ai/program-stats";
 import { ComparisonSection } from "@/components/schools/ai/comparison";
-import { EntrepreneurshipHighlight } from "@/components/schools/ai/entrepreneurship-highlight";
+// import { EntrepreneurshipHighlight } from "@/components/schools/ai/entrepreneurship-highlight";
 import { CurriculumAccordion } from "@/components/schools/ai/curriculum-accordion";
 import { Metadata } from "next";
 
@@ -30,7 +30,7 @@ export default function AIPage() {
       <ProgramStats />
       <EngineeringSkills />
       <ComparisonSection />
-      <EntrepreneurshipHighlight />
+      {/* <EntrepreneurshipHighlight /> */}
       <CurriculumAccordion />
 
 

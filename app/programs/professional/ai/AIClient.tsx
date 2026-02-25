@@ -71,7 +71,7 @@ export default function AIClient() {
             />
             <CourseCard
               sku="AI 007"
-              title="AI Fluency (VILT)"
+              title="AI Fluency"
               originalPrice={COURSE_PRICING.aiFluency.original[currency]}
               discountedPrice={COURSE_PRICING.aiFluency.twoToFive[currency]}
               currencySymbol={symbol}
