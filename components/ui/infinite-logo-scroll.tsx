@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 
 const LOGOS = [
   "/logos/drpinnacle.png",
-  "/logos/GSCentriQ.jpeg",
+  // "/logos/GSCentriQ.jpeg",
   "/logos/Faba.png",
-  "/logos/gs.png",
+  // "/logos/gs.png",
   "/logos/redshelid1.png",
   "/logos/csi.png"
 ];
