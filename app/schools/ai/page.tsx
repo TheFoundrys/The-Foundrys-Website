@@ -6,8 +6,8 @@ import { WhyUs } from "@/components/schools/ai/why-us";
 import { EngineeringSkills } from "@/components/schools/ai/founder-skills"; // File name kept, component renamed
 import { ProgramStats } from "@/components/schools/ai/program-stats";
 import { ComparisonSection } from "@/components/schools/ai/comparison";
-// import { EntrepreneurshipHighlight } from "@/components/schools/ai/entrepreneurship-highlight";
-import { CurriculumAccordion } from "@/components/schools/ai/curriculum-accordion";
+import { EntrepreneurshipHighlight } from "@/components/schools/ai/entrepreneurship-highlight";
+import { FutureVision } from "@/components/schools/shared/future-vision";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -30,8 +30,27 @@ export default function AIPage() {
       <ProgramStats />
       <EngineeringSkills />
       <ComparisonSection />
-      {/* <EntrepreneurshipHighlight /> */}
-      <CurriculumAccordion />
+      <EntrepreneurshipHighlight />
+      <FutureVision
+        schoolName="Artificial Intelligence"
+        accentColor="#2563eb" // Blue
+        whyAIImportant="AI is not a sector; it is the new substrate of reality. Within 10 years, any organization not built on an AI-first architecture will be as obsolete as a company without internet today. We are moving from 'software eating the world' to 'AI architecting the world' in real-time."
+        futureJobs={[
+          {
+            title: "Agentic Systems Architect",
+            desc: "Designing swarms of autonomous agents that manage entire departments with zero human intervention."
+          },
+          {
+            title: "Neural Synergy Officer",
+            desc: "Optimizing the interface between specialized LLMs and proprietary data to create infinite business leverage."
+          },
+          {
+            title: "Synthetic Reality Designer",
+            desc: "Governing the generation of data, media, and environments that power the post-labor economy."
+          }
+        ]}
+        outcomeStatement="A high-tier AI Engineer capable of not just training models, but architecting the autonomous infrastructure that will power the next 50 years of human civilization."
+      />
 
 
 

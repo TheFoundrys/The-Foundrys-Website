@@ -9,27 +9,27 @@ export function CurriculumAccordion() {
 
     return (
         <section id="syllabus" className="py-24 px-4 bg-white relative overflow-hidden">
-             {/* Background Image */}
-             <div className="absolute inset-0 z-0">
-                <div 
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0">
+                <div
                     className="absolute inset-0 bg-cover bg-center opacity-30"
-                    style={{ backgroundImage: "url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop')" }} 
+                    style={{ backgroundImage: "url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop')" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/60 to-white/90" />
             </div>
 
             <div className="container mx-auto max-w-4xl relative z-10">
                 <div className="text-center mb-16">
-                     <span className="text-blue-600 font-bold tracking-widest text-sm uppercase mb-4 block">The Syllabus</span>
-                     <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Zero to Architect. <br/><span className="text-slate-400">Step by Step.</span></h2>
+                    <span className="text-blue-600 font-bold tracking-widest text-sm uppercase mb-4 block">The Syllabus</span>
+                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Zero to Architect. <br /><span className="text-slate-400">Step by Step.</span></h2>
                 </div>
 
                 <div className="space-y-8">
                     {aiCurriculum.years.map((year, yearIdx) => (
                         <div key={yearIdx} className="border border-slate-200 rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
-                            
+
                             {/* Year Header - Toggle */}
-                            <button 
+                            <button
                                 onClick={() => setOpenYear(openYear === yearIdx ? null : yearIdx)}
                                 className="w-full flex items-center justify-between p-6 md:p-8 bg-slate-50 hover:bg-slate-100 transition-colors text-left"
                             >
@@ -45,7 +45,7 @@ export function CurriculumAccordion() {
                             {/* Year Content */}
                             <AnimatePresence>
                                 {openYear === yearIdx && (
-                                    <motion.div 
+                                    <motion.div
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
@@ -53,12 +53,12 @@ export function CurriculumAccordion() {
                                     >
                                         <div className="p-6 md:p-8 border-t border-slate-100">
                                             <p className="text-slate-600 italic mb-8 border-l-4 border-blue-200 pl-4 py-2">{year.goal}</p>
-                                            
+
                                             <div className="space-y-12">
                                                 {year.semesters.map((sem, semIdx) => (
                                                     <div key={sem.id} className="relative pl-8 md:pl-12 border-l border-slate-200 pb-12 last:pb-0 last:border-0">
                                                         <div className="absolute top-0 left-[-6px] w-3 h-3 rounded-full bg-blue-600 shadow-[0_0_0_4px_white]" />
-                                                        
+
                                                         <h4 className="text-xl font-bold text-slate-900 mb-1">{sem.title}</h4>
                                                         <p className="text-slate-500 font-mono text-sm mb-6">{sem.theme}</p>
 
@@ -87,7 +87,7 @@ export function CurriculumAccordion() {
                                                             <div className="absolute top-4 right-4 bg-white/10 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                                                                 Hero Project
                                                             </div>
-                                                            
+
                                                             <div className="relative z-10">
                                                                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mb-4 shadow-lg">
                                                                     <Rocket className="text-white" />
@@ -97,7 +97,7 @@ export function CurriculumAccordion() {
                                                                     <span className="text-slate-400 text-sm font-bold uppercase mr-2">Mission:</span>
                                                                     <span className="text-slate-200">{sem.project.task}</span>
                                                                 </div>
-                                                                 <div className="p-3 bg-white/5 rounded-lg border border-white/10 inline-block">
+                                                                <div className="p-3 bg-white/5 rounded-lg border border-white/10 inline-block">
                                                                     <span className="text-green-400 text-xs font-bold uppercase mr-2">XP Gained:</span>
                                                                     <span className="text-slate-300 text-sm">{sem.project.outcome}</span>
                                                                 </div>

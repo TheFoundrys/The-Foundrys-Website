@@ -120,9 +120,7 @@ export function Footer({ hideCTA = false }: FooterProps) {
                         </div>
                     </div>
 
-                    <div className="font-semibold text-slate-700">
-                        India
-                    </div>
+
                 </div>
             </div>
         </footer>
