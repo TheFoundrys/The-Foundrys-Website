@@ -74,18 +74,18 @@ export function Footer({ hideCTA = false }: FooterProps) {
                             <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
                                 <MapPin size={14} className="text-slate-600" />
                             </div>
-                            <span className="font-bold text-slate-800 block text-xs tracking-wider mt-2">Headquarters</span>
+                            <span className="text-sm font-bold text-slate-900 mt-2">Headquarters</span>
                         </div>
                         <div className="md:col-span-2 flex items-start gap-4">
                             <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
                                 <MapPin size={14} className="text-slate-600" />
                             </div>
-                            <span className="font-bold text-slate-800 block text-xs tracking-wider mt-2">Hyderabad Office</span>
+                            <span className="text-sm font-bold text-slate-900 mt-2">Hyderabad Office</span>
                         </div>
 
                         {/* Content Row */}
                         <div className="md:col-span-1">
-                            <div className="flex gap-3 pl-11">
+                            <div className="flex gap-3 pl-1">
                                 <Link href="https://x.com/thefoundrys" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Twitter size={14} /></Link>
                                 <Link href="https://www.linkedin.com/company/the-foundry-s" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Linkedin size={14} /></Link>
                                 <Link href="https://www.instagram.com/the.foundrys/" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Instagram size={14} /></Link>
@@ -95,13 +95,12 @@ export function Footer({ hideCTA = false }: FooterProps) {
                         </div>
                         <div className="md:col-span-1 pl-12">
                             <span className="block text-slate-500 leading-relaxed text-sm">
-                                2343 Dulles Station Blvd, Apt 256,<br />
-                                Herndon, Virginia 20171
+                                2343 Dulles Station Blvd, Apt 256, Herndon, Virginia 20171
                             </span>
                         </div>
                         <div className="md:col-span-2 pl-12">
                             <span className="block text-slate-500 leading-relaxed text-sm">
-                                SASI ICON, Beside Madhapur Metro Station, Jubilee Hills,<br />
+                                Sasi Icon, Beside Madhapur Metro Station, Jubilee Hills, <br />
                                 Road No 36 & 37, Hyderabad, Telangana - 500033
                             </span>
                         </div>
