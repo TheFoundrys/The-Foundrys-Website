@@ -74,7 +74,7 @@ export function Footer({ hideCTA = false }: FooterProps) {
                             <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
                                 <MapPin size={14} className="text-slate-600" />
                             </div>
-                            <span className="text-sm font-bold text-slate-900 mt-2">Headquarters</span>
+                            <span className="text-sm font-bold text-slate-900 mt-2">United States of America</span>
                         </div>
                         <div className="md:col-span-2 flex items-start gap-4">
                             <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
