@@ -20,8 +20,7 @@ export function Footer({ hideCTA = false }: FooterProps) {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-10 text-sm">
-
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-16 text-sm">
                     {/* Column 1: Deep Tech */}
                     <div className="flex flex-col gap-3">
                         <h3 className="text-slate-900 font-bold mb-1">School of Deep Tech</h3>
@@ -37,7 +36,6 @@ export function Footer({ hideCTA = false }: FooterProps) {
                         <FooterLink href="/schools/venture-building">School of Entrepreneurship</FooterLink>
                         <FooterLink href="/schools/esg">School of Sustainability</FooterLink>
                         <FooterLink href="/schools/renewable-energy">School of Energy</FooterLink>
-                        {/* <FooterLink href="/schools/strategy">Strategic Innovation</FooterLink> */}
                     </div>
 
                     {/* Column 3: Programs */}
@@ -51,61 +49,60 @@ export function Footer({ hideCTA = false }: FooterProps) {
                     {/* Column 4: Explore */}
                     <div className="flex flex-col gap-3">
                         <h3 className="text-slate-900 font-bold mb-1">Explore</h3>
-                        {/* <FooterLink href="/programs">Online Programs</FooterLink> */}
                         <FooterLink href="/campus">Campus</FooterLink>
                         <FooterLink href="/about">About Us</FooterLink>
                         <FooterLink href="/events">Events</FooterLink>
                         <FooterLink href="/contact">Contact Us</FooterLink>
                         <FooterLink href="/faq">FAQs</FooterLink>
                     </div>
+                </div>
 
-                    {/* Column 5: Contact */}
-                    <div className="flex flex-col gap-4 items-center text-center md:items-start md:text-left col-span-2 md:col-span-1">
-                        <h3 className="text-slate-900 font-bold mb-1 w-full text-center md:text-left">Contact</h3>
-
-                        <div className="flex flex-col gap-4 text-sm w-full items-center md:items-start">
-                            <a href="mailto:info@thefoundrys.com" className="flex flex-col items-center gap-2 hover:text-slate-900 transition-colors text-center md:flex-row md:text-left md:gap-3">
-                                <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
-                                    <Mail size={14} className="text-slate-600" />
-                                </div>
-                                <span>info@thefoundrys.com</span>
-                            </a>
-
-                            <div className="flex flex-col items-center gap-2 leading-relaxed text-center md:flex-row md:items-start md:text-left md:gap-3">
-                                <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 mt-0.5">
-                                    <MapPin size={14} className="text-slate-600" />
-                                </div>
-                                <div>
-                                    <span className="font-bold text-slate-800 block text-xs tracking-wider mb-1">HeadQuarters</span>
-                                    <span className="block text-slate-500">
-                                        2343 Dulles Station Blvd, Apt 256,<br />
-                                        Herndon, Virginia 20171
-                                    </span>
-                                </div>
+                {/* Contact & Social Section */}
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pt-8 border-t border-slate-200 mb-12">
+                    <div className="md:col-span-1">
+                        <h3 className="text-slate-900 font-bold mb-4">Contact</h3>
+                        <a href="mailto:info@thefoundrys.com" className="flex items-center gap-3 hover:text-slate-900 transition-colors">
+                            <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+                                <Mail size={14} className="text-slate-600" />
                             </div>
-                            <div className="flex flex-col items-center gap-2 leading-relaxed text-center md:flex-row md:items-start md:text-left md:gap-3">
-                                <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 mt-0.5">
-                                    <MapPin size={14} className="text-slate-600" />
-                                </div>
-                                <div>
-                                    <span className="font-bold text-slate-800 block text-xs tracking-wider mb-1">Hyderabad Office</span>
-                                    <span className="block text-slate-500">
-                                        SASI ICON, Beside Madhapur Metro Station,
-                                        Jubilee Hills, Road No 36 &amp; 37, Hyderabad, Telangana - 500033.
-                                    </span>
-                                </div>
-                            </div>
-                            
-                        </div>
-
-                        <div className="h-px bg-slate-200 my-2 w-full" />
-
-                        <div className="flex justify-center gap-4 w-full md:justify-start">
+                            <span>info@thefoundrys.com</span>
+                        </a>
+                        <div className="flex gap-4 mt-6">
                             <Link href="https://x.com/thefoundrys" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Twitter size={16} /></Link>
                             <Link href="https://www.linkedin.com/company/the-foundry-s" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Linkedin size={16} /></Link>
                             <Link href="https://www.instagram.com/the.foundrys/" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Instagram size={16} /></Link>
                             <Link href="https://www.youtube.com/@TheFoundrys" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Youtube size={16} /></Link>
                             <Link href="https://www.facebook.com/profile.php?id=61587055543711" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Facebook size={16} /></Link>
+                        </div>
+                    </div>
+
+                    <div className="md:col-span-1">
+                        <div className="flex items-start gap-4">
+                            <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 mt-1">
+                                <MapPin size={14} className="text-slate-600" />
+                            </div>
+                            <div>
+                                <span className="font-bold text-slate-800 block text-xs tracking-wider mb-2">HEADQUARTERS</span>
+                                <span className="block text-slate-500 leading-relaxed text-sm">
+                                    2343 Dulles Station Blvd, Apt 256,<br />
+                                    Herndon, Virginia 20171
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="md:col-span-2">
+                        <div className="flex items-start gap-4">
+                            <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 mt-1">
+                                <MapPin size={14} className="text-slate-600" />
+                            </div>
+                            <div>
+                                <span className="font-bold text-slate-800 block text-xs tracking-wider mb-2">HYDERABAD OFFICE</span>
+                                <span className="block text-slate-500 leading-relaxed text-sm">
+                                    SASI ICON, Beside Madhapur Metro Station, Jubilee Hills,<br />
+                                    Road No 36 & 37, Hyderabad, Telangana - 500033
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -42,9 +42,10 @@ export default function AIClient() {
               discountedPrice={COURSE_PRICING.professionalAIResearch.freshers[currency]}
               currencySymbol={symbol}
               duration="6 Weeks"
-              desc="Dive deep into algorithms and model architectures that power modern AI. Learn how to push the boundaries of intelligent systems through research and experimentation."
+              desc="Master the art of original research in Artificial Intelligence. This intensive 7-phase program covers mathematical foundations, SOTA architectures, and experimental rigor. Perfect for aspiring AI Scientists."
               href="/programs/professional/ai/certified-professional-in-ai-research"
-              persona="For Data & ML Researchers"
+              persona="For Aspiring AI Scientists & Research Engineers"
+              isBestSeller={true}
             />
             <CourseCard
               sku="AI 004"
