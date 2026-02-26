@@ -20,7 +20,7 @@ export function Footer({ hideCTA = false }: FooterProps) {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-16 text-sm">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-8 text-sm">
                     {/* Column 1: Deep Tech */}
                     <div className="flex flex-col gap-4">
                         <h3 className="text-slate-900 font-bold mb-1">School of Deep Tech</h3>
