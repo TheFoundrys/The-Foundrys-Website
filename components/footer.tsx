@@ -10,7 +10,7 @@ export function Footer({ hideCTA = false }: FooterProps) {
 
     return (
         <footer className="bg-slate-50 text-slate-500 font-medium py-12 border-t border-slate-200 font-sans tracking-tight">
-            <div className="container mx-auto px-6">
+            <div className="container mx-auto px-10 md:px-16 lg:px-24">
 
                 {/* Note / Breadcrumb Style Top */}
                 <div className="mb-8 border-b border-slate-200 pb-6">
@@ -51,6 +51,7 @@ export function Footer({ hideCTA = false }: FooterProps) {
                         <h3 className="text-slate-900 font-bold mb-1">Explore</h3>
                         <FooterLink href="/campus">Campus</FooterLink>
                         <FooterLink href="/about">About Us</FooterLink>
+                        <FooterLink href="/news">News</FooterLink>
                         <FooterLink href="/events">Events</FooterLink>
                         <FooterLink href="/contact">Contact Us</FooterLink>
                         <FooterLink href="/faq">FAQs</FooterLink>

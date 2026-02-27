@@ -6,7 +6,7 @@ import { FutureVision } from "@/components/schools/shared/future-vision";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Certified Innovator MBA (3+1) | Bachelor of AI + MBA",
+  title: "Bachelors of Certified Innovation | The Foundrys",
   description: "Master the game of business. A 4-year integrated program: 3 years of AI Engineering + 1 year MBA. Prepare for founder and C-Suite roles.",
   keywords: ["Bachelor of AI + MBA", "Integrated MBA Program India", "Business Strategy Course", "Leadership Training", "Certified Innovator MBA"],
 };

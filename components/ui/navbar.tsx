@@ -25,6 +25,8 @@ export function Navbar() {
     // State for the two-column layout: defaults to 'deep-tech'
     const [activeCategory, setActiveCategory] = useState<"deep-tech" | "entrepreneurship" | "sustainability" | "energy" | "online">("deep-tech");
     const [activeProgramCategory, setActiveProgramCategory] = useState<"career-transformation" | "executive-leadership" | "educators-faculty">("career-transformation");
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
 
     // Lock body scroll when mobile menu is open
     useEffect(() => {
@@ -35,6 +37,22 @@ export function Navbar() {
         }
         return () => { document.body.style.overflow = "unset"; };
     }, [isOpen]);
+
+    useEffect(() => {
+        const controlNavbar = () => {
+            if (typeof window !== "undefined") {
+                if (window.scrollY > lastScrollY && window.scrollY > 150) {
+                    setIsVisible(false);
+                } else {
+                    setIsVisible(true);
+                }
+                setLastScrollY(window.scrollY);
+            }
+        };
+
+        window.addEventListener("scroll", controlNavbar);
+        return () => window.removeEventListener("scroll", controlNavbar);
+    }, [lastScrollY]);
 
     // Data Structure for the Categories
     const SCHOOL_CATEGORIES = [
@@ -209,7 +227,12 @@ export function Navbar() {
 
     return (
         <>
-            <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none perspective-[2000px]">
+            <motion.div
+                initial={{ y: 0 }}
+                animate={{ y: isVisible ? 0 : -120 }}
+                transition={{ duration: 0.3 }}
+                className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none perspective-[2000px]"
+            >
                 {/* Container for floating bubbles */}
                 <div className="flex items-center gap-3 pointer-events-auto relative w-auto justify-center">
 
@@ -532,7 +555,7 @@ export function Navbar() {
                         )}
                     </motion.button>
                 </div>
-            </div>
+            </motion.div>
 
             {/* Mobile Menu Overlay */}
             <AnimatePresence>

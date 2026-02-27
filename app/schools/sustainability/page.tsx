@@ -5,7 +5,7 @@ import { SustainabilityHero } from "@/components/schools/sustainability/hero";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "School of Sustainability | AI-Driven ESG & Climate Tech",
+    title: "Bachelors of Sustainability | The Foundrys",
     description: "Merge environmental strategy with deep tech. Master ESG, Carbon Markets, and AI-driven sustainability solutions.",
     keywords: ["Sustainability School India", "ESG Career", "Climate Tech", "AI for Sustainability", "Green MBA Alternative"],
 };
