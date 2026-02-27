@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { triggerHaptic } from "@/lib/haptics";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu, Zap, Leaf, Network, BookOpen, Briefcase, GraduationCap, Calendar } from "lucide-react";
+import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu, Zap, Leaf, Network, BookOpen, Briefcase, GraduationCap, Calendar, Newspaper } from "lucide-react";
 
 export function Navbar() {
     const pathname = usePathname();
@@ -527,6 +527,17 @@ export function Navbar() {
                                                     </div>
                                                     <span className="text-sm font-bold text-slate-700">Resources</span>
                                                 </Link>
+
+                                                <Link
+                                                    href="/news"
+                                                    onClick={handleHaptic}
+                                                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
+                                                >
+                                                    <div className="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center text-red-600 group-hover:scale-110 transition-transform">
+                                                        <Newspaper size={16} />
+                                                    </div>
+                                                    <span className="text-sm font-bold text-slate-700">News</span>
+                                                </Link>
                                             </div>
                                         </motion.div>
                                     )}
@@ -811,6 +822,16 @@ export function Navbar() {
                                                             <Library size={16} />
                                                         </div>
                                                         <span className="font-semibold text-slate-700">Resources</span>
+                                                    </Link>
+                                                    <Link
+                                                        href="/news"
+                                                        onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
+                                                    >
+                                                        <div className="w-8 h-8 rounded-md bg-red-50 flex items-center justify-center text-red-600">
+                                                            <Newspaper size={16} />
+                                                        </div>
+                                                        <span className="font-semibold text-slate-700">News</span>
                                                     </Link>
                                                 </div>
                                             </motion.div>

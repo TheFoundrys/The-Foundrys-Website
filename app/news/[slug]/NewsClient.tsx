@@ -49,6 +49,40 @@ const ARTICLES: Record<string, NewsArticle> = {
                 </p>
             </>
         )
+    },
+    "thefoundrys-partnered-with-csi": {
+        title: "Thefoundrys Partnered with CSI Computer Society of India",
+        date: "February 28, 2026",
+        readTime: "2 min read",
+        category: "Partnerships",
+        image: "/csi-partnership.jpeg",
+        content: (
+            <>
+                <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
+                    We’re incredibly excited to share that The Foundry’s has officially partnered with the Computer Society of India (CSI)!
+                </p>
+
+                <h2>Empowering Next-Generation Tech Leaders</h2>
+                <p>
+                    We’ve signed an MOU to train the next generation of students and professionals in AI and deep tech, equipping them with future-ready skills. This collaboration aims to empower students, researchers, and tech enthusiasts by providing unparalleled access to state-of-the-art resources, deep tech education, and an expansive network of industry professionals.
+                </p>
+
+                <div className="my-10 p-8 bg-blue-50/50 rounded-3xl border border-blue-100/50 italic text-slate-700">
+                    "This partnership with CSI represents a crucial step forward in our mission to bridge the gap between academic learning and industry demands in the rapidly evolving tech landscape."
+                </div>
+
+                <h2>Join Us in Shaping the Future</h2>
+                <ul>
+                    <li><strong>Collaborative Programs:</strong> Joint workshops, seminars, and certification programs focusing on emerging technologies.</li>
+                    <li><strong>Research Initiatives:</strong> Shared resources to foster innovation and support groundbreaking research projects.</li>
+                    <li><strong>Community Building:</strong> Creating a robust ecosystem for knowledge exchange among students and seasoned tech veterans.</li>
+                </ul>
+
+                <p>
+                    Together with CSI, Thefoundrys is set to accelerate the development of world-class engineering talent, driving forward the tech ecosystem locally and globally. Join us in shaping the future!
+                </p>
+            </>
+        )
     }
 };
 

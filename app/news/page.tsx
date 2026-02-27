@@ -7,14 +7,23 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 
 const NEWS_ITEMS = [
+    // {
+    //     slug: "the-future-of-deep-tech",
+    //     title: "The Future of Deep Tech Education: A New Chapter",
+    //     excerpt: "At the intersection of deep tech and entrepreneurship, we are redefining what it means to be a modern engineer. Our new News section will serve as the central hub for all updates...",
+    //     date: "Feb 27, 2026",
+    //     readTime: "4 min",
+    //     category: "Announcements",
+    //     image: "/news-hero.png"
+    // },
     {
-        slug: "the-future-of-deep-tech",
-        title: "The Future of Deep Tech Education: A New Chapter",
-        excerpt: "At the intersection of deep tech and entrepreneurship, we are redefining what it means to be a modern engineer. Our new News section will serve as the central hub for all updates...",
-        date: "Feb 27, 2026",
-        readTime: "4 min",
-        category: "Announcements",
-        image: "/news-hero.png"
+        slug: "thefoundrys-partnered-with-csi",
+        title: "Thefoundrys Partnered with CSI Computer Society of India",
+        excerpt: "We’re incredibly excited to share that The Foundry’s has officially partnered with the Computer Society of India (CSI)! We’ve signed an MOU to train the next generation of students and professionals in AI and deep tech, equipping them with future-ready skills. Join us in shaping the future!",
+        date: "Feb 28, 2026",
+        readTime: "2 min",
+        category: "Partnerships",
+        image: "/csi-partnership.jpeg"
     }
 ];
 

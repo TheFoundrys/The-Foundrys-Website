@@ -9,7 +9,7 @@ export default async function NewsDetailPage({ params }: PageProps) {
     const { slug } = await params;
 
     // Valid slugs for now
-    const validSlugs = ["the-future-of-deep-tech"];
+    const validSlugs = ["the-future-of-deep-tech", "thefoundrys-partnered-with-csi"];
 
     if (!validSlugs.includes(slug)) {
         return notFound();
