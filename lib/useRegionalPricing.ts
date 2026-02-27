@@ -185,9 +185,9 @@ export const COURSE_PRICING: CoursePricing = {
         twoToFive: { INR: '27,000', USD: '540' },
     },
     aiFluency: {
-        original: { INR: '1,00,000', USD: '2,000' },
-        freshers: { INR: '50,000', USD: '1,000' },
-        zeroToTwo: { INR: '75,000', USD: '1,500' },
-        twoToFive: { INR: '50,000', USD: '1,000' },
+        original: { INR: '10,000', USD: '200' },
+        freshers: { INR: '5,000', USD: '100' },
+        zeroToTwo: { INR: '7,500', USD: '150' },
+        twoToFive: { INR: '9,000', USD: '180' },
     },
 };

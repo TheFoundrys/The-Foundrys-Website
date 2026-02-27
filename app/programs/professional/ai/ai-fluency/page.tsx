@@ -221,7 +221,7 @@ export default function AIFluencyPage() {
 
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-sm font-medium mb-8 backdrop-blur-sm">
                             <BrainCircuit size={16} />
-                            <span>Mid-Level VILT Program</span>
+                            <span>Mid-Level Program</span>
                         </div>
 
                         <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 leading-tight">
@@ -243,7 +243,7 @@ export default function AIFluencyPage() {
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
                             <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Duration</p>
-                                <p className="text-lg font-bold text-slate-900">20 Days (VILT)</p>
+                                <p className="text-lg font-bold text-slate-900">20 Days </p>
                             </div>
                             <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Effort</p>
@@ -262,7 +262,7 @@ export default function AIFluencyPage() {
                             </div>
                         </div>
                         <div className="w-full lg:w-auto">
-                            <Link href="/apply" className="block w-full text-center px-8 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-500 transition-all shadow-lg active:scale-95 whitespace-nowrap">
+                            <Link href="https://compass.thefoundrys.com/courses/ai/ai-fluency" className="block w-full text-center px-8 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-500 transition-all shadow-lg active:scale-95 whitespace-nowrap">
                                 Apply Now
                             </Link>
                         </div>

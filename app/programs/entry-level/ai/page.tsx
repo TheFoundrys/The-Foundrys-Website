@@ -80,7 +80,7 @@ export default function EntryLevelAIPage() {
                             href="/programs/entry-level/ai/certified-in-prompt-engineering"
                             symbol={symbol}
                         />
-                        <CourseCard
+                        {/* <CourseCard
                             sku="AI 003"
                             title="AI Fluency "
                             originalPrice={COURSE_PRICING.aiFluency.original[currency]}
@@ -88,9 +88,9 @@ export default function EntryLevelAIPage() {
                             duration="20 Days"
                             desc="Enable experienced Java developers to build practical AI capabilities using Python by covering core language fundamentals, AI frameworks, data preparation, model training, and deployment workflows."
                             persona="For Java Developers (4+ years experience) & Tech Cross Functional"
-                            href="/programs/professional/ai/ai-fluency"
+                            href="https://compass.thefoundrys.com/courses/ai/ai-fluency"
                             symbol={symbol}
-                        />
+                        /> */}
                     </div>
                 </div>
             </section>
