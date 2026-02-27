@@ -44,7 +44,7 @@ export function AIHero() {
 
                     <div className="flex flex-col items-center gap-4 mb-10">
                         <div className="text-slate-400 font-medium bg-white/5 border border-white/10 px-6 py-2 rounded-full backdrop-blur-md">
-                            Eligibility: <span className="text-emerald-400 font-bold">Class 12 / Intermediate MPC / MEC / CEC</span>
+                            Eligibility: <span className="text-emerald-400 font-bold">Class 12 / Intermediate HEC / MEC / CEC / MPC</span>
                             <span className="text-slate-500 ml-2">(Any branch except BiPC)</span>
                         </div>
                     </div>
