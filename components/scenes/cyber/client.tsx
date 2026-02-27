@@ -7,31 +7,36 @@ import { WhyUs } from "@/components/schools/cyber/why-us";
 import { ProgramStats } from "@/components/schools/cyber/program-stats";
 import { EngineeringSkills } from "@/components/schools/cyber/engineering-skills";
 import { ComparisonSection } from "@/components/schools/cyber/comparison";
-import { CurriculumAccordion } from "@/components/schools/cyber/curriculum-accordion";
-import { MoveRight } from "lucide-react";
+import { PostAIJobs } from "@/components/schools/cyber/post-ai-jobs";
+import { WhyThisProgram } from "@/components/schools/cyber/why-this-program";
+import { motion } from "framer-motion";
 
 export function CyberClient() {
   return (
     <main className="min-h-screen bg-slate-950 font-sans selection:bg-emerald-500/30">
       <Navbar />
-      
-      {/* 1. Hero (Reverted to clean version) */}
+
+      {/* 1. Hero */}
       <AIHero />
 
-      {/* 2. Why Us (Enhanced 3D Wireframe) */}
+      {/* 2. Why Us */}
       <WhyUs />
-      
-      {/* 3. Stats (Enhanced Radar Scan) */}
+
+      {/* 3. Why This Program */}
+      <WhyThisProgram />
+
+      {/* 3. Stats */}
       <ProgramStats />
-      
-      {/* 4. Skills (Enhanced Decrypt Effect - 'Core Mastery') */}
+
+      {/* 4. Skills */}
       <EngineeringSkills />
-      
-      {/* 5. Comparison (Enhanced Diff Style - 'Education is Evolving') */}
+
+      {/* 5. Future Jobs */}
+      <PostAIJobs />
+
+      {/* 7. Comparison */}
       <ComparisonSection />
 
-      {/* 6. Curriculum */}
-      <CurriculumAccordion />
 
       <Footer />
     </main>
