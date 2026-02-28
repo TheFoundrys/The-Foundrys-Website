@@ -1,858 +1,660 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import { Link as ScrollLink } from "react-scroll";
-import { 
-    ChevronRight, 
-    ChevronDown, 
-    Code2, 
-    Database, 
-    BrainCircuit, 
-    Rocket, 
-    Terminal,
-    GraduationCap,
-    Languages,
-    SearchCode,
-    ClipboardCheck,
-    CheckCircle2,
-    Cpu,
-    Target,
-    Users,
-    Lightbulb,
-    Zap,
-    Trophy,
-    TrendingUp,
-    Shield
-} from "lucide-react";
-
-// Data
-import { aiCurriculum } from "@/data/ai-curriculum";
-import { useRegionalPricing } from "@/lib/useRegionalPricing";
-
-// Global Components
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import {
+    ArrowLeft,
+    CheckCircle2,
+    Calendar,
+    Clock,
+    Award,
+    ArrowUpRight,
+    Terminal,
+    Cpu,
+    ShieldCheck,
+    Code2,
+    Briefcase,
+    ServerCog,
+    ChevronDown,
+    Users,
+    BarChart3,
+    Rocket,
+    BrainCircuit,
+    Database,
+    Globe
+} from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
 
-// Types
-interface ProgramInvestmentProps {
-    courseId?: string;
-    accentColor?: string;
-}
 
-// --- Internal Components (Inlined) ---
+const CAREER_ROLES = [
+    {
+        id: "neural-architect",
+        label: "Neural Architect",
+        title: "Neural Architect",
+        desc: "Designs novel transformer blocks and customized model architectures for hyper-efficient edge deployments and massive scale clusters.",
+        salary: "₹85L - 1.2Cr",
+        growth: "+45% YoY",
+        skills: [
+            "PyTorch & TensorFlow",
+            "CUDA Optimization",
+            "LLM Architecture Design",
+            "TPU/GPU Tuning",
+            "Distributed Systems"
+        ],
+        responsibilities: [
+            "Designing enterprise-grade neural architectures",
+            "Optimizing model weights for inference speed",
+            "Scaling distributed training clusters",
+            "Researching novel attention mechanisms",
+            "Publishing findings in top-tier conferences"
+        ]
+    },
+    {
+        id: "agentic-systems-engineer",
+        label: "Agentic Systems Engineer",
+        title: "Agentic Systems Engineer",
+        desc: "Architects swarms of AI agents that can autonomously manage complex enterprise supply chains, legal filings, and real-time operations.",
+        salary: "₹65L - 95L",
+        growth: "+60% YoY",
+        skills: [
+            "LangChain & Autogen",
+            "Agent Orchestration",
+            "System Design",
+            "API Integration",
+            "Memory Systems"
+        ],
+        responsibilities: [
+            "Building multi-agent task frameworks",
+            "Implementing agent error correction loops",
+            "Integrating AI memory layers",
+            "Managing real-world API connectivity",
+            "Designing fault-tolerant agent networks"
+        ]
+    },
+    {
+        id: "ai-security-lead",
+        label: "AI Security & Ethics Lead",
+        title: "AI Security & Ethics Lead",
+        desc: "Ensures the safety and alignment of large-scale cognitive systems, protecting against prompt injection, model extraction, and ethical drift.",
+        salary: "₹55L - 85L",
+        growth: "+35% YoY",
+        skills: [
+            "Red Teaming",
+            "Cybersecurity",
+            "AI Alignment",
+            "Governance Frameworks",
+            "Adversarial ML"
+        ],
+        responsibilities: [
+            "Conducting adversarial red teaming",
+            "Guaranteeing model compliance & safety",
+            "Implementing data privacy shields",
+            "Monitoring AI decisions for bias",
+            "Defining organizational AI ethics policies"
+        ]
+    },
+    {
+        id: "chief-ai-officer",
+        label: "Chief AI Officer (CAIO)",
+        title: "Chief AI Officer (CAIO)",
+        desc: "The executive steward of a corporation's intelligence strategy, overseeing the transition from legacy software to an AI-native operating model.",
+        salary: "₹1.5Cr+",
+        growth: "+25% YoY",
+        skills: [
+            "AI Strategy",
+            "P&L Management",
+            "Innovation Leadership",
+            "Executive Communication",
+            "Vendor Evaluation"
+        ],
+        responsibilities: [
+            "Leading corporate AI digital transformation",
+            "Managing enterprise intelligence budgets",
+            "Selecting vendor vs custom AI stacks",
+            "Defining AI-driven product roadmaps",
+            "Reporting AI ROI to the board"
+        ]
+    }
+];
 
-function AIHero() {
+const CURRICULUM_DATA = [
+    {
+        year: 1,
+        title: "Foundations of Intelligence",
+        topics: [
+            "Mathematical Foundations: Linear Algebra, Calculus, Probability & Statistics",
+            "Python Mastery: From Zero to Production-Grade Engineering",
+            "Core Data Structures & Algorithms for AI",
+            "Introduction to Machine Learning: Supervised & Unsupervised Learning",
+            "Neural Network Fundamentals: Perceptrons to Deep Networks",
+            "Entrepreneurship 101: Problem Discovery & Ideation"
+        ]
+    },
+    {
+        year: 2,
+        title: "Engineering & Specialization",
+        topics: [
+            "Deep Learning: CNNs, RNNs, LSTMs, and Attention Mechanisms",
+            "Natural Language Processing & Large Language Models",
+            "Computer Vision: Object Detection, Segmentation, GANs",
+            "Reinforcement Learning & Multi-Agent Systems",
+            "MLOps: Model Deployment, Monitoring & Scaling",
+            "Startup Lab: Building Your First AI Product (MVP)"
+        ]
+    },
+    {
+        year: 3,
+        title: "Mastery & Real-World Impact",
+        topics: [
+            "Advanced Transformer Architectures & LLM Fine-Tuning",
+            "Agentic AI: Autonomous Systems & Orchestration",
+            "AI Security, Ethics & Responsible AI",
+            "Distributed Training on HPC Clusters (H100/A100)",
+            "Capstone: Production-Grade AI System with Industry Partner",
+            "Founder Track: Pitch Deck, Fundraising & Go-to-Market Strategy"
+        ]
+    }
+];
+
+function CurriculumTabs() {
+    const [activeYear, setActiveYear] = useState(1);
+    const activeContent = CURRICULUM_DATA.find(item => item.year === activeYear);
+
     return (
-        <section id="hero" className="relative pt-32 pb-48 px-4 flex flex-col justify-center items-center bg-slate-900 overflow-hidden text-center min-h-[90vh]">
-            {/* Background Image with Overlay */}
-            <div className="absolute inset-0 z-0">
-                <Image
-                    src="/images/program-bg/ai-hero.png"
-                    alt="AI Neural Network Background"
-                    fill
-                    className="object-cover opacity-80 scale-105"
-                    priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-transparent to-transparent" />
-            </div>
-
-            <div className="relative z-10 container mx-auto max-w-6xl flex flex-col items-center">
-                <motion.h1
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6 leading-[1.1] max-w-4xl"
-                >
-                    Graduate with <br />
-                    Mastery, Vision & <br />
-                    Real-World Impact.
-                </motion.h1>
-
-                <motion.p
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="text-xl md:text-2xl text-slate-300 max-w-2xl leading-relaxed mb-10"
-                >
-                    Not just code. A 3 year degree program merging AI Engineering with Entrepreneurship.
-                    Built by Engineers & Founders, for future Architects.
-                </motion.p>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="flex flex-wrap gap-4 justify-center"
-                >
-                    <Link
-                        href="/apply"
-                        className="px-10 py-4 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-500 transition-all shadow-[0_0_30px_rgba(37,99,235,0.3)] hover:shadow-[0_0_50px_rgba(37,99,235,0.5)] transform hover:-translate-y-1"
+        <div className="space-y-8">
+            {/* Year Tabs */}
+            <div className="flex flex-wrap justify-center gap-3">
+                {CURRICULUM_DATA.map((item) => (
+                    <button
+                        key={item.year}
+                        onClick={() => setActiveYear(item.year)}
+                        className={`px-6 py-3 rounded-full font-bold text-sm transition-all ${activeYear === item.year
+                            ? 'bg-blue-600 text-white shadow-lg scale-105'
+                            : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                            }`}
                     >
-                        Apply Now   
-                    </Link>
-                </motion.div>
+                        Year {item.year}
+                    </button>
+                ))}
             </div>
-        </section>
+
+            {/* Content Display */}
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={activeYear}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-200"
+                >
+                    <div className="flex items-center gap-4 mb-6">
+                        <div className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-bold">
+                            Year {activeContent?.year}
+                        </div>
+                        <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
+                            {activeContent?.title}
+                        </h3>
+                    </div>
+
+                    <div className="grid md:grid-cols-1 gap-4">
+                        {activeContent?.topics.map((topic, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                className="flex items-start gap-3 p-4 rounded-xl bg-slate-50 hover:bg-blue-50 transition-colors"
+                            >
+                                <CheckCircle2 size={20} className="text-blue-600 shrink-0 mt-0.5" />
+                                <span className="text-slate-700 font-medium">{topic}</span>
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.div>
+            </AnimatePresence>
+        </div>
     );
 }
 
-const NAV_LINKS = [
-    { name: "Overview", target: "overview" },
-    { name: "Entry requirements", target: "entry-requirements" },
-    { name: "Why this degree is for", target: "advantage" },
-    { name: "Career outcomes", target: "future-vision" },
-];
-
-function CourseSubNav() {
-    const [isSticky, setIsSticky] = useState(false);
+export default function AISchoolPage() {
+    const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
 
     useEffect(() => {
-        const handleScroll = () => {
-            const heroHeight = document.getElementById("hero")?.offsetHeight || 800;
-            setIsSticky(window.scrollY > heroHeight - 80);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        window.scrollTo(0, 0);
     }, []);
 
     return (
-        <div className={`w-full transition-all duration-300 ${isSticky ? "fixed top-0 bg-white/80 backdrop-blur-md shadow-sm border-b border-slate-200/50 z-[60]" : "relative bg-white border-b border-slate-200 pt-8 pb-4 z-40"}`}>
-            <div className="container mx-auto px-6 max-w-7xl">
-                <div className={`flex items-center justify-center transition-all duration-300 ${isSticky ? "py-2" : "py-0.5"} relative`}>
-                    <nav className={`flex items-center justify-center gap-x-3 md:gap-x-8 lg:gap-x-12 overflow-x-auto no-scrollbar transition-all duration-300 ${isSticky ? "py-2.5" : "py-1.5"} w-full`}>
-                        {NAV_LINKS.map((link) => (
-                            <ScrollLink
-                                key={link.target}
-                                to={link.target}
-                                spy={true}
-                                smooth={true}
-                                offset={-80}
-                                duration={500}
-                                className="text-[9px] md:text-[13px] font-bold uppercase tracking-widest text-slate-500 hover:text-blue-600 cursor-pointer relative py-1 transition-colors active:text-blue-600 group whitespace-nowrap"
-                                activeClass="text-blue-600 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-blue-600"
-                            >
-                                {link.name}
-                            </ScrollLink>
-                        ))}
-                    </nav>
+        <main className="min-h-screen bg-slate-50 font-sans selection:bg-blue-100">
+            <Navbar />
 
-                    <AnimatePresence>
-                        {isSticky && (
-                            <motion.div
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: 20 }}
-                                className="absolute right-0 hidden lg:block"
-                            >
-                                <Link
-                                    href="/contact"
-                                    className="px-5 py-1.5 bg-blue-600 text-white rounded-full text-xs font-bold flex items-center gap-2 hover:bg-blue-500 transition-all shadow-md active:scale-95"
+            {/* HERO SECTION */}
+            <section id="hero" className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
+                {/* Background Image with Overlay */}
+                <div className="absolute inset-0 z-0 select-none">
+                    <motion.div
+                        initial={{ scale: 1.1 }}
+                        animate={{ scale: 1 }}
+                        transition={{ duration: 2, ease: "easeOut" }}
+                        className="w-full h-full"
+                    >
+                        <img
+                            src="/images/program-bg/ai-hero.png"
+                            alt="AI Engineering"
+                            className="w-full h-full object-cover"
+                        />
+                    </motion.div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-slate-900/90" />
+                </div>
+
+                <div className="container mx-auto max-w-6xl relative z-10 px-4 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="max-w-5xl mx-auto"
+                    >
+
+                        <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white mb-8 leading-[0.9]">
+                            Artificial <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-white to-blue-200">Intelligence.</span>
+                        </h1>
+
+                        <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-light mb-12">
+                            A 3-year degree merging AI Engineering with Entrepreneurship. <br />
+                            <span className="text-white font-medium">Graduate with Mastery, Vision & Real-World Impact.</span>
+                        </p>
+
+
+                    </motion.div>
+                </div>
+
+                {/* Scroll Indicator */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5, duration: 1 }}
+                    className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50"
+                >
+                    <span className="text-[10px] uppercase tracking-widest">Scroll</span>
+                    <div className="w-[1px] h-12 bg-gradient-to-b from-white/0 via-white/50 to-white/0" />
+                </motion.div>
+            </section>
+
+            {/* Program Details Card */}
+            <div className="relative z-20 px-4 -mt-14 mb-12">
+                <div className="mx-auto max-w-7xl">
+                    <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
+                            <div>
+                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Program Length</p>
+                                <p className="text-lg font-bold text-slate-900">3-Year Full-Time</p>
+                            </div>
+                            <div>
+                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Delivery Mode</p>
+                                <p className="text-lg font-bold text-slate-900">On-Campus, Immersive</p>
+                            </div>
+                            <div>
+                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Campus</p>
+                                <p className="text-lg font-bold text-slate-900">Hyderabad, India</p>
+                            </div>
+                            <div>
+                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Admissions</p>
+                                <p className="text-lg font-bold text-slate-900">Now Open</p>
+                            </div>
+                        </div>
+                        <div className="flex gap-3 w-full lg:w-auto">
+                            <Link href="/apply" className="flex-1 lg:flex-none text-center px-8 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-500 transition-all shadow-lg active:scale-95 whitespace-nowrap">
+                                Apply Now
+                            </Link>
+                            <Link href="/contact" className="flex-1 lg:flex-none text-center px-8 py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-slate-50 transition-all border border-slate-300 active:scale-95 whitespace-nowrap">
+                                Contact Now
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* 1. Overview */}
+            <section id="overview" className="py-28 px-6 bg-white overflow-hidden">
+                <div className="container mx-auto max-w-6xl">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <p className="text-blue-600 text-sm font-bold uppercase tracking-widest mb-4">Program Overview</p>
+                            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                                A Degree Built for <br />
+                                <span className="text-blue-600">the AI Era.</span>
+                            </h2>
+                            <p className="text-lg text-slate-600 leading-relaxed mb-8">
+                                The Foundry&apos;s 3-year AI program combines rigorous academic foundations with hands-on engineering and entrepreneurial execution. Students don&apos;t just learn theory — they architect neural networks, deploy agent systems, and ship production-grade AI products before graduation.
+                            </p>
+                            <div className="flex flex-wrap gap-3">
+                                {["Neural Networks", "LLMs & Agents", "MLOps", "Startup Lab", "GPU Clusters", "Ethics & Safety"].map((tag, i) => (
+                                    <span key={i} className="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-semibold border border-slate-200 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-colors cursor-default">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-5">
+                            {[
+                                { value: "3", unit: "Years", label: "Full-time immersive program" },
+                                { value: "6", unit: "Semesters", label: "Progressive skill building" },
+                                { value: "100%", unit: "Hands-on", label: "Project-based from day one" },
+                                { value: "H100", unit: "GPUs", label: "Industry-grade infrastructure" },
+                            ].map((stat, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.1 }}
+                                    className="bg-slate-50 rounded-2xl p-6 border border-slate-200 text-center hover:shadow-lg transition-shadow"
                                 >
-                                    Contact Us
-                                    <ChevronRight size={14} />
-                                </Link>
+                                    <div className="text-3xl md:text-4xl font-black text-slate-900">{stat.value}</div>
+                                    <div className="text-sm font-bold text-blue-600 uppercase tracking-wider mb-1">{stat.unit}</div>
+                                    <p className="text-xs text-slate-500 font-medium">{stat.label}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Who Is This For — Dark section with numbered cards */}
+            <section className="py-24 px-6 bg-slate-900 overflow-hidden relative">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
+                <div className="container mx-auto max-w-6xl relative z-10">
+                    <div className="mb-14">
+                        <p className="text-blue-400 text-sm font-bold uppercase tracking-widest mb-3">Built for the next generation</p>
+                        <h2 className="text-4xl md:text-5xl font-bold text-white">Who Is This For</h2>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-6">
+                        {[
+                            { num: "01", title: "Aspiring AI Engineers", desc: "Class 12 / Intermediate graduates from any stream — MPC, BiPC, CEC, HEC, Commerce, or Arts. Your background doesn't define your future.", icon: Rocket, color: "from-blue-500 to-cyan-400" },
+                            { num: "02", title: "Future Founders", desc: "Students who want to build AI-powered startups, not just get a degree. You'll ship real products before you graduate.", icon: BrainCircuit, color: "from-violet-500 to-purple-400" },
+                            { num: "03", title: "Zero Coding Background", desc: "No prior programming required. We teach from the ground up, starting with logic and systems thinking.", icon: Code2, color: "from-emerald-500 to-teal-400" },
+                            { num: "04", title: "Global Thinkers", desc: "Individuals who want access to Silicon Valley networks, H100 GPU clusters, and world-class mentors.", icon: Globe, color: "from-amber-500 to-orange-400" },
+                        ].map((item, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-slate-600 transition-all duration-300 hover:bg-slate-800/80"
+                            >
+                                <div className="flex items-start gap-5">
+                                    <div className={`shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
+                                        <item.icon size={24} className="text-white" />
+                                    </div>
+                                    <div className="flex-1">
+                                        <div className="flex items-center gap-3 mb-2">
+                                            <span className="text-xs font-mono text-slate-500 tracking-widest">{item.num}</span>
+                                            <h3 className="text-xl font-bold text-white">{item.title}</h3>
+                                        </div>
+                                        <p className="text-slate-400 leading-relaxed">{item.desc}</p>
+                                    </div>
+                                </div>
                             </motion.div>
-                        )}
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* What You'll Achieve — Milestone cards with accent strip */}
+            <section className="py-24 px-6 bg-slate-50 overflow-hidden">
+                <div className="container mx-auto max-w-6xl">
+                    <div className="text-center mb-14">
+                        <p className="text-blue-600 text-sm font-bold uppercase tracking-widest mb-3">Your Transformation</p>
+                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900">What You&apos;ll Achieve</h2>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {[
+                            { num: "01", text: "Design & build production-grade neural network architectures", highlight: "Neural Networks" },
+                            { num: "02", text: "Train large-scale models on H100/A100 GPU clusters", highlight: "GPU Clusters" },
+                            { num: "03", text: "Build and deploy autonomous AI agent systems", highlight: "Agentic AI" },
+                            { num: "04", text: "Launch your own AI-powered startup with seed funding access", highlight: "Startup Launch" },
+                            { num: "05", text: "Graduate with a portfolio of deployed AI products, not just a certificate", highlight: "Real Portfolio" },
+                            { num: "06", text: "Join a global alumni network of AI engineers, researchers, and founders", highlight: "Global Network" },
+                        ].map((item, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.08 }}
+                                className="group relative bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300"
+                            >
+                                <div className="h-1.5 bg-gradient-to-r from-blue-600 to-cyan-500" />
+                                <div className="p-7">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <span className="text-3xl font-black text-blue-100 group-hover:text-blue-200 transition-colors">{item.num}</span>
+                                        <span className="text-xs font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-2 py-1 rounded-full">{item.highlight}</span>
+                                    </div>
+                                    <p className="text-slate-700 font-medium leading-relaxed">{item.text}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* 2. Eligibility */}
+            <section id="eligibility" className="py-24 px-6 bg-slate-50 overflow-hidden">
+                <div className="container mx-auto max-w-6xl">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Eligibility</h2>
+                        <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                            Admission to The Foundry is based on your potential to create and lead. We value diverse backgrounds and look for individuals who demonstrate logical clarity and a hunger for building.
+                        </p>
+                    </div>
+
+                    <div className="grid lg:grid-cols-2 gap-8 mb-12">
+                        <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                            <div className="bg-slate-900 px-8 py-4">
+                                <h3 className="text-xl font-bold text-white flex items-center gap-3">
+                                    <Award size={20} className="text-blue-400" />
+                                    Academic Eligibility
+                                </h3>
+                            </div>
+                            <div className="p-8">
+                                <div className="grid md:grid-cols-2 gap-8">
+                                    <div>
+                                        <h4 className="font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">Standard Pathway</h4>
+                                        <ul className="space-y-4 text-slate-700">
+                                            <li className="flex gap-3">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
+                                                <span>Successful completion of <strong>Class 12 / Intermediate</strong> (or equivalent).</span>
+                                            </li>
+                                            <li className="flex gap-3">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
+                                                <span><strong>No Mandatory Subjects</strong>: Students from MPC, BiPC, CEC, HEC, Commerce, or Arts are all eligible.</span>
+                                            </li>
+                                            <li className="flex gap-3">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
+                                                <span>Minimum aggregate of <strong>60%</strong> in core subjects.</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">Alternative Credentials</h4>
+                                        <ul className="space-y-4 text-slate-700">
+                                            <li className="flex gap-3">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
+                                                <span><strong>IB Diploma</strong>: Minimum 24 points.</span>
+                                            </li>
+                                            <li className="flex gap-3">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
+                                                <span><strong>A-Levels</strong>: Passed in at least 3 subjects.</span>
+                                            </li>
+                                            <li className="flex gap-3">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
+                                                <span><strong>BTEC/Vocational</strong>: Evaluated on a case-by-case basis.</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="space-y-8">
+                            <div className="p-8 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                                <div className="flex items-center gap-4 mb-6">
+                                    <ShieldCheck className="text-blue-600" />
+                                    <h3 className="text-xl font-bold text-slate-900">Prerequisites</h3>
+                                </div>
+                                <ul className="space-y-5">
+                                    <li>
+                                        <p className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-1">Coding Experience</p>
+                                        <p className="text-slate-600 text-sm"><strong>Zero prior coding experience</strong> is required. We teach you from the ground up.</p>
+                                    </li>
+                                    <li>
+                                        <p className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-1">English Proficiency</p>
+                                        <p className="text-slate-600 text-sm"><strong>No IELTS or TOEFL</strong> required. We value clear communication over test scores.</p>
+                                    </li>
+                                    <li>
+                                        <p className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-1">Entrance Tests</p>
+                                        <p className="text-slate-600 text-sm"><strong>No traditional entrance exams</strong>. Seats allocated based on academic merit and profile evaluation.</p>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div className="p-8 bg-blue-600 rounded-2xl text-white">
+                                <h3 className="text-2xl font-bold italic mb-4">Who we look for</h3>
+                                <p className="text-blue-50 leading-relaxed mb-6">
+                                    We are looking for the "misfits" and the "builders" — individuals who are dissatisfied with the status quo and want to build the future.
+                                </p>
+                                <div className="space-y-3">
+                                    <div className="flex items-center gap-3 text-sm font-bold bg-white/10 p-3 rounded-lg border border-white/20">
+                                        <div className="w-2 h-2 rounded-full bg-white" />
+                                        Intellectual Curiosity
+                                    </div>
+                                    <div className="flex items-center gap-3 text-sm font-bold bg-white/10 p-3 rounded-lg border border-white/20">
+                                        <div className="w-2 h-2 rounded-full bg-white" />
+                                        Logical Problem Solving
+                                    </div>
+                                    <div className="flex items-center gap-3 text-sm font-bold bg-white/10 p-3 rounded-lg border border-white/20">
+                                        <div className="w-2 h-2 rounded-full bg-white" />
+                                        Persistence & Grit
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* 3. What You Will Study (Curriculum) */}
+            <section id="curriculum" className="py-24 px-6 bg-white overflow-hidden">
+                <div className="container mx-auto max-w-6xl">
+                    <div className="text-center mb-12">
+                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">What You Will Study</h2>
+                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">From mathematical foundations to shipping production AI systems. Every year builds on the last.</p>
+                    </div>
+                    <CurriculumTabs />
+                </div>
+            </section>
+
+            {/* 4. AI Post 2035 Jobs */}
+            <section id="careers" className="py-24 px-6 bg-slate-50 overflow-hidden">
+                <div className="container mx-auto max-w-6xl">
+                    <div className="text-center mb-12">
+                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">AI Post 2035 Jobs</h2>
+                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">The roles our graduates are being trained to lead. These aren't jobs — they're missions.</p>
+                    </div>
+                    <div className="flex flex-wrap justify-center gap-3 mb-8">
+                        {CAREER_ROLES.map((role) => (
+                            <button
+                                key={role.id}
+                                onClick={() => setActiveRole(role)}
+                                className={`px-5 py-2.5 rounded-full font-bold text-sm transition-all ${activeRole.id === role.id
+                                    ? 'bg-blue-600 text-white shadow-lg scale-105'
+                                    : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                                    }`}
+                            >
+                                {role.label}
+                            </button>
+                        ))}
+                    </div>
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeRole.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.3 }}
+                            className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-200"
+                        >
+                            <div className="flex flex-col lg:flex-row gap-10">
+                                <div className="flex-1">
+                                    <h3 className="text-3xl font-bold text-slate-900 mb-3">{activeRole.title}</h3>
+                                    <p className="text-slate-600 leading-relaxed mb-6">{activeRole.desc}</p>
+                                    <div className="flex gap-6 mb-8">
+                                        <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                            <div className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Avg. Compensation</div>
+                                            <div className="text-xl font-bold text-slate-900">{activeRole.salary}</div>
+                                        </div>
+                                        <div className="p-4 bg-emerald-50 rounded-xl border border-emerald-100">
+                                            <div className="text-xs text-emerald-600 uppercase tracking-widest font-bold mb-1">Growth</div>
+                                            <div className="text-xl font-bold text-emerald-600">{activeRole.growth}</div>
+                                        </div>
+                                    </div>
+                                    <h4 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">Key Skills</h4>
+                                    <div className="flex flex-wrap gap-2">
+                                        {activeRole.skills.map((skill, i) => (
+                                            <span key={i} className="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full text-xs font-bold border border-blue-100">
+                                                {skill}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="lg:w-[350px]">
+                                    <h4 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">Responsibilities</h4>
+                                    <div className="space-y-3">
+                                        {activeRole.responsibilities.map((resp, i) => (
+                                            <div key={i} className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
+                                                <div className="w-2 h-2 rounded-full bg-blue-500 shrink-0" />
+                                                <span className="text-sm font-medium text-slate-700">{resp}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
                     </AnimatePresence>
                 </div>
+            </section>
+
+            <Footer />
+        </main>
+    );
+}
+
+function AudienceItem({ icon: Icon, title, desc }: { icon: any, title: string, desc: string }) {
+    return (
+        <div className="flex items-start gap-4 p-5 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-200 transition-colors group">
+            <div className="p-3 bg-white rounded-lg text-blue-600 shadow-sm group-hover:scale-110 transition-transform">
+                <Icon size={20} />
+            </div>
+            <div>
+                <h4 className="font-bold text-slate-900">{title}</h4>
+                <p className="text-sm text-slate-600">{desc}</p>
             </div>
         </div>
     );
 }
 
-function WhyUs() {
-    const reasons = [
-        {
-            title: "HPC Computing Clusters",
-            desc: "Access to private H100 and A100 GPU clusters for training large-scale models.",
-            icon: <Cpu className="text-blue-500" />,
-        },
-        {
-            title: "AI Research Lab",
-            desc: "Work on real-world research problems in collaboration with industry partners.",
-            icon: <Target className="text-blue-500" />,
-        },
-        {
-            title: "Global Standards",
-            desc: "Curriculum designed by engineers from top tech companies and research institutions.",
-            icon: <Zap className="text-blue-500" />,
-        },
-        {
-            title: "Rapid Prototyping",
-            desc: "Move from idea to functioning production-ready AI models in weeks, not months.",
-            icon: <Rocket className="text-blue-500" />,
-        },
-    ];
-
+function OutcomeItem({ text }: { text: string }) {
     return (
-        <section id="overview" className="py-24 px-6 bg-white">
-            <div className="container mx-auto max-w-6xl">
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {reasons.map((reason, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1 }}
-                            className="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-all hover:shadow-xl group"
-                        >
-                            <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                                {reason.icon}
-                            </div>
-                            <h3 className="text-xl font-bold text-slate-900 mb-3">{reason.title}</h3>
-                            <p className="text-slate-600 leading-relaxed text-sm">{reason.desc}</p>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-        </section>
+        <div className="flex items-center gap-3 p-4 bg-blue-50/50 rounded-xl border border-blue-100/50">
+            <CheckCircle2 size={18} className="text-blue-600 shrink-0" />
+            <span className="text-slate-800 font-medium">{text}</span>
+        </div>
     );
 }
 
-function ProgramStats() {
-    const stats = [
-        { label: "Academic Sessions", value: "30%", color: "#2563eb", desc: "Core engineering, math, and AI theory modules." },
-        { label: "Start-up Lab", value: "30%", color: "#3b82f6", desc: "Building and scaling your own AI-first project." },
-        { label: "Industry Exposure", value: "20%", color: "#60a5fa", desc: "Internships and real-world company problem sets." },
-        { label: "Beyond Academics", value: "10%", color: "#93c5fd", desc: "Soft skills, leadership, and emotional intelligence." },
-        { label: "Student Circles", value: "10%", color: "#bfdbfe", desc: "Peer learning, clubs, and extracurricular activities." },
-    ];
-
-    return (
-        <section className="py-24 px-6 bg-slate-50 overflow-hidden">
-            <div className="container mx-auto max-w-6xl">
-                <div className="flex flex-col lg:flex-row items-center gap-16">
-                    <div className="lg:w-1/2">
-                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8">Holistic Breakdown</h2>
-                        <div className="space-y-6">
-                            {stats.map((stat, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.1 }}
-                                    className="relative"
-                                >
-                                    <div className="flex justify-between mb-2">
-                                        <span className="font-bold text-slate-900">{stat.label}</span>
-                                        <span className="text-blue-600 font-bold">{stat.value}</span>
-                                    </div>
-                                    <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
-                                        <div className="h-full bg-blue-600 rounded-full" style={{ width: stat.value }} />
-                                    </div>
-                                    <p className="text-xs text-slate-500 mt-2">{stat.desc}</p>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="lg:w-1/2 relative">
-                        <div className="aspect-square relative flex items-center justify-center">
-                           <div className="absolute inset-0 bg-blue-600/5 rounded-full blur-[100px]" />
-                           <div className="relative w-full aspect-square max-w-sm rounded-full border-[20px] border-blue-600/10 flex items-center justify-center p-12">
-                                <div className="text-center">
-                                    <div className="text-6xl font-black text-blue-600 mb-2">100%</div>
-                                    <div className="text-slate-500 font-bold uppercase tracking-widest text-sm">Immersion</div>
-                                </div>
-                                {/* Theoretical "Chart" Elements */}
-                                <div className="absolute inset-0">
-                                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-blue-600 rounded-full" />
-                                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-4 h-4 bg-blue-400 rounded-full" />
-                                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-blue-300 rounded-full" />
-                                </div>
-                           </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
-}
-
-function EntryRequirements() {
-    return (
-        <section id="entry-requirements" className="py-24 px-6 bg-slate-50">
-            <div className="container mx-auto max-w-5xl">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mb-16"
-                >
-                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Entry requirements</h2>
-                    <p className="text-lg text-slate-600 max-w-3xl">
-                        Admission to The Foundry is based on your potential to create and lead. We value diverse backgrounds 
-                        and look for individuals who demonstrate logical clarity and a hunger for building.
-                    </p>
-                </motion.div>
-
-                <div className="space-y-12">
-                    <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-                        <div className="bg-slate-900 px-8 py-4">
-                            <h3 className="text-xl font-bold text-white flex items-center gap-3">
-                                <GraduationCap size={20} className="text-blue-400" />
-                                Academic Eligibility
-                            </h3>
-                        </div>
-                        <div className="p-8">
-                            <div className="grid md:grid-cols-2 gap-12">
-                                <div>
-                                    <h4 className="font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">Standard Pathway</h4>
-                                    <ul className="space-y-4 text-slate-700">
-                                        <li className="flex gap-3">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
-                                            <span>Successful completion of **Class 12 / Intermediate** (or equivalent).</span>
-                                        </li>
-                                        <li className="flex gap-3">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
-                                            <span>**No Mandatory Subjects**: Students from **MPC, BiPC, CEC, HEC, Commerce, or Arts** are all eligible to apply.</span>
-                                        </li>
-                                        <li className="flex gap-3">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
-                                            <span>Minimum aggregate of **60%** in core subjects.</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4 className="font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">Alternative Credentials</h4>
-                                    <ul className="space-y-4 text-slate-700">
-                                        <li className="flex gap-3">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
-                                            <span>**IB Diploma**: Minimum **24 points**.</span>
-                                        </li>
-                                        <li className="flex gap-3">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
-                                            <span>**A-Levels**: Passed in at least **3 subjects**.</span>
-                                        </li>
-                                        <li className="flex gap-3">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
-                                            <span>**BTEC/Vocational**: Evaluated on a case-by-case basis.</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-8">
-                        <div className="p-8 bg-white rounded-2xl border border-slate-200 shadow-sm leading-relaxed">
-                            <div className="flex items-center gap-4 mb-6">
-                                <SearchCode className="text-blue-600" />
-                                <h3 className="text-xl font-bold text-slate-900">Program Prerequisites</h3>
-                            </div>
-                            <ul className="space-y-6">
-                                <li>
-                                    <p className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-1">Coding Experience</p>
-                                    <p className="text-slate-600 text-sm">
-                                        **Zero prior coding experience** is required. We teach you from the ground up, starting with core logic and systems thinking.
-                                    </p>
-                                </li>
-                                <li>
-                                    <p className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-1">English Proficiency</p>
-                                    <p className="text-slate-600 text-sm">
-                                        **No standardized English tests** (like IELTS or TOEFL) are mandatory for admission. We value clear communication over test scores.
-                                    </p>
-                                </li>
-                                <li>
-                                    <p className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-1">Entrance Tests</p>
-                                    <p className="text-slate-600 text-sm">
-                                        The Foundry does **not conduct traditional entrance exams**. Seats are allocated based on **academic merit** and **profile evaluation**.
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div className="p-8 bg-blue-600 rounded-2xl text-white flex flex-col justify-center">
-                            <div className="flex items-center gap-4 mb-4">
-                                <ClipboardCheck size={32} />
-                                <h3 className="text-2xl font-bold italic">Who we look for</h3>
-                            </div>
-                            <p className="text-blue-50 leading-relaxed mb-6">
-                                We are looking for the "misfits" and the "builders"—individuals who are dissatisfied with the status quo 
-                                and want to build the future.
-                            </p>
-                            <div className="space-y-3">
-                                <div className="flex items-center gap-3 text-sm font-bold bg-white/10 p-3 rounded-lg border border-white/20">
-                                    <div className="w-2 h-2 rounded-full bg-white" />
-                                    Intellectual Curiosity
-                                </div>
-                                <div className="flex items-center gap-3 text-sm font-bold bg-white/10 p-3 rounded-lg border border-white/20">
-                                    <div className="w-2 h-2 rounded-full bg-white" />
-                                    Logical Problem Solving
-                                </div>
-                                <div className="flex items-center gap-3 text-sm font-bold bg-white/10 p-3 rounded-lg border border-white/20">
-                                    <div className="w-2 h-2 rounded-full bg-white" />
-                                    Persistence & Grit
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
-}
-
-function EngineeringSkills() {
-    const skills = [
-        "Neural Architecture Search",
-        "Data Pipeline Engineering",
-        "Distributed Training",
-        "Kernel Optimization",
-    ];
-
-    return (
-        <section className="py-24 px-6 bg-slate-900 text-white overflow-hidden">
-            <div className="container mx-auto max-w-6xl">
-                <div className="flex flex-col lg:flex-row items-center gap-16">
-                    <div className="lg:w-1/2">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-8">Engineering Mastery</h2>
-                        <p className="text-slate-400 text-lg mb-12">
-                            We don't just teach you how to use AI—we teach you how to build it from scratch. 
-                            From raw hardware optimization to massive scale deployments.
-                        </p>
-                        <div className="grid grid-cols-2 gap-4">
-                            {skills.map((skill, idx) => (
-                                <div key={idx} className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
-                                    <div className="w-2 h-2 rounded-full bg-blue-500" />
-                                    <span className="font-bold text-sm tracking-wide">{skill}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="lg:w-1/2">
-                        <div className="bg-slate-950 p-10 md:p-14 rounded-[2.5rem] border border-white/10 shadow-2xl relative overflow-hidden">
-                            <div className="absolute inset-0 bg-blue-600/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2" />
-                             <div className="space-y-10 relative z-10">
-                                <div>
-                                    <div className="flex justify-between items-center mb-4">
-                                        <h4 className="font-bold uppercase tracking-widest text-xs text-blue-300">Model Efficiency</h4>
-                                        <span className="text-xs font-bold px-3 py-1 rounded-lg bg-blue-500/20 text-blue-300 border border-blue-500/30">99.8%</span>
-                                    </div>
-                                    <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
-                                        <motion.div 
-                                            initial={{ width: 0 }}
-                                            whileInView={{ width: "99.8%" }}
-                                            viewport={{ once: true }}
-                                            className="h-full bg-blue-500" 
-                                        />
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="flex justify-between items-center mb-4">
-                                        <h4 className="font-bold uppercase tracking-widest text-xs text-purple-300">Distributed Training</h4>
-                                        <span className="text-xs font-bold px-3 py-1 rounded-lg bg-purple-500/20 text-purple-300 border border-purple-500/30">H100 Ready</span>
-                                    </div>
-                                    <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
-                                        <motion.div 
-                                            initial={{ width: 0 }}
-                                            whileInView={{ width: "100%" }}
-                                            viewport={{ once: true }}
-                                            className="h-full bg-purple-500" 
-                                        />
-                                    </div>
-                                </div>
-                                <div className="pt-8 border-t border-white/10">
-                                    <div className="flex items-center justify-between">
-                                        <div>
-                                            <div className="text-3xl font-black text-white">2.4ms</div>
-                                            <div className="text-xs uppercase font-bold text-slate-400 tracking-wider mt-1">Inference Latency</div>
-                                        </div>
-                                        <div>
-                                            <div className="text-3xl font-black text-white">1.2T</div>
-                                            <div className="text-xs uppercase font-bold text-slate-400 tracking-wider mt-1">Token Throughput</div>
-                                        </div>
-                                    </div>
-                                </div>
-                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
-}
-
-
-function ComparisonSection() {
-    return (
-        <section id="advantage" className="py-24 px-6 bg-slate-50">
-            <div className="container mx-auto max-w-6xl">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold text-slate-900 mb-4">The Foundry Advantage</h2>
-                    <p className="text-slate-500">How we differ from traditional engineering colleges.</p>
-                </div>
-                <div className="grid md:grid-cols-2 gap-px bg-slate-200 rounded-3xl overflow-hidden border border-slate-200 shadow-2xl">
-                    <div className="bg-white p-12">
-                        <h3 className="text-xs font-bold text-slate-400 uppercase tracking-[0.3em] mb-8">Conventional Education</h3>
-                        <ul className="space-y-6">
-                            <li className="flex items-start gap-4">
-                                <div className="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center shrink-0 mt-1">
-                                    <div className="w-2 h-2 rounded-full bg-red-400" />
-                                </div>
-                                <div>
-                                    <h4 className="font-bold text-slate-900 mb-1">Textbook Driven</h4>
-                                    <p className="text-slate-500 text-sm">Learning from decades-old curriculum that lacks modern industry relevance.</p>
-                                </div>
-                            </li>
-                            <li className="flex items-start gap-4">
-                                <div className="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center shrink-0 mt-1">
-                                    <div className="w-2 h-2 rounded-full bg-red-400" />
-                                </div>
-                                <div>
-                                    <h4 className="font-bold text-slate-900 mb-1">Isolated Learning</h4>
-                                    <p className="text-slate-500 text-sm">Theory-heavy environments without access to production-grade compute.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="bg-blue-600 p-12 text-white relative overflow-hidden">
-                        <div className="absolute top-0 right-0 p-48 bg-white/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
-                        <h3 className="text-xs font-bold text-blue-200 uppercase tracking-[0.3em] mb-8 relative z-10">The Foundry Model</h3>
-                        <ul className="space-y-6 relative z-10">
-                            <li className="flex items-start gap-4">
-                                <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center shrink-0 mt-1">
-                                    <CheckCircle2 className="text-white w-4 h-4" />
-                                </div>
-                                <div>
-                                    <h4 className="font-bold mb-1">Production Driven</h4>
-                                    <p className="text-blue-100 text-sm">Building and deploying models that handle real token traffic and users.</p>
-                                </div>
-                            </li>
-                            <li className="flex items-start gap-4">
-                                <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center shrink-0 mt-1">
-                                    <CheckCircle2 className="text-white w-4 h-4" />
-                                </div>
-                                <div>
-                                    <h4 className="font-bold mb-1">Ecosystem Immersion</h4>
-                                    <p className="text-blue-100 text-sm">Direct access to VCs, founders, and the world's most powerful H100 clusters.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
-}
-
-function EntrepreneurshipHighlight() {
-    return (
-        <section className="py-24 px-6 bg-white overflow-hidden">
-            {/* <div className="container mx-auto max-w-6xl">
-                <div className="flex flex-col lg:flex-row items-center gap-16">
-                    <div className="lg:w-1/2 relative">
-                        <div className="w-full aspect-[4/3] bg-slate-100 rounded-[2rem] overflow-hidden relative group shadow-2xl">
-                            <Image 
-                                src="/images/global-fellowship.png"
-                                alt="Founder Lab"
-                                fill
-                                className="object-cover"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60" />
-                            <div className="absolute bottom-8 left-8 right-8">
-                                <div className="p-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl">
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center shadow-lg">
-                                            <Trophy className="text-white" />
-                                        </div>
-                                        <div>
-                                            <div className="text-white font-bold">The Fellowship</div>
-                                            <div className="text-blue-200 text-xs">Tier-1 Access Only</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="lg:w-1/2">
-                        <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-widest mb-6">Beyond Employment</span>
-                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">Graduate with a Net Worth, <br />Not just a Degree.</h2>
-                        <p className="text-slate-600 text-lg mb-10 leading-relaxed">
-                            The Foundry isn't a classroom; it's an asset launchpad. We treat our students like Founders-in-Residence. 
-                            While other colleges gift you a piece of paper, we provide the infrastructure, capital access, and global network to ensure you graduate with a functioning, revenue-generating AI product.
-                        </p>
-                        <div className="space-y-4">
-                            <div className="flex items-center gap-3">
-                                <div className="w-6 h-6 rounded-full bg-green-50 flex items-center justify-center">
-                                    <CheckCircle2 size={16} className="text-green-500" />
-                                </div>
-                                <span className="font-semibold text-slate-700">Guaranteed $10k Seed credits for Student Projects</span>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <div className="w-6 h-6 rounded-full bg-green-50 flex items-center justify-center">
-                                    <CheckCircle2 size={16} className="text-green-500" />
-                                </div>
-                                <span className="font-semibold text-slate-700">Elite Global Builder Hub Access (Silicon Valley & Dubai)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-        </section>
-    );
-}
-
-interface FutureJob {
-    role: string;
-    desc: string;
-    salary: string;
-    growth: string;
-    tags: string[];
-    responsibilities: string[];
-    icon: React.ReactNode;
-}
-
-interface FutureVisionProps {
-    schoolName: string;
-    accentColor: string;
-    whyAIImportant: string;
-    futureJobs: FutureJob[];
-}
-
-function FutureVision({
-    schoolName,
-    accentColor,
-    whyAIImportant,
-    futureJobs
-}: FutureVisionProps) {
-    const [activeJob, setActiveJob] = useState(0);
-
-    return (
-        <section id="future-vision" className="py-20 px-6 bg-slate-950 text-white overflow-hidden relative">
-            <div className="absolute inset-0 bg-blue-600/5 animate-aurora mix-blend-screen opacity-50" />
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 blur-[150px] -translate-y-1/2 translate-x-1/2" />
-            
-            <div className="container mx-auto max-w-7xl relative z-10">
-                <div className="mb-14">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight tracking-tight">
-                            The Future of <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">{schoolName}</span>
-                        </h2>
-                        <p className="text-slate-400 text-lg leading-relaxed max-w-2xl">
-                            {whyAIImportant}
-                        </p>
-                    </motion.div>
-                </div>
-
-                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
-                    {/* Role Tabs */}
-                    <motion.div 
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="w-full lg:w-[280px] flex-shrink-0"
-                    >
-                        <div className="space-y-3">
-                            {futureJobs.map((job, idx) => (
-                                <button
-                                    key={idx}
-                                    onClick={() => setActiveJob(idx)}
-                                    className={`w-full text-left py-3 px-5 rounded-xl transition-all flex items-center gap-4 group relative ${activeJob === idx ? "bg-blue-600/10 text-white shadow-[inset_0_0_20px_rgba(37,99,235,0.1)]" : "text-slate-500 hover:text-slate-300"}`}
-                                >
-                                    {activeJob === idx && (
-                                        <motion.div 
-                                            layoutId="tabIndicator"
-                                            className="absolute left-0 w-1 h-6 bg-blue-500 rounded-full"
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                        />
-                                    )}
-                                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all ${activeJob === idx ? "bg-blue-600 text-white shadow-lg" : "bg-slate-900 text-slate-600 group-hover:bg-slate-800"}`}>
-                                        {job.icon}
-                                    </div>
-                                    <span className={`text-sm font-bold transition-colors ${activeJob === idx ? "text-white" : "text-slate-500"}`}>
-                                        {job.role}
-                                    </span>
-                                </button>
-                            ))}
-                        </div>
-                    </motion.div>
-
-                    {/* Role Display Card */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="flex-1 w-full"
-                    >
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={activeJob}
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -10 }}
-                                className="bg-slate-900/40 backdrop-blur-3xl p-6 md:p-10 rounded-[2rem] border border-white/5 relative z-10 w-full shadow-2xl"
-                            >
-                                <div className="flex flex-col xl:flex-row justify-between items-start gap-10 mb-12">
-                                    <div className="flex-1">
-                                        <div className="text-[10px] font-black uppercase tracking-[0.4em] text-blue-500 mb-5">Landscape Projection 2035</div>
-                                        <h3 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter text-white leading-none">
-                                            {futureJobs[activeJob].role}
-                                        </h3>
-                                        <p className="text-base text-slate-400 mb-8 leading-relaxed max-w-2xl">
-                                            {futureJobs[activeJob].desc}
-                                        </p>
-                                        <div className="flex flex-wrap gap-3">
-                                            {futureJobs[activeJob].tags.map((tag, i) => (
-                                                <span key={i} className="px-4 py-1.5 bg-white/5 border border-white/10 rounded-lg text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                                                    {tag}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="flex flex-col md:flex-row xl:flex-col gap-5 w-full xl:w-[220px]">
-                                        <div className="flex-1 p-6 bg-slate-950/50 border border-white/5 rounded-2xl group hover:border-blue-500/20 transition-all duration-500">
-                                            <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Avg. Comp</div>
-                                            <div className="text-2xl font-black text-white italic">{futureJobs[activeJob].salary}</div>
-                                        </div>
-                                        <div className="flex-1 p-6 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl group hover:border-emerald-500/20 transition-all duration-500">
-                                            <div className="flex items-center gap-2 mb-2">
-                                                <div className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Growth</div>
-                                                <TrendingUp size={12} className="text-emerald-500" />
-                                            </div>
-                                            <div className="text-2xl font-black text-emerald-400 italic">{futureJobs[activeJob].growth}</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="pt-12 border-t border-white/5">
-                                    <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 mb-8">Mission Critical Responsibilities</h4>
-                                    <div className="grid md:grid-cols-2 gap-4">
-                                        {futureJobs[activeJob].responsibilities.map((resp, i) => (
-                                            <div key={i} className="flex items-center gap-4 p-4 bg-white/[0.02] rounded-2xl border border-white/5 hover:border-white/10 transition-all group">
-                                                <div className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_12px_rgba(37,99,235,1)] group-hover:scale-125 transition-transform" />
-                                                <span className="text-sm font-bold text-slate-300">{resp}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </motion.div>
-                        </AnimatePresence>
-                    </motion.div>
-                </div>
-
-            </div>
-        </section>
-    );
-}
-
-
-// --- Main Page Component ---
-
-export default function AISchoolPage() {
-    return (
-        <main className="bg-white selection:bg-blue-100">
-            <Navbar />
-            <AIHero />
-            <CourseSubNav />
-            <WhyUs />
-            <ProgramStats />
-            <EntryRequirements />
-            <EngineeringSkills />
-            <ComparisonSection />
-            <EntrepreneurshipHighlight />
-            <FutureVision 
-                schoolName="Artificial Intelligence"
-                accentColor="#2563eb"
-                whyAIImportant="AI is not just a tool; it is the entire operating system of the next century. Mastering it today means being the architect of a world where machine intelligence and human creativity merge."
-                futureJobs={[
-                    { 
-                        role: "Neural Architect", 
-                        icon: <Cpu size={24} />,
-                        desc: "Designing novel transformer blocks and customized model architectures for hyper-efficient edge deployments and massive scale clusters.",
-                        salary: "₹85L - 1.2Cr",
-                        growth: "+45% YoY",
-                        tags: ["PyTorch", "CUDA", "LLM Design", "TPU Tuning"],
-                        responsibilities: [
-                            "Designing enterprise-grade neural architectures",
-                            "Optimizing model weights for inference speed",
-                            "Scaling distributed training clusters",
-                            "Researching novel attention mechanisms"
-                        ]
-                    },
-                    { 
-                        role: "Agentic Systems Engineer", 
-                        icon: <BrainCircuit size={24} />,
-                        desc: "Architecting swarms of AI agents that can autonomously manage complex enterprise supply chains, legal filings, and real-time operations.",
-                        salary: "₹65L - 95L",
-                        growth: "+60% YoY",
-                        tags: ["LangChain", "Autogen", "Orchestration", "System Logic"],
-                        responsibilities: [
-                            "Building multi-agent task frameworks",
-                            "Implementing agent error correction loops",
-                            "Integrating AI memory layers",
-                            "Managing real-world API connectivity"
-                        ]
-                    },
-                    { 
-                        role: "AI Security & Ethics Lead", 
-                        icon: <Shield size={24} />,
-                        desc: "Ensuring the safety and alignment of large-scale cognitive systems, protecting against prompt injection, model extraction, and ethical drift.",
-                        salary: "₹55L - 85L",
-                        growth: "+35% YoY",
-                        tags: ["Red Teaming", "Cybersec", "Alignment", "Governance"],
-                        responsibilities: [
-                            "Conducting adversarial red teaming",
-                            "Guaranteeing model compliance & safety",
-                            "Implementing data privacy shields",
-                            "Monitoring AI decisions for bias"
-                        ]
-                    },
-                    { 
-                        role: "Chief AI Officer (CAIO)", 
-                        icon: <Rocket size={24} />,
-                        desc: "The executive steward of a corporation's intelligence strategy, overseeing the transition from legacy software to an AI-native operating model.",
-                        salary: "₹1.5Cr+",
-                        growth: "+25% YoY",
-                        tags: ["Strategy", "P&L", "Innovation", "Executive"],
-                        responsibilities: [
-                            "Leading corporate AI digital transformation",
-                            "Managing enterprise intelligence budgets",
-                            "Selecting vendor vs custom AI stacks",
-                            "Defining AI-driven product roadmaps"
-                        ]
-                    }
-                ]}
-            />
-            
-            {/* CTA Footer Section */}
-            {/* <section className="py-32 px-6 bg-white overflow-hidden text-center relative">
-                <div className="container mx-auto max-w-4xl relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <h2 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6">Build the Intelligence.</h2>
-                        <p className="text-xl text-slate-500 mb-12 max-w-2xl mx-auto">
-                            The Foundry is more than a school. It's an engine for those who want to build, scale, and lead. 
-                            The next cohort starts soon.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Link href="/apply" className="px-10 py-5 bg-blue-600 text-white rounded-full font-bold text-xl hover:bg-blue-500 transition-all shadow-xl hover:shadow-blue-200">
-                                Apply Now
-                            </Link>
-                            <Link href="/contact" className="px-10 py-5 bg-slate-100 text-slate-900 rounded-full font-bold text-xl hover:bg-slate-200 transition-all">
-                                Contact Admissions
-                            </Link>
-                        </div>
-                    </motion.div>
-                </div>
-            </section> */}
-            
-            <Footer />
-        </main>
-    );
-}
