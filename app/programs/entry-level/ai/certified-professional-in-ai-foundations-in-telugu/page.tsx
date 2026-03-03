@@ -5,7 +5,6 @@ import { Footer } from "@/components/footer";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import {
-    ArrowLeft,
     CheckCircle2,
     Calendar,
     Clock,
@@ -16,7 +15,6 @@ import {
     Lightbulb,
     ShieldAlert,
     ChevronDown,
-    GraduationCap,
     Languages,
     Puzzle
 } from "lucide-react";
@@ -159,20 +157,8 @@ export default function AIFoundationsTeluguCoursePage() {
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
 
                 <div className="container mx-auto max-w-6xl relative z-10">
-                    <Link href="/programs/entry-level/ai" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8 text-sm font-medium">
-                        <ArrowLeft size={16} /> Back to Entry Level Programs
-                    </Link>
-
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div>
-                            <div className="flex flex-wrap gap-3 mb-6">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm font-bold">
-                                    <GraduationCap size={16} /> Entry Level Certification
-                                </div>
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-bold">
-                                    <Languages size={16} /> Taught in Telugu
-                                </div>
-                            </div>
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
                                 Certified Professional <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">AI Foundations</span>

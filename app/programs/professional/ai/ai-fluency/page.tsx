@@ -5,7 +5,6 @@ import { Footer } from "@/components/footer";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import {
-    ArrowLeft,
     CheckCircle2,
     Calendar,
     Clock,
@@ -21,7 +20,6 @@ import {
     Users,
     BarChart3,
     Rocket,
-    BrainCircuit,
     Database,
     Globe
 } from "lucide-react";
@@ -215,18 +213,10 @@ export default function AIFluencyPage() {
 
                 <div className="container mx-auto max-w-5xl relative z-10">
                     <div className="text-center">
-                        <Link href="/programs/professional/ai" className="inline-flex items-center gap-2 text-blue-300 hover:text-white transition-colors mb-8 text-sm font-medium">
-                            <ArrowLeft size={16} /> Back to AI Programs
-                        </Link>
-
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-sm font-medium mb-8 backdrop-blur-sm">
-                            <BrainCircuit size={16} />
-                            <span>Mid-Level Program</span>
-                        </div>
 
                         <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 leading-tight">
                             AI Fluency <br />
-                            <span className="text-blue-400 italic">for Java Developers</span>
+                            {/* <span className="text-blue-400 italic">for Java Developers</span> */}
                         </h1>
 
                         <p className="text-lg md:text-xl text-blue-100/80 font-light leading-relaxed max-w-3xl mx-auto mb-12">

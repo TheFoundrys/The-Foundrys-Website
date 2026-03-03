@@ -5,17 +5,13 @@ import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import {
-    ArrowLeft,
     CheckCircle2,
     Calendar,
     Clock,
     ArrowUpRight,
     BrainCircuit,
-    Microscope,
     Sigma,
-    Network,
     Sparkles,
-    FileText,
     FlaskConical
 } from "lucide-react";
 import Link from "next/link";
@@ -89,15 +85,8 @@ export default function AIResearcherPage() {
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
 
                 <div className="container mx-auto max-w-6xl relative z-10">
-                    <Link href="/programs/professional/ai" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8 text-sm font-medium">
-                        <ArrowLeft size={16} /> Back to AI Programs
-                    </Link>
-
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-bold mb-6">
-                                <Microscope size={16} /> Professional Certification
-                            </div>
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
                                 AI Researcher
                             </h1>

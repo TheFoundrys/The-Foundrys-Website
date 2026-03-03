@@ -61,9 +61,9 @@ export function Footer({ hideCTA = false }: FooterProps) {
                 {/* Contact & Social Section */}
                 <div className="pt-8 border-t border-slate-200 mb-12">
                     <h3 className="text-slate-900 font-bold mb-6">Contact</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-x-12 gap-y-4">
-                        {/* Headers / Primary Row */}
-                        <div className="md:col-span-1">
+                    <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-x-12 gap-y-6">
+                        {/* Email */}
+                        <div className="md:col-start-1 md:row-start-1">
                             <a href="mailto:info@thefoundrys.com" className="flex items-center gap-3 hover:text-slate-900 transition-colors">
                                 <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
                                     <Mail size={14} className="text-slate-600" />
@@ -71,21 +71,9 @@ export function Footer({ hideCTA = false }: FooterProps) {
                                 <span className="text-sm font-bold text-slate-900">info@thefoundrys.com</span>
                             </a>
                         </div>
-                        <div className="md:col-span-1 flex items-start gap-4">
-                            <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
-                                <MapPin size={14} className="text-slate-600" />
-                            </div>
-                            <span className="text-sm font-bold text-slate-900 mt-2">United States of America</span>
-                        </div>
-                        <div className="md:col-span-2 flex items-start gap-4">
-                            <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
-                                <MapPin size={14} className="text-slate-600" />
-                            </div>
-                            <span className="text-sm font-bold text-slate-900 mt-2">Hyderabad Office</span>
-                        </div>
 
-                        {/* Content Row */}
-                        <div className="md:col-span-1">
+                        {/* Social Icons - below addresses on mobile, below email on desktop */}
+                        <div className="order-last md:order-none md:col-start-1 md:row-start-2">
                             <div className="flex gap-3 pl-1">
                                 <Link href="https://x.com/thefoundrys" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Twitter size={14} /></Link>
                                 <Link href="https://www.linkedin.com/company/the-foundry-s" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Linkedin size={14} /></Link>
@@ -94,13 +82,29 @@ export function Footer({ hideCTA = false }: FooterProps) {
                                 <Link href="https://www.facebook.com/profile.php?id=61587055543711" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-all"><Facebook size={14} /></Link>
                             </div>
                         </div>
-                        <div className="md:col-span-1 pl-12">
-                            <span className="block text-slate-500 leading-relaxed text-sm">
+
+                        {/* USA Office */}
+                        <div className="md:col-start-2 md:row-start-1 md:row-span-2 flex flex-col gap-2">
+                            <div className="flex items-start gap-4">
+                                <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+                                    <MapPin size={14} className="text-slate-600" />
+                                </div>
+                                <span className="text-sm font-bold text-slate-900 mt-2">United States of America</span>
+                            </div>
+                            <span className="block text-slate-500 leading-relaxed text-sm pl-12">
                                 2343 Dulles Station Blvd, Apt 256, Herndon, Virginia 20171
                             </span>
                         </div>
-                        <div className="md:col-span-2 pl-12">
-                            <span className="block text-slate-500 leading-relaxed text-sm">
+
+                        {/* Hyderabad Office */}
+                        <div className="md:col-start-3 md:col-span-2 md:row-start-1 md:row-span-2 flex flex-col gap-2">
+                            <div className="flex items-start gap-4">
+                                <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+                                    <MapPin size={14} className="text-slate-600" />
+                                </div>
+                                <span className="text-sm font-bold text-slate-900 mt-2">Hyderabad Office</span>
+                            </div>
+                            <span className="block text-slate-500 leading-relaxed text-sm pl-12">
                                 Sasi Icon, Beside Madhapur Metro Station, Jubilee Hills, <br />
                                 Road No 36 & 37, Hyderabad, Telangana - 500033
                             </span>
