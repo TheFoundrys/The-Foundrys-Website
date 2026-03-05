@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import { ArrowUpRight, CheckCircle2, ShieldCheck } from "lucide-react";
 import Link from "next/link";
-import { useRegionalPricing } from "@/lib/useRegionalPricing";
+import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
 
 export default function EntryLevelCyberSecurityPage() {
     const { symbol, currency } = useRegionalPricing();
@@ -35,40 +35,38 @@ export default function EntryLevelCyberSecurityPage() {
                 <div className="container mx-auto max-w-6xl">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                         <CourseCard
-                            sku="CS 001"
-                            title="Certified in Cyber Security"
-                            priceINR={{ original: "150,000", discounted: "75,000" }}
-                            priceUSD={{ original: "3,000", discounted: "1,500" }}
-                            desc="Foundational concepts of network security, ethical hacking basics, and digital defense principles."
+                            sku="CC 001"
+                            title="Certified in Cyber Security (CC)"
+                            originalPrice={COURSE_PRICING.certifiedInCybersecurity.original[currency]}
+                            discountedPrice={COURSE_PRICING.certifiedInCybersecurity.freshers[currency]}
+                            desc="Master (ISC)² cybersecurity domains. Build a strong foundation in network security, access control, and security operations."
                             symbol={symbol}
-                            currency={currency}
+                            href="/programs/entry-level/cyber-security/certified-in-cybersecurity"
+                            enrollHref="https://compass.thefoundrys.com/courses/cyber-security/Certified-in-Cyber-Security"
                         />
                         <CourseCard
                             sku="CS 003"
                             title="Certified in VAPT for AI"
-                            priceINR={{ original: "150,000", discounted: "75,000" }}
-                            priceUSD={{ original: "3,000", discounted: "1,500" }}
+                            originalPrice="1,50,000"
+                            discountedPrice="75,000"
                             desc="Introduction to Vulnerability Assessment and Penetration Testing with a focus on AI components."
                             symbol={symbol}
-                            currency={currency}
                         />
                         <CourseCard
                             sku="CS 005"
                             title="Certified in Security for AI"
-                            priceINR={{ original: "150,000", discounted: "75,000" }}
-                            priceUSD={{ original: "3,000", discounted: "1,500" }}
+                            originalPrice="1,50,000"
+                            discountedPrice="75,000"
                             desc="Understanding the unique security challenges posed by artificial intelligence and how to mitigate them."
                             symbol={symbol}
-                            currency={currency}
                         />
                         <CourseCard
                             sku="CS 007"
                             title="Certified in AI Security"
-                            priceINR={{ original: "150,000", discounted: "75,000" }}
-                            priceUSD={{ original: "3,000", discounted: "1,500" }}
+                            originalPrice="1,50,000"
+                            discountedPrice="75,000"
                             desc="Master the core protocols for securing AI systems and protecting neural networks."
                             symbol={symbol}
-                            currency={currency}
                         />
                     </div>
                 </div>
@@ -79,15 +77,7 @@ export default function EntryLevelCyberSecurityPage() {
     );
 }
 
-interface PricePair {
-    original: string;
-    discounted: string;
-}
-
-function CourseCard({ sku, title, priceINR, priceUSD, desc, symbol, currency }: { sku: string, title: string, priceINR: PricePair, priceUSD: PricePair, desc: string, symbol: string, currency: 'INR' | 'USD' }) {
-    const originalPrice = currency === 'USD' ? priceUSD.original : priceINR.original;
-    const discountedPrice = currency === 'USD' ? priceUSD.discounted : priceINR.discounted;
-
+function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discountLabel = "50% Discount", href = "/apply", enrollHref, duration = "6 Weeks", persona = "UG / PG Students", isBestSeller = false, symbol = "₹" }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string, discountLabel?: string, href?: string, enrollHref?: string, duration?: string, persona?: string, isBestSeller?: boolean, symbol?: string }) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -99,37 +89,76 @@ function CourseCard({ sku, title, priceINR, priceUSD, desc, symbol, currency }: 
                 <div className="flex justify-between items-start mb-4">
                     <span className="text-xs font-bold text-slate-400 tracking-wider uppercase bg-slate-100 px-2 py-1 rounded">{sku}</span>
                     <div className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100">
-                        Entry-Level Course
+                        Entry-Level {duration} Course
                     </div>
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-teal-600 transition-colors">{title}</h3>
                 <p className="text-slate-600 leading-relaxed mb-6">{desc}</p>
 
-                <div className="flex items-center gap-2 text-sm text-slate-500 mb-6 font-medium">
-                    <CheckCircle2 size={16} className="text-teal-500" /> Hybrid Format
-                    <span className="mx-2">•</span>
-                    <CheckCircle2 size={16} className="text-teal-500" /> Weekend compatible
+                <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-slate-500 mb-6 font-medium">
+                    <div className="flex items-center gap-2">
+                        <CheckCircle2 size={16} className="text-teal-500" />
+                        Hybrid Format
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                        <CheckCircle2 size={16} className="text-teal-500" />
+                        (ISC)² Alignment
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                        <CheckCircle2 size={16} className="text-teal-500" />
+                        Professional Labs
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <CheckCircle2 size={16} className="text-teal-500" />
+                        {persona}
+                    </div>
                 </div>
             </div>
 
-            <div className="p-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <div className="p-6 bg-slate-50 border-t border-slate-100 flex flex-col sm:flex-row md:flex-col lg:flex-row items-start sm:items-center md:items-start lg:items-center justify-between gap-4">
                 <div>
+                    {isBestSeller && (
+                        <div className="inline-block px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-bold uppercase tracking-wide mb-2 rounded">
+                            Bestseller
+                        </div>
+                    )}
                     <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
                     <div className="flex flex-col">
                         <span className="text-sm text-slate-400 line-through font-medium">{symbol}{originalPrice}</span>
                         <div className="flex items-baseline gap-2">
                             <span className="text-2xl font-bold text-slate-900">{symbol}{discountedPrice}</span>
-                            <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">50% Discount</span>
+                            <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">{discountLabel}</span>
                         </div>
                     </div>
                 </div>
-                <Link
-                    href="/apply"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-teal-600 transition-colors shadow-lg hover:shadow-teal-500/25"
-                >
-                    View Program <ArrowUpRight size={18} />
-                </Link>
+                <div className="flex flex-wrap gap-2 w-full sm:w-auto md:w-full lg:w-auto">
+                    <Link
+                        href={href}
+                        className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-slate-900 border border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition-colors shadow-sm"
+                    >
+                        Details
+                    </Link>
+                    {enrollHref && (
+                        <Link
+                            href={enrollHref}
+                            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-teal-600 transition-colors shadow-lg hover:shadow-teal-500/25"
+                        >
+                            Enroll Now <ArrowUpRight size={18} />
+                        </Link>
+                    )}
+                    {!enrollHref && (
+                        <Link
+                            href={href}
+                            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-teal-600 transition-colors shadow-lg hover:shadow-teal-500/25"
+                        >
+                            View Program <ArrowUpRight size={18} />
+                        </Link>
+                    )}
+                </div>
             </div>
         </motion.div>
     )
 }
+

@@ -97,6 +97,7 @@ export interface CoursePricing {
     certifiedInnovatorMBA: PriceTier;
     agenticAIBootcamp: PriceTier;
     aiFluency: PriceTier;
+    certifiedInCybersecurity: PriceTier;
 }
 
 export const COURSE_PRICING: CoursePricing = {
@@ -189,5 +190,11 @@ export const COURSE_PRICING: CoursePricing = {
         freshers: { INR: '5,000', USD: '200' },
         zeroToTwo: { INR: '5,500', USD: '200' },
         twoToFive: { INR: '5,000', USD: '200' },
+    },
+    certifiedInCybersecurity: {
+        original: { INR: '1,50,000', USD: '3,000' },
+        freshers: { INR: '75,000', USD: '1,500' },
+        zeroToTwo: { INR: '1,12,500', USD: '2,250' },
+        twoToFive: { INR: '1,35,000', USD: '2,700' },
     },
 };
