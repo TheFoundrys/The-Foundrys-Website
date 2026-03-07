@@ -9,12 +9,15 @@ const LOGOS = [
   "/logos/Faba.png",
   // "/logos/gs.png",
   "/logos/redshelid1.png",
+  "logos/optgpt.png",
+  "logos/markitome.png",
   "/logos/csi.png",
   "logos/image.png",
   "/logos/techop.png",
   "/logos/OptGrad_logo.png",
   "/logos/optsearch.png",
-  "logos/hive_link_logo.jpg"
+  "logos/hive_link_logo.jpg",
+  "AI COMPASS"
 ];
 
 export function InfiniteLogoScroll() {
@@ -46,12 +49,18 @@ export function InfiniteLogoScroll() {
         >
           {/* Double the logos to create seamless loop */}
           {[...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS].map((logo, index) => (
-            <div key={index} className="flex-shrink-0 w-28 md:w-40 lg:w-48 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 flex items-center justify-center p-2">
-              <img
-                src={logo}
-                alt={`Partner logo ${index}`}
-                className="w-full h-auto max-h-10 md:max-h-14 lg:max-h-16 object-contain"
-              />
+            <div key={index} className="flex-shrink-0 min-w-28 md:min-w-40 lg:min-w-48 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 flex items-center justify-center p-2">
+              {logo.includes(".") ? (
+                <img
+                  src={logo.startsWith("/") ? logo : `/${logo}`}
+                  alt={`Partner logo ${index}`}
+                  className="w-full h-auto max-h-10 md:max-h-14 lg:max-h-16 object-contain"
+                />
+              ) : (
+                <span className="text-xl md:text-2xl lg:text-3xl font-black text-red-600 whitespace-nowrap tracking-tighter">
+                  {logo}
+                </span>
+              )}
             </div>
           ))}
         </motion.div>
