@@ -6,7 +6,9 @@ import { motion } from "framer-motion";
 import { Calendar, Clock, MapPin, ArrowUpRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 
-const upcomingEvents = [
+const upcomingEvents: any[] = [];
+
+const pastEvents = [
     {
         id: 1,
         title: "Join Us for the AI @GenZ",
@@ -59,7 +61,7 @@ export default function EventsPage() {
                 </div>
             </section>
 
-            {/* Upcoming Events Section */}
+            {/* Past Events Section */}
             <section className="py-20 md:py-28 px-6 bg-white">
                 <div className="container mx-auto max-w-5xl">
                     <motion.div
@@ -70,18 +72,18 @@ export default function EventsPage() {
                         className="mb-12"
                     >
                         <div className="text-blue-600 font-bold uppercase tracking-widest text-xs mb-3">
-                            What&apos;s Coming Up
+                            Looking Back
                         </div>
                         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
-                            Upcoming Events
+                            Past Events
                         </h2>
                         <p className="text-slate-500 mt-3 text-lg max-w-2xl">
-                            Stay ahead of the curve with workshops, talks, hackathons, and community sessions happening all year round.
+                            Memories of moments that sparked action and change. Relive the experiences that define our community.
                         </p>
                     </motion.div>
 
                     <div className="flex flex-col gap-8">
-                        {upcomingEvents.map((event, i) => (
+                        {pastEvents.map((event, i) => (
                             <motion.div
                                 key={event.id}
                                 initial={{ opacity: 0, y: 30 }}
@@ -95,18 +97,7 @@ export default function EventsPage() {
                                         : "border-slate-200 bg-white shadow-sm"
                                         }`}
                                 >
-                                    {/* Featured Badge */}
-                                    {event.featured && (
-                                        <div className="absolute top-6 right-6 z-10">
-                                            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-bold uppercase tracking-wider shadow-lg">
-                                                <Sparkles size={12} />
-                                                Featured
-                                            </div>
-                                        </div>
-                                    )}
-
                                     <div className="p-8 md:p-10">
-                                        {/* Event Type Tag */}
                                         <div className="inline-block px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider mb-5">
                                             {event.type}
                                         </div>
@@ -119,7 +110,6 @@ export default function EventsPage() {
                                             {event.description}
                                         </p>
 
-                                        {/* Event Details Grid */}
                                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                                             <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
                                                 <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
@@ -164,9 +154,8 @@ export default function EventsPage() {
                                             </div>
                                         </div>
 
-                                        {/* Tags */}
                                         <div className="flex flex-wrap gap-2 mb-8">
-                                            {event.tags.map((tag) => (
+                                            {event.tags.map((tag: string) => (
                                                 <span
                                                     key={tag}
                                                     className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-bold"
@@ -176,17 +165,7 @@ export default function EventsPage() {
                                             ))}
                                         </div>
 
-                                        {/* Action Buttons */}
                                         <div className="flex flex-col sm:flex-row gap-3">
-                                            <a
-                                                href="https://luma.com/cp4d1w4b"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
-                                            >
-                                                Register Now
-                                                <ArrowUpRight size={16} />
-                                            </a>
                                             <a
                                                 href={event.mapsUrl}
                                                 target="_blank"
@@ -202,6 +181,165 @@ export default function EventsPage() {
                             </motion.div>
                         ))}
                     </div>
+                </div>
+            </section>
+
+            {/* Upcoming Events Section */}
+            <section className="py-20 md:py-28 px-6 bg-slate-50">
+                <div className="container mx-auto max-w-5xl">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="mb-12"
+                    >
+                        <div className="text-blue-600 font-bold uppercase tracking-widest text-xs mb-3">
+                            What&apos;s Coming Up
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+                            Upcoming Events
+                        </h2>
+                        <p className="text-slate-500 mt-3 text-lg max-w-2xl">
+                            Stay ahead of the curve with workshops, talks, hackathons, and community sessions happening all year round.
+                        </p>
+                    </motion.div>
+
+                    {upcomingEvents.length > 0 ? (
+                        <div className="flex flex-col gap-8">
+                            {upcomingEvents.map((event, i) => (
+                                <motion.div
+                                    key={event.id}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                                >
+                                    <div
+                                        className={`relative rounded-3xl overflow-hidden border ${event.featured
+                                            ? "border-blue-200 bg-gradient-to-br from-blue-50/80 via-white to-indigo-50/50 shadow-xl shadow-blue-100/50"
+                                            : "border-slate-200 bg-white shadow-sm"
+                                            }`}
+                                    >
+                                        {/* Featured Badge */}
+                                        {event.featured && (
+                                            <div className="absolute top-6 right-6 z-10">
+                                                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-bold uppercase tracking-wider shadow-lg">
+                                                    <Sparkles size={12} />
+                                                    Featured
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        <div className="p-8 md:p-10">
+                                            {/* Event Type Tag */}
+                                            <div className="inline-block px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider mb-5">
+                                                {event.type}
+                                            </div>
+
+                                            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight mb-4 max-w-2xl">
+                                                {event.title}
+                                            </h3>
+
+                                            <p className="text-slate-500 text-base md:text-lg leading-relaxed mb-8 max-w-3xl">
+                                                {event.description}
+                                            </p>
+
+                                            {/* Event Details Grid */}
+                                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                                                <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
+                                                    <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                                                        <Calendar size={20} />
+                                                    </div>
+                                                    <div>
+                                                        <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
+                                                            Date
+                                                        </div>
+                                                        <div className="font-bold text-slate-900">
+                                                            {event.date}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
+                                                    <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 shrink-0">
+                                                        <Clock size={20} />
+                                                    </div>
+                                                    <div>
+                                                        <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
+                                                            Time
+                                                        </div>
+                                                        <div className="font-bold text-slate-900">
+                                                            {event.time}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
+                                                    <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0">
+                                                        <MapPin size={20} />
+                                                    </div>
+                                                    <div>
+                                                        <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
+                                                            Venue
+                                                        </div>
+                                                        <div className="font-bold text-slate-900">
+                                                            {event.venue}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {/* Tags */}
+                                            <div className="flex flex-wrap gap-2 mb-8">
+                                                {event.tags.map((tag: string) => (
+                                                    <span
+                                                        key={tag}
+                                                        className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-bold"
+                                                    >
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+
+                                            {/* Action Buttons */}
+                                            <div className="flex flex-col sm:flex-row gap-3">
+                                                <a
+                                                    href="https://luma.com/cp4d1w4b"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+                                                >
+                                                    Register Now
+                                                    <ArrowUpRight size={16} />
+                                                </a>
+                                                <a
+                                                    href={event.mapsUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-slate-900 text-white rounded-full font-bold hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+                                                >
+                                                    <MapPin size={16} />
+                                                    View on Google Maps
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    ) : (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            className="text-center py-20 bg-white rounded-3xl border border-dashed border-slate-300"
+                        >
+                            <Calendar size={48} className="mx-auto text-slate-300 mb-4" />
+                            <h3 className="text-xl font-bold text-slate-900 mb-2">Something Big is Coming!</h3>
+                            <p className="text-slate-500">We&apos;re currently planning our next set of events. Stay tuned for updates.</p>
+                        </motion.div>
+                    )}
                 </div>
             </section>
 
