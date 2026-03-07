@@ -10,6 +10,7 @@ const LOGOS = [
   // "/logos/gs.png",
   "/logos/redshelid1.png",
   "/logos/csi.png",
+  "logos/image.png",
   "/logos/techop.png",
   "/logos/OptGrad_logo.png",
   "/logos/optsearch.png",
