@@ -37,14 +37,14 @@ export default function VivekRangabhashyamProfile() {
                                         <span className="text-lg font-bold">Vivek Rangabhashyam</span>
                                     </div>
                                 </Link>
-                                {/* In a real scenario, we'd have an image here:
+
                                 <Image
-                                    src="/images/vivek-rangabhashyam.jpg"
+                                    src="/images/Vivek.jpg"
                                     alt="Vivek Rangabhashyam"
                                     fill
                                     className="object-cover"
-                                /> 
-                                */}
+                                />
+
                             </div>
                             {/* Decorative elements */}
                             <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-500/20 blur-3xl rounded-full" />
