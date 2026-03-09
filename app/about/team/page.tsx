@@ -38,7 +38,17 @@ const teamMembers = [
             linkedin: "https://www.linkedin.com/in/pvenkatanreddy",
         }
     },
-    // Add more team members here
+    {
+        name: "Vivek Rangabhashyam",
+        role: "3D Animation Specialist & Serial Entrepreneur",
+        bio: "Veteran 3D Animation Specialist and entrepreneur. Former Google 'GXBO' contributor and founder of Markitome, specializing in startup mentorship and global networking.",
+        image: "/images/vivek.jpg",
+        profileLink: "/about/faculty/vivek-rangabhashyam",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/vivekrangabhashyam/",
+            website: "https://vivekrangabhashyam.com/"
+        }
+    },
 ];
 
 export default function TeamPage() {

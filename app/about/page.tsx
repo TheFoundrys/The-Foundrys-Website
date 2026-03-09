@@ -3,7 +3,7 @@
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Linkedin, Globe } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -127,6 +127,59 @@ export default function AboutPage() {
                     </div>
                 </div>
             </section>
+
+            {/* Vivek Section */}
+            {/* <section className="py-16 md:py-24 bg-white text-slate-900 relative overflow-hidden border-t border-slate-100">
+                <div className="container mx-auto max-w-6xl relative z-10 px-6">
+                    <div className="flex flex-col lg:flex-row-reverse gap-10 lg:gap-16 items-start">
+
+                       
+                        <div className="flex-1 w-full relative">
+                            <div className="relative aspect-square w-full max-w-sm md:max-w-md mx-auto rounded-full overflow-hidden border-4 border-slate-100 bg-slate-200 shadow-xl">
+                                <div className="absolute inset-0 flex items-center justify-center text-slate-400 font-bold">
+                                    Vivek Rangabhashyam
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div className="flex-[1.5] space-y-6 md:space-y-8">
+                            <div className="text-center lg:text-left">
+                                <h2 className="text-3xl md:text-5xl font-bold mb-2 text-slate-900">Vivek Rangabhashyam</h2>
+                                <p className="text-lg md:text-xl text-blue-600 font-medium">3D Animation Specialist & Serial Entrepreneur</p>
+                            </div>
+
+                            <div className="space-y-6 text-slate-600 text-base md:text-lg leading-relaxed">
+                                <p>
+                                    Vivek Rangabhashyam is a seasoned 3D Animation Specialist who has worked on major movie franchises and educational content. His journey from Google&apos;s &apos;GXBO&apos; project to serial entrepreneurship has made him a pivotal figure in the startup ecosystem.
+                                </p>
+                                <p>
+                                    As the founder of Markitome and co-founder of Sea Ridges Financial Service, Vivek has dedicated his career to mentoring young entrepreneurs and consulting with startups worldwide, bridging the gap between technical expertise and business leadership.
+                                </p>
+                            </div>
+
+                            <div className="flex flex-col md:flex-row items-center gap-4 pt-4 w-full">
+                                <Link
+                                    href="/about/faculty/vivek-rangabhashyam"
+                                    className="w-full md:w-auto inline-flex justify-center items-center gap-2 px-8 py-4 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-slate-800 transition-all hover:scale-105 whitespace-nowrap"
+                                >
+                                    Read Full Story <ArrowUpRight size={20} />
+                                </Link>
+
+                                <div className="flex gap-4">
+                                    <Link href="https://www.linkedin.com/in/vivekrangabhashyam/" target="_blank" className="p-3 rounded-full bg-slate-100 text-slate-600 hover:bg-blue-600 hover:text-white transition-colors border border-slate-200">
+                                        <Linkedin size={20} />
+                                    </Link>
+                                    <Link href="https://vivekrangabhashyam.com/" target="_blank" className="p-3 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-colors border border-slate-200">
+                                        <Globe size={20} />
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> */}
+
 
             {/* Meet the Team CTA */}
             {/* <section className="py-24 px-6 bg-slate-900 border-t border-slate-800">
