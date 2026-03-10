@@ -45,7 +45,7 @@ const teamMembers = [
         image: "/images/Vivek.jpg",
         profileLink: "/about/faculty/vivek-rangabhashyam",
         socials: {
-            linkedin: "https://www.linkedin.com/in/vivekrangabhashyam/",
+            linkedin: "https://www.linkedin.com/in/vivekranga/",
             website: "https://vivekrangabhashyam.com/"
         }
     },

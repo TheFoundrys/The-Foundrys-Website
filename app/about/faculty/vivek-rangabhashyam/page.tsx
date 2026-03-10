@@ -70,7 +70,7 @@ export default function VivekRangabhashyamProfile() {
 
                                 <div className="flex flex-wrap gap-3 mb-6">
                                     <a
-                                        href="https://www.linkedin.com/in/vivekrangabhashyam/"
+                                        href="https://www.linkedin.com/in/vivekranga/"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-full transition-colors"

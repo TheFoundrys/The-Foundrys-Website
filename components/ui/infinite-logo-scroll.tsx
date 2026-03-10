@@ -17,8 +17,7 @@ const LOGOS = [
   "/logos/OptGrad_logo.png",
   "/logos/optsearch.png",
   "logos/hive_link_logo.jpg",
-  "AI COMPASS"
-];
+  "AI COMPASS"];
 
 export function InfiniteLogoScroll() {
   return (
@@ -57,7 +56,7 @@ export function InfiniteLogoScroll() {
                   className="w-full h-auto max-h-10 md:max-h-14 lg:max-h-16 object-contain"
                 />
               ) : (
-                <span className="text-xl md:text-2xl lg:text-3xl font-black text-red-600 whitespace-nowrap tracking-tighter">
+                <span className="text-xl md:text-2xl lg:text-3xl font-black text-blue-600 whitespace-nowrap tracking-tighter">
                   {logo}
                 </span>
               )}
