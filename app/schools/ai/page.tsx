@@ -23,10 +23,13 @@ import {
     Rocket,
     BrainCircuit,
     Database,
-    Globe
+    Globe,
+    Bot,
+    Layers
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { CareerVision } from "@/components/schools/shared/career-vision";
 import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
 
 
@@ -117,6 +120,72 @@ const CAREER_ROLES = [
             "Selecting vendor vs custom AI stacks",
             "Defining AI-driven product roadmaps",
             "Reporting AI ROI to the board"
+        ]
+    },
+    {
+        id: "embodied-ai-specialist",
+        label: "Embodied AI Specialist",
+        title: "Embodied AI Specialist",
+        desc: "Specializes in the intersection of LLMs and physical robotics, designing the 'brain' for humanoid and industrial autonomous robots.",
+        salary: "₹75L - 1.1Cr",
+        growth: "+55% YoY",
+        skills: [
+            "Robotics (ROS2)",
+            "Computer Vision",
+            "Kinematics",
+            "Real-time Inference",
+            "Sensor Fusion"
+        ],
+        responsibilities: [
+            "Mapping vision to physical motor control",
+            "Optimizing onboard model latency",
+            "Designing gesture-based interaction",
+            "Leading humanoid cognitive research",
+            "Implementing spatial reasoning loops"
+        ]
+    },
+    {
+        id: "synthetic-data-architect",
+        label: "Synthetic Data Architect",
+        title: "Synthetic Data Architect",
+        desc: "Engineers complex simulations and generative pipelines to produce high-fidelity training data for frontier model development.",
+        salary: "₹65L - 90L",
+        growth: "+40% YoY",
+        skills: [
+            "Generative AI",
+            "Data Engineering",
+            "Simulation (Unreal/Unity)",
+            "Statistical Validation",
+            "GANs/VAEs"
+        ],
+        responsibilities: [
+            "Building high-fidelity simulation worlds",
+            "Mitigating data bias in synthetic sets",
+            "Designing recursive training loops",
+            "Validating synthetic data distribution",
+            "Scaling automated data pipelines"
+        ]
+    },
+    {
+        id: "cross-modal-systems-designer",
+        label: "Cross-Modal Systems Designer",
+        title: "Cross-Modal Systems Designer",
+        desc: "Architects systems that seamlessly translate intelligence across text, vision, audio, and tactile sensors for unified world-models.",
+        salary: "₹70L - 1.Cr",
+        growth: "+48% YoY",
+        skills: [
+            "Multi-modal LLMs",
+            "Audio Processing",
+            "Transformer Architecture",
+            "Latent Space Analysis",
+            "Feature Embedding"
+        ],
+        responsibilities: [
+            "Aligning visual and textual embeddings",
+            "Designing cross-attention mechanisms",
+            "Optimizing multi-modal batching",
+            "Building unified sensory-input layers",
+            "Evaluating model cross-modal coherence"
         ]
     }
 ];
@@ -444,106 +513,138 @@ export default function AISchoolPage() {
                 </div>
             </section>
 
-            {/* 2. Eligibility */}
-            <section id="eligibility" className="py-24 px-6 bg-slate-50 overflow-hidden">
-                <div className="container mx-auto max-w-6xl">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Eligibility</h2>
-                        <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                            Admission to The Foundry is based on your potential to create and lead. We value diverse backgrounds and look for individuals who demonstrate logical clarity and a hunger for building.
-                        </p>
-                    </div>
+            {/* 2. Eligibility - REVISED EXPANSIVE DESIGN */}
+            <section id="eligibility" className="py-32 px-6 bg-white overflow-hidden relative">
+                {/* Subtle Background Elements */}
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50/50 -skew-x-12 translate-x-1/4 z-0" />
+                <div className="absolute top-40 left-10 text-[15rem] font-black text-slate-100/50 select-none pointer-events-none z-0 tracking-tighter">
+                    QUALIFY
+                </div>
 
-                    <div className="grid lg:grid-cols-2 gap-8 mb-12">
-                        <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-                            <div className="bg-slate-900 px-8 py-4">
-                                <h3 className="text-xl font-bold text-white flex items-center gap-3">
-                                    <Award size={20} className="text-blue-400" />
-                                    Academic Eligibility
-                                </h3>
-                            </div>
-                            <div className="p-8">
-                                <div className="grid md:grid-cols-2 gap-8">
-                                    <div>
-                                        <h4 className="font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">Standard Pathway</h4>
-                                        <ul className="space-y-4 text-slate-700">
-                                            <li className="flex gap-3">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
-                                                <span>Successful completion of <strong>Class 12 / Intermediate</strong> (or equivalent).</span>
-                                            </li>
-                                            <li className="flex gap-3">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
-                                                <span><strong>No Mandatory Subjects</strong>: Students from MPC, BiPC, CEC, HEC, Commerce, or Arts are all eligible.</span>
-                                            </li>
-                                            <li className="flex gap-3">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
-                                                <span>Minimum aggregate of <strong>60%</strong> in core subjects.</span>
-                                            </li>
-                                        </ul>
+                <div className="container mx-auto max-w-7xl relative z-10">
+                    <div className="grid lg:grid-cols-12 gap-16 md:gap-24 items-start">
+                        {/* Left Column: Heading & Narrative */}
+                        <div className="lg:col-span-5 pt-4">
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                            >
+                                <p className="text-blue-600 text-sm font-bold uppercase tracking-[0.3em] mb-6">Entry Standards</p>
+                                <h2 className="text-5xl md:text-7xl font-bold text-slate-900 mb-10 tracking-tight leading-[0.9]">
+                                    Unlocking <br />
+                                    <span className="text-slate-400">Potential.</span>
+                                </h2>
+                                <p className="text-xl text-slate-600 leading-relaxed font-light mb-12">
+                                    Admissions at The Foundry prioritized logical clarity over rote memorization. We seek the architects of tomorrow, regardless of their academic stream or prior technical experience.
+                                </p>
+
+                                <div className="p-8 bg-slate-900 rounded-[2rem] text-white shadow-2xl relative overflow-hidden group">
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-colors" />
+                                    <h3 className="text-2xl font-bold italic mb-4">Who we look for</h3>
+                                    <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                                        We look for the <span className="text-white font-bold">&quot;misfits&quot;</span> and the <span className="text-white font-bold">&quot;builders&quot;</span>—individuals who are dissatisfied with the status quo and see the world as a series of problems to be solved.
+                                    </p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {["Curious", "Logical", "Persistent", "Grit"].map((t) => (
+                                            <span key={t} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-blue-400">
+                                                {t}
+                                            </span>
+                                        ))}
                                     </div>
-                                    <div>
-                                        <h4 className="font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">Alternative Credentials</h4>
-                                        <ul className="space-y-4 text-slate-700">
-                                            <li className="flex gap-3">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
-                                                <span><strong>IB Diploma</strong>: Minimum 24 points.</span>
-                                            </li>
-                                            <li className="flex gap-3">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
-                                                <span><strong>A-Levels</strong>: Passed in at least 3 subjects.</span>
-                                            </li>
-                                            <li className="flex gap-3">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
-                                                <span><strong>BTEC/Vocational</strong>: Evaluated on a case-by-case basis.</span>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <Link href="/apply" className="mt-8 inline-flex items-center gap-2 text-white font-bold group">
+                                        Unlock Potential
+                                        <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                    </Link>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
 
-                        <div className="space-y-8">
-                            <div className="p-8 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                                <div className="flex items-center gap-4 mb-6">
-                                    <ShieldCheck className="text-blue-600" />
-                                    <h3 className="text-xl font-bold text-slate-900">Prerequisites</h3>
+                        {/* Right Column: Requirements Grid */}
+                        <div className="lg:col-span-7 space-y-20">
+                            {/* Academic Row */}
+                            <motion.div
+                                initial={{ opacity: 0, x: 50 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                className="space-y-10"
+                            >
+                                <div className="flex items-center gap-6">
+                                    <div className="h-px bg-slate-200 flex-1" />
+                                    <h3 className="text-xs font-black text-slate-400 uppercase tracking-[0.4em] whitespace-nowrap">Academic Eligibility</h3>
                                 </div>
-                                <ul className="space-y-5">
-                                    <li>
-                                        <p className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-1">Coding Experience</p>
-                                        <p className="text-slate-600 text-sm"><strong>Zero prior coding experience</strong> is required. We teach you from the ground up.</p>
-                                    </li>
-                                    <li>
-                                        <p className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-1">English Proficiency</p>
-                                        <p className="text-slate-600 text-sm"><strong>No IELTS or TOEFL</strong> required. We value clear communication over test scores.</p>
-                                    </li>
-                                    <li>
-                                        <p className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-1">Entrance Tests</p>
-                                        <p className="text-slate-600 text-sm"><strong>No traditional entrance exams</strong>. Seats allocated based on academic merit and profile evaluation.</p>
-                                    </li>
-                                </ul>
-                            </div>
 
-                            <div className="p-8 bg-blue-600 rounded-2xl text-white">
-                                <h3 className="text-2xl font-bold italic mb-4">Who we look for</h3>
-                                <p className="text-blue-50 leading-relaxed mb-6">
-                                    We are looking for the "misfits" and the "builders" — individuals who are dissatisfied with the status quo and want to build the future.
-                                </p>
-                                <div className="space-y-3">
-                                    <div className="flex items-center gap-3 text-sm font-bold bg-white/10 p-3 rounded-lg border border-white/20">
-                                        <div className="w-2 h-2 rounded-full bg-white" />
-                                        Intellectual Curiosity
+                                <div className="grid md:grid-cols-2 gap-12">
+                                    <div className="space-y-6">
+                                        <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold">1</div>
+                                        <h4 className="text-xl font-bold text-slate-900">Standard Pathway</h4>
+                                        <ul className="space-y-4 text-slate-500 text-sm font-medium">
+                                            <li className="flex items-start gap-3">
+                                                <CheckCircle2 size={16} className="text-emerald-500 mt-0.5 shrink-0" />
+                                                <span>Grade 12 / Intermediate from any recognized board.</span>
+                                            </li>
+                                            <li className="flex items-start gap-3">
+                                                <CheckCircle2 size={16} className="text-emerald-500 mt-0.5 shrink-0" />
+                                                <span>MPC, BiPC, CEC, HEC, or Arts—all streams are eligible.</span>
+                                            </li>
+                                            <li className="flex items-start gap-3">
+                                                <CheckCircle2 size={16} className="text-emerald-500 mt-0.5 shrink-0" />
+                                                <span>Min. 60% aggregate in core subjects.</span>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <div className="flex items-center gap-3 text-sm font-bold bg-white/10 p-3 rounded-lg border border-white/20">
-                                        <div className="w-2 h-2 rounded-full bg-white" />
-                                        Logical Problem Solving
-                                    </div>
-                                    <div className="flex items-center gap-3 text-sm font-bold bg-white/10 p-3 rounded-lg border border-white/20">
-                                        <div className="w-2 h-2 rounded-full bg-white" />
-                                        Persistence & Grit
+                                    <div className="space-y-6">
+                                        <div className="w-10 h-10 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold">2</div>
+                                        <h4 className="text-xl font-bold text-slate-900">Global Credentials</h4>
+                                        <div className="space-y-4">
+                                            <div className="flex justify-between items-end pb-2 border-b border-slate-100">
+                                                <span className="text-sm text-slate-500">IB Diploma</span>
+                                                <span className="font-bold text-slate-900">24+ Points</span>
+                                            </div>
+                                            <div className="flex justify-between items-end pb-2 border-b border-slate-100">
+                                                <span className="text-sm text-slate-500">A-Levels</span>
+                                                <span className="font-bold text-slate-900">3 Subjects</span>
+                                            </div>
+                                            <p className="text-[10px] text-slate-400 italic">Other vocational boards evaluated case-by-case.</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
+
+                            {/* Zero-Gate Row */}
+                            <motion.div
+                                initial={{ opacity: 0, x: 50 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="space-y-10"
+                            >
+                                <div className="flex items-center gap-6">
+                                    <div className="h-px bg-slate-200 flex-1" />
+                                    <h3 className="text-xs font-black text-slate-400 uppercase tracking-[0.4em] whitespace-nowrap">Zero-Gate Admissions</h3>
+                                </div>
+
+                                <div className="grid md:grid-cols-2 gap-12">
+                                    <div className="space-y-4">
+                                        <div className="flex items-center gap-4 text-slate-900">
+                                            <Code2 className="text-blue-600" size={24} />
+                                            <h4 className="text-lg font-bold">No Code Start</h4>
+                                        </div>
+                                        <p className="text-sm text-slate-500 leading-relaxed">
+                                            We teach from the absolute ground up. No prior programming knowledge or technical background is required to begin your journey.
+                                        </p>
+                                    </div>
+                                    <div className="space-y-4">
+                                        <div className="flex items-center gap-4 text-slate-900">
+                                            <ShieldCheck className="text-indigo-600" size={24} />
+                                            <h4 className="text-lg font-bold">Aptitude Driven</h4>
+                                        </div>
+                                        <p className="text-sm text-slate-500 leading-relaxed">
+                                            Forget high-stress entrance exams. We evaluate you on logical clarity, situational persistence, and your profile potential.
+                                        </p>
+                                    </div>
+                                </div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
@@ -560,75 +661,29 @@ export default function AISchoolPage() {
                 </div>
             </section>
 
-            {/* 4. AI Post 2035 Jobs */}
-            <section id="careers" className="py-24 px-6 bg-slate-50 overflow-hidden">
-                <div className="container mx-auto max-w-6xl">
-                    <div className="text-center mb-12">
-                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">AI Post 2035 Jobs</h2>
-                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">The roles our graduates are being trained to lead. These aren't jobs — they're missions.</p>
-                    </div>
-                    <div className="flex flex-wrap justify-center gap-3 mb-8">
-                        {CAREER_ROLES.map((role) => (
-                            <button
-                                key={role.id}
-                                onClick={() => setActiveRole(role)}
-                                className={`px-5 py-2.5 rounded-full font-bold text-sm transition-all ${activeRole.id === role.id
-                                    ? 'bg-blue-600 text-white shadow-lg scale-105'
-                                    : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
-                                    }`}
-                            >
-                                {role.label}
-                            </button>
-                        ))}
-                    </div>
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activeRole.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.3 }}
-                            className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-200"
-                        >
-                            <div className="flex flex-col lg:flex-row gap-10">
-                                <div className="flex-1">
-                                    <h3 className="text-3xl font-bold text-slate-900 mb-3">{activeRole.title}</h3>
-                                    <p className="text-slate-600 leading-relaxed mb-6">{activeRole.desc}</p>
-                                    <div className="flex gap-6 mb-8">
-                                        <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-                                            <div className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Avg. Compensation</div>
-                                            <div className="text-xl font-bold text-slate-900">{activeRole.salary}</div>
-                                        </div>
-                                        <div className="p-4 bg-emerald-50 rounded-xl border border-emerald-100">
-                                            <div className="text-xs text-emerald-600 uppercase tracking-widest font-bold mb-1">Growth</div>
-                                            <div className="text-xl font-bold text-emerald-600">{activeRole.growth}</div>
-                                        </div>
-                                    </div>
-                                    <h4 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">Key Skills</h4>
-                                    <div className="flex flex-wrap gap-2">
-                                        {activeRole.skills.map((skill, i) => (
-                                            <span key={i} className="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full text-xs font-bold border border-blue-100">
-                                                {skill}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="lg:w-[350px]">
-                                    <h4 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">Responsibilities</h4>
-                                    <div className="space-y-3">
-                                        {activeRole.responsibilities.map((resp, i) => (
-                                            <div key={i} className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
-                                                <div className="w-2 h-2 rounded-full bg-blue-500 shrink-0" />
-                                                <span className="text-sm font-medium text-slate-700">{resp}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
-            </section>
+
+
+
+            <CareerVision
+                roles={CAREER_ROLES.map(role => ({
+                    icon: role.id === "neural-architect" ? Cpu :
+                        role.id === "agentic-systems-engineer" ? BrainCircuit :
+                            role.id === "ai-security-lead" ? ShieldCheck :
+                                role.id === "chief-ai-officer" ? Briefcase :
+                                    role.id === "embodied-ai-specialist" ? Bot :
+                                        role.id === "synthetic-data-architect" ? Database :
+                                            role.id === "cross-modal-systems-designer" ? Layers : Cpu,
+                    title: role.title,
+                    salary: role.salary,
+                    growth: role.growth,
+                    desc: role.desc,
+                    skills: role.skills,
+                    responsibilities: role.responsibilities
+                }))}
+                title="What You'll Become"
+                subtitle="From mathematical foundations to architecting global cognitive systems. This is your career in 2035."
+                themeColor="blue"
+            />
 
             <Footer />
         </main>
@@ -657,4 +712,5 @@ function OutcomeItem({ text }: { text: string }) {
         </div>
     );
 }
+
 

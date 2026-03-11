@@ -2,8 +2,23 @@
 import React, { useState } from "react";
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
-import { motion } from "framer-motion";
-import { Sparkles, Send, Loader2, CheckCircle2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+    Sparkles,
+    Send,
+    Loader2,
+    CheckCircle2,
+    ArrowUpRight,
+    User,
+    Mail,
+    Phone,
+    Briefcase,
+    GraduationCap,
+    Clock,
+    Globe,
+    Shield
+} from "lucide-react";
+import Link from "next/link";
 
 export function ApplyClient() {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -37,26 +52,37 @@ export function ApplyClient() {
 
     if (isSuccess) {
         return (
-            <main className="min-h-screen bg-slate-50 selection:bg-blue-200 flex flex-col">
+            <main className="min-h-screen bg-white selection:bg-blue-100 flex flex-col font-sans text-slate-900">
                 <Navbar />
-                <div className="flex-1 flex items-center justify-center px-4 pt-32 pb-12">
+                <div className="flex-1 flex items-center justify-center px-4 pt-32 pb-12 overflow-hidden relative">
+                    {/* Success Background Elements */}
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-50/50 via-transparent to-transparent z-0" />
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 0.1, scale: 1 }}
+                        className="absolute text-[30rem] font-black text-blue-600 pointer-events-none select-none z-0 tracking-tighter"
+                    >
+                        DONE
+                    </motion.div>
+
                     <motion.div
                         initial={{ scale: 0.9, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
-                        className="max-w-md w-full bg-white p-8 rounded-3xl shadow-xl text-center border border-slate-100"
+                        className="max-w-xl w-full bg-white/80 backdrop-blur-2xl p-12 rounded-[3rem] shadow-[0_32px_120px_-10px_rgba(0,0,0,0.08)] text-center border border-white/50 relative z-10"
                     >
-                        <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <Sparkles size={32} />
+                        <div className="w-24 h-24 bg-blue-600 text-white rounded-3xl flex items-center justify-center mx-auto mb-10 shadow-xl shadow-blue-200 rotate-3">
+                            <CheckCircle2 size={48} />
                         </div>
-                        <h2 className="text-2xl font-bold text-slate-900 mb-2">Interest Recorded</h2>
-                        <p className="text-slate-600 mb-8">
-                            We have received your details. We will keep you updated on our launch and upcoming cohorts.
+                        <h2 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">Interest Recorded</h2>
+                        <p className="text-xl text-slate-500 mb-10 leading-relaxed font-light">
+                            We have received your details. Our admissions team will reach out to you shortly with the next steps.
                         </p>
                         <button
                             onClick={() => window.location.href = '/'}
-                            className="w-full py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition-colors"
+                            className="group w-full py-5 bg-slate-900 text-white rounded-2xl font-bold text-lg hover:bg-slate-800 transition-all flex items-center justify-center gap-3"
                         >
-                            Return Home
+                            Return to Homepage
+                            <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </button>
                     </motion.div>
                 </div>
@@ -66,121 +92,215 @@ export function ApplyClient() {
     }
 
     return (
-        <main className="min-h-screen bg-slate-50 selection:bg-blue-200">
+        <main className="min-h-screen bg-white selection:bg-blue-100 font-sans text-slate-900">
             <Navbar />
 
-            <section className="pt-32 pb-24 px-4 min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
-                {/* Abstract Background */}
-                <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-blue-50 to-transparent -z-10" />
-                <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-indigo-100/40 rounded-full blur-3xl -z-10 animate-pulse" />
-
+            <section className="pt-40 pb-32 px-6 min-h-screen relative overflow-hidden text-slate-900">
+                {/* Dynamic Background Elements */}
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50/50 -skew-x-12 translate-x-1/4 z-0" />
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="w-full max-w-2xl"
+                    initial={{ opacity: 0, x: -100 }}
+                    animate={{ opacity: 0.05, x: 0 }}
+                    className="absolute top-40 left-10 text-[20rem] font-black text-slate-900 select-none pointer-events-none z-0 tracking-tighter"
                 >
-                    <div className="text-center mb-10">
-                        {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-wider mb-4">
-                    <Sparkles size={14} />
-                    <span>Apply Now</span>
-                </div> */}
-                        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
-                            Apply Now
-                        </h1>
-                        <p className="text-lg text-slate-600 max-w-lg mx-auto">
-                            Applications are now open for our upcoming programs. Apply today and begin your journey with us.
-                        </p>
-                    </div>
-
-                    <form onSubmit={handleSubmit} className="bg-white/80 backdrop-blur-xl p-8 md:p-10 rounded-[2rem] shadow-xl border border-white/50 relative overflow-hidden">
-                        {/* Glass Shim */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent pointer-events-none" />
-
-                        <div className="relative z-10 space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-sm font-bold text-slate-900 ml-1">Full Name <span className="text-red-500">*</span></label>
-                                    <input required name="name" type="text" placeholder="Enter your name" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all placeholder:text-slate-400 font-medium" />
-                                </div>
-                                <div className="space-y-2">
-                                    <label className="text-sm font-bold text-slate-900 ml-1">Phone Number <span className="text-red-500">*</span></label>
-                                    <input required name="phone" type="tel" placeholder="Enter your phone number" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all placeholder:text-slate-400 font-medium" />
-                                </div>
-                            </div>
-
-                            <div className="space-y-2">
-                                <label className="text-sm font-bold text-slate-900 ml-1">Email Address <span className="text-red-500">*</span></label>
-                                <input required name="email" type="email" placeholder="Enter your email address" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all placeholder:text-slate-400 font-medium" />
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-sm font-bold text-slate-900 ml-1">Program of Interest<span className="text-red-500">*</span></label>
-                                    <div className="relative">
-                                        <select name="program" defaultValue="" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all font-medium appearance-none text-slate-700">
-                                            <option value="" disabled>Select a Program</option>
-                                            <option value="quantum computing">Quantum Computing</option>
-                                            <option value="Blockchain">Blockchain</option>
-                                            <option value="AI">Artificial Intelligence</option>
-                                            <option value="Cyber Security">Cyber Security</option>
-                                            <option value="Venture Building">Venture Building</option>
-                                            <option value="Strategic Innovation">Strategic Innovation</option>
-                                            <option value="ESG">Environmental, Social, and Governance (ESG)</option>
-                                            <option value="renewable-energy">Renewable Energy</option>
-                                        </select>
-                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">▼</div>
-                                    </div>
-                                </div>
-                                <div className="space-y-2">
-                                    <label className="text-sm font-bold text-slate-900 ml-1">Current Occupation <span className="text-red-500">*</span></label>
-                                    <div className="relative">
-                                        <select required name="occupation" defaultValue="" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all font-medium appearance-none text-slate-700">
-                                            <option value="" disabled>Select Occupation</option>
-                                            <option value="Student">Student (High School/College)</option>
-                                            <option value="Professional">Working Professional</option>
-                                            <option value="Founder">Founder</option>
-                                            <option value="Other">Other</option>
-                                        </select>
-                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">▼</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="space-y-2">
-                                <label className="text-sm font-bold text-slate-900 ml-1">Why do you want to join? <span className="text-slate-400 font-normal">(Optional)</span></label>
-                                <textarea name="message" rows={4} placeholder="Tell us about your goals..." className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all placeholder:text-slate-400 font-medium resize-none" />
-                            </div>
-
-                            {error && (
-                                <div className="p-3 rounded-lg bg-red-50 text-red-600 text-sm font-bold text-center">
-                                    {error}
-                                </div>
-                            )}
-
-                            <button
-                                type="submit"
-                                disabled={isSubmitting}
-                                className="w-full py-5 bg-slate-900 text-white rounded-xl font-bold text-lg hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
-                            >
-                                {isSubmitting ? (
-                                    <>
-                                        <Loader2 className="animate-spin" />
-                                        <span>Submitting...</span>
-                                    </>
-                                ) : (
-                                    <>
-                                        <span>Apply Now</span>
-                                        <Send size={18} />
-                                    </>
-                                )}
-                            </button>
-
-                            <p className="text-center text-xs text-slate-400 font-medium mt-4">
-                                We respect your privacy. No spam, ever.
-                            </p>
-                        </div>
-                    </form>
+                    APPLY
                 </motion.div>
+
+                <div className="container mx-auto max-w-7xl relative z-10 text-slate-900">
+                    <div className="grid lg:grid-cols-12 gap-20 md:gap-32 items-start">
+                        {/* Left Column: Context & Info */}
+                        <div className="lg:col-span-12 xl:col-span-5 pt-8 space-y-12">
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8 }}
+                            >
+                                <p className="text-blue-600 text-sm font-bold uppercase tracking-[0.4em] mb-6">Step One</p>
+                                <h1 className="text-6xl md:text-[5.5rem] font-medium text-slate-900 mb-10 tracking-tight leading-[0.9]">
+                                    Unlocking <br />
+                                    <span className="text-slate-400">Potential.</span>
+                                </h1>
+                                <p className="text-xl text-slate-500 leading-relaxed font-light max-w-lg">
+                                    Begin your journey at The Foundry. We prioritize your ambition and logical clarity over traditional credentials.
+                                </p>
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 }}
+                                className="grid sm:grid-cols-2 gap-8 text-slate-900"
+                            >
+                                <div className="space-y-4">
+                                    <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center">
+                                        <Clock size={24} />
+                                    </div>
+                                    <h3 className="font-bold text-slate-900">Swift Process</h3>
+                                    <p className="text-sm text-slate-500 leading-relaxed font-medium">Recorded interest leads to profile evaluation within 48 hours.</p>
+                                </div>
+                                <div className="space-y-4">
+                                    <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center">
+                                        <Shield size={24} />
+                                    </div>
+                                    <h3 className="font-bold text-slate-900">Privacy First</h3>
+                                    <p className="text-sm text-slate-500 leading-relaxed font-medium">Your data is secured and used solely for admissions purposes.</p>
+                                </div>
+                            </motion.div>
+                        </div>
+
+                        {/* Right Column: Application Form */}
+                        <div className="lg:col-span-12 xl:col-span-7">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.5, delay: 0.3 }}
+                                className="bg-white/80 backdrop-blur-2xl p-8 md:p-14 rounded-[3.5rem] shadow-[0_32px_120px_-10px_rgba(0,0,0,0.06)] border border-slate-100 relative text-slate-900"
+                            >
+                                <form onSubmit={handleSubmit} className="space-y-10 relative z-10 text-slate-900">
+                                    <div className="grid md:grid-cols-2 gap-x-12 gap-y-10 text-slate-900">
+                                        {/* Name Field */}
+                                        <div className="space-y-3 group text-slate-900">
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <User size={14} className="text-slate-400 group-focus-within:text-blue-600 transition-colors" />
+                                                <label className="text-xs font-black text-slate-400 uppercase tracking-widest">Full Name</label>
+                                            </div>
+                                            <input
+                                                required
+                                                name="name"
+                                                type="text"
+                                                placeholder="John Doe"
+                                                className="w-full pb-4 bg-transparent border-b-2 border-slate-100 focus:border-blue-600 focus:outline-none transition-all placeholder:text-slate-200 font-medium text-lg text-slate-900"
+                                            />
+                                        </div>
+
+                                        {/* Phone Field */}
+                                        <div className="space-y-3 group text-slate-900">
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <Phone size={14} className="text-slate-400 group-focus-within:text-blue-600 transition-colors" />
+                                                <label className="text-xs font-black text-slate-400 uppercase tracking-widest">Phone Number</label>
+                                            </div>
+                                            <input
+                                                required
+                                                name="phone"
+                                                type="tel"
+                                                placeholder="+91 00000 00000"
+                                                className="w-full pb-4 bg-transparent border-b-2 border-slate-100 focus:border-blue-600 focus:outline-none transition-all placeholder:text-slate-200 font-medium text-lg text-slate-900"
+                                            />
+                                        </div>
+
+                                        {/* Email Field */}
+                                        <div className="md:col-span-2 space-y-3 group text-slate-900">
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <Mail size={14} className="text-slate-400 group-focus-within:text-blue-600 transition-colors" />
+                                                <label className="text-xs font-black text-slate-400 uppercase tracking-widest">Email Address</label>
+                                            </div>
+                                            <input
+                                                required
+                                                name="email"
+                                                type="email"
+                                                placeholder="hello@example.com"
+                                                className="w-full pb-4 bg-transparent border-b-2 border-slate-100 focus:border-blue-600 focus:outline-none transition-all placeholder:text-slate-200 font-medium text-lg text-slate-900"
+                                            />
+                                        </div>
+
+                                        {/* Program Selection */}
+                                        <div className="space-y-3 group relative text-slate-900">
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <Globe size={14} className="text-slate-400 group-focus-within:text-blue-600 transition-colors" />
+                                                <label className="text-xs font-black text-slate-400 uppercase tracking-widest">Program</label>
+                                            </div>
+                                            <select
+                                                name="program"
+                                                required
+                                                defaultValue=""
+                                                className="w-full pb-4 bg-transparent border-b-2 border-slate-100 focus:border-blue-600 focus:outline-none transition-all font-medium text-lg text-slate-900 appearance-none cursor-pointer"
+                                            >
+                                                <option value="" disabled>Select program</option>
+                                                <option value="AI">AI (Machine Learning)</option>
+                                                <option value="Cyber Security">Cyber Security</option>
+                                                <option value="Venture Building">Venture Building</option>
+                                                <option value="Strategic Innovation">Strategic Innovation</option>
+                                                <option value="ESG">ESG & Sustainability</option>
+                                                <option value="Blockchain">Blockchain</option>
+                                                <option value="Quantum Computing">Quantum Computing</option>
+                                            </select>
+                                            <div className="absolute right-0 bottom-6 text-slate-300 pointer-events-none">▼</div>
+                                        </div>
+
+                                        {/* Occupation Selection */}
+                                        <div className="space-y-3 group relative text-slate-900">
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <GraduationCap size={14} className="text-slate-400 group-focus-within:text-blue-600 transition-colors" />
+                                                <label className="text-xs font-black text-slate-400 uppercase tracking-widest">Occupation</label>
+                                            </div>
+                                            <select
+                                                name="occupation"
+                                                required
+                                                defaultValue=""
+                                                className="w-full pb-4 bg-transparent border-b-2 border-slate-100 focus:border-blue-600 focus:outline-none transition-all font-medium text-lg text-slate-900 appearance-none cursor-pointer"
+                                            >
+                                                <option value="" disabled>Select current role</option>
+                                                <option value="Student">Student</option>
+                                                <option value="Professional">Working Professional</option>
+                                                <option value="Founder">Founder</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                            <div className="absolute right-0 bottom-6 text-slate-300 pointer-events-none">▼</div>
+                                        </div>
+                                    </div>
+
+                                    {/* Message / Goals */}
+                                    <div className="space-y-4 group text-slate-900">
+                                        <div className="flex items-center gap-2 mb-1">
+                                            <Briefcase size={14} className="text-slate-400 group-focus-within:text-blue-600 transition-colors" />
+                                            <label className="text-xs font-black text-slate-400 uppercase tracking-widest">Goals & Ambitions</label>
+                                        </div>
+                                        <textarea
+                                            name="message"
+                                            rows={2}
+                                            placeholder="Tell us what you want to build..."
+                                            className="w-full pb-4 bg-transparent border-b-2 border-slate-100 focus:border-blue-600 focus:outline-none transition-all placeholder:text-slate-200 font-medium text-lg text-slate-900 resize-none"
+                                        />
+                                    </div>
+
+                                    {error && (
+                                        <motion.div
+                                            initial={{ opacity: 0, x: -10 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            className="p-4 rounded-2xl bg-red-50 text-red-600 text-sm font-bold flex items-center gap-3 border border-red-100"
+                                        >
+                                            <div className="w-1.5 h-1.5 rounded-full bg-red-600" />
+                                            {error}
+                                        </motion.div>
+                                    )}
+
+                                    <div className="pt-6">
+                                        <button
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                            className="group w-full py-6 bg-slate-900 text-white rounded-[2rem] font-bold text-xl hover:bg-slate-800 transition-all shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.3)] active:scale-[0.98] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                                        >
+                                            {isSubmitting ? (
+                                                <>
+                                                    <Loader2 className="animate-spin" size={24} />
+                                                    <span>Registering Interest...</span>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <span>Unlock Potential</span>
+                                                    <ArrowUpRight size={24} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                                </>
+                                            )}
+                                        </button>
+                                        <p className="text-center text-[10px] text-slate-400 font-black uppercase tracking-[0.3em] mt-8">
+                                            The Foundry Admissions &copy; 2026
+                                        </p>
+                                    </div>
+                                </form>
+                            </motion.div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <Footer hideCTA={true} />

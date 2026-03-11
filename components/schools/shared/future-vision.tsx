@@ -14,6 +14,7 @@ interface FutureVisionProps {
     futureJobs: JobPrediction[];
     outcomeStatement: string;
     accentColor?: string; // Default to Bowers Red #B31B1B
+    jobsTitle?: string;
 }
 
 export function FutureVision({
@@ -21,7 +22,8 @@ export function FutureVision({
     whyAIImportant,
     futureJobs,
     outcomeStatement,
-    accentColor = "#B31B1B"
+    accentColor = "#B31B1B",
+    jobsTitle = "Post-AI Job Landscape (2035)"
 }: FutureVisionProps) {
     return (
         <section className="py-24 px-6 bg-white overflow-hidden">
@@ -66,7 +68,7 @@ export function FutureVision({
                 {/* 2. Future Jobs (10-Year Horizon) */}
                 <div className="mb-32">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">Post-AI Job Landscape (2035)</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">{jobsTitle}</h2>
                         <p className="text-neutral-500 max-w-2xl mx-auto">
                             The jobs of tomorrow won't use AI; they will be built within AI. Here is what you will be leading in 10 years.
                         </p>
