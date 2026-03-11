@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { CareerVision } from "@/components/schools/shared/career-vision";
+import { DecryptText } from "@/components/ui/decrypt-text";
 
 const CAREER_ROLES = [
   {
@@ -234,7 +235,7 @@ function CurriculumTabs() {
             onClick={() => setActiveYear(item.year)}
             className={`px-6 py-3 rounded-full font-bold text-sm transition-all ${activeYear === item.year
               ? 'bg-emerald-600 text-white shadow-lg scale-105'
-              : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+              : 'bg-slate-900/50 text-slate-400 hover:bg-slate-800 border border-slate-800'
               }`}
           >
             Year {item.year}
@@ -249,13 +250,13 @@ function CurriculumTabs() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
-          className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-200"
+          className="bg-slate-900/40 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl border border-slate-800"
         >
           <div className="flex items-center gap-4 mb-6">
-            <div className="px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-bold">
+            <div className="px-4 py-2 bg-emerald-500/10 text-emerald-400 rounded-full text-sm font-bold border border-emerald-500/20">
               Year {activeContent?.year}
             </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
+            <h3 className="text-2xl md:text-3xl font-bold text-white">
               {activeContent?.title}
             </h3>
           </div>
@@ -267,10 +268,10 @@ function CurriculumTabs() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-start gap-3 p-4 rounded-xl bg-slate-50 hover:bg-emerald-50 transition-colors"
+                className="flex items-start gap-3 p-4 rounded-xl bg-slate-900/50 hover:bg-emerald-500/10 border border-slate-800 hover:border-emerald-500/20 transition-all group"
               >
-                <CheckCircle2 size={20} className="text-emerald-600 shrink-0 mt-0.5" />
-                <span className="text-slate-700 font-medium">{topic}</span>
+                <CheckCircle2 size={20} className="text-emerald-500 shrink-0 mt-0.5" />
+                <span className="text-slate-300 font-medium group-hover:text-white transition-colors">{topic}</span>
               </motion.div>
             ))}
           </div>
@@ -280,6 +281,64 @@ function CurriculumTabs() {
   );
 }
 
+// Sub-components for better state management (Rules of Hooks)
+const WhoIsThisForCard = ({ item, index }: { item: any; index: number }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      className="group relative bg-slate-900/40 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 hover:border-emerald-500/30 transition-all duration-300"
+    >
+      <div className="flex items-start gap-5">
+        <div className={`shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
+          <item.icon size={24} className="text-white" />
+        </div>
+        <div className="flex-1">
+          <div className="flex items-center gap-3 mb-2">
+            <span className="text-xs font-mono text-slate-500 tracking-widest">{item.num}</span>
+            <h3 className="text-xl font-bold text-white font-mono">
+              <DecryptText text={item.title} parentHover={isHovered} />
+            </h3>
+          </div>
+          <p className="text-slate-400 leading-relaxed font-medium">{item.desc}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const MilestoneCard = ({ item, index }: { item: any; index: number }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.08 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      className="group relative bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-800 overflow-hidden hover:shadow-2xl hover:border-emerald-500/30 transition-all duration-300"
+    >
+      <div className="h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-500" />
+      <div className="p-7">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-3xl font-black text-slate-900/40 group-hover:text-emerald-500/20 transition-colors">{item.num}</span>
+          <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded-full">{item.highlight}</span>
+        </div>
+        <h4 className="text-lg font-bold text-white mb-2 font-mono">
+          <DecryptText text={item.highlight} parentHover={isHovered} />
+        </h4>
+        <p className="text-slate-300 font-medium leading-relaxed group-hover:text-white transition-colors">{item.text}</p>
+      </div>
+    </motion.div>
+  );
+};
+
 export function CyberClient() {
 
   useEffect(() => {
@@ -287,7 +346,7 @@ export function CyberClient() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-slate-50 font-sans selection:bg-emerald-100">
+    <main className="min-h-screen bg-[#0a0f1e] text-white font-sans selection:bg-emerald-500/30">
       <Navbar />
 
       {/* HERO SECTION */}
@@ -342,23 +401,23 @@ export function CyberClient() {
       {/* Program Details Card */}
       <div className="relative z-20 px-4 -mt-14 mb-12">
         <div className="mx-auto max-w-7xl">
-          <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
+          <div className="bg-slate-900/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-800 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
               <div>
                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Program Length</p>
-                <p className="text-lg font-bold text-slate-900">3-Year Full-Time</p>
+                <p className="text-lg font-bold text-white">3-Year Full-Time</p>
               </div>
               <div>
                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Delivery Mode</p>
-                <p className="text-lg font-bold text-slate-900">On-Campus, Immersive</p>
+                <p className="text-lg font-bold text-white">On-Campus, Immersive</p>
               </div>
               <div>
                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Campus</p>
-                <p className="text-lg font-bold text-slate-900">Hyderabad, India</p>
+                <p className="text-lg font-bold text-white">Hyderabad, India</p>
               </div>
               <div>
                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Admissions</p>
-                <p className="text-lg font-bold text-slate-900">Now Open</p>
+                <p className="text-lg font-bold text-white">Now Open</p>
               </div>
             </div>
             <div className="flex gap-3 w-full lg:w-auto">
@@ -374,21 +433,22 @@ export function CyberClient() {
       </div>
 
       {/* 1. Overview */}
-      <section id="overview" className="py-28 px-6 bg-white overflow-hidden">
-        <div className="container mx-auto max-w-6xl">
+      <section id="overview" className="py-28 px-6 bg-[#0a0f1e] overflow-hidden relative">
+        <div className="absolute inset-0 cyber-grid opacity-30" />
+        <div className="container mx-auto max-w-6xl relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <p className="text-emerald-600 text-sm font-bold uppercase tracking-widest mb-4">Program Overview</p>
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+              <p className="text-emerald-400 text-sm font-bold uppercase tracking-widest mb-4">Program Overview</p>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
                 Built for the <br />
-                <span className="text-emerald-600">Digital Battlefield.</span>
+                <span className="text-emerald-500">Digital Battlefield.</span>
               </h2>
-              <p className="text-lg text-slate-600 leading-relaxed mb-8">
+              <p className="text-lg text-slate-400 leading-relaxed mb-8">
                 The Foundry&apos;s 3-year Cybersecurity program trains you to think like an attacker, defend like an architect, and lead like a strategist. From kernel hacking to red teaming — you graduate battle-ready for the real world.
               </p>
               <div className="flex flex-wrap gap-3">
                 {["Penetration Testing", "Red Teaming", "Malware Analysis", "Cloud Security", "AI Security", "Digital Forensics"].map((tag, i) => (
-                  <span key={i} className="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-semibold border border-slate-200 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 transition-colors cursor-default">
+                  <span key={i} className="px-4 py-2 bg-slate-900 text-slate-300 rounded-full text-sm font-semibold border border-slate-800 hover:bg-emerald-500/10 hover:text-emerald-400 hover:border-emerald-500/30 transition-all cursor-default">
                     {tag}
                   </span>
                 ))}
@@ -407,10 +467,10 @@ export function CyberClient() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-slate-50 rounded-2xl p-6 border border-slate-200 text-center hover:shadow-lg transition-shadow"
+                  className="bg-slate-900/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-800 text-center hover:shadow-2xl hover:border-emerald-500/30 transition-all group"
                 >
-                  <div className="text-3xl md:text-4xl font-black text-slate-900">{stat.value}</div>
-                  <div className="text-sm font-bold text-emerald-600 uppercase tracking-wider mb-1">{stat.unit}</div>
+                  <div className="text-3xl md:text-4xl font-black text-white group-hover:text-emerald-400 transition-colors">{stat.value}</div>
+                  <div className="text-sm font-bold text-emerald-500 uppercase tracking-wider mb-1">{stat.unit}</div>
                   <p className="text-xs text-slate-500 font-medium">{stat.label}</p>
                 </motion.div>
               ))}
@@ -420,7 +480,8 @@ export function CyberClient() {
       </section>
 
       {/* Who Is This For — Dark section with numbered cards */}
-      <section className="py-24 px-6 bg-slate-900 overflow-hidden relative">
+      <section className="py-24 px-6 bg-[#0a0f1e] overflow-hidden relative">
+        <div className="absolute inset-0 cyber-grid opacity-20" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-emerald-900/30 via-transparent to-transparent" />
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="mb-14">
@@ -434,38 +495,19 @@ export function CyberClient() {
               { num: "03", title: "Zero Coding Background", desc: "No prior programming required. We teach you from shell scripts to exploit development, step by step.", icon: Code2, color: "from-amber-500 to-orange-400" },
               { num: "04", title: "Digital Guardians", desc: "Individuals who want to protect critical infrastructure, governments, and enterprises from the next generation of threats.", icon: Lock, color: "from-rose-500 to-red-400" },
             ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-slate-600 transition-all duration-300 hover:bg-slate-800/80"
-              >
-                <div className="flex items-start gap-5">
-                  <div className={`shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
-                    <item.icon size={24} className="text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-xs font-mono text-slate-500 tracking-widest">{item.num}</span>
-                      <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                    </div>
-                    <p className="text-slate-400 leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              </motion.div>
+              <WhoIsThisForCard key={i} item={item} index={i} />
             ))}
           </div>
         </div>
       </section>
 
       {/* What You'll Achieve — Milestone cards */}
-      <section className="py-24 px-6 bg-slate-50 overflow-hidden">
-        <div className="container mx-auto max-w-6xl">
+      <section className="py-24 px-6 bg-[#0a0f1e] overflow-hidden relative">
+        <div className="absolute inset-0 cyber-grid-strong opacity-20" />
+        <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-14">
-            <p className="text-emerald-600 text-sm font-bold uppercase tracking-widest mb-3">Your Transformation</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900">What You&apos;ll Achieve</h2>
+            <p className="text-emerald-400 text-sm font-bold uppercase tracking-widest mb-3">Your Transformation</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-white">What You&apos;ll Achieve</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -476,33 +518,18 @@ export function CyberClient() {
               { num: "05", text: "Detect and respond to AI-powered cyber threats", highlight: "AI Security" },
               { num: "06", text: "Graduate with OSCP-level skills and a portfolio of real exploits", highlight: "Real Portfolio" },
             ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="group relative bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300"
-              >
-                <div className="h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-500" />
-                <div className="p-7">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-3xl font-black text-emerald-100 group-hover:text-emerald-200 transition-colors">{item.num}</span>
-                    <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest bg-emerald-50 px-2 py-1 rounded-full">{item.highlight}</span>
-                  </div>
-                  <p className="text-slate-700 font-medium leading-relaxed">{item.text}</p>
-                </div>
-              </motion.div>
+              <MilestoneCard key={i} item={item} index={i} />
             ))}
           </div>
         </div>
       </section>
 
       {/* 2. Eligibility - REVISED EXPANSIVE DESIGN */}
-      <section id="eligibility" className="py-32 px-6 bg-white overflow-hidden relative">
+      <section id="eligibility" className="py-32 px-6 bg-[#0a0f1e] overflow-hidden relative">
+        <div className="absolute inset-0 cyber-grid opacity-30" />
         {/* Subtle Background Elements */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50/50 -skew-x-12 translate-x-1/4 z-0" />
-        <div className="absolute top-40 left-10 text-[15rem] font-black text-slate-100/50 select-none pointer-events-none z-0 tracking-tighter">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-emerald-900/5 -skew-x-12 translate-x-1/4 z-0" />
+        <div className="absolute top-40 left-10 text-[15rem] font-black text-slate-800/10 select-none pointer-events-none z-0 tracking-tighter">
           QUALIFY
         </div>
 
@@ -515,16 +542,16 @@ export function CyberClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <p className="text-emerald-600 text-sm font-bold uppercase tracking-[0.3em] mb-6">Entry Standards</p>
-                <h2 className="text-5xl md:text-7xl font-bold text-slate-900 mb-10 tracking-tight leading-[0.9]">
+                <p className="text-emerald-400 text-sm font-bold uppercase tracking-[0.3em] mb-6">Entry Standards</p>
+                <h2 className="text-5xl md:text-7xl font-bold text-white mb-10 tracking-tight leading-[0.9]">
                   Unlocking <br />
-                  <span className="text-slate-400">Potential.</span>
+                  <span className="text-slate-500">Potential.</span>
                 </h2>
-                <p className="text-xl text-slate-600 leading-relaxed font-light mb-12">
+                <p className="text-xl text-slate-400 leading-relaxed font-light mb-12">
                   Admissions at The Foundry prioritized logical clarity over rote memorization. Master the art of defense, regardless of your academic stream or prior technical experience.
                 </p>
 
-                <div className="p-8 bg-slate-900 rounded-[2rem] text-white shadow-2xl relative overflow-hidden group">
+                <div className="p-8 bg-slate-900 border border-slate-800 rounded-[2rem] text-white shadow-2xl relative overflow-hidden group">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-colors" />
                   <h3 className="text-2xl font-bold italic mb-4">Who we look for</h3>
                   <p className="text-slate-400 text-sm leading-relaxed mb-6">
@@ -561,9 +588,9 @@ export function CyberClient() {
 
                 <div className="grid md:grid-cols-2 gap-12">
                   <div className="space-y-6">
-                    <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">1</div>
-                    <h4 className="text-xl font-bold text-slate-900">Standard Pathway</h4>
-                    <ul className="space-y-4 text-slate-500 text-sm font-medium">
+                    <div className="w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold border border-emerald-500/20">1</div>
+                    <h4 className="text-xl font-bold text-white">Standard Pathway</h4>
+                    <ul className="space-y-4 text-slate-400 text-sm font-medium">
                       <li className="flex items-start gap-3">
                         <CheckCircle2 size={16} className="text-emerald-500 mt-0.5 shrink-0" />
                         <span>Grade 12 / Intermediate from any recognized board.</span>
@@ -579,18 +606,18 @@ export function CyberClient() {
                     </ul>
                   </div>
                   <div className="space-y-6">
-                    <div className="w-10 h-10 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold">2</div>
-                    <h4 className="text-xl font-bold text-slate-900">Global Credentials</h4>
+                    <div className="w-10 h-10 rounded-full bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold border border-indigo-500/20">2</div>
+                    <h4 className="text-xl font-bold text-white">Global Credentials</h4>
                     <div className="space-y-4">
-                      <div className="flex justify-between items-end pb-2 border-b border-slate-100">
-                        <span className="text-sm text-slate-500">IB Diploma</span>
-                        <span className="font-bold text-slate-900">24+ Points</span>
+                      <div className="flex justify-between items-end pb-2 border-b border-slate-800">
+                        <span className="text-sm text-slate-400">IB Diploma</span>
+                        <span className="font-bold text-white">24+ Points</span>
                       </div>
-                      <div className="flex justify-between items-end pb-2 border-b border-slate-100">
-                        <span className="text-sm text-slate-500">A-Levels</span>
-                        <span className="font-bold text-slate-900">3 Subjects</span>
+                      <div className="flex justify-between items-end pb-2 border-b border-slate-800">
+                        <span className="text-sm text-slate-400">A-Levels</span>
+                        <span className="font-bold text-white">3 Subjects</span>
                       </div>
-                      <p className="text-[10px] text-slate-400 italic">Other vocational boards evaluated case-by-case.</p>
+                      <p className="text-[10px] text-slate-500 italic">Other vocational boards evaluated case-by-case.</p>
                     </div>
                   </div>
                 </div>
@@ -611,20 +638,20 @@ export function CyberClient() {
 
                 <div className="grid md:grid-cols-2 gap-12">
                   <div className="space-y-4">
-                    <div className="flex items-center gap-4 text-slate-900">
-                      <Code2 className="text-emerald-600" size={24} />
+                    <div className="flex items-center gap-4 text-white">
+                      <Code2 className="text-emerald-500" size={24} />
                       <h4 className="text-lg font-bold">Zero Code Required</h4>
                     </div>
-                    <p className="text-sm text-slate-500 leading-relaxed">
+                    <p className="text-sm text-slate-400 leading-relaxed">
                       We start from the absolute basics of shell scripting. No prior programming background is required to join.
                     </p>
                   </div>
                   <div className="space-y-4">
-                    <div className="flex items-center gap-4 text-slate-900">
-                      <ShieldCheck className="text-indigo-600" size={24} />
+                    <div className="flex items-center gap-4 text-white">
+                      <ShieldCheck className="text-indigo-400" size={24} />
                       <h4 className="text-lg font-bold">Aptitude Over Exams</h4>
                     </div>
-                    <p className="text-sm text-slate-500 leading-relaxed">
+                    <p className="text-sm text-slate-400 leading-relaxed">
                       Beyond grades, we value your ability to deconstruct complex systems and your persistence in solving puzzles.
                     </p>
                   </div>
@@ -636,11 +663,12 @@ export function CyberClient() {
       </section>
 
       {/* 3. What You Will Study (Curriculum) */}
-      <section id="curriculum" className="py-24 px-6 bg-slate-50 overflow-hidden">
-        <div className="container mx-auto max-w-6xl">
+      <section id="curriculum" className="py-24 px-6 bg-[#0a0f1e] overflow-hidden relative">
+        <div className="absolute inset-0 cyber-grid-strong opacity-10" />
+        <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">What You Will Study</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">From networking fundamentals to zero-day research. Every year builds on the last.</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">What You Will Study</h2>
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">From networking fundamentals to zero-day research. Every year builds on the last.</p>
           </div>
           <CurriculumTabs />
         </div>
@@ -665,6 +693,7 @@ export function CyberClient() {
         title="What You'll Become"
         subtitle="The roles our graduates are being trained to lead. These aren't jobs — they're missions."
         themeColor="emerald"
+        isDark={true}
       />
 
       <Footer />

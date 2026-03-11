@@ -20,13 +20,15 @@ interface CareerVisionProps {
     title?: string;
     subtitle?: string;
     themeColor?: "blue" | "emerald" | "indigo" | "stone";
+    isDark?: boolean;
 }
 
 export function CareerVision({
     roles,
     title = "What You'll Become",
     subtitle = "Explore career paths at the intersection of expertise and innovation",
-    themeColor = "blue"
+    themeColor = "blue",
+    isDark = false
 }: CareerVisionProps) {
     const [selectedCareer, setSelectedCareer] = useState(0);
     const roleRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -69,12 +71,17 @@ export function CareerVision({
     const currentTheme = themeStyles[themeColor];
 
     return (
-        <section className={`py-24 bg-gradient-to-b from-white to-slate-50 border-y border-slate-200 ${currentTheme.selection}`}>
+        <section className={`py-24 border-y relative overflow-hidden ${isDark
+            ? "bg-slate-950 border-slate-800 cyber-grid"
+            : `bg-gradient-to-b from-white to-slate-50 border-slate-200 ${currentTheme.selection}`}`}>
+            {isDark && (
+                <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/5 via-transparent to-emerald-500/5 pointer-events-none" />
+            )}
             <div className="container mx-auto px-6 max-w-6xl">
                 {/* Header */}
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-serif text-slate-900 mb-4">{title}</h2>
-                    <p className="text-lg text-slate-600 font-light max-w-2xl mx-auto">
+                <div className="text-center mb-16 relative z-10">
+                    <h2 className={`text-4xl md:text-5xl font-serif mb-4 ${isDark ? "text-white" : "text-slate-900"}`}>{title}</h2>
+                    <p className={`text-lg font-light max-w-2xl mx-auto ${isDark ? "text-slate-400" : "text-slate-600"}`}>
                         {subtitle}
                     </p>
                 </div>
@@ -88,7 +95,7 @@ export function CareerVision({
                                 ref={(el) => {
                                     if (el) roleRefs.current[index] = el;
                                 }}
-                                className="bg-white rounded-xl border border-slate-200 overflow-hidden scroll-mt-32"
+                                className={`${isDark ? "bg-slate-900/50 border-slate-800" : "bg-white border-slate-200"} rounded-xl border overflow-hidden scroll-mt-32`}
                             >
                                 <button
                                     onClick={() => {
@@ -100,14 +107,20 @@ export function CareerVision({
                                             });
                                         }, 100);
                                     }}
-                                    className={`w-full text-left p-4 min-h-[48px] flex items-center justify-between transition-colors ${selectedCareer === index ? `${currentTheme.lightBg}/50` : "bg-white"}`}
+                                    className={`w-full text-left p-4 min-h-[48px] flex items-center justify-between transition-colors ${selectedCareer === index
+                                        ? (isDark ? "bg-emerald-950/30" : `${currentTheme.lightBg}/50`)
+                                        : (isDark ? "bg-transparent" : "bg-white")}`}
                                 >
                                     <div className="flex items-center gap-4">
-                                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${selectedCareer === index ? currentTheme.lightBg : 'bg-slate-50'}`}>
+                                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${selectedCareer === index
+                                            ? (isDark ? "bg-emerald-500/20" : currentTheme.lightBg)
+                                            : (isDark ? "bg-slate-800" : "bg-slate-50")}`}>
                                             <role.icon size={20} className={currentTheme.text} />
                                         </div>
                                         <div>
-                                            <h3 className={`font-serif text-lg ${selectedCareer === index ? currentTheme.accentText : "text-slate-900"}`}>
+                                            <h3 className={`font-serif text-lg ${selectedCareer === index
+                                                ? (isDark ? "text-emerald-400" : currentTheme.accentText)
+                                                : (isDark ? "text-slate-200" : "text-slate-900")}`}>
                                                 {role.title}
                                             </h3>
                                             <div className={`text-sm font-bold ${currentTheme.text}`}>
@@ -130,7 +143,7 @@ export function CareerVision({
                                         >
                                             <div className="p-4 pt-0 border-t border-slate-100">
                                                 <div className="pt-4">
-                                                    <RoleDetailsContent role={role} />
+                                                    <RoleDetailsContent role={role} isDark={isDark} />
                                                 </div>
                                             </div>
                                         </motion.div>
@@ -150,7 +163,7 @@ export function CareerVision({
                                     onClick={() => setSelectedCareer(i)}
                                     className={`w-full p-5 rounded-lg transition-all text-left ${selectedCareer === i
                                         ? `${currentTheme.bg} text-white shadow-lg`
-                                        : `bg-white border-2 border-slate-200 ${currentTheme.border} hover:shadow-md`
+                                        : `${isDark ? "bg-slate-900/40 border-slate-800" : "bg-white border-slate-200"} border-2 ${currentTheme.border} hover:shadow-md`
                                         }`}
                                 >
                                     <div className="flex items-start gap-4">
@@ -159,7 +172,9 @@ export function CareerVision({
                                             <role.icon size={22} className={selectedCareer === i ? 'text-white' : currentTheme.text} />
                                         </div>
                                         <div className="flex-1">
-                                            <h3 className={`text-base font-serif leading-tight mb-1.5 ${selectedCareer === i ? 'text-white' : 'text-slate-900'
+                                            <h3 className={`text-base font-serif leading-tight mb-1.5 ${selectedCareer === i
+                                                ? 'text-white'
+                                                : (isDark ? 'text-slate-200' : 'text-slate-900')
                                                 }`}>
                                                 {role.title}
                                             </h3>
@@ -175,8 +190,8 @@ export function CareerVision({
 
                         {/* Right: Selected Role Details */}
                         <div className="lg:sticky lg:top-6 h-fit">
-                            <div className="bg-white border-2 border-slate-200 rounded-2xl p-8 md:p-10 shadow-sm">
-                                <RoleDetailsContent role={roles[selectedCareer]} />
+                            <div className={`${isDark ? "bg-slate-900/60 border-slate-800 backdrop-blur-sm" : "bg-white border-slate-200"} border-2 rounded-2xl p-8 md:p-10 shadow-sm`}>
+                                <RoleDetailsContent role={roles[selectedCareer]} isDark={isDark} />
                             </div>
                         </div>
                     </div>
