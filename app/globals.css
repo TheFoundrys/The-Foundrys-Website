@@ -93,6 +93,7 @@
 
 html {
     scroll-behavior: smooth;
+    overscroll-behavior: none;
 }
 
 body {
@@ -100,6 +101,7 @@ body {
     color: var(--foreground);
     font-family: var(--font-sans);
     overflow-x: hidden;
+    overscroll-behavior: none;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -128,6 +130,7 @@ body {
 .no-scrollbar::-webkit-scrollbar {
     display: none;
 }
+
 .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;

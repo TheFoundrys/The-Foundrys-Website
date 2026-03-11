@@ -696,7 +696,7 @@ export function CyberClient() {
         isDark={true}
       />
 
-      <Footer />
+      <Footer isDark={true} />
     </main>
   );
 }
