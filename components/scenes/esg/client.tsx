@@ -4,6 +4,7 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import { Leaf, Globe, TrendingUp, Users, Scale, Building2 } from "lucide-react";
+import Link from "next/link";
 
 export function ESGClient() {
   return (
@@ -35,13 +36,81 @@ export function ESGClient() {
                     Become the architect of compliant, ethical, and highly profitable systems for the future economy.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                    <button className="px-8 py-4 bg-emerald-600 text-white rounded-full font-bold text-lg hover:bg-emerald-500 transition-all shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-[0_0_50px_rgba(16,185,129,0.5)] transform hover:-translate-y-1">
-                        APPLY FOR ESG PROGRAM
-                    </button>
+                    <Link href="/payment?course=esgSustainability&type=freshers" className="px-8 py-4 bg-emerald-600 text-white rounded-full font-bold text-lg hover:bg-emerald-500 transition-all shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-[0_0_50px_rgba(16,185,129,0.5)] transform hover:-translate-y-1">
+                        Enroll Now
+                    </Link>
                 </div>
             </motion.div>
         </div>
       </section>
+
+      {/* Program Details Card */}
+      <div className="relative z-20 px-4 -mt-14 mb-12">
+        <div className="mx-auto max-w-7xl">
+          <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12 text-slate-900">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Program Length</p>
+                <p className="text-lg font-bold">3-Year Full-Time</p>
+              </div>
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Delivery Mode</p>
+                <p className="text-lg font-bold">On-Campus, Immersive</p>
+              </div>
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Campus</p>
+                <p className="text-lg font-bold">Hyderabad, India</p>
+              </div>
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Admissions</p>
+                <p className="text-lg font-bold">Now Open</p>
+              </div>
+            </div>
+            <div className="flex gap-3 w-full lg:w-auto">
+              <Link href="/payment?course=esgSustainability&type=freshers" className="flex-1 lg:flex-none text-center px-8 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition-all shadow-lg active:scale-95 whitespace-nowrap">
+                Enroll Now
+              </Link>
+              <Link href="/contact" className="flex-1 lg:flex-none text-center px-8 py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-slate-50 transition-all border border-slate-300 active:scale-95 whitespace-nowrap">
+                Contact Now
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Program Details Card */}
+      <div className="relative z-20 px-4 -mt-14 mb-12">
+        <div className="mx-auto max-w-7xl">
+          <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12 text-slate-900">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Program Length</p>
+                <p className="text-lg font-bold">3-Year Full-Time</p>
+              </div>
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Delivery Mode</p>
+                <p className="text-lg font-bold">On-Campus, Immersive</p>
+              </div>
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Campus</p>
+                <p className="text-lg font-bold">Hyderabad, India</p>
+              </div>
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Admissions</p>
+                <p className="text-lg font-bold">Now Open</p>
+              </div>
+            </div>
+            <div className="flex gap-3 w-full lg:w-auto">
+              <Link href="/payment?course=esgSustainability&type=freshers" className="flex-1 lg:flex-none text-center px-8 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition-all shadow-lg active:scale-95 whitespace-nowrap">
+                Enroll Now
+              </Link>
+              <Link href="/contact" className="flex-1 lg:flex-none text-center px-8 py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-slate-50 transition-all border border-slate-300 active:scale-95 whitespace-nowrap">
+                Contact Now
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Curriculum / Philosophy */}
       <section className="py-24 px-4 bg-white">

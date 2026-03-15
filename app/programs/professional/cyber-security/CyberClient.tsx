@@ -42,6 +42,7 @@ export default function CyberClient() {
                             desc="Comprehensive coverage of network security, ethical hacking, and incident response for the enterprise."
                             symbol={symbol}
                             currency={currency}
+                            enrollHref="/payment?course=certifiedInCybersecurity&type=freshers"
                         />
                         <CourseCard
                             sku="CS 004"
@@ -51,6 +52,7 @@ export default function CyberClient() {
                             desc="Specialized track focusing on Vulnerability Assessment and Penetration Testing specifically for AI systems."
                             symbol={symbol}
                             currency={currency}
+                            enrollHref="/payment?course=certifiedInCybersecurity&type=freshers"
                         />
                         <CourseCard
                             sku="CS 006"
@@ -60,6 +62,7 @@ export default function CyberClient() {
                             desc="Learn to secure AI pipelines, training data, and model endpoints against adversarial attacks."
                             symbol={symbol}
                             currency={currency}
+                            enrollHref="/payment?course=certifiedInCybersecurity&type=freshers"
                         />
                         <CourseCard
                             sku="CS 008"
@@ -69,6 +72,7 @@ export default function CyberClient() {
                             desc="Advanced studies in securing the AI lifecycle, from data ingestion to inference."
                             symbol={symbol}
                             currency={currency}
+                            enrollHref="/payment?course=certifiedInCybersecurity&type=freshers"
                         />
                     </div>
                 </div>
@@ -84,7 +88,7 @@ interface PricePair {
     discounted: string;
 }
 
-function CourseCard({ sku, title, priceINR, priceUSD, desc, symbol, currency }: { sku: string, title: string, priceINR: PricePair, priceUSD: PricePair, desc: string, symbol: string, currency: 'INR' | 'USD' }) {
+function CourseCard({ sku, title, priceINR, priceUSD, desc, symbol, currency, enrollHref }: { sku: string, title: string, priceINR: PricePair, priceUSD: PricePair, desc: string, symbol: string, currency: 'INR' | 'USD', enrollHref?: string }) {
     const originalPrice = currency === 'USD' ? priceUSD.original : priceINR.original;
     const discountedPrice = currency === 'USD' ? priceUSD.discounted : priceINR.discounted;
 
@@ -123,12 +127,22 @@ function CourseCard({ sku, title, priceINR, priceUSD, desc, symbol, currency }: 
                         </div>
                     </div>
                 </div>
-                <Link
-                    href="/apply"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-teal-600 transition-colors shadow-lg hover:shadow-teal-500/25"
-                >
-                    View Program <ArrowUpRight size={18} />
-                </Link>
+                <div className="flex flex-col gap-2 w-full sm:w-auto md:w-full lg:w-auto">
+                    <Link
+                        href={enrollHref || "/apply"}
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-teal-600 transition-all shadow-lg hover:shadow-teal-500/25 whitespace-nowrap"
+                    >
+                        Enroll Now <ArrowUpRight size={18} />
+                    </Link>
+                    {enrollHref && (
+                        <Link
+                            href="/apply"
+                            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-bold hover:bg-slate-50 transition-colors whitespace-nowrap"
+                        >
+                            View Program
+                        </Link>
+                    )}
+                </div>
             </div>
         </motion.div>
     )

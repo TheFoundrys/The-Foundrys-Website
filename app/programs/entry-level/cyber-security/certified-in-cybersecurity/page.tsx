@@ -378,7 +378,7 @@ export default function CertifiedInCybersecurityPage() {
                         </div>
 
                         <div className="w-full lg:w-auto">
-                            <Link href="https://compass.thefoundrys.com/courses/cyber-security/Certified-in-Cyber-Security" className="block w-full text-center px-8 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
+                            <Link href="/payment?course=certifiedInCybersecurity&type=freshers" className="block w-full text-center px-8 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
                                 Enroll Now
                             </Link>
                         </div>

@@ -46,6 +46,7 @@ export default function AIClient() {
               href="/programs/professional/ai/certified-professional-in-ai-research"
               persona="For Aspiring AI Scientists & Research Engineers"
               isBestSeller={true}
+              enrollHref="/payment?course=professionalAIResearch&type=freshers"
             />
             <CourseCard
               sku="AI 004"
@@ -58,6 +59,7 @@ export default function AIClient() {
               href="/programs/professional/ai/certified-professional-in-ai-engineering"
               persona="For Software Developers (Full-stack, Backend, MERN ...)"
               isBestSeller={true}
+              enrollHref="/payment?course=professionalAIEngineer&type=freshers"
             />
             <CourseCard
               sku="AI 005"
@@ -69,6 +71,7 @@ export default function AIClient() {
               desc="Master the art of MLOps. Learn deployment strategies, monitoring, and maintaining AI at scale."
               href="/programs/professional/ai/certified-professional-in-ai-operations"
               persona="For DevOps & Cloud Engineers"
+              enrollHref="/payment?course=professionalAIOperations&type=freshers"
             />
             <CourseCard
               sku="AI 007"
@@ -80,6 +83,7 @@ export default function AIClient() {
               desc="Enable experienced Java developers to build practical AI capabilities using Python by covering core language fundamentals, AI frameworks, data preparation, model training, and deployment workflows."
               href="/programs/professional/ai/ai-fluency"
               persona="For Java Developers (4+ years experience) & Tech Cross Functional"
+              enrollHref="/payment?course=aiFluency&type=twoToFive"
             />
             <CourseCard
               sku="AI 006"
@@ -92,6 +96,7 @@ export default function AIClient() {
               href="/programs/professional/ai/agentic-ai-bootcamp"
               persona="Engineering + Non-Engineering Backgrounds"
               badges={["In-Person @ Hyderabad", "March 2026"]}
+              enrollHref="/payment?course=agenticAIBootcamp&type=freshers"
             />
           </div>
         </div>
@@ -102,7 +107,7 @@ export default function AIClient() {
   );
 }
 
-function CourseCard({ sku, title, originalPrice, discountedPrice, currencySymbol = "₹", desc, discountLabel = "50% Discount", href = "/apply", duration = "3 Months", persona = "Students / Working professionals", isBestSeller = false, badges }: { sku: string, title: string, originalPrice: string, discountedPrice: string, currencySymbol?: string, desc: string, discountLabel?: string, href?: string, duration?: string, persona?: string, isBestSeller?: boolean, badges?: string[] }) {
+function CourseCard({ sku, title, originalPrice, discountedPrice, currencySymbol = "₹", desc, discountLabel = "50% Discount", href = "/apply", duration = "3 Months", persona = "Students / Working professionals", isBestSeller = false, badges, enrollHref }: { sku: string, title: string, originalPrice: string, discountedPrice: string, currencySymbol?: string, desc: string, discountLabel?: string, href?: string, duration?: string, persona?: string, isBestSeller?: boolean, badges?: string[], enrollHref?: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -168,12 +173,22 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, currencySymbol
             </div>
           </div>
         </div>
-        <Link
-          href={href}
-          className="w-full sm:w-auto md:w-full lg:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 transition-colors shadow-lg hover:shadow-blue-500/25"
-        >
-          View Program <ArrowUpRight size={18} />
-        </Link>
+        <div className="flex flex-col gap-2 w-full sm:w-auto md:w-full lg:w-auto">
+          <Link
+            href={enrollHref || href}
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 transition-all shadow-lg hover:shadow-blue-500/25 whitespace-nowrap"
+          >
+            Enroll Now <ArrowUpRight size={18} />
+          </Link>
+          {enrollHref && (
+            <Link
+              href={href}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-bold hover:bg-slate-50 transition-colors whitespace-nowrap"
+            >
+              View Program
+            </Link>
+          )}
+        </div>
       </div>
     </motion.div>
   )

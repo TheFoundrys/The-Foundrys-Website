@@ -79,6 +79,7 @@ export default function EntryLevelAIPage() {
                             persona="For Students & AI enthusiasts"
                             href="/programs/entry-level/ai/certified-in-prompt-engineering"
                             symbol={symbol}
+                            enrollHref="/payment?course=promptEngineering&type=freshers"
                         />
                         {/* <CourseCard
                             sku="AI 003"
@@ -100,7 +101,7 @@ export default function EntryLevelAIPage() {
     );
 }
 
-function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discountLabel = "50% Discount", href = "/apply", duration = "3 Months", persona = "UG / PG Students", isBestSeller = false, symbol = "₹" }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string, discountLabel?: string, href?: string, duration?: string, persona?: string, isBestSeller?: boolean, symbol?: string }) {
+function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discountLabel = "50% Discount", href = "/apply", enrollHref, duration = "3 Months", persona = "UG / PG Students", isBestSeller = false, symbol = "₹" }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string, discountLabel?: string, href?: string, enrollHref?: string, duration?: string, persona?: string, isBestSeller?: boolean, symbol?: string }) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -156,12 +157,22 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
                         </div>
                     </div>
                 </div>
-                <Link
-                    href={href}
-                    className="w-full sm:w-auto md:w-full lg:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 transition-colors shadow-lg hover:shadow-blue-500/25"
-                >
-                    View Program <ArrowUpRight size={18} />
-                </Link>
+                <div className="flex flex-col gap-2 w-full sm:w-auto md:w-full lg:w-auto">
+                    <Link
+                        href={enrollHref || href}
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 transition-colors shadow-lg hover:shadow-blue-500/25 whitespace-nowrap"
+                    >
+                        Enroll Now <ArrowUpRight size={18} />
+                    </Link>
+                    {enrollHref && (
+                        <Link
+                            href={href}
+                            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-bold hover:bg-slate-50 transition-colors whitespace-nowrap"
+                        >
+                            View Program
+                        </Link>
+                    )}
+                </div>
             </div>
         </motion.div>
     )

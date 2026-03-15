@@ -20,7 +20,8 @@ const FUNDAMENTALS_PROGRAMS = [
                     "Computer Vision Basics",
                     "NLP & Transformer Models",
                     "AI Ethics & Safety"
-                ]
+                ],
+                enrollHref: "/payment?course=promptEngineering&type=freshers"
             },
             {
                 id: "cyber-funds",
@@ -31,7 +32,8 @@ const FUNDAMENTALS_PROGRAMS = [
                     "Ethical Hacking Basics",
                     "Cryptography Fundamentals",
                     "Incident Response"
-                ]
+                ],
+                enrollHref: "/payment?course=certifiedInCybersecurity&type=freshers"
             },
             {
                 id: "quantum-funds",
@@ -42,9 +44,10 @@ const FUNDAMENTALS_PROGRAMS = [
                     "Quantum Gates & Circuits",
                     "Shor's & Grover's Algorithms",
                     "Quantum Hardware Overview"
-                ]
+                ],
+                enrollHref: "/payment?course=quantumFundamentals&type=freshers"
             },
-             {
+            {
                 id: "blockchain-funds",
                 title: "Fundamentals of Blockchain",
                 duration: "3 Months",
@@ -53,7 +56,8 @@ const FUNDAMENTALS_PROGRAMS = [
                     "Smart Contracts (Solidity)",
                     "Consensus Mechanisms",
                     "DeFi Basics"
-                ]
+                ],
+                enrollHref: "/payment?course=blockchain&type=freshers"
             }
         ]
     },
@@ -72,7 +76,8 @@ const FUNDAMENTALS_PROGRAMS = [
                     "Business Model Canvas",
                     "MVP Development",
                     "Go-to-Market Strategy"
-                ]
+                ],
+                enrollHref: "/payment?course=ventureBuilding&type=freshers"
             },
             {
                 id: "strategy-funds",
@@ -83,7 +88,8 @@ const FUNDAMENTALS_PROGRAMS = [
                     "Blue Ocean Strategy",
                     "Corporate Innovation",
                     "Design Thinking"
-                ]
+                ],
+                enrollHref: "/payment?course=strategicInnovation&type=freshers"
             }
         ]
     },
@@ -102,7 +108,8 @@ const FUNDAMENTALS_PROGRAMS = [
                     "Carbon Footprint Analysis",
                     "Green Finance",
                     "Sustainability Reporting"
-                ]
+                ],
+                enrollHref: "/payment?course=esgSustainability&type=freshers"
             }
         ]
     },
@@ -121,7 +128,8 @@ const FUNDAMENTALS_PROGRAMS = [
                     "Wind Energy Systems",
                     "Energy Storage Solutions",
                     "Smart Grid Basics"
-                ]
+                ],
+                enrollHref: "/payment?course=sustainability&type=freshers"
             }
         ]
     }
@@ -221,11 +229,10 @@ export function ExecutiveSpotlight() {
                         </div>
 
                         <Link 
-                            href="https://compass.thefoundrys.com/executive/ai-leadership"
-                            target="_blank"
+                            href="/payment?course=deliveringAgeOfAI&type=freshers"
                             className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-bold px-8 py-4 rounded-full transition-all shadow-lg hover:shadow-amber-500/25 active:scale-95"
                         >
-                            Apply for Executive Cohort <ArrowUpRight size={18} />
+                            Enroll for Executive Cohort <ArrowUpRight size={18} />
                         </Link>
                     </div>
 
@@ -312,14 +319,21 @@ function CourseCard({ course, category }: { course: any, category: any }) {
                 </div>
             </div>
 
-            <div className="mt-auto pt-6">
+            <div className="mt-auto pt-6 flex flex-col gap-2">
                 <Link 
-                    href={`https://compass.thefoundrys.com/course/${course.id}`} // Placeholder link
-                    target="_blank"
-                    className="w-full py-3 rounded-xl bg-white border border-slate-200 text-slate-900 font-bold text-center hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center justify-center gap-2 group/btn shadow-sm"
+                    href={course.enrollHref || `https://compass.thefoundrys.com/course/${course.id}`}
+                    className="w-full py-3 rounded-xl bg-slate-900 border border-slate-800 text-white font-bold text-center hover:bg-blue-600 hover:border-blue-500 transition-all flex items-center justify-center gap-2 group/btn shadow-sm"
                 >
-                    View on Compass <ArrowUpRight size={16} className="text-slate-400 group-hover/btn:text-blue-600" />
+                    {course.enrollHref ? "Enroll Now" : "View on Compass"} <ArrowUpRight size={16} className={`${course.enrollHref ? "text-white" : "text-slate-400"} group-hover/btn:text-white`} />
                 </Link>
+                {course.enrollHref && course.id === "quantum-funds" && (
+                    <Link 
+                        href="/programs/professional/quantum-computing/certified-professional-in-quantum-fundamentals"
+                        className="w-full py-3 rounded-xl bg-white border border-slate-200 text-slate-700 font-bold text-center hover:bg-slate-50 transition-all flex items-center justify-center gap-2"
+                    >
+                        View Details
+                    </Link>
+                )}
             </div>
         </div>
     )

@@ -190,7 +190,7 @@ export default function AIFoundationsTeluguCoursePage() {
                             </div>
 
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <Link href="/apply" className="px-8 py-4 bg-amber-600 text-white rounded-full font-bold text-lg hover:bg-amber-500 transition-all shadow-lg hover:shadow-amber-500/25 text-center">
+                                <Link href="/payment?course=aiFoundationsTelugu&type=freshers" className="px-8 py-4 bg-amber-600 text-white rounded-full font-bold text-lg hover:bg-amber-500 transition-all shadow-lg hover:shadow-amber-500/25 text-center">
                                     Enroll Now
                                 </Link>
                                 <Link href="#overview" className="px-8 py-4 bg-slate-800 text-white rounded-full font-bold text-lg hover:bg-slate-700 transition-all border border-slate-700 text-center">
@@ -516,10 +516,10 @@ export default function AIFoundationsTeluguCoursePage() {
                         Join the next cohort and build your foundation in Artificial Intelligence.
                     </p>
                     <Link
-                        href="/apply"
+                        href="/payment?course=aiFoundationsTelugu&type=freshers"
                         className="inline-flex items-center gap-2 px-10 py-5 bg-amber-600 text-white rounded-full font-bold text-xl hover:bg-amber-500 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
                     >
-                        Start Application <ArrowUpRight size={20} />
+                        Enroll Now <ArrowUpRight size={20} />
                     </Link>
                 </div>
             </section>

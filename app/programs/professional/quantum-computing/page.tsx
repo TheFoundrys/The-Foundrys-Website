@@ -42,6 +42,7 @@ export default function QuantumPage() {
               desc="Hardware-focused track covering quantum gates, circuitry, and the physical implementation of qubits."
               symbol={symbol}
               currency={currency}
+              enrollHref="/payment?course=quantumEngineering&type=freshers"
             />
             <CourseCard
               sku="Q 004"
@@ -51,6 +52,7 @@ export default function QuantumPage() {
               desc="Core algorithm track including Shor's, Grover's, and quantum simulation techniques."
               symbol={symbol}
               currency={currency}
+              enrollHref="/payment?course=quantumComputing&type=freshers"
             />
             <CourseCard
               sku="Q 006"
@@ -60,6 +62,7 @@ export default function QuantumPage() {
               desc="Explore high-precision metrology and imaging using quantum properties."
               symbol={symbol}
               currency={currency}
+              enrollHref="/payment?course=quantumSensing&type=freshers"
             />
             <CourseCard
               sku="Q 008"
@@ -69,6 +72,7 @@ export default function QuantumPage() {
               desc="Secure communication protocols, quantum key distribution (QKD), and the quantum internet."
               symbol={symbol}
               currency={currency}
+              enrollHref="/payment?course=quantumCommunication&type=freshers"
             />
             <CourseCard
               sku="Q 010"
@@ -78,6 +82,7 @@ export default function QuantumPage() {
               desc="Information theory re-imagined. Entropy, entanglement, and density matrices."
               symbol={symbol}
               currency={currency}
+              enrollHref="/payment?course=quantumInformation&type=freshers"
             />
             <CourseCard
               sku="Q 012"
@@ -87,6 +92,7 @@ export default function QuantumPage() {
               desc="Preparing classical systems to withstand quantum attacks. Lattice-based cryptography and more."
               symbol={symbol}
               currency={currency}
+              enrollHref="/payment?course=postQuantumCryptography&type=freshers"
             />
             <CourseCard
               sku="QAI 002"
@@ -96,6 +102,7 @@ export default function QuantumPage() {
               desc="The intersection of two frontiers. Quantum machine learning algorithms and neural networks."
               symbol={symbol}
               currency={currency}
+              enrollHref="/payment?course=quantumAI&type=freshers"
             />
           </div>
         </div>
@@ -111,7 +118,7 @@ interface PricePair {
   discounted: string;
 }
 
-function CourseCard({ sku, title, priceINR, priceUSD, desc, duration = "Professional 3 Month Course", href = "/apply", symbol, currency }: { sku: string, title: string, priceINR: PricePair, priceUSD: PricePair, desc: string, duration?: string, href?: string, symbol: string, currency: 'INR' | 'USD' }) {
+function CourseCard({ sku, title, priceINR, priceUSD, desc, duration = "Professional 3 Month Course", href = "/apply", symbol, currency, enrollHref }: { sku: string, title: string, priceINR: PricePair, priceUSD: PricePair, desc: string, duration?: string, href?: string, symbol: string, currency: 'INR' | 'USD', enrollHref?: string }) {
   const originalPrice = currency === 'USD' ? priceUSD.original : priceINR.original;
   const discountedPrice = currency === 'USD' ? priceUSD.discounted : priceINR.discounted;
 
@@ -150,12 +157,22 @@ function CourseCard({ sku, title, priceINR, priceUSD, desc, duration = "Professi
             </div>
           </div>
         </div>
-        <Link
-          href={href}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-purple-600 transition-colors shadow-lg hover:shadow-purple-500/25"
-        >
-          View Program <ArrowUpRight size={18} />
-        </Link>
+        <div className="flex flex-col gap-2 w-full sm:w-auto md:w-full lg:w-auto">
+          <Link
+            href={enrollHref || href}
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-purple-600 transition-all shadow-lg hover:shadow-purple-500/25 whitespace-nowrap"
+          >
+            Enroll Now <ArrowUpRight size={18} />
+          </Link>
+          {enrollHref && (
+            <Link
+              href={href}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-bold hover:bg-slate-50 transition-colors whitespace-nowrap"
+            >
+              View Program
+            </Link>
+          )}
+        </div>
       </div>
     </motion.div>
   )

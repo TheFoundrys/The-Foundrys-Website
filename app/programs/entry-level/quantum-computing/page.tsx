@@ -44,6 +44,7 @@ export default function EntryLevelQuantumPage() {
                             persona="For Students & Quantum enthusiasts"
                             isBestSeller={true}
                             symbol={symbol}
+                            enrollHref="/payment?course=quantumFundamentals&type=freshers"
                         />
                         <CourseCard
                             sku="Q 001"
@@ -53,6 +54,7 @@ export default function EntryLevelQuantumPage() {
                             duration="4 Weeks"
                             desc="Master the physical implementation of qubits and quantum circuitry."
                             symbol={symbol}
+                            enrollHref="/payment?course=quantumEngineering&type=freshers"
                         />
                         <CourseCard
                             sku="Q 003"
@@ -62,6 +64,7 @@ export default function EntryLevelQuantumPage() {
                             duration="4 Weeks"
                             desc="Learn core quantum algorithms and simulation techniques."
                             symbol={symbol}
+                            enrollHref="/payment?course=quantumComputing&type=freshers"
                         />
                         <CourseCard
                             sku="Q 005"
@@ -71,6 +74,7 @@ export default function EntryLevelQuantumPage() {
                             duration="4 Weeks"
                             desc="Explore high-precision metrology using quantum properties."
                             symbol={symbol}
+                            enrollHref="/payment?course=quantumSensing&type=freshers"
                         />
                         <CourseCard
                             sku="Q 007"
@@ -80,6 +84,7 @@ export default function EntryLevelQuantumPage() {
                             duration="4 Weeks"
                             desc="Learn secure communication protocols and QKD."
                             symbol={symbol}
+                            enrollHref="/payment?course=quantumCommunication&type=freshers"
                         />
                         <CourseCard
                             sku="Q 009"
@@ -89,6 +94,7 @@ export default function EntryLevelQuantumPage() {
                             duration="4 Weeks"
                             desc="Information theory re-imagined with entanglement and entropy."
                             symbol={symbol}
+                            enrollHref="/payment?course=quantumInformation&type=freshers"
                         />
                         <CourseCard
                             sku="Q 011"
@@ -98,6 +104,7 @@ export default function EntryLevelQuantumPage() {
                             duration="4 Weeks"
                             desc="Preparing classical systems to withstand quantum attacks."
                             symbol={symbol}
+                            enrollHref="/payment?course=postQuantumCryptography&type=freshers"
                         />
                         <CourseCard
                             sku="QAI 001"
@@ -107,6 +114,7 @@ export default function EntryLevelQuantumPage() {
                             duration="4 Weeks"
                             desc="The intersection of quantum computing and machine learning."
                             symbol={symbol}
+                            enrollHref="/payment?course=quantumAI&type=freshers"
                         />
                     </div>
                 </div>
@@ -117,7 +125,7 @@ export default function EntryLevelQuantumPage() {
     );
 }
 
-function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discountLabel = "50% Discount", href = "/apply", duration = "3 Months", persona = "UG / PG Students", isBestSeller = false, symbol = "₹" }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string, discountLabel?: string, href?: string, duration?: string, persona?: string, isBestSeller?: boolean, symbol?: string }) {
+function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discountLabel = "50% Discount", href = "/apply", duration = "3 Months", persona = "UG / PG Students", isBestSeller = false, symbol = "₹", enrollHref }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string, discountLabel?: string, href?: string, duration?: string, persona?: string, isBestSeller?: boolean, symbol?: string, enrollHref?: string }) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -173,12 +181,22 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
                         </div>
                     </div>
                 </div>
-                <Link
-                    href={href}
-                    className="w-full sm:w-auto md:w-full lg:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-purple-600 transition-colors shadow-lg hover:shadow-purple-500/25"
-                >
-                    View Program <ArrowUpRight size={18} />
-                </Link>
+                <div className="flex flex-col gap-2 w-full sm:w-auto md:w-full lg:w-auto">
+                    <Link
+                        href={enrollHref || href}
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-purple-600 transition-colors shadow-lg hover:shadow-purple-500/25 whitespace-nowrap"
+                    >
+                        Enroll Now <ArrowUpRight size={18} />
+                    </Link>
+                    {enrollHref && (
+                        <Link
+                            href={href}
+                            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-bold hover:bg-slate-50 transition-colors whitespace-nowrap"
+                        >
+                            View Program
+                        </Link>
+                    )}
+                </div>
             </div>
         </motion.div>
     )

@@ -98,6 +98,24 @@ export interface CoursePricing {
     agenticAIBootcamp: PriceTier;
     aiFluency: PriceTier;
     certifiedInCybersecurity: PriceTier;
+    blockchain: PriceTier;
+    nft: PriceTier;
+    decentralizedSystems: PriceTier;
+    quantumEngineering: PriceTier;
+    quantumSensing: PriceTier;
+    quantumCommunication: PriceTier;
+    quantumInformation: PriceTier;
+    postQuantumCryptography: PriceTier;
+    quantumAI: PriceTier;
+    esgSustainability: PriceTier;
+    schoolOfAI: PriceTier;
+    schoolOfCyber: PriceTier;
+    schoolOfBlockchain: PriceTier;
+    schoolOfQuantum: PriceTier;
+    schoolOfVenture: PriceTier;
+    schoolOfSustainability: PriceTier;
+    schoolOfEnergy: PriceTier;
+    schoolOfInnovation: PriceTier;
 }
 
 export const COURSE_PRICING: CoursePricing = {
@@ -196,5 +214,113 @@ export const COURSE_PRICING: CoursePricing = {
         freshers: { INR: '75,000', USD: '1,500' },
         zeroToTwo: { INR: '1,12,500', USD: '2,250' },
         twoToFive: { INR: '1,35,000', USD: '2,700' },
+    },
+    blockchain: {
+        original: { INR: '50,000', USD: '1,000' },
+        freshers: { INR: '25,000', USD: '500' },
+        zeroToTwo: { INR: '37,500', USD: '750' },
+        twoToFive: { INR: '45,000', USD: '900' },
+    },
+    nft: {
+        original: { INR: '75,000', USD: '1,500' },
+        freshers: { INR: '37,500', USD: '750' },
+        zeroToTwo: { INR: '56,250', USD: '1,125' },
+        twoToFive: { INR: '67,500', USD: '1,350' },
+    },
+    decentralizedSystems: {
+        original: { INR: '1,00,000', USD: '2,000' },
+        freshers: { INR: '50,000', USD: '1,000' },
+        zeroToTwo: { INR: '75,000', USD: '1,500' },
+        twoToFive: { INR: '90,000', USD: '1,800' },
+    },
+    quantumEngineering: {
+        original: { INR: '1,50,000', USD: '3,000' },
+        freshers: { INR: '75,000', USD: '1,500' },
+        zeroToTwo: { INR: '1,12,500', USD: '2,250' },
+        twoToFive: { INR: '1,35,000', USD: '2,700' },
+    },
+    quantumSensing: {
+        original: { INR: '1,50,000', USD: '3,000' },
+        freshers: { INR: '75,000', USD: '1,500' },
+        zeroToTwo: { INR: '1,12,500', USD: '2,250' },
+        twoToFive: { INR: '1,35,000', USD: '2,700' },
+    },
+    quantumCommunication: {
+        original: { INR: '1,50,000', USD: '3,000' },
+        freshers: { INR: '75,000', USD: '1,500' },
+        zeroToTwo: { INR: '1,12,500', USD: '2,250' },
+        twoToFive: { INR: '1,35,000', USD: '2,700' },
+    },
+    quantumInformation: {
+        original: { INR: '1,50,000', USD: '3,000' },
+        freshers: { INR: '75,000', USD: '1,500' },
+        zeroToTwo: { INR: '1,12,500', USD: '2,250' },
+        twoToFive: { INR: '1,35,000', USD: '2,700' },
+    },
+    postQuantumCryptography: {
+        original: { INR: '1,50,000', USD: '3,000' },
+        freshers: { INR: '75,000', USD: '1,500' },
+        zeroToTwo: { INR: '1,12,500', USD: '2,250' },
+        twoToFive: { INR: '1,35,000', USD: '2,700' },
+    },
+    quantumAI: {
+        original: { INR: '4,00,000', USD: '8,000' },
+        freshers: { INR: '2,00,000', USD: '4,000' },
+        zeroToTwo: { INR: '3,00,000', USD: '6,000' },
+        twoToFive: { INR: '3,60,000', USD: '7,200' },
+    },
+    esgSustainability: {
+        original: { INR: '1,50,000', USD: '3,000' },
+        freshers: { INR: '75,000', USD: '1,500' },
+        zeroToTwo: { INR: '1,12,500', USD: '2,250' },
+        twoToFive: { INR: '1,35,000', USD: '2,700' },
+    },
+    schoolOfAI: {
+        original: { INR: '2,00,000', USD: '4,000' },
+        freshers: { INR: '1,50,000', USD: '3,000' },
+        zeroToTwo: { INR: '1,60,000', USD: '3,200' },
+        twoToFive: { INR: '1,80,000', USD: '3,600' },
+    },
+    schoolOfCyber: {
+        original: { INR: '2,00,000', USD: '4,000' },
+        freshers: { INR: '1,50,000', USD: '3,000' },
+        zeroToTwo: { INR: '1,60,000', USD: '3,200' },
+        twoToFive: { INR: '1,80,000', USD: '3,600' },
+    },
+    schoolOfBlockchain: {
+        original: { INR: '2,00,000', USD: '4,000' },
+        freshers: { INR: '1,50,000', USD: '3,000' },
+        zeroToTwo: { INR: '1,60,000', USD: '3,200' },
+        twoToFive: { INR: '1,80,000', USD: '3,600' },
+    },
+    schoolOfQuantum: {
+        original: { INR: '2,00,000', USD: '4,000' },
+        freshers: { INR: '1,50,000', USD: '3,000' },
+        zeroToTwo: { INR: '1,60,000', USD: '3,200' },
+        twoToFive: { INR: '1,80,000', USD: '3,600' },
+    },
+    schoolOfVenture: {
+        original: { INR: '2,00,000', USD: '4,000' },
+        freshers: { INR: '1,50,000', USD: '3,000' },
+        zeroToTwo: { INR: '1,60,000', USD: '3,200' },
+        twoToFive: { INR: '1,80,000', USD: '3,600' },
+    },
+    schoolOfSustainability: {
+        original: { INR: '2,00,000', USD: '4,000' },
+        freshers: { INR: '1,50,000', USD: '3,000' },
+        zeroToTwo: { INR: '1,60,000', USD: '3,200' },
+        twoToFive: { INR: '1,80,000', USD: '3,600' },
+    },
+    schoolOfEnergy: {
+        original: { INR: '2,00,000', USD: '4,000' },
+        freshers: { INR: '1,50,000', USD: '3,000' },
+        zeroToTwo: { INR: '1,60,000', USD: '3,200' },
+        twoToFive: { INR: '1,80,000', USD: '3,600' },
+    },
+    schoolOfInnovation: {
+        original: { INR: '2,00,000', USD: '4,000' },
+        freshers: { INR: '1,50,000', USD: '3,000' },
+        zeroToTwo: { INR: '1,60,000', USD: '3,200' },
+        twoToFive: { INR: '1,80,000', USD: '3,600' },
     },
 };

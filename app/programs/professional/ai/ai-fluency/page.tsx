@@ -252,7 +252,7 @@ export default function AIFluencyPage() {
                             </div>
                         </div>
                         <div className="w-full lg:w-auto">
-                            <Link href="https://compass.thefoundrys.com/courses/ai/ai-fluency" className="block w-full text-center px-8 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-500 transition-all shadow-lg active:scale-95 whitespace-nowrap">
+                            <Link href="/payment?course=aiFluency&type=twoToFive" className="block w-full text-center px-8 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-500 transition-all shadow-lg active:scale-95 whitespace-nowrap">
                                 Apply Now
                             </Link>
                         </div>

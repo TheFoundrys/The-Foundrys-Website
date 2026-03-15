@@ -365,8 +365,8 @@ export default function AIResearchCoursePage() {
                         </div>
 
                         <div className="w-full lg:w-auto">
-                            <Link href="/apply" className="block w-full text-center px-8 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
-                                Apply Now
+                            <Link href="/payment?course=aiResearch&type=freshers" className="block w-full text-center px-8 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
+                                Enroll Now
                             </Link>
                         </div>
                     </div>

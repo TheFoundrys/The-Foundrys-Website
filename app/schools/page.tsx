@@ -117,8 +117,8 @@ export default function SchoolsPage() {
                 <div className="container mx-auto px-6 text-center relative z-10">
                     <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400">Ready to Forge Your Future?</h2>
                     <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-                        <Link href="/apply" className="px-10 py-4 bg-white text-slate-950 rounded-full font-bold text-lg hover:bg-blue-50 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                            Start Application <ArrowRight size={20} />
+                        <Link href="/programs" className="px-10 py-4 bg-white text-slate-950 rounded-full font-bold text-lg hover:bg-blue-50 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                            Enroll Now <ArrowRight size={20} />
                         </Link>
                         {/* <Link href="/programs" className="px-10 py-4 bg-slate-900 border border-slate-700 text-white rounded-full font-bold text-lg hover:bg-slate-800 transition-all flex items-center gap-2 group hover:border-slate-500">
                         <Globe size={20} className="text-blue-400 group-hover:rotate-12 transition-transform" />

@@ -421,8 +421,8 @@ export function CyberClient() {
               </div>
             </div>
             <div className="flex gap-3 w-full lg:w-auto">
-              <Link href="/apply" className="flex-1 lg:flex-none text-center px-8 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition-all shadow-lg active:scale-95 whitespace-nowrap">
-                Apply Now
+              <Link href="/payment?course=schoolOfCyber&type=freshers" className="flex-1 lg:flex-none text-center px-8 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition-all shadow-lg active:scale-95 whitespace-nowrap">
+                Enroll Now
               </Link>
               <Link href="/contact" className="flex-1 lg:flex-none text-center px-8 py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-slate-50 transition-all border border-slate-300 active:scale-95 whitespace-nowrap">
                 Contact Now

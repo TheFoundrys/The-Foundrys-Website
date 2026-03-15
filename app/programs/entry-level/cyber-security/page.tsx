@@ -42,7 +42,7 @@ export default function EntryLevelCyberSecurityPage() {
                             desc="Master (ISC)² cybersecurity domains. Build a strong foundation in network security, access control, and security operations."
                             symbol={symbol}
                             href="/programs/entry-level/cyber-security/certified-in-cybersecurity"
-                            enrollHref="https://compass.thefoundrys.com/courses/cyber-security/Certified-in-Cyber-Security"
+                            enrollHref="/payment?course=certifiedInCybersecurity&type=freshers"
                         />
                         <CourseCard
                             sku="CS 003"
@@ -133,27 +133,19 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-wrap gap-2 w-full sm:w-auto md:w-full lg:w-auto">
+                <div className="flex flex-col gap-2 w-full sm:w-auto md:w-full lg:w-auto">
                     <Link
-                        href={href}
-                        className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-slate-900 border border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition-colors shadow-sm"
+                        href={enrollHref || href}
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-teal-600 transition-colors shadow-lg hover:shadow-teal-500/25 whitespace-nowrap"
                     >
-                        Details
+                        Enroll Now <ArrowUpRight size={18} />
                     </Link>
                     {enrollHref && (
                         <Link
-                            href={enrollHref}
-                            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-teal-600 transition-colors shadow-lg hover:shadow-teal-500/25"
-                        >
-                            Enroll Now <ArrowUpRight size={18} />
-                        </Link>
-                    )}
-                    {!enrollHref && (
-                        <Link
                             href={href}
-                            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-teal-600 transition-colors shadow-lg hover:shadow-teal-500/25"
+                            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-bold hover:bg-slate-50 transition-colors whitespace-nowrap"
                         >
-                            View Program <ArrowUpRight size={18} />
+                            View Program
                         </Link>
                     )}
                 </div>
