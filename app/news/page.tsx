@@ -34,6 +34,15 @@ const NEWS_ITEMS = [
         category: "Partnerships",
         image: "/mou-keshava-college.jpg",
         imagePosition: "object-top"
+    },
+    {
+        slug: "thefoundrys-certified-by-startup-india",
+        title: "The Foundry's Officially Certified by Startup India",
+        excerpt: "The Foundry’s is proud to announce its official recognition and certification by Startup India, the Government of India’s flagship initiative to foster innovation and entrepreneurship.",
+        date: "Mar 17, 2026",
+        readTime: "3 min",
+        category: "Achievements",
+        image: "/startup-india-certificate.jpg"
     }
 ];
 
@@ -83,18 +92,37 @@ function NewsCard({ slug, title, excerpt, date, readTime, category, image, image
             transition={{ delay: index * 0.1 }}
             className="group flex flex-col bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
         >
-            <Link href={`/news/${slug}`} className="block relative aspect-video overflow-hidden">
-                <img
-                    src={image}
-                    alt={title}
-                    className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ${imagePosition || 'object-center'}`}
-                />
-                <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur shadow-sm text-blue-600 text-xs font-bold border border-blue-100">
-                        {category}
-                    </span>
-                </div>
-            </Link>
+            {image ? (
+                <Link href={`/news/${slug}`} className="block relative aspect-video overflow-hidden">
+                    <img
+                        src={image}
+                        alt={title}
+                        className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ${imagePosition || 'object-center'}`}
+                    />
+                    <div className="absolute top-4 left-4">
+                        <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur shadow-sm text-blue-600 text-xs font-bold border border-blue-100">
+                            {category}
+                        </span>
+                    </div>
+                </Link>
+            ) : (
+                <Link href={`/news/${slug}`} className="block relative aspect-video bg-slate-900 group-hover:bg-slate-800 transition-colors duration-500 p-8 flex flex-col justify-end overflow-hidden focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.15),transparent)] pointer-events-none" />
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none" />
+
+                    {/* Decorative Element */}
+                    <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <Newspaper size={120} className="text-white transform translate-x-1/4 -translate-y-1/4 rotate-12" />
+                    </div>
+
+                    <div className="relative z-10">
+                        <span className="px-3 py-1 rounded-full bg-blue-500/10 backdrop-blur-md text-blue-400 text-[10px] font-bold border border-blue-500/20 uppercase tracking-widest mb-4 inline-block">
+                            {category}
+                        </span>
+
+                    </div>
+                </Link>
+            )}
 
             <div className="p-8 flex-grow flex flex-col">
                 <div className="flex items-center gap-4 text-xs font-medium text-slate-400 mb-4">

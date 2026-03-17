@@ -10,7 +10,7 @@ import Link from "next/link";
 const teamMembers = [
     {
         name: "Vishwanath Akuthota",
-        role: "Young Chief AI Officer | Founder & CEO",
+        role: "Founder & CEO",
         bio: "Deep Tech Entrepreneur & AI Architect with over 1.5 decades of experience. Building at the intersection of AI, Quantum, and Human Potential.",
         image: "/images/vishwa-new.jpg",
         profileLink: "/about/faculty/vishwanath-akuthota",

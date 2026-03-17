@@ -51,7 +51,7 @@ export default function VishwanathAkuthotaProfile() {
                         >
                             <div>
                                 <div className="inline-block px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-xs font-bold uppercase tracking-widest mb-4">
-                                    Young Chief AI Officer | Founder & CEO
+                                    Founder & CEO
                                 </div>
                                 <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-2">
                                     Vishwanath Akuthota
@@ -108,7 +108,7 @@ export default function VishwanathAkuthotaProfile() {
                                     Professional Summary
                                 </h2>
                                 <p className="text-slate-700 leading-relaxed mb-6">
-                                    Vishwanath Akuthota is a distinguished deep-tech entrepreneur and AI architect with over 1.5 decades of experience in Artificial Intelligence, Machine Learning, and Generative AI. Regarded as the "Young Chief AI Officer" by industry leaders, he has been at the forefront of building world-class AI products and Large Language Model (LLM) applications.
+                                    Vishwanath Akuthota is a distinguished deep-tech entrepreneur and AI architect with over 1.5 decades of experience in Artificial Intelligence, Machine Learning, and Generative AI. He has been at the forefront of building world-class AI products and Large Language Model (LLM) applications.
                                 </p>
                                 <p className="text-slate-700 leading-relaxed mb-6">
                                     His work is characterized by a mission to develop responsible and trustworthy AI systems that align with ethical principles and industry standards. He currently serves as the Founder & CEO of The Foundry’s, where he leads the mission to bridge the gap between emerging technology and human potential.
