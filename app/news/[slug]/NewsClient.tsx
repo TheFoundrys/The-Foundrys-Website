@@ -83,6 +83,40 @@ const ARTICLES: Record<string, NewsArticle> = {
                 </p>
             </>
         )
+    },
+    "thefoundrys-partnered-with-keshava-college": {
+        title: "The Foundrys Partnered with Keshava Degree College for Women",
+        date: "March 17, 2026",
+        readTime: "2 min read",
+        category: "Partnerships",
+        image: "/mou-keshava-college.jpg",
+        content: (
+            <>
+                <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
+                    The Foundry’s is proud to announce a strategic partnership with Keshava Degree College for Women, Hanamakonda.
+                </p>
+
+                <h2>Empowering Women in Deep Tech</h2>
+                <p>
+                    This Memorandum of Understanding (MOU) marks a significant step forward in our mission to bring advanced technical education to a broader student body. By partnering with Keshava Degree College for Women, we are committed to providing the next generation of female tech leaders with the tools, mentorship, and training required to excel in Artificial Intelligence and Deep Tech.
+                </p>
+
+                <div className="my-10 p-8 bg-blue-50/50 rounded-3xl border border-blue-100/50 italic text-slate-700">
+                    "Bridging the gender gap in technical leadership is not just a social imperative, but an economic one. Our collaboration with Keshava College is a blueprint for empowering women to lead the future of innovation."
+                </div>
+
+                <h2>Future-Ready Training and Mentorship</h2>
+                <ul>
+                    <li><strong>Specialized AI Training:</strong> Hands-on workshops focusing on Generative AI, LLM development, and Machine Learning.</li>
+                    <li><strong>Industry Mentorship:</strong> Exclusive access to a network of industry experts and deep-tech entrepreneurs.</li>
+                    <li><strong>Strategic Ecosystem:</strong> Building a robust ecosystem of innovation, where students can transition from academic learning to building real-world applications.</li>
+                </ul>
+
+                <p>
+                    The Foundry’s remains dedicated to creating inclusive, accessible, and high-impact educational pathways. We look forward to seeing the breakthroughs and innovations that emerge from this exciting new partnership.
+                </p>
+            </>
+        )
     }
 };
 

@@ -3,6 +3,13 @@ import { CampusHero } from "@/components/campus/hero";
 import { CampusGallery } from "@/components/campus/gallery";
 import { Amenities } from "@/components/campus/amenities";
 import { Footer } from "@/components/footer";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Our Campus in Hitech City | Inside the Tech Ecosystem",
+  description: "Experience The Foundry's campus in the heart of Hyderabad's Hitech City. Our facility is located inside a corporate workspace, offering real-world exposure from Day 1.",
+  keywords: ["Hyderabad Hitech City Campus", "Experimental Education Space", "Workplace Learning", "The Foundry Hyderabad Location", "Collaborative Learning Environment"],
+};
 
 export default function CampusPage() {
   return (

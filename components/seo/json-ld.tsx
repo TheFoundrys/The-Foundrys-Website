@@ -27,16 +27,23 @@ export function JsonLd() {
     ],
     "address": {
       "@type": "PostalAddress",
-      // "streetAddress": "Hitech City",
+      "streetAddress": "Sasi Icon, Beside Madhapur Metro Station, Jubilee Hills Road No 36 & 37",
       "addressLocality": "Hyderabad",
       "addressRegion": "Telangana",
-      "postalCode": "500081",
+      "postalCode": "500033",
       "addressCountry": "IN"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 17.4435, 
-      "longitude": 78.3772
+      "latitude": 17.4332, 
+      "longitude": 78.3976
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-XXXXXXXXXX",
+      "contactType": "admissions",
+      "areaServed": "IN",
+      "availableLanguage": ["English", "Telugu", "Hindi"]
     },
     "description": "India's first Deep Tech and Venture Building school located inside a workspace. Founded by Vishwanath Akuthota (Dr. Pinnacle). We forge Architects, not just engineers.",
     "foundingDate": "2025",

@@ -24,6 +24,15 @@ const NEWS_ITEMS = [
         readTime: "2 min",
         category: "Partnerships",
         image: "/csi-partnership.jpeg"
+    },
+    {
+        slug: "thefoundrys-partnered-with-keshava-college",
+        title: "The Foundrys Partnered with Keshava Degree College for Women",
+        excerpt: "We are proud to announce a strategic partnership with Keshava Degree College for Women, Hanamakonda. This MOU marks a significant step towards empowering women in tech through advanced training in Deep Tech and AI.",
+        date: "Mar 17, 2026",
+        readTime: "2 min",
+        category: "Partnerships",
+        image: "/mou-keshava-college.jpg"
     }
 ];
 
