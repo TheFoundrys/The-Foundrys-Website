@@ -12,6 +12,7 @@ interface NewsArticle {
     readTime: string;
     category: string;
     image: string;
+    imagePosition?: string;
     content: React.ReactNode;
 }
 
@@ -90,6 +91,7 @@ const ARTICLES: Record<string, NewsArticle> = {
         readTime: "2 min read",
         category: "Partnerships",
         image: "/mou-keshava-college.jpg",
+        imagePosition: "object-top",
         content: (
             <>
                 <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
@@ -205,7 +207,7 @@ export default function NewsClient({ slug }: { slug: string }) {
                         <img
                             src={article.image}
                             alt={article.title}
-                            className="w-full h-full object-cover"
+                            className={`w-full h-full object-cover ${article.imagePosition || 'object-center'}`}
                         />
                         <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                     </div>

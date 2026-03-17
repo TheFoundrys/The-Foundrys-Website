@@ -32,7 +32,8 @@ const NEWS_ITEMS = [
         date: "Mar 17, 2026",
         readTime: "2 min",
         category: "Partnerships",
-        image: "/mou-keshava-college.jpg"
+        image: "/mou-keshava-college.jpg",
+        imagePosition: "object-top"
     }
 ];
 
@@ -73,7 +74,7 @@ export default function NewsroomPage() {
     );
 }
 
-function NewsCard({ slug, title, excerpt, date, readTime, category, image, index }: any) {
+function NewsCard({ slug, title, excerpt, date, readTime, category, image, imagePosition, index }: any) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -86,7 +87,7 @@ function NewsCard({ slug, title, excerpt, date, readTime, category, image, index
                 <img
                     src={image}
                     alt={title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ${imagePosition || 'object-center'}`}
                 />
                 <div className="absolute top-4 left-4">
                     <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur shadow-sm text-blue-600 text-xs font-bold border border-blue-100">
