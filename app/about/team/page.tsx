@@ -129,7 +129,7 @@ export default function TeamPage() {
                             member={{
                                 name: "Akuthota Aravind",
                                 role: "Business Development Executive",
-                                image: "/images/executive-indian-portrait-male.png",
+                                image: "/images/akuthota.png",
                                 bio: "Enabling strategic partnerships and expanding market opportunities at the convergence of Deep Tech and Sustainability.",
                                 profileLink: "/about/faculty/akuthota-aravind"
                             }}
@@ -168,7 +168,7 @@ function SmallTeamCard({ member, index }: { member: any, index: number }) {
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
@@ -224,7 +224,7 @@ function TeamCard({ member, index }: { member: any, index: number }) {
                         src={member.image}
                         alt={member.name}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                     />
                 )}
             </div>

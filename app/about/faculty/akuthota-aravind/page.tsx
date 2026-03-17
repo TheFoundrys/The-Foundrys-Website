@@ -33,10 +33,10 @@ export default function AkuthotaAravindProfile() {
                         >
                             <div className="aspect-[3/4] relative rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-800 bg-slate-800">
                                 <Image
-                                    src="/images/executive-indian-portrait-male.png"
+                                    src="/images/araavind.png"
                                     alt="Akuthota Aravind"
                                     fill
-                                    className="object-cover"
+                                    className="object-cover object-top"
                                 />
                             </div>
                             <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-500/20 blur-3xl rounded-full" />
