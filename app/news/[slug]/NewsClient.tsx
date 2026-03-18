@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft, Clock, Share2, Tag, Calendar, User } from 'lucide-react';
@@ -11,7 +11,9 @@ interface NewsArticle {
     date: string;
     readTime: string;
     category: string;
-    image: string;
+    excerpt?: string;
+    image?: string;
+    imagePosition?: string;
     content: React.ReactNode;
 }
 
@@ -83,11 +85,80 @@ const ARTICLES: Record<string, NewsArticle> = {
                 </p>
             </>
         )
+    },
+    "thefoundrys-partnered-with-keshava-college": {
+        title: "The Foundrys Partnered with Keshava Degree College for Women",
+        date: "March 17, 2026",
+        readTime: "2 min read",
+        category: "Partnerships",
+        image: "/mou-keshava-college.jpg",
+        imagePosition: "object-top",
+        content: (
+            <>
+                <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
+                    The Foundry’s is proud to announce a strategic partnership with Keshava Degree College for Women, Hanamakonda.
+                </p>
+
+                <h2>Empowering Women in Deep Tech</h2>
+                <p>
+                    This Memorandum of Understanding (MOU) marks a significant step forward in our mission to bring advanced technical education to a broader student body. By partnering with Keshava Degree College for Women, we are committed to providing the next generation of female tech leaders with the tools, mentorship, and training required to excel in Artificial Intelligence and Deep Tech.
+                </p>
+
+                <div className="my-10 p-8 bg-blue-50/50 rounded-3xl border border-blue-100/50 italic text-slate-700">
+                    "Bridging the gender gap in technical leadership is not just a social imperative, but an economic one. Our collaboration with Keshava College is a blueprint for empowering women to lead the future of innovation."
+                </div>
+
+                <h2>Future-Ready Training and Mentorship</h2>
+                <ul>
+                    <li><strong>Specialized AI Training:</strong> Hands-on workshops focusing on Generative AI, LLM development, and Machine Learning.</li>
+                    <li><strong>Industry Mentorship:</strong> Exclusive access to a network of industry experts and deep-tech entrepreneurs.</li>
+                    <li><strong>Strategic Ecosystem:</strong> Building a robust ecosystem of innovation, where students can transition from academic learning to building real-world applications.</li>
+                </ul>
+
+                <p>
+                    The Foundry’s remains dedicated to creating inclusive, accessible, and high-impact educational pathways. We look forward to seeing the breakthroughs and innovations that emerge from this exciting new partnership.
+                </p>
+            </>
+        )
+    },
+    "thefoundrys-certified-by-startup-india": {
+        title: "The Foundry's Officially Certified by Startup India",
+        date: "March 17, 2026",
+        readTime: "3 min read",
+        category: "Achievements",
+        image: "/startup-india-certificate.jpg",
+        content: (
+            <>
+                <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
+                    The Foundry’s is proud to announce its official recognition and certification by Startup India, the Government of India’s flagship initiative.
+                </p>
+
+                <h2>A Milestone in Innovation</h2>
+                <p>
+                    This recognition by the Department for Promotion of Industry and Internal Trade (DPIIT) is a testament to our commitment to building cutting-edge deep tech solutions in India. Being part of the Startup India ecosystem provides us with a robust framework to scale our operations and continue our mission of technical excellence.
+                </p>
+
+                <div className="my-10 p-8 bg-blue-50/50 rounded-3xl border border-blue-100/50 italic text-slate-700">
+                    "Recognition by Startup India is more than just a certification; it's a validation of our vision to position India as a global leader in AI and Deep Tech innovation."
+                </div>
+
+                <h2>Fueling the Deep Tech Revolution</h2>
+                <p>
+                    As a certified startup, we gain access to strategic resources, tax benefits, and a network of mentors and investors who share our passion for transformative technology. This milestone enables us to accelerate our research and development in Generative AI, LLM frameworks, and responsible AI architectures.
+                </p>
+
+                <h2>The Road Ahead</h2>
+                <p>
+                    We remain dedicated to fostering a culture of innovation and mentorship. This certification empowers us to further bridge the gap between academic brilliance and industrial application, creating world-class AI products that solve real-world challenges.
+                </p>
+            </>
+        )
     }
 };
 
 export default function NewsClient({ slug }: { slug: string }) {
     const article = ARTICLES[slug];
+    const [copied, setCopied] = useState(false);
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
@@ -98,6 +169,30 @@ export default function NewsClient({ slug }: { slug: string }) {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    const handleShare = async () => {
+        const shareData = {
+            title: article.title,
+            text: article.excerpt || article.title,
+            url: window.location.href,
+        };
+
+        if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+            try {
+                await navigator.share(shareData);
+            } catch (err) {
+                console.error('Error sharing:', err);
+            }
+        } else {
+            try {
+                await navigator.clipboard.writeText(window.location.href);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+            } catch (err) {
+                console.error('Error copying to clipboard:', err);
+            }
+        }
+    };
 
     if (!article) {
         return (
@@ -167,14 +262,16 @@ export default function NewsClient({ slug }: { slug: string }) {
                 {/* Main Content Card */}
                 <article className="bg-white/70 backdrop-blur-xl rounded-[2.5rem] p-6 md:p-12 shadow-[0_8px_32px_rgba(0,0,0,0.04)] border border-white/80 relative overflow-hidden ring-1 ring-white/80">
 
-                    <div className="mb-14 rounded-2xl overflow-hidden shadow-2xl shadow-slate-900/10 relative group transform transition-transform hover:scale-[1.01] duration-700 aspect-video">
-                        <img
-                            src={article.image}
-                            alt={article.title}
-                            className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                    </div>
+                    {article.image && (
+                        <div className="mb-14 rounded-2xl overflow-hidden shadow-2xl shadow-slate-900/10 relative group transform transition-transform hover:scale-[1.01] duration-700 aspect-video">
+                            <img
+                                src={article.image}
+                                alt={article.title}
+                                className={`w-full h-full object-cover ${article.imagePosition || 'object-center'}`}
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                        </div>
+                    )}
 
                     <div className="prose prose-lg prose-slate max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-slate-900 prose-p:text-slate-700 prose-p:leading-relaxed prose-a:text-blue-600 hover:prose-a:text-blue-500 prose-img:rounded-2xl">
                         {article.content}
@@ -182,13 +279,18 @@ export default function NewsClient({ slug }: { slug: string }) {
 
                     {/* Footer / Share */}
                     <div className="mt-20 pt-10 border-t border-slate-200/60 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
-                        <div className="text-slate-400 text-xs font-mono tracking-widest uppercase">
-                            // TRANSMISSION END
-                        </div>
+
                         <div className="flex gap-4">
-                            <button className="flex items-center gap-2 text-slate-600 hover:text-white hover:bg-slate-900 transition-all font-bold px-6 py-3 rounded-full bg-slate-100/50 active:scale-95 duration-200 shadow-sm hover:shadow-lg">
+                            <button 
+                                onClick={handleShare}
+                                className={`flex items-center gap-2 transition-all font-bold px-6 py-3 rounded-full active:scale-95 duration-200 shadow-sm hover:shadow-lg ${
+                                    copied 
+                                    ? "bg-green-500 text-white" 
+                                    : "text-slate-600 bg-slate-100/50 hover:text-white hover:bg-slate-900"
+                                }`}
+                            >
                                 <Share2 size={16} />
-                                Share Article
+                                {copied ? "Link Copied!" : "Share Article"}
                             </button>
                         </div>
                     </div>

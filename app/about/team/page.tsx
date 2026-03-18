@@ -11,8 +11,9 @@ const teamMembers = [
     {
         name: "Vishwanath Akuthota",
         role: "Founder & CEO",
-        bio: "Deep Tech Entrepreneur & Architect. Building at the intersection of AI, Quantum, and Human Potential.",
+        bio: "Deep Tech Entrepreneur & AI Architect with over 1.5 decades of experience. Building at the intersection of AI, Quantum, and Human Potential.",
         image: "/images/vishwa-new.jpg",
+        profileLink: "/about/faculty/vishwanath-akuthota",
         socials: {
             linkedin: "https://www.linkedin.com/in/vishwanathakuthota/",
             website: "https://www.drpinnacle.com"
@@ -81,32 +82,113 @@ export default function TeamPage() {
             </section>
 
             {/* Team Grid */}
-            <section className="py-24 px-6">
+            <section className="py-24 px-6 bg-white">
                 <div className="container mx-auto max-w-6xl">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">The Architects</h2>
+                        <p className="text-slate-600 max-w-2xl mx-auto">Building the foundations of the cultivation economy.</p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {teamMembers.map((member, index) => (
                             <TeamCard key={index} member={member} index={index} />
                         ))}
+                    </div>
+                </div>
+            </section>
 
-                        {/* Hiring / Join Us Card */}
-                        {/* <div className="bg-slate-100 rounded-3xl p-8 flex flex-col justify-center items-center text-center border-2 border-dashed border-slate-300 min-h-[400px]">
-                      <div className="w-16 h-16 bg-slate-200 rounded-full flex items-center justify-center mb-6 text-slate-400">
-                          <ArrowUpRight size={32} />
-                      </div>
-                      <h3 className="text-2xl font-bold text-slate-900 mb-2">Join the Foundry</h3>
-                      <p className="text-slate-600 mb-6">
-                          Are you a deep tech expert or founder? We are always looking for mentors and architects.
-                      </p>
-                      <Link href="/apply" className="px-6 py-3 bg-slate-900 text-white rounded-full font-bold hover:bg-slate-800 transition-colors">
-                          Apply to Join
-                      </Link>
-                  </div> */}
+            {/* Advisory Board Section */}
+            <section className="py-24 px-6 bg-slate-50 border-t border-slate-200">
+                <div className="container mx-auto max-w-6xl">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">Advisory Board</h2>
+                        <p className="text-slate-600 max-w-2xl mx-auto">Strategic guidance from industry veterans and visionaries.</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <SmallTeamCard
+                            member={{
+                                name: "Dr. Suman Rangabhashyam",
+                                role: "Social Entrepreneur & Author",
+                                image: "/images/suman rangabhasyam.jpg",
+                                bio: "TEDx Speaker, Author, and Social Entrepreneur helping individuals and enterprises scale through branding.",
+                                profileLink: "/about/faculty/suman-rangabhashyam"
+                            }}
+                            index={0}
+                        />
+                        <SmallTeamCard
+                            member={{
+                                name: "Gunda Lakshmaiah",
+                                role: "Business Development Executive",
+                                image: "/images/laxman.jpg",
+                                bio: "Driving growth at The Foundry’s through strategic partnerships and business opportunities in Deep Tech and Sustainability.",
+                                profileLink: "/about/faculty/gunda-lakshmaiah"
+                            }}
+                            index={1}
+                        />
+                        <SmallTeamCard
+                            member={{
+                                name: "Akuthota Aravind",
+                                role: "Business Development Executive",
+                                image: "/images/akuthota.png",
+                                bio: "Enabling strategic partnerships and expanding market opportunities at the convergence of Deep Tech and Sustainability.",
+                                profileLink: "/about/faculty/akuthota-aravind"
+                            }}
+                            index={3}
+                        />
+                        <SmallTeamCard
+                            member={{
+                                name: "Soujanya Kanagala",
+                                role: "Management Consultant",
+                                image: "/images/soujanya.jpg",
+                                bio: "Management Consultant with 14 years of experience specializing in business setup, operations, and organizational scaling.",
+                                profileLink: "/about/faculty/soujanya-kanagala"
+                            }}
+                            index={2}
+                        />
                     </div>
                 </div>
             </section>
 
             <Footer />
         </main>
+    );
+}
+
+function SmallTeamCard({ member, index }: { member: any, index: number }) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 flex flex-col"
+        >
+            <div className="aspect-square relative bg-slate-100 overflow-hidden">
+                <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+
+            <div className="p-5 flex-1 flex flex-col">
+                <h3 className="text-lg font-bold text-slate-900 mb-0.5">{member.name}</h3>
+                <div className="text-blue-600 font-semibold text-xs uppercase tracking-wider mb-3">{member.role}</div>
+                <p className="text-slate-600 text-xs leading-relaxed mb-4 line-clamp-3">
+                    {member.bio}
+                </p>
+
+                {member.profileLink && (
+                    <div className="mt-auto">
+                        <Link href={member.profileLink} className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors">
+                            View Profile <ArrowUpRight size={14} />
+                        </Link>
+                    </div>
+                )}
+            </div>
+        </motion.div>
     );
 }
 
@@ -142,7 +224,7 @@ function TeamCard({ member, index }: { member: any, index: number }) {
                         src={member.image}
                         alt={member.name}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                     />
                 )}
             </div>
