@@ -1,0 +1,11 @@
+{
+  "amount": 100,
+  "currency": "INR",
+  "courseName": "Certified AI Engineer",
+  "courseId": "aiEngineer",
+  "name": "Test User",
+  "email": "test_live_rzp_7@example.com",
+  "phone": "9876543210",
+  "username": "test_live_rzp_7",
+  "password": "Password123!"
+}

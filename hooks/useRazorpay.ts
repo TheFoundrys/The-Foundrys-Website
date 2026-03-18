@@ -77,7 +77,7 @@ export function useRazorpay() {
     }
 
     const rzpOptions = {
-      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_SQaZLZuH0NJBzh",
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
       amount: orderData.amount,
       currency: orderData.currency,
       name: "The Foundry's",

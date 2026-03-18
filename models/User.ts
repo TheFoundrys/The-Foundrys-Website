@@ -1,6 +1,8 @@
-import mongoose, { Schema, Document } from 'mongoose';
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-export interface IUser extends Document {
+export interface IUser {
     name: string;
     username: string;
     email: string;
@@ -13,7 +15,7 @@ export interface IUser extends Document {
     updatedAt: Date;
 }
 
-const UserSchema: Schema = new Schema({
+const UserSchema = new Schema({
     name: { type: String, required: true },
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
@@ -24,4 +26,4 @@ const UserSchema: Schema = new Schema({
     verificationToken: { type: String },
 }, { timestamps: true });
 
-export default mongoose.models.User || mongoose.model<IUser>('User', UserSchema);
+export default mongoose.models.User || mongoose.model('User', UserSchema);

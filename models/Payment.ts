@@ -1,6 +1,8 @@
-import mongoose, { Schema, Document } from 'mongoose';
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-export interface IPayment extends Document {
+export interface IPayment {
     name: string;
     email: string;
     phone: string;
@@ -15,7 +17,7 @@ export interface IPayment extends Document {
     timestamp: Date;
 }
 
-const PaymentSchema: Schema = new Schema({
+const PaymentSchema = new Schema({
     name: { type: String, required: true },
     email: { type: String, required: true },
     phone: { type: String, required: true },
@@ -34,4 +36,4 @@ const PaymentSchema: Schema = new Schema({
     timestamp: { type: Date, default: Date.now },
 });
 
-export default mongoose.models.Payment || mongoose.model<IPayment>('Payment', PaymentSchema);
+export default mongoose.models.Payment || mongoose.model('Payment', PaymentSchema);

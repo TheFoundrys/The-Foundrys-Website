@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
+  serverExternalPackages: ['bcryptjs', 'mongoose', 'razorpay', 'nodemailer'],
   async redirects() {
     return [
       {
