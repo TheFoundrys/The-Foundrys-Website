@@ -14,6 +14,7 @@ const LOGOS = [
   "/logos/techop.png",
   "/logos/OptGrad_logo.png",
   "/logos/optsearch.png",
+  "/logos/capsim.png",
   "/logos/hive_link_logo.jpg",
   "AI COMPASS"
 ];
@@ -31,7 +32,7 @@ export function InfiniteLogoScroll() {
 
       <div className="flex w-full items-center">
         <motion.div
-          className="flex items-center gap-12 md:gap-24"
+          className="flex items-center flex-nowrap will-change-transform"
           initial={{ x: 0 }}
           animate={{
             x: ["0%", "-50%"],
@@ -46,23 +47,30 @@ export function InfiniteLogoScroll() {
           }}
           style={{ width: "max-content" }}
         >
-          {/* Duplicate logos once to create seamless loop with -50% animation */}
-          {[...LOGOS, ...LOGOS].map((logo, index) => (
-            <div 
-              key={index} 
-              className="flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-500 opacity-40 hover:opacity-100 flex items-center justify-center px-4 hover:scale-110"
-            >
-              {logo.includes(".") ? (
-                <img
-                  src={logo.startsWith("/") ? logo : `/${logo}`}
-                  alt={`Partner logo ${index}`}
-                  className="h-8 md:h-12 lg:h-14 w-auto object-contain pointer-events-none"
-                />
-              ) : (
-                <span className="text-lg md:text-xl lg:text-2xl font-black text-slate-900 whitespace-nowrap tracking-tighter">
-                  {logo}
-                </span>
-              )}
+          {[0, 1].map((setIndex) => (
+            <div key={setIndex} className="flex flex-none items-center flex-nowrap">
+              {LOGOS.map((logo, index) => (
+                <div
+                  key={`${setIndex}-${index}`}
+                  className="flex-none w-[200px] md:w-[300px] grayscale hover:grayscale-0 transition-all duration-500 opacity-40 hover:opacity-100 flex items-center justify-center hover:scale-110"
+                >
+                  {logo.includes(".") ? (
+                    <img
+                      src={logo.startsWith("/") ? logo : `/${logo}`}
+                      alt={`Partner logo ${setIndex}-${index}`}
+                      className={`w-auto object-contain pointer-events-none ${
+                        logo.includes("capsim") 
+                          ? "h-4 md:h-6 lg:h-7" 
+                          : "h-8 md:h-12 lg:h-14"
+                      }`}
+                    />
+                  ) : (
+                    <span className="text-lg md:text-xl lg:text-2xl font-black text-slate-900 whitespace-nowrap tracking-tighter">
+                      {logo}
+                    </span>
+                  )}
+                </div>
+              ))}
             </div>
           ))}
         </motion.div>

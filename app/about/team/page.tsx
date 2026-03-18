@@ -99,12 +99,12 @@ export default function TeamPage() {
             {/* Advisory Board Section */}
             <section className="py-24 px-6 bg-slate-50 border-t border-slate-200">
                 <div className="container mx-auto max-w-6xl">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">Advisory Board</h2>
-                        <p className="text-slate-600 max-w-2xl mx-auto">Strategic guidance from industry veterans and visionaries.</p>
-                    </div>
+                    {/* <div className="text-center mb-16">
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <p className="text-slate-600 max-w-2xl mx-auto">Strategic guidance from industry veterans and visionaries.</p>
+                    </div> */}
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center max-w-5xl mx-auto">
                         <SmallTeamCard
                             member={{
                                 name: "Dr. Suman Rangabhashyam",
@@ -115,7 +115,7 @@ export default function TeamPage() {
                             }}
                             index={0}
                         />
-                        <SmallTeamCard
+                        {/* <SmallTeamCard
                             member={{
                                 name: "Gunda Lakshmaiah",
                                 role: "Business Development Executive",
@@ -124,12 +124,12 @@ export default function TeamPage() {
                                 profileLink: "/about/faculty/gunda-lakshmaiah"
                             }}
                             index={1}
-                        />
+                        /> */}
                         <SmallTeamCard
                             member={{
                                 name: "Akuthota Aravind",
                                 role: "Business Development Executive",
-                                image: "/images/akuthota.png",
+                                image: "/images/araavind.png",
                                 bio: "Enabling strategic partnerships and expanding market opportunities at the convergence of Deep Tech and Sustainability.",
                                 profileLink: "/about/faculty/akuthota-aravind"
                             }}
@@ -161,7 +161,7 @@ function SmallTeamCard({ member, index }: { member: any, index: number }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 flex flex-col"
+            className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 flex flex-col w-full"
         >
             <div className="aspect-square relative bg-slate-100 overflow-hidden">
                 <Image

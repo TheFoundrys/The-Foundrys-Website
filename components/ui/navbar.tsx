@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { triggerHaptic } from "@/lib/haptics";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu, Zap, Leaf, Network, BookOpen, Briefcase, GraduationCap, Calendar, Newspaper } from "lucide-react";
+import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu, Zap, Leaf, Network, BookOpen, Briefcase, GraduationCap, Calendar, Newspaper, ArrowRight } from "lucide-react";
 
 export function Navbar() {
     const pathname = usePathname();

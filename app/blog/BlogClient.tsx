@@ -44,7 +44,20 @@ export function BlogClient() {
         const fetchPosts = async () => {
             try {
                 const data = await client.fetch(POSTS_QUERY);
-                setPosts(data);
+                
+                // Static SEO Blog Post
+                const staticPost: Post = {
+                    _id: "static-best-ai-finishing-school",
+                    title: "Best AI Finishing School in India",
+                    slug: { current: "best-ai-finishing-school-in-india" },
+                    publishedAt: "2026-03-19T00:00:00Z",
+                    mainImage: { asset: { _ref: "image-school-deep-tech-jpg" }, static: true, url: "/images/school-deep-tech.jpg" },
+                    category: "AI & Education",
+                    readTime: "7 min read",
+                    excerpt: "Discover why The Foundry's is the best AI finishing school in India. Based in Hyderabad, we bridge the gap between academia and industry."
+                };
+
+                setPosts([staticPost, ...data]);
             } catch (error) {
                 console.error("Failed to fetch posts:", error);
             } finally {
@@ -166,7 +179,7 @@ export function BlogClient() {
                                         <div className="h-64 overflow-hidden relative">
                                             {post.mainImage ? (
                                                 <img 
-                                                    src={urlForImage(post.mainImage).url()} 
+                                                    src={(post.mainImage as any).static ? (post.mainImage as any).url : urlForImage(post.mainImage).url()} 
                                                     alt={post.title} 
                                                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 saturate-0 group-hover:saturate-100"
                                                 />
