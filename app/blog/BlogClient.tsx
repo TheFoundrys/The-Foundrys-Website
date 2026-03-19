@@ -31,19 +31,10 @@ const POSTS_QUERY = `*[_type == "post"] | order(publishedAt desc) {
   "excerpt": array::join(string::split((pt::text(body)), "")[0..120], "") + "..."
 }`;
 
-const STATIC_POST: Post = {
-    _id: "static-best-ai-finishing-school",
-    title: "Best AI Finishing School in India",
-    slug: { current: "best-ai-finishing-school-in-india" },
-    publishedAt: "2026-03-19T00:00:00Z",
-    mainImage: { asset: { _ref: "image-school-deep-tech-jpg" }, static: true, url: "/images/school-deep-tech.jpg" },
-    category: "AI & Education",
-    readTime: "7 min read",
-    excerpt: "Discover why The Foundry's is the best AI finishing school in India. Based in Hyderabad, we bridge the gap between academia and industry."
-};
+
 
 export function BlogClient() {
-    const [posts, setPosts] = useState<Post[]>([STATIC_POST]);
+    const [posts, setPosts] = useState<Post[]>([]);
     const [loading, setLoading] = useState(true);
     const { scrollY } = useScroll();
     
@@ -55,7 +46,7 @@ export function BlogClient() {
         const fetchPosts = async () => {
             try {
                 const data = await client.fetch(POSTS_QUERY);
-                setPosts([STATIC_POST, ...data]);
+                setPosts(data);
             } catch (error) {
                 console.error("Failed to fetch posts:", error);
             } finally {
