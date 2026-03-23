@@ -4,7 +4,7 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Linkedin, Globe, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Users } from "lucide-react";
 import Link from "next/link";
 
 const teamMembers = [
@@ -50,6 +50,16 @@ const teamMembers = [
             website: "https://vivekrangabhashyam.com/"
         }
     },
+    {
+        name: "Maruthi Ram Prasad Pelluri",
+        role: "Principal & Academic Director",
+        bio: "Renowned educator with 36+ years of leadership at HPS Begumpet and Ramadevi Public School. National Award recipient and international ambassador for educational excellence.",
+        image: "/images/maruthi.jpg",
+        profileLink: "/about/faculty/maruthi-ram-prasad-pelluri",
+        socials: {
+            linkedin: "#",
+        }
+    },
 ];
 
 export default function TeamPage() {
@@ -83,14 +93,19 @@ export default function TeamPage() {
 
             {/* Team Grid */}
             <section className="py-24 px-6 bg-white">
-                <div className="container mx-auto max-w-6xl">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">The Architects</h2>
-                        <p className="text-slate-600 max-w-2xl mx-auto">Building the foundations of the cultivation economy.</p>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {teamMembers.map((member, index) => (
-                            <TeamCard key={index} member={member} index={index} />
+                <div className="container mx-auto max-w-[1600px]">
+
+                    {/* 6-column grid for perfect 3+2 centering on desktop */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 justify-items-center max-w-[1600px] mx-auto">
+                        {teamMembers.slice(0, 3).map((member, index) => (
+                            <div key={index} className="lg:col-span-2">
+                                <SmallTeamCard member={member} index={index} />
+                            </div>
+                        ))}
+                        {teamMembers.slice(3, 5).map((member, index) => (
+                            <div key={index + 3} className={`lg:col-span-2 ${index === 0 ? 'lg:col-start-2' : ''}`}>
+                                <SmallTeamCard member={member} index={index + 3} />
+                            </div>
                         ))}
                     </div>
                 </div>
@@ -98,13 +113,14 @@ export default function TeamPage() {
 
             {/* Advisory Board Section */}
             <section className="py-24 px-6 bg-slate-50 border-t border-slate-200">
-                <div className="container mx-auto max-w-6xl">
+                <div className="container mx-auto max-w-[1600px]">
                     {/* <div className="text-center mb-16">
 
                         <p className="text-slate-600 max-w-2xl mx-auto">Strategic guidance from industry veterans and visionaries.</p>
                     </div> */}
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center max-w-5xl mx-auto">
+                    {/* Standard 4-column grid for 4 members in a single row */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center max-w-[1600px] mx-auto">
                         <SmallTeamCard
                             member={{
                                 name: "Dr. Suman Rangabhashyam",
@@ -133,7 +149,7 @@ export default function TeamPage() {
                                 bio: "Enabling strategic partnerships and expanding market opportunities at the convergence of Deep Tech and Sustainability.",
                                 profileLink: "/about/faculty/akuthota-aravind"
                             }}
-                            index={3}
+                            index={1}
                         />
                         <SmallTeamCard
                             member={{
@@ -144,6 +160,16 @@ export default function TeamPage() {
                                 profileLink: "/about/faculty/soujanya-kanagala"
                             }}
                             index={2}
+                        />
+                        <SmallTeamCard
+                            member={{
+                                name: "Abhishek Sharma",
+                                role: "Senior Data Analyst",
+                                image: "/images/abhishek shaarma.png",
+                                bio: "Analytical professional with 8+ years of experience in driving organizational performance through deep data insights and actionable dashboards.",
+                                profileLink: "/about/faculty/abhishek-sharma"
+                            }}
+                            index={3}
                         />
                     </div>
                 </div>
@@ -161,22 +187,31 @@ function SmallTeamCard({ member, index }: { member: any, index: number }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 flex flex-col w-full"
+            className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 flex flex-col w-full h-full min-h-[480px] max-w-[350px]"
         >
-            <div className="aspect-square relative bg-slate-100 overflow-hidden">
-                <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="aspect-square relative bg-white overflow-hidden flex items-center justify-center">
+                {member.image ? (
+                    <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    />
+                ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-slate-100 to-white flex flex-col items-center justify-center p-4 text-center">
+                        <div className="w-16 h-16 rounded-full bg-blue-600/5 border border-blue-500/10 flex items-center justify-center mb-2">
+                            <Users className="text-blue-400" size={24} />
+                        </div>
+                        <span className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">Photo Pending</span>
+                    </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
 
             <div className="p-5 flex-1 flex flex-col">
                 <h3 className="text-lg font-bold text-slate-900 mb-0.5">{member.name}</h3>
                 <div className="text-blue-600 font-semibold text-xs uppercase tracking-wider mb-3">{member.role}</div>
-                <p className="text-slate-600 text-xs leading-relaxed mb-4 line-clamp-3">
+                <p className="text-slate-600 text-xs leading-relaxed mb-4 line-clamp-4 flex-1">
                     {member.bio}
                 </p>
 
@@ -192,56 +227,3 @@ function SmallTeamCard({ member, index }: { member: any, index: number }) {
     );
 }
 
-function TeamCard({ member, index }: { member: any, index: number }) {
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="group relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100"
-        >
-            <div className="aspect-[4/5] relative bg-slate-200 overflow-hidden">
-                {/* Image Placeholder if source not found, usually next/image handles this but for mockup we use color */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60 z-10" />
-
-                {/* Socials Overlay */}
-                <div className="absolute bottom-6 left-6 right-6 z-20 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100 flex gap-3">
-                    {member.socials.linkedin && (
-                        <Link href={member.socials.linkedin} className="p-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-white hover:text-blue-600 transition-colors">
-                            <Linkedin size={18} />
-                        </Link>
-                    )}
-                    {member.socials.website && (
-                        <Link href={member.socials.website} className="p-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-white hover:text-slate-900 transition-colors">
-                            <Globe size={18} />
-                        </Link>
-                    )}
-                </div>
-
-                {member.image && (
-                    <Image
-                        src={member.image}
-                        alt={member.name}
-                        fill
-                        className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                    />
-                )}
-            </div>
-
-            <div className="p-8">
-                <h3 className="text-xl font-bold text-slate-900 mb-1">{member.name}</h3>
-                <div className="text-blue-600 font-medium text-sm mb-4 uppercase tracking-wide">{member.role}</div>
-                <p className="text-slate-600 leading-relaxed text-sm mb-6">
-                    {member.bio}
-                </p>
-
-                {member.profileLink && (
-                    <Link href={member.profileLink} className="inline-flex items-center gap-1 text-sm font-bold text-blue-600 hover:text-blue-700 transition-colors">
-                        Show More <ArrowUpRight size={16} />
-                    </Link>
-                )}
-            </div>
-        </motion.div>
-    )
-}
