@@ -118,42 +118,139 @@ export default function VishwanathAkuthotaProfile() {
 
                         {/* Research & Publications */}
                         <div className="mb-16">
-                            <h3 className="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2">
-                                <BookOpen className="text-blue-600" size={24} /> Research & Publications
+                            <h3 className="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2 border-b border-slate-100 pb-4">
+                                <BookOpen className="text-blue-600" size={24} /> IEEE Publications & Research
                             </h3>
-                            <div className="grid gap-6">
-                                {[
-                                    {
-                                        title: "Vulnerability Detection and Monitoring Using LLM",
-                                        source: "IEEE: 10456393",
-                                        link: "https://ieeexplore.ieee.org/document/10456393"
-                                    },
-                                    {
-                                        title: "A Deep Learning Approach for Accurate Blood Cancer Cell Classification",
-                                        source: "IEEE: 10497341",
-                                        link: "https://ieeexplore.ieee.org/document/10497341"
-                                    },
-                                    {
-                                        title: "Hybrid Q-Learning with VLMs Reasoning Features",
-                                        source: "IEEE: 11040757",
-                                        link: "https://ieeexplore.ieee.org/document/11040757"
-                                    },
-                                    {
-                                        title: "A Multi-Agent Garage Service Search and Recommendation with Hybrid MLs and LLMs",
-                                        source: "IEEE: 10940937",
-                                        link: "https://ieeexplore.ieee.org/document/10940937"
-                                    }
-                                ].map((pub, idx) => (
-                                    <div key={idx} className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:border-blue-200 transition-colors">
-                                        <h4 className="font-bold text-slate-900 mb-2">{pub.title}</h4>
-                                        <div className="flex items-center justify-between">
-                                            <span className="text-sm text-slate-500 font-medium">{pub.source}</span>
-                                            <a href={pub.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 text-sm font-bold flex items-center gap-1 hover:underline">
-                                                View Publication <Globe size={14} />
-                                            </a>
-                                        </div>
+                            
+                            <div className="space-y-12">
+                                {/* Cybersecurity Section */}
+                                <div>
+                                    <div className="flex items-center gap-2 mb-6">
+                                        <div className="w-1.5 h-6 bg-blue-600 rounded-full" />
+                                        <h4 className="text-lg font-bold text-slate-800 uppercase tracking-wider">Cybersecurity & Trustworthy AI</h4>
                                     </div>
-                                ))}
+                                    <div className="grid gap-4">
+                                        {[
+                                            {
+                                                title: "Multi-Agent Phishing Detection And Deletion via Small VLM and LLM Reasoning",
+                                                venue: "2025 5th International Conference on Electrical, Computer & Telecommunication Engineering (ICECTE)",
+                                                year: "2026",
+                                                link: "https://ieeexplore.ieee.org/author/231984777844193"
+                                            },
+                                            {
+                                                title: "RAG-Enhanced Multi-Model Ensemble for Automated Vulnerability Detection Using SLMs",
+                                                venue: "2025 5th International Conference on Electrical, Computer & Telecommunication Engineering (ICECTE)",
+                                                year: "2026",
+                                                link: "https://ieeexplore.ieee.org/author/231984777844193"
+                                            },
+                                            {
+                                                title: "Vulnerability Detection and Monitoring Using LLM",
+                                                venue: "2023 14th International Conference on Computing Communication and Networking Technologies (ICCCNT)",
+                                                year: "2023",
+                                                link: "https://ieeexplore.ieee.org/document/10456393"
+                                            },
+                                            {
+                                                title: "A Comprehensive Insight into Machine Learning-Based Approaches for Fake Profile Detection",
+                                                venue: "2023 14th International Conference on Computing Communication and Networking Technologies (ICCCNT)",
+                                                year: "2023",
+                                                link: "https://ieeexplore.ieee.org/author/231984777844193"
+                                            }
+                                        ].map((pub, idx) => (
+                                            <div key={idx} className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:border-blue-200 transition-colors">
+                                                <h5 className="font-bold text-slate-900 mb-1">{pub.title}</h5>
+                                                <p className="text-sm text-slate-500 mb-3">{pub.venue}</p>
+                                                <div className="flex items-center justify-between">
+                                                    <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">{pub.year}</span>
+                                                    <a href={pub.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 text-xs font-bold flex items-center gap-1 hover:underline">
+                                                        View Publication <Globe size={14} />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* AI Architectures Section */}
+                                <div>
+                                    <div className="flex items-center gap-2 mb-6">
+                                        <div className="w-1.5 h-6 bg-indigo-600 rounded-full" />
+                                        <h4 className="text-lg font-bold text-slate-800 uppercase tracking-wider">AI Architectures & Applications</h4>
+                                    </div>
+                                    <div className="grid gap-4">
+                                        {[
+                                            {
+                                                title: "Pose Detection: Integrating Machine Learning with Large Vision Models",
+                                                venue: "2025 2nd International Conference on Intelligent Algorithms for Computational Intelligence Systems (IACIS)",
+                                                year: "2025",
+                                                link: "https://ieeexplore.ieee.org/author/231984777844193"
+                                            },
+                                            {
+                                                title: "A Multi-Agent Garage Service Search and Recommendation with Hybrid MLs and LLMs",
+                                                venue: "2025 International Conference on Computing Technologies (ICOCT)",
+                                                year: "2025",
+                                                link: "https://ieeexplore.ieee.org/document/10940937"
+                                            },
+                                            {
+                                                title: "Hybrid Q-Learning with VLMs Reasoning Features",
+                                                venue: "2025 3rd International Conference on Artificial Intelligence and Machine Learning Applications (AIMLA)",
+                                                year: "2025",
+                                                link: "https://ieeexplore.ieee.org/document/11040757"
+                                            },
+                                            {
+                                                title: "Hybrid ML-SLM RAG System for Large Technical PDFs",
+                                                venue: "2025 International Conference on Computing Technologies (ICOCT)",
+                                                year: "2025",
+                                                link: "https://ieeexplore.ieee.org/author/231984777844193"
+                                            }
+                                        ].map((pub, idx) => (
+                                            <div key={idx} className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:border-indigo-200 transition-colors">
+                                                <h5 className="font-bold text-slate-900 mb-1">{pub.title}</h5>
+                                                <p className="text-sm text-slate-500 mb-3">{pub.venue}</p>
+                                                <div className="flex items-center justify-between">
+                                                    <span className="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">{pub.year}</span>
+                                                    <a href={pub.link} target="_blank" rel="noopener noreferrer" className="text-indigo-600 text-xs font-bold flex items-center gap-1 hover:underline">
+                                                        View Publication <Globe size={14} />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Healthcare Section */}
+                                <div>
+                                    <div className="flex items-center gap-2 mb-6">
+                                        <div className="w-1.5 h-6 bg-emerald-600 rounded-full" />
+                                        <h4 className="text-lg font-bold text-slate-800 uppercase tracking-wider">Healthcare & Specialized Vision</h4>
+                                    </div>
+                                    <div className="grid gap-4">
+                                        {[
+                                            {
+                                                title: "Multi-Vision LVMs Model Ensemble for Gold Jewelry Authenticity Verification",
+                                                venue: "2025 International Conference on Computing Technologies (ICOCT)",
+                                                year: "2025",
+                                                link: "https://ieeexplore.ieee.org/author/231984777844193"
+                                            },
+                                            {
+                                                title: "Comparative Analysis of Diverse Architectures for Accurate Blood Cancer Cell Classification",
+                                                venue: "2024 6th International Conference on Inventive Research in Computing Applications (ICIRCA)",
+                                                year: "2024",
+                                                link: "https://ieeexplore.ieee.org/document/10497341"
+                                            }
+                                        ].map((pub, idx) => (
+                                            <div key={idx} className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:border-emerald-200 transition-colors">
+                                                <h5 className="font-bold text-slate-900 mb-1">{pub.title}</h5>
+                                                <p className="text-sm text-slate-500 mb-3">{pub.venue}</p>
+                                                <div className="flex items-center justify-between">
+                                                    <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">{pub.year}</span>
+                                                    <a href={pub.link} target="_blank" rel="noopener noreferrer" className="text-emerald-600 text-xs font-bold flex items-center gap-1 hover:underline">
+                                                        View Publication <Globe size={14} />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

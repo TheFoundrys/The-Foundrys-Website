@@ -52,18 +52,18 @@ export default function MaruthiPelluriProfile() {
                         >
                             <div>
                                 <div className="inline-block px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-xs font-bold uppercase tracking-widest mb-4">
-                                    Principal & Academic Director
+                                    Advisory Board Member
                                 </div>
                                 <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-2">
                                     Maruthi Ram Prasad Pelluri
                                 </h1>
                                 <p className="text-xl text-blue-400 font-medium mb-4 italic">
-                                    Principal & Academic Director • International Educational Ambassador
+                                    Advisory Board Member
                                 </p>
 
                                 <div className="flex flex-wrap gap-3 mb-6">
                                     <div className="flex items-center gap-2 px-4 py-2 bg-slate-800/50 border border-slate-700 text-slate-300 text-sm font-bold rounded-full">
-                                        36+ Years of Excellence
+                                        36+ Years of Excellence in Education
                                     </div>
                                 </div>
                             </div>
@@ -126,10 +126,10 @@ export default function MaruthiPelluriProfile() {
                             </div>
                         </div>
 
-                        <h3 className="text-2xl font-bold text-slate-900 mt-16 mb-8">Current & Institutional Roles</h3>
+                        {/* <h3 className="text-2xl font-bold text-slate-900 mt-16 mb-8">Current & Institutional Roles</h3>
                         <p className="text-slate-700 leading-relaxed mb-10">
                             Presently serving as the Principal & Academic Director of The Suraka School (Kollur), he continues to inspire institutional excellence. His contributions extend far beyond traditional schooling—as a Director for Escuela Educational Consultancy and Gavva Laxmi Education Forum, he mentors the next generation of academic leaders across the country.
-                        </p>
+                        </p> */}
 
                         <div className="bg-slate-900 rounded-3xl p-10 text-white mb-16">
                             <div className="flex flex-col md:flex-row gap-8 items-center">

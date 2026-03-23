@@ -51,7 +51,7 @@ export default function AkuthotaAravindProfile() {
                         >
                             <div>
                                 <div className="inline-block px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-xs font-bold uppercase tracking-widest mb-4">
-                                    Advisory Board
+                                    Business Development Executive
                                 </div>
                                 <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-2">
                                     Akuthota Aravind

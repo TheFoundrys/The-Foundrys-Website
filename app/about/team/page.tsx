@@ -52,7 +52,7 @@ const teamMembers = [
     },
     {
         name: "Maruthi Ram Prasad Pelluri",
-        role: "Principal & Academic Director",
+        role: "Advisory Board Member",
         bio: "Renowned educator with 36+ years of leadership at HPS Begumpet and Ramadevi Public School. National Award recipient and international ambassador for educational excellence.",
         image: "/images/maruthi.jpg",
         profileLink: "/about/faculty/maruthi-ram-prasad-pelluri",
@@ -154,9 +154,9 @@ export default function TeamPage() {
                         <SmallTeamCard
                             member={{
                                 name: "Soujanya Kanagala",
-                                role: "Management Consultant",
+                                role: "Operations Head",
                                 image: "/images/soujanya.jpg",
-                                bio: "Management Consultant with 14 years of experience specializing in business setup, operations, and organizational scaling.",
+                                bio: "Operations Head with 14 years of experience specializing in business setup, operations, and organizational scaling.",
                                 profileLink: "/about/faculty/soujanya-kanagala"
                             }}
                             index={2}
