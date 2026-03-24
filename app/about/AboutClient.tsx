@@ -106,12 +106,7 @@ export function AboutClient() {
                                     Connect on LinkedIn <ArrowUpRight size={18} />
                                 </Link>
 
-                                <Link
-                                    href="/about/team"
-                                    className="w-full md:w-auto inline-flex justify-center items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-500 transition-all hover:scale-105 whitespace-nowrap"
-                                >
-                                    Meet the Team <ArrowUpRight size={20} />
-                                </Link>
+
 
                                 <Link
                                     href="https://www.drpinnacle.com"
@@ -119,6 +114,13 @@ export function AboutClient() {
                                     className="w-full md:w-auto inline-flex justify-center items-center gap-2 px-6 py-3 bg-white text-slate-950 rounded-full font-bold hover:bg-slate-200 transition-colors whitespace-nowrap"
                                 >
                                     Visit Dr.Pinnacle <ArrowUpRight size={18} />
+                                </Link>
+
+                                <Link
+                                    href="/about/team"
+                                    className="w-full md:w-auto inline-flex justify-center items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-500 transition-all hover:scale-105 whitespace-nowrap"
+                                >
+                                    Meet the Team <ArrowUpRight size={20} />
                                 </Link>
                             </div>
 
