@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { BrainCircuit, Briefcase, UserCheck, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 interface JobPrediction {
@@ -120,10 +121,10 @@ export function FutureVision({
                         </p>
 
                         <div className="flex flex-wrap gap-4">
-                            <button className="px-8 py-4 bg-white text-neutral-900 font-bold rounded-lg hover:bg-neutral-100 transition-colors flex items-center gap-2 group">
+                            <Link href="/apply" className="px-8 py-4 bg-white text-neutral-900 font-bold rounded-lg hover:bg-neutral-100 transition-colors flex items-center gap-2 group">
                                 Apply to {schoolName}
                                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </motion.div>

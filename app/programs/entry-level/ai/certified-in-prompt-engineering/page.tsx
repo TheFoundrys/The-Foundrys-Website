@@ -331,7 +331,8 @@ export default function PromptEngineeringCoursePage() {
             </section>
 
             {/* Program Details Card */}
-            <div className="relative z-20 px-4 -mt-14 mb-12">
+            {/* Program Details Card */}
+            <div className="relative z-20 px-4 mt-12 mb-12">
                 <div className="mx-auto max-w-5xl">
                     <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
@@ -417,15 +418,15 @@ export default function PromptEngineeringCoursePage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <HighlightCard icon={MessageSquare} title="Advanced Techniques" desc="Master Zero-shot, Few-shot, Chain-of-Thought, and Tree-of-Thoughts prompting." />
-                        <HighlightCard icon={Zap} title="Model Optimization" desc="Learn to reduce hallucinations, improve accuracy, and lower API costs." />
-                        <HighlightCard icon={Briefcase} title="Build a Portfolio" desc="Create 6 real-world projects, from chatbots to automated content engines." />
-                        <HighlightCard icon={ShieldCheck} title="AI Safety & Ethics" desc="Understand bias mitigation, prompt injection defense, and responsible AI." />
-                        <HighlightCard icon={Sparkles} title="Multi-Modal AI" desc="Work with image generation (Midjourney, DALL-E) and audio models." />
+                        <HighlightCard icon={MessageSquare} title="Psychology of Models" desc="Beyond 'magic words.' Understand model temperature, top-p, and how to control LLM variance for reliable, consistent outputs." />
+                        <HighlightCard icon={Zap} title="Evaluation Frameworks" desc="Move past simple 'vibe-checks.' Learn to use human-in-the-loop and automated scoring to benchmark and improve prompt performance." />
+                        <HighlightCard icon={Briefcase} title="Advanced Orchestration" desc="Master Chain-of-Thought, ReAct reasoning, and multi-prompt chaining to solve complex, multi-step business problems." />
+                        <HighlightCard icon={ShieldCheck} title="Structured Intelligence" desc="Force models to output precise JSON or XML for seamless integration into production software applications and databases." />
+                        <HighlightCard icon={Sparkles} title="AI Safety & Red-Teaming" desc="Proactively defend against prompt injections and jailbreaking by hardening your system prompts against adversarial attacks." />
                         <HighlightCard
                             icon={Workflow}
-                            title="Agentic Thinking"
-                            desc="Design multi-step, goal-driven AI workflows using agents, tools, and structured reasoning."
+                            title="Tool-Use & Function Calling"
+                            desc="Teach models to use external calculators, APIs, and search engines to solve real-world problems with real-time data."
                         />
                     </div>
                 </div>
@@ -461,12 +462,11 @@ export default function PromptEngineeringCoursePage() {
                             {
                                 logos: [
                                     { url: "https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg", name: "OpenAI" },
-                                    { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Claude_AI_symbol.svg/640px-Claude_AI_symbol.svg.png", name: "Anthropic" },
-                                    { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/LangChain_Logo.svg/640px-LangChain_Logo.svg.png", name: "LangChain" },
+                                    { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Claude_AI_logo.svg/640px-Claude_AI_logo.svg.png", name: "Anthropic" },
+                                    { url: "https://upload.wikimedia.org/wikipedia/commons/3/3f/LangChain_logo.png?_=20230418052632", name: "LangChain" },
                                     { url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", name: "Python" },
                                     { url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/streamlit/streamlit-original.svg", name: "Streamlit" },
                                     { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/ChatGPT-Logo.svg/640px-ChatGPT-Logo.svg.png", name: "ChatGPT" },
-                                    { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Claude_AI_symbol.svg/640px-Claude_AI_symbol.svg.png", name: "Claude 3" },
                                     { url: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg", name: "Python" },
                                     { url: "https://avatars.githubusercontent.com/u/126733545?s=200&v=4", name: "LangSmith" }
                                 ],

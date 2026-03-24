@@ -3,10 +3,28 @@ import { motion } from "framer-motion";
 import { Cpu, ShieldCheck } from "lucide-react";
 import { useRegionalPricing } from "@/lib/useRegionalPricing";
 
-export function MBAProgramDetails() {
+interface ProgramBlock {
+    icon: React.ReactNode;
+    phase: string;
+    duration: string;
+    title: string;
+    desc: string;
+}
+
+interface MBAProgramDetailsProps {
+    title?: string;
+    description?: string;
+    programs?: ProgramBlock[];
+}
+
+export function MBAProgramDetails({
+    title = "Choose Your Path",
+    description = "Two flagship integrated programs designed to produce the next generation of technical CEOs and visionaries.",
+    programs
+}: MBAProgramDetailsProps) {
     const { isIndia } = useRegionalPricing();
 
-    const programBlocks = [
+    const defaultPrograms = [
         {
             icon: <Cpu className="text-indigo-600" size={24} />,
             phase: "Specialization 01",
@@ -23,24 +41,26 @@ export function MBAProgramDetails() {
         }
     ];
 
+    const displayPrograms = programs || defaultPrograms;
+
     return (
         <section className="py-24 px-6 bg-neutral-50 border-b border-neutral-100">
             <div className="container mx-auto max-w-6xl">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 mb-4">Choose Your Path</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 mb-4">{title}</h2>
                     <p className="text-neutral-500 max-w-2xl mx-auto">
-                        Two flagship integrated programs designed to produce the next generation of technical CEOs and visionaries.
+                        {description}
                     </p>
                 </div>
-                <div className="grid md:grid-cols-2 gap-12 mb-20">
-                    {programBlocks.map((block, i) => (
+                <div className="grid md:grid-cols-2 gap-12 mb-20 justify-center">
+                    {displayPrograms.map((block, i) => (
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className="bg-white p-10 rounded-sm border border-neutral-200 shadow-sm relative group hover:border-indigo-600/30 transition-colors"
+                            className={`bg-white p-10 rounded-sm border border-neutral-200 shadow-sm relative group hover:border-indigo-600/30 transition-colors ${displayPrograms.length === 1 ? 'md:col-span-2 max-w-2xl mx-auto' : ''}`}
                         >
                             <div className="absolute top-0 right-0 p-4 font-mono text-xs uppercase tracking-widest text-neutral-400 group-hover:text-indigo-600/50 transition-colors">
                                 {block.duration}

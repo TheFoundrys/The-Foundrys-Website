@@ -4,6 +4,7 @@ import { VentureHero } from "@/components/schools/venture-building/hero";
 import { VentureWhyUs } from "@/components/schools/venture-building/why-us";
 import { MBAProgramDetails } from "@/components/schools/certified-innovator/program-details";
 import { FutureVision } from "@/components/schools/shared/future-vision";
+import { Rocket, Target, Zap } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,7 +19,26 @@ export default function VentureBuildingPage() {
       <Navbar />
       <VentureHero />
       <VentureWhyUs />
-      <MBAProgramDetails />
+      <MBAProgramDetails 
+        title="Venture Tracks"
+        description="Choose the track that fits your stage. From ideation to market explosion."
+        programs={[
+          {
+            icon: <Rocket className="text-[#B31B1B]" size={24} />,
+            phase: "Phase 01",
+            duration: "12 Months",
+            title: "Zero-to-One",
+            desc: "The prototype track. Validate your idea, build your MVP, and find your first 100 customers with zero ad spend."
+          },
+          {
+            icon: <Target className="text-[#B31B1B]" size={24} />,
+            phase: "Phase 02",
+            duration: "24 Months",
+            title: "Growth Architect",
+            desc: "The scaling track. Build your team, automate operations with agentic AI, and raise seed capital from global partners."
+          }
+        ]}
+      />
       <FutureVision
         schoolName="Venture Building"
         whyAIImportant="In the next decade, startups won't just 'use' AI; they will be autonomous AI-native entities. Venture building today requires understanding how to architect business logic that resides directly within LLMs and agentic swarms. Traditional business models are failing because they can't match the zero-marginal-cost execution of AI."

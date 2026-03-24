@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export function RenewableEnergyHero() {
   return (
@@ -45,9 +46,11 @@ export function RenewableEnergyHero() {
                 transition={{ delay: 0.3 }}
                 className="flex flex-wrap gap-4"
             >
-                 <button className="px-8 py-4 bg-green-600 text-white rounded-full font-bold text-lg hover:bg-green-500 transition-all shadow-[0_0_30px_rgba(22,163,74,0.3)] hover:shadow-[0_0_50px_rgba(22,163,74,0.5)] transform hover:-translate-y-1">
+            <Link href="/apply">
+                <button className="px-8 py-4 bg-green-600 text-white rounded-full font-bold text-lg hover:bg-green-500 transition-all shadow-[0_0_30px_rgba(22,163,74,0.3)] hover:shadow-[0_0_50px_rgba(22,163,74,0.5)] transform hover:-translate-y-1">
                     APPLY FOR PROGRAM
                 </button>
+            </Link>
                  <button 
                     onClick={() => document.getElementById('syllabus')?.scrollIntoView({ behavior: 'smooth' })}
                     className="px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/10 text-white rounded-full font-bold text-lg hover:bg-white/10 transition-colors"

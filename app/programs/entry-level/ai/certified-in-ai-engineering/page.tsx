@@ -253,7 +253,6 @@ const CURRICULUM_DATA = [
             "Identity Shift to Production-Aware AI Engineer"
         ]
     }
-
 ];
 
 function CurriculumTabs() {
@@ -262,7 +261,6 @@ function CurriculumTabs() {
 
     return (
         <div className="space-y-8">
-            {/* Week Tabs */}
             <div className="flex flex-wrap justify-center gap-3">
                 {CURRICULUM_DATA.map((item) => (
                     <button
@@ -278,7 +276,6 @@ function CurriculumTabs() {
                 ))}
             </div>
 
-            {/* Content Display */}
             <AnimatePresence mode="wait">
                 <motion.div
                     key={activeWeek}
@@ -376,7 +373,7 @@ export default function AIEngineeringCoursePage() {
             </section>
 
             {/* Program Details Card */}
-            <div className="relative z-20 px-4 -mt-14 mb-12">
+            <div className="relative z-20 px-4 mt-12 mb-12">
                 <div className="mx-auto max-w-5xl">
                     <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
@@ -488,6 +485,30 @@ export default function AIEngineeringCoursePage() {
                     </div>
 
                     <CurriculumTabs />
+                </div>
+            </section>
+
+            {/* What You'll Learn Highlights */}
+            <section className="py-24 px-6 bg-white border-t border-slate-200">
+                <div className="container mx-auto max-w-6xl text-center mb-16">
+                    <h2 className="text-3xl md:text-5xl font-serif text-slate-900 mb-6">Course Highlights</h2>
+                    <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                        Master the transition from basic scripting to production-ready AI engineering.
+                    </p>
+                </div>
+                <div className="container mx-auto max-w-6xl">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <HighlightCard icon={Terminal} title="Zero-to-Hero" desc="No PhD required. Start with LLM fundamentals and end with deploying autonomous agents." />
+                        <HighlightCard icon={Code2} title="Industry-First Stack" desc="Master OpenAI API, LangChain, Vector Databases, and Open Source models (Llama 3, Mistral)." />
+                        <HighlightCard icon={Briefcase} title="Real Portfolio" desc="Build and deploy 6 production-grade projects that you can show off on GitHub and LinkedIn." />
+                        <HighlightCard icon={ShieldCheck} title="AI Safety" desc="Learn responsible AI: prompt injection attacks, bias mitigation, and privacy." />
+                        <HighlightCard icon={Cpu} title="Hybrid Model" desc="Deep dives into proprietary models (GPT-4) and running local models using Ollama." />
+                        <HighlightCard
+                            icon={ServerCog}
+                            title="Production AI Systems"
+                            desc="Design, deploy, monitor, and scale real-world AI systems used in production environments."
+                        />
+                    </div>
                 </div>
             </section>
 
@@ -754,7 +775,19 @@ function ProjectCard({ number, title, tag, desc, tech }: { number: string, title
                 </div>
             </div>
         </div>
-    )
+    );
+}
+
+function HighlightCard({ icon: Icon, title, desc }: { icon: any, title: string, desc: string }) {
+    return (
+        <div className="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+            <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 mb-4">
+                <Icon size={24} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-2">{title}</h3>
+            <p className="text-slate-600 text-sm leading-relaxed">{desc}</p>
+        </div>
+    );
 }
 
 function FAQItem({ question, answer }: { question: string, answer: string }) {
@@ -788,5 +821,5 @@ function FAQItem({ question, answer }: { question: string, answer: string }) {
                 )}
             </AnimatePresence>
         </div>
-    )
+    );
 }

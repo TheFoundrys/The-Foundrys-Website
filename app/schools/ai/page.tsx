@@ -3,7 +3,7 @@
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import {
     ArrowLeft,
     CheckCircle2,
@@ -293,7 +293,7 @@ function CurriculumTabs() {
 export default function AISchoolPage() {
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 

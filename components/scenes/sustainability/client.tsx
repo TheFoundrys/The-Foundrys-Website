@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useLayoutEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -17,7 +17,8 @@ import {
    Scale,
    Zap,
    CheckCircle2,
-   Users
+   Users,
+   HelpCircle
 } from "lucide-react";
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
@@ -127,11 +128,68 @@ const CAREER_ROLES = [
    }
 ];
 
+const FAQ_DATA = [
+   {
+      question: "Do I need a deep technical background?",
+      answer: "No deep coding background is required. We focus on systems thinking, AI literacy, and strategic decision-making. We provide the necessary technical context for professionals from all backgrounds."
+   },
+   {
+      question: "Is this course relevant for non-tech roles?",
+      answer: "Absolutely. Policy makers, ESG consultants, business leaders, and product managers will find this immensely valuable for navigating the AI-driven transformation of their fields."
+   },
+   {
+      question: "What is the hybrid format?",
+      answer: "The program includes both live online sessions and self-paced work, plus optional in-person networking opportunities where available."
+   },
+   {
+      question: "Will I get a certificate?",
+      answer: "Yes, upon successful completion of the capstone project, you will receive a verifiable Certificate of Competence in Sustainable AI Systems."
+   }
+];
+
+function FAQItem({ question, answer }: { question: string, answer: string }) {
+   const [isOpen, setIsOpen] = useState(false);
+
+   return (
+      <div className="border border-stone-200 rounded-2xl bg-white overflow-hidden shadow-sm">
+         <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="w-full flex items-center justify-between p-6 text-left hover:bg-stone-50 transition-colors"
+            aria-expanded={isOpen}
+         >
+            <h4 className="text-lg font-bold text-stone-900 pr-8">{question}</h4>
+            <ChevronDown
+               className={`text-stone-400 transition-transform duration-300 ${isOpen ? 'rotate-180 text-emerald-500' : ''}`}
+               size={20}
+            />
+         </button>
+         <AnimatePresence>
+            {isOpen && (
+               <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+               >
+                  <div className="px-6 pb-6 text-stone-600 leading-relaxed border-t border-stone-100 pt-4">
+                     {answer}
+                  </div>
+               </motion.div>
+            )}
+         </AnimatePresence>
+      </div>
+   );
+}
+
 export default function SustainabilityClient() {
    const containerRef = useRef(null);
    const roleRefs = useRef<(HTMLDivElement | null)[]>([]);
    const [selectedCareer, setSelectedCareer] = useState(0);
    const { symbol, currency } = useRegionalPricing();
+
+   useLayoutEffect(() => {
+      window.scrollTo(0, 0);
+   }, []);
 
    const originalPrice = COURSE_PRICING.sustainability.original[currency];
    const discountedPrice = COURSE_PRICING.sustainability.freshers[currency];
@@ -191,8 +249,8 @@ export default function SustainabilityClient() {
          </section>
 
 
-         {/* Program Details Block - Relative with negative margin for overlap */}
-         <div className="relative z-20 px-4 -mt-14 mb-12">
+         {/* Program Details Block - Adjusted below hero */}
+         <div className="relative z-20 px-4 mt-12 mb-12">
             <div className="mx-auto max-w-5xl">
                <div className="bg-white rounded-2xl shadow-xl border border-stone-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
 
@@ -667,6 +725,24 @@ export default function SustainabilityClient() {
                         ))}
                      </div>
                   </div>
+               </div>
+            </div>
+         </section>
+
+         {/* FAQ SECTION */}
+         <section className="py-24 bg-white border-t border-stone-200">
+            <div className="container mx-auto px-6 max-w-3xl">
+               <div className="text-center mb-16">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-sm font-bold mb-4">
+                     <HelpCircle size={16} />
+                     <span>FAQ</span>
+                  </div>
+                  <h2 className="text-3xl md:text-5xl font-serif text-stone-900">Frequently Asked Questions</h2>
+               </div>
+               <div className="space-y-6">
+                  {FAQ_DATA.map((item, i) => (
+                     <FAQItem key={i} question={item.question} answer={item.answer} />
+                  ))}
                </div>
             </div>
          </section>

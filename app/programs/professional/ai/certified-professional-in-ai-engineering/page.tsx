@@ -508,15 +508,15 @@ export default function AIEngineeringCoursePage() {
                     </div> */}
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <HighlightCard icon={Terminal} title="Zero-to-Hero" desc="No PhD required. Start with LLM fundamentals and end with deploying autonomous agents." />
-                        <HighlightCard icon={Code2} title="Industry-First Stack" desc="Master OpenAI API, LangChain, Vector Databases, and Open Source models (Llama 3, Mistral)." />
-                        <HighlightCard icon={Briefcase} title="Real Portfolio" desc="Build and deploy 6 production-grade projects that you can show off on GitHub and LinkedIn." />
-                        <HighlightCard icon={ShieldCheck} title="AI Safety" desc="Learn responsible AI: prompt injection attacks, bias mitigation, and privacy." />
-                        <HighlightCard icon={Cpu} title="Hybrid Model" desc="Deep dives into proprietary models (GPT-4) and running local models using Ollama." />
+                        <HighlightCard icon={Terminal} title="Systemic Architecture" desc="Master Multi-Agent Orchestration and High-Dimensional Vector Logic for enterprise systems." />
+                        <HighlightCard icon={Cpu} title="Vector Intelligence" desc="Orchestrate knowledge bases and high-performance data pipelines at global scale." />
+                        <HighlightCard icon={Briefcase} title="Model Deep-Dive" desc="In-depth Transformer mechanics, fine-tuning strategies (LoRA/QLoA), and quantization." />
+                        <HighlightCard icon={ShieldCheck} title="MLOps 2.0" desc="Enterprise-grade observability, CI/CD for AI, and scaling with Kubernetes & Docker." />
+                        <HighlightCard icon={Rocket} title="Agentic Autonomy" desc="Build goal-driven research agents and complex multi-agent swarm orchestration." />
                         <HighlightCard
                             icon={ServerCog}
-                            title="Production AI Systems & Deployment"
-                            desc="Design, deploy, monitor, and scale real-world AI systems used in production environments."
+                            title="Frontier Research"
+                            desc="Stay ahead with Multimodal World Models and future-proofing AI infrastructure for the next decade."
                         />
                     </div>
                 </div>

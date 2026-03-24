@@ -35,7 +35,7 @@ const polarData = [
     label: "Sustainability", 
     percent: 10, 
     color: "#dcfce7", // Extremely Light Green
-    radius: 80,
+    radius: 105,
     desc: "Holistic approach to environmental impact and circular systems."
   },
 ];

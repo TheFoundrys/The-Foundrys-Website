@@ -1,12 +1,5 @@
-import { Navbar } from "@/components/ui/navbar";
-import { Footer } from "@/components/footer";
-import { BlockchainHero } from "@/components/schools/blockchain/hero";
-import { BlockchainWhyUs } from "@/components/schools/blockchain/why-us";
-import { BlockchainSkills } from "@/components/schools/blockchain/founder-skills";
-import { BlockchainStats } from "@/components/schools/blockchain/program-stats";
-import { BlockchainComparison } from "@/components/schools/blockchain/comparison";
-import { BlockchainCurriculumAccordion } from "@/components/schools/blockchain/curriculum-accordion";
 import { Metadata } from "next";
+import BlockchainClient from "./BlockchainClient";
 
 export const metadata: Metadata = {
   title: "Bachelors of Blockchain | The Foundrys",
@@ -20,16 +13,5 @@ export const metadata: Metadata = {
 };
 
 export default function BlockchainPage() {
-  return (
-    <main className="min-h-screen bg-white select-none">
-      <Navbar />
-      <BlockchainHero />
-      <BlockchainWhyUs />
-      <BlockchainStats />
-      <BlockchainSkills />
-      <BlockchainComparison />
-      <BlockchainCurriculumAccordion />
-      <Footer />
-    </main>
-  );
+  return <BlockchainClient />;
 }
