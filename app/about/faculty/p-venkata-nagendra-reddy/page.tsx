@@ -52,7 +52,7 @@ export default function PVenkataNagendraReddyProfile() {
                         >
                             <div>
                                 <div className="inline-block px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs font-bold uppercase tracking-widest mb-4">
-                                    Head of the School of Sustainability
+                                    SME in Sustainability
                                 </div>
                                 <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-2">
                                     P. Venkata Nagendra Reddy

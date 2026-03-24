@@ -20,6 +20,26 @@ const teamMembers = [
         }
     },
     {
+        name: "Pramod Chada",
+        role: "Advisory Board Member",
+        bio: "Visionary IT leader with 2.5 decades of expertise in SDLC evolution. Co-founder and CEO of TechOptima, driving business transformation through cutting-edge AI solutions.",
+        image: "/images/pramod-chada.jpg",
+        profileLink: "/about/faculty/pramod-chada",
+        socials: {
+            linkedin: "#",
+        }
+    },
+    {
+        name: "Maruthi Ram Prasad Pelluri",
+        role: "Advisory Board Member",
+        bio: "Renowned educator with 36+ years of leadership at HPS Begumpet and Ramadevi Public School. National Award recipient and international ambassador for educational excellence.",
+        image: "/images/maruthi.jpg",
+        profileLink: "/about/faculty/maruthi-ram-prasad-pelluri",
+        socials: {
+            linkedin: "#",
+        }
+    },
+    {
         name: "Dr. Srikanth Itapu",
         role: "SME in the Quantum Technologies",
         bio: "Subject matter expert in quantum technologies, advanced materials, and semiconductor devices with over 12 years of research experience.",
@@ -31,7 +51,7 @@ const teamMembers = [
     },
     {
         name: "P. Venkata Nagendra Reddy",
-        role: "Head of the School of Sustainability",
+        role: "SME in Sustainability",
         bio: "Veteran operator and Sustainability Architect with 19+ years of experience. Leading the transition to a 'Cultivation Economy' through tech-driven ESG compliance and biological scaling principles.",
         image: "/images/venkat-reddy.jpg",
         profileLink: "/about/faculty/p-venkata-nagendra-reddy",
@@ -41,23 +61,13 @@ const teamMembers = [
     },
     {
         name: "Vivek Rangabhashyam",
-        role: "3D Animation Specialist & Serial Entrepreneur",
+        role: "SME in Graphic Design",
         bio: "Veteran 3D Animation Specialist and entrepreneur. Former Google 'GXBO' contributor and founder of Markitome, specializing in startup mentorship and global networking.",
         image: "/images/Vivek.jpg",
         profileLink: "/about/faculty/vivek-rangabhashyam",
         socials: {
             linkedin: "https://www.linkedin.com/in/vivekranga/",
             website: "https://vivekrangabhashyam.com/"
-        }
-    },
-    {
-        name: "Maruthi Ram Prasad Pelluri",
-        role: "Advisory Board Member",
-        bio: "Renowned educator with 36+ years of leadership at HPS Begumpet and Ramadevi Public School. National Award recipient and international ambassador for educational excellence.",
-        image: "/images/maruthi.jpg",
-        profileLink: "/about/faculty/maruthi-ram-prasad-pelluri",
-        socials: {
-            linkedin: "#",
         }
     },
 ];
@@ -102,8 +112,8 @@ export default function TeamPage() {
                                 <SmallTeamCard member={member} index={index} />
                             </div>
                         ))}
-                        {teamMembers.slice(3, 5).map((member, index) => (
-                            <div key={index + 3} className={`lg:col-span-2 ${index === 0 ? 'lg:col-start-2' : ''}`}>
+                        {teamMembers.slice(3, 6).map((member, index) => (
+                            <div key={index + 3} className="lg:col-span-2">
                                 <SmallTeamCard member={member} index={index + 3} />
                             </div>
                         ))}

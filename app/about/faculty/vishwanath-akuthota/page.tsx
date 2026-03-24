@@ -4,7 +4,7 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Linkedin, ArrowLeft, Mail, MapPin, Phone, Zap, Target, Rocket, Briefcase, Globe, Github, BookOpen, Download } from "lucide-react";
+import { Linkedin, ArrowLeft, Mail, MapPin, Phone, Zap, Target, Rocket, Briefcase, Globe, Github, BookOpen, Download, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 export default function VishwanathAkuthotaProfile() {
@@ -260,16 +260,32 @@ export default function VishwanathAkuthotaProfile() {
                                 <Briefcase className="text-blue-600" size={24} /> Authored Books
                             </h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="bg-slate-900 rounded-2xl p-6 text-white">
-                                    <h4 className="text-lg font-bold mb-2">The Shadows Of Deception</h4>
+                                <a 
+                                    href="https://www.amazon.in/Shadows-Deception-Unveiling-Cyber-Realms-ebook/dp/B0CJ9M698Y"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="bg-slate-900 rounded-2xl p-6 text-white hover:bg-slate-800 transition-all border border-slate-800 hover:border-blue-500/50 group block"
+                                >
+                                    <div className="flex justify-between items-start mb-2">
+                                        <h4 className="text-lg font-bold group-hover:text-blue-400 transition-colors">The Shadows Of Deception</h4>
+                                        <ArrowUpRight size={18} className="text-slate-500 group-hover:text-blue-400 transition-colors" />
+                                    </div>
                                     <p className="text-slate-400 text-sm mb-4">Unveiling Cyber Realms</p>
                                     <div className="text-blue-400 text-xs font-bold uppercase tracking-widest">Cybersecurity</div>
-                                </div>
-                                <div className="bg-slate-900 rounded-2xl p-6 text-white">
-                                    <h4 className="text-lg font-bold mb-2">The Fabric of Law</h4>
+                                </a>
+                                <a 
+                                    href="https://www.amazon.in/Fabric-Law-Understanding-Jurisprudence-Principles-ebook/dp/B0D1JQ76YG"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="bg-slate-900 rounded-2xl p-6 text-white hover:bg-slate-800 transition-all border border-slate-800 hover:border-blue-500/50 group block"
+                                >
+                                    <div className="flex justify-between items-start mb-2">
+                                        <h4 className="text-lg font-bold group-hover:text-blue-400 transition-colors">The Fabric of Law</h4>
+                                        <ArrowUpRight size={18} className="text-slate-500 group-hover:text-blue-400 transition-colors" />
+                                    </div>
                                     <p className="text-slate-400 text-sm mb-4">Understanding Jurisprudence and Legal Principles</p>
                                     <div className="text-blue-400 text-xs font-bold uppercase tracking-widest">Law & Ethics</div>
-                                </div>
+                                </a>
                             </div>
                         </div>
 
