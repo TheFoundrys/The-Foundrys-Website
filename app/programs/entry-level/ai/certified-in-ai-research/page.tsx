@@ -475,7 +475,7 @@ export default function AIResearchCoursePage() {
                                     { url: "https://upload.wikimedia.org/wikipedia/commons/0/01/Created_with_Matplotlib-logo.svg", name: "Matplotlib" },
                                     { url: "https://avatars.githubusercontent.com/u/126733545?s=200&v=4", name: "LangChain" },
                                     { url: "https://avatars.githubusercontent.com/u/54333248?s=200&v=4", name: "Pinecone" },
-                                    { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/121px-Python-logo-notext.svg.png", name: "Jupyter" },
+                                    { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/120px-Jupyter_logo.svg.png", name: "Jupyter" },
                                     { url: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg", name: "HuggingFace" }
                                 ],
                                 direction: "left"

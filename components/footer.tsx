@@ -22,7 +22,6 @@ export function Footer({ hideCTA = false, isDark = false }: FooterProps) {
                 </div>
 
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-8 text-sm">
-                    {/* Column 1: Deep Tech */}
                     <div className="flex flex-col gap-4">
                         <h3 className={`${isDark ? 'text-white' : 'text-slate-900'} font-bold mb-1`}>School of Deep Tech</h3>
                         <FooterLink href="/schools/ai" isDark={isDark}>Artificial Intelligence</FooterLink>
@@ -31,24 +30,21 @@ export function Footer({ hideCTA = false, isDark = false }: FooterProps) {
                         <FooterLink href="/schools/blockchain" isDark={isDark}>Blockchain</FooterLink>
                     </div>
 
-                    {/* Column 2: Specialized Schools */}
-                    <div className="flex flex-col gap-7">
+                    <div className="flex flex-col gap-4">
                         <h3 className={`${isDark ? 'text-white' : 'text-slate-900'} font-bold mb-1`}>Specialized Schools</h3>
                         <FooterLink href="/schools/venture-building" isDark={isDark}>School of Entrepreneurship</FooterLink>
                         <FooterLink href="/schools/esg" isDark={isDark}>School of Sustainability</FooterLink>
                         <FooterLink href="/schools/renewable-energy" isDark={isDark}>School of Energy</FooterLink>
                     </div>
 
-                    {/* Column 3: Programs */}
-                    <div className="flex flex-col gap-7">
+                    <div className="flex flex-col gap-4">
                         <h3 className={`${isDark ? 'text-white' : 'text-slate-900'} font-bold mb-1`}>Programs</h3>
                         <FooterLink href="/programs/professional" isDark={isDark}>Professional Learning</FooterLink>
                         <FooterLink href="/programs/executive" isDark={isDark}>Executive Learning</FooterLink>
                         <FooterLink href="/programs/educators" isDark={isDark}>Educators and Faculty</FooterLink>
                     </div>
 
-                    {/* Column 4: Explore */}
-                    <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-4">
                         <h3 className={`${isDark ? 'text-white' : 'text-slate-900'} font-bold mb-1`}>Explore</h3>
                         <FooterLink href="/campus" isDark={isDark}>Campus</FooterLink>
                         <FooterLink href="/about" isDark={isDark}>About Us</FooterLink>

@@ -202,8 +202,8 @@ export default function ExecutiveLandingClient() {
                             <CourseCard
                                 sku="EXE 001"
                                 title="Delivering In the Age of AI"
-                                priceINR={{ original: "1,00,000", discounted: "75,000" }}
-                                priceUSD={{ original: "2,000", discounted: "1,500" }}
+                                priceINR={{ original: "1,00,000", discounted: "50,000" }}
+                                priceUSD={{ original: "2,000", discounted: "1,000" }}
                                 desc="Where Senior Tech Leaders become System Owners. Design, engineer, deploy, and govern critical systems in an AI-driven world."
                                 link="/programs/executive/delivering-in-age-of-ai"
                                 delay={0}
@@ -274,8 +274,8 @@ function MethodologyItem({ icon: Icon, title, desc, index }: { icon: any, title:
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="relative p-8 rounded-3xl border border-slate-100 bg-slate-50 backdrop-blur-sm hover:bg-slate-100 transition-colors"
         >
-            <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/20">
+            <div className="flex items-start gap-5">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-b from-blue-500 to-purple-500 flex items-center justify-center text-white shrink-0 shadow-lg shadow-blue-500/20">
                     <Icon size={24} />
                 </div>
                 <div>
