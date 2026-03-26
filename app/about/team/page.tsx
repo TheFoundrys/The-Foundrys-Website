@@ -44,7 +44,10 @@ const teamMembers = [
         role: "SME in Social Entrepreneurship",
         image: "/images/suman rangabhasyam.jpg",
         bio: "TEDx Speaker, Author, and Social Entrepreneur helping individuals and enterprises scale through branding.",
-        profileLink: "/about/faculty/suman-rangabhashyam"
+        profileLink: "/about/faculty/suman-rangabhashyam",
+        socials: {
+            linkedin: "#",
+        }
     },
     {
         name: "Dr. Srikanth Itapu",
@@ -186,7 +189,7 @@ function SmallTeamCard({ member, index }: { member: any, index: number }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 flex flex-col w-full sm:w-[320px] xl:w-[350px] h-full min-h-[480px]"
+            className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 flex flex-col w-full sm:w-[320px] xl:w-[350px] min-h-[480px]"
         >
             <div className="aspect-square relative bg-white overflow-hidden flex items-center justify-center">
                 {member.image ? (
