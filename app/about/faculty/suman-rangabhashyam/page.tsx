@@ -58,7 +58,7 @@ export default function SumanRangabhashyamProfile() {
                                     Dr. Suman Rangabhashyam
                                 </h1>
                                 <p className="text-xl text-blue-400 font-medium mb-4 italic">
-                                    TEDx Speaker • Author • Social Entrepreneur
+                                    SME In Social Entrepreneurship
                                 </p>
 
                                 <div className="flex flex-wrap gap-3 mb-6">

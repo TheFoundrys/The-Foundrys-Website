@@ -40,6 +40,13 @@ const teamMembers = [
         }
     },
     {
+        name: "Dr. Suman Rangabhashyam",
+        role: "SME in Social Entrepreneurship",
+        image: "/images/suman rangabhasyam.jpg",
+        bio: "TEDx Speaker, Author, and Social Entrepreneur helping individuals and enterprises scale through branding.",
+        profileLink: "/about/faculty/suman-rangabhashyam"
+    },
+    {
         name: "Dr. Srikanth Itapu",
         role: "SME in the Quantum Technologies",
         bio: "Subject matter expert in quantum technologies, advanced materials, and semiconductor devices with over 12 years of research experience.",
@@ -105,17 +112,9 @@ export default function TeamPage() {
             <section className="py-24 px-6 bg-white">
                 <div className="container mx-auto max-w-[1600px]">
 
-                    {/* 6-column grid for perfect 3+2 centering on desktop */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 justify-items-center max-w-[1600px] mx-auto">
-                        {teamMembers.slice(0, 3).map((member, index) => (
-                            <div key={index} className="lg:col-span-2">
-                                <SmallTeamCard member={member} index={index} />
-                            </div>
-                        ))}
-                        {teamMembers.slice(3, 6).map((member, index) => (
-                            <div key={index + 3} className="lg:col-span-2">
-                                <SmallTeamCard member={member} index={index + 3} />
-                            </div>
+                    <div className="flex flex-wrap justify-center gap-10 max-w-[1600px] mx-auto">
+                        {teamMembers.map((member, index) => (
+                            <SmallTeamCard key={index} member={member} index={index} />
                         ))}
                     </div>
                 </div>
@@ -129,18 +128,8 @@ export default function TeamPage() {
                         <p className="text-slate-600 max-w-2xl mx-auto">Strategic guidance from industry veterans and visionaries.</p>
                     </div> */}
 
-                    {/* Standard 4-column grid for 4 members in a single row */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center max-w-[1600px] mx-auto">
-                        <SmallTeamCard
-                            member={{
-                                name: "Dr. Suman Rangabhashyam",
-                                role: "Social Entrepreneur & Author",
-                                image: "/images/suman rangabhasyam.jpg",
-                                bio: "TEDx Speaker, Author, and Social Entrepreneur helping individuals and enterprises scale through branding.",
-                                profileLink: "/about/faculty/suman-rangabhashyam"
-                            }}
-                            index={0}
-                        />
+                    {/* Centered flex wrapper for members */}
+                    <div className="flex flex-wrap justify-center gap-10 max-w-[1600px] mx-auto">
                         {/* <SmallTeamCard
                             member={{
                                 name: "Gunda Lakshmaiah",
@@ -159,7 +148,7 @@ export default function TeamPage() {
                                 bio: "Enabling strategic partnerships and expanding market opportunities at the convergence of Deep Tech and Sustainability.",
                                 profileLink: "/about/faculty/akuthota-aravind"
                             }}
-                            index={1}
+                            index={0}
                         />
                         <SmallTeamCard
                             member={{
@@ -169,7 +158,7 @@ export default function TeamPage() {
                                 bio: "Operations Head with 14 years of experience specializing in business setup, operations, and organizational scaling.",
                                 profileLink: "/about/faculty/soujanya-kanagala"
                             }}
-                            index={2}
+                            index={1}
                         />
                         <SmallTeamCard
                             member={{
@@ -179,7 +168,7 @@ export default function TeamPage() {
                                 bio: "Analytical professional with 8+ years of experience in driving organizational performance through deep data insights and actionable dashboards.",
                                 profileLink: "/about/faculty/abhishek-sharma"
                             }}
-                            index={3}
+                            index={2}
                         />
                     </div>
                 </div>
@@ -197,7 +186,7 @@ function SmallTeamCard({ member, index }: { member: any, index: number }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 flex flex-col w-full h-full min-h-[480px] max-w-[350px]"
+            className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 flex flex-col w-full sm:w-[320px] xl:w-[350px] h-full min-h-[480px]"
         >
             <div className="aspect-square relative bg-white overflow-hidden flex items-center justify-center">
                 {member.image ? (
