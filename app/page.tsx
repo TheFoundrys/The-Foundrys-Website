@@ -13,8 +13,8 @@ import { UniqueNeeds } from "@/components/home/unique-needs";
 import { FaqJsonLd } from "@/components/seo/faq-json-ld";
 
 export const metadata: Metadata = {
-  title: "The Foundry's | India's First Deep Tech & Venture School",
-  description: "The Foundry's: India's first Deep Tech & Venture School in Hyderabad. The best alternative to traditional engineering for Class 12 & Intermediate MPC students. Forging innovators, not just Graduates.",
+  title: "The Foundrys | India's First Deep Tech & Venture School",
+  description: "The Foundrys: India's first Deep Tech & Venture School in Hyderabad. The best alternative to traditional engineering for Class 12 & Intermediate MPC students. Forging innovators, not just Graduates.",
   alternates: {
     canonical: "https://thefoundrys.com",
   },

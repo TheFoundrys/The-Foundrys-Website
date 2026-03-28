@@ -23,10 +23,10 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://thefoundrys.com"),
   title: {
-    default: "The Foundry's | Best Deep Tech & AI College in Hyderabad",
-    template: "%s | The Foundry's"
+    default: "The Foundrys | Best Deep Tech & AI College in Hyderabad",
+    template: "%s | The Foundrys"
   },
-  description: "The Foundry's: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging innovators, not just Graduates.",
+  description: "The Foundrys: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging innovators, not just Graduates.",
   keywords: [
     // Brand Variations & Common Misspellings
     "The Foundry's", "The Foundry", "TheFoundry", "TheFoundrys", "Foundrys", "Foundry School", "The Foundery", "The Foundries",
