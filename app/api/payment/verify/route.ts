@@ -6,6 +6,7 @@ import Enrollment from '@/lib/models/Enrollment';
 import CompassUser from '@/lib/models/CompassUser';
 import CompassCourse from '@/lib/models/CompassCourse';
 import CompassEnrollment from '@/lib/models/CompassEnrollment';
+import CompassTransaction from '@/lib/models/CompassTransaction';
 import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
@@ -108,6 +109,21 @@ export async function POST(request: NextRequest) {
           { upsert: true, new: true }
         );
         console.log(`✅ Compass enrollment synced: User ${compassUser.username} -> Course ${compassCourse.slug}`);
+
+        // 4. Create Transaction Record for Purchase History
+        const invoiceId = `INV-${Date.now()}-${Math.random().toString(36).substring(2, 7).toUpperCase()}`;
+        console.log(`🧾 Creating transaction record: ${invoiceId}...`);
+        
+        await CompassTransaction.create({
+          invoiceId,
+          user: compassUser._id,
+          courses: [compassCourse._id],
+          amount: enrollment.amount,
+          utr: razorpay_payment_id || 'test_payment_id',
+          status: 'successful',
+          paymentDate: new Date()
+        });
+        console.log(`✅ Compass transaction synced: ${invoiceId}`);
       } else {
         console.warn(`⚠️ Compass course with slug '${enrollment.courseId}' not found. Skipping auto-enrollment.`);
       }

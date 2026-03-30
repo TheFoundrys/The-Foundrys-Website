@@ -186,10 +186,10 @@ export const COURSE_PRICING: CoursePricing = {
         twoToFive: { INR: '27,000', USD: '540' },
     },
     aiFluency: {
-        original: { INR: '10,000', USD: '200' },
-        freshers: { INR: '5,000', USD: '200' },
-        zeroToTwo: { INR: '5,500', USD: '200' },
-        twoToFive: { INR: '5,000', USD: '200' },
+        original: { INR: '20,000', USD: '500' },
+        freshers: { INR: '10,000', USD: '250' },
+        zeroToTwo: { INR: '10,000', USD: '250' },
+        twoToFive: { INR: '10,000', USD: '250' },
     },
     certifiedInCybersecurity: {
         original: { INR: '1,50,000', USD: '3,000' },
