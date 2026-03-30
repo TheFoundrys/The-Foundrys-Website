@@ -61,6 +61,26 @@ export const COURSE_CATALOG: Record<string, CourseInfo> = {
       USD: 500,
     },
   },
+  'certified-professional-in-ai-engineering': {
+    id: 'certified-professional-in-ai-engineering',
+    name: 'Certified Professional in AI Engineering',
+    sku: 'AI 004',
+    duration: '6 Weeks',
+    prices: {
+      INR: 75000,
+      USD: 1500,
+    },
+  },
+  'certified-professional-in-ai-research': {
+    id: 'certified-professional-in-ai-research',
+    name: 'Certified Professional in AI Research',
+    sku: 'AI 002',
+    duration: '6 Weeks',
+    prices: {
+      INR: 75000,
+      USD: 1500,
+    },
+  },
   'ai-fluency': {
     id: 'ai-fluency',
     name: 'AI Fluency for Professionals',
@@ -106,6 +126,8 @@ export const COUPONS: Record<string, Coupon> = {
       'ai-fluency', 
       'certified-in-prompt-engineering', 
       'certified-in-ai-engineering', 
+      'certified-professional-in-ai-engineering',
+      'certified-professional-in-ai-research',
       'certified-in-cybersecurity',
       'quantum-fundamentals',
       'sustainability-in-the-age-of-ai'
