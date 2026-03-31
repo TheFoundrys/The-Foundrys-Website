@@ -47,18 +47,19 @@ export async function POST(request: NextRequest) {
 
     // Razorpay expects amount in paise (INR) or cents (USD)
     const razorpayAmount = Math.round(amount * 100);
+    const receipt = `reg_${Date.now()}`;
 
     console.log('Creating Razorpay order:', {
       amount: razorpayAmount,
       currency: validCurrency,
-      receipt: `enroll_${courseId}_${Date.now()}`
+      receipt
     });
 
     // Create Razorpay order
     const order = await razorpay.orders.create({
       amount: razorpayAmount,
       currency: validCurrency,
-      receipt: `enroll_${courseId}_${Date.now()}`,
+      receipt,
       notes: {
         courseId,
         courseName: course.name,
@@ -93,7 +94,7 @@ export async function POST(request: NextRequest) {
       currency: validCurrency,
       enrollmentId: enrollment._id,
       courseName: course.name,
-      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+      key: process.env.RAZORPAY_KEY_ID,
     });
   } catch (error: unknown) {
     console.error('Create order error:', error);
