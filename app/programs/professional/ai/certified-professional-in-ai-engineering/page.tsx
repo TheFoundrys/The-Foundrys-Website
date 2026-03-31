@@ -331,7 +331,7 @@ export default function AIEngineeringCoursePage() {
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent" />
 
                 {/* Subtle Background Pattern */}
-                <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+                <div className="absolute inset-0 opacity-10 bg-[url('/noise.svg')]" />
 
                 {/* Animated Gradient Orbs */}
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />

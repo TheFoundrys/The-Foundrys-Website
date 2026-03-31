@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { CheckoutButton } from './checkout-button';
+import { LoadingOverlay } from './loading-overlay';
 
 interface EnrollmentFlowProps {
   courseId: string;
@@ -20,11 +21,13 @@ export function EnrollmentFlow({ courseId, amount, initialOpen = false }: Enroll
   const [couponCode, setCouponCode] = useState('');
   const [discount, setDiscount] = useState(0);
   const [isVerifyingCoupon, setIsVerifyingCoupon] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const finalAmount = Math.round(amount * (1 - discount / 100));
 
   const handleSendLink = async () => {
     if (!email || !name || !phone) return alert('Name, Email, and Phone are required');
+    setIsSubmitting(true);
     try {
       // 1. Check if user is already verified or exists in DB
       const checkRes = await fetch('/api/auth/check-status', {
@@ -49,6 +52,8 @@ export function EnrollmentFlow({ courseId, amount, initialOpen = false }: Enroll
       else alert('Failed to send verification link');
     } catch (err) {
       alert('Error in verification flow');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -111,7 +116,8 @@ export function EnrollmentFlow({ courseId, amount, initialOpen = false }: Enroll
   }
 
   return (
-    <div className="w-full max-w-md bg-white rounded-2xl border border-slate-200 shadow-2xl overflow-hidden">
+    <div className="w-full max-w-md bg-white rounded-2xl border border-slate-200 shadow-2xl overflow-hidden relative">
+      <LoadingOverlay isVisible={isSubmitting} message="Working on it..." />
       <div className="p-8">
         <div className="flex justify-between items-center mb-6">
           <h3 className="text-2xl font-bold text-slate-900">Enrollment</h3>

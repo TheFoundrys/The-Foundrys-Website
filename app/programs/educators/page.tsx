@@ -152,7 +152,7 @@ export default function EducatorsPage() {
             <section className="py-32 px-6 bg-white text-slate-900 relative overflow-hidden border-y border-slate-100">
                 <motion.div
                     style={{ y }}
-                    className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5"
+                    className="absolute inset-0 bg-[url('/noise.svg')] opacity-5"
                 />
 
                 <div className="container mx-auto max-w-6xl relative z-10">

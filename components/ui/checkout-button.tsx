@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { LoadingOverlay } from './loading-overlay';
 
 interface CheckoutButtonProps {
   courseId: string;
@@ -99,12 +100,15 @@ export function CheckoutButton({ courseId, amount, email, userName, phone, coupo
   };
 
   return (
-    <button
-      onClick={handlePayment}
-      disabled={loading}
-      className="w-full py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/25 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-    >
-      {loading ? 'Processing...' : `Pay Selection`}
-    </button>
+    <>
+      <LoadingOverlay isVisible={loading} message="Processing Payment..." />
+      <button
+        onClick={handlePayment}
+        disabled={loading}
+        className="w-full py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/25 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {loading ? 'Processing...' : `Pay Selection`}
+      </button>
+    </>
   );
 }

@@ -28,11 +28,15 @@ export async function connectDB() {
   }
 
   if (!cached.promise) {
+    console.log('Initiating new MongoDB connection...');
     cached.promise = mongoose.connect(MONGODB_URI!, {
       bufferCommands: false,
     }).then((mongoose) => {
-      console.log('✅ MongoDB connected for Foundry Website');
+      console.log('✅ MongoDB connected successfully');
       return mongoose;
+    }).catch((err) => {
+      console.error('❌ MongoDB connection failed:', err.message);
+      throw err;
     });
   }
 

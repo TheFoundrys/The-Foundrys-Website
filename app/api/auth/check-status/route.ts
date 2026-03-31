@@ -11,10 +11,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
+    console.log('Connecting to DB...');
     await connectDB();
+    console.log('Connected to DB. Checking CompassUser for email:', email);
 
     // 1. Check if user already exists in the shared Compass users collection
     const existingUser = await CompassUser.findOne({ email });
+    console.log('CompassUser check complete. Found:', !!existingUser);
     if (existingUser) {
       return NextResponse.json({ 
         verified: true, 
@@ -24,7 +27,9 @@ export async function POST(request: NextRequest) {
     }
 
     // 2. Check if there's a temporary verification token from a recent magic-link
+    console.log('Checking VerificationToken for email:', email);
     const tokenRecord = await VerificationToken.findOne({ email });
+    console.log('VerificationToken check complete. Found:', !!tokenRecord);
 
     if (!tokenRecord) {
       return NextResponse.json({ verified: false, message: 'No verification pending' });
@@ -41,6 +46,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ verified: false, message: 'Still waiting for verification' });
   } catch (error) {
     console.error('Check status error:', error);
-    return NextResponse.json({ error: 'Failed to check status' }, { status: 500 });
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    return NextResponse.json({ 
+      error: 'Failed to check status',
+      details: message,
+      stack: process.env.NODE_ENV === 'development' ? (error as Error).stack : undefined
+    }, { status: 500 });
   }
 }

@@ -291,7 +291,7 @@ export default function PromptEngineeringCoursePage() {
             {/* Hero Section */}
             <section className="relative pt-32 pb-48 px-6 bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-600/20 via-transparent to-transparent" />
-                <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+                <div className="absolute inset-0 opacity-10 bg-[url('/noise.svg')]" />
 
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
                 <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse" />
