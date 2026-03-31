@@ -46,6 +46,10 @@ export function CheckoutButton({ courseId, amount, email, userName, phone, coupo
       const orderData = await orderRes.json();
       if (!orderRes.ok) throw new Error(orderData.error || 'Failed to create order');
 
+      if (!orderData.key) {
+        throw new Error('Razorpay key is missing from server response. Check environment variables.');
+      }
+
       const options = {
         key: orderData.key,
         amount: orderData.razorpayAmount,
