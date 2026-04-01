@@ -80,6 +80,28 @@ export default function EntryLevelAIPage() {
                             href="/programs/entry-level/ai/certified-in-prompt-engineering"
                             symbol={symbol}
                         />
+                        <CourseCard
+                            sku="AI 006"
+                            title="0-1 LLM: Certified in Large Language Models"
+                            originalPrice={COURSE_PRICING.zeroToOneLLM.original[currency]}
+                            discountedPrice={COURSE_PRICING.zeroToOneLLM.freshers[currency]}
+                            duration="8 Weeks"
+                            desc="Master the architecture, training, and deployment of Large Language Models. From transformer foundations to building complex agentic systems."
+                            persona="For Developers & AI enthusiasts"
+                            href="/programs/entry-level/ai/certified-in-zero-to-one-llm"
+                            symbol={symbol}
+                        />
+                        <CourseCard
+                            sku="AI 007"
+                            title="Certified Professional in AI"
+                            originalPrice={COURSE_PRICING.certifiedProfessionalAI.original[currency]}
+                            discountedPrice={COURSE_PRICING.certifiedProfessionalAI.freshers[currency]}
+                            duration="12 Weeks"
+                            desc="Master the practical application of AI in the modern workplace. From strategy to implementation, lead the AI revolution."
+                            persona="For Business Leaders & Professionals"
+                            href="/programs/entry-level/ai/certified-professional-in-ai"
+                            symbol={symbol}
+                        />
                         {/* <CourseCard
                             sku="AI 003"
                             title="AI Fluency "

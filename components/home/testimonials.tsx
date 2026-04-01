@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
+import { text } from 'stream/consumers';
 
 const testimonials = [
   {
@@ -10,6 +11,14 @@ const testimonials = [
     designation: "AI Researcher",
     image: "/images/testimonials/manianna.jpeg",
     text: "Hi, I am manikanta, I started my carrier as a fullstack developer, but I always knew that I wanted to dive deeper into the future technology. Under the guidance of my mentor Vishwanath Akuthota, I successfully transitioned into my current role as a AI Researcher. Vishwa has a unique way of teaching, he strips away the noise and focuses on building foundations from the absolute scratch. From understanding the math behind the neural networks to building Advanced AI Application, his mentorship made complex feels accessible. Now, he is bringing that passion to \"The Foundry's\". offering the bachelor degree in AI and Cyber Security. Congratulations Vishwa for the Successful journey."
+  },
+  {
+    name: "Venkata Shiva Ranga Reddy",
+    designation: "AI Researcher",
+    image: "/images/testimonials/shiva.jpeg",
+    text: "Hi, iam venkata shiva ranga reddy, my journey with vishwanath akuthota started after my graduation, as a student i was very curious passionate about learning AI and under guidence of vishwanath akuthota and with his experience and expertise it was very easy to me to understand systems and build scalable systems which are very efficient and optimised so now the foundrys is starting in warangal city i wish him all the best"
+
+
   },
   {
     name: "Raju Kalla",
