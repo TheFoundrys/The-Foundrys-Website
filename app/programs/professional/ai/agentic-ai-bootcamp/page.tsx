@@ -300,7 +300,7 @@ export default function AgenticAIBootcampPage() {
                             </div>
                             <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
                                 <Calendar size={16} className="text-violet-400" />
-                                <span>Starting March 2026</span>
+                                <span>Starting April 2026</span>
                             </div>
                             <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
                                 <Award size={16} className="text-violet-400" />
@@ -326,7 +326,7 @@ export default function AgenticAIBootcampPage() {
                             </div>
                             <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Starts</p>
-                                <p className="text-lg font-bold text-slate-900">March 2026</p>
+                                <p className="text-lg font-bold text-slate-900">April 2026</p>
                             </div>
                             <div className="lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>
@@ -517,7 +517,7 @@ export default function AgenticAIBootcampPage() {
                         <FAQItem question="Is this an online or in-person bootcamp?" answer="This is a fully in-person bootcamp conducted in Hyderabad. All 5 days are instructor-led, 8 hours per day." />
                         <FAQItem question="Will I receive a certificate?" answer="Yes. Upon successful completion of the bootcamp and your capstone presentation, you will receive a verifiable digital certificate from The Foundry." />
                         <FAQItem question="What will I build during the bootcamp?" answer="You will build multiple AI agents throughout the week — from single research and summarizer agents to multi-agent teams. On Day 5, you'll present a capstone project solving a real business or engineering problem." />
-                        <FAQItem question="When does the bootcamp start?" answer="The bootcamp is scheduled to start in March 2026. The bootcamp runs for 5 consecutive days." />
+                        <FAQItem question="When does the bootcamp start?" answer="The bootcamp is scheduled to start in April 2026. The bootcamp runs for 5 consecutive days." />
                     </div>
                 </div>
             </section>
