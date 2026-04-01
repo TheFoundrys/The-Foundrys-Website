@@ -11,6 +11,7 @@ import { ArchetypeColumns } from "@/components/home/archetype-columns";
 import { TheForging } from "@/components/home/the-forging";
 import { UniqueNeeds } from "@/components/home/unique-needs";
 import { FaqJsonLd } from "@/components/seo/faq-json-ld";
+import { Testimonials } from "@/components/home/testimonials";
 
 export const metadata: Metadata = {
   title: "The Foundrys | India's First Deep Tech & Venture School",
@@ -63,6 +64,9 @@ export default function Home() {
         
         {/* Section 3: The Forging */}
         <TheForging />
+
+        {/* Section 4: Testimonials */}
+        <Testimonials />
 
         {/* <FaqPreview /> */}
         <InfiniteLogoScroll />
