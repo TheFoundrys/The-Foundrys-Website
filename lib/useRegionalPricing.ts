@@ -108,10 +108,10 @@ export const COURSE_PRICING: CoursePricing = {
         twoToFive: { INR: '18,000', USD: '450' },
     },
     aiEngineer: {
-        original: { INR: '1,00,000', USD: '2,000' },
-        freshers: { INR: '50,000', USD: '1,000' },
-        zeroToTwo: { INR: '75,000', USD: '1,500' },
-        twoToFive: { INR: '90,000', USD: '1,800' },
+        original: { INR: '2,00,000', USD: '2,000' },
+        freshers: { INR: '1,00,000', USD: '1,000' },
+        zeroToTwo: { INR: '1,50,000', USD: '1,500' },
+        twoToFive: { INR: '1,80,000', USD: '1,800' },
     },
     aiResearch: {
         original: { INR: '1,50,000', USD: '3,000' },
@@ -120,10 +120,10 @@ export const COURSE_PRICING: CoursePricing = {
         twoToFive: { INR: '1,35,000', USD: '2,700' },
     },
     professionalAIEngineer: {
-        original: { INR: '1,50,000', USD: '3,000' },
-        freshers: { INR: '75,000', USD: '1,500' },
-        zeroToTwo: { INR: '1,12,500', USD: '2,250' },
-        twoToFive: { INR: '1,35,000', USD: '2,700' },
+        original: { INR: '2,00,000', USD: '3,000' },
+        freshers: { INR: '1,00,000', USD: '1,500' },
+        zeroToTwo: { INR: '1,50,000', USD: '2,250' },
+        twoToFive: { INR: '1,80,000', USD: '2,700' },
     },
     professionalAIOperations: {
         original: { INR: '2,00,000', USD: '4,000' },

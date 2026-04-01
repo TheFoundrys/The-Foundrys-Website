@@ -27,7 +27,7 @@ export const COURSE_CATALOG: Record<string, CourseInfo> = {
     sku: 'AI 003',
     duration: '6 Weeks',
     prices: {
-      INR: 50000,
+      INR: 100000,
       USD: 1000,
     },
   },
@@ -67,7 +67,7 @@ export const COURSE_CATALOG: Record<string, CourseInfo> = {
     sku: 'AI 004',
     duration: '6 Weeks',
     prices: {
-      INR: 75000,
+      INR: 100000,
       USD: 1500,
     },
   },
