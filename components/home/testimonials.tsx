@@ -38,7 +38,7 @@ const testimonials = [
   {
     name: "Sai Pramodu",
     designation: "Software Developer",
-    image: "/images/testimonials/pramod.jpeg",
+    image: "/images/testimonials/saipramod.jpeg",
     text: "I am Pramod, working as a Software Developer. As a fresher, I was exploring my path, and I would like to thank Vishwanath Akutota for his guidance in AI engineering, where I was introduced to concepts like machine learning and model training. Even though these are complex topics, he made them easy to understand through his approach of learning while doing, which helped me grasp them effectively and grow both technically and professionally. As a Software Developer today, I truly appreciate his mentorship in helping me become who I am. Congratulations to Vishwanath Akutota and the entire team of The Foundrys on starting this new journey in Warangal."
   }
 ];
