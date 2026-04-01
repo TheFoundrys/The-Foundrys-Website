@@ -40,6 +40,15 @@ const teamMembers = [
         }
     },
     {
+        name: "Thirupathi Reddy",
+        role: "Academics SME",
+        bio: "Holds a Master of Commerce (M.Com) and a Master of Social Work (MSW). Brings over 23 years of teaching experience, including 5 years as a Junior College Principal and 13 years as a Degree College Principal.",
+        image: "/images/ThirupathiReddy.jpeg",
+        socials: {
+            linkedin: "#",
+        }
+    },
+    {
         name: "Dr. Suman Rangabhashyam",
         role: "SME in Social Entrepreneurship",
         image: "/images/suman rangabhasyam.jpg",
