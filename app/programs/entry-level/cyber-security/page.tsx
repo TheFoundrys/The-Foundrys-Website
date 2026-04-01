@@ -42,7 +42,7 @@ export default function EntryLevelCyberSecurityPage() {
                             desc="Master (ISC)² cybersecurity domains. Build a strong foundation in network security, access control, and security operations."
                             symbol={symbol}
                             href="/programs/entry-level/cyber-security/certified-in-cybersecurity"
-                            enrollHref="https://compass.thefoundrys.com/courses/cyber-security/Certified-in-Cyber-Security"
+                            enrollHref="/enroll/certified-in-cybersecurity"
                         />
                         <CourseCard
                             sku="CS 003"
