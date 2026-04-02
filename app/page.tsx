@@ -61,7 +61,7 @@ export default function Home() {
       <Testimonials />
       <InfiniteLogoScroll />
       <Philosophy />
-      <Triad />
+      {/* <Triad /> */}
       <Campus />
       <UniqueNeeds />
 
