@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ==============================================================================
-# 🚀 THE FOUNDRY'S WEBSITE - DEPLOYMENT SYSTEM
+# 🚀 THE FOUNDRY'S WEBSITE - DEPLOYMENT SYSTEM (REGULAR BUILD MODE)
 # ==============================================================================
 # This script manages the synchronization and remote build of the Next.js app.
 # Designed for high-performance servers (64GB RAM).
@@ -12,13 +12,12 @@ set -e # Exit immediately on error
 # --- Configuration ---
 REMOTE_USER="toptima"
 REMOTE_HOST="192.168.1.119"
-REMOTE_DIR="/home/toptima/The-Foundrys-Website/"
+REMOTE_DIR="/home/toptima/tfw/"
 APP_NAME="foundys-web"
 LOG_FILE="deploy.log"
 
 # --- SSH Connection Sharing (Crucial for ONE password) ---
 SSH_SOCKET="/tmp/ssh-master-$REMOTE_USER@$REMOTE_HOST"
-# We use auto-master and persistent path
 SSH_COMMON_OPTS="-o ControlMaster=auto -o ControlPath=$SSH_SOCKET -o ControlPersist=600"
 
 # --- UI Enhancement ---
@@ -43,7 +42,7 @@ print_header() {
     echo "     ██║   ██║  ██║███████╗    ██║     ╚██████╔╝╚██████╔╝██║ ╚████║██████╔╝██║  ██║   ██║    ███████║"
     echo "     ╚═╝   ╚═╝  ╚═╝╚══════╝    ╚═╝      ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝   ╚═╝    ╚══════╝"
     echo -e "${NC}"
-    echo -e "${WHITE}${BOLD}  The Foundry's Website Deployment System ${NC}"
+    echo -e "${WHITE}${BOLD}  The Foundry's Website Deployment System (Regular Build) ${NC}"
     echo -e "${WHITE}  Target: ${REMOTE_USER}@${REMOTE_HOST}${NC}"
     echo -e "${WHITE}  --------------------------------------------------------------------------------${NC}"
 }
@@ -81,33 +80,40 @@ trap cleanup EXIT
 
 print_header
 
-# 1. AUTHENTICATION (THE ONLY PASSWORD PROMPT)
+# 1. AUTHENTICATION (ASK FOR PASSWORD ONLY ONCE)
 log_step "Authenticating (Enter password once)..."
 ssh $SSH_COMMON_OPTS ${REMOTE_USER}@${REMOTE_HOST} "true" || (log_error "Auth failed." && exit 1)
-log_success "Authenticated successfully."
+log_success "Authentication successful."
 
-# 2. SYNC
-log_step "Synchronizing code..."
+# 2. SYNC CODE
+log_step "Synchronizing Source Code..."
 (rsync -avz --delete \
     -e "ssh $SSH_COMMON_OPTS" \
     --exclude='node_modules' --exclude='.next' --exclude='.git' --exclude='.env*' --exclude='deploy.log' \
     ./ \
     ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_DIR} 2>> "$LOG_FILE") &
 spinner $! || (log_error "Sync failed." && exit 1)
-log_success "Code synced."
+log_success "Code synchronized to ${REMOTE_DIR}"
 
-# 3. REMOTE BUILD
-log_step "Building on server..."
+# 3. REMOTE OPERATIONS (BUILD AND START)
+log_step "Cleaning & Building on server..."
 (ssh $SSH_COMMON_OPTS ${REMOTE_USER}@${REMOTE_HOST} << EOF
     set -e
     export NVM_DIR="\$HOME/.nvm"
     [ -s "\$NVM_DIR/nvm.sh" ] && \. "\$NVM_DIR/nvm.sh"
     cd ${REMOTE_DIR}
 
+    echo -e "${YELLOW}👉 Removing old build and node_modules...${NC}"
     rm -rf .next node_modules >> "${REMOTE_DIR}deploy.log" 2>&1
+
+    echo -e "${YELLOW}👉 Installing fresh dependencies...${NC}"
     npm install --quiet >> "${REMOTE_DIR}deploy.log" 2>&1
+
+    echo -e "${YELLOW}👉 Building Next.js application (Standard Build)...${NC}"
     npm run build >> "${REMOTE_DIR}deploy.log" 2>&1
 
+    echo -e "${YELLOW}👉 Updating PM2...${NC}"
+    # Standard way to start/reload a regular Next.js app in PM2:
     if pm2 describe ${APP_NAME} > /dev/null 2>&1; then
         pm2 reload ${APP_NAME} >> "${REMOTE_DIR}deploy.log" 2>&1
     else
@@ -117,6 +123,5 @@ log_step "Building on server..."
 EOF
 ) &
 spinner $! || (log_error "Remote build failed." && exit 1)
-log_success "Remote build successful."
 
-echo -e "\n${GREEN}${BOLD}  🎉 THE FOUNDRY'S WEBSITE IS LIVE!${NC}\n"
+echo -e "\n${GREEN}${BOLD}  🎉 THE FOUNDRY'S WEBSITE IS NOW LIVE!${NC}\n"

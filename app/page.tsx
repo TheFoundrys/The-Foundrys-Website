@@ -69,7 +69,7 @@ export default function Home() {
       <ArchetypeColumns />
 
       {/* Section 3: The Forging */}
-      <TheForging />
+      {/* <TheForging /> */}
 
       {/* <FaqPreview /> */}
 
