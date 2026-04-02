@@ -82,30 +82,32 @@ export function Testimonials() {
         <div className="flex w-full overflow-hidden hover:pause-scroll group">
           <motion.div
             className="flex items-center flex-nowrap py-3"
-            initial={{ x: "calc(50vw - 500px)" }}
+            initial={{ x: "calc(50vw - 7500px)" }}
             animate={{
               x: [
-                "calc(50vw - 500px)", "calc(50vw - 500px)",
-                "calc(50vw - 1500px)", "calc(50vw - 1500px)",
-                "calc(50vw - 2500px)", "calc(50vw - 2500px)",
-                "calc(50vw - 3500px)", "calc(50vw - 3500px)",
-                "calc(50vw - 4500px)", "calc(50vw - 4500px)",
-                "calc(50vw - 5500px)", "calc(50vw - 5500px)",
-                "calc(50vw - 6500px)", "calc(50vw - 6500px)",
+                "calc(50vw - 7500px)", "calc(50vw - 7500px)",
+                "calc(50vw - 8500px)", "calc(50vw - 8500px)",
+                "calc(50vw - 9500px)", "calc(50vw - 9500px)",
+                "calc(50vw - 10500px)", "calc(50vw - 10500px)",
+                "calc(50vw - 11500px)", "calc(50vw - 11500px)",
+                "calc(50vw - 12500px)", "calc(50vw - 12500px)",
+                "calc(50vw - 13500px)", "calc(50vw - 13500px)",
+                "calc(50vw - 14500px)",
               ]
             }}
             transition={{
               x: {
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: 30,
+                duration: 42,
                 times: [
-                  0, 0.133,
-                  0.166, 0.3,
-                  0.333, 0.466,
-                  0.5, 0.633,
-                  0.666, 0.8,
-                  0.833, 0.966,
+                  0, 0.119,
+                  0.142, 0.261,
+                  0.284, 0.403,
+                  0.426, 0.545,
+                  0.568, 0.687,
+                  0.710, 0.829,
+                  0.852, 0.971,
                   1
                 ],
                 ease: "easeInOut",
