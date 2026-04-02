@@ -23,7 +23,7 @@ export function InfiniteLogoScroll() {
   return (
     <section className="py-12 bg-white overflow-hidden relative border-y border-slate-50">
       <div className="container mx-auto px-4 mb-6 text-center">
-        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Our Trusted Partners</p>
+        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Our Alumini Works</p>
       </div>
 
       {/* Gradient Masks for Fade Effect - Blended for seamless feel */}
@@ -41,7 +41,7 @@ export function InfiniteLogoScroll() {
             x: {
               repeat: Infinity,
               repeatType: "loop",
-              duration: 40,
+              duration: 30,
               ease: "linear",
             },
           }}
@@ -58,11 +58,10 @@ export function InfiniteLogoScroll() {
                     <img
                       src={logo.startsWith("/") ? logo : `/${logo}`}
                       alt={`Partner logo ${setIndex}-${index}`}
-                      className={`w-auto object-contain pointer-events-none ${
-                        logo.includes("capsim") 
-                          ? "h-4 md:h-6 lg:h-7" 
-                          : "h-8 md:h-12 lg:h-14"
-                      }`}
+                      className={`w-auto object-contain pointer-events-none ${logo.includes("capsim")
+                        ? "h-4 md:h-6 lg:h-7"
+                        : "h-8 md:h-12 lg:h-14"
+                        }`}
                     />
                   ) : (
                     <span className="text-lg md:text-xl lg:text-2xl font-black text-slate-900 whitespace-nowrap tracking-tighter">

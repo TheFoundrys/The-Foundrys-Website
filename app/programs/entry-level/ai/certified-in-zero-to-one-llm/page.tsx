@@ -80,39 +80,59 @@ const CAREER_ROLES = [
 
 const CURRICULUM_DATA = [
     {
-        week: 1,
-        title: "Foundations & Architecture",
+        month: 1,
+        title: "Foundations & Data Processing",
         topics: [
-            "Introduction to LLMs & History",
-            "Syllabus to be updated soon...",
+            "Module 1: Introduction to LLMs & Ecosystem",
+            "Module 2: Python Foundations for AI Mastery",
+            "Module 3: Math & ML Fundamentals for Deep Tech",
+            "Module 4: Data Handling & Preprocessing Pipelines",
+        ]
+    },
+    {
+        month: 2,
+        title: "Core architectures & Embeddings",
+        topics: [
+            "Module 5: NLP Foundations & Sequential Data",
+            "Module 6: Vector Embeddings & Semantic Space",
+            "Module 7: Transformer Basics & Attention Mechanisms",
+        ]
+    },
+    {
+        month: 3,
+        title: "Applications & Production",
+        topics: [
+            "Module 8: Working with Hugging Face Ecosystem",
+            "Module 9: Prompting for Beginners to Advanced Patterns",
+            "Module 10: Capstone Project & Production Practice",
         ]
     }
 ];
 
 function CurriculumTabs() {
-    const [activeWeek, setActiveWeek] = useState(1);
-    const activeContent = CURRICULUM_DATA.find(item => item.week === activeWeek);
+    const [activeMonth, setActiveMonth] = useState(1);
+    const activeContent = CURRICULUM_DATA.find(item => item.month === activeMonth);
 
     return (
         <div className="space-y-8">
             <div className="flex flex-wrap justify-center gap-3">
                 {CURRICULUM_DATA.map((item) => (
                     <button
-                        key={item.week}
-                        onClick={() => setActiveWeek(item.week)}
-                        className={`px-6 py-3 rounded-full font-bold text-sm transition-all ${activeWeek === item.week
+                        key={item.month}
+                        onClick={() => setActiveMonth(item.month)}
+                        className={`px-8 py-3 rounded-full font-bold text-sm transition-all ${activeMonth === item.month
                             ? 'bg-blue-600 text-white shadow-lg scale-105'
                             : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
                             }`}
                     >
-                        Week {item.week}
+                        Month {item.month}
                     </button>
                 ))}
             </div>
 
             <AnimatePresence mode="wait">
                 <motion.div
-                    key={activeWeek}
+                    key={activeMonth}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
@@ -121,14 +141,14 @@ function CurriculumTabs() {
                 >
                     <div className="flex items-center gap-4 mb-6">
                         <div className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-bold">
-                            Week {activeContent?.week}
+                            Month {activeContent?.month}
                         </div>
                         <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
                             {activeContent?.title}
                         </h3>
                     </div>
 
-                    <div className="grid md:grid-cols-1 gap-4">
+                    <div className="grid grid-cols-1 gap-4">
                         {activeContent?.topics.map((topic, index) => (
                             <motion.div
                                 key={index}
@@ -255,7 +275,7 @@ export default function ZeroToOneLLMCoursePage() {
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
                             <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Duration</p>
-                                <p className="text-lg font-bold text-slate-900">8 Weeks</p>
+                                <p className="text-lg font-bold text-slate-900">90 Days</p>
                             </div>
                             <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Mode</p>

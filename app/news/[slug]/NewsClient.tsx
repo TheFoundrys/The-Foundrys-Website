@@ -121,6 +121,40 @@ const ARTICLES: Record<string, NewsArticle> = {
             </>
         )
     },
+    "thefoundrys-partnered-with-ebs": {
+        title: "The Foundry's Partnered with EBS Ethames Business School",
+        date: "April 02, 2026",
+        readTime: "2 min read",
+        category: "Partnerships",
+        image: "/ebs-partnership.png",
+        content: (
+            <>
+                <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
+                    The Foundry’s is proud to announce a strategic partnership with Ethames Business School (EBS).
+                </p>
+
+
+                <p>
+                    This Memorandum of Understanding (MOU) marks a significant step forward in our mission to bring advanced technical education to a broader student body. By partnering with EBS, we are committed to providing the next generation of tech leaders with the tools, mentorship, and training required to excel in Artificial Intelligence and Deep Tech.
+                </p>
+
+                <div className="my-10 p-8 bg-blue-50/50 rounded-3xl border border-blue-100/50 italic text-slate-700">
+                    "This partnership with EBS represents a crucial step forward in our mission to bridge the gap between academic learning and industry demands in the rapidly evolving tech landscape."
+                </div>
+
+                <h2>Future-Ready Training and Mentorship</h2>
+                <ul>
+                    <li><strong>Specialized AI Training:</strong> Hands-on workshops focusing on Generative AI, LLM development, and Machine Learning.</li>
+                    <li><strong>Industry Mentorship:</strong> Exclusive access to a network of industry experts and deep-tech entrepreneurs.</li>
+                    <li><strong>Strategic Ecosystem:</strong> Building a robust ecosystem of innovation, where students can transition from academic learning to building real-world applications.</li>
+                </ul>
+
+                <p>
+                    The Foundry’s remains dedicated to creating inclusive, accessible, and high-impact educational pathways. We look forward to seeing the breakthroughs and innovations that emerge from this exciting new partnership.
+                </p>
+            </>
+        )
+    },
     "thefoundrys-certified-by-startup-india": {
         title: "The Foundry's Officially Certified by Startup India",
         date: "March 17, 2026",
@@ -281,13 +315,12 @@ export default function NewsClient({ slug }: { slug: string }) {
                     <div className="mt-20 pt-10 border-t border-slate-200/60 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
 
                         <div className="flex gap-4">
-                            <button 
+                            <button
                                 onClick={handleShare}
-                                className={`flex items-center gap-2 transition-all font-bold px-6 py-3 rounded-full active:scale-95 duration-200 shadow-sm hover:shadow-lg ${
-                                    copied 
-                                    ? "bg-green-500 text-white" 
+                                className={`flex items-center gap-2 transition-all font-bold px-6 py-3 rounded-full active:scale-95 duration-200 shadow-sm hover:shadow-lg ${copied
+                                    ? "bg-green-500 text-white"
                                     : "text-slate-600 bg-slate-100/50 hover:text-white hover:bg-slate-900"
-                                }`}
+                                    }`}
                             >
                                 <Share2 size={16} />
                                 {copied ? "Link Copied!" : "Share Article"}

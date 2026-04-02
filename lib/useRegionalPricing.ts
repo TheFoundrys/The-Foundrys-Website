@@ -194,10 +194,10 @@ export const COURSE_PRICING: CoursePricing = {
         twoToFive: { INR: '10,000', USD: '250' },
     },
     zeroToOneLLM: {
-        original: { INR: '2,00,000', USD: '2,000' },
-        freshers: { INR: '1,00,000', USD: '1,000' },
-        zeroToTwo: { INR: '1,50,000', USD: '1,500' },
-        twoToFive: { INR: '1,80,000', USD: '1,800' },
+        original: { INR: '2,50,000', USD: '2,500' },
+        freshers: { INR: '1,50,000', USD: '1,500' },
+        zeroToTwo: { INR: '1,80,000', USD: '1,800' },
+        twoToFive: { INR: '2,10,000', USD: '2,100' },
     },
     certifiedProfessionalAI: {
         original: { INR: '2,00,000', USD: '3,000' },

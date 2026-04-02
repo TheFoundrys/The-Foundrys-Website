@@ -156,7 +156,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "circOut" }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-[7.5rem] font-bold tracking-tighter text-blue-400 select-none uppercase drop-shadow-md bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent leading-[1.1] sm:leading-[0.9]"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-[7.5rem] font-bold tracking-tighter text-blue-400 select-none uppercase drop-shadow-md bg-gradient-to-r from-blue-400 via-blue-200 to-lime-vibrant bg-clip-text text-transparent leading-[1.1] sm:leading-[0.9]"
               >
                 IN THE AGE OF AI
               </motion.div>

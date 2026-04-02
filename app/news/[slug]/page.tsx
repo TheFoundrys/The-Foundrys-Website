@@ -9,7 +9,7 @@ export default async function NewsDetailPage({ params }: PageProps) {
     const { slug } = await params;
 
     // Valid slugs for now
-    const validSlugs = ["the-future-of-deep-tech", "thefoundrys-partnered-with-csi", "thefoundrys-partnered-with-keshava-college", "thefoundrys-certified-by-startup-india"];
+    const validSlugs = ["the-future-of-deep-tech", "thefoundrys-partnered-with-csi", "thefoundrys-partnered-with-keshava-college", "thefoundrys-partnered-with-ebs", "thefoundrys-certified-by-startup-india"];
 
     if (!validSlugs.includes(slug)) {
         return notFound();

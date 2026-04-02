@@ -36,6 +36,15 @@ const NEWS_ITEMS = [
         imagePosition: "object-top"
     },
     {
+        slug: "thefoundrys-partnered-with-ebs",
+        title: "The Foundry's Partnered with EBS Ethames Business School",
+        excerpt: "The Foundry’s is proud to announce a strategic partnership with Ethames Business School (EBS). This  marks a significant step forward in our mission to bring advanced technical education to a broader student body.",
+        date: "Apr 02, 2026",
+        readTime: "2 min",
+        category: "Partnerships",
+        image: "/ebs-partnership.png"
+    },
+    {
         slug: "thefoundrys-certified-by-startup-india",
         title: "The Foundry's Officially Certified by Startup India",
         excerpt: "The Foundry’s is proud to announce its official recognition and certification by Startup India, the Government of India’s flagship initiative to foster innovation and entrepreneurship.",

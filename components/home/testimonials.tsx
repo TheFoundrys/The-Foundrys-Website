@@ -56,12 +56,12 @@ export function Testimonials() {
   const doubledTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden" id="testimonials">
+    <section className="py-8 bg-white relative overflow-hidden" id="testimonials">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-50/50 rounded-full blur-[120px] -translate-x-1/2 translate-y-1/2" />
 
-      <div className="container mx-auto px-6 relative z-10 mb-16">
+      <div className="container mx-auto px-6 relative z-10 mb-5">
         <div className="text-center">
           <h4 className="text-blue-600 font-bold uppercase tracking-widest mb-4">Testimonials</h4>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
@@ -79,9 +79,9 @@ export function Testimonials() {
         <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white via-white/50 to-transparent z-10 pointer-events-none" />
         <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white via-white/50 to-transparent z-10 pointer-events-none" />
 
-        <div className="flex w-full overflow-hidden hover:pause-scroll group justify-center">
+        <div className="flex w-full overflow-hidden hover:pause-scroll group">
           <motion.div
-            className="flex items-center flex-nowrap py-10"
+            className="flex items-center flex-nowrap py-3"
             initial={{ x: "calc(50vw - 500px)" }}
             animate={{
               x: [
@@ -91,7 +91,7 @@ export function Testimonials() {
                 "calc(50vw - 3500px)", "calc(50vw - 3500px)",
                 "calc(50vw - 4500px)", "calc(50vw - 4500px)",
                 "calc(50vw - 5500px)", "calc(50vw - 5500px)",
-                "calc(50vw - 6500px)"
+                "calc(50vw - 6500px)", "calc(50vw - 6500px)",
               ]
             }}
             transition={{
