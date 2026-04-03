@@ -1,7 +1,6 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
 import { text } from 'stream/consumers';
 
@@ -79,40 +78,9 @@ export function Testimonials() {
         <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white via-white/50 to-transparent z-10 pointer-events-none" />
         <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white via-white/50 to-transparent z-10 pointer-events-none" />
 
-        <div className="flex w-full overflow-hidden hover:pause-scroll group">
-          <motion.div
-            className="flex items-center flex-nowrap py-3"
-            initial={{ x: "calc(50vw - 7500px)" }}
-            animate={{
-              x: [
-                "calc(50vw - 7500px)", "calc(50vw - 7500px)",
-                "calc(50vw - 8500px)", "calc(50vw - 8500px)",
-                "calc(50vw - 9500px)", "calc(50vw - 9500px)",
-                "calc(50vw - 10500px)", "calc(50vw - 10500px)",
-                "calc(50vw - 11500px)", "calc(50vw - 11500px)",
-                "calc(50vw - 12500px)", "calc(50vw - 12500px)",
-                "calc(50vw - 13500px)", "calc(50vw - 13500px)",
-                "calc(50vw - 14500px)",
-              ]
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 42,
-                times: [
-                  0, 0.119,
-                  0.142, 0.261,
-                  0.284, 0.403,
-                  0.426, 0.545,
-                  0.568, 0.687,
-                  0.710, 0.829,
-                  0.852, 0.971,
-                  1
-                ],
-                ease: "easeInOut",
-              },
-            }}
+        <div className="flex w-full overflow-hidden group">
+          <div
+            className="flex items-center flex-nowrap py-3 animate-stepped-scroll hover:[animation-play-state:paused] will-change-transform"
             style={{ width: "max-content" }}
           >
             {doubledTestimonials.map((testimonial, index) => (
@@ -151,15 +119,9 @@ export function Testimonials() {
                 </div>
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .hover\:pause-scroll:hover div {
-            animation-play-state: paused !important;
-        }
-      `}</style>
     </section>
   );
 }

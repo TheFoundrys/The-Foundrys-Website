@@ -113,13 +113,13 @@ export function AdmissionsOpen() {
                     <a href="tel:+917981171474">+91 79811 71474</a>
                   </div>
                 </div>
-                <div className="group space-y-2">
+                {/* <div className="group space-y-2">
                   <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Web Protocol</p>
                   <div className="flex items-center gap-3 text-xl font-bold hover:text-lime-vibrant transition-colors">
                     <Globe size={18} className="text-lime-vibrant" />
                     <a href="https://www.thefoundrys.com" target="_blank">thefoundrys.com</a>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
 

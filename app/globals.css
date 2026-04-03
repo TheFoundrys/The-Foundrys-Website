@@ -13,6 +13,60 @@
     --animate-smoke: smoke 15s ease-in-out infinite alternate;
     --animate-float: float 6s ease-in-out infinite;
     --animate-float-slow: float 10s ease-in-out infinite;
+    --animate-infinite-scroll: infinite-scroll 30s linear infinite;
+    --animate-stepped-scroll: stepped-scroll 42s ease-in-out infinite;
+
+    @keyframes infinite-scroll {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    @keyframes stepped-scroll {
+
+        0%,
+        11.9% {
+            transform: translateX(calc(50vw - 7500px));
+        }
+
+        14.2%,
+        26.1% {
+            transform: translateX(calc(50vw - 8500px));
+        }
+
+        28.4%,
+        40.3% {
+            transform: translateX(calc(50vw - 9500px));
+        }
+
+        42.6%,
+        54.5% {
+            transform: translateX(calc(50vw - 10500px));
+        }
+
+        56.8%,
+        68.7% {
+            transform: translateX(calc(50vw - 11500px));
+        }
+
+        71.0%,
+        82.9% {
+            transform: translateX(calc(50vw - 12500px));
+        }
+
+        85.2%,
+        97.1% {
+            transform: translateX(calc(50vw - 13500px));
+        }
+
+        100% {
+            transform: translateX(calc(50vw - 14500px));
+        }
+    }
 
     @keyframes aurora {
         0% {
