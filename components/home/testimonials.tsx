@@ -80,15 +80,15 @@ export function Testimonials() {
 
         <div className="flex w-full overflow-hidden group">
           <div
-            className="flex items-center flex-nowrap py-3 animate-stepped-scroll hover:[animation-play-state:paused] will-change-transform"
+            className="flex items-stretch flex-nowrap py-3 animate-infinite-scroll lg:animate-stepped-scroll hover:[animation-play-state:paused] will-change-transform"
             style={{ width: "max-content" }}
           >
             {doubledTestimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="flex-none w-[90vw] md:w-[1000px] px-4"
+                className="flex-none w-[85vw] sm:w-[500px] md:w-[1000px] px-3 md:px-4 flex"
               >
-                <div className="glass-card p-8 md:p-12 rounded-3xl h-[650px] md:h-[380px] flex flex-col md:flex-row gap-8 md:gap-12 items-center text-center md:text-left group-hover:shadow-2xl transition-all duration-500 cursor-default overflow-hidden">
+                <div className="w-full glass-card p-8 md:p-12 rounded-3xl flex flex-col md:flex-row gap-8 md:gap-12 items-center text-center md:text-left group-hover:shadow-2xl transition-all duration-500 cursor-default overflow-hidden">
                   {/* Image and Info */}
                   <div className="flex flex-col items-center shrink-0">
                     <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-2xl overflow-hidden border-2 border-white shadow-lg mb-6">

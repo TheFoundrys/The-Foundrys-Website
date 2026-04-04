@@ -50,7 +50,7 @@ export function AdmissionsOpen() {
                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-lime-vibrant mb-4 block">
                   Foundry Protocol: Admissions
                 </span>
-                <h2 className="text-9xl md:text-9xl font-bold text-white tracking-tighter leading-[0.9] uppercase italic">
+                <h2 className="text-5xl sm:text-7xl md:text-9xl font-bold text-white tracking-tighter leading-[0.9] uppercase italic">
                   ADMISSIONS <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-vibrant to-lime-200">OPEN</span>
                 </h2>
@@ -142,7 +142,7 @@ export function AdmissionsOpen() {
           </div>
 
           {/* Right Content: Depth & Layering */}
-          <div className="relative h-[600px] lg:h-[750px] flex items-center justify-center lg:justify-end">
+          <div className="hidden lg:flex relative h-[600px] lg:h-[750px] items-center justify-center lg:justify-end">
             {/* Background elements - Glass Panels */}
             <div className="absolute top-1/4 right-1/4 w-full h-full border border-white/5 bg-white/[0.02] backdrop-blur-sm -z-10 rounded-3xl rotate-6" />
             <div className="absolute bottom-1/4 left-1/4 w-full h-full border border-lime-vibrant/10 bg-lime-vibrant/[0.01] backdrop-blur-[2px] -z-10 rounded-3xl -rotate-3" />

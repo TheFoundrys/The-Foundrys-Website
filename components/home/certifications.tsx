@@ -47,7 +47,7 @@ export function Certifications() {
           <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-lime-vibrant mb-4 block">
             Foundry Ecosystem
           </span>
-          <h2 className="text-4xl md:text-6xl font-black text-white italic tracking-tighter uppercase leading-[0.9] whitespace-nowrap">
+          <h2 className="text-4xl md:text-6xl font-black text-white italic tracking-tighter uppercase leading-[0.9] md:whitespace-nowrap">
             The Forging <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-vibrant to-white">Career Pathways</span>
           </h2>
           <p className="mt-6 text-slate-400 text-lg max-w-2xl font-medium">
