@@ -231,70 +231,62 @@ const TOOLS = [
     { name: "Guardrails AI", cat: "ML Security", sz: 0.85, color: "#F44336", fb: true },
 ];
 
-// Premium Tool Marquee Item
-// Premium Tool Marquee Item
-function ToolTag({ tool }: { tool: any }) {
-    const initials = (name: string) =>  name.replace(/[^a-zA-Z0-9 ]/g, '').split(/[\s.]+/).map(w => w[0] || '').join('').slice(0, 2).toUpperCase();
-    
-    return (
-        <div 
-            className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-200 transition-all group shrink-0"
-            style={{ color: tool.color }}
-        >
-            {tool.svg && !tool.fb ? (
-                <div
-                    className="w-8 h-8 shrink-0 flex items-center justify-center group-hover:scale-110 transition-transform"
-                    dangerouslySetInnerHTML={{ __html: tool.svg.replace('<svg ', `<svg width="32" height="32" `) }}
-                />
-            ) : (
-                <div
-                    className="w-8 h-8 flex items-center justify-center font-black text-white rounded-lg shrink-0 group-hover:scale-110 transition-transform"
-                    style={{ background: tool.color, fontSize: '12px' }}
-                >
-                    {initials(tool.name)}
-                </div>
-            )}
-            <span className="font-black uppercase tracking-tighter text-lg whitespace-nowrap">{tool.name}</span>
-        </div>
-    );
-}
-
-function ToolMasterSection() {
+function WordCloud() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const [placed, setPlaced] = useState<{ tool: any, x: number, y: number, sz: number }[]>([]);
-    const categories = ["Data & ML", "Cloud & Infra", "Foundation Models", "Agents & Orch."];
+    const [placed, setPlaced] = useState<{ tool: any, x: number, y: number, fontSize: number, iconSize: number }[]>([]);
+    const [tooltip, setTooltip] = useState<{ show: boolean, x: number, y: number, text: string }>({ show: false, x: 0, y: 0, text: "" });
 
     const buildCloud = useCallback(() => {
         if (!containerRef.current) return;
-        const cw = containerRef.current.offsetWidth || 1000;
-        const ch = 700;
-        const result: any[] = [];
+        const cw = containerRef.current.offsetWidth || 300;
+        const ch = containerRef.current.offsetHeight || 500;
+        const isMobile = cw < 600;
         const placedItems: { x: number, y: number, w: number, h: number }[] = [];
+        const result: any[] = [];
 
-        const sorted = [...TOOLS].sort(() => Math.random() - 0.5);
+        const sorted = [...TOOLS].sort((a, b) => b.sz - a.sz);
+        const scale = isMobile ? 0.75 : 1; // Scale down for mobile screens
 
         sorted.forEach(tool => {
-            const fontSize = 14 + Math.random() * 10;
-            const ww = (tool.name.length * fontSize * 0.7) + 40;
-            const wh = fontSize + 30;
+            const fontSize = Math.round((20 + tool.sz * 16) * scale);
+            const iconSize = Math.round((24 + tool.sz * 12) * scale);
 
+            const isVertical = Math.random() > 0.65; // ~35% chance to be vertical
+
+            // Approximate width/height for overlap detection - Tighter buffer
+            const naturalW = (tool.name.length * fontSize * 0.62) + iconSize + 16 * scale;
+            const naturalH = fontSize + 16 * scale;
+
+            const ww = isVertical ? naturalH : naturalW;
+            const wh = isVertical ? naturalW : naturalH;
+
+            const cx = cw / 2;
+            const cy = ch / 2;
             let found = false;
-            for (let attempt = 0; attempt < 200; attempt++) {
-                const x = 20 + Math.random() * (cw - ww - 40);
-                const y = 20 + Math.random() * (ch - wh - 40);
-                const box = { x, y, h: wh, w: ww };
 
-                const overlaps = (a: any, b: any) => {
-                    const pad = 10;
-                    return !(a.x + a.w + pad < b.x || b.x + b.w + pad < a.x || a.y + a.h + pad < b.y || b.y + b.h + pad < a.y);
-                };
+            for (let r = 0; r < Math.max(cw, ch) * 0.9; r += 2) {
+                const steps = Math.max(14, Math.floor(r * 1.25));
+                for (let s = 0; s < steps; s++) {
+                    const angle = (s / steps) * Math.PI * 2 + r * 0.15;
+                    const x = cx + r * Math.cos(angle) - ww / 2;
+                    const y = cy + r * Math.sin(angle) * (isMobile ? 0.85 : 0.7) - wh / 2;
 
-                if (!placedItems.some(p => overlaps(p, box))) {
-                    result.push({ tool, x, y, sz: fontSize });
-                    placedItems.push(box);
-                    found = true;
-                    break;
+                    if (x < 2 || y < 2 || x + ww > cw - 2 || y + wh > ch - 2) continue;
+
+                    const box = { x, y, w: ww, h: wh };
+                    const overlaps = (a: any, b: any) => {
+                        const pad = 1; // Minimal pad for maximum density
+                        return !(a.x + a.w + pad < b.x || b.x + b.w + pad < a.x || a.y + a.h + pad < b.y || b.y + b.h + pad < a.y);
+                    };
+
+                    if (!placedItems.some(p => overlaps(p, box))) {
+                        result.push({ tool, x, y, w: ww, h: wh, fontSize, iconSize, isVertical });
+                        placedItems.push(box);
+                        found = true;
+                        break;
+                    }
                 }
+                if (found) break;
             }
         });
         setPlaced(result);
@@ -306,75 +298,71 @@ function ToolMasterSection() {
         return () => window.removeEventListener('resize', buildCloud);
     }, [buildCloud]);
 
-    const initials = (name: string) => name.replace(/[^a-zA-Z0-9 ]/g, '').split(/[\s.]+/).map(w => w[0] || '').join('').slice(0, 2).toUpperCase();
+    const initials = (name: string) => {
+        return name.replace(/[^a-zA-Z0-9 ]/g, '').split(/[\s.]+/).map(w => w[0] || '').join('').slice(0, 2).toUpperCase();
+    };
 
     return (
-        <div className="w-full">
-            {/* DESKTOP VIEW: Scattered Organic Cloud */}
-            <div className="hidden lg:block">
-                <div ref={containerRef} className="relative w-full h-[700px] bg-white rounded-[3rem] border border-slate-200/60 overflow-hidden select-none shadow-[inset_0_2px_20px_rgba(0,0,0,0.02)]">
-                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
-                    {placed.map((item, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: idx * 0.01, duration: 0.4 }}
-                            className="absolute flex items-center gap-2.5 px-4 py-2.5 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-xl hover:border-blue-400 hover:z-50 transition-all duration-300 group cursor-pointer"
-                            style={{ left: item.x, top: item.y }}
-                        >
-                            {/* Standard tag content */}
-                            {item.tool.svg && !item.tool.fb ? (
-                                <div className="w-6 h-6 shrink-0" dangerouslySetInnerHTML={{ __html: item.tool.svg.replace('<svg ', `<svg width="24" height="24" `) }} />
-                            ) : (
-                                <div className="w-6 h-6 flex items-center justify-center font-black text-white rounded-[4px] shrink-0 text-[10px]" style={{ background: item.tool.color }}>{initials(item.tool.name)}</div>
-                            )}
-                            <span className="font-black uppercase tracking-tighter" style={{ fontSize: item.sz, color: item.tool.color }}>{item.tool.name}</span>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-
-            {/* MOBILE VIEW: High-Performance Marquee */}
-            <div className="lg:hidden w-full space-y-12">
-                <div className="relative space-y-6">
-                    {/* Row 1 */}
-                    <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
-                        <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="flex gap-4 pr-4">
-                            {[...TOOLS, ...TOOLS].map((tool, i) => (
-                                <div key={i} className="flex items-center gap-2 px-4 py-3 bg-white border border-slate-100 rounded-xl shadow-sm group shrink-0">
-                                    <span className="font-black uppercase tracking-tighter text-sm whitespace-nowrap" style={{ color: tool.color }}>{tool.name}</span>
-                                </div>
-                            ))}
-                        </motion.div>
+        <div ref={containerRef} className="relative w-full h-[600px] md:h-[850px] overflow-hidden rounded-3xl bg-white border border-slate-100 shadow-inner select-none">
+            {placed.map((item, idx) => (
+                <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: idx * 0.005, duration: 0.4 }}
+                    className="absolute flex items-center justify-center cursor-default transition-all duration-300 hover:z-50"
+                    style={{
+                        left: item.x,
+                        top: item.y,
+                        width: item.w,
+                        height: item.h
+                    }}
+                    onMouseEnter={(e) => setTooltip({ show: true, x: e.clientX, y: e.clientY, text: item.tool.cat })}
+                    onMouseMove={(e) => setTooltip(prev => ({ ...prev, x: e.clientX, y: e.clientY }))}
+                    onMouseLeave={() => setTooltip(prev => ({ ...prev, show: false }))}
+                >
+                    <div 
+                        className="flex items-center gap-2.5 transition-transform hover:scale-110"
+                        style={{
+                            transform: item.isVertical ? 'rotate(-90deg)' : 'none',
+                            color: item.tool.color,
+                            fontSize: item.fontSize,
+                            fontWeight: 900,
+                            lineHeight: 1,
+                            filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.05))'
+                        }}
+                    >
+                        {item.tool.svg && !item.tool.fb ? (
+                            <div
+                                className="shrink-0 flex items-center justify-center"
+                                style={{ width: item.iconSize, height: item.iconSize }}
+                                dangerouslySetInnerHTML={{ __html: item.tool.svg.replace('<svg ', `<svg width="${item.iconSize}" height="${item.iconSize}" `) }}
+                            />
+                        ) : (
+                            <div
+                                className="flex items-center justify-center font-black text-white rounded-[4px] shrink-0"
+                                style={{
+                                    width: item.iconSize,
+                                    height: item.iconSize,
+                                    background: item.tool.color,
+                                    fontSize: Math.round(item.iconSize * 0.4)
+                                }}
+                            >
+                                {initials(item.tool.name)}
+                            </div>
+                        )}
+                        <span className="whitespace-nowrap tracking-tight">{item.tool.name}</span>
                     </div>
-                    {/* Row 2 */}
-                    <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
-                        <motion.div animate={{ x: ["-50%", "0%"] }} transition={{ duration: 35, repeat: Infinity, ease: "linear" }} className="flex gap-4 pr-4">
-                            {[...TOOLS.slice().reverse(), ...TOOLS.slice().reverse()].map((tool, i) => (
-                                <div key={i} className="flex items-center gap-2 px-4 py-3 bg-white border border-slate-100 rounded-xl shadow-sm group shrink-0">
-                                    <span className="font-black uppercase tracking-tighter text-sm whitespace-nowrap" style={{ color: tool.color }}>{tool.name}</span>
-                                </div>
-                            ))}
-                        </motion.div>
-                    </div>
+                </motion.div>
+            ))}
+            {tooltip.show && (
+                <div
+                    className="fixed z-[999] bg-slate-900 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full pointer-events-none shadow-xl border border-white/10 backdrop-blur-sm"
+                    style={{ left: tooltip.x + 15, top: tooltip.y - 40 }}
+                >
+                    {tooltip.text}
                 </div>
-
-                {/* Mobile Categories */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 px-6 pb-8">
-                    {categories.map((cat) => (
-                        <div key={cat} className="p-5 rounded-2xl bg-white border border-slate-200/50 shadow-sm">
-                            <p className="text-[9px] font-black text-blue-600 uppercase tracking-widest mb-1.5">{cat}</p>
-                            <h4 className="text-base font-bold text-slate-900 leading-tight">
-                                {cat === "Data & ML" && "Advanced Engineering"}
-                                {cat === "Cloud & Infra" && "Global Deployment"}
-                                {cat === "Foundation Models" && "Frontier Training"}
-                                {cat === "Agents & Orch." && "Cognitive Systems"}
-                            </h4>
-                        </div>
-                    ))}
-                </div>
-            </div>
+            )}
         </div>
     );
 }
@@ -628,7 +616,7 @@ function NeuralNetwork() {
         let particles: any[] = [];
         const particleCount = 180; // Significantly more particles for brain detail
         let rotationAngle = 0;
-        
+
         const resize = () => {
             if (!canvas || !canvas.parentElement) return;
             canvas.width = canvas.parentElement.offsetWidth;
@@ -638,7 +626,7 @@ function NeuralNetwork() {
         class Particle {
             x: number; y: number; z: number;
             baseX: number; baseY: number; baseZ: number;
-            
+
             constructor() {
                 // Approximate 3-Year Immersive Brain (High-Res Scale)
                 const hemisphere = Math.random() > 0.5 ? 1 : -1;
@@ -649,7 +637,7 @@ function NeuralNetwork() {
                 this.baseX = (r * 0.9 * Math.sin(phi) * Math.cos(theta)) + (hemisphere * 40); // Wider split
                 this.baseY = r * 1.1 * Math.sin(phi) * Math.sin(theta);
                 this.baseZ = r * 0.7 * Math.cos(phi);
-                
+
                 this.x = this.baseX;
                 this.y = this.baseY;
                 this.z = this.baseZ;
@@ -658,10 +646,10 @@ function NeuralNetwork() {
             rotate(angle: number) {
                 const cos = Math.cos(angle);
                 const sin = Math.sin(angle);
-                
+
                 this.x = this.baseX * cos - this.baseZ * sin;
                 this.z = this.baseX * sin + this.baseZ * cos;
-                this.y = this.baseY + Math.sin(angle * 0.4) * 20; 
+                this.y = this.baseY + Math.sin(angle * 0.4) * 20;
             }
         }
 
@@ -672,7 +660,7 @@ function NeuralNetwork() {
         const draw = () => {
             if (!ctx || !canvas) return;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
+
             rotationAngle += 0.004;
             const centerX = canvas.width / 2;
             const centerY = canvas.height * 0.45; // Centered higher up
@@ -686,7 +674,7 @@ function NeuralNetwork() {
 
             particles.forEach((p, i) => {
                 p.rotate(rotationAngle);
-                
+
                 const scale = 600 / (600 + p.z + 100);
                 const x2d = p.x * scale + centerX;
                 const y2d = p.y * scale + centerY;
@@ -714,13 +702,13 @@ function NeuralNetwork() {
                     const dx = p.x - p2.x;
                     const dy = p.y - p2.y;
                     const dz = p.z - p2.z;
-                    const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+                    const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
 
-                    if (dist < 70) { 
+                    if (dist < 70) {
                         const x2d2 = p2.x * scale + centerX;
                         const y2d2 = p2.y * scale + centerY;
                         const lineOpacity = (1 - dist / 70) * 0.3 * opacity;
-                        
+
                         ctx.beginPath();
                         ctx.moveTo(x2d, y2d);
                         ctx.lineTo(x2d2, y2d2);
@@ -730,7 +718,7 @@ function NeuralNetwork() {
                     }
                 }
             });
-            
+
             animationFrameId = requestAnimationFrame(draw);
         };
 
@@ -993,59 +981,143 @@ export default function AISchoolPage() {
                 </div>
             </section>
 
-            {/* What You'll Achieve — Verbatim Screenshot Realignment */}
+            {/* What You'll Achieve — Merged Design */}
             <section id="outcomes" className="py-24 px-6 bg-white overflow-hidden">
-                <div className="container mx-auto max-w-7xl">
-                    <div className="grid lg:grid-cols-2 gap-20 items-start mb-24">
-                        {/* Program Core Skills */}
+                <div className="container mx-auto max-w-7xl font-sans">
+                    <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start mb-16">
+                        
+                        {/* Highlights & Timeline */}
                         <div>
                             <div className="mb-10">
-                                <h3 className="text-4xl font-extralight text-slate-900 tracking-tight uppercase leading-none">Program</h3>
-                                <h2 className="text-5xl font-black text-slate-900 uppercase leading-tight">Core Skills</h2>
-                                <div className="w-20 h-1.5 bg-lime-400 mt-4" />
+                                <p className="text-blue-600 text-sm font-bold uppercase tracking-widest mb-3">Program highlights</p>
+                                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight mb-6">
+                                    Three paths to becoming an <span className="text-blue-600">AI professional</span>
+                                </h2>
+                                <p className="text-lg text-slate-600 leading-relaxed max-w-xl">
+                                    This program is structured as a progressive journey — from understanding AI fundamentals to building real systems and operating at an industry level.
+                                </p>
                             </div>
-                            <ul className="space-y-5">
-                                {[
-                                    "AI system thinking",
-                                    "Data-first problem framing",
-                                    "Model selection & evaluation",
-                                    "LLM integration & orchestration",
-                                    "Risk, security, and governance by design",
-                                    "Cost, latency, and reliability trade-off analysis",
-                                    "Human-in-the-loop system design"
-                                ].map((skill, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-slate-700 text-lg group">
-                                        <div className="w-2 h-2 rounded-full bg-slate-900/10 group-hover:bg-lime-500 transition-colors shrink-0" />
-                                        <span className="font-medium">{skill}</span>
-                                    </li>
-                                ))}
-                            </ul>
+
+                            <div className="flex flex-col gap-0 max-w-xl">
+                                {/* Stage 01 */}
+                                <div className="grid grid-cols-[48px_1fr] gap-x-5 pb-9 relative group">
+                                    <div className="flex flex-col items-center">
+                                        <div className="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center shrink-0 border-2 border-blue-500 group-last:mb-0">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4" /></svg>
+                                        </div>
+                                        <div className="w-[2px] bg-slate-200 flex-1 mt-2 group-last:hidden"></div>
+                                    </div>
+                                    <div className="pt-2.5 pb-2 cursor-default">
+                                        <div className="text-blue-600 text-xs font-bold uppercase tracking-wide mb-1">Stage 01</div>
+                                        <div className="text-xl font-bold text-slate-900 mb-2">AI Fluency</div>
+                                        <div className="text-base text-slate-600 leading-relaxed">
+                                            Learn the core concepts of Artificial Intelligence, Machine Learning, Deep Learning and Neural Networks. Build a confident foundation before you write a single line of code.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Stage 02 */}
+                                <div className="grid grid-cols-[48px_1fr] gap-x-5 pb-9 relative group">
+                                    <div className="flex flex-col items-center">
+                                        <div className="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center shrink-0 border-2 border-blue-500">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>
+                                        </div>
+                                        <div className="w-[2px] bg-slate-200 flex-1 mt-2 group-last:hidden"></div>
+                                    </div>
+                                    <div className="pt-2.5 pb-2">
+                                        <div className="text-blue-600 text-xs font-bold uppercase tracking-wide mb-1">Stage 02</div>
+                                        <div className="text-xl font-bold text-slate-900 mb-2">AI Builder</div>
+                                        <div className="text-base text-slate-600 leading-relaxed">
+                                            Work on real-world AI projects and develop practical problem-solving skills. Apply your knowledge to challenges that mirror what teams face in production environments today.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Stage 03 */}
+                                <div className="grid grid-cols-[48px_1fr] gap-x-5 relative group">
+                                    <div className="flex flex-col items-center">
+                                        <div className="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center shrink-0 border-2 border-blue-500">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3" /><path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" /></svg>
+                                        </div>
+                                        <div className="w-[2px] bg-slate-200 flex-1 mt-2 group-last:hidden"></div>
+                                    </div>
+                                    <div className="pt-2.5 pb-2">
+                                        <div className="text-blue-600 text-xs font-bold uppercase tracking-wide mb-1">Stage 03</div>
+                                        <div className="text-xl font-bold text-slate-900 mb-2">AI Engineer</div>
+                                        <div className="text-base text-slate-600 leading-relaxed">
+                                            Get guidance and training from experienced professionals in the AI industry. Graduate ready to own systems, communicate decisions, and operate at scale.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        {/* Program Outcomes */}
-                        <div className="mt-16 lg:mt-0">
-                            <div className="mb-10">
-                                <h3 className="text-4xl font-extralight text-slate-900 tracking-tight uppercase leading-none">Program</h3>
-                                <h2 className="text-5xl font-black text-slate-900 uppercase leading-tight">Outcomes</h2>
-                                <div className="w-20 h-1.5 bg-lime-400 mt-4" />
+                        {/* Skills and Outcomes Column */}
+                        <div className="flex flex-col gap-12 bg-slate-50 border border-slate-100 p-8 md:p-12 rounded-3xl">
+                            {/* What you'll learn */}
+                            <div>
+                                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+                                    What you&apos;ll <span className="text-blue-600">learn</span>
+                                </h3>
+                                <p className="text-base text-slate-600 leading-relaxed mb-6 max-w-lg">
+                                    A curriculum built around the skills that AI teams actually need — from system design to governance and reliability.
+                                </p>
+                                
+                                <div className="flex flex-col">
+                                    {[
+                                        "AI system thinking",
+                                        "Data-first problem framing",
+                                        "Model selection & evaluation",
+                                        "LLM integration & orchestration",
+                                        "Risk, security, and governance by design",
+                                        "Cost, latency, and reliability trade-off analysis",
+                                        "Human-in-the-loop system design"
+                                    ].map((skill, index) => (
+                                        <div key={index} className="flex items-start gap-4 py-3.5 border-b border-slate-200 last:border-0 hover:bg-slate-100/50 transition-colors rounded-lg px-2 -mx-2">
+                                            <span className="text-sm font-bold text-blue-600 min-w-[24px] mt-0.5">
+                                                {(index + 1).toString().padStart(2, '0')}
+                                            </span>
+                                            <span className="text-base text-slate-700 font-medium">
+                                                {skill}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                            <ul className="space-y-5">
-                                {[
-                                    "Designs AI systems instead of model demos",
-                                    "Evaluates failure before deployment",
-                                    "Owns AI behavior, cost, and risk",
-                                    "Communicates AI decisions to engineers, leaders, and regulators"
-                                ].map((outcome, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-slate-700 text-lg group">
-                                        <div className="w-2 h-2 rounded-full bg-slate-900/10 group-hover:bg-lime-500 transition-colors shrink-0" />
-                                        <span className="font-medium">{outcome}</span>
-                                    </li>
-                                ))}
-                            </ul>
+
+                            {/* What you'll achieve */}
+                            <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
+                                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+                                    What you&apos;ll <span className="text-blue-600">achieve</span>
+                                </h3>
+                                <p className="text-base text-slate-600 leading-relaxed mb-6">
+                                    Graduates leave this program with the mindset, vocabulary, and skills to make real decisions in AI-driven organisations.
+                                </p>
+                                
+                                <div className="text-sm font-bold text-slate-500 mb-5 uppercase tracking-wide">
+                                    You will be able to —
+                                </div>
+                                <div className="flex flex-col gap-5">
+                                    {[
+                                        "Design AI systems instead of model demos",
+                                        "Evaluate failure before deployment",
+                                        "Own AI behavior, cost, and risk",
+                                        "Communicate AI decisions to engineers, leaders, and regulators"
+                                    ].map((outcome, index) => (
+                                        <div key={index} className="flex items-start gap-4 group">
+                                            <div className="w-[24px] h-[24px] rounded-full bg-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex items-center justify-center shrink-0 mt-px border border-blue-200">
+                                                <svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="2,6 5,9 10,3" /></svg>
+                                            </div>
+                                            <div className="text-base font-medium text-slate-900">
+                                                {outcome}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
+
                     </div>
-
-
                 </div>
             </section>
 
@@ -1060,8 +1132,8 @@ export default function AISchoolPage() {
                 </div>
             </section>
             {/* Tool Master Section — Contained Design */}
-            <section id="tool-master" className="py-24 bg-slate-50 relative border-y border-slate-200">
-                <div className="container mx-auto max-w-[1450px] relative z-10 px-6">
+            <section id="tool-master" className="py-20 px-6 bg-slate-50 overflow-hidden relative border-y border-slate-200">
+                <div className="container mx-auto max-w-6xl relative z-10">
                     <div className="text-center mb-16">
                         <p className="text-blue-600 text-sm font-bold uppercase tracking-widest mb-4">Industrial Stack</p>
                         <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter mb-6 leading-tight">
@@ -1069,13 +1141,12 @@ export default function AISchoolPage() {
                         </h2>
                     </div>
 
-                    {/* Contained Tool Mastery Content */}
-                    <ToolMasterSection />
+                    {/* User-provided Dynamic Word Cloud component */}
+                    <div className="py-8">
+                        <WordCloud />
+                    </div>
                 </div>
             </section>
-
-
-
 
             <CareerVision
                 roles={CAREER_ROLES.map(role => ({
