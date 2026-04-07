@@ -3,7 +3,7 @@
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect, useLayoutEffect, useRef, useCallback } from "react";
 import {
     ArrowLeft,
     CheckCircle2,
@@ -25,12 +25,331 @@ import {
     Database,
     Globe,
     Bot,
-    Layers
+    Layers,
+    Cloud,
+    Eye,
+    Settings,
+    Heart,
+    Activity,
+    Zap,
+    Share2,
+    Link as LinkIcon
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { CareerVision } from "@/components/schools/shared/career-vision";
 import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
+import { ProgramStats } from "./program-stats";
+import { WhyUs } from "./why-us";
+
+function StickyNav() {
+    const [isSticky, setIsSticky] = useState(false);
+    const [activeSection, setActiveSection] = useState("overview");
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const heroHeight = document.getElementById('hero')?.offsetHeight || 800;
+            setIsSticky(window.scrollY > heroHeight - 100);
+
+            // Active section detection
+            const sections = ['overview', 'curriculum', 'eligibility', 'outcomes'];
+            for (const section of sections) {
+                const el = document.getElementById(section);
+                if (el) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top <= 150 && rect.bottom >= 150) {
+                        setActiveSection(section);
+                        break;
+                    }
+                }
+            }
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const navLinks = [
+        { id: 'overview', label: 'Overview' },
+        { id: 'curriculum', label: 'What you\'ll study' },
+        { id: 'eligibility', label: 'Entry requirements' },
+        { id: 'outcomes', label: 'Career outcomes' },
+    ];
+
+    return (
+        <div className={`sticky top-0 z-50 w-full transition-all duration-300 ${isSticky ? 'bg-white/90 backdrop-blur-md shadow-md py-4' : 'bg-transparent py-0 pointer-events-none opacity-0'
+            }`}>
+            <div className="container mx-auto max-w-7xl px-6 flex justify-between items-center">
+                <div className="flex gap-8">
+                    {navLinks.map((link) => (
+                        <button
+                            key={link.id}
+                            onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })}
+                            className={`text-sm font-bold tracking-tight transition-colors ${activeSection === link.id ? 'text-blue-600' : 'text-slate-600 hover:text-blue-500'
+                                }`}
+                        >
+                            {link.label}
+                        </button>
+                    ))}
+                </div>
+                <Link href="/apply" className="px-6 py-2 bg-blue-600 text-white text-sm font-bold rounded-full hover:bg-blue-500 transition-all shadow-md active:scale-95">
+                    Apply Now
+                </Link>
+            </div>
+        </div>
+    );
+}
+
+const TOOLS = [
+    {
+        name: "pandas", cat: "Data & ML", sz: 1.15, color: "#150458",
+        svg: `<svg viewBox="0 0 24 24" fill="#150458"><path d="M8.333 0h2v7.667h-2zm5.334 0h2v7.667h-2zM8.333 16.333h2V24h-2zm5.334 0h2V24h-2zM8.333 9.5h2v5h-2zm5.334 0h2v5h-2z"/></svg>`
+    },
+    {
+        name: "PyTorch", cat: "Data & ML", sz: 1.1, color: "#EE4C2C",
+        svg: `<svg viewBox="0 0 24 24" fill="#EE4C2C"><path d="M12.005 0 4.952 7.053a9.865 9.865 0 0 0 0 13.99 9.866 9.866 0 0 0 13.99 0 9.866 9.866 0 0 0 0-13.99L16.6 9.397a5.754 5.754 0 0 1 0 8.14 5.755 5.755 0 0 1-8.14 0 5.754 5.754 0 0 1 0-8.14zM16.318 4.877a1.44 1.44 0 1 0 0-2.88 1.44 1.44 0 0 0 0 2.88z"/></svg>`
+    },
+    {
+        name: "TensorFlow", cat: "Data & ML", sz: 1.15, color: "#FF6F00",
+        svg: `<svg viewBox="0 0 24 24" fill="#FF6F00"><path d="M11.54 0L1.292 6.002L1.277 11.167L7.445 7.603V21.622L11.54 24V0ZM12.46 0V24L16.555 21.622V14.87L19.648 16.658L19.63 12.04L16.555 10.284V7.603L22.723 11.167L22.709 5.857L12.46 0Z"/></svg>`
+    },
+    {
+        name: "JAX", cat: "Data & ML", sz: 1.0, color: "#4285F4", fb: true
+    },
+    {
+        name: "Keras", cat: "Data & ML", sz: 1.1, color: "#D00000", fb: true
+    },
+    {
+        name: "MLflow", cat: "Data & ML", sz: 0.88, color: "#0194E2", fb: true
+    },
+    {
+        name: "Kaggle", cat: "Data & ML", sz: 0.9, color: "#20BEFF", fb: true
+    },
+    {
+        name: "spaCy", cat: "Data & ML", sz: 0.85, color: "#09A3D5", fb: true
+    },
+    {
+        name: "NLTK", cat: "Data & ML", sz: 0.75, color: "#154360", fb: true
+    },
+    {
+        name: "OpenCV", cat: "Data & ML", sz: 1.1, color: "#5C3EE8", fb: true
+    },
+    {
+        name: "Jupyter", cat: "Data & ML", sz: 1.0, color: "#F37626",
+        svg: `<svg viewBox="0 0 24 24" fill="#F37626"><path d="M7.157 22.201A1.784 1.784 0 0 1 5.374 24a1.784 1.784 0 0 1-1.784-1.799 1.784 1.784 0 0 1 1.784-1.784 1.784 1.784 0 0 1 1.783 1.784zM20.067 1.783A1.784 1.784 0 0 1 18.284 3.567a1.784 1.784 0 0 1-1.784-1.784A1.784 1.784 0 0 1 18.284 0a1.784 1.784 0 0 1 1.783 1.783zM4.188 5.032a1.186 1.186 0 0 1-1.185 1.186A1.186 1.186 0 0 1 1.817 5.032a1.186 1.186 0 0 1 1.186-1.185 1.186 1.186 0 0 1 1.185 1.185zM12 4.734c-4.01 0-7.58 1.302-8.971 3.157.67-.258 1.657-.404 2.74-.404 2.65 0 4.483.983 4.483 2.266 0 1.284-1.833 2.266-4.483 2.266-.963 0-1.85-.13-2.55-.354C4.37 13.893 7.959 15.27 12 15.27c4.04 0 7.63-1.378 9.78-3.605-.699.224-1.586.354-2.549.354-2.65 0-4.483-.982-4.483-2.266 0-1.283 1.833-2.266 4.483-2.266 1.082 0 2.07.146 2.74.404C20.58 6.036 17.01 4.734 12 4.734z"/></svg>`
+    },
+    {
+        name: "Python", cat: "Data & ML", sz: 1.0, color: "#3776AB",
+        svg: `<svg viewBox="0 0 24 24" fill="#3776AB"><path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.912S0 5.789 0 11.969c0 6.18 3.403 5.963 3.403 5.963h2.031v-2.867s-.109-3.402 3.35-3.402h5.769s3.24.052 3.24-3.131V3.199S18.28 0 11.914 0zm-3.21 1.85a1.046 1.046 0 1 1 0 2.093 1.046 1.046 0 0 1 0-2.093z"/><path d="M12.086 24c6.094 0 5.714-2.656 5.714-2.656l-.007-2.752h-5.814v-.826h8.109S24 18.211 24 12.031c0-6.18-3.403-5.963-3.403-5.963H18.566v2.867s.109 3.402-3.35 3.402H9.447s-3.24-.052-3.24 3.131v5.333S5.72 24 12.086 24zm3.21-1.85a1.046 1.046 0 1 1 0-2.093 1.046 1.046 0 0 1 0 2.093z" fill="#FFD43B"/></svg>`
+    },
+    {
+        name: "scikit-learn", cat: "Data & ML", sz: 0.82, color: "#F7931E",
+        svg: `<svg viewBox="0 0 24 24" fill="#F7931E"><path d="M8.133 4.357c-.67-1.86-2.68-2.957-4.61-2.52C1.593 2.28.303 4.137.57 6.1c.268 1.965 2.02 3.385 3.998 3.264a4.047 4.047 0 0 0 3.565-2.87zm7.734 11.286c-.67-1.86-2.68-2.957-4.61-2.52-1.93.443-3.22 2.3-2.953 4.263.268 1.965 2.02 3.385 3.998 3.264a4.047 4.047 0 0 0 3.565-2.87zM21 9.714c0-2.014-1.634-3.648-3.648-3.648S13.704 7.7 13.704 9.714s1.634 3.648 3.648 3.648S21 11.728 21 9.714z"/></svg>`
+    },
+    { name: "YOLO", cat: "Data & ML", sz: 1.2, color: "#00ADEF", fb: true },
+    { name: "Streamlit", cat: "Data & ML", sz: 1.0, color: "#FF4B4B", fb: true },
+    { name: "Gradio", cat: "Data & ML", sz: 0.9, color: "#F97316", fb: true },
+    { name: "CUDA", cat: "Data & ML", sz: 1.1, color: "#76B900", fb: true },
+    { name: "MLOps", cat: "Data & ML", sz: 0.72, color: "#1D9E75", fb: true },
+
+    {
+        name: "AWS", cat: "Cloud & Infra", sz: 1.1, color: "#FF9900",
+        svg: `<svg viewBox="0 0 24 24" fill="#FF9900"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.743.167-1.166.167z"/><path d="M21.616 18.396c-2.59 1.917-6.35 2.934-9.587 2.934-4.534 0-8.616-1.677-11.7-4.466-.241-.216-.025-.51.266-.343 3.33 1.938 7.447 3.107 11.695 3.107 2.868 0 6.02-.591 8.924-1.83.437-.19.804.287.402.598z" fill="#FF9900"/><path d="M22.699 17.155c-.33-.424-2.184-.2-3.015-.1-.253.03-.292-.19-.063-.35 1.476-1.039 3.898-.74 4.182-.39.285.35-.074 2.78-1.461 3.942-.213.18-.416.084-.32-.152.311-.778 1.008-2.525.677-2.95z" fill="#FF9900"/></svg>`
+    },
+    {
+        name: "Azure", cat: "Cloud & Infra", sz: 1.0, color: "#0078D4",
+        svg: `<svg viewBox="0 0 24 24" fill="#0078D4"><path d="M13.05 4.24L6.56 18.05l-4.12.74L8.73 7.27zm.81-.74l3.85 10.74-8.24 1.49 5.2-2.43L11.2 7.24zm7.25 14.27H2.44l1.88-.34 5.45-9.66L13.05 3.5l1.42 4.04z"/></svg>`
+    },
+    {
+        name: "Colab", cat: "Cloud & Infra", sz: 0.75, color: "#F9AB00",
+        svg: `<svg viewBox="0 0 24 24" fill="#F9AB00"><path d="M16.9 4.8C13.1 4.8 10 7.9 10 11.7s3.1 6.9 6.9 6.9 6.9-3.1 6.9-6.9-3.1-6.9-6.9-6.9zm0 11.5c-2.6 0-4.6-2.1-4.6-4.6s2.1-4.6 4.6-4.6c1.5 0 2.8.7 3.7 1.8l-3.7 2.8 3.7 2.8c-.9 1.1-2.2 1.8-3.7 1.8zM7.1 4.8C3.3 4.8.2 7.9.2 11.7s3.1 6.9 6.9 6.9c1.5 0 2.9-.5 4-1.3l-1.5-1.8c-.7.5-1.6.8-2.5.8-2.6 0-4.6-2.1-4.6-4.6S4.5 7 7.1 7c.9 0 1.8.3 2.5.8l1.5-1.8C10 5.3 8.6 4.8 7.1 4.8z"/></svg>`
+    },
+    { name: "Kubeflow", cat: "Cloud & Infra", sz: 0.85, color: "#4285F4", fb: true },
+    { name: "Ray", cat: "Cloud & Infra", sz: 0.9, color: "#00BCD4", fb: true },
+    { name: "BentoML", cat: "Cloud & Infra", sz: 0.8, color: "#121926", fb: true },
+
+    {
+        name: "OpenAI", cat: "Foundation Models", sz: 1.2, color: "#412991",
+        svg: `<svg viewBox="0 0 24 24" fill="#412991"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.843-3.372 2.02-1.168a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.402-.678zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/></svg>`
+    },
+    {
+        name: "HuggingFace Transformers", cat: "Foundation Models", sz: 1.1, color: "#FFD21E",
+        svg: `<svg viewBox="0 0 24 24" fill="#FFD21E"><path d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12z"/><path d="M12 4.8c-3.9 0-7.2 2.7-7.2 6.6 0 3.3 2.1 6 5.1 6.9l-1.5 1.8h7.2l-1.5-1.8c3-.9 5.1-3.6 5.1-6.9 0-3.9-3.3-6.6-7.2-6.6zm-2.4 5.4c.7 0 1.2.5 1.2 1.2s-.5 1.2-1.2 1.2-1.2-.5-1.2-1.2.5-1.2 1.2-1.2zm4.8 0c.7 0 1.2.5 1.2 1.2s-.5 1.2-1.2 1.2-1.2-.5-1.2-1.2.5-1.2 1.2-1.2zm-2.4 4.2c-1.2 0-2.4-.6-3-1.5l.9-.6c.6.9 1.5 1.2 2.1 1.2s1.5-.3 2.1-1.2l.9.6c-.6.9-1.8 1.5-3 1.5z" fill="#000"/></svg>`
+    },
+    { name: "Hugging Face Hub", cat: "Foundation Models", sz: 0.9, color: "#FFD21E", fb: true },
+    { name: "vLLM", cat: "Foundation Models", sz: 0.85, color: "#3B82F6", fb: true },
+    { name: "Triton Inference Server", cat: "Foundation Models", sz: 0.8, color: "#76B900", fb: true },
+    { name: "Ollama", cat: "Foundation Models", sz: 0.95, color: "#111827", fb: true },
+    { name: "SentenceTransformers", cat: "Foundation Models", sz: 0.82, color: "#4B5563", fb: true },
+    { name: "together.ai", cat: "Foundation Models", sz: 0.75, color: "#7B2FBE", fb: true },
+    { name: "Arcee", cat: "Foundation Models", sz: 0.78, color: "#5A4FCF", fb: true },
+    { name: "Symbolica", cat: "Foundation Models", sz: 0.74, color: "#8B44C4", fb: true },
+    { name: "Upstage", cat: "Foundation Models", sz: 0.7, color: "#6637B8", fb: true },
+    { name: "Cartesia", cat: "Foundation Models", sz: 0.7, color: "#9B3DBF", fb: true },
+
+    {
+        name: "LangChain", cat: "Agents & Orch.", sz: 1.0, color: "#1C7C3C",
+        svg: `<svg viewBox="0 0 24 24" fill="#1C7C3C"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 4.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11zm-1 2h2v4.5l3 1.8-1 1.732-4-2.4V8.5z"/></svg>`
+    },
+    { name: "LlamaIndex", cat: "Agents & Orch.", sz: 1.0, color: "#3B82F6", fb: true },
+    { name: "Haystack", cat: "Agents & Orch.", sz: 0.85, color: "#FF5722", fb: true },
+    { name: "LiveKit", cat: "Agents & Orch.", sz: 0.8, color: "#E5484D", fb: true },
+    { name: "hume", cat: "Agents & Orch.", sz: 0.75, color: "#FF6B6B", fb: true },
+    { name: "aixplain", cat: "Agents & Orch.", sz: 0.7, color: "#E03C6E", fb: true },
+    { name: "vijil", cat: "Agents & Orch.", sz: 0.68, color: "#C0392B", fb: true },
+    { name: "webAI", cat: "Agents & Orch.", sz: 0.7, color: "#922B21", fb: true },
+    { name: "Browserbase", cat: "Agents & Orch.", sz: 0.72, color: "#D44000", fb: true },
+    { name: "crewAI", cat: "Agents & Orch.", sz: 0.78, color: "#E74C3C", fb: true },
+    { name: "veeW ai", cat: "Agents & Orch.", sz: 0.66, color: "#CB4335", fb: true },
+
+    {
+        name: "Qdrant", cat: "Vector DBs", sz: 0.9, color: "#DC244C",
+        svg: `<svg viewBox="0 0 24 24" fill="#DC244C"><path d="m12 0 10.39 6v12L12 24 1.61 18V6zm0 2.31L3.5 7.35v9.3l8.5 4.91 8.5-4.9v-9.3zM7.25 8.5l4.75 2.75 4.75-2.75L12 5.75zM6.5 15.5V9.75l5 2.88v5.75zm11 0L12 18.38v-5.75l5-2.88z"/></svg>`
+    },
+    { name: "FAISS", cat: "Vector DBs", sz: 0.9, color: "#3B82F6", fb: true },
+    { name: "Pinecone", cat: "Vector DBs", sz: 1.0, color: "#2E7D32", fb: true },
+    { name: "Weaviate", cat: "Vector DBs", sz: 0.95, color: "#3B82F6", fb: true },
+    { name: "Dnotitia", cat: "Vector DBs", sz: 0.68, color: "#A93226", fb: true },
+
+    { name: "aaru", cat: "Synthetic Data", sz: 0.85, color: "#2471A3", fb: true },
+    {
+        name: "Delve", cat: "Synthetic Data", sz: 0.8, color: "#1A5276",
+        svg: `<svg viewBox="0 0 24 24" fill="#1A5276"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`
+    },
+    {
+        name: "glean", cat: "Synthetic Data", sz: 0.85, color: "#6436F0",
+        svg: `<svg viewBox="0 0 24 24" fill="#6436F0"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm3.5-11.5A3.5 3.5 0 0 1 12 12a3.5 3.5 0 0 1-3.5-3.5A3.5 3.5 0 0 1 12 5a3.5 3.5 0 0 1 3.5 3.5zm-3.5 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 2c-2.33 0-7 1.17-7 3.5V17h14v-2c0-2.33-4.67-3.5-7-3.5z"/></svg>`
+    },
+    { name: "Solve Intel.", cat: "Synthetic Data", sz: 0.64, color: "#154360", fb: true },
+
+    { name: "ZAMA", cat: "ML Security", sz: 0.85, color: "#1E8449", fb: true },
+    {
+        name: "EDERA", cat: "ML Security", sz: 0.75, color: "#196F3D",
+        svg: `<svg viewBox="0 0 24 24" fill="#196F3D"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l6 2.67V11c0 3.73-2.56 7.21-6 8.32-3.44-1.11-6-4.59-6-8.32V7.67L12 5z"/></svg>`
+    },
+    { name: "Chainguard", cat: "ML Security", sz: 0.78, color: "#0B5345", fb: true },
+    { name: "Evidently AI", cat: "ML Security", sz: 0.8, color: "#FFC107", fb: true },
+    { name: "Guardrails AI", cat: "ML Security", sz: 0.85, color: "#F44336", fb: true },
+];
+
+function WordCloud() {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [placed, setPlaced] = useState<{ tool: any, x: number, y: number, fontSize: number, iconSize: number }[]>([]);
+    const [tooltip, setTooltip] = useState<{ show: boolean, x: number, y: number, text: string }>({ show: false, x: 0, y: 0, text: "" });
+
+    const buildCloud = useCallback(() => {
+        if (!containerRef.current) return;
+        const cw = Math.max(containerRef.current.offsetWidth || 700, 500);
+        const ch = 850;
+        const placedItems: { x: number, y: number, w: number, h: number }[] = [];
+        const result: any[] = [];
+
+        const sorted = [...TOOLS].sort((a, b) => b.sz - a.sz);
+
+        sorted.forEach(tool => {
+            const fontSize = Math.round(20 + tool.sz * 16);
+            const iconSize = Math.round(24 + tool.sz * 12);
+
+            // Approximate width/height for overlap detection - Tighter buffer
+            const ww = (tool.name.length * fontSize * 0.62) + iconSize + 16;
+            const wh = fontSize + 16;
+
+            const cx = cw / 2;
+            const cy = ch / 2;
+            let found = false;
+
+            for (let r = 0; r < Math.max(cw, ch) * 0.9; r += 2) {
+                const steps = Math.max(14, Math.floor(r * 1.25));
+                for (let s = 0; s < steps; s++) {
+                    const angle = (s / steps) * Math.PI * 2 + r * 0.15;
+                    const x = cx + r * Math.cos(angle) - ww / 2;
+                    const y = cy + r * Math.sin(angle) * 0.7 - wh / 2;
+
+                    if (x < 2 || y < 2 || x + ww > cw - 2 || y + wh > ch - 2) continue;
+
+                    const box = { x, y, w: ww, h: wh };
+                    const overlaps = (a: any, b: any) => {
+                        const pad = 1; // Minimal pad for maximum density
+                        return !(a.x + a.w + pad < b.x || b.x + b.w + pad < a.x || a.y + a.h + pad < b.y || b.y + b.h + pad < a.y);
+                    };
+
+                    if (!placedItems.some(p => overlaps(p, box))) {
+                        result.push({ tool, x, y, fontSize, iconSize });
+                        placedItems.push(box);
+                        found = true;
+                        break;
+                    }
+                }
+                if (found) break;
+            }
+        });
+        setPlaced(result);
+    }, []);
+
+    useEffect(() => {
+        buildCloud();
+        window.addEventListener('resize', buildCloud);
+        return () => window.removeEventListener('resize', buildCloud);
+    }, [buildCloud]);
+
+    const initials = (name: string) => {
+        return name.replace(/[^a-zA-Z0-9 ]/g, '').split(/[\s.]+/).map(w => w[0] || '').join('').slice(0, 2).toUpperCase();
+    };
+
+    return (
+        <div ref={containerRef} className="relative w-full h-[850px] overflow-hidden rounded-3xl bg-white border border-slate-100 shadow-inner select-none">
+            {placed.map((item, idx) => (
+                <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: idx * 0.005, duration: 0.4 }}
+                    className="absolute flex items-center gap-2.5 cursor-default transition-all duration-300 hover:scale-110 hover:z-50 "
+                    style={{
+                        left: item.x,
+                        top: item.y,
+                        color: item.tool.color,
+                        fontSize: item.fontSize,
+                        fontWeight: 900,
+                        lineHeight: 1,
+                        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.05))'
+                    }}
+                    onMouseEnter={(e) => setTooltip({ show: true, x: e.clientX, y: e.clientY, text: item.tool.cat })}
+                    onMouseMove={(e) => setTooltip(prev => ({ ...prev, x: e.clientX, y: e.clientY }))}
+                    onMouseLeave={() => setTooltip(prev => ({ ...prev, show: false }))}
+                >
+                    {item.tool.svg && !item.tool.fb ? (
+                        <div
+                            className="shrink-0 flex items-center justify-center"
+                            style={{ width: item.iconSize, height: item.iconSize }}
+                            dangerouslySetInnerHTML={{ __html: item.tool.svg.replace('<svg ', `<svg width="${item.iconSize}" height="${item.iconSize}" `) }}
+                        />
+                    ) : (
+                        <div
+                            className="flex items-center justify-center font-black text-white rounded-[4px] shrink-0"
+                            style={{
+                                width: item.iconSize,
+                                height: item.iconSize,
+                                background: item.tool.color,
+                                fontSize: Math.round(item.iconSize * 0.4)
+                            }}
+                        >
+                            {initials(item.tool.name)}
+                        </div>
+                    )}
+                    <span className="whitespace-nowrap tracking-tight">{item.tool.name}</span>
+                </motion.div>
+            ))}
+            {tooltip.show && (
+                <div
+                    className="fixed z-[999] bg-slate-900 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full pointer-events-none shadow-xl border border-white/10 backdrop-blur-sm"
+                    style={{ left: tooltip.x + 15, top: tooltip.y - 40 }}
+                >
+                    {tooltip.text}
+                </div>
+            )}
+        </div>
+    );
+}
 
 
 const CAREER_ROLES = [
@@ -39,8 +358,8 @@ const CAREER_ROLES = [
         label: "Neural Architect",
         title: "Neural Architect",
         desc: "Designs novel transformer blocks and customized model architectures for hyper-efficient edge deployments and massive scale clusters.",
-        salary: "₹85L - 1.2Cr",
-        growth: "+45% YoY",
+        salary: "₹45L - 80L",
+        growth: "+38% YoY",
         skills: [
             "PyTorch & TensorFlow",
             "CUDA Optimization",
@@ -61,8 +380,8 @@ const CAREER_ROLES = [
         label: "Agentic Systems Engineer",
         title: "Agentic Systems Engineer",
         desc: "Architects swarms of AI agents that can autonomously manage complex enterprise supply chains, legal filings, and real-time operations.",
-        salary: "₹65L - 95L",
-        growth: "+60% YoY",
+        salary: "₹30L - 60L",
+        growth: "+45% YoY",
         skills: [
             "LangChain & Autogen",
             "Agent Orchestration",
@@ -83,8 +402,8 @@ const CAREER_ROLES = [
         label: "AI Security & Ethics Lead",
         title: "AI Security & Ethics Lead",
         desc: "Ensures the safety and alignment of large-scale cognitive systems, protecting against prompt injection, model extraction, and ethical drift.",
-        salary: "₹55L - 85L",
-        growth: "+35% YoY",
+        salary: "₹35L - 60L",
+        growth: "+32% YoY",
         skills: [
             "Red Teaming",
             "Cybersecurity",
@@ -101,34 +420,12 @@ const CAREER_ROLES = [
         ]
     },
     {
-        id: "chief-ai-officer",
-        label: "Chief AI Officer (CAIO)",
-        title: "Chief AI Officer (CAIO)",
-        desc: "The executive steward of a corporation's intelligence strategy, overseeing the transition from legacy software to an AI-native operating model.",
-        salary: "₹1.5Cr+",
-        growth: "+25% YoY",
-        skills: [
-            "AI Strategy",
-            "P&L Management",
-            "Innovation Leadership",
-            "Executive Communication",
-            "Vendor Evaluation"
-        ],
-        responsibilities: [
-            "Leading corporate AI digital transformation",
-            "Managing enterprise intelligence budgets",
-            "Selecting vendor vs custom AI stacks",
-            "Defining AI-driven product roadmaps",
-            "Reporting AI ROI to the board"
-        ]
-    },
-    {
         id: "embodied-ai-specialist",
         label: "Embodied AI Specialist",
         title: "Embodied AI Specialist",
         desc: "Specializes in the intersection of LLMs and physical robotics, designing the 'brain' for humanoid and industrial autonomous robots.",
-        salary: "₹75L - 1.1Cr",
-        growth: "+55% YoY",
+        salary: "₹40L - 75L",
+        growth: "42 YoY",
         skills: [
             "Robotics (ROS2)",
             "Computer Vision",
@@ -149,8 +446,8 @@ const CAREER_ROLES = [
         label: "Synthetic Data Architect",
         title: "Synthetic Data Architect",
         desc: "Engineers complex simulations and generative pipelines to produce high-fidelity training data for frontier model development.",
-        salary: "₹65L - 90L",
-        growth: "+40% YoY",
+        salary: "₹30L - 60L",
+        growth: "+36% YoY",
         skills: [
             "Generative AI",
             "Data Engineering",
@@ -171,8 +468,8 @@ const CAREER_ROLES = [
         label: "Cross-Modal Systems Designer",
         title: "Cross-Modal Systems Designer",
         desc: "Architects systems that seamlessly translate intelligence across text, vision, audio, and tactile sensors for unified world-models.",
-        salary: "₹70L - 1.Cr",
-        growth: "+48% YoY",
+        salary: "₹45L - 85L",
+        growth: "+40% YoY",
         skills: [
             "Multi-modal LLMs",
             "Audio Processing",
@@ -302,44 +599,116 @@ export default function AISchoolPage() {
             <Navbar />
 
             {/* HERO SECTION */}
-            <section id="hero" className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
-                {/* Background Image with Overlay */}
-                <div className="absolute inset-0 z-0 select-none">
-                    <motion.div
-                        initial={{ scale: 1.1 }}
-                        animate={{ scale: 1 }}
-                        transition={{ duration: 2, ease: "easeOut" }}
-                        className="w-full h-full"
-                    >
-                        <img
-                            src="/images/program-bg/ai-hero.png"
-                            alt="AI Engineering"
-                            className="w-full h-full object-cover"
-                        />
-                    </motion.div>
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-slate-900/90" />
-                </div>
+            <section id="hero" className="relative min-h-[90vh] flex items-center bg-[#030712] overflow-hidden">
+                {/* Subtle Decorative Elements for Solid Background */}
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2" />
 
-                <div className="container mx-auto max-w-6xl relative z-10 px-4 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="max-w-5xl mx-auto"
-                    >
+                <div className="container mx-auto max-w-[1450px] relative z-10 px-4">
+                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 lg:items-stretch text-left py-12 md:py-20 lg:min-h-[85vh]">
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="max-w-3xl pt-16 md:pt-24"
+                        >
+                            <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.85]">
+                                Artificial <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-white to-blue-200">Intelligence.</span>
+                            </h1>
 
-                        <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white mb-8 leading-[0.9]">
-                            Artificial <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-white to-blue-200">Intelligence.</span>
-                        </h1>
+                            <p className="text-xl md:text-2xl text-slate-300 leading-relaxed font-light mb-12 max-w-xl">
+                                A 3-year degree merging AI Engineering with Entrepreneurship. <br />
+                                <span className="text-white font-medium">Graduate with Mastery, Vision & Real-World Impact.</span>
+                            </p>
 
-                        <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-light mb-12">
-                            A 3-year degree merging AI Engineering with Entrepreneurship. <br />
-                            <span className="text-white font-medium">Graduate with Mastery, Vision & Real-World Impact.</span>
-                        </p>
+                            {/* Program Highlights Moved to Left */}
+                            <div className="space-y-4 mt-8">
+                                <h3 className="text-xs font-black text-blue-400 uppercase tracking-[0.3em] mb-6">Program Highlights</h3>
+                                <div className="grid md:grid-cols-1 gap-4">
+                                    {[
+                                        { title: "AI Fluency", desc: "Learn the core concepts of Artificial Intelligence, Machine Learning, Deep Learning and Neural Networks.", icon: BrainCircuit },
+                                        { title: "AI Builder", desc: "Work on real-world AI projects and develop practical problem-solving skills.", icon: Cpu },
+                                        { title: "AI Engineer", desc: "Get guidance and training from experienced professionals in the AI industry.", icon: Rocket },
+                                    ].map((h, i) => (
+                                        <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/5 hover:border-blue-500/30 transition-all group max-w-xl">
+                                            <div className="w-10 h-10 rounded-xl bg-blue-600/20 shadow-sm flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform shrink-0">
+                                                <h.icon size={20} />
+                                            </div>
+                                            <div>
+                                                <h4 className="font-bold text-white text-base group-hover:text-blue-400 transition-colors uppercase tracking-tight">{h.title}</h4>
+                                                <p className="text-xs text-slate-400 leading-relaxed font-light mt-0.5">{h.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </motion.div>
 
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                            className="flex flex-col justify-between pt-16 md:pt-24"
+                        >
+                            {/* Degrees Available Box */}
+                            <div className="p-8 md:p-10 bg-white/5 backdrop-blur-md rounded-[2.5rem] border border-white/10 text-white shadow-2xl relative overflow-hidden group">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+                                <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
+                                    <Layers className="text-blue-400" size={20} />
+                                    Available Degrees
+                                </h3>
+                                <div className="grid gap-3">
+                                    {[
+                                        "BCA in Artificial Intelligence",
+                                        "B.SC AI / ML Professional"
+                                    ].map((degree, i) => (
+                                        <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                                            <span className="text-sm font-medium">{degree}</span>
+                                        </div>
+                                    ))}
+                                </div>
 
-                    </motion.div>
+                                {/* Partner Colleges */}
+                                <div className="mt-8 pt-6 border-t border-white/10">
+                                    <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold mb-4">Partner Institutions</p>
+                                    <div className="space-y-3">
+                                        {[
+                                            "Ethames Business School (EBS) Hyderabad",
+                                            "Keshava Degree College Warangal"
+                                        ].map((college, i) => (
+                                            <div key={i} className="flex items-center gap-4 text-white hover:text-blue-400 transition-colors">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
+                                                <span className="text-md font-bold leading-tight">{college}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Certifications Box */}
+                            <div className="p-8 md:p-10 bg-white/10 backdrop-blur-xl rounded-[2.5rem] border border-white/10 shadow-2xl relative overflow-hidden group hover:bg-white/15 transition-all duration-500">
+                                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-50" />
+                                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3 relative z-10">
+                                    <Award className="text-blue-400 group-hover:scale-110 transition-transform" size={20} />
+                                    Industry Certifications
+                                </h3>
+                                <div className="grid grid-cols-3 gap-4 relative z-10">
+                                    {[
+                                        { code: "FCEP", label: "Execution" },
+                                        { code: "FCIP", label: "Practitioner" },
+                                        { code: "FFP", label: "Professional" }
+                                    ].map((cert, i) => (
+                                        <div key={i} className="flex flex-col p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 items-center text-center hover:bg-white/20 transition-colors">
+                                            <span className="text-[14px] font-black text-blue-400 uppercase tracking-widest mb-1 drop-shadow-[0_0_10px_rgba(34,211,238,0.3)]">{cert.code}</span>
+                                            <span className="font-bold text-white/90 text-[10px] leading-tight">{cert.label}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
 
                 {/* Scroll Indicator */}
@@ -369,7 +738,7 @@ export default function AISchoolPage() {
                             </div>
                             <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Campus</p>
-                                <p className="text-lg font-bold text-slate-900">Hyderabad, India</p>
+                                <p className="text-lg font-bold text-slate-900">Hyderabad, Warangal</p>
                             </div>
                             <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Admissions</p>
@@ -390,7 +759,7 @@ export default function AISchoolPage() {
 
             {/* 1. Overview */}
             <section id="overview" className="py-28 px-6 bg-white overflow-hidden">
-                <div className="container mx-auto max-w-6xl">
+                <div className="container mx-auto max-w-[1450px]">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div>
                             <p className="text-blue-600 text-sm font-bold uppercase tracking-widest mb-4">Program Overview</p>
@@ -402,7 +771,7 @@ export default function AISchoolPage() {
                                 The Foundry&apos;s 3-year AI program combines rigorous academic foundations with hands-on engineering and entrepreneurial execution. Students don&apos;t just learn theory — they architect neural networks, deploy agent systems, and ship production-grade AI products before graduation.
                             </p>
                             <div className="flex flex-wrap gap-3">
-                                {["Neural Networks", "LLMs & Agents", "MLOps", "Startup Lab", "GPU Clusters", "Ethics & Safety"].map((tag, i) => (
+                                {["Neural Networks", "LLMs \u0026 Agents", "MLOps", "Startup Lab", "GPU Clusters", "Ethics \u0026 Safety"].map((tag, i) => (
                                     <span key={i} className="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-semibold border border-slate-200 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-colors cursor-default">
                                         {tag}
                                     </span>
@@ -414,7 +783,7 @@ export default function AISchoolPage() {
                                 { value: "3", unit: "Years", label: "Full-time immersive program" },
                                 { value: "6", unit: "Semesters", label: "Progressive skill building" },
                                 { value: "100%", unit: "Hands-on", label: "Project-based from day one" },
-                                { value: "H100", unit: "GPUs", label: "Industry-grade infrastructure" },
+                                { value: "10+", unit: "Projects", label: "Real-world problem solving" },
                             ].map((stat, i) => (
                                 <motion.div
                                     key={i}
@@ -433,231 +802,156 @@ export default function AISchoolPage() {
                     </div>
                 </div>
             </section>
-
-            {/* Who Is This For — Dark section with numbered cards */}
-            <section className="py-24 px-6 bg-slate-900 overflow-hidden relative">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
-                <div className="container mx-auto max-w-6xl relative z-10">
-                    <div className="mb-14">
-                        <p className="text-blue-400 text-sm font-bold uppercase tracking-widest mb-3">Built for the next generation</p>
-                        <h2 className="text-4xl md:text-5xl font-bold text-white">Who Is This For</h2>
-                    </div>
-                    <div className="grid md:grid-cols-2 gap-6">
-                        {[
-                            { num: "01", title: "Aspiring AI Engineers", desc: "Class 12 / Intermediate graduates from any stream — MPC, BiPC, CEC, HEC, Commerce, or Arts. Your background doesn't define your future.", icon: Rocket, color: "from-blue-500 to-cyan-400" },
-                            { num: "02", title: "Future Founders", desc: "Students who want to build AI-powered startups, not just get a degree. You'll ship real products before you graduate.", icon: BrainCircuit, color: "from-violet-500 to-purple-400" },
-                            { num: "03", title: "Zero Coding Background", desc: "No prior programming required. We teach from the ground up, starting with logic and systems thinking.", icon: Code2, color: "from-emerald-500 to-teal-400" },
-                            { num: "04", title: "Global Thinkers", desc: "Individuals who want access to Silicon Valley networks, H100 GPU clusters, and world-class mentors.", icon: Globe, color: "from-amber-500 to-orange-400" },
-                        ].map((item, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-slate-600 transition-all duration-300 hover:bg-slate-800/80"
-                            >
-                                <div className="flex items-start gap-5">
-                                    <div className={`shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
-                                        <item.icon size={24} className="text-white" />
-                                    </div>
-                                    <div className="flex-1">
-                                        <div className="flex items-center gap-3 mb-2">
-                                            <span className="text-xs font-mono text-slate-500 tracking-widest">{item.num}</span>
-                                            <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                                        </div>
-                                        <p className="text-slate-400 leading-relaxed">{item.desc}</p>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* What You'll Achieve — Milestone cards with accent strip */}
-            <section className="py-24 px-6 bg-slate-50 overflow-hidden">
-                <div className="container mx-auto max-w-6xl">
-                    <div className="text-center mb-14">
-                        <p className="text-blue-600 text-sm font-bold uppercase tracking-widest mb-3">Your Transformation</p>
-                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900">What You&apos;ll Achieve</h2>
-                    </div>
-                    <div className="grid md:grid-cols-3 gap-6">
-                        {[
-                            { num: "01", text: "Design & build production-grade neural network architectures", highlight: "Neural Networks" },
-                            { num: "02", text: "Train large-scale models on H100/A100 GPU clusters", highlight: "GPU Clusters" },
-                            { num: "03", text: "Build and deploy autonomous AI agent systems", highlight: "Agentic AI" },
-                            { num: "04", text: "Launch your own AI-powered startup with seed funding access", highlight: "Startup Launch" },
-                            { num: "05", text: "Graduate with a portfolio of deployed AI products, not just a certificate", highlight: "Real Portfolio" },
-                            { num: "06", text: "Join a global alumni network of AI engineers, researchers, and founders", highlight: "Global Network" },
-                        ].map((item, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.08 }}
-                                className="group relative bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300"
-                            >
-                                <div className="h-1.5 bg-gradient-to-r from-blue-600 to-cyan-500" />
-                                <div className="p-7">
-                                    <div className="flex items-center gap-3 mb-4">
-                                        <span className="text-3xl font-black text-blue-100 group-hover:text-blue-200 transition-colors">{item.num}</span>
-                                        <span className="text-xs font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-2 py-1 rounded-full">{item.highlight}</span>
-                                    </div>
-                                    <p className="text-slate-700 font-medium leading-relaxed">{item.text}</p>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* 2. Eligibility - REVISED EXPANSIVE DESIGN */}
-            <section id="eligibility" className="py-32 px-6 bg-white overflow-hidden relative">
-                {/* Subtle Background Elements */}
-                <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50/50 -skew-x-12 translate-x-1/4 z-0" />
-                <div className="absolute top-40 left-10 text-[15rem] font-black text-slate-100/50 select-none pointer-events-none z-0 tracking-tighter">
-                    QUALIFY
-                </div>
-
+            <ProgramStats />
+            {/* Consolidated: Who Should Join & Eligibility */}
+            <section id="who-and-eligibility" className="py-24 px-6 bg-white overflow-hidden relative border-b border-slate-100">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-blue-50/30 via-transparent to-transparent" />
                 <div className="container mx-auto max-w-7xl relative z-10">
-                    <div className="grid lg:grid-cols-12 gap-16 md:gap-24 items-start">
-                        {/* Left Column: Heading & Narrative */}
-                        <div className="lg:col-span-5 pt-4">
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                            >
-                                <p className="text-blue-600 text-sm font-bold uppercase tracking-[0.3em] mb-6">Entry Standards</p>
-                                <h2 className="text-5xl md:text-7xl font-bold text-slate-900 mb-10 tracking-tight leading-[0.9]">
-                                    Unlocking <br />
-                                    <span className="text-slate-400">Potential.</span>
-                                </h2>
-                                <p className="text-xl text-slate-600 leading-relaxed font-light mb-12">
-                                    Admissions at The Foundry prioritized logical clarity over rote memorization. We seek the architects of tomorrow, regardless of their academic stream or prior technical experience.
-                                </p>
-
-                                <div className="p-8 bg-slate-900 rounded-[2rem] text-white shadow-2xl relative overflow-hidden group">
-                                    <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-colors" />
-                                    <h3 className="text-2xl font-bold italic mb-4">Who we look for</h3>
-                                    <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                                        We look for the <span className="text-white font-bold">&quot;misfits&quot;</span> and the <span className="text-white font-bold">&quot;builders&quot;</span>—individuals who are dissatisfied with the status quo and see the world as a series of problems to be solved.
-                                    </p>
-                                    <div className="flex flex-wrap gap-2">
-                                        {["Curious", "Logical", "Persistent", "Grit"].map((t) => (
-                                            <span key={t} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-blue-400">
-                                                {t}
-                                            </span>
-                                        ))}
+                    <div className="grid lg:grid-cols-2 gap-20 items-start">
+                        {/* Left side: Who Is This For */}
+                        <div>
+                            <div className="mb-10">
+                                <p className="text-blue-600 text-sm font-bold uppercase tracking-widest mb-3">Built for the next generation</p>
+                                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">Who Is This For</h2>
+                            </div>
+                            <div className="space-y-6">
+                                {[
+                                    { num: "01", title: "Aspiring AI Engineers", desc: "Class 12 / Intermediate graduates from any stream — MPC, BiPC, CEC, HEC, or Arts.", icon: Rocket, color: "bg-blue-600 text-white" },
+                                    { num: "02", title: "Future Founders", desc: "Students who want to build AI-powered startups and ship real products before graduation.", icon: BrainCircuit, color: "bg-violet-600 text-white" },
+                                    { num: "03", title: "Zero Coding Background", desc: "No prior programming required. We teach from the ground up starting with logic.", icon: Code2, color: "bg-emerald-600 text-white" }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex items-start gap-5 p-6 bg-slate-50 border border-slate-100 rounded-2xl hover:border-blue-200 transition-all hover:bg-white hover:shadow-lg">
+                                        <div className={`shrink-0 w-12 h-12 rounded-xl ${item.color} flex items-center justify-center shadow-lg`}>
+                                            <item.icon size={22} />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-lg font-bold text-slate-900 mb-1">{item.title}</h3>
+                                            <p className="text-sm text-slate-600 leading-relaxed">{item.desc}</p>
+                                        </div>
                                     </div>
-                                    <Link href="/apply" className="mt-8 inline-flex items-center gap-2 text-white font-bold group">
-                                        Unlock Potential
-                                        <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                    </Link>
-                                </div>
-                            </motion.div>
+                                ))}
+                            </div>
                         </div>
 
-                        {/* Right Column: Requirements Grid */}
-                        <div className="lg:col-span-7 space-y-20">
-                            {/* Academic Row */}
-                            <motion.div
-                                initial={{ opacity: 0, x: 50 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                className="space-y-10"
-                            >
-                                <div className="flex items-center gap-6">
-                                    <div className="h-px bg-slate-200 flex-1" />
-                                    <h3 className="text-xs font-black text-slate-400 uppercase tracking-[0.4em] whitespace-nowrap">Academic Eligibility</h3>
-                                </div>
-
-                                <div className="grid md:grid-cols-2 gap-12">
-                                    <div className="space-y-6">
-                                        <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold">1</div>
-                                        <h4 className="text-xl font-bold text-slate-900">Standard Pathway</h4>
-                                        <ul className="space-y-4 text-slate-500 text-sm font-medium">
-                                            <li className="flex items-start gap-3">
-                                                <CheckCircle2 size={16} className="text-emerald-500 mt-0.5 shrink-0" />
-                                                <span>Grade 12 / Intermediate from any recognized board.</span>
+                        {/* Right side: Eligibility */}
+                        <div className="bg-slate-50 border border-slate-100 rounded-[2.5rem] p-10 lg:sticky lg:top-32 h-fit">
+                            <div className="mb-8">
+                                <p className="text-blue-600 text-xs font-black uppercase tracking-[0.3em] mb-4">Academic Criteria</p>
+                                <h2 className="text-3xl font-bold text-slate-900">Academic Eligibility</h2>
+                            </div>
+                            <div className="space-y-8">
+                                <div className="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm transition-transform hover:scale-[1.02]">
+                                    <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                                        <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs">01</div>
+                                        Standard Pathway
+                                    </h4>
+                                    <ul className="space-y-4">
+                                        {[
+                                            "Grade 12 / Intermediate from any recognized board.",
+                                            "MPC, BiPC, CEC, HEC, or Arts—all streams are eligible.",
+                                            "Minimum 60% aggregate in core subjects."
+                                        ].map((req, j) => (
+                                            <li key={j} className="flex items-start gap-3 text-slate-600 text-sm">
+                                                <CheckCircle2 size={16} className="text-blue-500 mt-0.5 shrink-0" />
+                                                <span>{req}</span>
                                             </li>
-                                            <li className="flex items-start gap-3">
-                                                <CheckCircle2 size={16} className="text-emerald-500 mt-0.5 shrink-0" />
-                                                <span>MPC, BiPC, CEC, HEC, or Arts—all streams are eligible.</span>
-                                            </li>
-                                            <li className="flex items-start gap-3">
-                                                <CheckCircle2 size={16} className="text-emerald-500 mt-0.5 shrink-0" />
-                                                <span>Min. 60% aggregate in core subjects.</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="space-y-6">
-                                        <div className="w-10 h-10 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold">2</div>
-                                        <h4 className="text-xl font-bold text-slate-900">Global Credentials</h4>
-                                        <div className="space-y-4">
-                                            <div className="flex justify-between items-end pb-2 border-b border-slate-100">
-                                                <span className="text-sm text-slate-500">IB Diploma</span>
-                                                <span className="font-bold text-slate-900">24+ Points</span>
-                                            </div>
-                                            <div className="flex justify-between items-end pb-2 border-b border-slate-100">
-                                                <span className="text-sm text-slate-500">A-Levels</span>
-                                                <span className="font-bold text-slate-900">3 Subjects</span>
-                                            </div>
-                                            <p className="text-[10px] text-slate-400 italic">Other vocational boards evaluated case-by-case.</p>
-                                        </div>
-                                    </div>
+                                        ))}
+                                    </ul>
                                 </div>
-                            </motion.div>
-
-                            {/* Zero-Gate Row */}
-                            <motion.div
-                                initial={{ opacity: 0, x: 50 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.2 }}
-                                className="space-y-10"
-                            >
-                                <div className="flex items-center gap-6">
-                                    <div className="h-px bg-slate-200 flex-1" />
-                                    <h3 className="text-xs font-black text-slate-400 uppercase tracking-[0.4em] whitespace-nowrap">Zero-Gate Admissions</h3>
-                                </div>
-
-                                <div className="grid md:grid-cols-2 gap-12">
-                                    <div className="space-y-4">
-                                        <div className="flex items-center gap-4 text-slate-900">
-                                            <Code2 className="text-blue-600" size={24} />
-                                            <h4 className="text-lg font-bold">No Code Start</h4>
-                                        </div>
-                                        <p className="text-sm text-slate-500 leading-relaxed">
-                                            We teach from the absolute ground up. No prior programming knowledge or technical background is required to begin your journey.
-                                        </p>
+                                <div className="p-6 bg-blue-600 rounded-2xl text-white shadow-xl flex items-center justify-between group cursor-pointer overflow-hidden relative">
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+                                    <div>
+                                        <h4 className="text-lg font-bold mb-1">Admissions Open</h4>
+                                        <p className="text-blue-100 text-sm">Secure your cohort for 2026 today.</p>
                                     </div>
-                                    <div className="space-y-4">
-                                        <div className="flex items-center gap-4 text-slate-900">
-                                            <ShieldCheck className="text-indigo-600" size={24} />
-                                            <h4 className="text-lg font-bold">Aptitude Driven</h4>
-                                        </div>
-                                        <p className="text-sm text-slate-500 leading-relaxed">
-                                            Forget high-stress entrance exams. We evaluate you on logical clarity, situational persistence, and your profile potential.
-                                        </p>
-                                    </div>
+                                    <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                 </div>
-                            </motion.div>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            {/* What You'll Achieve — Verbatim Screenshot Realignment */}
+            <section id="outcomes" className="py-24 px-6 bg-white overflow-hidden">
+                <div className="container mx-auto max-w-7xl">
+                    <div className="grid lg:grid-cols-2 gap-20 items-start mb-24">
+                        {/* Program Core Skills */}
+                        <div>
+                            <div className="mb-10">
+                                <h3 className="text-4xl font-extralight text-slate-900 tracking-tight uppercase leading-none">Program</h3>
+                                <h2 className="text-5xl font-black text-slate-900 uppercase leading-tight">Core Skills</h2>
+                                <div className="w-20 h-1.5 bg-lime-400 mt-4" />
+                            </div>
+                            <ul className="space-y-5">
+                                {[
+                                    "AI system thinking",
+                                    "Data-first problem framing",
+                                    "Model selection & evaluation",
+                                    "LLM integration & orchestration",
+                                    "Risk, security, and governance by design",
+                                    "Cost, latency, and reliability trade-off analysis",
+                                    "Human-in-the-loop system design"
+                                ].map((skill, i) => (
+                                    <li key={i} className="flex items-center gap-3 text-slate-700 text-lg group">
+                                        <div className="w-2 h-2 rounded-full bg-slate-900/10 group-hover:bg-lime-500 transition-colors shrink-0" />
+                                        <span className="font-medium">{skill}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Program Outcomes */}
+                        <div className="mt-16 lg:mt-0">
+                            <div className="mb-10">
+                                <h3 className="text-4xl font-extralight text-slate-900 tracking-tight uppercase leading-none">Program</h3>
+                                <h2 className="text-5xl font-black text-slate-900 uppercase leading-tight">Outcomes</h2>
+                                <div className="w-20 h-1.5 bg-lime-400 mt-4" />
+                            </div>
+                            <ul className="space-y-5">
+                                {[
+                                    "Designs AI systems instead of model demos",
+                                    "Evaluates failure before deployment",
+                                    "Owns AI behavior, cost, and risk",
+                                    "Communicates AI decisions to engineers, leaders, and regulators"
+                                ].map((outcome, i) => (
+                                    <li key={i} className="flex items-center gap-3 text-slate-700 text-lg group">
+                                        <div className="w-2 h-2 rounded-full bg-slate-900/10 group-hover:bg-lime-500 transition-colors shrink-0" />
+                                        <span className="font-medium">{outcome}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+
+
                 </div>
             </section>
 
             {/* 3. What You Will Study (Curriculum) */}
             <section id="curriculum" className="py-24 px-6 bg-white overflow-hidden">
-                <div className="container mx-auto max-w-6xl">
+                <div className="container mx-auto max-w-7xl">
                     <div className="text-center mb-12">
-                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">What You Will Study</h2>
+                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">What You Will Study</h2>
                         <p className="text-lg text-slate-600 max-w-2xl mx-auto">From mathematical foundations to shipping production AI systems. Every year builds on the last.</p>
                     </div>
                     <CurriculumTabs />
+                </div>
+            </section>
+            {/* Tool Master Word Cloud Section — Smaller + Icon-Rich Design */}
+            <section id="tool-master" className="py-20 px-6 bg-slate-50 overflow-hidden relative border-y border-slate-200">
+                <div className="container mx-auto max-w-6xl relative z-10">
+                    <div className="text-center mb-16">
+                        <p className="text-blue-600 text-sm font-bold uppercase tracking-widest mb-4">Industrial Stack</p>
+                        <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter mb-6 leading-tight">
+                            Tool Master
+                        </h2>
+                    </div>
+
+                    {/* User-provided Dynamic Word Cloud component */}
+                    <div className="py-8">
+                        <WordCloud />
+                    </div>
                 </div>
             </section>
 
@@ -684,6 +978,7 @@ export default function AISchoolPage() {
                 subtitle="From mathematical foundations to architecting global cognitive systems. This is your career in 2035."
                 themeColor="blue"
             />
+            <WhyUs />
 
             <Footer />
         </main>

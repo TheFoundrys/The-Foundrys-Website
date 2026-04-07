@@ -77,7 +77,7 @@ export function CareerVision({
             {isDark && (
                 <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/5 via-transparent to-emerald-500/5 pointer-events-none" />
             )}
-            <div className="container mx-auto px-6 max-w-6xl">
+            <div className="container mx-auto px-6 max-w-7xl">
                 {/* Header */}
                 <div className="text-center mb-16 relative z-10">
                     <h2 className={`text-4xl md:text-5xl font-serif mb-4 ${isDark ? "text-white" : "text-slate-900"}`}>{title}</h2>

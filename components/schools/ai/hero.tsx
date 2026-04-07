@@ -51,7 +51,7 @@ export function AIHero() {
                         href="/contact"
                         className="px-10 py-4 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-500 transition-all shadow-[0_0_30px_rgba(37,99,235,0.3)] hover:shadow-[0_0_50px_rgba(37,99,235,0.5)] transform hover:-translate-y-1"
                     >
-                       Contact Now     
+                        Contact Now
                     </Link>
                 </motion.div>
             </div>

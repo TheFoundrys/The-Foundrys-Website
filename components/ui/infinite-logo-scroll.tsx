@@ -19,14 +19,24 @@ const LOGOS = [
   "AI COMPASS"
 ];
 
+/* Scale map for smaller logos */
+const LOGO_SCALE: Record<string, string> = {
+  "/logos/csi.png": "scale-[1.9]",
+  "/logos/techop.png": "scale-[1.4]",
+  "/logos/OptGrad_logo.png": "scale-[1.4]",
+  "/logos/optsearch.png": "scale-[1.4]",
+};
+
 export function InfiniteLogoScroll() {
   return (
     <section className="py-12 bg-white overflow-hidden relative border-y border-slate-50">
       <div className="container mx-auto px-4 mb-6 text-center">
-        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Our Alumini Works</p>
+        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+          Our Alumini Works
+        </p>
       </div>
 
-      {/* Gradient Masks for Fade Effect - Blended for seamless feel */}
+      {/* Gradient Masks */}
       <div className="absolute top-0 left-0 w-24 md:w-48 h-full bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
       <div className="absolute top-0 right-0 w-24 md:w-48 h-full bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
 
@@ -34,9 +44,7 @@ export function InfiniteLogoScroll() {
         <motion.div
           className="flex items-center flex-nowrap will-change-transform"
           initial={{ x: 0 }}
-          animate={{
-            x: ["0%", "-50%"],
-          }}
+          animate={{ x: ["0%", "-50%"] }}
           transition={{
             x: {
               repeat: Infinity,
@@ -59,16 +67,16 @@ export function InfiniteLogoScroll() {
                       src={logo.startsWith("/") ? logo : `/${logo}`}
                       alt={`Partner logo ${setIndex}-${index}`}
                       className={`w-auto object-contain pointer-events-none mix-blend-multiply ${logo.toLowerCase().includes("csi")
-                          ? "h-10 md:h-14 lg:h-16"
-                          : logo.toLowerCase().includes("capsim")
-                            ? "h-6 md:h-8 lg:h-10"
-                            : logo.toLowerCase().includes("optgrad") || logo.toLowerCase().includes("optsearch")
-                              ? "h-12 md:h-16 lg:h-20 scale-125"
-                              : logo.toLowerCase().includes("optgpt") || logo.toLowerCase().includes("techop")
-                                ? "h-10 md:h-14 lg:h-16 scale-110"
-                                : logo.toLowerCase().includes("image")
-                                  ? "h-8 md:h-12 lg:h-14"
-                                  : "h-10 md:h-14 lg:h-16"
+                        ? "h-10 md:h-14 lg:h-16"
+                        : logo.toLowerCase().includes("capsim")
+                          ? "h-6 md:h-8 lg:h-10"
+                          : logo.toLowerCase().includes("optgrad") || logo.toLowerCase().includes("optsearch")
+                            ? "h-12 md:h-16 lg:h-20 scale-125"
+                            : logo.toLowerCase().includes("optgpt") || logo.toLowerCase().includes("techop")
+                              ? "h-10 md:h-14 lg:h-16 scale-110"
+                              : logo.toLowerCase().includes("image")
+                                ? "h-8 md:h-12 lg:h-14"
+                                : "h-10 md:h-14 lg:h-16"
                         }`}
                     />
                   ) : (
