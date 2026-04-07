@@ -233,54 +233,51 @@ const TOOLS = [
 
 function WordCloud() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const [placed, setPlaced] = useState<{ tool: any, x: number, y: number, w: number, h: number, fontSize: number, iconSize: number, isVertical: boolean }[]>([]);
+    const [placed, setPlaced] = useState<{ tool: any, x: number, y: number, w: number, h: number, fontSize: number, iconSize: number }[]>([]);
     const [tooltip, setTooltip] = useState<{ show: boolean, x: number, y: number, text: string }>({ show: false, x: 0, y: 0, text: "" });
 
     const buildCloud = useCallback(() => {
         if (!containerRef.current) return;
         const cw = containerRef.current.offsetWidth || 300;
-        const ch = containerRef.current.offsetHeight || 500;
-        const isMobile = cw < 600;
+        const isMobile = cw < 640;
+        const ch = isMobile ? 500 : 850;
         const placedItems: { x: number, y: number, w: number, h: number }[] = [];
         const result: any[] = [];
 
         const sorted = [...TOOLS].sort((a, b) => b.sz - a.sz);
-        const scale = isMobile ? 0.75 : 1; // Scale down for mobile screens
+        // More aggressive scaling for mobile (up to 45% reduction)
+        const scale = isMobile ? Math.max(0.48, cw / 680) : 1;
 
         sorted.forEach(tool => {
             const fontSize = Math.round((20 + tool.sz * 16) * scale);
             const iconSize = Math.round((24 + tool.sz * 12) * scale);
 
-            const isVertical = Math.random() > 0.65; // ~35% chance to be vertical
-
             // Approximate width/height for overlap detection - Tighter buffer
-            const naturalW = (tool.name.length * fontSize * 0.62) + iconSize + 16 * scale;
-            const naturalH = fontSize + 16 * scale;
-
-            const ww = isVertical ? naturalH : naturalW;
-            const wh = isVertical ? naturalW : naturalH;
+            const ww = (tool.name.length * fontSize * 0.62) + iconSize + 12 * scale;
+            const wh = fontSize + 12 * scale;
 
             const cx = cw / 2;
             const cy = ch / 2;
             let found = false;
 
-            for (let r = 0; r < Math.max(cw, ch) * 0.9; r += 2) {
-                const steps = Math.max(14, Math.floor(r * 1.25));
+            // Tighter step (r += 1.5) for more precision on mobile
+            for (let r = 0; r < Math.max(cw, ch) * 1.2; r += 1.5) {
+                const steps = Math.max(12, Math.floor(r * (isMobile ? 1.5 : 1.25)));
                 for (let s = 0; s < steps; s++) {
-                    const angle = (s / steps) * Math.PI * 2 + r * 0.15;
+                    const angle = (s / steps) * Math.PI * 2 + r * 0.1;
                     const x = cx + r * Math.cos(angle) - ww / 2;
-                    const y = cy + r * Math.sin(angle) * (isMobile ? 0.85 : 0.7) - wh / 2;
+                    const y = cy + r * Math.sin(angle) * (isMobile ? 1.0 : 0.7) - wh / 2;
 
                     if (x < 2 || y < 2 || x + ww > cw - 2 || y + wh > ch - 2) continue;
 
                     const box = { x, y, w: ww, h: wh };
                     const overlaps = (a: any, b: any) => {
-                        const pad = 1; // Minimal pad for maximum density
+                        const pad = 0.5; // Minimal pad for maximum density
                         return !(a.x + a.w + pad < b.x || b.x + b.w + pad < a.x || a.y + a.h + pad < b.y || b.y + b.h + pad < a.y);
                     };
 
                     if (!placedItems.some(p => overlaps(p, box))) {
-                        result.push({ tool, x, y, w: ww, h: wh, fontSize, iconSize, isVertical });
+                        result.push({ tool, x, y, w: ww, h: wh, fontSize, iconSize });
                         placedItems.push(box);
                         found = true;
                         break;
@@ -321,10 +318,9 @@ function WordCloud() {
                     onMouseMove={(e) => setTooltip(prev => ({ ...prev, x: e.clientX, y: e.clientY }))}
                     onMouseLeave={() => setTooltip(prev => ({ ...prev, show: false }))}
                 >
-                    <div 
+                    <div
                         className="flex items-center gap-2.5 transition-transform hover:scale-110"
                         style={{
-                            transform: item.isVertical ? 'rotate(-90deg)' : 'none',
                             color: item.tool.color,
                             fontSize: item.fontSize,
                             fontWeight: 900,
@@ -371,11 +367,11 @@ function WordCloud() {
 const CAREER_ROLES = [
     {
         id: "neural-architect",
-        label: "Neural Architect",
-        title: "Neural Architect",
-        desc: "Designs novel transformer blocks and customized model architectures for hyper-efficient edge deployments and massive scale clusters.",
-        salary: "₹45L - 80L",
-        growth: "+38% YoY",
+        label: "AI Model Engineer",
+        title: "AI Model Engineer",
+        desc: "Builds and fine-tunes transformer models and neural architectures for scalable AI applications across cloud and edge environments.",
+        salary: "₹7L - 11L",
+        growth: "+35% YoY",
         skills: [
             "PyTorch & TensorFlow",
             "CUDA Optimization",
@@ -384,20 +380,20 @@ const CAREER_ROLES = [
             "Distributed Systems"
         ],
         responsibilities: [
-            "Designing enterprise-grade neural architectures",
-            "Optimizing model weights for inference speed",
-            "Scaling distributed training clusters",
-            "Researching novel attention mechanisms",
-            "Publishing findings in top-tier conferences"
+            "Implementing neural network architectures",
+            "Fine-tuning pretrained transformer models",
+            "Optimizing models for inference performance",
+            "Assisting in distributed training workflows",
+            "Experimenting with new model architectures"
         ]
     },
     {
         id: "agentic-systems-engineer",
-        label: "Agentic Systems Engineer",
-        title: "Agentic Systems Engineer",
-        desc: "Architects swarms of AI agents that can autonomously manage complex enterprise supply chains, legal filings, and real-time operations.",
-        salary: "₹30L - 60L",
-        growth: "+45% YoY",
+        label: "AI Agent Engineer",
+        title: "AI Agent Engineer",
+        desc: "Builds intelligent AI agents capable of reasoning, tool usage, and task automation across enterprise workflows.",
+        salary: "₹5L - 10L",
+        growth: "+40% YoY",
         skills: [
             "LangChain & Autogen",
             "Agent Orchestration",
@@ -406,20 +402,20 @@ const CAREER_ROLES = [
             "Memory Systems"
         ],
         responsibilities: [
-            "Building multi-agent task frameworks",
-            "Implementing agent error correction loops",
-            "Integrating AI memory layers",
-            "Managing real-world API connectivity",
-            "Designing fault-tolerant agent networks"
+            "Building AI agent workflows",
+            "Integrating external tools and APIs",
+            "Implementing memory and retrieval systems",
+            "Testing agent reasoning capabilities",
+            "Improving agent reliability and performance"
         ]
     },
     {
         id: "ai-security-lead",
-        label: "AI Security & Ethics Lead",
-        title: "AI Security & Ethics Lead",
-        desc: "Ensures the safety and alignment of large-scale cognitive systems, protecting against prompt injection, model extraction, and ethical drift.",
-        salary: "₹35L - 60L",
-        growth: "+32% YoY",
+        label: "AI Safety Engineer",
+        title: "AI Safety Engineer",
+        desc: "Ensures AI systems operate safely and responsibly by testing models against prompt injection, adversarial attacks, and bias.",
+        salary: "₹6L - 12L",
+        growth: "+30% YoY",
         skills: [
             "Red Teaming",
             "Cybersecurity",
@@ -428,20 +424,20 @@ const CAREER_ROLES = [
             "Adversarial ML"
         ],
         responsibilities: [
-            "Conducting adversarial red teaming",
-            "Guaranteeing model compliance & safety",
-            "Implementing data privacy shields",
-            "Monitoring AI decisions for bias",
-            "Defining organizational AI ethics policies"
+            "Testing models against adversarial attacks",
+            "Monitoring model outputs for bias",
+            "Implementing safety guardrails for LLM systems",
+            "Analyzing prompt injection vulnerabilities",
+            "Supporting AI governance initiatives"
         ]
     },
     {
         id: "embodied-ai-specialist",
-        label: "Embodied AI Specialist",
-        title: "Embodied AI Specialist",
-        desc: "Specializes in the intersection of LLMs and physical robotics, designing the 'brain' for humanoid and industrial autonomous robots.",
-        salary: "₹40L - 75L",
-        growth: "42 YoY",
+        label: "Robotics AI Engineer",
+        title: "Robotics AI Engineer",
+        desc: "Develops AI models that enable robots to perceive environments, interpret sensor data, and execute intelligent actions.",
+        salary: "₹5L - 11L",
+        growth: "+38% YoY",
         skills: [
             "Robotics (ROS2)",
             "Computer Vision",
@@ -450,20 +446,20 @@ const CAREER_ROLES = [
             "Sensor Fusion"
         ],
         responsibilities: [
-            "Mapping vision to physical motor control",
-            "Optimizing onboard model latency",
-            "Designing gesture-based interaction",
-            "Leading humanoid cognitive research",
-            "Implementing spatial reasoning loops"
+            "Integrating AI models with robotic systems",
+            "Processing visual and sensor data streams",
+            "Optimizing real-time inference pipelines",
+            "Supporting robotic perception systems",
+            "Testing robotic navigation and interaction"
         ]
     },
     {
         id: "synthetic-data-architect",
-        label: "Synthetic Data Architect",
-        title: "Synthetic Data Architect",
-        desc: "Engineers complex simulations and generative pipelines to produce high-fidelity training data for frontier model development.",
-        salary: "₹30L - 60L",
-        growth: "+36% YoY",
+        label: "Synthetic Data Engineer",
+        title: "Synthetic Data Engineer",
+        desc: "Builds pipelines that generate synthetic datasets to train and improve AI models while reducing dependency on real-world data.",
+        salary: "₹5L - 10L",
+        growth: "+35% YoY",
         skills: [
             "Generative AI",
             "Data Engineering",
@@ -472,20 +468,20 @@ const CAREER_ROLES = [
             "GANs/VAEs"
         ],
         responsibilities: [
-            "Building high-fidelity simulation worlds",
-            "Mitigating data bias in synthetic sets",
-            "Designing recursive training loops",
-            "Validating synthetic data distribution",
-            "Scaling automated data pipelines"
+            "Generating synthetic datasets for AI training",
+            "Building automated data generation pipelines",
+            "Validating statistical similarity with real data",
+            "Reducing bias in training datasets",
+            "Supporting model training workflows"
         ]
     },
     {
         id: "cross-modal-systems-designer",
-        label: "Cross-Modal Systems Designer",
-        title: "Cross-Modal Systems Designer",
-        desc: "Architects systems that seamlessly translate intelligence across text, vision, audio, and tactile sensors for unified world-models.",
-        salary: "₹45L - 85L",
-        growth: "+40% YoY",
+        label: "Multimodal AI Engineer",
+        title: "Multimodal AI Engineer",
+        desc: "Develops AI systems capable of understanding and generating information across multiple modalities such as text, images, audio, and video.",
+        salary: "₹6L - 12L",
+        growth: "+38% YoY",
         skills: [
             "Multi-modal LLMs",
             "Audio Processing",
@@ -494,11 +490,11 @@ const CAREER_ROLES = [
             "Feature Embedding"
         ],
         responsibilities: [
+            "Training models on multi-modal datasets",
             "Aligning visual and textual embeddings",
-            "Designing cross-attention mechanisms",
-            "Optimizing multi-modal batching",
-            "Building unified sensory-input layers",
-            "Evaluating model cross-modal coherence"
+            "Implementing cross-modal attention mechanisms",
+            "Optimizing multi-modal model performance",
+            "Evaluating cross-modal reasoning quality"
         ]
     }
 ];
@@ -892,7 +888,7 @@ export default function AISchoolPage() {
                                 { value: "3", unit: "Years", label: "Full-time immersive program" },
                                 { value: "6", unit: "Semesters", label: "Progressive skill building" },
                                 { value: "100%", unit: "Hands-on", label: "Project-based from day one" },
-                                { value: "10+", unit: "Projects", label: "Real-world problem solving" },
+                                { value: "100+", unit: "Projects", label: "Real-world problem solving" },
                             ].map((stat, i) => (
                                 <motion.div
                                     key={i}
@@ -982,10 +978,10 @@ export default function AISchoolPage() {
             </section>
 
             {/* What You'll Achieve — Merged Design */}
-            <section id="outcomes" className="py-24 px-6 bg-white overflow-hidden">
+            <section id="outcomes" className="pt-24 pb-16 px-6 bg-slate-50 overflow-hidden border-y border-slate-100">
                 <div className="container mx-auto max-w-7xl font-sans">
-                    <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start mb-16">
-                        
+                    <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-start">
+
                         {/* Highlights & Timeline */}
                         <div>
                             <div className="mb-10">
@@ -1053,16 +1049,16 @@ export default function AISchoolPage() {
                         </div>
 
                         {/* Skills and Outcomes Column */}
-                        <div className="flex flex-col gap-12 bg-slate-50 border border-slate-100 p-8 md:p-12 rounded-3xl">
+                        <div className="flex flex-col gap-6 bg-white border border-slate-200 p-6 md:p-8 rounded-3xl shadow-sm">
                             {/* What you'll learn */}
                             <div>
-                                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+                                <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">
                                     What you&apos;ll <span className="text-blue-600">learn</span>
                                 </h3>
-                                <p className="text-base text-slate-600 leading-relaxed mb-6 max-w-lg">
+                                <p className="text-sm text-slate-600 leading-relaxed mb-4 max-w-lg">
                                     A curriculum built around the skills that AI teams actually need — from system design to governance and reliability.
                                 </p>
-                                
+
                                 <div className="flex flex-col">
                                     {[
                                         "AI system thinking",
@@ -1073,7 +1069,7 @@ export default function AISchoolPage() {
                                         "Cost, latency, and reliability trade-off analysis",
                                         "Human-in-the-loop system design"
                                     ].map((skill, index) => (
-                                        <div key={index} className="flex items-start gap-4 py-3.5 border-b border-slate-200 last:border-0 hover:bg-slate-100/50 transition-colors rounded-lg px-2 -mx-2">
+                                        <div key={index} className="flex items-start gap-3 py-2 border-b border-slate-100 last:border-0 hover:bg-slate-50 transition-colors rounded-lg px-2 -mx-2">
                                             <span className="text-sm font-bold text-blue-600 min-w-[24px] mt-0.5">
                                                 {(index + 1).toString().padStart(2, '0')}
                                             </span>
@@ -1086,18 +1082,18 @@ export default function AISchoolPage() {
                             </div>
 
                             {/* What you'll achieve */}
-                            <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
-                                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+                            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200 shadow-sm">
+                                <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">
                                     What you&apos;ll <span className="text-blue-600">achieve</span>
                                 </h3>
-                                <p className="text-base text-slate-600 leading-relaxed mb-6">
+                                <p className="text-sm text-slate-600 leading-relaxed mb-4">
                                     Graduates leave this program with the mindset, vocabulary, and skills to make real decisions in AI-driven organisations.
                                 </p>
-                                
-                                <div className="text-sm font-bold text-slate-500 mb-5 uppercase tracking-wide">
+
+                                <div className="text-xs font-bold text-slate-500 mb-4 uppercase tracking-wide">
                                     You will be able to —
                                 </div>
-                                <div className="flex flex-col gap-5">
+                                <div className="flex flex-col gap-3">
                                     {[
                                         "Design AI systems instead of model demos",
                                         "Evaluate failure before deployment",
