@@ -262,6 +262,7 @@ function ToolTag({ tool }: { tool: any }) {
 function ToolMasterSection() {
     const containerRef = useRef<HTMLDivElement>(null);
     const [placed, setPlaced] = useState<{ tool: any, x: number, y: number, sz: number }[]>([]);
+    const categories = ["Data & ML", "Cloud & Infra", "Foundation Models", "Agents & Orch."];
 
     const buildCloud = useCallback(() => {
         if (!containerRef.current) return;
@@ -308,43 +309,72 @@ function ToolMasterSection() {
     const initials = (name: string) => name.replace(/[^a-zA-Z0-9 ]/g, '').split(/[\s.]+/).map(w => w[0] || '').join('').slice(0, 2).toUpperCase();
 
     return (
-        <div ref={containerRef} className="relative w-full h-[700px] bg-white rounded-[3rem] border border-slate-200/60 overflow-hidden select-none shadow-[inset_0_2px_20px_rgba(0,0,0,0.02)]">
-            {/* Soft Ambient Texture */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
-
-            {placed.map((item, idx) => (
-                <motion.div
-                    key={item.tool.name}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: idx * 0.01, duration: 0.4 }}
-                    className="absolute flex items-center gap-2.5 px-4 py-2.5 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-xl hover:border-blue-400 hover:z-50 transition-all duration-300 group cursor-pointer"
-                    style={{
-                        left: item.x,
-                        top: item.y,
-                    }}
-                >
-                    {item.tool.svg && !item.tool.fb ? (
-                        <div
-                            className="w-6 h-6 shrink-0 flex items-center justify-center group-hover:scale-110 transition-transform"
-                            dangerouslySetInnerHTML={{ __html: item.tool.svg.replace('<svg ', `<svg width="24" height="24" `) }}
-                        />
-                    ) : (
-                        <div
-                            className="w-6 h-6 flex items-center justify-center font-black text-white rounded-[4px] shrink-0 text-[10px]"
-                            style={{ background: item.tool.color }}
+        <div className="w-full">
+            {/* DESKTOP VIEW: Scattered Organic Cloud */}
+            <div className="hidden lg:block">
+                <div ref={containerRef} className="relative w-full h-[700px] bg-white rounded-[3rem] border border-slate-200/60 overflow-hidden select-none shadow-[inset_0_2px_20px_rgba(0,0,0,0.02)]">
+                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
+                    {placed.map((item, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: idx * 0.01, duration: 0.4 }}
+                            className="absolute flex items-center gap-2.5 px-4 py-2.5 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-xl hover:border-blue-400 hover:z-50 transition-all duration-300 group cursor-pointer"
+                            style={{ left: item.x, top: item.y }}
                         >
-                            {initials(item.tool.name)}
+                            {/* Standard tag content */}
+                            {item.tool.svg && !item.tool.fb ? (
+                                <div className="w-6 h-6 shrink-0" dangerouslySetInnerHTML={{ __html: item.tool.svg.replace('<svg ', `<svg width="24" height="24" `) }} />
+                            ) : (
+                                <div className="w-6 h-6 flex items-center justify-center font-black text-white rounded-[4px] shrink-0 text-[10px]" style={{ background: item.tool.color }}>{initials(item.tool.name)}</div>
+                            )}
+                            <span className="font-black uppercase tracking-tighter" style={{ fontSize: item.sz, color: item.tool.color }}>{item.tool.name}</span>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+
+            {/* MOBILE VIEW: High-Performance Marquee */}
+            <div className="lg:hidden w-full space-y-12">
+                <div className="relative space-y-6">
+                    {/* Row 1 */}
+                    <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
+                        <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="flex gap-4 pr-4">
+                            {[...TOOLS, ...TOOLS].map((tool, i) => (
+                                <div key={i} className="flex items-center gap-2 px-4 py-3 bg-white border border-slate-100 rounded-xl shadow-sm group shrink-0">
+                                    <span className="font-black uppercase tracking-tighter text-sm whitespace-nowrap" style={{ color: tool.color }}>{tool.name}</span>
+                                </div>
+                            ))}
+                        </motion.div>
+                    </div>
+                    {/* Row 2 */}
+                    <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
+                        <motion.div animate={{ x: ["-50%", "0%"] }} transition={{ duration: 35, repeat: Infinity, ease: "linear" }} className="flex gap-4 pr-4">
+                            {[...TOOLS.slice().reverse(), ...TOOLS.slice().reverse()].map((tool, i) => (
+                                <div key={i} className="flex items-center gap-2 px-4 py-3 bg-white border border-slate-100 rounded-xl shadow-sm group shrink-0">
+                                    <span className="font-black uppercase tracking-tighter text-sm whitespace-nowrap" style={{ color: tool.color }}>{tool.name}</span>
+                                </div>
+                            ))}
+                        </motion.div>
+                    </div>
+                </div>
+
+                {/* Mobile Categories */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 px-6 pb-8">
+                    {categories.map((cat) => (
+                        <div key={cat} className="p-5 rounded-2xl bg-white border border-slate-200/50 shadow-sm">
+                            <p className="text-[9px] font-black text-blue-600 uppercase tracking-widest mb-1.5">{cat}</p>
+                            <h4 className="text-base font-bold text-slate-900 leading-tight">
+                                {cat === "Data & ML" && "Advanced Engineering"}
+                                {cat === "Cloud & Infra" && "Global Deployment"}
+                                {cat === "Foundation Models" && "Frontier Training"}
+                                {cat === "Agents & Orch." && "Cognitive Systems"}
+                            </h4>
                         </div>
-                    )}
-                    <span 
-                        className="font-black uppercase tracking-tighter transition-colors group-hover:text-slate-900"
-                        style={{ fontSize: item.sz, color: item.tool.color }}
-                    >
-                        {item.tool.name}
-                    </span>
-                </motion.div>
-            ))}
+                    ))}
+                </div>
+            </div>
         </div>
     );
 }
