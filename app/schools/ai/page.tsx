@@ -233,7 +233,7 @@ const TOOLS = [
 
 function WordCloud() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const [placed, setPlaced] = useState<{ tool: any, x: number, y: number, fontSize: number, iconSize: number }[]>([]);
+    const [placed, setPlaced] = useState<{ tool: any, x: number, y: number, w: number, h: number, fontSize: number, iconSize: number, isVertical: boolean }[]>([]);
     const [tooltip, setTooltip] = useState<{ show: boolean, x: number, y: number, text: string }>({ show: false, x: 0, y: 0, text: "" });
 
     const buildCloud = useCallback(() => {
