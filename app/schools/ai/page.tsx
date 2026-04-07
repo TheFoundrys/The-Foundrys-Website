@@ -231,55 +231,69 @@ const TOOLS = [
     { name: "Guardrails AI", cat: "ML Security", sz: 0.85, color: "#F44336", fb: true },
 ];
 
-function WordCloud() {
+// Premium Tool Marquee Item
+// Premium Tool Marquee Item
+function ToolTag({ tool }: { tool: any }) {
+    const initials = (name: string) =>  name.replace(/[^a-zA-Z0-9 ]/g, '').split(/[\s.]+/).map(w => w[0] || '').join('').slice(0, 2).toUpperCase();
+    
+    return (
+        <div 
+            className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-200 transition-all group shrink-0"
+            style={{ color: tool.color }}
+        >
+            {tool.svg && !tool.fb ? (
+                <div
+                    className="w-8 h-8 shrink-0 flex items-center justify-center group-hover:scale-110 transition-transform"
+                    dangerouslySetInnerHTML={{ __html: tool.svg.replace('<svg ', `<svg width="32" height="32" `) }}
+                />
+            ) : (
+                <div
+                    className="w-8 h-8 flex items-center justify-center font-black text-white rounded-lg shrink-0 group-hover:scale-110 transition-transform"
+                    style={{ background: tool.color, fontSize: '12px' }}
+                >
+                    {initials(tool.name)}
+                </div>
+            )}
+            <span className="font-black uppercase tracking-tighter text-lg whitespace-nowrap">{tool.name}</span>
+        </div>
+    );
+}
+
+function ToolMasterSection() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const [placed, setPlaced] = useState<{ tool: any, x: number, y: number, fontSize: number, iconSize: number }[]>([]);
-    const [tooltip, setTooltip] = useState<{ show: boolean, x: number, y: number, text: string }>({ show: false, x: 0, y: 0, text: "" });
+    const [placed, setPlaced] = useState<{ tool: any, x: number, y: number, sz: number }[]>([]);
 
     const buildCloud = useCallback(() => {
         if (!containerRef.current) return;
-        const cw = Math.max(containerRef.current.offsetWidth || 700, 500);
-        const ch = 850;
-        const placedItems: { x: number, y: number, w: number, h: number }[] = [];
+        const cw = containerRef.current.offsetWidth || 1000;
+        const ch = 700;
         const result: any[] = [];
+        const placedItems: { x: number, y: number, w: number, h: number }[] = [];
 
-        const sorted = [...TOOLS].sort((a, b) => b.sz - a.sz);
+        const sorted = [...TOOLS].sort(() => Math.random() - 0.5);
 
         sorted.forEach(tool => {
-            const fontSize = Math.round(20 + tool.sz * 16);
-            const iconSize = Math.round(24 + tool.sz * 12);
+            const fontSize = 14 + Math.random() * 10;
+            const ww = (tool.name.length * fontSize * 0.7) + 40;
+            const wh = fontSize + 30;
 
-            // Approximate width/height for overlap detection - Tighter buffer
-            const ww = (tool.name.length * fontSize * 0.62) + iconSize + 16;
-            const wh = fontSize + 16;
-
-            const cx = cw / 2;
-            const cy = ch / 2;
             let found = false;
+            for (let attempt = 0; attempt < 200; attempt++) {
+                const x = 20 + Math.random() * (cw - ww - 40);
+                const y = 20 + Math.random() * (ch - wh - 40);
+                const box = { x, y, h: wh, w: ww };
 
-            for (let r = 0; r < Math.max(cw, ch) * 0.9; r += 2) {
-                const steps = Math.max(14, Math.floor(r * 1.25));
-                for (let s = 0; s < steps; s++) {
-                    const angle = (s / steps) * Math.PI * 2 + r * 0.15;
-                    const x = cx + r * Math.cos(angle) - ww / 2;
-                    const y = cy + r * Math.sin(angle) * 0.7 - wh / 2;
+                const overlaps = (a: any, b: any) => {
+                    const pad = 10;
+                    return !(a.x + a.w + pad < b.x || b.x + b.w + pad < a.x || a.y + a.h + pad < b.y || b.y + b.h + pad < a.y);
+                };
 
-                    if (x < 2 || y < 2 || x + ww > cw - 2 || y + wh > ch - 2) continue;
-
-                    const box = { x, y, w: ww, h: wh };
-                    const overlaps = (a: any, b: any) => {
-                        const pad = 1; // Minimal pad for maximum density
-                        return !(a.x + a.w + pad < b.x || b.x + b.w + pad < a.x || a.y + a.h + pad < b.y || b.y + b.h + pad < a.y);
-                    };
-
-                    if (!placedItems.some(p => overlaps(p, box))) {
-                        result.push({ tool, x, y, fontSize, iconSize });
-                        placedItems.push(box);
-                        found = true;
-                        break;
-                    }
+                if (!placedItems.some(p => overlaps(p, box))) {
+                    result.push({ tool, x, y, sz: fontSize });
+                    placedItems.push(box);
+                    found = true;
+                    break;
                 }
-                if (found) break;
             }
         });
         setPlaced(result);
@@ -291,62 +305,46 @@ function WordCloud() {
         return () => window.removeEventListener('resize', buildCloud);
     }, [buildCloud]);
 
-    const initials = (name: string) => {
-        return name.replace(/[^a-zA-Z0-9 ]/g, '').split(/[\s.]+/).map(w => w[0] || '').join('').slice(0, 2).toUpperCase();
-    };
+    const initials = (name: string) => name.replace(/[^a-zA-Z0-9 ]/g, '').split(/[\s.]+/).map(w => w[0] || '').join('').slice(0, 2).toUpperCase();
 
     return (
-        <div ref={containerRef} className="relative w-full h-[850px] overflow-hidden rounded-3xl bg-white border border-slate-100 shadow-inner select-none">
+        <div ref={containerRef} className="relative w-full h-[700px] bg-white rounded-[3rem] border border-slate-200/60 overflow-hidden select-none shadow-[inset_0_2px_20px_rgba(0,0,0,0.02)]">
+            {/* Soft Ambient Texture */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
+
             {placed.map((item, idx) => (
                 <motion.div
-                    key={idx}
+                    key={item.tool.name}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: idx * 0.005, duration: 0.4 }}
-                    className="absolute flex items-center gap-2.5 cursor-default transition-all duration-300 hover:scale-110 hover:z-50 "
+                    transition={{ delay: idx * 0.01, duration: 0.4 }}
+                    className="absolute flex items-center gap-2.5 px-4 py-2.5 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-xl hover:border-blue-400 hover:z-50 transition-all duration-300 group cursor-pointer"
                     style={{
                         left: item.x,
                         top: item.y,
-                        color: item.tool.color,
-                        fontSize: item.fontSize,
-                        fontWeight: 900,
-                        lineHeight: 1,
-                        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.05))'
                     }}
-                    onMouseEnter={(e) => setTooltip({ show: true, x: e.clientX, y: e.clientY, text: item.tool.cat })}
-                    onMouseMove={(e) => setTooltip(prev => ({ ...prev, x: e.clientX, y: e.clientY }))}
-                    onMouseLeave={() => setTooltip(prev => ({ ...prev, show: false }))}
                 >
                     {item.tool.svg && !item.tool.fb ? (
                         <div
-                            className="shrink-0 flex items-center justify-center"
-                            style={{ width: item.iconSize, height: item.iconSize }}
-                            dangerouslySetInnerHTML={{ __html: item.tool.svg.replace('<svg ', `<svg width="${item.iconSize}" height="${item.iconSize}" `) }}
+                            className="w-6 h-6 shrink-0 flex items-center justify-center group-hover:scale-110 transition-transform"
+                            dangerouslySetInnerHTML={{ __html: item.tool.svg.replace('<svg ', `<svg width="24" height="24" `) }}
                         />
                     ) : (
                         <div
-                            className="flex items-center justify-center font-black text-white rounded-[4px] shrink-0"
-                            style={{
-                                width: item.iconSize,
-                                height: item.iconSize,
-                                background: item.tool.color,
-                                fontSize: Math.round(item.iconSize * 0.4)
-                            }}
+                            className="w-6 h-6 flex items-center justify-center font-black text-white rounded-[4px] shrink-0 text-[10px]"
+                            style={{ background: item.tool.color }}
                         >
                             {initials(item.tool.name)}
                         </div>
                     )}
-                    <span className="whitespace-nowrap tracking-tight">{item.tool.name}</span>
+                    <span 
+                        className="font-black uppercase tracking-tighter transition-colors group-hover:text-slate-900"
+                        style={{ fontSize: item.sz, color: item.tool.color }}
+                    >
+                        {item.tool.name}
+                    </span>
                 </motion.div>
             ))}
-            {tooltip.show && (
-                <div
-                    className="fixed z-[999] bg-slate-900 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full pointer-events-none shadow-xl border border-white/10 backdrop-blur-sm"
-                    style={{ left: tooltip.x + 15, top: tooltip.y - 40 }}
-                >
-                    {tooltip.text}
-                </div>
-            )}
         </div>
     );
 }
@@ -586,6 +584,138 @@ function CurriculumTabs() {
         </div>
     );
 }
+// Organic AI Brain Animation Component
+function NeuralNetwork() {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        let animationFrameId: number;
+        let particles: any[] = [];
+        const particleCount = 180; // Significantly more particles for brain detail
+        let rotationAngle = 0;
+        
+        const resize = () => {
+            if (!canvas || !canvas.parentElement) return;
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+        };
+
+        class Particle {
+            x: number; y: number; z: number;
+            baseX: number; baseY: number; baseZ: number;
+            
+            constructor() {
+                // Approximate 3-Year Immersive Brain (High-Res Scale)
+                const hemisphere = Math.random() > 0.5 ? 1 : -1;
+                const r = 220 * Math.pow(Math.random(), 0.5); // Much larger
+                const theta = Math.random() * Math.PI * 2;
+                const phi = Math.random() * Math.PI;
+
+                this.baseX = (r * 0.9 * Math.sin(phi) * Math.cos(theta)) + (hemisphere * 40); // Wider split
+                this.baseY = r * 1.1 * Math.sin(phi) * Math.sin(theta);
+                this.baseZ = r * 0.7 * Math.cos(phi);
+                
+                this.x = this.baseX;
+                this.y = this.baseY;
+                this.z = this.baseZ;
+            }
+
+            rotate(angle: number) {
+                const cos = Math.cos(angle);
+                const sin = Math.sin(angle);
+                
+                this.x = this.baseX * cos - this.baseZ * sin;
+                this.z = this.baseX * sin + this.baseZ * cos;
+                this.y = this.baseY + Math.sin(angle * 0.4) * 20; 
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        const draw = () => {
+            if (!ctx || !canvas) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            rotationAngle += 0.004;
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height * 0.45; // Centered higher up
+
+            // Brighten Aura significantly
+            const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 400);
+            gradient.addColorStop(0, 'rgba(59, 130, 246, 0.4)'); // BRIGHTER
+            gradient.addColorStop(1, 'rgba(34, 211, 238, 0)');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach((p, i) => {
+                p.rotate(rotationAngle);
+                
+                const scale = 600 / (600 + p.z + 100);
+                const x2d = p.x * scale + centerX;
+                const y2d = p.y * scale + centerY;
+                const size = Math.max(0.8, (p.z < 0 ? 5 : 2) * scale); // LARGER DOTS
+                const opacity = (1 - (p.z + 150) / 450) * 0.9; // HIGHER OPACITY
+
+                // Neon Brain Pulse
+                const pulse = Math.sin(Date.now() * 0.003 + p.x * 0.02) * 0.3 + 0.7;
+
+                ctx.beginPath();
+                ctx.arc(x2d, y2d, size, 0, Math.PI * 2);
+                ctx.fillStyle = p.z < 0 ? `rgba(165, 243, 252, ${opacity * pulse})` : `rgba(34, 211, 238, ${opacity * 0.6})`;
+                ctx.fill();
+
+                if (p.z < -50) {
+                    ctx.shadowBlur = 15;
+                    ctx.shadowColor = 'rgba(34, 211, 238, 0.8)';
+                } else {
+                    ctx.shadowBlur = 0;
+                }
+
+                // Connections - Organic synapic clusters
+                for (let j = i + 1; j < particles.length; j += 4) {
+                    const p2 = particles[j];
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const dz = p.z - p2.z;
+                    const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+
+                    if (dist < 70) { 
+                        const x2d2 = p2.x * scale + centerX;
+                        const y2d2 = p2.y * scale + centerY;
+                        const lineOpacity = (1 - dist / 70) * 0.3 * opacity;
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(x2d, y2d);
+                        ctx.lineTo(x2d2, y2d2);
+                        ctx.strokeStyle = `rgba(147, 197, 253, ${lineOpacity})`;
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+                }
+            });
+            
+            animationFrameId = requestAnimationFrame(draw);
+        };
+
+        window.addEventListener('resize', resize);
+        resize();
+        draw();
+
+        return () => {
+            window.removeEventListener('resize', resize);
+            cancelAnimationFrame(animationFrameId);
+        };
+    }, []);
+
+    return <canvas ref={canvasRef} className="w-full h-full" />;
+}
 
 export default function AISchoolPage() {
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
@@ -604,107 +734,68 @@ export default function AISchoolPage() {
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
                 <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2" />
 
+                {/* Neural Network Visualization - Absolute right */}
+                <div className="absolute right-0 top-0 w-1/2 h-full z-0 hidden lg:block pointer-events-none">
+                    <NeuralNetwork />
+                </div>
+
                 <div className="container mx-auto max-w-[1450px] relative z-10 px-4">
-                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 lg:items-stretch text-left py-12 md:py-20 lg:min-h-[85vh]">
+                    <div className="flex flex-col justify-center text-left py-24 md:py-32 lg:min-h-[90vh] relative">
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="max-w-3xl pt-16 md:pt-24"
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="max-w-5xl relative z-10"
                         >
-                            <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.85]">
+                            {/* Department / Program Label */}
+
+                            <h1 className="text-6xl sm:text-7xl md:text-[7rem] lg:text-[8.5rem] font-black tracking-tighter text-white mb-8 md:mb-10 leading-[0.85] uppercase">
                                 Artificial <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-white to-blue-200">Intelligence.</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-200 to-blue-500 pb-2 inline-block pr-8">Intelligence</span>
                             </h1>
 
-                            <p className="text-xl md:text-2xl text-slate-300 leading-relaxed font-light mb-12 max-w-xl">
-                                A 3-year degree merging AI Engineering with Entrepreneurship. <br />
+                            <p className="text-xl md:text-3xl text-slate-300 leading-relaxed font-light mb-16 max-w-3xl">
+                                A 3-year immersive degree merging AI Engineering with Entrepreneurship. <br />
                                 <span className="text-white font-medium">Graduate with Mastery, Vision & Real-World Impact.</span>
                             </p>
 
-                            {/* Program Highlights Moved to Left */}
-                            <div className="space-y-4 mt-8">
-                                <h3 className="text-xs font-black text-blue-400 uppercase tracking-[0.3em] mb-6">Program Highlights</h3>
-                                <div className="grid md:grid-cols-1 gap-4">
-                                    {[
-                                        { title: "AI Fluency", desc: "Learn the core concepts of Artificial Intelligence, Machine Learning, Deep Learning and Neural Networks.", icon: BrainCircuit },
-                                        { title: "AI Builder", desc: "Work on real-world AI projects and develop practical problem-solving skills.", icon: Cpu },
-                                        { title: "AI Engineer", desc: "Get guidance and training from experienced professionals in the AI industry.", icon: Rocket },
-                                    ].map((h, i) => (
-                                        <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/5 hover:border-blue-500/30 transition-all group max-w-xl">
-                                            <div className="w-10 h-10 rounded-xl bg-blue-600/20 shadow-sm flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform shrink-0">
-                                                <h.icon size={20} />
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-white text-base group-hover:text-blue-400 transition-colors uppercase tracking-tight">{h.title}</h4>
-                                                <p className="text-xs text-slate-400 leading-relaxed font-light mt-0.5">{h.desc}</p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            className="flex flex-col justify-between pt-16 md:pt-24"
-                        >
-                            {/* Degrees Available Box */}
-                            <div className="p-8 md:p-10 bg-white/5 backdrop-blur-md rounded-[2.5rem] border border-white/10 text-white shadow-2xl relative overflow-hidden group">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
-                                <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
-                                    <Layers className="text-blue-400" size={20} />
-                                    Available Degrees
-                                </h3>
-                                <div className="grid gap-3">
-                                    {[
-                                        "BCA in Artificial Intelligence",
-                                        "B.SC AI / ML Professional"
-                                    ].map((degree, i) => (
-                                        <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                                            <span className="text-sm font-medium">{degree}</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                {/* Partner Colleges */}
-                                <div className="mt-8 pt-6 border-t border-white/10">
-                                    <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold mb-4">Partner Institutions</p>
-                                    <div className="space-y-3">
-                                        {[
-                                            "Ethames Business School (EBS) Hyderabad",
-                                            "Keshava Degree College Warangal"
-                                        ].map((college, i) => (
-                                            <div key={i} className="flex items-center gap-4 text-white hover:text-blue-400 transition-colors">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
-                                                <span className="text-md font-bold leading-tight">{college}</span>
-                                            </div>
-                                        ))}
+                            {/* Elegant Inline Content (Replacing Cluttered Boxes) */}
+                            <div className="grid sm:grid-cols-3 gap-10 md:gap-16 pt-12 border-t border-white/10 max-w-4xl relative z-10">
+                                {/* Degrees */}
+                                <div>
+                                    <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-[0.2em] font-bold mb-4">Available Degrees</p>
+                                    <div className="space-y-1.5 border-l-2 border-cyan-500/30 pl-4">
+                                        <p className="text-sm md:text-base font-semibold text-white tracking-tight">BCA in Artificial Intelligence</p>
+                                        <p className="text-sm md:text-base font-semibold text-white tracking-tight">B.Sc AI / ML Professional</p>
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* Certifications Box */}
-                            <div className="p-8 md:p-10 bg-white/10 backdrop-blur-xl rounded-[2.5rem] border border-white/10 shadow-2xl relative overflow-hidden group hover:bg-white/15 transition-all duration-500">
-                                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-50" />
-                                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3 relative z-10">
-                                    <Award className="text-blue-400 group-hover:scale-110 transition-transform" size={20} />
-                                    Industry Certifications
-                                </h3>
-                                <div className="grid grid-cols-3 gap-4 relative z-10">
-                                    {[
-                                        { code: "FCEP", label: "Execution" },
-                                        { code: "FCIP", label: "Practitioner" },
-                                        { code: "FFP", label: "Professional" }
-                                    ].map((cert, i) => (
-                                        <div key={i} className="flex flex-col p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 items-center text-center hover:bg-white/20 transition-colors">
-                                            <span className="text-[14px] font-black text-blue-400 uppercase tracking-widest mb-1 drop-shadow-[0_0_10px_rgba(34,211,238,0.3)]">{cert.code}</span>
-                                            <span className="font-bold text-white/90 text-[10px] leading-tight">{cert.label}</span>
+                                {/* Partners */}
+                                <div>
+                                    <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-[0.2em] font-bold mb-4">Partner Institutions</p>
+                                    <div className="space-y-1.5 border-l-2 border-blue-500/30 pl-4">
+                                        <p className="text-sm md:text-base font-semibold text-white tracking-tight">Ethames Business School</p>
+                                        <p className="text-sm md:text-base font-semibold text-white tracking-tight">Keshava Degree College</p>
+                                    </div>
+                                </div>
+
+                                {/* Certifications */}
+                                <div>
+                                    <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-[0.2em] font-bold mb-4">Industry Certifications</p>
+                                    <div className="flex gap-5 border-l-2 border-indigo-500/30 pl-4 h-full items-start">
+                                        <div className="text-left">
+                                            <span className="text-base md:text-lg font-black text-cyan-400 tracking-widest block mb-0.5">FCEP</span>
+                                            <span className="text-[9px] text-slate-500 uppercase font-bold tracking-widest block">Exec</span>
                                         </div>
-                                    ))}
+                                        <div className="text-left">
+                                            <span className="text-base md:text-lg font-black text-blue-400 tracking-widest block mb-0.5">FCIP</span>
+                                            <span className="text-[9px] text-slate-500 uppercase font-bold tracking-widest block">Pract</span>
+                                        </div>
+                                        <div className="text-left">
+                                            <span className="text-base md:text-lg font-black text-indigo-400 tracking-widest block mb-0.5">FFP</span>
+                                            <span className="text-[9px] text-slate-500 uppercase font-bold tracking-widest block">Prof</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
@@ -938,9 +1029,9 @@ export default function AISchoolPage() {
                     <CurriculumTabs />
                 </div>
             </section>
-            {/* Tool Master Word Cloud Section — Smaller + Icon-Rich Design */}
-            <section id="tool-master" className="py-20 px-6 bg-slate-50 overflow-hidden relative border-y border-slate-200">
-                <div className="container mx-auto max-w-6xl relative z-10">
+            {/* Tool Master Section — Contained Design */}
+            <section id="tool-master" className="py-24 bg-slate-50 relative border-y border-slate-200">
+                <div className="container mx-auto max-w-[1450px] relative z-10 px-6">
                     <div className="text-center mb-16">
                         <p className="text-blue-600 text-sm font-bold uppercase tracking-widest mb-4">Industrial Stack</p>
                         <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter mb-6 leading-tight">
@@ -948,10 +1039,8 @@ export default function AISchoolPage() {
                         </h2>
                     </div>
 
-                    {/* User-provided Dynamic Word Cloud component */}
-                    <div className="py-8">
-                        <WordCloud />
-                    </div>
+                    {/* Contained Tool Mastery Content */}
+                    <ToolMasterSection />
                 </div>
             </section>
 

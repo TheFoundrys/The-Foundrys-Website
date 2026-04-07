@@ -19,41 +19,43 @@ export function AIHero() {
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-transparent to-transparent" />
             </div>
 
-            <div className="relative z-10 container mx-auto max-w-6xl flex flex-col items-center">
-                <motion.h1
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6 leading-[1.1] max-w-4xl"
-                >
-                    Graduate with <br />
-                    Mastery, Vision & <br />
-                    Real-World Impact.
-                </motion.h1>
-
-                <motion.p
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="text-xl md:text-2xl text-slate-300 max-w-2xl leading-relaxed mb-10"
-                >
-                    Not just code. A 3 year degree program merging AI Engineering with Entrepreneurship.
-                    Built by Engineers & Founders, for future Architects.
-                </motion.p>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="flex flex-wrap gap-4 justify-center"
-                >
-                    <Link
-                        href="/contact"
-                        className="px-10 py-4 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-500 transition-all shadow-[0_0_30px_rgba(37,99,235,0.3)] hover:shadow-[0_0_50px_rgba(37,99,235,0.5)] transform hover:-translate-y-1"
+            <div className="relative z-10 w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col justify-center h-full sm:mt-20">
+                <div className="max-w-5xl flex flex-col items-center lg:items-start text-center lg:text-left">
+                    <motion.h1
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] xl:text-[7rem] font-bold tracking-tighter text-white mb-6 md:mb-8 leading-[1.1] md:leading-[1] uppercase drop-shadow-lg"
                     >
-                        Contact Now
-                    </Link>
-                </motion.div>
+                        Graduate with <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-lime-vibrant pb-2 inline-block pr-6">Mastery, Vision</span> <br />
+                        <span className="text-slate-300">&amp; Real-World Impact.</span>
+                    </motion.h1>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-lg sm:text-xl md:text-2xl text-slate-300 max-w-3xl leading-relaxed mb-10 font-medium tracking-wide drop-shadow-md"
+                    >
+                        Not just code. A 3 year degree program merging AI Engineering with Entrepreneurship.
+                        Built by Engineers & Founders, for future Architects.
+                    </motion.p>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                        className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+                    >
+                        <Link
+                            href="/contact"
+                            className="px-10 py-4 bg-white text-slate-900 rounded-full font-bold text-lg hover:scale-105 hover:bg-slate-50 transition-all shadow-xl hover:shadow-2xl ring-2 ring-white/50 text-center flex items-center justify-center gap-2 group"
+                        >
+                            Contact Now <span className="text-slate-600 group-hover:translate-x-1 transition-transform">→</span>
+                        </Link>
+                    </motion.div>
+                </div>
             </div>
 
             {/* Horizontal Info Bar (Sustainability Inspired) */}

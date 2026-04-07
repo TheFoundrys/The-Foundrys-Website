@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function AdmissionsOpen() {
   return (
-    <section className="relative bg-slate-900 py-24 px-6 lg:px-16 border-y border-white/5">
+    <section className="relative overflow-hidden bg-slate-900 py-24 px-6 lg:px-16 border-y border-white/5">
       {/* Ethereal Industrial Background Elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* Subtle Mono-spaced Grid Overlay */}
@@ -52,7 +52,7 @@ export function AdmissionsOpen() {
                 </span>
                 <h2 className="text-5xl sm:text-7xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white tracking-normal leading-[1.1] uppercase italic py-4 pr-16">
                   ADMISSIONS <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-vibrant to-lime-200">OPEN</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-vibrant to-lime-200 pb-4 pr-6">OPEN</span>
                 </h2>
                 {/* Thin underline */}
                 <div className="w-24 h-[1px] bg-lime-vibrant mt-6" />
