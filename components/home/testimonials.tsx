@@ -22,7 +22,7 @@ const testimonials = [
   {
     name: "Raju Kalla",
     designation: "Cybersecurity Operations",
-    image: "/images/testimonials/raju.jpeg",
+    image: "/images/testimonials/kalla.jpeg",
     text: "Hi, This is Raju working at the intersection of cybersecurity operations like application and network security. I’ve been able to grow and achieve this with the guidance of Vishwanath Akuthota, whose mentorship has changed my professional journey. I like the way of teaching made even complex topics like cryptography easy to understand. I’d also like to congratulate him on his great journey with Foundry’s. Wishing him great success ahead!"
   },
   {
@@ -40,7 +40,7 @@ const testimonials = [
   {
     name: "Yamuna Devi Kallakuri",
     designation: "AI Researcher",
-    image: "/images/testimonials/yamuna_kalukuri.jpeg",
+    image: "/images/testimonials/yk.jpeg",
     text: "Hi, Iam Yamuna, I'm happy to share that i have learned artificial intelligence under the guidance of Vishwanath Akuthota. The way he explanation is clear and neat. Learning from him, i gained strong foundation in artificial intelligence and i worked on real-life application by using LLMs, RAG pipelines, machine learning, and scalable ai system. I'm excited to share that he started a new branch in Warangal. wishing continuing success to Vishwanath Akuthota, Thank you."
   },
   {
@@ -80,7 +80,7 @@ export function Testimonials() {
 
         <div className="flex w-full overflow-hidden group">
           <div
-            className="flex items-stretch flex-nowrap py-3 animate-infinite-scroll lg:animate-stepped-scroll hover:[animation-play-state:paused] will-change-transform"
+            className="flex items-stretch flex-nowrap py-3 animate-infinite-scroll hover:[animation-play-state:paused] will-change-transform"
             style={{ width: "max-content" }}
           >
             {doubledTestimonials.map((testimonial, index) => (

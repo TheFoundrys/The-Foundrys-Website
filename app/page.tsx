@@ -62,7 +62,6 @@ export default function Home() {
       <InfiniteLogoScroll />
       <Philosophy />
       {/* <Triad /> */}
-      <Campus />
       <UniqueNeeds />
 
       {/* Section 2: The Archetypes */}

@@ -50,7 +50,7 @@ export function AdmissionsOpen() {
                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-lime-vibrant mb-4 block">
                   Foundry Protocol: Admissions
                 </span>
-                <h2 className="text-5xl sm:text-7xl md:text-9xl font-bold text-white tracking-tighter leading-[0.9] uppercase italic">
+                <h2 className="text-5xl sm:text-7xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white tracking-tighter leading-[0.9] uppercase italic">
                   ADMISSIONS <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-vibrant to-lime-200">OPEN</span>
                 </h2>
@@ -82,12 +82,12 @@ export function AdmissionsOpen() {
                     </span>
                   </div>
 
-                  <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight leading-tight flex flex-wrap items-center">
+                  <h3 className="text-3xl md:text-5xl lg:text-4xl xl:text-5xl font-bold text-white tracking-tight leading-tight flex flex-wrap items-center gap-1 xl:gap-0">
                     <span className="relative inline-block group-hover/title:text-lime-vibrant transition-colors duration-500">
                       B.Sc AI/ML
                       <div className="absolute -bottom-2 left-0 w-0 h-[2px] bg-lime-vibrant group-hover/title:w-full transition-all duration-700 ease-out" />
                     </span>
-                    <span className="mx-4 text-slate-700 font-light hidden md:inline">/</span>
+                    <span className="mx-2 lg:mx-3 xl:mx-4 text-slate-700 font-light hidden lg:inline">/</span>
                     <span className="relative inline-block group-hover/title:text-lime-vibrant transition-colors duration-500 delay-75">
                       BCA AI Professional
                       <div className="absolute -bottom-2 left-0 w-0 h-[2px] bg-lime-vibrant group-hover/title:w-full transition-all duration-700 ease-out delay-75" />
@@ -142,7 +142,7 @@ export function AdmissionsOpen() {
           </div>
 
           {/* Right Content: Depth & Layering */}
-          <div className="hidden lg:flex relative h-[600px] lg:h-[750px] items-center justify-center lg:justify-end">
+          <div className="hidden lg:flex relative h-[600px] lg:h-[500px] xl:h-[600px] 2xl:h-[750px] items-center justify-center lg:justify-end">
             {/* Background elements - Glass Panels */}
             <div className="absolute top-1/4 right-1/4 w-full h-full border border-white/5 bg-white/[0.02] backdrop-blur-sm -z-10 rounded-3xl rotate-6" />
             <div className="absolute bottom-1/4 left-1/4 w-full h-full border border-lime-vibrant/10 bg-lime-vibrant/[0.01] backdrop-blur-[2px] -z-10 rounded-3xl -rotate-3" />
