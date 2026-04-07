@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function AdmissionsOpen() {
   return (
-    <section className="relative overflow-hidden bg-slate-900 py-24 px-6 lg:px-16 border-y border-white/5">
+    <section className="relative bg-slate-900 py-24 px-6 lg:px-16 border-y border-white/5">
       {/* Ethereal Industrial Background Elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* Subtle Mono-spaced Grid Overlay */}
@@ -44,13 +44,13 @@ export function AdmissionsOpen() {
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
-                className="relative"
+                className="relative overflow-visible"
               >
                 {/* HUD Label */}
                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-lime-vibrant mb-4 block">
                   Foundry Protocol: Admissions
                 </span>
-                <h2 className="text-5xl sm:text-7xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white tracking-tighter leading-[0.9] uppercase italic">
+                <h2 className="text-5xl sm:text-7xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white tracking-normal leading-[1.1] uppercase italic py-4 pr-16">
                   ADMISSIONS <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-vibrant to-lime-200">OPEN</span>
                 </h2>
