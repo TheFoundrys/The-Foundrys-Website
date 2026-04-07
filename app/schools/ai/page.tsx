@@ -231,138 +231,48 @@ const TOOLS = [
     { name: "Guardrails AI", cat: "ML Security", sz: 0.85, color: "#F44336", fb: true },
 ];
 
-function WordCloud() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const [placed, setPlaced] = useState<{ tool: any, x: number, y: number, w: number, h: number, fontSize: number, iconSize: number }[]>([]);
-    const [tooltip, setTooltip] = useState<{ show: boolean, x: number, y: number, text: string }>({ show: false, x: 0, y: 0, text: "" });
+const TOOLS_ROW_1 = TOOLS.slice(0, 25);
+const TOOLS_ROW_2 = TOOLS.slice(25);
 
-    const buildCloud = useCallback(() => {
-        if (!containerRef.current) return;
-        const cw = containerRef.current.offsetWidth || 300;
-        const isMobile = cw < 640;
-        const ch = isMobile ? 500 : 850;
-        const placedItems: { x: number, y: number, w: number, h: number }[] = [];
-        const result: any[] = [];
+const initials = (name: string) => {
+    return name.replace(/[^a-zA-Z0-9 ]/g, '').split(/[\s.]+/).map(w => w[0] || '').join('').slice(0, 2).toUpperCase();
+};
 
-        const sorted = [...TOOLS].sort((a, b) => b.sz - a.sz);
-        // More aggressive scaling for mobile (up to 45% reduction)
-        const scale = isMobile ? Math.max(0.48, cw / 680) : 1;
-
-        sorted.forEach(tool => {
-            const fontSize = Math.round((20 + tool.sz * 16) * scale);
-            const iconSize = Math.round((24 + tool.sz * 12) * scale);
-
-            // Approximate width/height for overlap detection - Tighter buffer
-            const ww = (tool.name.length * fontSize * 0.62) + iconSize + 12 * scale;
-            const wh = fontSize + 12 * scale;
-
-            const cx = cw / 2;
-            const cy = ch / 2;
-            let found = false;
-
-            // Tighter step (r += 1.5) for more precision on mobile
-            for (let r = 0; r < Math.max(cw, ch) * 1.2; r += 1.5) {
-                const steps = Math.max(12, Math.floor(r * (isMobile ? 1.5 : 1.25)));
-                for (let s = 0; s < steps; s++) {
-                    const angle = (s / steps) * Math.PI * 2 + r * 0.1;
-                    const x = cx + r * Math.cos(angle) - ww / 2;
-                    const y = cy + r * Math.sin(angle) * (isMobile ? 1.0 : 0.7) - wh / 2;
-
-                    if (x < 2 || y < 2 || x + ww > cw - 2 || y + wh > ch - 2) continue;
-
-                    const box = { x, y, w: ww, h: wh };
-                    const overlaps = (a: any, b: any) => {
-                        const pad = 0.5; // Minimal pad for maximum density
-                        return !(a.x + a.w + pad < b.x || b.x + b.w + pad < a.x || a.y + a.h + pad < b.y || b.y + b.h + pad < a.y);
-                    };
-
-                    if (!placedItems.some(p => overlaps(p, box))) {
-                        result.push({ tool, x, y, w: ww, h: wh, fontSize, iconSize });
-                        placedItems.push(box);
-                        found = true;
-                        break;
-                    }
-                }
-                if (found) break;
-            }
-        });
-        setPlaced(result);
-    }, []);
-
-    useEffect(() => {
-        buildCloud();
-        window.addEventListener('resize', buildCloud);
-        return () => window.removeEventListener('resize', buildCloud);
-    }, [buildCloud]);
-
-    const initials = (name: string) => {
-        return name.replace(/[^a-zA-Z0-9 ]/g, '').split(/[\s.]+/).map(w => w[0] || '').join('').slice(0, 2).toUpperCase();
-    };
-
+const ToolMarquee = ({ tools, reverse = false, speed = 40 }: { tools: any[], reverse?: boolean, speed?: number }) => {
     return (
-        <div ref={containerRef} className="relative w-full h-[600px] md:h-[850px] overflow-hidden rounded-3xl bg-white border border-slate-100 shadow-inner select-none">
-            {placed.map((item, idx) => (
-                <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: idx * 0.005, duration: 0.4 }}
-                    className="absolute flex items-center justify-center cursor-default transition-all duration-300 hover:z-50"
-                    style={{
-                        left: item.x,
-                        top: item.y,
-                        width: item.w,
-                        height: item.h
-                    }}
-                    onMouseEnter={(e) => setTooltip({ show: true, x: e.clientX, y: e.clientY, text: item.tool.cat })}
-                    onMouseMove={(e) => setTooltip(prev => ({ ...prev, x: e.clientX, y: e.clientY }))}
-                    onMouseLeave={() => setTooltip(prev => ({ ...prev, show: false }))}
-                >
-                    <div
-                        className="flex items-center gap-2.5 transition-transform hover:scale-110"
-                        style={{
-                            color: item.tool.color,
-                            fontSize: item.fontSize,
-                            fontWeight: 900,
-                            lineHeight: 1,
-                            filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.05))'
-                        }}
-                    >
-                        {item.tool.svg && !item.tool.fb ? (
+        <div className="flex w-full overflow-hidden select-none py-4 md:py-6 relative">
+            <motion.div
+                className="flex items-center gap-10 md:gap-16 whitespace-nowrap"
+                animate={{ x: reverse ? ["-50%", "0%"] : ["0%", "-50%"] }}
+                transition={{ duration: speed, repeat: Infinity, ease: "linear" }}
+            >
+                {[...tools, ...tools].map((tool, idx) => (
+                    <div key={idx} className="flex items-center gap-3.5 transition-all duration-300">
+                        {tool.svg && !tool.fb ? (
                             <div
-                                className="shrink-0 flex items-center justify-center"
-                                style={{ width: item.iconSize, height: item.iconSize }}
-                                dangerouslySetInnerHTML={{ __html: item.tool.svg.replace('<svg ', `<svg width="${item.iconSize}" height="${item.iconSize}" `) }}
+                                className="w-8 h-8 md:w-10 md:h-10 shrink-0 flex items-center justify-center transition-all"
+                                dangerouslySetInnerHTML={{ __html: tool.svg.replace('<svg ', `<svg width="100%" height="100%" `) }}
                             />
                         ) : (
                             <div
-                                className="flex items-center justify-center font-black text-white rounded-[4px] shrink-0"
-                                style={{
-                                    width: item.iconSize,
-                                    height: item.iconSize,
-                                    background: item.tool.color,
-                                    fontSize: Math.round(item.iconSize * 0.4)
-                                }}
+                                className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center font-black text-white rounded-lg shrink-0 transition-all"
+                                style={{ background: tool.color, fontSize: '11px' }}
                             >
-                                {initials(item.tool.name)}
+                                {initials(tool.name)}
                             </div>
                         )}
-                        <span className="whitespace-nowrap tracking-tight">{item.tool.name}</span>
+                        <span
+                            className="text-xl md:text-3xl font-black tracking-tighter"
+                            style={{ color: tool.color }}
+                        >
+                            {tool.name}
+                        </span>
                     </div>
-                </motion.div>
-            ))}
-            {tooltip.show && (
-                <div
-                    className="fixed z-[999] bg-slate-900 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full pointer-events-none shadow-xl border border-white/10 backdrop-blur-sm"
-                    style={{ left: tooltip.x + 15, top: tooltip.y - 40 }}
-                >
-                    {tooltip.text}
-                </div>
-            )}
+                ))}
+            </motion.div>
         </div>
     );
-}
-
+};
 
 const CAREER_ROLES = [
     {
@@ -829,28 +739,33 @@ export default function AISchoolPage() {
             </section>
 
             {/* Program Details Card */}
-            <div className="relative z-20 px-4 -mt-14 mb-12">
-                <div className="mx-auto max-w-7xl">
-                    <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
+            <div className="relative z-20 px-4 -mt-10 mb-12">
+                <div className="mx-auto max-w-[1450px]">
+                    {/* Adjusted mobile padding (py-6) while keeping desktop (md:py-5) */}
+                    <div className="bg-white rounded-2xl shadow-xl border border-slate-200 py-6 px-6 md:py-5 md:px-10 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-8">
+
+                        {/* Switched to grid-cols-1 and text-left for better mobile readability */}
+                        <div className="grid grid-cols-1 lg:grid-cols-4 gap-y-5 lg:gap-x-14 flex-1 text-left w-full">
                             <div>
-                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Program Length</p>
+                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-0.5">Program Length</p>
                                 <p className="text-lg font-bold text-slate-900">3-Year Full-Time</p>
                             </div>
                             <div>
-                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Delivery Mode</p>
+                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-0.5">Delivery Mode</p>
                                 <p className="text-lg font-bold text-slate-900">On-Campus, Immersive</p>
                             </div>
                             <div>
-                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Campus</p>
-                                <p className="text-lg font-bold text-slate-900">Hyderabad, Warangal</p>
+                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-0.5">Campus</p>
+                                <p className="text-lg font-bold text-slate-900">Hyderabad and Warangal</p>
                             </div>
                             <div>
-                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Admissions</p>
+                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-0.5">Admissions</p>
                                 <p className="text-lg font-bold text-slate-900">Now Open</p>
                             </div>
                         </div>
-                        <div className="flex gap-3 w-full lg:w-auto">
+
+                        {/* Buttons stack nicely on mobile with the flex-col mobile class if needed, or stay side-by-side */}
+                        <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
                             <Link href="/apply" className="flex-1 lg:flex-none text-center px-8 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-500 transition-all shadow-lg active:scale-95 whitespace-nowrap">
                                 Apply Now
                             </Link>
@@ -861,6 +776,7 @@ export default function AISchoolPage() {
                     </div>
                 </div>
             </div>
+
 
             {/* 1. Overview */}
             <section id="overview" className="py-28 px-6 bg-white overflow-hidden">
@@ -1128,18 +1044,21 @@ export default function AISchoolPage() {
                 </div>
             </section>
             {/* Tool Master Section — Contained Design */}
-            <section id="tool-master" className="py-20 px-6 bg-slate-50 overflow-hidden relative border-y border-slate-200">
-                <div className="container mx-auto max-w-6xl relative z-10">
-                    <div className="text-center mb-16">
+            <section id="tool-master" className="py-10 bg-slate-50 overflow-hidden relative border-y border-slate-200">
+                <div className="container mx-auto max-w-6xl relative z-10 px-6">
+                    <div className="text-center mb-10">
                         <p className="text-blue-600 text-sm font-bold uppercase tracking-widest mb-4">Industrial Stack</p>
-                        <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter mb-6 leading-tight">
+                        <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter mb-4 leading-tight">
                             Tool Master
                         </h2>
                     </div>
+                </div>
 
-                    {/* User-provided Dynamic Word Cloud component */}
-                    <div className="py-8">
-                        <WordCloud />
+                {/* Dual Row Inter-scrolling Marquee - Full Width - Reduced Height */}
+                <div className="relative py-2 md:py-4 overflow-hidden">
+                    <div className="flex flex-col gap-2 md:gap-4">
+                        <ToolMarquee tools={TOOLS_ROW_1} reverse={false} speed={40} />
+                        <ToolMarquee tools={TOOLS_ROW_2} reverse={true} speed={55} />
                     </div>
                 </div>
             </section>
