@@ -948,7 +948,7 @@ export default function AISchoolPage() {
                 <div className="container mx-auto max-w-6xl relative z-10 px-6">
                     <div className="text-center mb-2">
                         <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter mb-1 leading-tight">
-                            Tool Master
+                            Industrial Skills
                         </h2>
                     </div>
                 </div>
