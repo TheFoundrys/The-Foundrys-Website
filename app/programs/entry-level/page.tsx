@@ -365,7 +365,7 @@ export default function EntryLevelProgramPage() {
 
             {/* FAQ Section */}
             <section className="py-24 px-6 bg-slate-50 border-t border-slate-200">
-                <div className="container mx-auto max-w-3xl">
+                <div className="container mx-auto max-w-auto">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>
                         <p className="text-lg text-slate-600">Common queries about the entry level foundation tracks.</p>

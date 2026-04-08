@@ -100,170 +100,70 @@ function StickyNav() {
 }
 
 const TOOLS = [
-    {
-        name: "pandas", cat: "Data & ML", sz: 1.15, color: "#150458",
-        svg: `<svg viewBox="0 0 24 24" fill="#150458"><path d="M8.333 0h2v7.667h-2zm5.334 0h2v7.667h-2zM8.333 16.333h2V24h-2zm5.334 0h2V24h-2zM8.333 9.5h2v5h-2zm5.334 0h2v5h-2z"/></svg>`
-    },
-    {
-        name: "PyTorch", cat: "Data & ML", sz: 1.1, color: "#EE4C2C",
-        svg: `<svg viewBox="0 0 24 24" fill="#EE4C2C"><path d="M12.005 0 4.952 7.053a9.865 9.865 0 0 0 0 13.99 9.866 9.866 0 0 0 13.99 0 9.866 9.866 0 0 0 0-13.99L16.6 9.397a5.754 5.754 0 0 1 0 8.14 5.755 5.755 0 0 1-8.14 0 5.754 5.754 0 0 1 0-8.14zM16.318 4.877a1.44 1.44 0 1 0 0-2.88 1.44 1.44 0 0 0 0 2.88z"/></svg>`
-    },
-    {
-        name: "TensorFlow", cat: "Data & ML", sz: 1.15, color: "#FF6F00",
-        svg: `<svg viewBox="0 0 24 24" fill="#FF6F00"><path d="M11.54 0L1.292 6.002L1.277 11.167L7.445 7.603V21.622L11.54 24V0ZM12.46 0V24L16.555 21.622V14.87L19.648 16.658L19.63 12.04L16.555 10.284V7.603L22.723 11.167L22.709 5.857L12.46 0Z"/></svg>`
-    },
-    {
-        name: "JAX", cat: "Data & ML", sz: 1.0, color: "#4285F4", fb: true
-    },
-    {
-        name: "Keras", cat: "Data & ML", sz: 1.1, color: "#D00000", fb: true
-    },
-    {
-        name: "MLflow", cat: "Data & ML", sz: 0.88, color: "#0194E2", fb: true
-    },
-    {
-        name: "Kaggle", cat: "Data & ML", sz: 0.9, color: "#20BEFF", fb: true
-    },
-    {
-        name: "spaCy", cat: "Data & ML", sz: 0.85, color: "#09A3D5", fb: true
-    },
-    {
-        name: "NLTK", cat: "Data & ML", sz: 0.75, color: "#154360", fb: true
-    },
-    {
-        name: "OpenCV", cat: "Data & ML", sz: 1.1, color: "#5C3EE8", fb: true
-    },
-    {
-        name: "Jupyter", cat: "Data & ML", sz: 1.0, color: "#F37626",
-        svg: `<svg viewBox="0 0 24 24" fill="#F37626"><path d="M7.157 22.201A1.784 1.784 0 0 1 5.374 24a1.784 1.784 0 0 1-1.784-1.799 1.784 1.784 0 0 1 1.784-1.784 1.784 1.784 0 0 1 1.783 1.784zM20.067 1.783A1.784 1.784 0 0 1 18.284 3.567a1.784 1.784 0 0 1-1.784-1.784A1.784 1.784 0 0 1 18.284 0a1.784 1.784 0 0 1 1.783 1.783zM4.188 5.032a1.186 1.186 0 0 1-1.185 1.186A1.186 1.186 0 0 1 1.817 5.032a1.186 1.186 0 0 1 1.186-1.185 1.186 1.186 0 0 1 1.185 1.185zM12 4.734c-4.01 0-7.58 1.302-8.971 3.157.67-.258 1.657-.404 2.74-.404 2.65 0 4.483.983 4.483 2.266 0 1.284-1.833 2.266-4.483 2.266-.963 0-1.85-.13-2.55-.354C4.37 13.893 7.959 15.27 12 15.27c4.04 0 7.63-1.378 9.78-3.605-.699.224-1.586.354-2.549.354-2.65 0-4.483-.982-4.483-2.266 0-1.283 1.833-2.266 4.483-2.266 1.082 0 2.07.146 2.74.404C20.58 6.036 17.01 4.734 12 4.734z"/></svg>`
-    },
-    {
-        name: "Python", cat: "Data & ML", sz: 1.0, color: "#3776AB",
-        svg: `<svg viewBox="0 0 24 24" fill="#3776AB"><path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.912S0 5.789 0 11.969c0 6.18 3.403 5.963 3.403 5.963h2.031v-2.867s-.109-3.402 3.35-3.402h5.769s3.24.052 3.24-3.131V3.199S18.28 0 11.914 0zm-3.21 1.85a1.046 1.046 0 1 1 0 2.093 1.046 1.046 0 0 1 0-2.093z"/><path d="M12.086 24c6.094 0 5.714-2.656 5.714-2.656l-.007-2.752h-5.814v-.826h8.109S24 18.211 24 12.031c0-6.18-3.403-5.963-3.403-5.963H18.566v2.867s.109 3.402-3.35 3.402H9.447s-3.24-.052-3.24 3.131v5.333S5.72 24 12.086 24zm3.21-1.85a1.046 1.046 0 1 1 0-2.093 1.046 1.046 0 0 1 0 2.093z" fill="#FFD43B"/></svg>`
-    },
-    {
-        name: "scikit-learn", cat: "Data & ML", sz: 0.82, color: "#F7931E",
-        svg: `<svg viewBox="0 0 24 24" fill="#F7931E"><path d="M8.133 4.357c-.67-1.86-2.68-2.957-4.61-2.52C1.593 2.28.303 4.137.57 6.1c.268 1.965 2.02 3.385 3.998 3.264a4.047 4.047 0 0 0 3.565-2.87zm7.734 11.286c-.67-1.86-2.68-2.957-4.61-2.52-1.93.443-3.22 2.3-2.953 4.263.268 1.965 2.02 3.385 3.998 3.264a4.047 4.047 0 0 0 3.565-2.87zM21 9.714c0-2.014-1.634-3.648-3.648-3.648S13.704 7.7 13.704 9.714s1.634 3.648 3.648 3.648S21 11.728 21 9.714z"/></svg>`
-    },
-    { name: "YOLO", cat: "Data & ML", sz: 1.2, color: "#00ADEF", fb: true },
-    { name: "Streamlit", cat: "Data & ML", sz: 1.0, color: "#FF4B4B", fb: true },
-    { name: "Gradio", cat: "Data & ML", sz: 0.9, color: "#F97316", fb: true },
-    { name: "CUDA", cat: "Data & ML", sz: 1.1, color: "#76B900", fb: true },
-    { name: "MLOps", cat: "Data & ML", sz: 0.72, color: "#1D9E75", fb: true },
-
-    {
-        name: "AWS", cat: "Cloud & Infra", sz: 1.1, color: "#FF9900",
-        svg: `<svg viewBox="0 0 24 24" fill="#FF9900"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.743.167-1.166.167z"/><path d="M21.616 18.396c-2.59 1.917-6.35 2.934-9.587 2.934-4.534 0-8.616-1.677-11.7-4.466-.241-.216-.025-.51.266-.343 3.33 1.938 7.447 3.107 11.695 3.107 2.868 0 6.02-.591 8.924-1.83.437-.19.804.287.402.598z" fill="#FF9900"/><path d="M22.699 17.155c-.33-.424-2.184-.2-3.015-.1-.253.03-.292-.19-.063-.35 1.476-1.039 3.898-.74 4.182-.39.285.35-.074 2.78-1.461 3.942-.213.18-.416.084-.32-.152.311-.778 1.008-2.525.677-2.95z" fill="#FF9900"/></svg>`
-    },
-    {
-        name: "Azure", cat: "Cloud & Infra", sz: 1.0, color: "#0078D4",
-        svg: `<svg viewBox="0 0 24 24" fill="#0078D4"><path d="M13.05 4.24L6.56 18.05l-4.12.74L8.73 7.27zm.81-.74l3.85 10.74-8.24 1.49 5.2-2.43L11.2 7.24zm7.25 14.27H2.44l1.88-.34 5.45-9.66L13.05 3.5l1.42 4.04z"/></svg>`
-    },
-    {
-        name: "Colab", cat: "Cloud & Infra", sz: 0.75, color: "#F9AB00",
-        svg: `<svg viewBox="0 0 24 24" fill="#F9AB00"><path d="M16.9 4.8C13.1 4.8 10 7.9 10 11.7s3.1 6.9 6.9 6.9 6.9-3.1 6.9-6.9-3.1-6.9-6.9-6.9zm0 11.5c-2.6 0-4.6-2.1-4.6-4.6s2.1-4.6 4.6-4.6c1.5 0 2.8.7 3.7 1.8l-3.7 2.8 3.7 2.8c-.9 1.1-2.2 1.8-3.7 1.8zM7.1 4.8C3.3 4.8.2 7.9.2 11.7s3.1 6.9 6.9 6.9c1.5 0 2.9-.5 4-1.3l-1.5-1.8c-.7.5-1.6.8-2.5.8-2.6 0-4.6-2.1-4.6-4.6S4.5 7 7.1 7c.9 0 1.8.3 2.5.8l1.5-1.8C10 5.3 8.6 4.8 7.1 4.8z"/></svg>`
-    },
-    { name: "Kubeflow", cat: "Cloud & Infra", sz: 0.85, color: "#4285F4", fb: true },
-    { name: "Ray", cat: "Cloud & Infra", sz: 0.9, color: "#00BCD4", fb: true },
-    { name: "BentoML", cat: "Cloud & Infra", sz: 0.8, color: "#121926", fb: true },
-
-    {
-        name: "OpenAI", cat: "Foundation Models", sz: 1.2, color: "#412991",
-        svg: `<svg viewBox="0 0 24 24" fill="#412991"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.843-3.372 2.02-1.168a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.402-.678zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/></svg>`
-    },
-    {
-        name: "HuggingFace Transformers", cat: "Foundation Models", sz: 1.1, color: "#FFD21E",
-        svg: `<svg viewBox="0 0 24 24" fill="#FFD21E"><path d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12z"/><path d="M12 4.8c-3.9 0-7.2 2.7-7.2 6.6 0 3.3 2.1 6 5.1 6.9l-1.5 1.8h7.2l-1.5-1.8c3-.9 5.1-3.6 5.1-6.9 0-3.9-3.3-6.6-7.2-6.6zm-2.4 5.4c.7 0 1.2.5 1.2 1.2s-.5 1.2-1.2 1.2-1.2-.5-1.2-1.2.5-1.2 1.2-1.2zm4.8 0c.7 0 1.2.5 1.2 1.2s-.5 1.2-1.2 1.2-1.2-.5-1.2-1.2.5-1.2 1.2-1.2zm-2.4 4.2c-1.2 0-2.4-.6-3-1.5l.9-.6c.6.9 1.5 1.2 2.1 1.2s1.5-.3 2.1-1.2l.9.6c-.6.9-1.8 1.5-3 1.5z" fill="#000"/></svg>`
-    },
-    { name: "Hugging Face Hub", cat: "Foundation Models", sz: 0.9, color: "#FFD21E", fb: true },
-    { name: "vLLM", cat: "Foundation Models", sz: 0.85, color: "#3B82F6", fb: true },
-    { name: "Triton Inference Server", cat: "Foundation Models", sz: 0.8, color: "#76B900", fb: true },
-    { name: "Ollama", cat: "Foundation Models", sz: 0.95, color: "#111827", fb: true },
-    { name: "SentenceTransformers", cat: "Foundation Models", sz: 0.82, color: "#4B5563", fb: true },
-    { name: "together.ai", cat: "Foundation Models", sz: 0.75, color: "#7B2FBE", fb: true },
-    { name: "Arcee", cat: "Foundation Models", sz: 0.78, color: "#5A4FCF", fb: true },
-    { name: "Symbolica", cat: "Foundation Models", sz: 0.74, color: "#8B44C4", fb: true },
-    { name: "Upstage", cat: "Foundation Models", sz: 0.7, color: "#6637B8", fb: true },
-    { name: "Cartesia", cat: "Foundation Models", sz: 0.7, color: "#9B3DBF", fb: true },
-
-    {
-        name: "LangChain", cat: "Agents & Orch.", sz: 1.0, color: "#1C7C3C",
-        svg: `<svg viewBox="0 0 24 24" fill="#1C7C3C"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 4.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11zm-1 2h2v4.5l3 1.8-1 1.732-4-2.4V8.5z"/></svg>`
-    },
-    { name: "LlamaIndex", cat: "Agents & Orch.", sz: 1.0, color: "#3B82F6", fb: true },
-    { name: "Haystack", cat: "Agents & Orch.", sz: 0.85, color: "#FF5722", fb: true },
-    { name: "LiveKit", cat: "Agents & Orch.", sz: 0.8, color: "#E5484D", fb: true },
-    { name: "hume", cat: "Agents & Orch.", sz: 0.75, color: "#FF6B6B", fb: true },
-    { name: "aixplain", cat: "Agents & Orch.", sz: 0.7, color: "#E03C6E", fb: true },
-    { name: "vijil", cat: "Agents & Orch.", sz: 0.68, color: "#C0392B", fb: true },
-    { name: "webAI", cat: "Agents & Orch.", sz: 0.7, color: "#922B21", fb: true },
-    { name: "Browserbase", cat: "Agents & Orch.", sz: 0.72, color: "#D44000", fb: true },
-    { name: "crewAI", cat: "Agents & Orch.", sz: 0.78, color: "#E74C3C", fb: true },
-    { name: "veeW ai", cat: "Agents & Orch.", sz: 0.66, color: "#CB4335", fb: true },
-
-    {
-        name: "Qdrant", cat: "Vector DBs", sz: 0.9, color: "#DC244C",
-        svg: `<svg viewBox="0 0 24 24" fill="#DC244C"><path d="m12 0 10.39 6v12L12 24 1.61 18V6zm0 2.31L3.5 7.35v9.3l8.5 4.91 8.5-4.9v-9.3zM7.25 8.5l4.75 2.75 4.75-2.75L12 5.75zM6.5 15.5V9.75l5 2.88v5.75zm11 0L12 18.38v-5.75l5-2.88z"/></svg>`
-    },
-    { name: "FAISS", cat: "Vector DBs", sz: 0.9, color: "#3B82F6", fb: true },
-    { name: "Pinecone", cat: "Vector DBs", sz: 1.0, color: "#2E7D32", fb: true },
-    { name: "Weaviate", cat: "Vector DBs", sz: 0.95, color: "#3B82F6", fb: true },
-    { name: "Dnotitia", cat: "Vector DBs", sz: 0.68, color: "#A93226", fb: true },
-
-    { name: "aaru", cat: "Synthetic Data", sz: 0.85, color: "#2471A3", fb: true },
-    {
-        name: "Delve", cat: "Synthetic Data", sz: 0.8, color: "#1A5276",
-        svg: `<svg viewBox="0 0 24 24" fill="#1A5276"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`
-    },
-    {
-        name: "glean", cat: "Synthetic Data", sz: 0.85, color: "#6436F0",
-        svg: `<svg viewBox="0 0 24 24" fill="#6436F0"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm3.5-11.5A3.5 3.5 0 0 1 12 12a3.5 3.5 0 0 1-3.5-3.5A3.5 3.5 0 0 1 12 5a3.5 3.5 0 0 1 3.5 3.5zm-3.5 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 2c-2.33 0-7 1.17-7 3.5V17h14v-2c0-2.33-4.67-3.5-7-3.5z"/></svg>`
-    },
-    { name: "Solve Intel.", cat: "Synthetic Data", sz: 0.64, color: "#154360", fb: true },
-
-    { name: "ZAMA", cat: "ML Security", sz: 0.85, color: "#1E8449", fb: true },
-    {
-        name: "EDERA", cat: "ML Security", sz: 0.75, color: "#196F3D",
-        svg: `<svg viewBox="0 0 24 24" fill="#196F3D"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l6 2.67V11c0 3.73-2.56 7.21-6 8.32-3.44-1.11-6-4.59-6-8.32V7.67L12 5z"/></svg>`
-    },
-    { name: "Chainguard", cat: "ML Security", sz: 0.78, color: "#0B5345", fb: true },
-    { name: "Evidently AI", cat: "ML Security", sz: 0.8, color: "#FFC107", fb: true },
-    { name: "Guardrails AI", cat: "ML Security", sz: 0.85, color: "#F44336", fb: true },
+    { name: "pandas", cat: "Data & ML", color: "#150458", url: "https://cdn.simpleicons.org/pandas" },
+    { name: "PyTorch", cat: "Data & ML", color: "#EE4C2C", url: "https://cdn.simpleicons.org/pytorch" },
+    { name: "TensorFlow", cat: "Data & ML", color: "#FF6F00", url: "https://cdn.simpleicons.org/tensorflow" },
+    { name: "JAX", cat: "Data & ML", color: "#4285F4", url: "https://raw.githubusercontent.com/google/jax/main/docs/_static/jax_logo_250px.png" },
+    { name: "Keras", cat: "Data & ML", color: "#D00000", url: "https://cdn.simpleicons.org/keras" },
+    { name: "MLflow", cat: "Data & ML", color: "#0194E2", url: "https://cdn.simpleicons.org/mlflow" },
+    { name: "Kaggle", cat: "Data & ML", color: "#20BEFF", url: "https://cdn.simpleicons.org/kaggle" },
+    { name: "spaCy", cat: "Data & ML", color: "#09A3D5", url: "https://cdn.simpleicons.org/spacy" },
+    { name: "NLTK", cat: "Data & ML", color: "#154360", url: "https://www.nltk.org/_static/logo.png" },
+    { name: "OpenCV", cat: "Data & ML", color: "#5C3EE8", url: "https://cdn.simpleicons.org/opencv" },
+    { name: "Jupyter", cat: "Data & ML", color: "#F37626", url: "https://cdn.simpleicons.org/jupyter" },
+    { name: "Python", cat: "Data & ML", color: "#3776AB", url: "https://cdn.simpleicons.org/python" },
+    { name: "scikit-learn", cat: "Data & ML", color: "#F7931E", url: "https://cdn.simpleicons.org/scikitlearn" },
+    { name: "YOLO", cat: "Data & ML", color: "#00ADEF", url: "https://cdn.simpleicons.org/yolo" },
+    { name: "Streamlit", cat: "Data & ML", color: "#FF4B4B", url: "https://cdn.simpleicons.org/streamlit" },
+    { name: "Gradio", cat: "Data & ML", color: "#F97316", url: "https://cdn.simpleicons.org/gradio" },
+    { name: "CUDA", cat: "Data & ML", color: "#76B900", url: "https://cdn.simpleicons.org/nvidia" },
+    { name: "AWS", cat: "Cloud & Infra", color: "#FF9900", url: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" },
+    { name: "Azure", cat: "Cloud & Infra", color: "#0078D4", url: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg" },
+    { name: "Colab", cat: "Cloud & Infra", color: "#F9AB00", url: "https://cdn.simpleicons.org/googlecolab" },
+    { name: "Kubeflow", cat: "Cloud & Infra", color: "#4285F4", url: "https://www.kubeflow.org/images/logo.svg" },
+    { name: "Ray", cat: "Cloud & Infra", color: "#00BCD4", url: "https://cdn.simpleicons.org/ray" },
+    { name: "BentoML", cat: "Cloud & Infra", color: "#121926", url: "https://cdn.simpleicons.org/bentoml" },
+    { name: "OpenAI", cat: "Foundation Models", color: "#412991", url: "https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" },
+    { name: "HuggingFace", cat: "Foundation Models", color: "#FFD21E", url: "https://cdn.simpleicons.org/huggingface" },
+    { name: "vLLM", cat: "Foundation Models", color: "#3B82F6", url: "https://raw.githubusercontent.com/vllm-project/vllm/main/docs/source/assets/vllm-logo-text-light.png" },
+    { name: "Triton", cat: "Foundation Models", color: "#76B900", url: "https://cdn.simpleicons.org/nvidia" },
+    { name: "Ollama", cat: "Foundation Models", color: "#111827", url: "https://cdn.simpleicons.org/ollama" },
+    { name: "SentenceTransformers", cat: "Foundation Models", color: "#4B5563", url: "https://raw.githubusercontent.com/UKPLab/sentence-transformers/master/docs/img/logo.png" },
+    { name: "Together AI", cat: "Foundation Models", color: "#7B2FBE", url: "https://avatars.githubusercontent.com/u/104278457?s=200&v=4" },
+    { name: "Qdrant", cat: "Vector DBs", color: "#DC244C", url: "https://cdn.simpleicons.org/qdrant" },
+    { name: "FAISS", cat: "Vector DBs", color: "#3B82F6", url: "https://raw.githubusercontent.com/facebookresearch/faiss/main/docs/faiss_logo.png" },
+    { name: "Pinecone", cat: "Vector DBs", color: "#2E7D32", url: "https://upload.wikimedia.org/wikipedia/commons/7/71/Pinecone-Full-Logo-Black.svg" },
+    { name: "Weaviate", cat: "Vector DBs", color: "#3B82F6", url: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Weaviate_logo.svg" },
+    { name: "Databricks", cat: "Synthetic Data", color: "#2471A3", url: "https://cdn.simpleicons.org/databricks" },
+    { name: "Apache", cat: "Synthetic Data", color: "#1A5276", url: "https://cdn.simpleicons.org/apache" },
+    { name: "Chainguard", cat: "ML Security", color: "#0B5345", url: "https://cdn.simpleicons.org/chainguard" },
 ];
 
-const TOOLS_ROW_1 = TOOLS.slice(0, 25);
-const TOOLS_ROW_2 = TOOLS.slice(25);
+const TOOLS_ROW_1 = TOOLS.slice(0, 20);
+const TOOLS_ROW_2 = TOOLS.slice(20);
 
-const initials = (name: string) => {
-    return name.replace(/[^a-zA-Z0-9 ]/g, '').split(/[\s.]+/).map(w => w[0] || '').join('').slice(0, 2).toUpperCase();
-};
-
-const ToolMarquee = ({ tools, reverse = false, speed = 40 }: { tools: any[], reverse?: boolean, speed?: number }) => {
+const ToolMarquee = ({ tools, reverse = false, speed = 80 }: { tools: any[], reverse?: boolean, speed?: number }) => {
     return (
-        <div className="flex w-full overflow-hidden select-none py-4 md:py-6 relative">
+        <div className="flex w-full overflow-hidden select-none py-2 md:py-3 relative bg-white/50 backdrop-blur-sm border-y border-slate-100">
             <motion.div
-                className="flex items-center gap-10 md:gap-16 whitespace-nowrap"
+                className="flex items-center gap-12 md:gap-20 whitespace-nowrap"
                 animate={{ x: reverse ? ["-50%", "0%"] : ["0%", "-50%"] }}
                 transition={{ duration: speed, repeat: Infinity, ease: "linear" }}
             >
                 {[...tools, ...tools].map((tool, idx) => (
-                    <div key={idx} className="flex items-center gap-3.5 transition-all duration-300">
-                        {tool.svg && !tool.fb ? (
-                            <div
-                                className="w-8 h-8 md:w-10 md:h-10 shrink-0 flex items-center justify-center transition-all"
-                                dangerouslySetInnerHTML={{ __html: tool.svg.replace('<svg ', `<svg width="100%" height="100%" `) }}
+                    <div key={idx} className="flex items-center gap-4 group cursor-default">
+                        <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center p-2 bg-white rounded-xl shadow-sm border border-slate-100 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+                            <img
+                                src={tool.url}
+                                alt={tool.name}
+                                className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
+                                onError={(e) => {
+                                    (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${tool.name}&background=random&color=fff&size=128`;
+                                }}
                             />
-                        ) : (
-                            <div
-                                className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center font-black text-white rounded-lg shrink-0 transition-all"
-                                style={{ background: tool.color, fontSize: '11px' }}
-                            >
-                                {initials(tool.name)}
-                            </div>
-                        )}
+                        </div>
                         <span
-                            className="text-xl md:text-3xl font-black tracking-tighter"
-                            style={{ color: tool.color }}
+                            className="text-2xl md:text-4xl font-bold tracking-tighter text-slate-400 group-hover:text-slate-900 transition-colors duration-300"
                         >
                             {tool.name}
                         </span>
@@ -1044,21 +944,22 @@ export default function AISchoolPage() {
                 </div>
             </section>
             {/* Tool Master Section — Contained Design */}
-            <section id="tool-master" className="py-10 bg-slate-50 overflow-hidden relative border-y border-slate-200">
+            <section id="tool-master" className="py-6 bg-slate-50 overflow-hidden relative border-y border-slate-200">
                 <div className="container mx-auto max-w-6xl relative z-10 px-6">
-                    <div className="text-center mb-10">
-                        <p className="text-blue-600 text-sm font-bold uppercase tracking-widest mb-4">Industrial Stack</p>
-                        <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter mb-4 leading-tight">
+                    <div className="text-center mb-2">
+                        <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter mb-1 leading-tight">
                             Tool Master
                         </h2>
                     </div>
                 </div>
 
-                {/* Dual Row Inter-scrolling Marquee - Full Width - Reduced Height */}
-                <div className="relative py-2 md:py-4 overflow-hidden">
-                    <div className="flex flex-col gap-2 md:gap-4">
+                {/* Single Row on Mobile, Dual Row on Desktop */}
+                <div className="relative py-1 md:py-2 overflow-hidden">
+                    <div className="flex flex-col gap-1 md:gap-2">
                         <ToolMarquee tools={TOOLS_ROW_1} reverse={false} speed={40} />
-                        <ToolMarquee tools={TOOLS_ROW_2} reverse={true} speed={55} />
+                        <div className="hidden md:block">
+                            <ToolMarquee tools={TOOLS_ROW_2} reverse={true} speed={55} />
+                        </div>
                     </div>
                 </div>
             </section>
