@@ -1,12 +1,10 @@
 import { Navbar } from "@/components/ui/navbar";
 import { Hero } from "@/components/hero";
 import { InfiniteLogoScroll } from "@/components/ui/infinite-logo-scroll";
-import { Philosophy } from "@/components/philosophy";
 import { Triad } from "@/components/triad";
 import { Campus } from "@/components/campus";
 import { Footer } from "@/components/footer";
 import { Metadata } from "next";
-import { ArchetypeColumns } from "@/components/home/archetype-columns";
 // import { FaqPreview } from "@/components/home/faq-preview";
 import { TheForging } from "@/components/home/the-forging";
 import { UniqueNeeds } from "@/components/home/unique-needs";
@@ -60,12 +58,8 @@ export default function Home() {
       <Certifications />
       <Testimonials />
       <InfiniteLogoScroll />
-      <Philosophy />
       {/* <Triad /> */}
       <UniqueNeeds />
-
-      {/* Section 2: The Archetypes */}
-      <ArchetypeColumns />
 
       {/* <TheForging /> */}
 

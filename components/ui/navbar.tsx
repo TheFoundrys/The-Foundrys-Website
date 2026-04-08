@@ -443,6 +443,18 @@ export function Navbar() {
                                 </AnimatePresence>
                             </div>
 
+                            {/* About Us Link */}
+                            <Link
+                                href="/about"
+                                onClick={handleHaptic}
+                                className={cn(
+                                    "text-sm font-medium transition-colors hover:text-blue-600 py-2",
+                                    pathname === "/about" ? "text-slate-900 font-bold" : "text-slate-500"
+                                )}
+                            >
+                                About Us
+                            </Link>
+
                             {/* 'More' Dropdown */}
                             <div
                                 className="relative group"
@@ -475,16 +487,6 @@ export function Navbar() {
                                         >
                                             <div className="p-1 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-white/80 overflow-hidden ring-1 ring-slate-900/5 flex flex-col gap-1"
                                             >
-                                                <Link
-                                                    href="/about"
-                                                    onClick={handleHaptic}
-                                                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
-                                                >
-                                                    <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
-                                                        <Users size={16} />
-                                                    </div>
-                                                    <span className="text-sm font-bold text-slate-700">About Us</span>
-                                                </Link>
                                                 <Link
                                                     href="/events"
                                                     onClick={handleHaptic}
@@ -752,6 +754,16 @@ export function Navbar() {
                                     </AnimatePresence>
                                 </div>
 
+                                {/* About Us (Mobile) */}
+                                <Link
+                                    href="/about"
+                                    onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                    className="flex items-center justify-between w-full p-5 rounded-2xl bg-white/60 border border-white/50 shadow-sm"
+                                >
+                                    <span className="text-xl font-bold text-slate-900">About Us</span>
+                                    <Users size={20} className="text-slate-500" />
+                                </Link>
+
                                 {/* More Accordion */}
                                 <div className="rounded-2xl bg-white/60 p-1 border border-white/50 shadow-sm">
                                     <button
@@ -771,16 +783,6 @@ export function Navbar() {
                                                 className="overflow-hidden"
                                             >
                                                 <div className="px-2 pb-2 flex flex-col gap-2 pt-2">
-                                                    <Link
-                                                        href="/about"
-                                                        onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
-                                                    >
-                                                        <div className="w-8 h-8 rounded-md bg-blue-50 flex items-center justify-center text-blue-600">
-                                                            <Users size={16} />
-                                                        </div>
-                                                        <span className="font-semibold text-slate-700">About Us</span>
-                                                    </Link>
                                                     <Link
                                                         href="/events"
                                                         onClick={() => { setIsOpen(false); handleHaptic(); }}

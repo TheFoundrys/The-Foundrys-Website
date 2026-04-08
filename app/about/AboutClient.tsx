@@ -3,200 +3,132 @@
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Linkedin, Globe } from "lucide-react";
+import { ArrowUpRight, BrainCircuit, Landmark, Leaf, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
+
+const ARCHETYPES = [
+    { title: "Engineer Intelligence", school: "Deep Tech", icon: BrainCircuit, color: "text-blue-600", desc: "Architect machines that think." },
+    { title: "Build Empires", school: "Venture Builder", icon: Landmark, color: "text-amber-600", desc: "Construct sovereign systems." },
+    { title: "Nature is Blueprint", school: "Sustainability", icon: Leaf, color: "text-emerald-600", desc: "Biology as technology." },
+    { title: "Power is Harvested", school: "Energy", icon: Zap, color: "text-cyan-600", desc: "Capture energy from cosmos." }
+];
 
 export function AboutClient() {
     return (
-        <main className="min-h-screen bg-slate-50 selection:bg-blue-100 selection:text-blue-900">
+        <main className="min-h-screen bg-slate-100 text-slate-900 selection:bg-blue-200 selection:text-blue-900">
             <Navbar />
 
-            {/* Hero Section */}
-            <section className="pt-32 pb-20 px-6 relative overflow-hidden bg-slate-900 text-white">
-                {/* Background Gradients removed as requested */}
+            {/* Scroll 1: Impact Hero & Vision - Robust Grey Grid */}
+            <section className="h-screen flex items-center justify-center relative overflow-hidden bg-slate-100 border-b border-slate-200">
+                <div className="absolute inset-0 bg-[radial-gradient(#94a3b8_1.2px,transparent_1.2px)] [background-size:24px_24px] opacity-15" />
+                <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-400/20 blur-[120px] rounded-full" />
 
-                <div className="container mx-auto max-w-5xl relative z-10 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <div className="inline-block px-4 py-1.5 rounded-full border border-slate-700 bg-slate-800/50 text-slate-300 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
-                            Our Origin Story
-                        </div>
-                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter mb-8 leading-tight">
-                            We didn&apos;t just want to build a school. <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">We wanted to build a Foundry.</span>
+                <div className="container mx-auto max-w-5xl px-6 text-center z-10">
+                    <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                        <span className="text-white font-extrabold uppercase tracking-[0.4em] text-[10px] mb-8 inline-block bg-slate-900 px-4 py-1 rounded-full shadow-lg">The Origin</span>
+                        <h1 className="text-5xl md:text-8xl font-bold tracking-tighter mb-8 leading-[0.9] text-slate-900">
+                            We didn&apos;t build a school. <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">We built a Foundry.</span>
                         </h1>
-                        <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-                            The world needs Architects, not just graduates. We exist to close the gap between academic theory and the raw, rapid velocity of the deep tech industry.
+                        <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-16 leading-relaxed">
+                            Replacing rote memorization with rigorous creation. We forge sovereign innovators who architect the new foundations of the Deep Tech economy.
                         </p>
+                        <div className="grid md:grid-cols-2 gap-10 text-left max-w-4xl mx-auto pt-10">
+                            <div className="p-8 rounded-[2.5rem] bg-white border border-slate-200 shadow-xl shadow-slate-200/50">
+                                <h4 className="text-blue-600 font-bold mb-2">The Vision</h4>
+                                <p className="text-slate-500 text-sm">Forge a generation of innovators who don&apos;t just participate—they architect the future.</p>
+                            </div>
+                            <div className="p-8 rounded-[2.5rem] bg-white border border-slate-200 shadow-xl shadow-slate-200/50">
+                                <h4 className="text-indigo-600 font-bold mb-2">The Mission</h4>
+                                <p className="text-slate-500 text-sm">Bridging the void between academic theory and the raw velocity of deep tech industry.</p>
+                            </div>
+                        </div>
                     </motion.div>
                 </div>
             </section>
 
-            {/* Vision & Mission */}
-            <section className="py-24 px-6 bg-white">
-                <div className="container mx-auto max-w-4xl">
-                    <div className="text-center space-y-20 md:space-y-24">
-                        <div className="space-y-4 md:space-y-6">
-                            <h3 className="text-blue-600 font-bold uppercase tracking-widest text-sm">The Vision</h3>
-                            <h2 className="text-3xl md:text-5xl font-bold text-slate-900">Forge the Future.</h2>
-                            <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
-                                To create a generation of sovereign innovators who don&apos;t just participate in the economy, but architect its new foundations in Deep Tech, Entrepreneurship, Sustainability and Energy.
-                            </p>
+            {/* Scroll 2: Philosophy & Archetypes - Warm Sand/Gallery Aesthetics */}
+            <section className="h-screen flex items-center justify-center bg-[#f7f5ef] px-6 relative overflow-hidden border-b border-slate-200">
+                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-amber-200/20 blur-[150px] rounded-full -mr-32 -mt-32" />
+                <div className="container mx-auto max-w-6xl z-10">
+                    <div className="grid lg:grid-cols-2 gap-20 items-center">
+                        <div className="space-y-8 text-slate-900">
+                            <span className="text-blue-600 font-bold tracking-widest text-xs uppercase border-b-2 border-blue-600 pb-1">Philosophy</span>
+                            <h2 className="text-4xl md:text-6xl font-bold leading-tight">
+                                Degrees are printed. <br />
+                                <span className="text-slate-400">Skills are forged.</span>
+                            </h2>
+                            <div className="space-y-6 text-slate-600 text-lg">
+                                <p>The lecture hall is dead. success is measured by what you ship, not what you memorize.</p>
+                                <ul className="space-y-4 font-bold text-slate-900">
+                                    <li className="flex items-center gap-4">
+                                        <span className="text-slate-300 line-through">Memorize Syntax</span>
+                                        <div className="h-0.5 w-8 bg-blue-200" />
+                                        <span>Architect Logic</span>
+                                    </li>
+                                    <li className="flex items-center gap-4">
+                                        <span className="text-slate-300 line-through">Pass Exams</span>
+                                        <div className="h-0.5 w-8 bg-blue-200" />
+                                        <span>Deploy Products</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
 
-                        <div className="h-px w-24 bg-slate-300 mx-auto" />
-
-                        <div className="space-y-4 md:space-y-6">
-                            <h3 className="text-indigo-600 font-bold uppercase tracking-widest text-sm">The Mission</h3>
-                            <h2 className="text-3xl md:text-5xl font-bold text-slate-900">Bridging the Void.</h2>
-                            <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
-                                To replace rote memorization with rigorous creation. We provide the mentorship, capital network, and deep technical capabilities typically found only in elite R&D labs.
-                            </p>
+                        <div className="grid grid-cols-2 gap-6">
+                            {ARCHETYPES.map((arch) => (
+                                <div key={arch.title} className="p-8 rounded-[3rem] bg-white border border-slate-200 shadow-lg shadow-slate-300/20 group hover:shadow-blue-500/10 transition-all">
+                                    <arch.icon className={`${arch.color} mb-6`} size={36} />
+                                    <h4 className="font-bold text-[10px] text-slate-400 uppercase tracking-widest mb-2">{arch.school}</h4>
+                                    <h3 className="text-xl font-bold mb-3 text-slate-900">{arch.title}</h3>
+                                    <p className="text-xs text-slate-500 leading-relaxed">{arch.desc}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Founder Section */}
-            <section className="py-16 md:py-24 bg-slate-950 text-white relative overflow-hidden">
-                <div className="container mx-auto max-w-6xl relative z-10 px-6">
-                    <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
+            {/* Scroll 3: The Founder (Vishwa) - High Contrast Dark Mode Finish */}
+            <section className="h-screen flex items-center justify-center bg-slate-900 px-6 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:40px_40px]" />
+                <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 blur-[120px] rounded-full" />
 
-                        {/* Visual / Image */}
+                <div className="container mx-auto max-w-6xl z-10 text-white">
+                    <div className="flex flex-col lg:flex-row gap-20 items-center">
                         <div className="flex-1 w-full relative">
-                            <div className="relative aspect-square w-full max-w-sm md:max-w-md mx-auto rounded-full overflow-hidden border-4 border-slate-700 bg-slate-800 shadow-2xl">
-                                <Image
-                                    src="/images/vishwa.png"
-                                    alt="Vishwanath Akuthota"
-                                    fill
-                                    className="object-cover"
-                                />
+                            <div className="relative aspect-square max-w-md mx-auto rounded-full overflow-hidden border-8 border-slate-800 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] z-20">
+                                <Image src="/images/vishwa.png" alt="Vishwanath Akuthota" fill className="object-cover" />
                             </div>
                         </div>
-
-                        {/* Content */}
-                        <div className="flex-[1.5] space-y-6 md:space-y-8">
-                            <div className="text-center lg:text-left">
-                                <h2 className="text-3xl md:text-5xl font-bold mb-2">Vishwanath Akuthota</h2>
-                                <p className="text-lg md:text-xl text-blue-400 font-medium">Founder & CEO, Dr.Pinnacle & The Foundry&apos;s</p>
+                        <div className="flex-[1.4] space-y-8 z-10">
+                            <div>
+                                <h2 className="text-5xl md:text-7xl font-bold mb-4 tracking-tighter text-white">Vishwanath Akuthota</h2>
+                                <p className="text-2xl text-blue-400 font-medium tracking-tight">Founder & CEO</p>
                             </div>
-
-                            <div className="space-y-6 text-slate-300 text-base md:text-lg leading-relaxed">
-                                <p>
-                                    &quot;Leadership is not just about building technology it is about building trust, resilience, and possibility.&quot;
-                                </p>
-                                <p>
-                                    With over 15 years at the intersection of Artificial Intelligence, Cybersecurity, Quantum Computing, Blockchain and Enterprise Transformation, Vishwanath has witnessed firsthand how bold ideas can reshape industries.
-                                </p>
-                                <p>
-                                    His journey from designing AI solutions that helped Fortune 500 companies scale, to creating platforms that reduce complexity has culminated in the creation of <span className="text-white font-bold">The Foundry&apos;s</span>. A place where the next generation of architects is forged.
-                                </p>
+                            <div className="space-y-6 text-slate-300 text-lg leading-relaxed max-w-2xl border-l border-blue-500/30 pl-8">
+                                <p className="font-serif italic text-3xl text-blue-50/80 leading-snug">&quot;Leadership is about building trust, resilience, and possibility.&quot;</p>
+                                <p>With 15+ years in AI, Quantum, and Blockchain, Vishwanath built The Foundry&apos;s to forge the next generation of architects who reshape global industries.</p>
                             </div>
-
-                            <div className="flex flex-col md:flex-row items-center gap-4 pt-4 w-full">
-                                <Link
-                                    href="https://www.linkedin.com/in/vishwanathakuthota/"
-                                    target="_blank"
-                                    className="w-full md:w-auto inline-flex justify-center items-center gap-2 px-6 py-3 border border-slate-700 text-slate-300 rounded-full font-bold hover:bg-slate-800 hover:text-white transition-colors whitespace-nowrap"
-                                >
-                                    Connect on LinkedIn <ArrowUpRight size={18} />
-                                </Link>
-
-
-
-                                <Link
-                                    href="https://www.drpinnacle.com"
-                                    target="_blank"
-                                    className="w-full md:w-auto inline-flex justify-center items-center gap-2 px-6 py-3 bg-white text-slate-950 rounded-full font-bold hover:bg-slate-200 transition-colors whitespace-nowrap"
-                                >
-                                    Visit Dr.Pinnacle <ArrowUpRight size={18} />
-                                </Link>
-
-                                <Link
-                                    href="/about/team"
-                                    className="w-full md:w-auto inline-flex justify-center items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-500 transition-all hover:scale-105 whitespace-nowrap"
-                                >
-                                    Meet the Team <ArrowUpRight size={20} />
-                                </Link>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            {/* Vivek Section */}
-            {/* <section className="py-16 md:py-24 bg-white text-slate-900 relative overflow-hidden border-t border-slate-100">
-                <div className="container mx-auto max-w-6xl relative z-10 px-6">
-                    <div className="flex flex-col lg:flex-row-reverse gap-10 lg:gap-16 items-start">
-
-                       
-                        <div className="flex-1 w-full relative">
-                            <div className="relative aspect-square w-full max-w-sm md:max-w-md mx-auto rounded-full overflow-hidden border-4 border-slate-100 bg-slate-200 shadow-xl">
-                                <div className="absolute inset-0 flex items-center justify-center text-slate-400 font-bold">
-                                    Vivek Rangabhashyam
-                                </div>
-                            </div>
-                        </div>
-
-                        
-                        <div className="flex-[1.5] space-y-6 md:space-y-8">
-                            <div className="text-center lg:text-left">
-                                <h2 className="text-3xl md:text-5xl font-bold mb-2 text-slate-900">Vivek Rangabhashyam</h2>
-                                <p className="text-lg md:text-xl text-blue-600 font-medium">3D Animation Specialist & Serial Entrepreneur</p>
-                            </div>
-
-                            <div className="space-y-6 text-slate-600 text-base md:text-lg leading-relaxed">
-                                <p>
-                                    Vivek Rangabhashyam is a seasoned 3D Animation Specialist who has worked on major movie franchises and educational content. His journey from Google&apos;s &apos;GXBO&apos; project to serial entrepreneurship has made him a pivotal figure in the startup ecosystem.
-                                </p>
-                                <p>
-                                    As the founder of Markitome and co-founder of Sea Ridges Financial Service, Vivek has dedicated his career to mentoring young entrepreneurs and consulting with startups worldwide, bridging the gap between technical expertise and business leadership.
-                                </p>
-                            </div>
-
-                            <div className="flex flex-col md:flex-row items-center gap-4 pt-4 w-full">
-                                <Link
-                                    href="/about/faculty/vivek-rangabhashyam"
-                                    className="w-full md:w-auto inline-flex justify-center items-center gap-2 px-8 py-4 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-slate-800 transition-all hover:scale-105 whitespace-nowrap"
-                                >
-                                    Read Full Story <ArrowUpRight size={20} />
-                                </Link>
-
-                                <div className="flex gap-4">
-                                    <Link href="https://www.linkedin.com/in/vivekrangabhashyam/" target="_blank" className="p-3 rounded-full bg-slate-100 text-slate-600 hover:bg-blue-600 hover:text-white transition-colors border border-slate-200">
-                                        <Linkedin size={20} />
+                            <div className="flex items-center justify-start gap-3 pt-6 pb-2 overflow-x-auto no-scrollbar mask-fade-right">
+                                {[
+                                    { href: "https://www.linkedin.com/in/vishwanathakuthota/", text: "Connect LinkedIn" },
+                                    { href: "https://www.drpinnacle.com", text: "Dr.Pinnacle Website", white: true },
+                                    { href: "/about/team", text: "Foundry Team", blue: true }
+                                ].map((btn) => (
+                                    <Link key={btn.text} href={btn.href} className={`px-9 py-4 rounded-full font-bold text-sm transition-all flex items-center gap-2 whitespace-nowrap ${btn.white ? 'bg-white text-slate-900 shadow-xl' : btn.blue ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30' : 'bg-slate-800 text-white border border-slate-700 shadow-sm'}`}>
+                                        {btn.text} <ArrowUpRight size={16} />
                                     </Link>
-                                    <Link href="https://vivekrangabhashyam.com/" target="_blank" className="p-3 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition-colors border border-slate-200">
-                                        <Globe size={20} />
-                                    </Link>
-                                </div>
+                                ))}
                             </div>
                         </div>
                     </div>
                 </div>
-            </section> */}
-
-
-            {/* Meet the Team CTA */}
-            {/* <section className="py-24 px-6 bg-slate-900 border-t border-slate-800">
-                <div className="container mx-auto max-w-4xl text-center">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Built by Builders.</h2>
-                    <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-                        We are a collective of Engineers, Researchers, and Founders who have built systems that impact millions.
-                    </p>
-
-                </div>
-            </section> */}
+            </section>
 
             <Footer />
         </main>
     );
 }
-
-
