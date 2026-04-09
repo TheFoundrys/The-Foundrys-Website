@@ -13,7 +13,7 @@ const offices = [
     {
         country: "India",
         city: "Warangal",
-        address: "Bheemaram, Hasanparthy, Warangal, Telangana.",
+        address: "2-6-983 New, 2/725/1-1-X/5-3 old circuit house road, KLN Reddy colony, Hanamkonda Warangal Telangana 506001.",
     },
     {
         country: "Australia",

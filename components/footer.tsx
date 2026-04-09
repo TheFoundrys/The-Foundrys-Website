@@ -161,7 +161,7 @@ export function Footer({ hideCTA = false, isDark = false }: FooterProps) {
                                     <span className={`${isDark ? 'text-white' : 'text-slate-900'} font-bold`}>Warangal Office</span>
                                 </div>
                                 <p className="text-sm leading-relaxed pl-11 italic opacity-80">
-                                    Bheemaram, Hasanparthy, Warangal, Telangana.
+                                    2-6-983 New, 2/725/1-1-X/5-3 old circuit house road, KLN Reddy colony, Hanamkonda Warangal Telangana 506001.
                                 </p>
                             </div>
                         </div>
