@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Twitter, Instagram, Youtube, Linkedin, Facebook, MapPin, Mail } from "lucide-react";
+import { Twitter, Instagram, Youtube, Linkedin, Facebook, MapPin, Mail, Phone } from "lucide-react";
 
 interface FooterProps {
     hideCTA?: boolean;
@@ -84,14 +84,13 @@ export function Footer({ hideCTA = false, isDark = false }: FooterProps) {
 
                 {/* Contact Section */}
                 <div className={`pt-8 border-t ${isDark ? 'border-slate-800' : 'border-slate-200'} mb-12`}>
-                    <h3 className={`${isDark ? 'text-white' : 'text-slate-900'} font-bold mb-6 text-lg uppercase tracking-wider`}>
+                    <h3 className={`${isDark ? 'text-white' : 'text-slate-900'} font-bold mb-8 text-lg uppercase tracking-wider`}>
                         Contact
                     </h3>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                        {/* Email & Social */}
-                        <div className="flex flex-col gap-6">
+                    <div className="flex flex-col lg:flex-row gap-x-16 gap-y-12">
+                        {/* Email, Phone & Social */}
+                        <div className="flex flex-col gap-4 min-w-[250px]">
                             <a
                                 href="mailto:info@thefoundrys.com"
                                 className={`flex items-center gap-3 transition-colors ${isDark ? 'hover:text-emerald-400' : 'hover:text-slate-900'}`}
@@ -104,41 +103,68 @@ export function Footer({ hideCTA = false, isDark = false }: FooterProps) {
                                 </span>
                             </a>
 
-                            <div className="flex gap-4 items-center">
-                                <Link href="#" className={`${isDark ? 'text-slate-400 hover:text-emerald-400' : 'text-slate-600 hover:text-slate-900'} transition-all`}><Twitter size={20} /></Link>
-                                <Link href="#" className={`${isDark ? 'text-slate-400 hover:text-emerald-400' : 'text-slate-600 hover:text-slate-900'} transition-all`}><Linkedin size={20} /></Link>
-                                <Link href="#" className={`${isDark ? 'text-slate-400 hover:text-emerald-400' : 'text-slate-600 hover:text-slate-900'} transition-all`}><Instagram size={20} /></Link>
-                                <Link href="#" className={`${isDark ? 'text-slate-400 hover:text-emerald-400' : 'text-slate-600 hover:text-slate-900'} transition-all`}><Youtube size={20} /></Link>
-                                <Link href="#" className={`${isDark ? 'text-slate-400 hover:text-emerald-400' : 'text-slate-600 hover:text-slate-900'} transition-all`}><Facebook size={20} /></Link>
-                            </div>
-                        </div>
-
-                        {/* USA Office */}
-                        <div className="flex flex-col gap-3">
-                            <div className="flex gap-3 items-center">
+                            <a
+                                href="tel:+917981171474"
+                                className={`flex items-center gap-3 transition-colors ${isDark ? 'hover:text-emerald-400' : 'hover:text-slate-900'}`}
+                            >
                                 <div className={`w-8 h-8 rounded-full ${isDark ? 'bg-slate-900 border border-slate-800 text-emerald-400' : 'bg-slate-100 text-slate-600'} flex items-center justify-center shrink-0`}>
-                                    <MapPin size={16} />
+                                    <Phone size={16} />
                                 </div>
-                                <span className={`${isDark ? 'text-white' : 'text-slate-900'} font-bold`}>United States</span>
+                                <span className={`${isDark ? 'text-slate-300' : 'text-slate-900'} font-bold`}>
+                                    +91 79811 71474
+                                </span>
+                            </a>
+
+                            <div className="flex gap-4 items-center mt-2">
+                                <Link href="https://twitter.com/thefoundrys" className={`${isDark ? 'text-slate-400 hover:text-emerald-400' : 'text-slate-600 hover:text-slate-900'} transition-all`}><Twitter size={20} /></Link>
+                                <Link href="https://www.linkedin.com/company/the-foundry-s/" className={`${isDark ? 'text-slate-400 hover:text-emerald-400' : 'text-slate-600 hover:text-slate-900'} transition-all`}><Linkedin size={20} /></Link>
+                                <Link href="https://www.instagram.com/the.foundrys/" className={`${isDark ? 'text-slate-400 hover:text-emerald-400' : 'text-slate-600 hover:text-slate-900'} transition-all`}><Instagram size={20} /></Link>
+                                <Link href="https://www.youtube.com/@thefoundrys" className={`${isDark ? 'text-slate-400 hover:text-emerald-400' : 'text-slate-600 hover:text-slate-900'} transition-all`}><Youtube size={20} /></Link>
+                                <Link href="https://www.facebook.com/thefoundrys/" className={`${isDark ? 'text-slate-400 hover:text-emerald-400' : 'text-slate-600 hover:text-slate-900'} transition-all`}><Facebook size={20} /></Link>
                             </div>
-                            <p className="text-sm leading-relaxed pl-11 italic opacity-80">
-                                2343 Dulles Station Blvd, Apt 256, Herndon, Virginia 20171
-                            </p>
                         </div>
 
-                        {/* Hyderabad Office */}
-                        <div className="flex flex-col gap-3">
-                            <div className="flex gap-3 items-center">
-                                <div className={`w-8 h-8 rounded-full ${isDark ? 'bg-slate-900 border border-slate-800 text-emerald-400' : 'bg-slate-100 text-slate-600'} flex items-center justify-center shrink-0`}>
-                                    <MapPin size={16} />
+                        {/* Addresses Group - All three side by side */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 flex-1">
+                            {/* USA Office */}
+                            <div className="flex flex-col gap-3">
+                                <div className="flex gap-3 items-center">
+                                    <div className={`w-8 h-8 rounded-full ${isDark ? 'bg-slate-900 border border-slate-800 text-emerald-400' : 'bg-slate-100 text-slate-600'} flex items-center justify-center shrink-0`}>
+                                        <MapPin size={16} />
+                                    </div>
+                                    <span className={`${isDark ? 'text-white' : 'text-slate-900'} font-bold`}>United States</span>
                                 </div>
-                                <span className={`${isDark ? 'text-white' : 'text-slate-900'} font-bold`}>Hyderabad Office</span>
+                                <p className="text-sm leading-relaxed pl-11 italic opacity-80">
+                                    2343 Dulles Station Blvd, Apt 256, Herndon, Virginia 20171
+                                </p>
                             </div>
-                            <p className="text-sm leading-relaxed pl-11 italic opacity-80">
-                                Jubilee Hills, Road No 36 & 37, Hyderabad, Telangana - 500033
-                            </p>
-                        </div>
 
+                            {/* Hyderabad Office */}
+                            <div className="flex flex-col gap-3">
+                                <div className="flex gap-3 items-center">
+                                    <div className={`w-8 h-8 rounded-full ${isDark ? 'bg-slate-900 border border-slate-800 text-emerald-400' : 'bg-slate-100 text-slate-600'} flex items-center justify-center shrink-0`}>
+                                        <MapPin size={16} />
+                                    </div>
+                                    <span className={`${isDark ? 'text-white' : 'text-slate-900'} font-bold`}>Hyderabad Office</span>
+                                </div>
+                                <p className="text-sm leading-relaxed pl-11 italic opacity-80">
+                                    Jubilee Hills, Road No 36 & 37, Hyderabad, Telangana - 500033
+                                </p>
+                            </div>
+
+                            {/* Warangal Office */}
+                            <div className="flex flex-col gap-3">
+                                <div className="flex gap-3 items-center">
+                                    <div className={`w-8 h-8 rounded-full ${isDark ? 'bg-slate-900 border border-slate-800 text-emerald-400' : 'bg-slate-100 text-slate-600'} flex items-center justify-center shrink-0`}>
+                                        <MapPin size={16} />
+                                    </div>
+                                    <span className={`${isDark ? 'text-white' : 'text-slate-900'} font-bold`}>Warangal Office</span>
+                                </div>
+                                <p className="text-sm leading-relaxed pl-11 italic opacity-80">
+                                    Bheemaram, Hasanparthy, Warangal, Telangana.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

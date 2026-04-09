@@ -1,15 +1,19 @@
 "use client";
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { MapPin, Mail, Phone, Calendar, Instagram, Youtube, Linkedin, ArrowUpRight } from "lucide-react";
+import { MapPin, Mail, Phone, ArrowRight } from "lucide-react";
 
 const offices = [
     {
         country: "India",
         city: "Jubilee Hills",
-        address: "Sasi Icon,Beside Madhapur Metro Station, Jubilee Hills Road No 36 & 37, Hyderabad, Telangana - 500033",
+        address: "Sasi Icon, Beside Madhapur Metro Station, Jubilee Hills Road No 36 & 37, Hyderabad, Telangana - 500033",
+    },
+    {
+        country: "India",
+        city: "Warangal",
+        address: "Bheemaram, Hasanparthy, Warangal, Telangana.",
     },
     {
         country: "Australia",
@@ -35,83 +39,101 @@ const offices = [
 
 export function ContactClient() {
     return (
-        <main className="min-h-screen bg-slate-900 selection:bg-blue-500/30">
+        <main className="min-h-screen bg-white text-slate-900 selection:bg-blue-100">
             <Navbar />
 
-            <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white pt-32 lg:pt-40 pb-24 px-6 md:px-12 lg:px-24">
-                {/* Header */}
-                <div className="max-w-7xl mx-auto mb-16 lg:mb-24">
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-7xl font-bold tracking-tighter mb-8"
-                    >
-                        Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Touch</span>.
-                    </motion.h1>
-
+            {/* Hero Section */}
+            <section className="pt-32 pb-20 px-6 md:px-12 lg:px-24">
+                <div className="max-w-7xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="flex items-center gap-4 text-slate-300"
+                        transition={{ duration: 0.8 }}
+                        className="max-w-3xl"
                     >
-                        <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400">
-                            <Mail size={24} />
-                        </div>
-                        <a href="mailto:info@thefoundrys.com" className="text-xl md:text-2xl font-medium hover:text-white transition-colors underline decoration-blue-500/30 underline-offset-8">
-                            info@thefoundrys.com
-                        </a>
+                        <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-8 text-slate-900">
+                            Say <span className="text-blue-600">Hello</span>.
+                        </h1>
+                        <p className="text-xl text-slate-600 leading-relaxed font-light">
+                            Whether you're looking for admissions, partnership, or just want to see our campus, we're here to help. Reach out to us directly or visit one of our global offices.
+                        </p>
                     </motion.div>
+
+                    {/* Quick Contact Cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
+                        <motion.a
+                            href="tel:+917981171474"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="flex flex-col p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-all group shadow-sm"
+                        >
+                            <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform">
+                                <Phone size={24} />
+                            </div>
+                            <span className="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-2">Call Us</span>
+                            <span className="text-2xl md:text-3xl font-bold tracking-tight text-slate-900">+91 79811 71474</span>
+                        </motion.a>
+
+                        <motion.a
+                            href="mailto:info@thefoundrys.com"
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className="flex flex-col p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-all group shadow-sm"
+                        >
+                            <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 mb-6 group-hover:scale-110 transition-transform">
+                                <Mail size={24} />
+                            </div>
+                            <span className="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-2">Email Us</span>
+                            <span className="text-2xl md:text-3xl font-bold tracking-tight text-slate-900">info@thefoundrys.com</span>
+                        </motion.a>
+                    </div>
                 </div>
+            </section>
 
-                {/* Offices Grid */}
+            {/* Offices Section */}
+            <section className="pb-24 px-6 md:px-12 lg:px-24 border-t border-slate-100 pt-20">
                 <div className="max-w-7xl mx-auto">
-                    <motion.h3
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-2xl font-bold mb-10 uppercase tracking-[0.2em] text-slate-500"
-                    >
-                        Global Presence
-                    </motion.h3>
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+                        <div>
+                            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-slate-900">Our Locations</h2>
+                            <p className="text-slate-600">Find us in major cities across the globe.</p>
+                        </div>
+                    </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
                         {offices.map((office, index) => (
                             <motion.div
                                 key={index}
                                 initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.1 * index + 0.3 }}
-                                className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-[32px] p-8 lg:p-10 shadow-2xl hover:bg-white/10 hover:border-white/20 hover:-translate-y-2 transition-all duration-500 group"
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="group"
                             >
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
-                                        <MapPin className="text-blue-400" />
-                                    </div>
-                                    <div className="pt-1">
-                                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-400 block mb-1">
-                                            {office.country}
-                                        </span>
-                                        <h4 className="text-xl font-bold text-white tracking-tight">
-                                            {office.city}
-                                        </h4>
-                                    </div>
+                                <div className="flex items-center gap-2 mb-4">
+                                    <MapPin size={16} className="text-blue-600" />
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600/60">
+                                        {office.country}
+                                    </span>
                                 </div>
-
-                                <p className="text-slate-400 italic text-sm leading-relaxed mb-8 pl-1 lg:group-hover:pl-2 transition-all duration-500">
+                                <h3 className="text-xl font-bold mb-3 group-hover:text-blue-600 transition-colors text-slate-900">
+                                    {office.city}
+                                </h3>
+                                <p className="text-slate-600 leading-relaxed font-light mb-6">
                                     {office.address}
                                 </p>
-
-                                <button className="inline-flex items-center gap-2 text-sm font-bold text-blue-400 hover:text-emerald-400 transition-colors uppercase tracking-widest">
-                                    Find on Map <ArrowUpRight size={16} />
+                                <button className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors">
+                                    Directions <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                                 </button>
                             </motion.div>
                         ))}
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <Footer isDark hideCTA />
+            <Footer hideCTA />
         </main>
     );
 }
