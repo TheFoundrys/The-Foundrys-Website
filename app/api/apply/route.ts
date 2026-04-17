@@ -18,7 +18,7 @@ export async function POST(req: Request) {
             Occupation: occupation,
             Location: location || "Online",
             EduBackground: eduBackground || occupation,
-            LeadSource: "Website",
+            LeadSource: "Foundry's Website",
             Message: message,
         };
 
