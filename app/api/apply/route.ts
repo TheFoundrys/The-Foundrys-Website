@@ -30,7 +30,7 @@ export async function POST(req: Request) {
                 email: email,
                 location: location || "Online",
                 eduBackground: eduBackground || occupation || "B.Tech",
-                leadSource: "Website"
+                leadSource: "Foundry's Website"
             };
 
             const crmResponse = await fetch("https://crm.thefoundrys.com/api/v1/lms/external", {
