@@ -16,7 +16,9 @@ import {
     GraduationCap,
     Clock,
     Globe,
-    Shield
+    Shield,
+    MapPin,
+    BookOpen
 } from "lucide-react";
 import Link from "next/link";
 
@@ -247,7 +249,39 @@ export function ApplyClient() {
                                             </select>
                                             <div className="absolute right-0 bottom-6 text-slate-300 pointer-events-none">▼</div>
                                         </div>
+
+                                        {/* Location Field */}
+                                        <div className="space-y-3 group text-slate-900">
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <MapPin size={14} className="text-slate-400 group-focus-within:text-blue-600 transition-colors" />
+                                                <label className="text-xs font-black text-slate-400 uppercase tracking-widest">Location</label>
+                                            </div>
+                                            <input
+                                                required
+                                                name="location"
+                                                type="text"
+                                                placeholder="e.g. Online, Hyderabad"
+                                                defaultValue="Online"
+                                                className="w-full pb-4 bg-transparent border-b-2 border-slate-100 focus:border-blue-600 focus:outline-none transition-all placeholder:text-slate-200 font-medium text-lg text-slate-900"
+                                            />
+                                        </div>
+
+                                        {/* Educational Background Field */}
+                                        <div className="space-y-3 group text-slate-900">
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <BookOpen size={14} className="text-slate-400 group-focus-within:text-blue-600 transition-colors" />
+                                                <label className="text-xs font-black text-slate-400 uppercase tracking-widest">Edu Background</label>
+                                            </div>
+                                            <input
+                                                required
+                                                name="eduBackground"
+                                                type="text"
+                                                placeholder="e.g. B.Tech"
+                                                className="w-full pb-4 bg-transparent border-b-2 border-slate-100 focus:border-blue-600 focus:outline-none transition-all placeholder:text-slate-200 font-medium text-lg text-slate-900"
+                                            />
+                                        </div>
                                     </div>
+                                    <input type="hidden" name="leadSource" value="Website" />
 
                                     {/* Message / Goals */}
                                     <div className="space-y-4 group text-slate-900">

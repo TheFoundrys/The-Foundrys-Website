@@ -93,14 +93,14 @@ export default function SchoolsPage() {
                             We bridge the void between academic theory and deep tech velocity. <br className="hidden md:block" />
                             Each school is a pillar of the next civilization.
                         </p>
-                        
+
                         {/* Scroll Down Indicator */}
-                        <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="inline-flex items-center gap-3 p-4 bg-white rounded-full shadow-xl shadow-slate-200 border border-slate-100">
+                        {/* <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="inline-flex items-center gap-3 p-4 bg-white rounded-full shadow-xl shadow-slate-200 border border-slate-100">
                              <div className="w-6 h-10 border-2 border-slate-200 rounded-full flex justify-center p-1">
                                 <motion.div animate={{ height: [4, 12, 4] }} transition={{ repeat: Infinity, duration: 1.5 }} className="w-1 bg-blue-600 rounded-full" />
                              </div>
                              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 pr-2">The Pillars</span>
-                        </motion.div>
+                        </motion.div> */}
                     </motion.div>
                 </div>
             </section>
@@ -110,10 +110,10 @@ export default function SchoolsPage() {
                 <section key={school.id} id={school.name.toLowerCase()} className={`py-32 px-6 relative overflow-hidden bg-gradient-to-b ${school.bgGradient} border-t border-white shadow-inner`}>
                     <div className="container mx-auto max-w-7xl">
                         <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-20 items-center`}>
-                            
+
                             {/* Content Side */}
                             <div className="flex-1 space-y-10 text-center lg:text-left">
-                                <motion.div 
+                                <motion.div
                                     initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
@@ -140,9 +140,9 @@ export default function SchoolsPage() {
                                 <div className={`absolute inset-0 bg-${school.accent}-400/20 blur-[100px] rounded-full pointer-events-none`} />
 
                                 {school.programs.map((prog) => (
-                                    <Link 
-                                        key={prog.href} 
-                                        href={prog.href} 
+                                    <Link
+                                        key={prog.href}
+                                        href={prog.href}
                                         className="group relative p-8 rounded-[2.5rem] bg-white/60 backdrop-blur-xl border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:bg-white transition-all duration-500 hover:-translate-y-2 ring-1 ring-white"
                                     >
                                         <div className={`w-14 h-14 rounded-2xl ${school.iconBg} text-white flex items-center justify-center mb-8 shadow-lg shadow-${school.accent}-600/30 group-hover:scale-110 transition-transform duration-500`}>
@@ -150,7 +150,7 @@ export default function SchoolsPage() {
                                         </div>
                                         <h3 className="text-2xl font-bold mb-2 text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors">{prog.title}</h3>
                                         <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">{prog.desc}</p>
-                                        
+
                                         <div className="absolute top-8 right-8 text-slate-200 group-hover:text-blue-500 transition-colors">
                                             <ArrowUpRight size={20} />
                                         </div>
@@ -169,7 +169,7 @@ export default function SchoolsPage() {
             <section className="py-32 px-6 bg-slate-900 text-white relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(at_top_left,#1e3a8a_0%,#0f172a_100%)] opacity-80" />
                 <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
-                
+
                 <div className="container mx-auto max-w-5xl text-center relative z-10 space-y-12">
                     <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 1 }}>
                         <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-none mb-8">

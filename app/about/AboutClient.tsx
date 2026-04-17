@@ -21,7 +21,7 @@ export function AboutClient() {
             <Navbar />
 
             {/* Scroll 1: Impact Hero & Vision - Robust Grey Grid */}
-            <section className="h-screen flex items-center justify-center relative overflow-hidden bg-slate-100 border-b border-slate-200">
+            <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-slate-100 border-b border-slate-200 pt-32 pb-20">
                 <div className="absolute inset-0 bg-[radial-gradient(#94a3b8_1.2px,transparent_1.2px)] [background-size:24px_24px] opacity-15" />
                 <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-400/20 blur-[120px] rounded-full" />
 

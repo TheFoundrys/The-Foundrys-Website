@@ -105,6 +105,7 @@ export const metadata: Metadata = {
 };
 
 import { JsonLd } from "@/components/seo/json-ld";
+import { ScrollFix } from "@/components/scroll-fix";
 
 export default function RootLayout({
   children,
@@ -114,6 +115,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${ubuntu.variable} antialiased`}>
+        <ScrollFix />
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XQCKK6L717"

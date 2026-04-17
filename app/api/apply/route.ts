@@ -6,20 +6,53 @@ import nodemailer from "nodemailer";
 export async function POST(req: Request) {
     try {
         const data = await req.json();
-        const { name, email, phone, program, status, motivation } = data;
+        const { name, email, phone, program, occupation, message, location, eduBackground } = data;
 
-        // 1. Prepare Data Row
+        // 1. Prepare Data Row for Google Sheets
         const rowData = {
             Timestamp: new Date().toISOString(),
             Name: name,
             Email: email,
             Phone: phone,
             Program: program,
-            Status: status,
-            Motivation: motivation,
+            Occupation: occupation,
+            Location: location || "Online",
+            EduBackground: eduBackground || occupation,
+            LeadSource: "Website",
+            Message: message,
         };
 
-        // 2. Try Google Sheets (Primary)
+        // 2. Send to CRM API (NEW)
+        try {
+            const crmPayload = {
+                name: name,
+                phone: phone,
+                email: email,
+                location: location || "Online",
+                eduBackground: eduBackground || occupation || "B.Tech",
+                leadSource: "Website"
+            };
+
+            const crmResponse = await fetch("https://crm.thefoundrys.com/api/v1/lms/external", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-api-key": "default-lms-secret-key"
+                },
+                body: JSON.stringify(crmPayload)
+            });
+
+            if (!crmResponse.ok) {
+                const errorText = await crmResponse.text();
+                console.error("CRM API Error:", errorText);
+            } else {
+                console.log("Successfully sent to CRM");
+            }
+        } catch (crmError) {
+            console.error("CRM Fetch Error:", crmError);
+        }
+
+        // 3. Try Google Sheets (Primary)
         if (process.env.GOOGLE_SHEET_ID && process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
             try {
                 const serviceAccountAuth = new JWT({
@@ -35,11 +68,10 @@ export async function POST(req: Request) {
                 console.log("Saved to Google Sheets");
             } catch (sheetError) {
                 console.error("Google Sheets Error:", sheetError);
-                // Don't fail the request, try email fallback
             }
         }
 
-        // 3. Try Email to Admin (Fallback/Notification)
+        // 4. Try Email to Admin (Fallback/Notification)
         if (process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD) {
             try {
                 const transporter = nodemailer.createTransport({
@@ -61,10 +93,13 @@ Name: ${name}
 Email: ${email}
 Phone: ${phone}
 Program: ${program}
-Status: ${status}
+Occupation: ${occupation}
+Location: ${location || "Online"}
+Edu Background: ${eduBackground || occupation}
+Lead Source: Website
 
-Motivation:
-${motivation}
+Goal:
+${message}
                 `,
                 });
                 console.log("Email notification sent to admin");
