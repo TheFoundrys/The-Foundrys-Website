@@ -225,7 +225,7 @@ export function ApplyClient() {
                                                 <option value="ESG">ESG & Sustainability</option>
                                                 <option value="Blockchain">Blockchain</option>
                                                 <option value="BCA AI Professional">BCA AI Professional</option>
-                                                <option value="BCA in AI">BCA in AI</option>
+                                                <option value="B.Sc in AI">B.Sc in AI</option>
                                                 <option value="B.Sc in DataScience">B.Sc in DataScience</option>
                                                 <option value="Quantum Computing">Quantum Computing</option>
                                             </select>
