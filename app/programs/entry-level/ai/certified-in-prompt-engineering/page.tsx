@@ -332,7 +332,7 @@ export default function PromptEngineeringCoursePage() {
 
             {/* Program Details Card */}
             {/* Program Details Card */}
-            <div className="relative z-20 px-4 mt-12 mb-12">
+            <div className="relative z-20 px-4 -mt-16 mb-12">
                 <div className="mx-auto max-w-5xl">
                     <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
@@ -487,19 +487,23 @@ export default function PromptEngineeringCoursePage() {
                                         }}
                                         style={{ width: "max-content" }}
                                     >
-                                        {[...row.logos, ...row.logos, ...row.logos, ...row.logos].map((logo, idx) => (
-                                            <div
-                                                key={idx}
-                                                className="bg-white rounded-xl h-32 w-36 flex flex-col items-center justify-center p-4 gap-2 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex-shrink-0"
-                                            >
-                                                <img
-                                                    src={logo.url}
-                                                    className="h-12 w-auto object-contain"
-                                                    alt={logo.name}
-                                                />
-                                                <span className="text-xs font-semibold text-slate-700 text-center">
-                                                    {logo.name}
-                                                </span>
+                                        {[0, 1].map((setIndex) => (
+                                            <div key={setIndex} className="flex gap-8 items-center pr-8">
+                                                {row.logos.map((logo, idx) => (
+                                                    <div
+                                                        key={idx}
+                                                        className="bg-white rounded-xl h-32 w-36 flex flex-col items-center justify-center p-4 gap-2 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex-shrink-0"
+                                                    >
+                                                        <img
+                                                            src={logo.url}
+                                                            className="h-12 w-auto object-contain"
+                                                            alt={logo.name}
+                                                        />
+                                                        <span className="text-xs font-semibold text-slate-700 text-center">
+                                                            {logo.name}
+                                                        </span>
+                                                    </div>
+                                                ))}
                                             </div>
                                         ))}
                                     </motion.div>

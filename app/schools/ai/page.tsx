@@ -544,8 +544,8 @@ function NeuralNetwork() {
 export default function AISchoolPage() {
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
 
-    useLayoutEffect(() => {
-        window.scrollTo(0, 0);
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
     }, []);
 
     return (

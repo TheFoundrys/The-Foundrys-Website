@@ -1,4 +1,3 @@
-"use strict";
 import { CyberClient } from "@/components/scenes/cyber/client";
 import { Metadata } from "next";
 

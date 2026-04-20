@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useLayoutEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -187,8 +187,8 @@ export default function SustainabilityClient() {
    const [selectedCareer, setSelectedCareer] = useState(0);
    const { symbol, currency } = useRegionalPricing();
 
-   useLayoutEffect(() => {
-      window.scrollTo(0, 0);
+   useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
    }, []);
 
    const originalPrice = COURSE_PRICING.sustainability.original[currency];

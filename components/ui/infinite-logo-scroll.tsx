@@ -21,7 +21,7 @@ const LOGOS = [
 
 /* Scale map for smaller logos */
 const LOGO_SCALE: Record<string, string> = {
-  "/logos/csi.png": "scale-[1.9]",
+  "/logos/csi.jpg": "scale-[1.9]",
   "/logos/techop.png": "scale-[1.4]",
   "/logos/OptGrad_logo.png": "scale-[1.4]",
   "/logos/optsearch.png": "scale-[1.4]",
@@ -32,7 +32,7 @@ export function InfiniteLogoScroll() {
     <section className="py-12 bg-white overflow-hidden relative border-y border-slate-50">
       <div className="container mx-auto px-4 mb-6 text-center">
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
-          Our Alumini Works
+          Our Alumni Works
         </p>
       </div>
 
@@ -44,7 +44,7 @@ export function InfiniteLogoScroll() {
         <motion.div
           className="flex items-center flex-nowrap will-change-transform"
           initial={{ x: 0 }}
-          animate={{ x: ["0%", "-50%"] }}
+          animate={{ x: ["0%", "-33.333%"] }}
           transition={{
             x: {
               repeat: Infinity,
@@ -55,7 +55,7 @@ export function InfiniteLogoScroll() {
           }}
           style={{ width: "max-content" }}
         >
-          {[0, 1].map((setIndex) => (
+          {[0, 1, 2].map((setIndex) => (
             <div key={setIndex} className="flex flex-none items-center flex-nowrap gap-12 md:gap-20 lg:gap-24 pr-12 md:pr-20 lg:pr-24">
               {LOGOS.map((logo, index) => (
                 <div

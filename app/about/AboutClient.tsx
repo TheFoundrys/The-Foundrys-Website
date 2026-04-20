@@ -50,7 +50,7 @@ export function AboutClient() {
             </section>
 
             {/* Scroll 2: Philosophy & Archetypes - Warm Sand/Gallery Aesthetics */}
-            <section className="h-screen flex items-center justify-center bg-[#f7f5ef] px-6 relative overflow-hidden border-b border-slate-200">
+            <section className="min-h-screen flex flex-col justify-center bg-[#f7f5ef] px-6 py-24 relative overflow-hidden border-b border-slate-200">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-amber-200/20 blur-[150px] rounded-full -mr-32 -mt-32" />
                 <div className="container mx-auto max-w-6xl z-10">
                     <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -92,7 +92,7 @@ export function AboutClient() {
             </section>
 
             {/* Scroll 3: The Founder (Vishwa) - High Contrast Dark Mode Finish */}
-            <section className="h-screen flex items-center justify-center bg-slate-900 px-6 relative overflow-hidden">
+            <section className="min-h-screen flex flex-col justify-center bg-slate-900 px-6 py-24 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:40px_40px]" />
                 <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 blur-[120px] rounded-full" />
 

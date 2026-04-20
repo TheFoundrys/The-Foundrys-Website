@@ -91,6 +91,16 @@ export const COURSE_CATALOG: Record<string, CourseInfo> = {
       USD: 250,
     },
   },
+  '0-1-llm': {
+    id: '0-1-llm',
+    name: 'Certified in Large Language Models',
+    sku: 'LLM 001',
+    duration: '90 Days',
+    prices: {
+      INR: 150000,
+      USD: 1500,
+    },
+  },
 };
 
 // Hardcoded coupons — add more as needed
