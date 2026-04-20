@@ -22,7 +22,7 @@ export async function POST(req: Request) {
             Message: message,
         };
 
-        // 2. Send to CRM API (NEW)
+        // 2. Send to CRM API
         try {
             const crmPayload = {
                 name: name,
@@ -30,14 +30,15 @@ export async function POST(req: Request) {
                 email: email,
                 location: location || "Online",
                 eduBackground: eduBackground || occupation || "B.Tech",
-                leadSource: "Foundry's Website"
+                leadSource: "Website",
+                program: program
             };
 
             const crmResponse = await fetch("https://crm.thefoundrys.com/api/v1/lms/external", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-api-key": "default-lms-secret-key"
+                    "x-api-key": process.env.CRM_API_KEY || "default-lms-secret-key"
                 },
                 body: JSON.stringify(crmPayload)
             });
@@ -53,7 +54,8 @@ export async function POST(req: Request) {
         }
 
         // 3. Try Google Sheets (Primary)
-        if (process.env.GOOGLE_SHEET_ID && process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
+        const sheetId = process.env.GOOGLE_SHEET_ID || "17D3whdkDfigHYP8KrhbLSZA0v1g6KxIpfsMqjdjqKhA";
+        if (sheetId && process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
             try {
                 const serviceAccountAuth = new JWT({
                     email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
@@ -61,7 +63,7 @@ export async function POST(req: Request) {
                     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
                 });
 
-                const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, serviceAccountAuth);
+                const doc = new GoogleSpreadsheet(sheetId, serviceAccountAuth);
                 await doc.loadInfo();
                 const sheet = doc.sheetsByIndex[0]; // Assuming first sheet
                 await sheet.addRow(rowData);
