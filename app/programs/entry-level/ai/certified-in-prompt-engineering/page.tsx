@@ -466,7 +466,6 @@ export default function PromptEngineeringCoursePage() {
                                     { url: "https://upload.wikimedia.org/wikipedia/commons/3/3f/LangChain_logo.png?_=20230418052632", name: "LangChain" },
                                     { url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", name: "Python" },
                                     { url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/streamlit/streamlit-original.svg", name: "Streamlit" },
-                                    { url: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg", name: "Python" },
                                     { url: "https://avatars.githubusercontent.com/u/126733545?s=200&v=4", name: "LangSmith" }
                                 ],
                                 direction: "left"
