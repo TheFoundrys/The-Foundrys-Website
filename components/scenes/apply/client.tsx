@@ -224,6 +224,9 @@ export function ApplyClient() {
                                                 <option value="Strategic Innovation">Strategic Innovation</option>
                                                 <option value="ESG">ESG & Sustainability</option>
                                                 <option value="Blockchain">Blockchain</option>
+                                                <option value="BCA AI Professional">BCA AI Professional</option>
+                                                <option value="BCA in AI">BCA in AI</option>
+                                                <option value="B.Sc in DataScience">B.Sc in DataScience</option>
                                                 <option value="Quantum Computing">Quantum Computing</option>
                                             </select>
                                             <div className="absolute right-0 bottom-6 text-slate-300 pointer-events-none">▼</div>
@@ -261,7 +264,7 @@ export function ApplyClient() {
                                                 name="location"
                                                 type="text"
                                                 placeholder="e.g. Online, Hyderabad"
-                                                defaultValue="Online"
+                                                defaultValue=""
                                                 className="w-full pb-4 bg-transparent border-b-2 border-slate-100 focus:border-blue-600 focus:outline-none transition-all placeholder:text-slate-200 font-medium text-lg text-slate-900"
                                             />
                                         </div>
