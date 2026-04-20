@@ -462,11 +462,10 @@ export default function PromptEngineeringCoursePage() {
                             {
                                 logos: [
                                     { url: "https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg", name: "OpenAI" },
-                                    { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Claude_AI_logo.svg/640px-Claude_AI_logo.svg.png", name: "Anthropic" },
+                                    { url: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Claude_AI_logo.svg", name: "Anthropic" },
                                     { url: "https://upload.wikimedia.org/wikipedia/commons/3/3f/LangChain_logo.png?_=20230418052632", name: "LangChain" },
                                     { url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", name: "Python" },
                                     { url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/streamlit/streamlit-original.svg", name: "Streamlit" },
-                                    { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/ChatGPT-Logo.svg/640px-ChatGPT-Logo.svg.png", name: "ChatGPT" },
                                     { url: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg", name: "Python" },
                                     { url: "https://avatars.githubusercontent.com/u/126733545?s=200&v=4", name: "LangSmith" }
                                 ],
