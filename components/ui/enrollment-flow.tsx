@@ -27,6 +27,12 @@ export function EnrollmentFlow({ courseId, amount, initialOpen = false }: Enroll
 
   const handleSendLink = async () => {
     if (!email || !name || !phone) return alert('Name, Email, and Phone are required');
+    
+    // Validate phone number length
+    if (phone.length !== 10) {
+      return alert('Please enter a valid 10-digit phone number');
+    }
+
     setIsSubmitting(true);
     try {
       // 1. Check if user is already verified or exists in DB
@@ -158,8 +164,11 @@ export function EnrollmentFlow({ courseId, amount, initialOpen = false }: Enroll
               <input 
                 type="tel" 
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="+91 98765 43210"
+                onChange={(e) => {
+                  const value = e.target.value.replace(/\D/g, '');
+                  if (value.length <= 10) setPhone(value);
+                }}
+                placeholder="98765 43210"
                 className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
               />
             </div>
