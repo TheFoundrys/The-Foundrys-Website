@@ -330,14 +330,14 @@ export default function CertifiedInCybersecurityPage() {
                         </h1>
 
                         <p className="text-lg md:text-xl text-emerald-100/80 font-light leading-relaxed max-w-3xl mx-auto mb-12">
-                            Kickstart your career with the prestigious (ISC)² CC certification. Master the 5 domains of cybersecurity and prove your skills in the digital battlefield.
+                            Kickstart your career with the prestigious certification. Master the 5 domains of cybersecurity and prove your skills in the digital battlefield.
                         </p>
 
                         <div className="flex flex-wrap gap-4 md:gap-6 justify-center text-sm text-emerald-100">
-                            <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
+                            {/* <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
                                 <CheckCircle2 size={18} className="text-emerald-400" />
                                 <span>(ISC)² Alignment</span>
-                            </div>
+                            </div> */}
                             <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
                                 <CheckCircle2 size={18} className="text-emerald-400" />
                                 <span>Guided Hands-on Labs</span>
