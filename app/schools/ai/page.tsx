@@ -779,14 +779,14 @@ export default function AISchoolPage() {
                                         ))}
                                     </ul>
                                 </div>
-                                <div className="p-6 bg-blue-600 rounded-2xl text-white shadow-xl flex items-center justify-between group cursor-pointer overflow-hidden relative">
+                                <Link href="/apply" className="p-6 bg-blue-600 rounded-2xl text-white shadow-xl flex items-center justify-between group cursor-pointer overflow-hidden relative block w-full hover:scale-[1.02] transition-transform">
                                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
                                     <div>
                                         <h4 className="text-lg font-bold mb-1">Admissions Open</h4>
                                         <p className="text-blue-100 text-sm">Secure your cohort for 2026 today.</p>
                                     </div>
                                     <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
