@@ -103,22 +103,22 @@ export function AboutClient() {
                                 <Image src="/images/vishwa.png" alt="Vishwanath Akuthota" fill className="object-cover" />
                             </div>
                         </div>
-                        <div className="flex-[1.4] space-y-8 z-10">
+                        <div className="flex-[1.4] w-full space-y-6 md:space-y-8 z-10">
                             <div>
-                                <h2 className="text-5xl md:text-7xl font-bold mb-4 tracking-tighter text-white">Vishwanath Akuthota</h2>
-                                <p className="text-2xl text-blue-400 font-medium tracking-tight">Founder & CEO</p>
+                                <h2 className="text-4xl md:text-7xl font-bold mb-3 md:mb-4 tracking-tighter text-white">Vishwanath Akuthota</h2>
+                                <p className="text-xl md:text-2xl text-blue-400 font-medium tracking-tight">Founder & CEO</p>
                             </div>
-                            <div className="space-y-6 text-slate-300 text-lg leading-relaxed max-w-2xl border-l border-blue-500/30 pl-8">
-                                <p className="font-serif italic text-3xl text-blue-50/80 leading-snug">&quot;Leadership is about building trust, resilience, and possibility.&quot;</p>
-                                <p>With 15+ years in AI, Quantum, and Blockchain, Vishwanath built The Foundry&apos;s to forge the next generation of architects who reshape global industries.</p>
+                            <div className="space-y-4 md:space-y-6 text-slate-300 text-base md:text-lg leading-relaxed max-w-2xl border-l-2 border-blue-500/30 pl-6 md:pl-8">
+                                <p className="font-serif italic text-2xl md:text-3xl text-blue-50/80 leading-snug">&quot;Leadership is about building trust, resilience, and possibility.&quot;</p>
+                                <p className="text-sm md:text-base">With 15+ years in AI, Quantum, and Blockchain, Vishwanath built The Foundry&apos;s to forge the next generation of architects who reshape global industries.</p>
                             </div>
-                            <div className="flex items-center justify-start gap-3 pt-6 pb-2 overflow-x-auto no-scrollbar mask-fade-right">
+                            <div className="flex flex-col md:flex-row items-start md:items-center justify-start gap-3 md:gap-4 pt-6 pb-2 w-full">
                                 {[
                                     { href: "https://www.linkedin.com/in/vishwanathakuthota/", text: "Connect LinkedIn" },
                                     { href: "https://www.drpinnacle.com", text: "Dr.Pinnacle Website", white: true },
                                     { href: "/about/team", text: "Foundry Team", blue: true }
                                 ].map((btn) => (
-                                    <Link key={btn.text} href={btn.href} className={`px-9 py-4 rounded-full font-bold text-sm transition-all flex items-center gap-2 whitespace-nowrap ${btn.white ? 'bg-white text-slate-900 shadow-xl' : btn.blue ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30' : 'bg-slate-800 text-white border border-slate-700 shadow-sm'}`}>
+                                    <Link key={btn.text} href={btn.href} className={`px-9 py-4 rounded-full font-bold text-sm transition-all flex items-center justify-center gap-2 whitespace-nowrap w-full md:w-auto ${btn.white ? 'bg-white text-slate-900 shadow-xl' : btn.blue ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30' : 'bg-slate-800 text-white border border-slate-700 shadow-sm'}`}>
                                         {btn.text} <ArrowUpRight size={16} />
                                     </Link>
                                 ))}
