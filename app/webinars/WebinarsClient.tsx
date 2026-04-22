@@ -11,9 +11,9 @@ const allWebinars = [
         id: 1,
         title: "Build Your Future with Artificial Intillegence",
         type: "Community Webinar",
-        date: "Sat, April 26, 2026",
-        time: "11:00 AM",
-        dateTime: "2026-04-26T11:00:00+05:30", // This helps the system know exactly when to move it
+        date: "Sat, 26 April 2026",
+        time: "4:00 PM IST",
+        dateTime: "2026-04-26T16:00:00+05:30", // This helps the system know exactly when to move it
         platform: "EduCRM Live",
         link: "https://crm.thefoundrys.com/webinars/58beca00-00b2-459b-ae80-5d7ca202f01b/register",
         description:
@@ -50,9 +50,9 @@ Limited Seats Available Register Now and Build a Future-Ready Career in AI`,
 export function WebinarsClient() {
     // Automatically sort webinars into upcoming and past based on current date/time
     const now = new Date();
-    
+
     // Using a 2-hour buffer so it stays in "Upcoming" until roughly an hour after it starts
-    const bufferTime = 2 * 60 * 60 * 1000; 
+    const bufferTime = 2 * 60 * 60 * 1000;
 
     const upcomingWebinars = allWebinars.filter(
         (w) => new Date(w.dateTime).getTime() + bufferTime > now.getTime()
