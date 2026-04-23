@@ -8,12 +8,13 @@ const LOGOS = [
   "/logos/Faba.png",
   "/logos/redshelid1.png",
   "/logos/optgpt.png",
+  "/logos/ApplyuniNow.png",
   "/logos/markitome.png",
-  "/logos/csi.jpg",
   "/logos/image.png",
   "/logos/techop.png",
   "/logos/OptGrad_logo.png",
   "/logos/optsearch.png",
+  "/logos/csi.jpg",
   "/logos/capsim.png",
   "/logos/hive_link_logo.jpg",
   "AI COMPASS"
@@ -25,6 +26,21 @@ const LOGO_SCALE: Record<string, string> = {
   "/logos/techop.png": "scale-[1.4]",
   "/logos/OptGrad_logo.png": "scale-[1.4]",
   "/logos/optsearch.png": "scale-[1.4]",
+};
+
+/* URL map for clickable logos */
+const LOGO_LINKS: Record<string, string> = {
+  "/logos/techop.png": "https://techoptima.ai/",
+  "/logos/optgpt.png": "https://optgpt.in",
+  "/logos/ApplyuniNow.png": "https://www.ApplyUniNow.com",
+  "/logos/OptGrad_logo.png": "https://optgpt.in",
+  "/logos/optsearch.png": "https://optsearch.in",
+  "/logos/drpinnacle.png": "https://drpinnacle.com/",
+  "/logos/csi.jpg": "https://csi.org",
+  "/logos/markitome.png": "https://markitome.com",
+  "/logos/hive_link_logo.jpg": "https://hivelink.com",
+  "/logos/image.png": "https://www.policybazaar.com/",
+  "/logos/Faba.png": "https://biofaba.org.in/"
 };
 
 export function InfiniteLogoScroll() {
@@ -57,35 +73,53 @@ export function InfiniteLogoScroll() {
         >
           {[0, 1, 2].map((setIndex) => (
             <div key={setIndex} className="flex flex-none items-center flex-nowrap gap-12 md:gap-20 lg:gap-24 pr-12 md:pr-20 lg:pr-24">
-              {LOGOS.map((logo, index) => (
-                <div
-                  key={`${setIndex}-${index}`}
-                  className="flex-none grayscale hover:grayscale-0 transition-all duration-500 opacity-40 hover:opacity-100 flex items-center justify-center hover:scale-110"
-                >
-                  {logo.includes(".") ? (
-                    <img
-                      src={logo.startsWith("/") ? logo : `/${logo}`}
-                      alt={`Partner logo ${setIndex}-${index}`}
-                      className={`w-auto object-contain pointer-events-none mix-blend-multiply ${logo.toLowerCase().includes("csi")
-                        ? "h-10 md:h-14 lg:h-16"
-                        : logo.toLowerCase().includes("capsim")
-                          ? "h-6 md:h-8 lg:h-10"
-                          : logo.toLowerCase().includes("optgrad") || logo.toLowerCase().includes("optsearch")
-                            ? "h-12 md:h-16 lg:h-20 scale-125"
-                            : logo.toLowerCase().includes("optgpt") || logo.toLowerCase().includes("techop")
-                              ? "h-10 md:h-14 lg:h-16 scale-110"
-                              : logo.toLowerCase().includes("image")
-                                ? "h-8 md:h-12 lg:h-14"
-                                : "h-10 md:h-14 lg:h-16"
-                        }`}
-                    />
-                  ) : (
-                    <span className="text-lg md:text-xl lg:text-2xl font-black text-slate-900 whitespace-nowrap tracking-tighter">
-                      {logo}
-                    </span>
-                  )}
-                </div>
-              ))}
+              {LOGOS.map((logo, index) => {
+                const url = LOGO_LINKS[logo];
+                const inner = (
+                  <>
+                    {logo.includes(".") ? (
+                      <img
+                        src={logo.startsWith("/") ? logo : `/${logo}`}
+                        alt={`Partner logo ${setIndex}-${index}`}
+                        className={`w-auto object-contain mix-blend-multiply border-none pointer-events-none ${logo.toLowerCase().includes("csi")
+                          ? "h-10 md:h-14 lg:h-16"
+                          : logo.toLowerCase().includes("capsim")
+                            ? "h-6 md:h-8 lg:h-10"
+                            : logo.toLowerCase().includes("optgrad") || logo.toLowerCase().includes("optsearch")
+                              ? "h-12 md:h-16 lg:h-20 scale-125"
+                              : logo.toLowerCase().includes("optgpt") || logo.toLowerCase().includes("techop") || logo.toLowerCase().includes("applyuninow")
+                                ? "h-10 md:h-14 lg:h-16 scale-110"
+                                : logo.toLowerCase().includes("image")
+                                  ? "h-8 md:h-12 lg:h-14"
+                                  : "h-10 md:h-14 lg:h-16"
+                          }`}
+                      />
+                    ) : (
+                      <span className="text-lg md:text-xl lg:text-2xl font-black text-slate-900 whitespace-nowrap tracking-tighter border-none outline-none">
+                        {logo}
+                      </span>
+                    )}
+                  </>
+                );
+                return url ? (
+                  <a
+                    key={`${setIndex}-${index}`}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-none grayscale hover:grayscale-0 transition-all duration-500 opacity-40 hover:opacity-100 flex items-center justify-center hover:scale-110 cursor-pointer border-none outline-none"
+                  >
+                    {inner}
+                  </a>
+                ) : (
+                  <div
+                    key={`${setIndex}-${index}`}
+                    className="flex-none grayscale hover:grayscale-0 transition-all duration-500 opacity-40 hover:opacity-100 flex items-center justify-center hover:scale-110 border-none outline-none"
+                  >
+                    {inner}
+                  </div>
+                );
+              })}
             </div>
           ))}
         </motion.div>

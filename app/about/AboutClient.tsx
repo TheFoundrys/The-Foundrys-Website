@@ -110,7 +110,7 @@ export function AboutClient() {
                             </div>
                             <div className="space-y-4 md:space-y-6 text-slate-300 text-base md:text-lg leading-relaxed max-w-2xl border-l-2 border-blue-500/30 pl-6 md:pl-8">
                                 <p className="font-serif italic text-2xl md:text-3xl text-blue-50/80 leading-snug">&quot;Leadership is about building trust, resilience, and possibility.&quot;</p>
-                                <p className="text-sm md:text-base">With 15+ years in AI, Quantum, and Blockchain, Vishwanath built The Foundry&apos;s to forge the next generation of architects who reshape global industries.</p>
+                                <p className="text-sm md:text-base">With 15+ years in AI, Quantum, Cyber Security and Blockchain, Vishwanath built The Foundry&apos;s to forge the next generation of architects who reshape global industries.</p>
                             </div>
                             <div className="flex flex-col md:flex-row items-start md:items-center justify-start gap-3 md:gap-4 pt-6 pb-2 w-full">
                                 {[
