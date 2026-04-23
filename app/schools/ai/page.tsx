@@ -573,9 +573,9 @@ export default function AISchoolPage() {
                         >
                             {/* Department / Program Label */}
 
-                            <h1 className="text-6xl sm:text-7xl md:text-[7rem] lg:text-[8.5rem] font-black tracking-tighter text-white mb-8 md:mb-10 leading-[0.85] uppercase">
+                            <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-[8.5rem] font-black tracking-tighter text-white mb-8 md:mb-10 leading-[0.85] uppercase">
                                 Artificial <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-200 to-blue-500 pb-2 inline-block pr-8">Intelligence</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-200 to-blue-500 pb-2 inline-block md:pr-8">Intelligence</span>
                             </h1>
 
                             <p className="text-xl md:text-3xl text-slate-300 leading-relaxed font-light mb-16 max-w-3xl">

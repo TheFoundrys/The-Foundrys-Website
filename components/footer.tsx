@@ -26,10 +26,10 @@ export function Footer({ hideCTA = false, isDark = false }: FooterProps) {
                 </div>
 
                 {/* Fixed Grid Section */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-12 mb-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-12 mb-12">
 
                     {/* Column 1 */}
-                    <div className="flex flex-col gap-4 min-w-[180px] flex-1">
+                    <div className="flex flex-col gap-4 md:min-w-[180px] flex-1">
                         <h3 className={`${isDark ? 'text-white' : 'text-slate-900'} font-bold text-lg`}>
                             School of Deep Tech
                         </h3>
@@ -42,7 +42,7 @@ export function Footer({ hideCTA = false, isDark = false }: FooterProps) {
                     </div>
 
                     {/* Column 2 */}
-                    <div className="flex flex-col gap-4 min-w-[180px] flex-1">
+                    <div className="flex flex-col gap-4 md:min-w-[180px] flex-1">
                         <h3 className={`${isDark ? 'text-white' : 'text-slate-900'} font-bold text-lg`}>
                             Specialized Schools
                         </h3>
@@ -54,7 +54,7 @@ export function Footer({ hideCTA = false, isDark = false }: FooterProps) {
                     </div>
 
                     {/* Column 3 */}
-                    <div className="flex flex-col gap-4 min-w-[180px] flex-1">
+                    <div className="flex flex-col gap-4 md:min-w-[180px] flex-1">
                         <h3 className={`${isDark ? 'text-white' : 'text-slate-900'} font-bold text-lg`}>
                             Programs
                         </h3>
@@ -66,7 +66,7 @@ export function Footer({ hideCTA = false, isDark = false }: FooterProps) {
                     </div>
 
                     {/* Column 4 */}
-                    <div className="flex flex-col gap-4 min-w-[180px] flex-1">
+                    <div className="flex flex-col gap-4 md:min-w-[180px] flex-1">
                         <h3 className={`${isDark ? 'text-white' : 'text-slate-900'} font-bold text-lg`}>
                             Explore
                         </h3>
@@ -79,7 +79,7 @@ export function Footer({ hideCTA = false, isDark = false }: FooterProps) {
                     </div>
 
                     {/* Column 5 */}
-                    <div className="flex flex-col gap-4 min-w-[180px] flex-1">
+                    <div className="flex flex-col gap-4 md:min-w-[180px] flex-1">
                         <h3 className={`${isDark ? 'text-white' : 'text-slate-900'} font-bold text-lg`}>
                             Resources
                         </h3>
@@ -100,7 +100,7 @@ export function Footer({ hideCTA = false, isDark = false }: FooterProps) {
 
                     <div className="flex flex-col lg:flex-row gap-x-16 gap-y-12">
                         {/* Email, Phone & Social */}
-                        <div className="flex flex-col gap-4 min-w-[250px]">
+                        <div className="flex flex-col gap-4 md:min-w-[250px]">
                             <a
                                 href="mailto:info@thefoundrys.com"
                                 className={`flex items-center gap-3 transition-colors ${isDark ? 'hover:text-emerald-400' : 'hover:text-slate-900'}`}

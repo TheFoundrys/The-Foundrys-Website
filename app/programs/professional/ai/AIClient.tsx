@@ -120,7 +120,7 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, currencySymbol
         <h2 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">{title}</h2>
         <p className="text-slate-600 leading-relaxed mb-6">{desc}</p>
 
-        <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-slate-500 mb-6 font-medium">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm text-slate-500 mb-6 font-medium">
           <div className="flex items-center gap-2">
             <CheckCircle2 size={16} className="text-blue-500 shrink-0" />
             Hybrid

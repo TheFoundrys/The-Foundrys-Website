@@ -17,7 +17,7 @@ const ARCHETYPES = [
 
 export function AboutClient() {
     return (
-        <main className="min-h-screen bg-slate-100 text-slate-900 selection:bg-blue-200 selection:text-blue-900">
+        <main className="min-h-screen bg-slate-100 text-slate-900 selection:bg-blue-200 selection:text-blue-900 overflow-x-hidden">
             <Navbar />
 
             {/* Scroll 1: Impact Hero & Vision - Robust Grey Grid */}
@@ -28,7 +28,7 @@ export function AboutClient() {
                 <div className="container mx-auto max-w-5xl px-6 text-center z-10">
                     <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                         <span className="text-white font-extrabold uppercase tracking-[0.4em] text-[10px] mb-8 inline-block bg-slate-900 px-4 py-1 rounded-full shadow-lg">The Origin</span>
-                        <h1 className="text-5xl md:text-8xl font-bold tracking-tighter mb-8 leading-[0.9] text-slate-900">
+                        <h1 className="text-4xl md:text-8xl font-bold tracking-tighter mb-8 leading-[0.9] text-slate-900">
                             We didn&apos;t build a school. <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">We built a Foundry.</span>
                         </h1>
@@ -77,7 +77,7 @@ export function AboutClient() {
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {ARCHETYPES.map((arch) => (
                                 <div key={arch.title} className="p-8 rounded-[3rem] bg-white border border-slate-200 shadow-lg shadow-slate-300/20 group hover:shadow-blue-500/10 transition-all">
                                     <arch.icon className={`${arch.color} mb-6`} size={36} />
@@ -105,7 +105,7 @@ export function AboutClient() {
                         </div>
                         <div className="flex-[1.4] w-full space-y-6 md:space-y-8 z-10">
                             <div>
-                                <h2 className="text-4xl md:text-7xl font-bold mb-3 md:mb-4 tracking-tighter text-white">Vishwanath Akuthota</h2>
+                                <h2 className="text-3xl md:text-7xl font-bold mb-3 md:mb-4 tracking-tighter text-white">Vishwanath Akuthota</h2>
                                 <p className="text-xl md:text-2xl text-blue-400 font-medium tracking-tight">Founder & CEO</p>
                             </div>
                             <div className="space-y-4 md:space-y-6 text-slate-300 text-base md:text-lg leading-relaxed max-w-2xl border-l-2 border-blue-500/30 pl-6 md:pl-8">
