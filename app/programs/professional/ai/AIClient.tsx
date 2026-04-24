@@ -121,23 +121,23 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, currencySymbol
         <p className="text-slate-600 leading-relaxed mb-6">{desc}</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm text-slate-500 mb-6 font-medium">
-          <div className="flex items-center gap-2">
-            <CheckCircle2 size={16} className="text-blue-500 shrink-0" />
-            Hybrid
+          <div className="flex items-start gap-2">
+            <CheckCircle2 size={18} className="text-blue-500 shrink-0 mt-1" />
+            <span>Hybrid</span>
           </div>
 
-          <div className="flex items-center gap-2">
-            <CheckCircle2 size={16} className="text-blue-500 shrink-0" />
-            Hands-on Capstone Project
+          <div className="flex items-start gap-2">
+            <CheckCircle2 size={18} className="text-blue-500 shrink-0 mt-1" />
+            <span>Hands-on Capstone Project</span>
           </div>
 
-          <div className="flex items-center gap-2">
-            <CheckCircle2 size={16} className="text-blue-500 shrink-0" />
-            Industry Recognized Certification
+          <div className="flex items-start gap-2">
+            <CheckCircle2 size={18} className="text-blue-500 shrink-0 mt-1" />
+            <span>Industry Recognized Certification</span>
           </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle2 size={16} className="text-blue-500 shrink-0" />
-            {persona}
+          <div className="flex items-start gap-2">
+            <CheckCircle2 size={18} className="text-blue-500 shrink-0 mt-1" />
+            <span>{persona}</span>
           </div>
         </div>
 
