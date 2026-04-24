@@ -35,7 +35,9 @@ const LOGO_LINKS: Record<string, string> = {
   "/logos/hive_link_logo.jpg": "https://hivelink.com",
   "/logos/image.png": "https://www.policybazaar.com/",
   "/logos/Faba.png": "https://biofaba.org.in/",
-  "/logos/capsim.png": "https://www.capsim.com/"
+  "/logos/capsim.png": "https://www.capsim.com/",
+  "/logos/redshelid1.png": "https://thefoundrys.com",
+  "AI COMPASS": "https://openvalidations.com/services/ai-compass",
 };
 
 export function InfiniteLogoScroll() {
