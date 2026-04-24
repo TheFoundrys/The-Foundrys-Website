@@ -37,7 +37,7 @@ const LOGO_LINKS: Record<string, string> = {
   "/logos/Faba.png": "https://biofaba.org.in/",
   "/logos/capsim.png": "https://www.capsim.com/",
   "/logos/redshelid1.png": "https://thefoundrys.com",
-  "AI COMPASS": "https://openvalidations.com/services/ai-compass",
+  "AI COMPASS": "https://openvalidations.com/services/ai-compass"
 };
 
 export function InfiniteLogoScroll() {
