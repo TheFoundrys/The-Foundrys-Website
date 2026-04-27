@@ -6,9 +6,9 @@ import { Linkedin, Mail, GraduationCap, Award, BookOpen, Briefcase, Quote } from
 
 export default function PramodChadaPage() {
     return (
-        <main className="min-h-screen bg-white">
+        <main className="min-h-screen bg-white overflow-x-hidden">
             <Navbar />
-            
+
             {/* Header/Hero Section */}
             <section className="pt-32 pb-16 px-6 bg-slate-900 text-white relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-[100px]" />
@@ -27,10 +27,10 @@ export default function PramodChadaPage() {
                             <div className="inline-block px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-xs font-bold uppercase tracking-widest mb-4">
                                 Advisory Board Member
                             </div>
-                            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-2">
+                            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white mb-2">
                                 Pramod Chada
                             </h1>
-                            <p className="text-xl text-blue-400 font-medium mb-6">CEO, TechOptima | IT Delivery & AI Specialist</p>
+                            <p className="text-xl text-blue-400 font-medium mb-6">CEO, TechOptima | IT Delivery</p>
                             <div className="flex flex-wrap justify-center md:justify-start gap-4">
                                 <a href="#" className="p-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
                                     <Linkedin size={20} className="text-blue-400" />

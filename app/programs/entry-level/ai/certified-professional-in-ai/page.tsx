@@ -249,7 +249,7 @@ export default function CertifiedProfessionalAICoursePage() {
             </section>
 
             {/* Program Details Card */}
-            <div className="relative z-20 px-4 mt-12 mb-12">
+            <div className="relative z-20 px-4 -mt-16 mb-12">
                 <div className="mx-auto max-w-5xl">
                     <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
@@ -275,7 +275,7 @@ export default function CertifiedProfessionalAICoursePage() {
                         </div>
 
                         <div className="w-full lg:w-auto">
-                            <Link href="/enroll/certified-professional-in-ai" className="block w-full text-center px-8 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
+                            <Link href="/apply" className="block w-full text-center px-8 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
                                 Enroll Now
                             </Link>
                         </div>

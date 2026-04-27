@@ -32,7 +32,7 @@ const CAREER_ROLES = [
     label: "AI Security Analyst",
     title: "AI Security Analyst",
     desc: "Protects neural networks from adversarial attacks and data poisoning. Ensures AI models are secure, resilient, and ethically sound in production environments.",
-    salary: "₹45L - 75L",
+    salary: "₹6L - 14L",
     growth: "+55% YoY",
     skills: [
       "Adversarial ML",
@@ -54,7 +54,7 @@ const CAREER_ROLES = [
     label: "ML Security Engineer",
     title: "ML Security Engineer",
     desc: "Designs self-healing security systems that use machine learning to detect and neutralize threats in real-time across enterprise infrastructure.",
-    salary: "₹55L - 90L",
+    salary: "₹8L - 18L",
     growth: "+50% YoY",
     skills: [
       "SIEM & SOAR",
@@ -76,7 +76,7 @@ const CAREER_ROLES = [
     label: "Synthetic Threat Analyst",
     title: "Synthetic Threat Analyst",
     desc: "Detects and mitigates AI-generated deepfakes, synthetic phishing campaigns, and automated social engineering attacks at scale.",
-    salary: "₹40L - 70L",
+    salary: "₹5L - 12L",
     growth: "+65% YoY",
     skills: [
       "Deepfake Detection",
@@ -98,7 +98,7 @@ const CAREER_ROLES = [
     label: "Cyber Forensics Expert",
     title: "Cyber Forensics Expert (AI Era)",
     desc: "Traces digital footprints across decentralized networks to solve crimes involving weaponized AI, autonomous agents, and encrypted communications.",
-    salary: "₹50L - 85L",
+    salary: "₹4L - 10L",
     growth: "+40% YoY",
     skills: [
       "Digital Forensics",
@@ -116,33 +116,11 @@ const CAREER_ROLES = [
     ]
   },
   {
-    id: "quantum-security-strategist",
-    label: "Quantum Security Strategist",
-    title: "Quantum Security Strategist",
-    desc: "Prepares global enterprises for the post-quantum era, implementing lattice-based cryptography and securing communication against quantum-computing threats.",
-    salary: "₹60L - 1.1Cr",
-    growth: "+45% YoY",
-    skills: [
-      "Quantum Cryptography",
-      "Shor's Algorithm Analysis",
-      "PQC Algorithms",
-      "Network Infrastructure",
-      "Strategy Consulting"
-    ],
-    responsibilities: [
-      "Leading quantum-readiness audits",
-      "Implementing post-quantum protocols",
-      "Securing long-lived data assets",
-      "Architecting quantum-safe networking",
-      "Collaborating with government security bodies"
-    ]
-  },
-  {
     id: "autonomous-incident-orchestrator",
     label: "Autonomous Incident Orchestrator",
     title: "Autonomous Incident Orchestrator",
     desc: "Designs and manages high-velocity response systems where AI agents autonomously contain, eradicate, and recover from sophisticated cyber-attacks.",
-    salary: "₹55L - 95L",
+    salary: "₹8L - 16L",
     growth: "+58% YoY",
     skills: [
       "SOAR Architecture",
@@ -164,7 +142,7 @@ const CAREER_ROLES = [
     label: "Bio-Digital Identity Guard",
     title: "Bio-Digital Identity Guard",
     desc: "Secures the next generation of identity systems, protecting biometric and neural data against synthetic spoofing and decentralized identity theft.",
-    salary: "₹48L - 82L",
+    salary: "₹7L - 15L",
     growth: "+42% YoY",
     skills: [
       "Decentralized Identity (DID)",

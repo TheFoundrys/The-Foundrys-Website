@@ -332,7 +332,7 @@ export default function PromptEngineeringCoursePage() {
 
             {/* Program Details Card */}
             {/* Program Details Card */}
-            <div className="relative z-20 px-4 mt-12 mb-12">
+            <div className="relative z-20 px-4 -mt-16 mb-12">
                 <div className="mx-auto max-w-5xl">
                     <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
@@ -462,12 +462,10 @@ export default function PromptEngineeringCoursePage() {
                             {
                                 logos: [
                                     { url: "https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg", name: "OpenAI" },
-                                    { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Claude_AI_logo.svg/640px-Claude_AI_logo.svg.png", name: "Anthropic" },
+                                    { url: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Claude_AI_logo.svg", name: "Anthropic" },
                                     { url: "https://upload.wikimedia.org/wikipedia/commons/3/3f/LangChain_logo.png?_=20230418052632", name: "LangChain" },
                                     { url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", name: "Python" },
                                     { url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/streamlit/streamlit-original.svg", name: "Streamlit" },
-                                    { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/ChatGPT-Logo.svg/640px-ChatGPT-Logo.svg.png", name: "ChatGPT" },
-                                    { url: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg", name: "Python" },
                                     { url: "https://avatars.githubusercontent.com/u/126733545?s=200&v=4", name: "LangSmith" }
                                 ],
                                 direction: "left"
@@ -488,19 +486,23 @@ export default function PromptEngineeringCoursePage() {
                                         }}
                                         style={{ width: "max-content" }}
                                     >
-                                        {[...row.logos, ...row.logos, ...row.logos, ...row.logos].map((logo, idx) => (
-                                            <div
-                                                key={idx}
-                                                className="bg-white rounded-xl h-32 w-36 flex flex-col items-center justify-center p-4 gap-2 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex-shrink-0"
-                                            >
-                                                <img
-                                                    src={logo.url}
-                                                    className="h-12 w-auto object-contain"
-                                                    alt={logo.name}
-                                                />
-                                                <span className="text-xs font-semibold text-slate-700 text-center">
-                                                    {logo.name}
-                                                </span>
+                                        {[0, 1].map((setIndex) => (
+                                            <div key={setIndex} className="flex gap-8 items-center pr-8">
+                                                {row.logos.map((logo, idx) => (
+                                                    <div
+                                                        key={idx}
+                                                        className="bg-white rounded-xl h-32 w-36 flex flex-col items-center justify-center p-4 gap-2 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex-shrink-0"
+                                                    >
+                                                        <img
+                                                            src={logo.url}
+                                                            className="h-12 w-auto object-contain"
+                                                            alt={logo.name}
+                                                        />
+                                                        <span className="text-xs font-semibold text-slate-700 text-center">
+                                                            {logo.name}
+                                                        </span>
+                                                    </div>
+                                                ))}
                                             </div>
                                         ))}
                                     </motion.div>

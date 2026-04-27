@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
         destination: '/blog',
         permanent: true,
       },
+      {
+        source: '/programs',
+        destination: 'https://compass.thefoundrys.com',
+        permanent: false,
+      },
     ]
   },
   images: {

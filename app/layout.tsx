@@ -16,11 +16,6 @@ export const viewport: Viewport = {
 
 // Explicitly forcing no-icon to prevent browser defaults
 export const metadata: Metadata = {
-  icons: {
-    icon: 'data:image/x-icon;base64,',
-    shortcut: 'data:image/x-icon;base64,',
-    apple: 'data:image/x-icon;base64,',
-  },
   metadataBase: new URL("https://thefoundrys.com"),
   title: {
     default: "The Foundrys | Best Deep Tech & AI College in Hyderabad",

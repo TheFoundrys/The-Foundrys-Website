@@ -8,11 +8,11 @@ import { BlockchainSkills } from "@/components/schools/blockchain/founder-skills
 import { BlockchainStats } from "@/components/schools/blockchain/program-stats";
 import { BlockchainComparison } from "@/components/schools/blockchain/comparison";
 import { BlockchainCurriculumAccordion } from "@/components/schools/blockchain/curriculum-accordion";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 
 export default function BlockchainClient() {
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
   return (

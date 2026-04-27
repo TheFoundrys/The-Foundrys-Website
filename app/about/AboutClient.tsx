@@ -17,7 +17,7 @@ const ARCHETYPES = [
 
 export function AboutClient() {
     return (
-        <main className="min-h-screen bg-slate-100 text-slate-900 selection:bg-blue-200 selection:text-blue-900">
+        <main className="min-h-screen bg-slate-100 text-slate-900 selection:bg-blue-200 selection:text-blue-900 overflow-x-hidden">
             <Navbar />
 
             {/* Scroll 1: Impact Hero & Vision - Robust Grey Grid */}
@@ -28,7 +28,7 @@ export function AboutClient() {
                 <div className="container mx-auto max-w-5xl px-6 text-center z-10">
                     <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                         <span className="text-white font-extrabold uppercase tracking-[0.4em] text-[10px] mb-8 inline-block bg-slate-900 px-4 py-1 rounded-full shadow-lg">The Origin</span>
-                        <h1 className="text-5xl md:text-8xl font-bold tracking-tighter mb-8 leading-[0.9] text-slate-900">
+                        <h1 className="text-4xl md:text-8xl font-bold tracking-tighter mb-8 leading-[0.9] text-slate-900">
                             We didn&apos;t build a school. <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">We built a Foundry.</span>
                         </h1>
@@ -50,7 +50,7 @@ export function AboutClient() {
             </section>
 
             {/* Scroll 2: Philosophy & Archetypes - Warm Sand/Gallery Aesthetics */}
-            <section className="h-screen flex items-center justify-center bg-[#f7f5ef] px-6 relative overflow-hidden border-b border-slate-200">
+            <section className="min-h-screen flex flex-col justify-center bg-[#f7f5ef] px-6 py-24 relative overflow-hidden border-b border-slate-200">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-amber-200/20 blur-[150px] rounded-full -mr-32 -mt-32" />
                 <div className="container mx-auto max-w-6xl z-10">
                     <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -77,7 +77,7 @@ export function AboutClient() {
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {ARCHETYPES.map((arch) => (
                                 <div key={arch.title} className="p-8 rounded-[3rem] bg-white border border-slate-200 shadow-lg shadow-slate-300/20 group hover:shadow-blue-500/10 transition-all">
                                     <arch.icon className={`${arch.color} mb-6`} size={36} />
@@ -92,7 +92,7 @@ export function AboutClient() {
             </section>
 
             {/* Scroll 3: The Founder (Vishwa) - High Contrast Dark Mode Finish */}
-            <section className="h-screen flex items-center justify-center bg-slate-900 px-6 relative overflow-hidden">
+            <section className="min-h-screen flex flex-col justify-center bg-slate-900 px-6 py-24 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:40px_40px]" />
                 <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 blur-[120px] rounded-full" />
 
@@ -103,22 +103,22 @@ export function AboutClient() {
                                 <Image src="/images/vishwa.png" alt="Vishwanath Akuthota" fill className="object-cover" />
                             </div>
                         </div>
-                        <div className="flex-[1.4] space-y-8 z-10">
+                        <div className="flex-[1.4] w-full space-y-6 md:space-y-8 z-10">
                             <div>
-                                <h2 className="text-5xl md:text-7xl font-bold mb-4 tracking-tighter text-white">Vishwanath Akuthota</h2>
-                                <p className="text-2xl text-blue-400 font-medium tracking-tight">Founder & CEO</p>
+                                <h2 className="text-3xl md:text-7xl font-bold mb-3 md:mb-4 tracking-tighter text-white">Vishwanath Akuthota</h2>
+                                <p className="text-xl md:text-2xl text-blue-400 font-medium tracking-tight">Founder & CEO</p>
                             </div>
-                            <div className="space-y-6 text-slate-300 text-lg leading-relaxed max-w-2xl border-l border-blue-500/30 pl-8">
-                                <p className="font-serif italic text-3xl text-blue-50/80 leading-snug">&quot;Leadership is about building trust, resilience, and possibility.&quot;</p>
-                                <p>With 15+ years in AI, Quantum, and Blockchain, Vishwanath built The Foundry&apos;s to forge the next generation of architects who reshape global industries.</p>
+                            <div className="space-y-4 md:space-y-6 text-slate-300 text-base md:text-lg leading-relaxed max-w-2xl border-l-2 border-blue-500/30 pl-6 md:pl-8">
+                                <p className="font-serif italic text-2xl md:text-3xl text-blue-50/80 leading-snug">&quot;Leadership is about building trust, resilience, and possibility.&quot;</p>
+                                <p className="text-sm md:text-base">With 15+ years in AI, Quantum, Cyber Security and Blockchain, Vishwanath built The Foundry&apos;s to forge the next generation of architects who reshape global industries.</p>
                             </div>
-                            <div className="flex items-center justify-start gap-3 pt-6 pb-2 overflow-x-auto no-scrollbar mask-fade-right">
+                            <div className="flex flex-col md:flex-row items-start md:items-center justify-start gap-3 md:gap-4 pt-6 pb-2 w-full">
                                 {[
                                     { href: "https://www.linkedin.com/in/vishwanathakuthota/", text: "Connect LinkedIn" },
                                     { href: "https://www.drpinnacle.com", text: "Dr.Pinnacle Website", white: true },
                                     { href: "/about/team", text: "Foundry Team", blue: true }
                                 ].map((btn) => (
-                                    <Link key={btn.text} href={btn.href} className={`px-9 py-4 rounded-full font-bold text-sm transition-all flex items-center gap-2 whitespace-nowrap ${btn.white ? 'bg-white text-slate-900 shadow-xl' : btn.blue ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30' : 'bg-slate-800 text-white border border-slate-700 shadow-sm'}`}>
+                                    <Link key={btn.text} href={btn.href} className={`px-9 py-4 rounded-full font-bold text-sm transition-all flex items-center justify-center gap-2 whitespace-nowrap w-full md:w-auto ${btn.white ? 'bg-white text-slate-900 shadow-xl' : btn.blue ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30' : 'bg-slate-800 text-white border border-slate-700 shadow-sm'}`}>
                                         {btn.text} <ArrowUpRight size={16} />
                                     </Link>
                                 ))}

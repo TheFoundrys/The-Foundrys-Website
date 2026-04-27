@@ -50,7 +50,7 @@ export function AdmissionsOpen() {
                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-lime-vibrant mb-4 block">
                   Foundry Protocol: Admissions
                 </span>
-                <h2 className="text-5xl sm:text-7xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white tracking-normal leading-[1.1] uppercase italic py-4 pr-16">
+                <h2 className="text-3xl xs:text-4xl sm:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white tracking-tight leading-[1.1] uppercase italic py-4 md:pr-16">
                   ADMISSIONS <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-vibrant to-lime-200 pb-4 pr-6">OPEN</span>
                 </h2>

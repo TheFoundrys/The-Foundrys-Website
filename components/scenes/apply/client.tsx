@@ -185,7 +185,15 @@ export function ApplyClient() {
                                                 required
                                                 name="phone"
                                                 type="tel"
-                                                placeholder="+91 00000 00000"
+                                                placeholder="98765 43210"
+                                                onChange={(e) => {
+                                                    const value = e.target.value.replace(/\D/g, '');
+                                                    if (value.length <= 10) {
+                                                        e.target.value = value;
+                                                    } else {
+                                                        e.target.value = value.slice(0, 10);
+                                                    }
+                                                }}
                                                 className="w-full pb-3 md:pb-4 bg-transparent border-b-2 border-slate-100 focus:border-blue-600 focus:outline-none transition-all placeholder:text-slate-200 font-medium text-base md:text-lg text-slate-900"
                                             />
                                         </div>

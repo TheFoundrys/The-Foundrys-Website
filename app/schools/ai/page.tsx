@@ -544,8 +544,8 @@ function NeuralNetwork() {
 export default function AISchoolPage() {
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
 
-    useLayoutEffect(() => {
-        window.scrollTo(0, 0);
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
     }, []);
 
     return (
@@ -573,9 +573,9 @@ export default function AISchoolPage() {
                         >
                             {/* Department / Program Label */}
 
-                            <h1 className="text-6xl sm:text-7xl md:text-[7rem] lg:text-[8.5rem] font-black tracking-tighter text-white mb-8 md:mb-10 leading-[0.85] uppercase">
+                            <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-[8.5rem] font-black tracking-tighter text-white mb-8 md:mb-10 leading-[0.85] uppercase">
                                 Artificial <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-200 to-blue-500 pb-2 inline-block pr-8">Intelligence</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-200 to-blue-500 pb-2 inline-block md:pr-8">Intelligence</span>
                             </h1>
 
                             <p className="text-xl md:text-3xl text-slate-300 leading-relaxed font-light mb-16 max-w-3xl">
@@ -779,14 +779,14 @@ export default function AISchoolPage() {
                                         ))}
                                     </ul>
                                 </div>
-                                <div className="p-6 bg-blue-600 rounded-2xl text-white shadow-xl flex items-center justify-between group cursor-pointer overflow-hidden relative">
+                                <Link href="/apply" className="p-6 bg-blue-600 rounded-2xl text-white shadow-xl flex items-center justify-between group cursor-pointer overflow-hidden relative block w-full hover:scale-[1.02] transition-transform">
                                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
                                     <div>
                                         <h4 className="text-lg font-bold mb-1">Admissions Open</h4>
                                         <p className="text-blue-100 text-sm">Secure your cohort for 2026 today.</p>
                                     </div>
                                     <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                </div>
+                                </Link>
                             </div>
                         </div>
                     </div>

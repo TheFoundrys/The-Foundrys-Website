@@ -66,7 +66,7 @@ export default function EducatorsPage() {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed mb-12 font-light"
                     >
-                        Empowering teachers to lead the deep tech revolution. Integrate <span className="text-white font-medium">AI, Cyber Security and Quantum</span> into your classroom today.
+                        Empowering teachers to lead the deep tech revolution. Integrate <span className="text-white font-medium inline-block whitespace-nowrap">AI, Cyber Security and Quantum</span> into your classroom today.
                     </motion.p>
 
                     <motion.div

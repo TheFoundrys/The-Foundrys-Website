@@ -4,6 +4,7 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import { Leaf, Globe, TrendingUp, Users, Scale, Building2 } from "lucide-react";
+import Link from "next/link";
 
 export function ESGClient() {
   return (
@@ -35,9 +36,11 @@ export function ESGClient() {
                     Become the architect of compliant, ethical, and highly profitable systems for the future economy.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                    <button className="px-8 py-4 bg-emerald-600 text-white rounded-full font-bold text-lg hover:bg-emerald-500 transition-all shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-[0_0_50px_rgba(16,185,129,0.5)] transform hover:-translate-y-1">
-                        APPLY FOR ESG PROGRAM
-                    </button>
+                    <Link href="/apply">
+                        <button className="px-8 py-4 bg-emerald-600 text-white rounded-full font-bold text-lg hover:bg-emerald-500 transition-all shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-[0_0_50px_rgba(16,185,129,0.5)] transform hover:-translate-y-1">
+                            APPLY FOR ESG PROGRAM
+                        </button>
+                    </Link>
                 </div>
             </motion.div>
         </div>

@@ -136,26 +136,10 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
                 <div className="flex flex-wrap gap-2 w-full sm:w-auto md:w-full lg:w-auto">
                     <Link
                         href={href}
-                        className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-slate-900 border border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition-colors shadow-sm"
+                        className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-teal-600 transition-colors shadow-lg hover:shadow-teal-500/25"
                     >
-                        Details
+                        View Program <ArrowUpRight size={18} />
                     </Link>
-                    {enrollHref && (
-                        <Link
-                            href={enrollHref}
-                            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-teal-600 transition-colors shadow-lg hover:shadow-teal-500/25"
-                        >
-                            Enroll Now <ArrowUpRight size={18} />
-                        </Link>
-                    )}
-                    {!enrollHref && (
-                        <Link
-                            href={href}
-                            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-teal-600 transition-colors shadow-lg hover:shadow-teal-500/25"
-                        >
-                            View Program <ArrowUpRight size={18} />
-                        </Link>
-                    )}
                 </div>
             </div>
         </motion.div>

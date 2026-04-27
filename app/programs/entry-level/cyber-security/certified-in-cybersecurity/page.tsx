@@ -330,14 +330,14 @@ export default function CertifiedInCybersecurityPage() {
                         </h1>
 
                         <p className="text-lg md:text-xl text-emerald-100/80 font-light leading-relaxed max-w-3xl mx-auto mb-12">
-                            Kickstart your career with the prestigious (ISC)² CC certification. Master the 5 domains of cybersecurity and prove your skills in the digital battlefield.
+                            Kickstart your career with the prestigious certification. Master the 5 domains of cybersecurity and prove your skills in the digital battlefield.
                         </p>
 
                         <div className="flex flex-wrap gap-4 md:gap-6 justify-center text-sm text-emerald-100">
-                            <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
+                            {/* <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
                                 <CheckCircle2 size={18} className="text-emerald-400" />
                                 <span>(ISC)² Alignment</span>
-                            </div>
+                            </div> */}
                             <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
                                 <CheckCircle2 size={18} className="text-emerald-400" />
                                 <span>Guided Hands-on Labs</span>
@@ -352,7 +352,7 @@ export default function CertifiedInCybersecurityPage() {
             </section>
 
             {/* Program Details Card */}
-            <div className="relative z-20 px-4 -mt-14 mb-12">
+            <div className="relative z-20 px-4 -mt-16 mb-12">
                 <div className="mx-auto max-w-5xl">
                     <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
