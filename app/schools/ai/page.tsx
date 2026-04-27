@@ -605,13 +605,13 @@ export default function AISchoolPage() {
 
                             {/* Duration Toggle */}
                             <div className="flex gap-4 mb-12">
-                                <button 
+                                <button
                                     onClick={() => setDuration(3)}
                                     className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 3 ? 'bg-blue-600 text-white' : 'bg-white/10 text-white/60 hover:bg-white/20'}`}
                                 >
                                     3-Year Program
                                 </button>
-                                <button 
+                                <button
                                     onClick={() => setDuration(4)}
                                     className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 4 ? 'bg-blue-600 text-white' : 'bg-white/10 text-white/60 hover:bg-white/20'}`}
                                 >
@@ -632,8 +632,8 @@ export default function AISchoolPage() {
                                             </>
                                         ) : (
                                             <>
-                                                <p className="text-sm md:text-base font-semibold text-white tracking-tight">B.Tech in Artificial Intelligence</p>
-                                                <p className="text-sm md:text-base font-semibold text-white tracking-tight">B.Sc (Hons) AI / ML</p>
+                                                <p className="text-sm md:text-base font-semibold text-white tracking-tight">BCA in Artificial Intelligence</p>
+                                                <p className="text-sm md:text-base font-semibold text-white tracking-tight">B.Sc AI / ML Professional</p>
                                             </>
                                         )}
                                     </div>
