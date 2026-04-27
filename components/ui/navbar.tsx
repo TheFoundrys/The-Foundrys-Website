@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { triggerHaptic } from "@/lib/haptics";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu, Zap, Leaf, Network, BookOpen, Briefcase, GraduationCap, Calendar, Newspaper, ArrowRight } from "lucide-react";
+import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu, Zap, Leaf, Network, BookOpen, Briefcase, GraduationCap, Calendar, Newspaper, ArrowRight, LineChart } from "lucide-react";
 
 export function Navbar() {
     const pathname = usePathname();
@@ -87,6 +87,14 @@ export function Navbar() {
                 icon: BrainCircuit,
                 color: "text-blue-600",
                 bg: "bg-blue-50"
+            },
+            {
+                href: "/schools/datascience",
+                label: "Data Science",
+                desc: "The Insight Layer",
+                icon: LineChart,
+                color: "text-indigo-600",
+                bg: "bg-indigo-50"
             },
             {
                 href: "/schools/cyber",

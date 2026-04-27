@@ -375,8 +375,8 @@ export function CyberClient() {
             className="max-w-5xl mx-auto"
           >
             <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white mb-8 leading-[0.9]">
-              Cyber<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-white to-cyan-200">Security.</span>
+              Cyber Security.
+              {/* <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-white to-cyan-200">Security.</span> */}
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-light mb-12">
