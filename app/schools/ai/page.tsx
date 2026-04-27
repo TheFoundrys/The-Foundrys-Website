@@ -345,18 +345,37 @@ const CURRICULUM_DATA = [
             "Capstone: Production-Grade AI System with Industry Partner",
             "Founder Track: Pitch Deck, Fundraising & Go-to-Market Strategy"
         ]
+    },
+    {
+        year: 4,
+        title: "Deep Specialization & Venture Launch",
+        topics: [
+            "Advanced Specialization: Robotics, AI for Healthcare, or Finance",
+            "Deep Research: Contributing to Open Source AI Frameworks",
+            "Industrial MLOps: Orchestrating Global-Scale AI Systems",
+            "Major Capstone: Launching Your AI Venture to Market",
+            "Residency: 6-Month Full-Time Internship with Global Partners",
+            "Founder Track: Seed Funding, Equity Design & Scaling"
+        ]
     }
 ];
 
-function CurriculumTabs() {
+function CurriculumTabs({ duration }: { duration: 3 | 4 }) {
     const [activeYear, setActiveYear] = useState(1);
-    const activeContent = CURRICULUM_DATA.find(item => item.year === activeYear);
+    const filteredCurriculum = CURRICULUM_DATA.filter(item => item.year <= duration);
+    const activeContent = filteredCurriculum.find(item => item.year === activeYear) || filteredCurriculum[0];
+
+    useEffect(() => {
+        if (activeYear > duration) {
+            setActiveYear(1);
+        }
+    }, [duration, activeYear]);
 
     return (
         <div className="space-y-8">
             {/* Year Tabs */}
             <div className="flex flex-wrap justify-center gap-3">
-                {CURRICULUM_DATA.map((item) => (
+                {filteredCurriculum.map((item) => (
                     <button
                         key={item.year}
                         onClick={() => setActiveYear(item.year)}
@@ -543,6 +562,7 @@ function NeuralNetwork() {
 
 export default function AISchoolPage() {
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
+    const [duration, setDuration] = useState<3 | 4>(4);
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'instant' });
@@ -579,9 +599,25 @@ export default function AISchoolPage() {
                             </h1>
 
                             <p className="text-xl md:text-3xl text-slate-300 leading-relaxed font-light mb-16 max-w-3xl">
-                                A 3-year immersive degree merging AI Engineering with Entrepreneurship. <br />
+                                A {duration}-year immersive degree merging AI Engineering with Entrepreneurship. <br />
                                 <span className="text-white font-medium">Graduate with Mastery, Vision & Real-World Impact.</span>
                             </p>
+
+                            {/* Duration Toggle */}
+                            <div className="flex gap-4 mb-12">
+                                <button 
+                                    onClick={() => setDuration(3)}
+                                    className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 3 ? 'bg-blue-600 text-white' : 'bg-white/10 text-white/60 hover:bg-white/20'}`}
+                                >
+                                    3-Year Program
+                                </button>
+                                <button 
+                                    onClick={() => setDuration(4)}
+                                    className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 4 ? 'bg-blue-600 text-white' : 'bg-white/10 text-white/60 hover:bg-white/20'}`}
+                                >
+                                    4-Year Program
+                                </button>
+                            </div>
 
                             {/* Elegant Inline Content (Replacing Cluttered Boxes) */}
                             <div className="grid sm:grid-cols-3 gap-10 md:gap-16 pt-12 border-t border-white/10 max-w-4xl relative z-10">
@@ -589,8 +625,17 @@ export default function AISchoolPage() {
                                 <div>
                                     <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-[0.2em] font-bold mb-4">Available Degrees</p>
                                     <div className="space-y-1.5 border-l-2 border-cyan-500/30 pl-4">
-                                        <p className="text-sm md:text-base font-semibold text-white tracking-tight">BCA in Artificial Intelligence</p>
-                                        <p className="text-sm md:text-base font-semibold text-white tracking-tight">B.Sc AI / ML Professional</p>
+                                        {duration === 3 ? (
+                                            <>
+                                                <p className="text-sm md:text-base font-semibold text-white tracking-tight">BCA in Artificial Intelligence</p>
+                                                <p className="text-sm md:text-base font-semibold text-white tracking-tight">B.Sc AI / ML Professional</p>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <p className="text-sm md:text-base font-semibold text-white tracking-tight">B.Tech in Artificial Intelligence</p>
+                                                <p className="text-sm md:text-base font-semibold text-white tracking-tight">B.Sc (Hons) AI / ML</p>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
 
@@ -648,7 +693,7 @@ export default function AISchoolPage() {
                         <div className="grid grid-cols-1 lg:grid-cols-4 gap-y-5 lg:gap-x-14 flex-1 text-left w-full">
                             <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-0.5">Program Length</p>
-                                <p className="text-lg font-bold text-slate-900">3-Year Full-Time</p>
+                                <p className="text-lg font-bold text-slate-900">{duration}-Year Full-Time</p>
                             </div>
                             <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-0.5">Delivery Mode</p>
@@ -689,7 +734,7 @@ export default function AISchoolPage() {
                                 <span className="text-blue-600">the AI Era.</span>
                             </h2>
                             <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                                The Foundry&apos;s 3-year AI program combines rigorous academic foundations with hands-on engineering and entrepreneurial execution. Students don&apos;t just learn theory — they architect neural networks, deploy agent systems, and ship production-grade AI products before graduation.
+                                The Foundry&apos;s {duration}-year AI program combines rigorous academic foundations with hands-on engineering and entrepreneurial execution. Students don&apos;t just learn theory — they architect neural networks, deploy agent systems, and ship production-grade AI products before graduation.
                             </p>
                             <div className="flex flex-wrap gap-3">
                                 {["Neural Networks", "LLMs \u0026 Agents", "MLOps", "Startup Lab", "GPU Clusters", "Ethics \u0026 Safety"].map((tag, i) => (
@@ -701,8 +746,8 @@ export default function AISchoolPage() {
                         </div>
                         <div className="grid grid-cols-2 gap-5">
                             {[
-                                { value: "3", unit: "Years", label: "Full-time immersive program" },
-                                { value: "6", unit: "Semesters", label: "Progressive skill building" },
+                                { value: duration.toString(), unit: "Years", label: "Full-time immersive program" },
+                                { value: (duration * 2).toString(), unit: "Semesters", label: "Progressive skill building" },
                                 { value: "100%", unit: "Hands-on", label: "Project-based from day one" },
                                 { value: "100+", unit: "Projects", label: "Real-world problem solving" },
                             ].map((stat, i) => (
@@ -938,11 +983,12 @@ export default function AISchoolPage() {
                 <div className="container mx-auto max-w-7xl">
                     <div className="text-center mb-12">
                         <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">What You Will Study</h2>
-                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">From mathematical foundations to shipping production AI systems. Every year builds on the last.</p>
+                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">From mathematical foundations to building enterprise-scale data architectures. Every year builds on the last.</p>
                     </div>
-                    <CurriculumTabs />
+                    <CurriculumTabs duration={duration} />
                 </div>
             </section>
+
             {/* Tool Master Section — Contained Design */}
             <section id="tool-master" className="py-6 bg-slate-50 overflow-hidden relative border-y border-slate-200">
                 <div className="container mx-auto max-w-6xl relative z-10 px-6">

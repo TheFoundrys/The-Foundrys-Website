@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight, BrainCircuit, ShieldCheck, Atom, Network, Rocket, Cpu, Leaf, Zap, Globe, Sparkles } from "lucide-react";
+import { ArrowUpRight, BrainCircuit, ShieldCheck, Atom, Network, Rocket, Cpu, Leaf, Zap, Globe, Sparkles, LineChart } from "lucide-react";
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import React from "react";
@@ -18,8 +18,9 @@ const SCHOOLS = [
         iconBg: "bg-blue-600",
         accent: "blue",
         programs: [
-            { title: "Artificial Intelligence", desc: "Intelligence Layer", href: "/schools/ai", icon: BrainCircuit },
-            { title: "Cyber Security", desc: "Defense Layer", href: "/schools/cyber", icon: ShieldCheck },
+            { title: "Artificial Intelligence", desc: "3 or 4-Year Track", href: "/schools/ai", icon: BrainCircuit },
+            { title: "Data Science", desc: "3 or 4-Year Track", href: "/schools/datascience", icon: LineChart },
+            { title: "Cyber Security", desc: "3 or 4-Year Track", href: "/schools/cyber", icon: ShieldCheck },
             { title: "Quantum Computing", desc: "The Q-Layer", href: "/schools/quantum-computing", icon: Atom },
             { title: "Blockchain", desc: "Trust Layer", href: "/schools/blockchain", icon: Network },
         ]
@@ -149,7 +150,7 @@ export default function SchoolsPage() {
                                             <prog.icon size={28} />
                                         </div>
                                         <h3 className="text-2xl font-bold mb-2 text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors">{prog.title}</h3>
-                                        <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">{prog.desc}</p>
+                                        <p className="text-sm font-bold text-blue-600/80 uppercase tracking-widest">{prog.desc}</p>
 
                                         <div className="absolute top-8 right-8 text-slate-200 group-hover:text-blue-500 transition-colors">
                                             <ArrowUpRight size={20} />

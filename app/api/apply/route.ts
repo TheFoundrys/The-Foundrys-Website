@@ -6,7 +6,7 @@ import nodemailer from "nodemailer";
 export async function POST(req: Request) {
     try {
         const data = await req.json();
-        const { name, email, phone, program, occupation, message, location, eduBackground } = data;
+        const { name, email, phone, program, occupation, message, location, eduBackground, duration } = data;
 
         // 1. Prepare Data Row for Google Sheets
         const rowData = {
@@ -14,7 +14,7 @@ export async function POST(req: Request) {
             Name: name,
             Email: email,
             Phone: phone,
-            Program: program,
+            Program: duration ? `${program} (${duration}-Year)` : program,
             Occupation: occupation,
             Location: location || "Online",
             EduBackground: eduBackground || occupation,
@@ -31,7 +31,7 @@ export async function POST(req: Request) {
                 location: location || "Online",
                 eduBackground: eduBackground || occupation || "B.Tech",
                 leadSource: "Website",
-                program: program
+                program: duration ? `${program} (${duration}-Year)` : program
             };
 
             const crmResponse = await fetch("https://crm.thefoundrys.com/api/v1/lms/external", {
@@ -87,14 +87,14 @@ export async function POST(req: Request) {
                 await transporter.sendMail({
                     from: process.env.GMAIL_USER,
                     to: process.env.GMAIL_USER, // Send to self (Admin)
-                    subject: `New Interest: ${name} - ${program}`,
+                    subject: `New Interest: ${name} - ${program}${duration ? ` (${duration}-Year)` : ""}`,
                     text: `
 New Interest Form Submitted:
 
 Name: ${name}
 Email: ${email}
 Phone: ${phone}
-Program: ${program}
+Program: ${program}${duration ? ` (${duration}-Year)` : ""}
 Occupation: ${occupation}
 Location: ${location || "Online"}
 Edu Background: ${eduBackground || occupation}

@@ -331,17 +331,36 @@ const CURRICULUM_DATA = [
             "Capstone: solving Real-world Industry Challenges with Data",
             "Founder Track: Building a Data-Driven Startup"
         ]
+    },
+    {
+        year: 4,
+        title: "Enterprise Intelligence & Strategic Insights",
+        topics: [
+            "Advanced Big Data Architectures: Streaming & Real-time Analytics",
+            "Generative AI for Business: Implementation & Fine-tuning",
+            "Data Governance, Privacy Engineering & Compliance at Scale",
+            "Strategic Decision Science: Game Theory & Market Modeling",
+            "Major Capstone: Deploying a Multi-Region Data Infrastructure",
+            "Founder Track: Scaling Data-First Ventures & Go-to-Market"
+        ]
     }
 ];
 
-function CurriculumTabs() {
+function CurriculumTabs({ duration }: { duration: 3 | 4 }) {
     const [activeYear, setActiveYear] = useState(1);
-    const activeContent = CURRICULUM_DATA.find(item => item.year === activeYear);
+    const filteredCurriculum = CURRICULUM_DATA.filter(item => item.year <= duration);
+    const activeContent = filteredCurriculum.find(item => item.year === activeYear) || filteredCurriculum[0];
+
+    useEffect(() => {
+        if (activeYear > duration) {
+            setActiveYear(1);
+        }
+    }, [duration, activeYear]);
 
     return (
         <div className="space-y-8">
             <div className="flex flex-wrap justify-center gap-3">
-                {CURRICULUM_DATA.map((item) => (
+                {filteredCurriculum.map((item) => (
                     <button
                         key={item.year}
                         onClick={() => setActiveYear(item.year)}
@@ -496,6 +515,7 @@ function DataPulse() {
 
 export default function DataScienceSchoolPage() {
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
+    const [duration, setDuration] = useState<3 | 4>(4);
 
     useLayoutEffect(() => {
         window.scrollTo(0, 0);
@@ -528,23 +548,45 @@ export default function DataScienceSchoolPage() {
                             </h1>
 
                             <p className="text-xl md:text-3xl text-slate-300 leading-relaxed font-light mb-16 max-w-3xl">
-                                A 3-year immersive degree merging Advanced Analytics with Entrepreneurship. <br />
+                                A {duration}-year immersive degree merging Advanced Analytics with Entrepreneurship. <br />
                                 <span className="text-white font-medium">Graduate with Insight, Precision & Real-World Impact.</span>
                             </p>
+
+                            {/* Duration Toggle */}
+                            <div className="flex gap-4 mb-12">
+                                <button
+                                    onClick={() => setDuration(3)}
+                                    className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 3 ? 'bg-blue-600 text-white' : 'bg-white/10 text-white/60 hover:bg-white/20'}`}
+                                >
+                                    3-Year Program
+                                </button>
+                                <button
+                                    onClick={() => setDuration(4)}
+                                    className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 4 ? 'bg-blue-600 text-white' : 'bg-white/10 text-white/60 hover:bg-white/20'}`}
+                                >
+                                    4-Year Program
+                                </button>
+                            </div>
 
                             <div className="grid sm:grid-cols-3 gap-10 md:gap-16 pt-12 border-t border-white/10 max-w-4xl relative z-10">
                                 <div>
                                     <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-[0.2em] font-bold mb-4">Available Degrees</p>
                                     <div className="space-y-1.5 border-l-2 border-blue-500/30 pl-4">
-                                        <p className="text-sm md:text-base font-semibold text-white tracking-tight">BCA in Data Science</p>
-                                        <p className="text-sm md:text-base font-semibold text-white tracking-tight">B.Sc Data Analytics</p>
+                                        {duration === 3 ? (
+                                            <>
+                                                <p className="text-sm md:text-base font-semibold text-white tracking-tight">B.Sc in Data Science</p>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <p className="text-sm md:text-base font-semibold text-white tracking-tight">B.Sc in Data Science</p>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
 
                                 <div>
                                     <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-[0.2em] font-bold mb-4">Partner Institutions</p>
                                     <div className="space-y-1.5 border-l-2 border-indigo-500/30 pl-4">
-                                        <p className="text-sm md:text-base font-semibold text-white tracking-tight">Ethames Business School</p>
                                         <p className="text-sm md:text-base font-semibold text-white tracking-tight">Keshava Degree College</p>
                                     </div>
                                 </div>
@@ -589,7 +631,7 @@ export default function DataScienceSchoolPage() {
                         <div className="grid grid-cols-1 lg:grid-cols-4 gap-y-5 lg:gap-x-14 flex-1 text-left w-full">
                             <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-0.5">Program Length</p>
-                                <p className="text-lg font-bold text-slate-900">3-Year Full-Time</p>
+                                <p className="text-lg font-bold text-slate-900">{duration}-Year Full-Time</p>
                             </div>
                             <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-0.5">Delivery Mode</p>
@@ -597,7 +639,7 @@ export default function DataScienceSchoolPage() {
                             </div>
                             <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-0.5">Campus</p>
-                                <p className="text-lg font-bold text-slate-900">Hyderabad and Warangal</p>
+                                <p className="text-lg font-bold text-slate-900">Warangal</p>
                             </div>
                             <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-0.5">Admissions</p>
@@ -762,7 +804,7 @@ export default function DataScienceSchoolPage() {
                         <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">What You Will Study</h2>
                         <p className="text-lg text-slate-600 max-w-2xl mx-auto">From mathematical foundations to building enterprise-scale data architectures. Every year builds on the last.</p>
                     </div>
-                    <CurriculumTabs />
+                    <CurriculumTabs duration={duration} />
                 </div>
             </section>
 

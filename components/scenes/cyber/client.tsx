@@ -197,17 +197,36 @@ const CURRICULUM_DATA = [
       "Capstone: Production-Grade Security System with Industry Partner",
       "Founder Track: Cybersecurity Startup — Pitch, Fundraise & Launch"
     ]
+  },
+  {
+    year: 4,
+    title: "Zero-Day Research & Strategic Defense",
+    topics: [
+      "Advanced Exploit Development: Kernel & Browser Exploitation",
+      "Zero-Day Research: Bug Hunting & Responsible Disclosure",
+      "Industrial Control Systems (ICS/SCADA) Security",
+      "Cyber Warfare & National Security Strategy",
+      "Major Capstone: Building an Autonomous Defense System",
+      "Founder Track: Seed Funding & Launching your Security Startup"
+    ]
   }
 ];
 
-function CurriculumTabs() {
+function CurriculumTabs({ duration }: { duration: 3 | 4 }) {
   const [activeYear, setActiveYear] = useState(1);
-  const activeContent = CURRICULUM_DATA.find(item => item.year === activeYear);
+  const filteredCurriculum = CURRICULUM_DATA.filter(item => item.year <= duration);
+  const activeContent = filteredCurriculum.find(item => item.year === activeYear) || filteredCurriculum[0];
+
+  useEffect(() => {
+    if (activeYear > duration) {
+      setActiveYear(1);
+    }
+  }, [duration, activeYear]);
 
   return (
     <div className="space-y-8">
       <div className="flex flex-wrap justify-center gap-3">
-        {CURRICULUM_DATA.map((item) => (
+        {filteredCurriculum.map((item) => (
           <button
             key={item.year}
             onClick={() => setActiveYear(item.year)}
@@ -318,6 +337,7 @@ const MilestoneCard = ({ item, index }: { item: any; index: number }) => {
 };
 
 export function CyberClient() {
+  const [duration, setDuration] = useState<3 | 4>(4);
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -354,13 +374,28 @@ export function CyberClient() {
           >
             <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white mb-8 leading-[0.9]">
               Cyber Security.
-              {/* <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-white to-cyan-200">Security.</span> */}
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-light mb-12">
-              Master the art of Offensive & Defensive Security. <br />
+              A {duration}-year immersive degree merging Offensive & Defensive Security. <br />
               <span className="text-white font-medium">Defend the digital frontier. Build the future of trust.</span>
             </p>
+
+            {/* Duration Toggle */}
+            <div className="flex justify-center gap-4 mb-12">
+              <button 
+                onClick={() => setDuration(3)}
+                className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 3 ? 'bg-emerald-600 text-white' : 'bg-slate-900/50 text-slate-400 hover:bg-slate-800 border border-slate-800'}`}
+              >
+                3-Year Program
+              </button>
+              <button 
+                onClick={() => setDuration(4)}
+                className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 4 ? 'bg-emerald-600 text-white' : 'bg-slate-900/50 text-slate-400 hover:bg-slate-800 border border-slate-800'}`}
+              >
+                4-Year Program
+              </button>
+            </div>
           </motion.div>
         </div>
 
@@ -383,7 +418,7 @@ export function CyberClient() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
               <div>
                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Program Length</p>
-                <p className="text-lg font-bold text-white">3-Year Full-Time</p>
+                <p className="text-lg font-bold text-white">{duration}-Year Full-Time</p>
               </div>
               <div>
                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Delivery Mode</p>
@@ -422,7 +457,7 @@ export function CyberClient() {
                 <span className="text-emerald-500">Digital Battlefield.</span>
               </h2>
               <p className="text-lg text-slate-400 leading-relaxed mb-8">
-                The Foundry&apos;s 3-year Cybersecurity program trains you to think like an attacker, defend like an architect, and lead like a strategist. From kernel hacking to red teaming — you graduate battle-ready for the real world.
+                The Foundry&apos;s {duration}-year Cybersecurity program trains you to think like an attacker, defend like an architect, and lead like a strategist. From kernel hacking to red teaming — you graduate battle-ready for the real world.
               </p>
               <div className="flex flex-wrap gap-3">
                 {["Penetration Testing", "Red Teaming", "Malware Analysis", "Cloud Security", "AI Security", "Digital Forensics"].map((tag, i) => (
@@ -434,8 +469,8 @@ export function CyberClient() {
             </div>
             <div className="grid grid-cols-2 gap-5">
               {[
-                { value: "3", unit: "Years", label: "Full-time immersive program" },
-                { value: "6", unit: "Semesters", label: "Progressive skill building" },
+                { value: duration.toString(), unit: "Years", label: "Full-time immersive program" },
+                { value: (duration * 2).toString(), unit: "Semesters", label: "Progressive skill building" },
                 { value: "100%", unit: "Hands-on", label: "Lab-based from day one" },
                 { value: "CTF", unit: "Weekly", label: "Capture The Flag challenges" },
               ].map((stat, i) => (
@@ -648,7 +683,7 @@ export function CyberClient() {
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">What You Will Study</h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">From networking fundamentals to zero-day research. Every year builds on the last.</p>
           </div>
-          <CurriculumTabs />
+          <CurriculumTabs duration={duration} />
         </div>
       </section>
 

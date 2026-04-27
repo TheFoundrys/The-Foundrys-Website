@@ -22,11 +22,11 @@ export function TheForging() {
                 </h2>
                 <p className="mt-4 text-xl text-slate-500 leading-relaxed">
                     We don't just teach. We refine raw potential into sovereign capability. <br className="hidden md:block"/>
-                    A 3-year metamorphosis from Student to Founder.
+                    A 3 or 4-year metamorphosis from Student to Architect.
                 </p>
             </div>
             <div className="hidden md:block text-right">
-                 <div className="text-slate-400 font-mono text-sm">EST. TIME: 36 MONTHS</div>
+                 <div className="text-slate-400 font-mono text-sm">EST. TIME: 36-48 MONTHS</div>
                  <div className="text-slate-400 font-mono text-sm">INTENSITY: HIGH</div>
             </div>
         </div>
