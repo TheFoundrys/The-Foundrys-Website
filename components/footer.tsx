@@ -38,6 +38,7 @@ export function Footer({ hideCTA = false, isDark = false }: FooterProps) {
                             <FooterLink href="/schools/cyber" isDark={isDark}>Cyber Security</FooterLink>
                             <FooterLink href="/schools/quantum-computing" isDark={isDark}>Quantum Computing</FooterLink>
                             <FooterLink href="/schools/blockchain" isDark={isDark}>Blockchain</FooterLink>
+                            <FooterLink href="/schools/datascience" isDark={isDark}>Data Science</FooterLink>
                         </ul>
                     </div>
 
