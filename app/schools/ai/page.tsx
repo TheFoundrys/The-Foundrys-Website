@@ -633,20 +633,21 @@ export default function AISchoolPage() {
                                         ) : (
                                             <>
                                                 <p className="text-sm md:text-base font-semibold text-white tracking-tight">BCA in Artificial Intelligence</p>
-                                                <p className="text-sm md:text-base font-semibold text-white tracking-tight">B.Sc AI / ML Professional</p>
+                                                <p className="text-sm md:text-base font-semibold text-white tracking-tight">B.Tech AI / ML Professional</p>
                                             </>
                                         )}
                                     </div>
                                 </div>
 
-                                {/* Partners */}
-                                <div>
-                                    <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-[0.2em] font-bold mb-4">Partner Institutions</p>
-                                    <div className="space-y-1.5 border-l-2 border-blue-500/30 pl-4">
-                                        <p className="text-sm md:text-base font-semibold text-white tracking-tight">Ethames Business School</p>
-                                        <p className="text-sm md:text-base font-semibold text-white tracking-tight">Keshava Degree College</p>
+                                {duration === 3 && (
+                                    <div>
+                                        <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-[0.2em] font-bold mb-4">Partner Institutions</p>
+                                        <div className="space-y-1.5 border-l-2 border-blue-500/30 pl-4">
+                                            <p className="text-sm md:text-base font-semibold text-white tracking-tight">Ethames Business School</p>
+                                            <p className="text-sm md:text-base font-semibold text-white tracking-tight">Keshava Degree College</p>
+                                        </div>
                                     </div>
-                                </div>
+                                )}
 
                                 {/* Certifications */}
                                 <div>
@@ -701,7 +702,7 @@ export default function AISchoolPage() {
                             </div>
                             <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-0.5">Campus</p>
-                                <p className="text-lg font-bold text-slate-900">Hyderabad and Warangal</p>
+                                <p className="text-lg font-bold text-slate-900">{duration === 4 ? "Hyderabad" : "Hyderabad and Warangal"}</p>
                             </div>
                             <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-0.5">Admissions</p>
