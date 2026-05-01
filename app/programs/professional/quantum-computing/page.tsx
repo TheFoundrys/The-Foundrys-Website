@@ -35,7 +35,7 @@ export default function QuantumPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             <CourseCard
-              sku="Q 002"
+              sku="Q 001"
               title="Certified Professional in Quantum Engineering"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}
@@ -44,7 +44,7 @@ export default function QuantumPage() {
               currency={currency}
             />
             <CourseCard
-              sku="Q 004"
+              sku="Q 002"
               title="Certified Professional in Quantum Computing"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}
@@ -53,7 +53,7 @@ export default function QuantumPage() {
               currency={currency}
             />
             <CourseCard
-              sku="Q 006"
+              sku="Q 003"
               title="Certified Professional in Quantum Sensing"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}
@@ -62,7 +62,7 @@ export default function QuantumPage() {
               currency={currency}
             />
             <CourseCard
-              sku="Q 008"
+              sku="Q 004"
               title="Certified Professional in Quantum Communication"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}
@@ -71,7 +71,7 @@ export default function QuantumPage() {
               currency={currency}
             />
             <CourseCard
-              sku="Q 010"
+              sku="Q 005"
               title="Certified Professional in Quantum Information"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}
@@ -80,7 +80,7 @@ export default function QuantumPage() {
               currency={currency}
             />
             <CourseCard
-              sku="Q 012"
+              sku="Q 006"
               title="Certified Professional in Post Quantum Cryptography"
               priceINR={{ original: "150,000", discounted: "75,000" }}
               priceUSD={{ original: "3,000", discounted: "1,500" }}

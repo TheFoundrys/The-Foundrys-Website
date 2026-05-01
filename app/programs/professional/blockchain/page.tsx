@@ -35,7 +35,7 @@ export default function BlockchainPage() {
                 <div className="container mx-auto max-w-6xl">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                         <CourseCard
-                            sku="BC 002"
+                            sku="BC 001"
                             title="Certified Professional in Block Chain"
                             priceINR={{ original: "100,000", discounted: "50,000" }}
                             priceUSD={{ original: "2,000", discounted: "1,000" }}
@@ -44,7 +44,7 @@ export default function BlockchainPage() {
                             currency={currency}
                         />
                         <CourseCard
-                            sku="BC 004"
+                            sku="BC 002"
                             title="Certified Professional in NFT"
                             priceINR={{ original: "150,000", discounted: "75,000" }}
                             priceUSD={{ original: "3,000", discounted: "1,500" }}
@@ -53,7 +53,7 @@ export default function BlockchainPage() {
                             currency={currency}
                         />
                         <CourseCard
-                            sku="BC 006"
+                            sku="BC 003"
                             title="Certified Professional in Decentralized Systems"
                             priceINR={{ original: "200,000", discounted: "100,000" }}
                             priceUSD={{ original: "4,000", discounted: "2,000" }}

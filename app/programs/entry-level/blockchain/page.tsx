@@ -44,7 +44,7 @@ export default function EntryLevelBlockchainPage() {
                             currency={currency}
                         />
                         <CourseCard
-                            sku="BC 003"
+                            sku="BC 002"
                             title="Certified in NFT"
                             priceINR={{ original: "75,000", discounted: "37,500" }}
                             priceUSD={{ original: "1,500", discounted: "750" }}
@@ -53,7 +53,7 @@ export default function EntryLevelBlockchainPage() {
                             currency={currency}
                         />
                         <CourseCard
-                            sku="BC 005"
+                            sku="BC 003"
                             title="Certified in Decentralized Systems"
                             priceINR={{ original: "100,000", discounted: "50,000" }}
                             priceUSD={{ original: "2,000", discounted: "1,000" }}

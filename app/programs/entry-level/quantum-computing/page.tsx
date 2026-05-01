@@ -34,7 +34,7 @@ export default function EntryLevelQuantumPage() {
                 <div className="container mx-auto max-w-6xl">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                         <CourseCard
-                            sku="QC 001"
+                            sku="Q 001"
                             title="Certified in Quantum Fundamentals"
                             originalPrice="10,000"
                             discountedPrice="5,000"
@@ -46,7 +46,7 @@ export default function EntryLevelQuantumPage() {
                             symbol={symbol}
                         />
                         <CourseCard
-                            sku="Q 001"
+                            sku="Q 002"
                             title="Certified in Quantum Engineering"
                             originalPrice="150,000"
                             discountedPrice="75,000"
@@ -64,7 +64,7 @@ export default function EntryLevelQuantumPage() {
                             symbol={symbol}
                         />
                         <CourseCard
-                            sku="Q 005"
+                            sku="Q 004"
                             title="Certified in Quantum Sensing"
                             originalPrice="150,000"
                             discountedPrice="75,000"
@@ -73,7 +73,7 @@ export default function EntryLevelQuantumPage() {
                             symbol={symbol}
                         />
                         <CourseCard
-                            sku="Q 007"
+                            sku="Q 005"
                             title="Certified in Quantum Communication"
                             originalPrice="150,000"
                             discountedPrice="75,000"
@@ -82,7 +82,7 @@ export default function EntryLevelQuantumPage() {
                             symbol={symbol}
                         />
                         <CourseCard
-                            sku="Q 009"
+                            sku="Q 006"
                             title="Certified in Quantum Information"
                             originalPrice="150,000"
                             discountedPrice="75,000"
@@ -91,7 +91,7 @@ export default function EntryLevelQuantumPage() {
                             symbol={symbol}
                         />
                         <CourseCard
-                            sku="Q 011"
+                            sku="Q 007"
                             title="Certified in Post Quantum Cryptography"
                             originalPrice="150,000"
                             discountedPrice="75,000"

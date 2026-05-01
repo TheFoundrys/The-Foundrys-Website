@@ -31,7 +31,7 @@ const CAREER_ROLES = [
    {
       icon: Layers,
       title: "Sustainability Systems Architect",
-      salary: "₹18-25 LPA",
+      salary: "₹7-12 LPA",
       growth: "+15-20% YoY",
       desc: "Design and implement comprehensive sustainability frameworks for organizations. Bridge technology, policy, and environmental impact.",
       skills: ["Systems Thinking", "ESG Frameworks", "Data Analysis", "Stakeholder Management"],
@@ -45,7 +45,7 @@ const CAREER_ROLES = [
    {
       icon: BarChart,
       title: "ESG & AI Strategy Consultant",
-      salary: "₹15-30 LPA",
+      salary: "₹6-11 LPA",
       growth: "+18-25% YoY",
       desc: "Guide organizations in integrating AI solutions with ESG goals. Develop strategies that balance innovation with responsibility.",
       skills: ["ESG Reporting", "AI Strategy", "Risk Assessment", "Regulatory Compliance"],
@@ -59,7 +59,7 @@ const CAREER_ROLES = [
    {
       icon: Globe,
       title: "Climate Tech Product Leader",
-      salary: "₹18-35 LPA",
+      salary: "₹8-14 LPA",
       growth: "+20-30% YoY",
       desc: "Lead development of climate-focused technology products. Drive innovation in renewable energy, carbon tracking, and environmental monitoring.",
       skills: ["Product Management", "Climate Science", "Tech Innovation", "Market Analysis"],
@@ -73,7 +73,7 @@ const CAREER_ROLES = [
    {
       icon: Scale,
       title: "AI Governance Specialist",
-      salary: "₹14-28 LPA",
+      salary: "₹6-12 LPA",
       growth: "+16-22% YoY",
       desc: "Ensure AI systems comply with ethical standards and regulations. Develop governance frameworks for responsible AI deployment.",
       skills: ["AI Ethics", "Policy Development", "Compliance", "Risk Management"],
@@ -87,7 +87,7 @@ const CAREER_ROLES = [
    {
       icon: Zap,
       title: "Energy & Resource Optimizer",
-      salary: "₹12-24 LPA",
+      salary: "₹5-10 LPA",
       growth: "+14-18% YoY",
       desc: "Optimize energy consumption and resource utilization using AI and data analytics. Drive efficiency in operations and reduce environmental footprint.",
       skills: ["Energy Systems", "Optimization", "IoT", "Data Analytics"],
@@ -101,7 +101,7 @@ const CAREER_ROLES = [
    {
       icon: BookOpen,
       title: "Sustainability Educator & Advisor",
-      salary: "₹10-20 LPA",
+      salary: "₹4-8 LPA",
       growth: "+12-16% YoY",
       desc: "Train professionals and advise organizations on sustainability practices. Build capacity for sustainable transformation across industries.",
       skills: ["Training & Development", "Sustainability Practices", "Communication", "Advisory"],
@@ -115,7 +115,7 @@ const CAREER_ROLES = [
    {
       icon: BrainCircuit,
       title: "Circular Economy Strategist",
-      salary: "₹16-32 LPA",
+      salary: "₹6-11 LPA",
       growth: "+17-23% YoY",
       desc: "Design and implement circular economy models that eliminate waste and maximize resource efficiency. Transform linear business models into sustainable, regenerative systems.",
       skills: ["Circular Design", "Waste Management", "Business Model Innovation", "Life Cycle Assessment"],

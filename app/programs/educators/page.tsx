@@ -66,7 +66,7 @@ export default function EducatorsPage() {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed mb-12 font-light"
                     >
-                        Empowering teachers to lead the deep tech revolution. Integrate <span className="text-white font-medium inline-block whitespace-nowrap">AI, Cyber Security and Quantum</span> into your classroom today.
+                        Empowering teachers to lead the deep tech revolution. Integrate <span className="text-white font-medium inline-block whitespace-nowrap">Knowledge</span> into your classroom today.
                     </motion.p>
 
                     <motion.div
@@ -202,7 +202,7 @@ export default function EducatorsPage() {
                         <CourseCard
                             sku="EDU 001"
                             title="AI for Educators: Foundation & Practice"
-                            priceINR={{ original: "45,000", discounted: "25,000" }}
+                            priceINR={{ original: "50,000", discounted: "25,000" }}
                             priceUSD={{ original: "900", discounted: "500" }}
                             desc="Understand Generative AI and how to use it to create lesson plans, grade assessments, and personalize learning."
                             delay={0}

@@ -45,7 +45,7 @@ export default function EntryLevelCyberSecurityPage() {
                             enrollHref="/enroll/certified-in-cybersecurity"
                         />
                         <CourseCard
-                            sku="CS 003"
+                            sku="CS 002"
                             title="Certified in VAPT for AI"
                             originalPrice="1,50,000"
                             discountedPrice="75,000"
@@ -53,7 +53,7 @@ export default function EntryLevelCyberSecurityPage() {
                             symbol={symbol}
                         />
                         <CourseCard
-                            sku="CS 005"
+                            sku="CS 003"
                             title="Certified in Security for AI"
                             originalPrice="1,50,000"
                             discountedPrice="75,000"
@@ -61,7 +61,7 @@ export default function EntryLevelCyberSecurityPage() {
                             symbol={symbol}
                         />
                         <CourseCard
-                            sku="CS 007"
+                            sku="CS 004"
                             title="Certified in AI Security"
                             originalPrice="1,50,000"
                             discountedPrice="75,000"

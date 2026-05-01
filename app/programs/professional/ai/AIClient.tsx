@@ -36,7 +36,7 @@ export default function AIClient() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
 
             <CourseCard
-              sku="AI 002"
+              sku="AI 001"
               title="Certified Professional in AI Research"
               originalPrice={COURSE_PRICING.professionalAIResearch.original[currency]}
               discountedPrice={COURSE_PRICING.professionalAIResearch.freshers[currency]}
@@ -48,7 +48,7 @@ export default function AIClient() {
               isBestSeller={true}
             />
             <CourseCard
-              sku="AI 004"
+              sku="AI 002"
               title="Certified Professional in AI Engineering"
               originalPrice={COURSE_PRICING.professionalAIEngineer.original[currency]}
               discountedPrice={COURSE_PRICING.professionalAIEngineer.freshers[currency]}
@@ -60,7 +60,7 @@ export default function AIClient() {
               isBestSeller={true}
             />
             <CourseCard
-              sku="AI 005"
+              sku="AI 003"
               title="Certified Professional in AI Operations"
               originalPrice={COURSE_PRICING.professionalAIOperations.original[currency]}
               discountedPrice={COURSE_PRICING.professionalAIOperations.freshers[currency]}
@@ -71,7 +71,7 @@ export default function AIClient() {
               persona="For DevOps & Cloud Engineers"
             />
             <CourseCard
-              sku="AI 007"
+              sku="AI 004"
               title="AI Fluency"
               originalPrice={COURSE_PRICING.aiFluency.original[currency]}
               discountedPrice={COURSE_PRICING.aiFluency.twoToFive[currency]}
@@ -82,7 +82,7 @@ export default function AIClient() {
               persona="For Java Developers (4+ years experience) & Tech Cross Functional"
             />
             <CourseCard
-              sku="AI 006"
+              sku="AI 005"
               title="Agentic AI Bootcamp (Instructor-Led Training)"
               originalPrice={COURSE_PRICING.agenticAIBootcamp.original[currency]}
               discountedPrice={COURSE_PRICING.agenticAIBootcamp.freshers[currency]}
