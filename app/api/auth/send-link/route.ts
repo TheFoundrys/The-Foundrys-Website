@@ -1,4 +1,5 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+export const dynamic = 'force-dynamic';
 import crypto from 'crypto';
 import { connectDB } from '@/lib/mongodb';
 import VerificationToken from '@/lib/models/VerificationToken';

@@ -15,6 +15,11 @@ const nextConfig: NextConfig = {
         destination: 'https://compass.thefoundrys.com',
         permanent: false,
       },
+      {
+        source: '/about/faculty/vishwanath-akuthota',
+        destination: '/vishwanathakuthota',
+        permanent: true,
+      },
     ]
   },
   images: {

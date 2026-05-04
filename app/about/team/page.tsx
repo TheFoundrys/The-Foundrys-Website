@@ -13,7 +13,7 @@ const teamMembers = [
         role: "Founder & CEO",
         bio: "Deep Tech Entrepreneur & AI Architect with over 1.5 decades of experience. Building at the intersection of AI, Quantum, and Human Potential.",
         image: "/images/vishwa-new.jpg",
-        profileLink: "/about/faculty/vishwanath-akuthota",
+        profileLink: "/vishwanathakuthota",
         socials: {
             linkedin: "https://www.linkedin.com/in/vishwanathakuthota/",
             website: "https://www.drpinnacle.com"
@@ -228,7 +228,12 @@ function SmallTeamCard({ member, index }: { member: any, index: number }) {
 
                 {member.profileLink && (
                     <div className="mt-auto">
-                        <Link href={member.profileLink} className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors">
+                        <Link 
+                            href={member.profileLink} 
+                            target={member.profileLink.startsWith('http') ? "_blank" : undefined}
+                            rel={member.profileLink.startsWith('http') ? "noopener noreferrer" : undefined}
+                            className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                        >
                             View Profile <ArrowUpRight size={14} />
                         </Link>
                     </div>

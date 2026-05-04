@@ -4,10 +4,7 @@ import { connectDB } from '@/lib/mongodb';
 import Enrollment from '@/lib/models/Enrollment';
 import { COURSE_CATALOG, COUPONS } from '@/lib/courses';
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID!,
-  key_secret: process.env.RAZORPAY_KEY_SECRET!,
-});
+export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
   try {
@@ -53,6 +50,12 @@ export async function POST(request: NextRequest) {
       amount: razorpayAmount,
       currency: validCurrency,
       receipt
+    });
+
+    // Initialize Razorpay
+    const razorpay = new Razorpay({
+      key_id: process.env.RAZORPAY_KEY_ID!,
+      key_secret: process.env.RAZORPAY_KEY_SECRET!,
     });
 
     // Create Razorpay order
