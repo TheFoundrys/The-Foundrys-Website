@@ -101,6 +101,16 @@ export const COURSE_CATALOG: Record<string, CourseInfo> = {
       USD: 1500,
     },
   },
+  'agentic-ai-bootcamp': {
+    id: 'agentic-ai-bootcamp',
+    name: 'Agentic AI Bootcamp (Instructor-Led Training)',
+    sku: 'AI 005',
+    duration: '5 Days',
+    prices: {
+      INR: 15000,
+      USD: 300,
+    },
+  },
 };
 
 // Hardcoded coupons — add more as needed

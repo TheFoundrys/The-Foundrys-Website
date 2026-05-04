@@ -48,12 +48,12 @@ export function OnlineHero() {
             </p>
 
             <div className="flex flex-col md:flex-row items-center gap-4">
-                <Link 
-                    href="#courses" 
-                    className="px-8 py-4 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 shadow-xl hover:shadow-2xl flex items-center gap-2"
+                <button 
+                    onClick={(e) => { e.preventDefault(); document.getElementById('courses')?.scrollIntoView({ behavior: 'smooth' }); }}
+                    className="px-8 py-4 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 shadow-xl hover:shadow-2xl flex items-center gap-2 cursor-pointer"
                 >
                     Explore Programs <ArrowRight size={18} />
-                </Link>
+                </button>
                 <Link 
                     href="https://compass.thefoundrys.com" 
                     target="_blank"

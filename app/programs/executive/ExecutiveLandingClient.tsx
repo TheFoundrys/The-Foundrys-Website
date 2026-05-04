@@ -74,10 +74,10 @@ export default function ExecutiveLandingClient() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.6 }}
                     >
-                        <a href="#programs" className="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-full bg-white px-10 font-bold text-slate-900 transition-all duration-300 hover:bg-blue-600 hover:text-white hover:scale-105 hover:ring-4 hover:ring-blue-500/20 shadow-[0_0_40px_-10px_rgba(255,255,255,0.1)]">
+                        <button onClick={(e) => { e.preventDefault(); document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' }); }} className="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-full bg-white px-10 font-bold text-slate-900 transition-all duration-300 hover:bg-blue-600 hover:text-white hover:scale-105 hover:ring-4 hover:ring-blue-500/20 shadow-[0_0_40px_-10px_rgba(255,255,255,0.1)] cursor-pointer">
                             <span className="mr-2 text-lg">Explore Programs</span>
                             <ArrowUpRight className="transition-transform group-hover:rotate-45" />
-                        </a>
+                        </button>
                     </motion.div>
                 </div>
             </section>

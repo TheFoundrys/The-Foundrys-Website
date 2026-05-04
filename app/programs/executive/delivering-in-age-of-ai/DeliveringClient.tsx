@@ -83,9 +83,9 @@ export default function DeliveringClient() {
                                 <Link href="/apply?type=executive" className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-500 transition-all shadow-lg hover:shadow-blue-500/25 text-center">
                                     Enroll Now
                                 </Link>
-                                <a href="#overview" className="px-8 py-4 bg-slate-800 text-white rounded-full font-bold text-lg hover:bg-slate-700 transition-all border border-slate-700 text-center">
+                                <button onClick={(e) => { e.preventDefault(); document.getElementById('overview')?.scrollIntoView({ behavior: 'smooth' }); }} className="px-8 py-4 bg-slate-800 text-white rounded-full font-bold text-lg hover:bg-slate-700 transition-all border border-slate-700 text-center cursor-pointer">
                                     Explore Program
-                                </a>
+                                </button>
                             </div>
                         </div>
 

@@ -183,7 +183,7 @@ export const COURSE_PRICING: CoursePricing = {
     },
     agenticAIBootcamp: {
         original: { INR: '30,000', USD: '600' },
-        freshers: { INR: '20,000', USD: '400' },
+        freshers: { INR: '15,000', USD: '300' },
         zeroToTwo: { INR: '22,500', USD: '450' },
         twoToFive: { INR: '27,000', USD: '540' },
     },
