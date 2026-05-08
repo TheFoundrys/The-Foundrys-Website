@@ -111,6 +111,16 @@ export const COURSE_CATALOG: Record<string, CourseInfo> = {
       USD: 300,
     },
   },
+  'certified-in-malware-analysis': {
+    id: 'certified-in-malware-analysis',
+    name: 'Certified in Malware Analysis',
+    sku: 'SEC 002',
+    duration: '6 Weeks',
+    prices: {
+      INR: 75000,
+      USD: 1500,
+    },
+  },
 };
 
 // Hardcoded coupons — add more as needed

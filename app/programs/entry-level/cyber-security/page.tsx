@@ -1,4 +1,5 @@
 "use client";
+// Triggering rebuild
 
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
@@ -54,6 +55,16 @@ export default function EntryLevelCyberSecurityPage() {
                         />
                         <CourseCard
                             sku="CS 003"
+                            title="Certified in Malware Analysis"
+                            originalPrice={COURSE_PRICING.certifiedInMalwareAnalysis.original[currency]}
+                            discountedPrice={COURSE_PRICING.certifiedInMalwareAnalysis.freshers[currency]}
+                            desc="Learn the art of reverse engineering. Deconstruct malicious software, understand its behavior, and develop defense strategies."
+                            symbol={symbol}
+                            href="/programs/entry-level/cyber-security/certified-in-malware-analysis"
+                            enrollHref="/enroll/certified-in-malware-analysis"
+                        />
+                        <CourseCard
+                            sku="CS 004"
                             title="Certified in Security for AI"
                             originalPrice="1,50,000"
                             discountedPrice="75,000"
@@ -61,7 +72,7 @@ export default function EntryLevelCyberSecurityPage() {
                             symbol={symbol}
                         />
                         <CourseCard
-                            sku="CS 004"
+                            sku="CS 005"
                             title="Certified in AI Security"
                             originalPrice="1,50,000"
                             discountedPrice="75,000"
