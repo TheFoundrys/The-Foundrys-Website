@@ -337,7 +337,7 @@ const MilestoneCard = ({ item, index }: { item: any; index: number }) => {
 };
 
 export function CyberClient() {
-  const [duration, setDuration] = useState<3 | 4>(4);
+  const [duration, setDuration] = useState<3 | 4>(3);
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);

@@ -515,7 +515,7 @@ function DataPulse() {
 
 export default function DataScienceSchoolPage() {
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
-    const [duration, setDuration] = useState<3 | 4>(4);
+    const [duration, setDuration] = useState<3 | 4>(3);
 
     useLayoutEffect(() => {
         window.scrollTo(0, 0);

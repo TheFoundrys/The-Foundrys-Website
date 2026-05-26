@@ -562,7 +562,7 @@ function NeuralNetwork() {
 
 export default function AISchoolPage() {
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
-    const [duration, setDuration] = useState<3 | 4>(4);
+    const [duration, setDuration] = useState<3 | 4>(3);
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'instant' });
