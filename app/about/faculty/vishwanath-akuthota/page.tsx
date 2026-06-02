@@ -157,13 +157,13 @@ export default function VishwanathAkuthotaProfile() {
                                                 title: "Multi-Agent Phishing Detection And Deletion via Small VLM and LLM Reasoning",
                                                 venue: "2025 5th International Conference on Electrical, Computer & Telecommunication Engineering (ICECTE)",
                                                 year: "2026",
-                                                link: "https://ieeexplore.ieee.org/author/231984777844193"
+                                                link: "https://ieeexplore.ieee.org/document/11525902/"
                                             },
                                             {
                                                 title: "RAG-Enhanced Multi-Model Ensemble for Automated Vulnerability Detection Using SLMs",
                                                 venue: "2025 5th International Conference on Electrical, Computer & Telecommunication Engineering (ICECTE)",
                                                 year: "2026",
-                                                link: "https://ieeexplore.ieee.org/author/231984777844193"
+                                                link: "https://ieeexplore.ieee.org/document/11525939"
                                             },
                                             {
                                                 title: "Vulnerability Detection and Monitoring Using LLM",
@@ -204,7 +204,7 @@ export default function VishwanathAkuthotaProfile() {
                                                 title: "Pose Detection: Integrating Machine Learning with Large Vision Models",
                                                 venue: "2025 2nd International Conference on Intelligent Algorithms for Computational Intelligence Systems (IACIS)",
                                                 year: "2025",
-                                                link: "https://ieeexplore.ieee.org/author/231984777844193"
+                                                link: "https://ieeexplore.ieee.org/document/11525967"
                                             },
                                             {
                                                 title: "A Multi-Agent Garage Service Search and Recommendation with Hybrid MLs and LLMs",
