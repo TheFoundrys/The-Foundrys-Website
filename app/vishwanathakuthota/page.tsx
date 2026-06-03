@@ -172,10 +172,16 @@ export default function VishwanathAkuthotaProfile() {
                                                 link: "https://ieeexplore.ieee.org/document/10456393"
                                             },
                                             {
-                                                title: "A Comprehensive Insight into Machine Learning-Based Approaches for Fake Profile Detection",
-                                                venue: "2023 14th International Conference on Computing Communication and Networking Technologies (ICCCNT)",
-                                                year: "2023",
-                                                link: "https://ieeexplore.ieee.org/author/231984777844193"
+                                                title: "Multi-Agent Phishing Detection And Deletion via Small VLM and LLM Reasoning",
+                                                venue: " 2026 5th International Conference on Electrical, Computer & Telecommunication Engineering (ICECTE)",
+                                                year: "2026",
+                                                link: "https://ieeexplore.ieee.org/document/11429303"
+                                            },
+                                            {
+                                                title: "Quantum-Enhanced Tax Revenue via A-Challan: ML, LLMs, and QML Approaches",
+                                                venue: " 2025 IEEE International Women in Engineering (WIE) Conference on Electrical and Computer Engineering (WIECON-ECE)",
+                                                year: "2025",
+                                                link: "https://ieeexplore.ieee.org/document/11526131"
                                             }
                                         ].map((pub, idx) => (
                                             <div key={idx} className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:border-blue-200 transition-colors">
@@ -203,7 +209,7 @@ export default function VishwanathAkuthotaProfile() {
                                             {
                                                 title: "A Multi-Agent Quantum Chain of Thought Reasoning and Accuracy Accelerators Framework",
                                                 venue: " 2025 IEEE International Women in Engineering (WIE) Conference on Electrical and Computer Engineering (WIECON-ECE)",
-                                                year: "2026",
+                                                year: "2025",
                                                 link: "https://ieeexplore.ieee.org/document/11525967"
                                             },
                                             {
@@ -222,7 +228,13 @@ export default function VishwanathAkuthotaProfile() {
                                                 title: "Hybrid ML-SLM RAG System for Large Technical PDFs",
                                                 venue: "2025 International Conference on Computing Technologies (ICOCT)",
                                                 year: "2025",
-                                                link: "https://ieeexplore.ieee.org/author/231984777844193"
+                                                link: "https://ieeexplore.ieee.org/document/11118759"
+                                            },
+                                            {
+                                                title: "RAG-Enhanced Multi-Model Ensemble for Automated Vulnerability Detection Using SLMs",
+                                                venue: " 2026 5th International Conference on Electrical, Computer & Telecommunication Engineering (ICECTE)",
+                                                year: "2026",
+                                                link: "https://ieeexplore.ieee.org/document/11429262"
                                             }
                                         ].map((pub, idx) => (
                                             <div key={idx} className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:border-indigo-200 transition-colors">
@@ -251,13 +263,25 @@ export default function VishwanathAkuthotaProfile() {
                                                 title: "Multi-Vision LVMs Model Ensemble for Gold Jewelry Authenticity Verification",
                                                 venue: "2025 International Conference on Computing Technologies (ICOCT)",
                                                 year: "2025",
-                                                link: "https://ieeexplore.ieee.org/author/231984777844193"
+                                                link: "https://ieeexplore.ieee.org/document/11118918"
                                             },
                                             {
                                                 title: "Comparative Analysis of Diverse Architectures for Accurate Blood Cancer Cell Classification",
                                                 venue: "2024 6th International Conference on Inventive Research in Computing Applications (ICIRCA)",
                                                 year: "2024",
                                                 link: "https://ieeexplore.ieee.org/document/10497341"
+                                            },
+                                            {
+                                                title: "Pose Detection: Integrating Machine Learning with Large Vision Models",
+                                                venue: " 2025 2nd International Conference on Intelligent Algorithms for Computational Intelligence Systems (IACIS)",
+                                                year: "2025",
+                                                link: "https://ieeexplore.ieee.org/document/11211028"
+                                            },
+                                            {
+                                                title: "Financial Voucher Analysis with LVMs and Financial LLMs",
+                                                venue: "2025 International Conference on Computing Technologies (ICOCT)",
+                                                year: "2025",
+                                                link: "https://ieeexplore.ieee.org/document/11118347"
                                             }
                                         ].map((pub, idx) => (
                                             <div key={idx} className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:border-emerald-200 transition-colors">
