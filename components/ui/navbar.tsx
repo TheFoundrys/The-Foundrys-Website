@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { triggerHaptic } from "@/lib/haptics";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu, Zap, Leaf, Network, BookOpen, Briefcase, GraduationCap, Calendar, Newspaper, ArrowRight, LineChart, Video } from "lucide-react";
+import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu, Zap, Leaf, Network, BookOpen, Briefcase, GraduationCap, Calendar, Newspaper, ArrowRight, LineChart, Video, MessageSquare } from "lucide-react";
 
 export function Navbar() {
     const pathname = usePathname();
@@ -503,17 +503,17 @@ export function Navbar() {
                                                     <div className="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center text-orange-600 group-hover:scale-110 transition-transform">
                                                         <Calendar size={16} />
                                                     </div>
-                                                    <span className="text-sm font-bold text-slate-700">Events</span>
+                                                    <span className="text-sm font-bold text-slate-700">Events & Webinars</span>
                                                 </Link>
                                                 <Link
-                                                    href="/webinars"
+                                                    href="/testimonials"
                                                     onClick={handleHaptic}
                                                     className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
                                                 >
-                                                    <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
-                                                        <Video size={16} />
+                                                    <div className="w-8 h-8 rounded-lg bg-pink-50 flex items-center justify-center text-pink-600 group-hover:scale-110 transition-transform">
+                                                        <MessageSquare size={16} />
                                                     </div>
-                                                    <span className="text-sm font-bold text-slate-700">Webinar</span>
+                                                    <span className="text-sm font-bold text-slate-700">Testimonials</span>
                                                 </Link>
                                                 <Link
                                                     href="/campus"
@@ -802,25 +802,25 @@ export function Navbar() {
                                             >
                                                 <div className="px-2 pb-2 flex flex-col gap-2 pt-2">
                                                     <Link
-                                                        href="/events"
-                                                        onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
-                                                    >
-                                                        <div className="w-8 h-8 rounded-md bg-orange-50 flex items-center justify-center text-orange-600">
-                                                            <Calendar size={16} />
-                                                        </div>
-                                                        <span className="font-semibold text-slate-700">Events</span>
-                                                    </Link>
-                                                    <Link
-                                                        href="/webinars"
-                                                        onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
-                                                    >
-                                                        <div className="w-8 h-8 rounded-md bg-blue-50 flex items-center justify-center text-blue-600">
-                                                            <Video size={16} />
-                                                        </div>
-                                                        <span className="font-semibold text-slate-700">Webinar</span>
-                                                    </Link>
+                                                         href="/events"
+                                                         onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                         className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
+                                                     >
+                                                         <div className="w-8 h-8 rounded-md bg-orange-50 flex items-center justify-center text-orange-600">
+                                                             <Calendar size={16} />
+                                                         </div>
+                                                         <span className="font-semibold text-slate-700">Events & Webinars</span>
+                                                     </Link>
+                                                     <Link
+                                                         href="/testimonials"
+                                                         onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                         className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
+                                                     >
+                                                         <div className="w-8 h-8 rounded-md bg-pink-50 flex items-center justify-center text-pink-600">
+                                                             <MessageSquare size={16} />
+                                                         </div>
+                                                         <span className="font-semibold text-slate-700">Testimonials</span>
+                                                     </Link>
                                                     <Link
                                                         href="/campus"
                                                         onClick={() => { setIsOpen(false); handleHaptic(); }}

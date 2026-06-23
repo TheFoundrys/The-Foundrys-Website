@@ -74,6 +74,7 @@ export function Footer({ hideCTA = false, isDark = false }: FooterProps) {
                         <ul className="flex flex-col gap-4">
                             <FooterLink href="/campus" isDark={isDark}>Campus</FooterLink>
                             <FooterLink href="/about" isDark={isDark}>About Us</FooterLink>
+                            <FooterLink href="/testimonials" isDark={isDark}>Testimonials</FooterLink>
                             <FooterLink href="/faq" isDark={isDark}>FAQs</FooterLink>
                             <FooterLink href="/contact" isDark={isDark}>Contact Us</FooterLink>
                         </ul>
@@ -87,7 +88,7 @@ export function Footer({ hideCTA = false, isDark = false }: FooterProps) {
                         <ul className="flex flex-col gap-4">
                             <FooterLink href="/blog" isDark={isDark}>Blog</FooterLink>
                             <FooterLink href="/news" isDark={isDark}>News</FooterLink>
-                            <FooterLink href="/events" isDark={isDark}>Events</FooterLink>
+                            <FooterLink href="/events" isDark={isDark}>Events & Webinars</FooterLink>
                         </ul>
                     </div>
 

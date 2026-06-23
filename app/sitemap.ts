@@ -50,6 +50,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/programs/global-climate-change',
         '/programs/sustainability-in-the-age-of-ai',
         '/resources',
+        '/events',
+        '/testimonials',
         '/contact',
         '/faq',
         '/legal',
