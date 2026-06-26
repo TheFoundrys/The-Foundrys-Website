@@ -92,16 +92,18 @@ export function Testimonials() {
                   {/* Image and Info */}
                   <div className="flex flex-col items-center shrink-0">
                     <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-2xl overflow-hidden border-2 border-white shadow-lg mb-6">
-                      <Image
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        fill
-                        className="object-cover"
-                      />
-                      {/* Fallback pattern if image is missing */}
-                      <div className="absolute inset-0 bg-slate-100 -z-10 flex items-center justify-center text-slate-300">
-                        <span className="text-[10px]">Placeholder</span>
-                      </div>
+                      {testimonial.image ? (
+                        <Image
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-4xl md:text-5xl uppercase">
+                          {testimonial.name[0]}
+                        </div>
+                      )}
                     </div>
                     <div className="text-center">
                       <h3 className="text-xl font-bold text-slate-900">{testimonial.name}</h3>

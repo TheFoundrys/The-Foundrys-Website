@@ -4,7 +4,6 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import { Quote, Sparkles, ArrowUpRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 const testimonials = [
@@ -49,6 +48,36 @@ const testimonials = [
         designation: "Software Developer",
         image: "/images/testimonials/saipramod.jpeg",
         text: "I am Pramod, working as a Software Developer. As a fresher, I was exploring my path, and I would like to thank Vishwanath Akutota for his guidance in AI engineering, where I was introduced to concepts like machine learning and model training. Even though these are complex topics, he made them easy to understand through his approach of learning while doing, which helped me grasp them effectively and grow both technically and professionally. As a Software Developer today, I truly appreciate his mentorship in helping me become who I am. Congratulations to Vishwanath Akutota and the entire team of The Foundrys on starting this new journey in Warangal."
+    },
+    {
+        name: "Veda Bharathi Bhagavatula",
+        designation: "Skill Compass Alumna",
+        text: "Hi, I'm Veda Bharathi. I personally found the whole experience to be very efficient and intuitive, and I now have a clear understanding of various courses. I would definitely recommend Skill Compass for other students or professionals because of its curated content, which is structured in a proper format."
+    },
+    {
+        name: "Akshitha Reddy",
+        designation: "AI Intern",
+        text: "Hi, I am Akshitha Reddy. I'm currently studying at CBIT, and for the past month I've been working as an intern. Skill Compass helped me to learn key concepts and also dive deep into concepts like NLP and LLMs. My favorite feature of Skill Compass is the AI assistance. It made my learning much faster and also helped me learn complex topics easily. I would recommend Skill Compass to anyone who is looking for a smarter and more personalized way of learning with the help of AI assistance."
+    },
+    {
+        name: "Hansika",
+        designation: "Research Intern",
+        text: "Hi, I am Hansika. I joined the company as a research intern. For the past month, I've been working on full stack development projects, which includes role-based access control systems used for user authentication and authorization. The most valuable part of Skill Compass was the AI-powered assistant and structured learning path, which made complex tasks easier to solve in an interactive way. I would recommend Skill Compass to anyone looking for a smart, interactive way to learn concepts easily."
+    },
+    {
+        name: "Hriday",
+        designation: "AI Intern",
+        text: "Hello, my name is Hriday, and I'm currently working as an AI Intern. Skill Compass was a great platform to upskill myself and equip myself better in the current market. I think the AI Tutor feature was the best feature in Skill Compass and it really helped me understand concepts better. It's an excellent platform for anyone who's looking to position themselves better in their career. I would absolutely recommend it to anyone who's willing to upskill themselves and position themselves better in their career."
+    },
+    {
+        name: "Preethika",
+        designation: "Web Development Intern",
+        text: "Hi, I'm Preethika and I'm doing an internship in web development. I used Skill Compass for testing my skills and reading documents to learn more about AI and ML. There is an AI chatbot where you can just listen to it and learn what is in the document. I recommend this to my friends and people who are very interested in learning about new topics such as AI and ML."
+    },
+    {
+        name: "Anirudh",
+        designation: "AI/ML Student",
+        text: "Hi, my name is Anirudh. I've done an AI/ML course and it has been really helpful for me, especially since I'm a beginner. My favorite feature in Skill Compass is the voice assistant that teaches us and gives us a quiz after every concept. I would recommend Skill Compass to my friends and to my colleagues. It's a really good tool."
     }
 ];
 
@@ -103,7 +132,7 @@ export function TestimonialsClient() {
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                                className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-100 transition-all duration-300 flex flex-col justify-between group"
+                                className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-100 transition-all duration-300 flex flex-col justify-between group"
                             >
                                 <div className="relative">
                                     <Quote className="absolute -top-4 -left-4 text-blue-50 w-12 h-12 -z-0" />
@@ -112,21 +141,7 @@ export function TestimonialsClient() {
                                     </p>
                                 </div>
 
-                                <div className="mt-8 flex items-center gap-4 border-t border-slate-100 pt-6">
-                                    <div className="relative w-14 h-14 rounded-xl overflow-hidden shrink-0 border border-slate-100 shadow-sm bg-slate-100">
-                                        {testimonial.image ? (
-                                            <Image
-                                                src={testimonial.image}
-                                                alt={testimonial.name}
-                                                fill
-                                                className="object-cover"
-                                            />
-                                        ) : (
-                                            <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xl uppercase">
-                                                {testimonial.name[0]}
-                                            </div>
-                                        )}
-                                    </div>
+                                <div className="mt-4 border-t border-slate-100 pt-4">
                                     <div>
                                         <h4 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                                             {testimonial.name}
