@@ -146,7 +146,7 @@ export function Hero() {
       <div className={`relative z-10 w-full h-full min-h-screen flex flex-col justify-center lg:justify-start items-center lg:items-start px-6 lg:px-16 pointer-events-none transition-opacity duration-500 ${isVideoOpen ? 'opacity-0' : 'opacity-100'}`}>
 
         {/* Text Content - Mobile: Centered, Desktop: Left Aligned */}
-        <div className="max-w-5xl pointer-events-auto sm:mt-28 lg:mt-40 flex flex-col items-center lg:items-start px-4 sm:px-0">
+        <div className="max-w-5xl pointer-events-auto mt-28 sm:mt-32 lg:mt-40 flex flex-col items-center lg:items-start px-4 sm:px-0 pb-20 sm:pb-24 lg:pb-32">
           <div className="mb-6 sm:mb-8 relative w-full">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[7.5rem] font-bold tracking-tighter text-white leading-[1.1] sm:leading-[0.9] select-none uppercase drop-shadow-lg text-center lg:text-left">
               FORGING INNOVATORS

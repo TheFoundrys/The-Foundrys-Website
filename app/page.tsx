@@ -53,9 +53,9 @@ export default function Home() {
     <main className="min-h-screen bg-white select-none">
       <FaqJsonLd questions={homeFaqs} />
       <Navbar />
-      {/* <Hero /> */}
-      <AdmissionsOpen />
-      <Certifications />
+      <Hero />
+      {/* <AdmissionsOpen /> */}
+      {/* <Certifications /> */}
       <Testimonials />
       <InfiniteLogoScroll />
       {/* <Triad /> */}
