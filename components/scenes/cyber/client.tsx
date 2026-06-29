@@ -430,7 +430,7 @@ export function CyberClient() {
               </div>
               <div>
                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Admissions</p>
-                <p className="text-lg font-bold text-white">Now Open</p>
+                <p className="text-lg font-bold text-white">Closed</p>
               </div>
             </div>
             <div className="flex gap-3 w-full lg:w-auto">

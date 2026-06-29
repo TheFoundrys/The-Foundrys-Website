@@ -644,7 +644,7 @@ export default function DataScienceSchoolPage() {
                             </div>
                             <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-0.5">Admissions</p>
-                                <p className="text-lg font-bold text-slate-900">Now Open</p>
+                                <p className="text-lg font-bold text-slate-900">Closed</p>
                             </div>
                         </div>
 
