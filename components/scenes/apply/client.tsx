@@ -27,6 +27,128 @@ export function ApplyClient() {
     const [isSuccess, setIsSuccess] = useState(false);
     const [error, setError] = useState("");
     const [selectedProgram, setSelectedProgram] = useState("");
+    const [selectedLevel, setSelectedLevel] = useState("");
+    const [selectedCourse, setSelectedCourse] = useState("");
+
+    type LevelKey = "entry-level" | "professional";
+    const PROGRAM_COURSES: Record<string, Record<LevelKey, string[]>> = {
+        "AI": {
+            "entry-level": [
+                "Certified in AI Engineering",
+                "Certified in Prompt Engineering",
+                "Certified in Zero-to-One LLM",
+                "Certified Professional in AI",
+                "Certified in AI Research",
+                "Certified Professional in AI Foundations (in Telugu)",
+            ],
+            "professional": [
+                "Certified Professional in AI Engineering",
+                "Certified Professional in AI Research",
+                "Certified Professional in AI Operations",
+                "Agentic AI Bootcamp",
+                "AI Fluency",
+                "Certified Professional in AI Engineering (in Telugu)",
+                "AI Researcher",
+            ],
+        },
+        "Cyber Security": {
+            "entry-level": [
+                "Certified in Cybersecurity",
+                "Certified in Malware Analysis",
+                "Certified in VAPT for AI",
+                "Certified in Security for AI",
+                "Certified in AI Security",
+            ],
+            "professional": [
+                "Certified Professional in Cyber Security",
+                "Certified Professional in VAPT for AI",
+                "Certified Professional in Security for AI",
+                "Certified Professional in AI Security",
+            ],
+        },
+        "Blockchain": {
+            "entry-level": [
+                "Certified in Block Chain",
+                "Certified in NFT",
+                "Certified in Decentralized Systems",
+            ],
+            "professional": [
+                "Certified Professional in Block Chain",
+                "Certified Professional in NFT",
+                "Certified Professional in Decentralized Systems",
+            ],
+        },
+        "Quantum Computing": {
+            "entry-level": [
+                "Certified Professional in Quantum Fundamentals",
+            ],
+            "professional": [
+                "Certified Professional in Quantum Fundamentals",
+            ],
+        },
+    };
+
+    React.useEffect(() => {
+        if (typeof window !== "undefined") {
+            const params = new URLSearchParams(window.location.search);
+            const domainParam = params.get("domain") || params.get("program");
+            const levelParam = params.get("level");
+            const courseParam = params.get("course");
+
+            if (courseParam) {
+                const normalize = (str: string) => 
+                    str.toLowerCase()
+                       .replace(/certified/g, "")
+                       .replace(/professional/g, "")
+                       .replace(/in/g, "")
+                       .replace(/for/g, "")
+                       .replace(/[^a-z0-9]/g, "");
+
+                // Try to find the course, domain, and level from the course list
+                let foundDomain = "";
+                let foundLevel = "";
+                let foundCourse = "";
+
+                for (const [dom, levels] of Object.entries(PROGRAM_COURSES)) {
+                    for (const [lvl, courses] of Object.entries(levels)) {
+                        const matched = courses.find(
+                            (c) => c.toLowerCase() === courseParam.toLowerCase() ||
+                                   normalize(c) === normalize(courseParam)
+                        );
+                        if (matched) {
+                            foundDomain = dom;
+                            foundLevel = lvl;
+                            foundCourse = matched;
+                            break;
+                        }
+                    }
+                    if (foundCourse) break;
+                }
+
+                if (foundCourse) {
+                    setSelectedProgram(foundDomain);
+                    setSelectedLevel(foundLevel);
+                    setSelectedCourse(foundCourse);
+                    return;
+                }
+            }
+
+            // Fallback to separate parameters if course match wasn't found
+            if (domainParam) {
+                const matchedDomain = Object.keys(PROGRAM_COURSES).find(
+                    (key) => key.toLowerCase() === domainParam.toLowerCase() || 
+                             (key === "Cyber Security" && domainParam.toLowerCase() === "cybersecurity")
+                );
+                if (matchedDomain) {
+                    setSelectedProgram(matchedDomain);
+                    if (levelParam) {
+                        const matchedLevel = levelParam.toLowerCase() === "entry-level" || levelParam.toLowerCase() === "entry" ? "entry-level" : "professional";
+                        setSelectedLevel(matchedLevel);
+                    }
+                }
+            }
+        }
+    }, []);
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -224,43 +346,77 @@ export function ApplyClient() {
                                                 name="program"
                                                 required
                                                 value={selectedProgram}
-                                                onChange={(e) => setSelectedProgram(e.target.value)}
+                                                onChange={(e) => {
+                                                    setSelectedProgram(e.target.value);
+                                                    setSelectedLevel("");
+                                                    setSelectedCourse("");
+                                                }}
                                                 className="w-full pb-3 md:pb-4 bg-transparent border-b-2 border-slate-100 focus:border-blue-600 focus:outline-none transition-all font-medium text-base md:text-lg text-slate-900 appearance-none cursor-pointer"
                                             >
-                                                <option value="" disabled>Select program</option>
-                                                <option value="AI">AI (Machine Learning)</option>
-                                                <option value="Cyber Security">Cyber Security</option>
-                                                <option value="Venture Building">Venture Building</option>
-                                                <option value="Strategic Innovation">Strategic Innovation</option>
-                                                <option value="ESG">ESG & Sustainability</option>
+                                                <option value="" disabled>Select Domain</option>
+                                                <option value="AI">AI</option>
                                                 <option value="Blockchain">Blockchain</option>
-                                                <option value="BCA AI Professional">BCA AI Professional</option>
-                                                <option value="B.Sc in AI">B.Sc in AI</option>
-                                                <option value="B.Sc in DataScience">B.Sc in DataScience</option>
+                                                <option value="Cyber Security">Cybersecurity</option>
                                                 <option value="Quantum Computing">Quantum Computing</option>
                                             </select>
                                             <div className="absolute right-0 bottom-5 md:bottom-6 text-slate-300 pointer-events-none">▼</div>
                                         </div>
 
-                                        {/* Dynamic Duration Selection */}
-                                        {["AI", "Cyber Security", "B.Sc in DataScience", "BCA AI Professional", "B.Sc in AI"].includes(selectedProgram) && (
-                                            <motion.div 
+                                        {/* Dynamic Level Selection */}
+                                        {selectedProgram && (
+                                            <motion.div
+                                                key={`level-${selectedProgram}`}
                                                 initial={{ opacity: 0, y: -10 }}
                                                 animate={{ opacity: 1, y: 0 }}
+                                                transition={{ duration: 0.3 }}
                                                 className="space-y-3 group relative text-slate-900"
                                             >
                                                 <div className="flex items-center gap-2 mb-1">
-                                                    <Clock size={14} className="text-slate-400 group-focus-within:text-blue-600 transition-colors" />
-                                                    <label className="text-xs font-black text-slate-400 uppercase tracking-widest">Duration</label>
+                                                    <BookOpen size={14} className="text-slate-400 group-focus-within:text-blue-600 transition-colors" />
+                                                    <label className="text-xs font-black text-slate-400 uppercase tracking-widest">Level</label>
                                                 </div>
                                                 <select
-                                                    name="duration"
+                                                    name="level"
                                                     required
-                                                    defaultValue="4"
+                                                    value={selectedLevel}
+                                                    onChange={(e) => {
+                                                        setSelectedLevel(e.target.value);
+                                                        setSelectedCourse("");
+                                                    }}
                                                     className="w-full pb-3 md:pb-4 bg-transparent border-b-2 border-slate-100 focus:border-blue-600 focus:outline-none transition-all font-medium text-base md:text-lg text-slate-900 appearance-none cursor-pointer"
                                                 >
-                                                    <option value="3">3-Year Program (BCA / B.Sc)</option>
-                                                    <option value="4">4-Year Program (B.Tech / Honours)</option>
+                                                    <option value="" disabled>Select level</option>
+                                                    <option value="entry-level">Entry Level</option>
+                                                    <option value="professional">Professional / Mid-Level</option>
+                                                </select>
+                                                <div className="absolute right-0 bottom-5 md:bottom-6 text-slate-300 pointer-events-none">▼</div>
+                                            </motion.div>
+                                        )}
+
+                                        {/* Dynamic Course Selection */}
+                                        {selectedProgram && selectedLevel && (
+                                            <motion.div
+                                                key={`course-${selectedProgram}-${selectedLevel}`}
+                                                initial={{ opacity: 0, y: -10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ duration: 0.3 }}
+                                                className="md:col-span-2 space-y-3 group relative text-slate-900"
+                                            >
+                                                <div className="flex items-center gap-2 mb-1">
+                                                    <GraduationCap size={14} className="text-slate-400 group-focus-within:text-blue-600 transition-colors" />
+                                                    <label className="text-xs font-black text-slate-400 uppercase tracking-widest">Course</label>
+                                                </div>
+                                                <select
+                                                    name="course"
+                                                    required
+                                                    value={selectedCourse}
+                                                    onChange={(e) => setSelectedCourse(e.target.value)}
+                                                    className="w-full pb-3 md:pb-4 bg-transparent border-b-2 border-slate-100 focus:border-blue-600 focus:outline-none transition-all font-medium text-base md:text-lg text-slate-900 appearance-none cursor-pointer"
+                                                >
+                                                    <option value="" disabled>Select course</option>
+                                                    {PROGRAM_COURSES[selectedProgram]?.[selectedLevel as LevelKey]?.map((course) => (
+                                                        <option key={course} value={course}>{course}</option>
+                                                    ))}
                                                 </select>
                                                 <div className="absolute right-0 bottom-5 md:bottom-6 text-slate-300 pointer-events-none">▼</div>
                                             </motion.div>

@@ -179,7 +179,7 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
                     </div>
                 </div>
                 <Link
-                    href={href}
+                    href={href === "/apply" ? `/apply?course=${encodeURIComponent(title)}` : href}
                     className="w-full sm:w-auto md:w-full lg:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 transition-colors shadow-lg hover:shadow-blue-500/25"
                 >
                     View Program <ArrowUpRight size={18} />

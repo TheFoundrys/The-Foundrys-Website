@@ -270,7 +270,7 @@ export default function MLOpsCoursePage() {
                         </div>
 
                         <div className="w-full lg:w-auto">
-                            <Link href="/apply" className="block w-full text-center px-8 py-3 bg-cyan-600 text-white font-bold rounded-lg hover:bg-cyan-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
+                            <Link href="/apply?course=Certified Professional in AI Operations" className="block w-full text-center px-8 py-3 bg-cyan-600 text-white font-bold rounded-lg hover:bg-cyan-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
                                 Enroll Now
                             </Link>
                         </div>

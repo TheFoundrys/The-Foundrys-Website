@@ -146,7 +146,7 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
                 </div>
                 <div className="flex flex-wrap gap-2 w-full sm:w-auto md:w-full lg:w-auto">
                     <Link
-                        href={href}
+                        href={href === "/apply" ? `/apply?course=${encodeURIComponent(title)}` : href}
                         className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-teal-600 transition-colors shadow-lg hover:shadow-teal-500/25"
                     >
                         View Program <ArrowUpRight size={18} />
