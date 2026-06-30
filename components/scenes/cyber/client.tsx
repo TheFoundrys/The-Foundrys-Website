@@ -1,6 +1,7 @@
 "use client";
 
 import { Navbar } from "@/components/ui/navbar";
+import { SyllabusMindMap } from "@/components/ui/syllabus-mind-map";
 import { Footer } from "@/components/footer";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useLayoutEffect } from "react";
@@ -211,72 +212,6 @@ const CURRICULUM_DATA = [
     ]
   }
 ];
-
-function CurriculumTabs({ duration }: { duration: 3 | 4 }) {
-  const [activeYear, setActiveYear] = useState(1);
-  const filteredCurriculum = CURRICULUM_DATA.filter(item => item.year <= duration);
-  const activeContent = filteredCurriculum.find(item => item.year === activeYear) || filteredCurriculum[0];
-
-  useEffect(() => {
-    if (activeYear > duration) {
-      setActiveYear(1);
-    }
-  }, [duration, activeYear]);
-
-  return (
-    <div className="space-y-8">
-      <div className="flex flex-wrap justify-center gap-3">
-        {filteredCurriculum.map((item) => (
-          <button
-            key={item.year}
-            onClick={() => setActiveYear(item.year)}
-            className={`px-6 py-3 rounded-full font-bold text-sm transition-all ${activeYear === item.year
-              ? 'bg-emerald-600 text-white shadow-lg scale-105'
-              : 'bg-slate-900/50 text-slate-400 hover:bg-slate-800 border border-slate-800'
-              }`}
-          >
-            Year {item.year}
-          </button>
-        ))}
-      </div>
-
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeYear}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-          className="bg-slate-900/40 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl border border-slate-800"
-        >
-          <div className="flex items-center gap-4 mb-6">
-            <div className="px-4 py-2 bg-emerald-500/10 text-emerald-400 rounded-full text-sm font-bold border border-emerald-500/20">
-              Year {activeContent?.year}
-            </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-white">
-              {activeContent?.title}
-            </h3>
-          </div>
-
-          <div className="grid md:grid-cols-1 gap-4">
-            {activeContent?.topics.map((topic, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="flex items-start gap-3 p-4 rounded-xl bg-slate-900/50 hover:bg-emerald-500/10 border border-slate-800 hover:border-emerald-500/20 transition-all group"
-              >
-                <CheckCircle2 size={20} className="text-emerald-500 shrink-0 mt-0.5" />
-                <span className="text-slate-300 font-medium group-hover:text-white transition-colors">{topic}</span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  );
-}
 
 // Sub-components for better state management (Rules of Hooks)
 const WhoIsThisForCard = ({ item, index }: { item: any; index: number }) => {
@@ -683,7 +618,12 @@ export function CyberClient() {
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">What You Will Study</h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">From networking fundamentals to zero-day research. Every year builds on the last.</p>
           </div>
-          <CurriculumTabs duration={duration} />
+          <SyllabusMindMap
+            data={CURRICULUM_DATA.filter((item) => item.year <= duration).map(({ year, title, topics }) => ({ period: year, title, topics }))}
+            periodLabel="Year"
+            hubTitle="CYBER SECURITY"
+            theme="emerald"
+          />
         </div>
       </section>
 

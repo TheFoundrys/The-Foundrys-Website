@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { SyllabusMindMap } from "@/components/ui/syllabus-mind-map";
 import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
 
 // 5-Day Curriculum Data
@@ -122,125 +123,6 @@ const TRAINING_OBJECTIVES = [
     { icon: Rocket, text: "Move from theory → hands-on building → production thinking" },
     { icon: Target, text: "Deliver a working capstone agent system" },
 ];
-
-function CurriculumTabs() {
-    const [activeDay, setActiveDay] = useState(1);
-    const activeContent = CURRICULUM_DATA.find(item => item.day === activeDay);
-
-    return (
-        <div className="space-y-8">
-            {/* Day Tabs */}
-            <div className="flex flex-wrap justify-center gap-3">
-                {CURRICULUM_DATA.map((item) => (
-                    <button
-                        key={item.day}
-                        onClick={() => setActiveDay(item.day)}
-                        className={`px-6 py-3 rounded-full font-bold text-sm transition-all ${activeDay === item.day
-                            ? 'bg-violet-600 text-white shadow-lg scale-105'
-                            : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
-                            }`}
-                    >
-                        Day {item.day}
-                    </button>
-                ))}
-            </div>
-
-            {/* Content Display */}
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={activeDay}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.3 }}
-                    className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-200"
-                >
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
-                        <div className="px-4 py-2 bg-violet-100 text-violet-700 rounded-full text-sm font-bold">
-                            Day {activeContent?.day}
-                        </div>
-                        <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
-                            {activeContent?.title}
-                        </h3>
-                    </div>
-
-                    {/* Topics */}
-                    <div className="grid md:grid-cols-1 gap-3 mb-8">
-                        {activeContent?.topics.map((topic, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: index * 0.08 }}
-                                className="flex items-start gap-3 p-4 rounded-xl bg-slate-50 hover:bg-violet-50 transition-colors"
-                            >
-                                <CheckCircle2 size={20} className="text-violet-600 shrink-0 mt-0.5" />
-                                <span className="text-slate-700 font-medium">{topic}</span>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    {/* Use Cases (Day 1) */}
-                    {activeContent?.useCases && (
-                        <div className="mb-6">
-                            <h4 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">Real-world Use Cases</h4>
-                            <div className="grid sm:grid-cols-2 gap-3">
-                                {activeContent.useCases.map((uc, i) => (
-                                    <div key={i} className="flex items-center gap-2 text-sm text-slate-600 bg-amber-50 px-4 py-3 rounded-lg border border-amber-100">
-                                        <Lightbulb size={16} className="text-amber-500 shrink-0" />
-                                        {uc}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Building Blocks (Day 1) */}
-                    {activeContent?.buildingBlocks && (
-                        <div className="mb-6">
-                            <h4 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">The 4 Core Building Blocks</h4>
-                            <div className="flex flex-wrap gap-3">
-                                {activeContent.buildingBlocks.map((block, i) => (
-                                    <span key={i} className="px-4 py-2 bg-violet-100 text-violet-700 rounded-full text-sm font-bold">
-                                        {block}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Split Track (Day 3) */}
-                    {activeContent?.splitTrack && (
-                        <div className="mb-6">
-                            <h4 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">Optional Split Track</h4>
-                            <div className="grid sm:grid-cols-2 gap-4">
-                                <div className="p-4 rounded-xl bg-blue-50 border border-blue-100">
-                                    <div className="text-xs font-bold text-blue-600 uppercase mb-2">Non-Engineering</div>
-                                    <p className="text-sm text-slate-700">{activeContent.splitTrack.nonEngineering}</p>
-                                </div>
-                                <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-100">
-                                    <div className="text-xs font-bold text-emerald-600 uppercase mb-2">Engineering</div>
-                                    <p className="text-sm text-slate-700">{activeContent.splitTrack.engineering}</p>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Learning Outcome */}
-                    <div className="bg-gradient-to-r from-violet-50 to-blue-50 rounded-xl p-5 border border-violet-100">
-                        <div className="flex items-start gap-3">
-                            <Target size={20} className="text-violet-600 shrink-0 mt-0.5" />
-                            <div>
-                                <h4 className="text-sm font-bold text-violet-700 uppercase tracking-wider mb-1">Learning Outcome</h4>
-                                <p className="text-slate-700 font-medium">{activeContent?.learningOutcome}</p>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-            </AnimatePresence>
-        </div>
-    );
-}
 
 export default function AgenticAIBootcampPage() {
     const { currency, symbol } = useRegionalPricing();
@@ -410,7 +292,12 @@ export default function AgenticAIBootcampPage() {
                         </p>
                     </div>
 
-                    <CurriculumTabs />
+                    <SyllabusMindMap
+                        data={CURRICULUM_DATA.map(({ day, title, topics }) => ({ period: day, title, topics }))}
+                        periodLabel="Day"
+                        hubTitle="AGENTIC AI"
+                        theme="violet"
+                    />
                 </div>
             </section>
 

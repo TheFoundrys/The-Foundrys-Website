@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { SyllabusMindMap } from "@/components/ui/syllabus-mind-map";
 import { RoleDetailsContent } from "@/components/role-details-content";
 import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
 
@@ -128,67 +129,6 @@ const CURRICULUM_DATA = [
     }
 ];
 
-function CurriculumTabs() {
-    const [activeWeek, setActiveWeek] = useState(1);
-    const activeContent = CURRICULUM_DATA.find(item => item.week === activeWeek);
-
-    return (
-        <div className="space-y-8">
-            {/* Week Tabs */}
-            <div className="flex flex-wrap justify-center gap-3">
-                {CURRICULUM_DATA.map((item) => (
-                    <button
-                        key={item.week}
-                        onClick={() => setActiveWeek(item.week)}
-                        className={`px-6 py-3 rounded-full font-bold text-sm transition-all ${activeWeek === item.week
-                            ? 'bg-blue-600 text-white shadow-lg scale-105'
-                            : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
-                            }`}
-                    >
-                        Week {item.week}
-                    </button>
-                ))}
-            </div>
-
-            {/* Content Display */}
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={activeWeek}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.3 }}
-                    className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-200"
-                >
-                    <div className="flex items-center gap-4 mb-6">
-                        <div className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-bold">
-                            Week {activeContent?.week}
-                        </div>
-                        <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
-                            {activeContent?.title}
-                        </h3>
-                    </div>
-
-                    <div className="grid md:grid-cols-1 gap-4">
-                        {activeContent?.topics.map((topic, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: index * 0.1 }}
-                                className="flex items-start gap-3 p-4 rounded-xl bg-slate-50 hover:bg-blue-50 transition-colors"
-                            >
-                                <CheckCircle2 size={20} className="text-blue-600 shrink-0 mt-0.5" />
-                                <span className="text-slate-700 font-medium">{topic}</span>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-            </AnimatePresence>
-        </div>
-    );
-}
-
 export default function AIFluencyPage() {
     const [visibleProjects, setVisibleProjects] = useState(ALL_PROJECTS.slice(0, 3));
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
@@ -291,7 +231,12 @@ export default function AIFluencyPage() {
                             <h2 className="text-4xl font-bold text-slate-900 mb-4">The 2-Week Intensive Syllabus</h2>
                             <p className="text-lg text-slate-600 max-w-2xl mx-auto">Structured for professionals to master AI without abandoning their core engineering strengths.</p>
                         </div>
-                        <CurriculumTabs />
+                        <SyllabusMindMap
+                        data={CURRICULUM_DATA.map(({ week, title, topics }) => ({ period: week, title, topics }))}
+                        periodLabel="Week"
+                        hubTitle="AI FLUENCY"
+                        theme="blue"
+                    />
                     </div>
 
                     {/* Projects Header */}
