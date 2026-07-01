@@ -99,6 +99,7 @@ export interface CoursePricing {
     aiFluency: PriceTier;
     zeroToOneLLM: PriceTier;
     certifiedProfessionalAI: PriceTier;
+    aiStrategy: PriceTier;
     certifiedInCybersecurity: PriceTier;
     certifiedInMalwareAnalysis: PriceTier;
 }
@@ -205,6 +206,12 @@ export const COURSE_PRICING: CoursePricing = {
         freshers: { INR: '1,00,000', USD: '1,500' },
         zeroToTwo: { INR: '1,50,000', USD: '2,250' },
         twoToFive: { INR: '1,80,000', USD: '2,700' },
+    },
+    aiStrategy: {
+        original: { INR: '3,00,000', USD: '3,000' },
+        freshers: { INR: '1,50,000', USD: '1,500' },
+        zeroToTwo: { INR: '1,80,000', USD: '1,800' },
+        twoToFive: { INR: '2,10,000', USD: '2,100' },
     },
     certifiedInCybersecurity: {
         original: { INR: '1,50,000', USD: '3,000' },

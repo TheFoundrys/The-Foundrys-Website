@@ -172,13 +172,14 @@ const TOPIC_BOX_ANCHOR_CLASS = {
     right: "-translate-x-full -translate-y-1/2",
     top: "-translate-x-1/2 translate-y-0",
     bottom: "-translate-x-1/2 -translate-y-full",
+    center: "-translate-x-1/2 -translate-y-1/2",
 } as const;
 
-function buildRadialLayout(count: number) {
+function buildRadialLayout(count: number, canvasHeight: number) {
     const cx = 500;
-    const cy = 300;
-    const radiusX = count <= 2 ? 155 : count <= 4 ? 175 : count <= 5 ? 185 : 190;
-    const radiusY = count <= 2 ? 130 : count <= 4 ? 160 : count <= 5 ? 168 : 172;
+    const cy = canvasHeight / 2;
+    const radiusX = count <= 2 ? 155 : count <= 4 ? 175 : count <= 5 ? 185 : count <= 6 ? 220 : 330;
+    const radiusY = count <= 2 ? 130 : count <= 4 ? 160 : count <= 5 ? 168 : count <= 6 ? 180 : 225;
 
     const coords: Record<number, NodeCoord> = {};
     const paths: Record<number, string> = {};
@@ -193,7 +194,7 @@ function buildRadialLayout(count: number) {
             x,
             y,
             left: `${(x / 1000) * 100}%`,
-            top: `${(y / 600) * 100}%`,
+            top: `${(y / canvasHeight) * 100}%`,
         };
 
         const cpx = Math.round(cx + (x - cx) * 0.55 + (y - cy) * 0.06);
@@ -204,48 +205,48 @@ function buildRadialLayout(count: number) {
     return { coords, paths };
 }
 
-function getTopicBoxLayout(coord: NodeCoord, allCoords: NodeCoord[], topics: string[]) {
+function getTopicBoxLayout(coord: NodeCoord, allCoords: NodeCoord[], topics: string[], canvasHeight: number) {
     const cx = 500;
-    const cy = 300;
+    const cy = canvasHeight / 2;
     const dx = coord.x - cx;
     const dy = coord.y - cy;
     const len = Math.sqrt(dx * dx + dy * dy) || 1;
 
-    let ux = dx / len;
-    let uy = dy / len;
+    const ux = dx / len;
+    const uy = dy / len;
 
-    if (coord.y < 200) {
-        ux = coord.x > cx ? 0.9 : -0.9;
-        uy = 0.4;
-    } else if (coord.y > 400) {
-        ux = coord.x > cx ? 0.9 : -0.9;
-        uy = -0.35;
-    }
-    const nLen = Math.sqrt(ux * ux + uy * uy) || 1;
-    ux /= nLen;
-    uy /= nLen;
-
-    const WEEK_HALF = 88;
-    const BOX_HALF_W = 120;
+    const isLarge = allCoords.length >= 7;
+    const WEEK_HALF = isLarge ? 72 : 88;
+    const BOX_HALF_W = isLarge ? 104 : 120;
     const estimatedLines = topics.reduce((sum, topic) => sum + Math.max(1, Math.ceil(topic.length / 34)), 0);
     const estimatedHeight = 58 + estimatedLines * 14 + topics.length * 4;
-    const BOX_HALF_H = Math.min(240, Math.max(130, Math.ceil(estimatedHeight / 2)));
-    const BOX_GAP = 110;
-    const spread = WEEK_HALF + BOX_GAP + BOX_HALF_W;
+    const BOX_HALF_H = Math.min(isLarge ? 210 : 240, Math.max(isLarge ? 110 : 130, Math.ceil(estimatedHeight / 2)));
+    const BOX_GAP = isLarge ? 45 : 60;
+
+    const getSpread = (cux: number, cuy: number) => {
+        const nodeHalfW = isLarge ? 72 : 88;
+        const nodeHalfH = 34;
+        const nodeW_dir = Math.abs(cux) * nodeHalfW + Math.abs(cuy) * nodeHalfH;
+        const boxW_dir = Math.abs(cux) * BOX_HALF_W + Math.abs(cuy) * BOX_HALF_H;
+        return nodeW_dir + BOX_GAP + boxW_dir;
+    };
 
     const candidateVectors = [
-        { x: ux, y: uy, bonus: 0 },
+        { x: ux, y: uy, bonus: 0 },          // Outwards
         { x: ux, y: -uy, bonus: 0.2 },
-        { x: -ux, y: uy, bonus: 0.35 },
-        { x: uy, y: -ux, bonus: 0.45 },
-        { x: -uy, y: ux, bonus: 0.55 },
+        { x: -ux, y: uy, bonus: 0.2 },
+        { x: uy, y: -ux, bonus: 0.3 },
+        { x: -uy, y: ux, bonus: 0.3 },
+        { x: -ux, y: -uy, bonus: 0.4 },      // Towards center
+        { x: 0, y: 1, bonus: 0.15 },
+        { x: 0, y: -1, bonus: 0.15 },
     ];
 
     const getPenalty = (centerX: number, centerY: number) => {
         let penalty = 0;
-        const nodeHalfW = 88;
+        const nodeHalfW = isLarge ? 72 : 88;
         const nodeHalfH = 34;
-        const clearance = 24;
+        const clearance = isLarge ? 12 : 16;
 
         for (const node of allCoords) {
             if (node.x === coord.x && node.y === coord.y) continue;
@@ -256,14 +257,15 @@ function getTopicBoxLayout(coord: NodeCoord, allCoords: NodeCoord[], topics: str
 
             // Very strong penalty if topic panel would overlap any other week card.
             if (overlapX && overlapY) {
-                penalty += 12;
-            } else if (dxNode < BOX_HALF_W + nodeHalfW + 55 && dyNode < BOX_HALF_H + nodeHalfH + 55) {
-                penalty += 3;
+                penalty += 150;
+            } else if (dxNode < BOX_HALF_W + nodeHalfW + 35 && dyNode < BOX_HALF_H + nodeHalfH + 35) {
+                penalty += 10;
             }
         }
 
-        if (Math.hypot(centerX - 500, centerY - 300) < BOX_HALF_W + 90) {
-            penalty += 4;
+        // Penalty if topics panel would cover/overlap the center course title.
+        if (Math.hypot(centerX - 500, centerY - cy) < BOX_HALF_W + 90) {
+            penalty += 25;
         }
 
         const minX = centerX - BOX_HALF_W;
@@ -271,10 +273,10 @@ function getTopicBoxLayout(coord: NodeCoord, allCoords: NodeCoord[], topics: str
         const minY = centerY - BOX_HALF_H;
         const maxY = centerY + BOX_HALF_H;
 
-        if (minX < 20) penalty += (20 - minX) / 40;
-        if (maxX > 980) penalty += (maxX - 980) / 40;
-        if (minY < 30) penalty += (30 - minY) / 35;
-        if (maxY > 570) penalty += (maxY - 570) / 35;
+        if (minX < 10) penalty += (10 - minX) / 10;
+        if (maxX > 990) penalty += (maxX - 990) / 10;
+        if (minY < 10) penalty += (10 - minY) / 10;
+        if (maxY > (canvasHeight - 10)) penalty += (maxY - (canvasHeight - 10)) / 10;
 
         return penalty;
     };
@@ -282,8 +284,8 @@ function getTopicBoxLayout(coord: NodeCoord, allCoords: NodeCoord[], topics: str
     let best = {
         ux,
         uy,
-        centerX: coord.x + ux * spread,
-        centerY: coord.y + uy * spread,
+        centerX: coord.x + ux * getSpread(ux, uy),
+        centerY: coord.y + uy * getSpread(ux, uy),
         score: Number.POSITIVE_INFINITY,
     };
 
@@ -291,6 +293,7 @@ function getTopicBoxLayout(coord: NodeCoord, allCoords: NodeCoord[], topics: str
         const n = Math.hypot(candidate.x, candidate.y) || 1;
         const cux = candidate.x / n;
         const cuy = candidate.y / n;
+        const spread = getSpread(cux, cuy);
         const centerX = coord.x + cux * spread;
         const centerY = coord.y + cuy * spread;
         const score = getPenalty(centerX, centerY) + candidate.bonus;
@@ -304,7 +307,10 @@ function getTopicBoxLayout(coord: NodeCoord, allCoords: NodeCoord[], topics: str
             ? (best.ux > 0 ? "left" : "right")
             : (best.uy > 0 ? "top" : "bottom");
 
-    const lineStart = { x: coord.x + best.ux * WEEK_HALF, y: coord.y + best.uy * WEEK_HALF };
+    const nodeHalfW = isLarge ? 72 : 88;
+    const nodeHalfH = 34;
+    const nodeW_dir = Math.abs(best.ux) * nodeHalfW + Math.abs(best.uy) * nodeHalfH;
+    const lineStart = { x: coord.x + best.ux * nodeW_dir, y: coord.y + best.uy * nodeW_dir };
 
     let anchorX = best.centerX;
     let anchorY = best.centerY;
@@ -339,12 +345,14 @@ export function SyllabusMindMap({
     const gradientId = useId().replace(/:/g, "");
     const styles = THEME_STYLES[theme];
 
-    const { coords, paths } = useMemo(() => buildRadialLayout(data.length), [data.length]);
+    const canvasHeight = data.length >= 7 ? 780 : 600;
+
+    const { coords, paths } = useMemo(() => buildRadialLayout(data.length, canvasHeight), [data.length, canvasHeight]);
 
     const activeContent = data.find((item) => item.period === activePeriod);
     const activeCoord = activePeriod !== 0 ? coords[activePeriod] : null;
     const activeTopicBoxLayout = activeCoord && activeContent
-        ? getTopicBoxLayout(activeCoord, Object.values(coords), activeContent.topics)
+        ? getTopicBoxLayout(activeCoord, Object.values(coords), activeContent.topics, canvasHeight)
         : null;
 
     if (data.length === 0) return null;
@@ -356,7 +364,7 @@ export function SyllabusMindMap({
                 <motion.div
                     onClick={() => setActivePeriod(0)}
                     animate={{
-                        height: isExpanded ? 620 : 200
+                        height: isExpanded ? (activeTopicBoxLayout?.anchor === "bottom" ? canvasHeight + 140 : canvasHeight + 20) : 200
                     }}
                     transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
                     className="bg-transparent text-slate-800 p-8 relative overflow-visible select-none cursor-default"
@@ -375,15 +383,15 @@ export function SyllabusMindMap({
                     <motion.div
                         onClick={(e) => e.stopPropagation()}
                         animate={{
-                            height: isExpanded ? 500 : 120,
-                            marginTop: isExpanded ? 40 : 16
+                            height: isExpanded ? canvasHeight - 100 : 120,
+                            marginTop: isExpanded ? (activeTopicBoxLayout?.anchor === "bottom" ? 160 : 40) : 16
                         }}
                         transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
                         className="relative w-full overflow-visible"
                     >
                         <svg
                             className="absolute inset-0 w-full h-full pointer-events-none z-0"
-                            viewBox="0 0 1000 600"
+                            viewBox={`0 0 1000 ${canvasHeight}`}
                             preserveAspectRatio="none"
                             fill="none"
                         >
@@ -456,14 +464,14 @@ export function SyllabusMindMap({
                                 <span className="font-extrabold text-sm tracking-tight leading-tight uppercase text-slate-800">
                                     {hubTitle}
                                 </span>
-                                <motion.div 
+                                <motion.div
                                     className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-slate-950 text-white text-[8px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-800 shadow-md whitespace-nowrap animate-pulse"
                                     animate={{
                                         scale: isExpanded ? 0.95 : [1, 1.05, 1],
                                     }}
                                     transition={{
-                                        scale: isExpanded 
-                                            ? { duration: 0.2 } 
+                                        scale: isExpanded
+                                            ? { duration: 0.2 }
                                             : { repeat: Infinity, duration: 2, ease: "easeInOut" }
                                     }}
                                 >
@@ -496,18 +504,16 @@ export function SyllabusMindMap({
                                         ease: "easeOut",
                                         delay: isExpanded ? item.period * 0.04 : 0,
                                     }}
-                                    className={`absolute -translate-x-1/2 -translate-y-1/2 z-20 w-44 p-3 rounded-2xl flex flex-col items-center justify-center text-center border transition-all duration-300 shadow-sm ${
-                                        !isExpanded ? "pointer-events-none" : ""
-                                    } ${
-                                        isActive
+                                    className={`absolute -translate-x-1/2 -translate-y-1/2 z-20 ${data.length >= 7 ? "w-36 p-2 rounded-xl" : "w-44 p-3 rounded-2xl"} flex flex-col items-center justify-center text-center border transition-all duration-300 shadow-sm ${!isExpanded ? "pointer-events-none" : ""
+                                        } ${isActive
                                             ? `bg-gradient-to-br ${styles.gradient} text-white ${styles.borderActive} shadow-lg ${styles.shadowActive}`
                                             : `bg-white text-slate-700 border-slate-200 ${styles.weekHover} hover:bg-slate-50`
-                                    }`}
+                                        }`}
                                 >
                                     <span className={`text-[9px] font-mono uppercase tracking-widest mb-1 ${isActive ? "opacity-90" : "opacity-70"}`}>
                                         {periodLabel} {item.period}
                                     </span>
-                                    <span className="font-extrabold text-xs tracking-tight line-clamp-2 leading-tight">
+                                    <span className={`font-extrabold ${data.length >= 7 ? "text-[11px]" : "text-xs"} tracking-tight line-clamp-2 leading-tight`}>
                                         {item.title}
                                     </span>
                                 </motion.button>
@@ -524,9 +530,9 @@ export function SyllabusMindMap({
                                     transition={{ duration: 0.2 }}
                                     style={{
                                         left: `${activeTopicBoxLayout.anchorX / 10}%`,
-                                        top: `${(activeTopicBoxLayout.anchorY / 600) * 100}%`,
+                                        top: `${(activeTopicBoxLayout.anchorY / canvasHeight) * 100}%`,
                                     }}
-                                    className={`absolute z-25 ${TOPIC_BOX_ANCHOR_CLASS[activeTopicBoxLayout.anchor]}`}
+                                    className={`absolute z-25 ${TOPIC_BOX_ANCHOR_CLASS[activeTopicBoxLayout.anchor as keyof typeof TOPIC_BOX_ANCHOR_CLASS]}`}
                                 >
                                     <motion.div
                                         initial={{ scale: 0.85 }}
@@ -536,21 +542,22 @@ export function SyllabusMindMap({
                                         style={{
                                             transformOrigin:
                                                 activeTopicBoxLayout.anchor === "left" ? "left center" :
-                                                activeTopicBoxLayout.anchor === "right" ? "right center" :
-                                                activeTopicBoxLayout.anchor === "top" ? "center top" :
-                                                "center bottom",
+                                                    activeTopicBoxLayout.anchor === "right" ? "right center" :
+                                                        activeTopicBoxLayout.anchor === "top" ? "center top" :
+                                                            (activeTopicBoxLayout.anchor as string) === "center" ? "center center" :
+                                                                "center bottom",
                                         }}
                                         onClick={(e) => e.stopPropagation()}
-                                        className={`w-60 p-4 bg-white border ${styles.boxBorder} rounded-2xl shadow-xl ${styles.boxShadow} text-left`}
+                                        className={`${data.length >= 7 ? "w-52 p-3 rounded-xl" : "w-60 p-4 rounded-2xl"} bg-white border ${styles.boxBorder} shadow-xl ${styles.boxShadow} text-left`}
                                     >
-                                        <span className={`text-[9px] font-mono uppercase tracking-widest ${styles.accent} font-bold block mb-2.5`}>
+                                        <span className={`${data.length >= 7 ? "text-[8px] mb-2" : "text-[9px] mb-2.5"} font-mono uppercase tracking-widest ${styles.accent} font-bold block`}>
                                             {periodLabel} {activePeriod} Topics
                                         </span>
-                                        <div className="space-y-2.5">
+                                        <div className={data.length >= 7 ? "space-y-2" : "space-y-2.5"}>
                                             {activeContent.topics.map((topic, i) => (
-                                                <div key={i} className="flex items-start gap-2.5">
-                                                    <CheckCircle2 size={13} className={`${styles.check} shrink-0 mt-0.5`} />
-                                                    <span className="text-[11px] font-medium text-slate-700 leading-snug">{topic}</span>
+                                                <div key={i} className={`flex items-start ${data.length >= 7 ? "gap-2" : "gap-2.5"}`}>
+                                                    <CheckCircle2 size={data.length >= 7 ? 11 : 13} className={`${styles.check} shrink-0 mt-0.5`} />
+                                                    <span className={`${data.length >= 7 ? "text-[10px]" : "text-[11px]"} font-medium text-slate-700 leading-snug`}>{topic}</span>
                                                 </div>
                                             ))}
                                         </div>
@@ -578,11 +585,10 @@ export function SyllabusMindMap({
                             <div key={item.period} className="relative">
                                 <button
                                     onClick={() => setActivePeriod(isOpen ? 0 : item.period)}
-                                    className={`absolute -left-[35px] top-4 w-5 h-5 rounded-full border-2 transition-all flex items-center justify-center z-10 ${
-                                        isOpen
+                                    className={`absolute -left-[35px] top-4 w-5 h-5 rounded-full border-2 transition-all flex items-center justify-center z-10 ${isOpen
                                             ? `${styles.mobileDot} text-white scale-110 shadow-md`
                                             : `border-slate-300 bg-white ${styles.mobileDotHover}`
-                                    }`}
+                                        }`}
                                 >
                                     {isOpen ? (
                                         <div className="w-1.5 h-1.5 rounded-full bg-white" />

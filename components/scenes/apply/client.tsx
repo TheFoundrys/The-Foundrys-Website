@@ -40,6 +40,7 @@ export function ApplyClient() {
                 "Certified Professional in AI",
                 "Certified in AI Research",
                 "Certified Professional in AI Foundations (in Telugu)",
+                "AI Strategy & Institutional Intelligence",
             ],
             "professional": [
                 "Certified Professional in AI Engineering",

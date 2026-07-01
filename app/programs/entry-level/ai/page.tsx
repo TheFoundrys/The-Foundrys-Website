@@ -102,6 +102,17 @@ export default function EntryLevelAIPage() {
                             href="/programs/entry-level/ai/certified-professional-in-ai"
                             symbol={symbol}
                         />
+                        <CourseCard
+                            sku="AI 006"
+                            title="AI Strategy & Institutional Intelligence"
+                            originalPrice={COURSE_PRICING.aiStrategy.original[currency]}
+                            discountedPrice={COURSE_PRICING.aiStrategy.freshers[currency]}
+                            duration="9 Weeks"
+                            desc="Bridge the gap between AI technology and organizational leadership. Master AI frameworks, deployment strategy, institutional governance, and data privacy to drive AI initiatives."
+                            persona="For Executives, Leaders & Managers"
+                            href="/programs/entry-level/ai/ai-strategy-and-institutional-intelligence"
+                            symbol={symbol}
+                        />
                         {/* <CourseCard
                             sku="AI 003"
                             title="AI Fluency "
