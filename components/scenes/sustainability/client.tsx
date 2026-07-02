@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
+import StartsDate from "@/components/ui/starts-date";
 import {
    Leaf,
    Layers,
@@ -265,7 +266,7 @@ export default function SustainabilityClient() {
                      </div>
                      <div className="border-r-0 border-stone-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                         <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1">Starts</p>
-                        <p className="text-lg font-bold text-stone-900">April 2026</p>
+                        <p className="text-lg font-bold text-stone-900"><StartsDate fallback="April 2026" /></p>
                      </div>
                      <div className="lg:pr-4">
                         <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>

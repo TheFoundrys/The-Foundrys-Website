@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, ChevronRight, Clock, Target, Users, Zap } from "lucide-react";
 import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
+import StartsDate from "@/components/ui/starts-date";
 
 export function StrategyClient() {
     const [selectedCareer, setSelectedCareer] = useState(0);
@@ -116,7 +117,7 @@ export function StrategyClient() {
                             </div>
                             <div className="border-r border-neutral-100 last:border-0 pr-4">
                                 <p className="text-xs text-neutral-500 uppercase tracking-widest font-bold mb-1">Starts</p>
-                                <p className="text-lg font-bold text-neutral-900">April 2026</p>
+                                <p className="text-lg font-bold text-neutral-900"><StartsDate fallback="April 2026" /></p>
                             </div>
                             <div className="pr-4">
                                 <p className="text-xs text-neutral-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>

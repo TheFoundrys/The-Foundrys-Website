@@ -1,4 +1,6 @@
 "use client";
+import StartsDate from "@/components/ui/starts-date";
+
 
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
@@ -91,7 +93,7 @@ export default function AIClient() {
               desc="An intensive 5-day in-person bootcamp in Hyderabad. Build autonomous AI agents with hands-on, instructor-led training. Limited batch size for personalized learning."
               href="/programs/professional/ai/agentic-ai-bootcamp"
               persona="Engineering + Non-Engineering Backgrounds"
-              badges={["In-Person @ Hyderabad", "April 2026"]}
+              badges={["In-Person @ Hyderabad", <StartsDate key="starts" fallback="April 2026" />]}
             />
           </div>
         </div>
@@ -102,7 +104,7 @@ export default function AIClient() {
   );
 }
 
-function CourseCard({ sku, title, originalPrice, discountedPrice, currencySymbol = "₹", desc, discountLabel = "50% Discount", href = "/apply", duration = "3 Months", persona = "Students / Working professionals", isBestSeller = false, badges }: { sku: string, title: string, originalPrice: string, discountedPrice: string, currencySymbol?: string, desc: string, discountLabel?: string, href?: string, duration?: string, persona?: string, isBestSeller?: boolean, badges?: string[] }) {
+function CourseCard({ sku, title, originalPrice, discountedPrice, currencySymbol = "₹", desc, discountLabel = "50% Discount", href = "/apply", duration = "3 Months", persona = "Students / Working professionals", isBestSeller = false, badges }: { sku: string, title: string, originalPrice: string, discountedPrice: string, currencySymbol?: string, desc: string, discountLabel?: string, href?: string, duration?: string, persona?: string, isBestSeller?: boolean, badges?: React.ReactNode[] }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

@@ -3,7 +3,7 @@
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Zap, Terminal, Cpu, Network, ShieldCheck, BrainCircuit, Calendar, Wifi, Target, ArrowDown, FileText, UserCheck, Rocket, Code, Database, Server, Cloud, Box, Activity, GitMerge, Ship, Flame, Link as LinkIcon, Globe, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, Zap, Terminal, Cpu, Network, ShieldCheck, BrainCircuit, Calendar, Wifi, Target, ArrowDown, FileText, UserCheck, Rocket, Code, Database, Server, Cloud, Box, Activity, GitMerge, Ship, Flame, Link as LinkIcon, Globe, CheckCircle2, Upload, Loader2, Mail, Phone, User, GraduationCap, Briefcase } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import React from "react";
@@ -182,6 +182,9 @@ export default function EntryLevelProgramPage() {
                 </div>
             </section>
 
+            {/* Career Transformation Lead Capture Form */}
+            <CareerTransformationSection />
+
             {/* Core Domains */}
             <section className="py-24 px-6 bg-white border-y border-slate-200" id="curriculum">
                 <div className="container mx-auto max-w-6xl">
@@ -238,7 +241,7 @@ export default function EntryLevelProgramPage() {
                             <div className="text-6xl font-black text-slate-200 mb-6 group-hover:text-blue-100 transition-colors">01</div>
                             <h3 className="text-xl font-bold text-slate-900 mb-3">The Production Portfolio</h3>
                             <p className="text-slate-600 leading-relaxed text-sm">
-                                <strong className="text-slate-900">Your Proof of Competence.</strong> You will finish the track with a GitHub portfolio of 3-5 distinct projects and one major Capstone. When a recruiter asks, &quot;Can you do this?&quot;, you won&apos;t just say &quot;Yes&quot;—you will show them the code.
+                                <strong className="text-slate-900">Your Proof of Competence.</strong>{' '}You will finish the track with a GitHub portfolio of 3-5 distinct projects and one major Capstone. When a recruiter asks, &quot;Can you do this?&quot;, you won&apos;t just say &quot;Yes&quot;—you will show them the code.
                             </p>
                         </div>
 
@@ -246,7 +249,7 @@ export default function EntryLevelProgramPage() {
                             <div className="text-6xl font-black text-slate-200 mb-6 group-hover:text-purple-100 transition-colors">02</div>
                             <h3 className="text-xl font-bold text-slate-900 mb-3">The Verified Credential</h3>
                             <p className="text-slate-600 leading-relaxed text-sm">
-                                <strong className="text-slate-900">Your Signal of Quality.</strong> Upon successful assessment, you earn a Certified Professional Credential from The Foundry. This is a digitally verifiable asset that signals your technical rigor to employers and clients worldwide.
+                                <strong className="text-slate-900">Your Signal of Quality.</strong>{' '}Upon successful assessment, you earn a Certified Professional Credential from The Foundry. This is a digitally verifiable asset that signals your technical rigor to employers and clients worldwide.
                             </p>
                         </div>
 
@@ -254,7 +257,7 @@ export default function EntryLevelProgramPage() {
                             <div className="text-6xl font-black text-slate-200 mb-6 group-hover:text-emerald-100 transition-colors">03</div>
                             <h3 className="text-xl font-bold text-slate-900 mb-3">The Foundry Network</h3>
                             <p className="text-slate-600 leading-relaxed text-sm">
-                                <strong className="text-slate-900">Your Access.</strong> Certification is not the exit; it is the entry. You gain access to The Foundry’s professional community, mentorship channels, and exclusive industry events in Hyderabad—connecting you with the people who are building the future.
+                                <strong className="text-slate-900">Your Access.</strong>{' '}Certification is not the exit; it is the entry. You gain access to The Foundry’s professional community, mentorship channels, and exclusive industry events in Hyderabad—connecting you with the people who are building the future.
                             </p>
                         </div>
                     </div>
@@ -519,4 +522,272 @@ function ToolItem({ name, icon, color }: { name: string, icon: React.ReactNode, 
             <span className="text-slate-600">{name}</span>
         </div>
     )
+}
+
+function CareerTransformationSection() {
+    const [resumeFile, setResumeFile] = useState<File | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [error, setError] = useState("");
+
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setError("");
+
+        const formData = new FormData(e.currentTarget);
+        if (resumeFile) {
+            formData.set("resume", resumeFile);
+        } else {
+            setError("Please upload your resume.");
+            setIsSubmitting(false);
+            return;
+        }
+
+        try {
+            const response = await fetch("/api/career-transformation", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to submit details");
+            }
+
+            setIsSuccess(true);
+            setResumeFile(null);
+        } catch (err) {
+            setError("Something went wrong. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    }
+
+    if (isSuccess) {
+        return (
+            <section className="py-24 px-6 bg-slate-50 border-t border-slate-200" id="career-transformation">
+                <div className="container mx-auto max-w-6xl">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                        <div className="lg:col-span-5 space-y-6">
+                            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight">
+                                Personalized Career <span className="text-transparent bg-clip-text" style={{ backgroundImage: customGradient }}>Transformation</span> Journey
+                            </h2>
+                            <p className="text-lg text-slate-600 leading-relaxed font-semibold">
+                                Please contact us / Fill in your details.
+                            </p>
+                        </div>
+                        <div className="lg:col-span-7">
+                            <motion.div 
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-200 shadow-[0_20px_50px_rgba(0,0,0,0.05)] text-center relative overflow-hidden"
+                            >
+                                <div className="absolute top-0 left-0 right-0 h-1.5" style={{ background: customGradient }}></div>
+                                <div className="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-sm">
+                                    <CheckCircle2 size={40} />
+                                </div>
+                                <h3 className="text-2xl font-bold text-slate-900 mb-3">Submission Successful!</h3>
+                                <p className="text-slate-500 mb-8 max-w-md mx-auto leading-relaxed">
+                                    Your details have been successfully synced to CentraCRM. Our career advisers will review your profile and contact you shortly.
+                                </p>
+                                <button
+                                    onClick={() => setIsSuccess(false)}
+                                    className="px-6 py-3 bg-slate-900 text-white rounded-xl font-bold text-sm hover:bg-blue-600 transition-colors shadow-lg"
+                                >
+                                    Submit Another Profile
+                                </button>
+                            </motion.div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+    }
+
+    return (
+        <section className="py-24 px-6 bg-slate-50 border-t border-slate-200" id="career-transformation">
+            <div className="container mx-auto max-w-6xl">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                    {/* Left Info Column */}
+                    <div className="lg:col-span-5 space-y-6">
+                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight">
+                            Personalized Career <span className="text-transparent bg-clip-text" style={{ backgroundImage: customGradient }}>Transformation</span> Journey
+                        </h2>
+                        <p className="text-lg text-slate-600 leading-relaxed font-semibold">
+                            Please contact us / Fill in your details.
+                        </p>
+                        <p className="text-slate-500 leading-relaxed">
+                            Take the first step toward high-value specializations. Tell us about your background, share your resume, and let us custom-tailor your learning roadmap.
+                        </p>
+                        
+                        <div className="space-y-4 pt-4">
+                            <div className="flex items-center gap-3 text-slate-700">
+                                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100 shrink-0">
+                                    <Zap size={18} />
+                                </div>
+                                <span className="font-semibold text-sm">Direct CRM Lead Routing</span>
+                            </div>
+                            <div className="flex items-center gap-3 text-slate-700">
+                                <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center border border-purple-100 shrink-0">
+                                    <UserCheck size={18} />
+                                </div>
+                                <span className="font-semibold text-sm">Interactive Syllabus Mapping</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Form Card */}
+                    <div className="lg:col-span-7">
+                        <div className="bg-white p-8 md:p-10 rounded-[2.5rem] border border-slate-200/80 shadow-[0_20px_50px_rgba(0,0,0,0.05)] relative overflow-hidden">
+                            <div className="absolute top-0 left-0 right-0 h-1.5" style={{ background: customGradient }}></div>
+                            
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    {/* Full Name */}
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-bold uppercase tracking-widest text-slate-500 block">Full Name</label>
+                                        <div className="relative">
+                                            <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-slate-400">
+                                                <User size={18} />
+                                            </div>
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                required
+                                                placeholder="Enter full name"
+                                                className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 font-sans"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    {/* Mobile Number */}
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-bold uppercase tracking-widest text-slate-500 block">Mobile Number</label>
+                                        <div className="relative">
+                                            <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-slate-400">
+                                                <Phone size={18} />
+                                            </div>
+                                            <input
+                                                type="tel"
+                                                name="phone"
+                                                required
+                                                placeholder="Enter mobile number"
+                                                className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 font-sans"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    {/* Email Address */}
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-bold uppercase tracking-widest text-slate-500 block">Email Address</label>
+                                        <div className="relative">
+                                            <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-slate-400">
+                                                <Mail size={18} />
+                                            </div>
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                required
+                                                placeholder="name@domain.com"
+                                                className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 font-sans"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    {/* Year of Passing */}
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-bold uppercase tracking-widest text-slate-500 block">Year of Passing</label>
+                                        <div className="relative">
+                                            <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-slate-400">
+                                                <GraduationCap size={18} />
+                                            </div>
+                                            <input
+                                                type="number"
+                                                name="yearOfPassing"
+                                                required
+                                                min="1990"
+                                                max="2035"
+                                                placeholder="e.g. 2026"
+                                                className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 font-sans"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Experience Details */}
+                                <div className="space-y-2">
+                                    <label className="text-xs font-bold uppercase tracking-widest text-slate-500 block">Experience Details</label>
+                                    <div className="relative">
+                                        <div className="absolute top-4 left-4 flex items-start pointer-events-none text-slate-400">
+                                            <Briefcase size={18} />
+                                        </div>
+                                        <textarea
+                                            name="experienceDetails"
+                                            required
+                                            rows={3}
+                                            placeholder="Summarize your internships, jobs, coding background, or project experience..."
+                                            className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 resize-none font-sans"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Resume Upload (PDF/DOC/DOCX) */}
+                                <div className="space-y-2">
+                                    <label className="text-xs font-bold uppercase tracking-widest text-slate-500 block">Resume Upload (PDF/DOC/DOCX)</label>
+                                    <label className={`flex flex-col items-center justify-center border-2 border-dashed rounded-2xl p-6 transition-all cursor-pointer group ${resumeFile ? 'border-emerald-500/50 bg-emerald-50/10' : 'border-slate-200 hover:border-blue-500/50 hover:bg-slate-50/50'}`}>
+                                        <input
+                                            type="file"
+                                            accept=".pdf,.doc,.docx"
+                                            onChange={(e) => setResumeFile(e.target.files?.[0] || null)}
+                                            className="hidden"
+                                        />
+                                        <div className="flex flex-col items-center gap-2 text-center">
+                                            <div className={`p-3 rounded-full ${resumeFile ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-100 text-slate-400 group-hover:scale-110 transition-transform'}`}>
+                                                <Upload size={20} />
+                                            </div>
+                                            {resumeFile ? (
+                                                <div>
+                                                    <span className="text-sm font-bold text-slate-800 block">{resumeFile.name}</span>
+                                                    <span className="text-xs text-slate-400 font-medium">{(resumeFile.size / 1024 / 1024).toFixed(2)} MB • Click to replace</span>
+                                                </div>
+                                            ) : (
+                                                <div>
+                                                    <span className="text-sm font-bold text-slate-700 block font-sans">Choose file to upload</span>
+                                                    <span className="text-xs text-slate-400 font-medium font-sans">Supports PDF, DOC, DOCX up to 10MB</span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </label>
+                                </div>
+
+                                {error && (
+                                    <p className="text-sm text-red-500 font-medium">{error}</p>
+                                )}
+
+                                <button
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                    style={{ background: customGradient }}
+                                    className="w-full py-4 text-white rounded-xl font-bold hover:opacity-95 transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50"
+                                >
+                                    {isSubmitting ? (
+                                        <>
+                                            <Loader2 size={18} className="animate-spin" />
+                                            Submitting Lead Details...
+                                        </>
+                                    ) : (
+                                        <>
+                                            Transform My Career <ArrowUpRight size={18} />
+                                        </>
+                                    )}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
 }

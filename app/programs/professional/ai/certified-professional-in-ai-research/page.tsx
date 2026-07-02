@@ -1,4 +1,6 @@
 "use client";
+import StartsDate from "@/components/ui/starts-date";
+
 
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
@@ -296,7 +298,7 @@ export default function AIResearchProfessionalPage() {
                             </div>
                             <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Starts</p>
-                                <p className="text-lg font-bold text-slate-900">April 2026</p>
+                                <p className="text-lg font-bold text-slate-900"><StartsDate fallback="April 2026" /></p>
                             </div>
                             <div className="lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>
