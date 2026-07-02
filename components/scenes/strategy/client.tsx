@@ -6,7 +6,6 @@ import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, ChevronRight, Clock, Target, Users, Zap } from "lucide-react";
 import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
-import StartsDate from "@/components/ui/starts-date";
 
 export function StrategyClient() {
     const [selectedCareer, setSelectedCareer] = useState(0);
@@ -106,7 +105,7 @@ export function StrategyClient() {
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl px-4">
                     <div className="bg-white rounded-2xl shadow-xl border border-neutral-200 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12">
                         {/* Details Grid */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 flex-1 text-center md:text-left w-full">
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 flex-1 text-center md:text-left w-full">
                             <div className="border-r border-neutral-100 last:border-0 pr-4">
                                 <p className="text-xs text-neutral-500 uppercase tracking-widest font-bold mb-1">Duration</p>
                                 <p className="text-lg font-bold text-neutral-900">4 Weeks</p>
@@ -115,10 +114,7 @@ export function StrategyClient() {
                                 <p className="text-xs text-neutral-500 uppercase tracking-widest font-bold mb-1">Location</p>
                                 <p className="text-lg font-bold text-neutral-900">Hyderabad</p>
                             </div>
-                            <div className="border-r border-neutral-100 last:border-0 pr-4">
-                                <p className="text-xs text-neutral-500 uppercase tracking-widest font-bold mb-1">Starts</p>
-                                <p className="text-lg font-bold text-neutral-900"><StartsDate fallback="April 2026" /></p>
-                            </div>
+                            
                             <div className="pr-4">
                                 <p className="text-xs text-neutral-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>
                                 <div className="flex items-center gap-2 justify-center md:justify-start">

@@ -119,9 +119,9 @@ export const COURSE_PRICING: CoursePricing = {
     },
     aiResearch: {
         original: { INR: '', USD: '' },
-        freshers: { INR: '75,000', USD: '1,500' },
-        zeroToTwo: { INR: '1,12,500', USD: '2,250' },
-        twoToFive: { INR: '1,35,000', USD: '2,700' },
+        freshers: { INR: '1,00,000', USD: '1,500' },
+        zeroToTwo: { INR: '1,50,000', USD: '2,250' },
+        twoToFive: { INR: '1,80,000', USD: '2,700' },
     },
     professionalAIEngineer: {
         original: { INR: '', USD: '' },
@@ -137,9 +137,9 @@ export const COURSE_PRICING: CoursePricing = {
     },
     professionalAIResearch: {
         original: { INR: '', USD: '' },
-        freshers: { INR: '75,000', USD: '1,500' },
-        zeroToTwo: { INR: '1,12,500', USD: '2,250' },
-        twoToFive: { INR: '1,35,000', USD: '2,700' },
+        freshers: { INR: '1,00,000', USD: '1,500' },
+        zeroToTwo: { INR: '1,50,000', USD: '2,250' },
+        twoToFive: { INR: '1,80,000', USD: '2,700' },
     },
     quantumFundamentals: {
         original: { INR: '', USD: '' },

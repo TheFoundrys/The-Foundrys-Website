@@ -1,5 +1,4 @@
 "use client";
-import StartsDate from "@/components/ui/starts-date";
 
 
 import { Navbar } from "@/components/ui/navbar";
@@ -277,7 +276,7 @@ export default function PromptEngineeringCoursePage() {
             <div className="relative z-20 px-4 -mt-16 mb-12">
                 <div className="mx-auto max-w-5xl">
                     <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
+                        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
                             <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Duration</p>
                                 <p className="text-lg font-bold text-slate-900">2 Weeks</p>
@@ -286,10 +285,7 @@ export default function PromptEngineeringCoursePage() {
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Mode</p>
                                 <p className="text-lg font-bold text-slate-900">Hybrid</p>
                             </div>
-                            <div className="border-r-0 border-slate-100 lg:border-r lg:last:border-r-0 lg:pr-4">
-                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Starts</p>
-                                <p className="text-lg font-bold text-slate-900"><StartsDate fallback="April 2026" /></p>
-                            </div>
+                            
                             <div className="lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>
                                 <div className="flex items-center gap-2 justify-center lg:justify-start">
