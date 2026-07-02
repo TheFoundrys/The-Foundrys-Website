@@ -619,21 +619,6 @@ function CareerTransformationSection() {
                         <p className="text-slate-500 leading-relaxed">
                             Take the first step toward high-value specializations. Tell us about your background, share your resume, and let us custom-tailor your learning roadmap.
                         </p>
-                        
-                        <div className="space-y-4 pt-4">
-                            <div className="flex items-center gap-3 text-slate-700">
-                                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100 shrink-0">
-                                    <Zap size={18} />
-                                </div>
-                                <span className="font-semibold text-sm">Direct CRM Lead Routing</span>
-                            </div>
-                            <div className="flex items-center gap-3 text-slate-700">
-                                <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center border border-purple-100 shrink-0">
-                                    <UserCheck size={18} />
-                                </div>
-                                <span className="font-semibold text-sm">Interactive Syllabus Mapping</span>
-                            </div>
-                        </div>
                     </div>
 
                     {/* Right Form Card */}
