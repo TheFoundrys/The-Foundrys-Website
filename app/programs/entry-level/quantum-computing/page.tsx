@@ -36,7 +36,7 @@ export default function EntryLevelQuantumPage() {
                         <CourseCard
                             sku="Q 001"
                             title="Certified in Quantum Fundamentals"
-                            originalPrice="10,000"
+                            originalPrice=""
                             discountedPrice="5,000"
                             duration="4 Weeks"
                             desc="From Linear Algebra to Quantum Hardware in 30 Days. Master the mathematical postulates, quantum logic, and basic circuit design."
@@ -48,7 +48,7 @@ export default function EntryLevelQuantumPage() {
                         <CourseCard
                             sku="Q 002"
                             title="Certified in Quantum Engineering"
-                            originalPrice="150,000"
+                            originalPrice=""
                             discountedPrice="75,000"
                             duration="4 Weeks"
                             desc="Master the physical implementation of qubits and quantum circuitry."
@@ -57,7 +57,7 @@ export default function EntryLevelQuantumPage() {
                         <CourseCard
                             sku="Q 003"
                             title="Certified in Quantum Computing"
-                            originalPrice="150,000"
+                            originalPrice=""
                             discountedPrice="75,000"
                             duration="4 Weeks"
                             desc="Learn core quantum algorithms and simulation techniques."
@@ -66,7 +66,7 @@ export default function EntryLevelQuantumPage() {
                         <CourseCard
                             sku="Q 004"
                             title="Certified in Quantum Sensing"
-                            originalPrice="150,000"
+                            originalPrice=""
                             discountedPrice="75,000"
                             duration="4 Weeks"
                             desc="Explore high-precision metrology using quantum properties."
@@ -75,7 +75,7 @@ export default function EntryLevelQuantumPage() {
                         <CourseCard
                             sku="Q 005"
                             title="Certified in Quantum Communication"
-                            originalPrice="150,000"
+                            originalPrice=""
                             discountedPrice="75,000"
                             duration="4 Weeks"
                             desc="Learn secure communication protocols and QKD."
@@ -84,7 +84,7 @@ export default function EntryLevelQuantumPage() {
                         <CourseCard
                             sku="Q 006"
                             title="Certified in Quantum Information"
-                            originalPrice="150,000"
+                            originalPrice=""
                             discountedPrice="75,000"
                             duration="4 Weeks"
                             desc="Information theory re-imagined with entanglement and entropy."
@@ -93,7 +93,7 @@ export default function EntryLevelQuantumPage() {
                         <CourseCard
                             sku="Q 007"
                             title="Certified in Post Quantum Cryptography"
-                            originalPrice="150,000"
+                            originalPrice=""
                             discountedPrice="75,000"
                             duration="4 Weeks"
                             desc="Preparing classical systems to withstand quantum attacks."
@@ -102,7 +102,7 @@ export default function EntryLevelQuantumPage() {
                         <CourseCard
                             sku="QAI 001"
                             title="Certified in Quantum AI"
-                            originalPrice="400,000"
+                            originalPrice=""
                             discountedPrice="200,000"
                             duration="4 Weeks"
                             desc="The intersection of quantum computing and machine learning."
@@ -166,10 +166,12 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
                     )}
                     <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
                     <div className="flex flex-col">
-                        <span className="text-sm text-slate-400 line-through font-medium">{symbol}{originalPrice}</span>
+                        {originalPrice && <span className="text-sm text-slate-400 line-through font-medium">{symbol}{originalPrice}</span>}
                         <div className="flex items-baseline gap-2">
                             <span className="text-2xl font-bold text-slate-900">{symbol}{discountedPrice}</span>
-                            <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">{discountLabel}</span>
+                            {originalPrice && (
+                                <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">{discountLabel}</span>
+                            )}
                         </div>
                     </div>
                 </div>

@@ -36,7 +36,7 @@ export default function EntryLevelAIPage() {
                         {/* <CourseCard
                             sku="AI 001"
                             title="Certified Professional AI Foundations"
-                            originalPrice="100,000"
+                            originalPrice=""
                             discountedPrice="50,000"
                             duration="6 Weeks"
                             desc="Build a strong foundation in the mathematics, logic, and core principles of Artificial Intelligence. Learn how intelligent systems use data and algorithms to make decisions."

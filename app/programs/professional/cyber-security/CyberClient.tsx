@@ -37,8 +37,8 @@ export default function CyberClient() {
                         <CourseCard
                             sku="CS 001"
                             title="Certified Professional in Cyber Security"
-                            priceINR={{ original: "300,000", discounted: "150,000" }}
-                            priceUSD={{ original: "6,000", discounted: "3,000" }}
+                            priceINR={{ original: "", discounted: "150,000" }}
+                            priceUSD={{ original: "", discounted: "3,000" }}
                             desc="Comprehensive coverage of network security, ethical hacking, and incident response for the enterprise."
                             symbol={symbol}
                             currency={currency}
@@ -46,8 +46,8 @@ export default function CyberClient() {
                         <CourseCard
                             sku="CS 002"
                             title="Certified Professional in VAPT for AI"
-                            priceINR={{ original: "300,000", discounted: "150,000" }}
-                            priceUSD={{ original: "6,000", discounted: "3,000" }}
+                            priceINR={{ original: "", discounted: "150,000" }}
+                            priceUSD={{ original: "", discounted: "3,000" }}
                             desc="Specialized track focusing on Vulnerability Assessment and Penetration Testing specifically for AI systems."
                             symbol={symbol}
                             currency={currency}
@@ -55,8 +55,8 @@ export default function CyberClient() {
                         <CourseCard
                             sku="CS 003"
                             title="Certified Professional in Security for AI"
-                            priceINR={{ original: "300,000", discounted: "150,000" }}
-                            priceUSD={{ original: "6,000", discounted: "3,000" }}
+                            priceINR={{ original: "", discounted: "150,000" }}
+                            priceUSD={{ original: "", discounted: "3,000" }}
                             desc="Learn to secure AI pipelines, training data, and model endpoints against adversarial attacks."
                             symbol={symbol}
                             currency={currency}
@@ -64,8 +64,8 @@ export default function CyberClient() {
                         <CourseCard
                             sku="CS 004"
                             title="Certified Professional in AI Security"
-                            priceINR={{ original: "300,000", discounted: "150,000" }}
-                            priceUSD={{ original: "6,000", discounted: "3,000" }}
+                            priceINR={{ original: "", discounted: "150,000" }}
+                            priceUSD={{ original: "", discounted: "3,000" }}
                             desc="Advanced studies in securing the AI lifecycle, from data ingestion to inference."
                             symbol={symbol}
                             currency={currency}
@@ -116,10 +116,12 @@ function CourseCard({ sku, title, priceINR, priceUSD, desc, symbol, currency }: 
                 <div>
                     <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
                     <div className="flex flex-col">
-                        <span className="text-sm text-slate-400 line-through font-medium">{symbol}{originalPrice}</span>
+                        {originalPrice && <span className="text-sm text-slate-400 line-through font-medium">{symbol}{originalPrice}</span>}
                         <div className="flex items-baseline gap-2">
                             <span className="text-2xl font-bold text-slate-900">{symbol}{discountedPrice}</span>
-                            <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">50% Discount</span>
+                            {originalPrice && (
+                                <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">50% Discount</span>
+                            )}
                         </div>
                     </div>
                 </div>

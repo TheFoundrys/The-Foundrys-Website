@@ -161,10 +161,12 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, currencySymbol
           )}
           <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
           <div className="flex flex-col">
-            <span className="text-sm text-slate-400 line-through font-medium">{currencySymbol}{originalPrice}</span>
+            {originalPrice && <span className="text-sm text-slate-400 line-through font-medium">{currencySymbol}{originalPrice}</span>}
             <div className="flex items-baseline gap-2">
               <span className="text-2xl font-bold text-slate-900">{currencySymbol}{discountedPrice}</span>
-              <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">{discountLabel}</span>
+                            {originalPrice && (
+                                <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">{discountLabel}</span>
+                            )}
             </div>
           </div>
         </div>

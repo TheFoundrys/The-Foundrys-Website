@@ -186,7 +186,7 @@ export default function AIFluencyPage() {
                             <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Fee</p>
                                 <div className="flex items-center gap-2 justify-center lg:justify-start">
-                                    <span className="text-sm text-slate-400 line-through">{symbol}{pricing.original[currency]}</span>
+                                    {pricing.original[currency] && <span className="text-sm text-slate-400 line-through">{symbol}{pricing.original[currency]}</span>}
                                     <span className="text-lg font-bold text-slate-900">{symbol}{pricing.twoToFive[currency]}</span>
                                 </div>
                             </div>

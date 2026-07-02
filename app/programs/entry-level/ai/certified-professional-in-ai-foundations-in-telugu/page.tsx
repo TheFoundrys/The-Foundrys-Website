@@ -203,7 +203,7 @@ export default function AIFoundationsTeluguCoursePage() {
                             <h3 className="text-white text-xl font-bold mb-6">Program Fee</h3>
                             <div className="flex items-baseline gap-3 mb-2">
                                 <span className="text-4xl lg:text-5xl font-bold text-white">{symbol}{discountedPrice}</span>
-                                <span className="text-xl text-slate-500 line-through">{symbol}{originalPrice}</span>
+                                {originalPrice && <span className="text-xl text-slate-500 line-through">{symbol}{originalPrice}</span>}
                             </div>
                             <div className="flex items-center gap-2 mb-8">
                                 <span className="bg-amber-500/20 text-amber-400 text-xs font-bold px-2 py-1 rounded uppercase">50% Scholarship</span>

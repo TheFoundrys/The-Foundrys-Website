@@ -209,7 +209,7 @@ export default function QuantumFundamentalsCoursePage() {
                             <div className="lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>
                                 <div className="flex items-center gap-2 justify-center lg:justify-start">
-                                    <span className="text-sm text-slate-400 line-through">{symbol}{originalPrice}</span>
+                                    {originalPrice && <span className="text-sm text-slate-400 line-through">{symbol}{originalPrice}</span>}
                                     <span className="text-lg font-bold text-slate-900">{symbol}{discountedPrice}</span>
                                 </div>
                             </div>
