@@ -133,7 +133,7 @@ export default function EntryLevelAIPage() {
     );
 }
 
-function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discountLabel = "50% Discount", href = "/apply", duration = "3 Months", persona = "UG / PG Students", isBestSeller = false, symbol = "₹" }: { sku: string, title: string, originalPrice: string, discountedPrice: string, desc: string, discountLabel?: string, href?: string, duration?: string, persona?: string, isBestSeller?: boolean, symbol?: string }) {
+function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discountLabel = "50% Discount", href = "/apply", duration = "3 Months", persona = "UG / PG Students", isBestSeller = false, symbol = "₹" }: { sku: string, title: string, originalPrice?: string, discountedPrice: string, desc: string, discountLabel?: string, href?: string, duration?: string, persona?: string, isBestSeller?: boolean, symbol?: string }) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -182,10 +182,14 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
                     )}
                     <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
                     <div className="flex flex-col">
-                        <span className="text-sm text-slate-400 line-through font-medium">{symbol}{originalPrice}</span>
+                        {originalPrice && (
+                            <span className="text-sm text-slate-400 line-through font-medium">{symbol}{originalPrice}</span>
+                        )}
                         <div className="flex items-baseline gap-2">
                             <span className="text-2xl font-bold text-slate-900">{symbol}{discountedPrice}</span>
-                            <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">{discountLabel}</span>
+                            {originalPrice && discountLabel && (
+                                <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">{discountLabel}</span>
+                            )}
                         </div>
                     </div>
                 </div>

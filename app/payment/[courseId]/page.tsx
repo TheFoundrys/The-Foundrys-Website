@@ -465,14 +465,15 @@ export default function PaymentPage({
                 </div>
 
                 <div className="p-6 space-y-4">
-                  {/* Price breakdown */}
-                  <div className="flex justify-between text-sm">
-                    <span className="text-slate-500">Program Fee</span>
-                    <span className="text-slate-400 line-through">
-                      {symbol}
-                      {pricing.original[currency]}
-                    </span>
-                  </div>
+                  {pricing.original[currency] && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-slate-500">Program Fee</span>
+                      <span className="text-slate-400 line-through">
+                        {symbol}
+                        {pricing.original[currency]}
+                      </span>
+                    </div>
+                  )}
 
                   <div className="flex justify-between text-sm">
                     <span className="text-slate-500">Early Bird Price</span>
