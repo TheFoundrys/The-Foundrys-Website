@@ -2,12 +2,13 @@
 
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, BookOpen, Users, Zap, Briefcase, GraduationCap, CheckCircle2, ChevronRight, Terminal, Cpu, Network, ShieldCheck, BrainCircuit, Globe, Calendar, Wifi, Target, Clock, ArrowDown, ChevronLeft, FileText, UserCheck, Rocket, Code, Database, Server, Cloud, Lock, Box, Activity, GitMerge, Ship, Smile as SmileIcon, Link2, Bug, Search, Settings, HardHat, Flame, Link as LinkIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import { CareerTransformationModal } from "../entry-level/page";
 
 // Custom Gradient Style
 const customGradient = "linear-gradient(to right, lab(44.0605 29.0279 -86.0352) 0%, lab(38.4009 52.6132 -92.3857) 100%)";
@@ -15,7 +16,12 @@ const textGradientClass = "text-transparent bg-clip-text";
 
 export default function ProfessionalProgramPage() {
     const [currentDomainIndex, setCurrentDomainIndex] = useState(0);
+    const [modalData, setModalData] = useState<{ domain: string; type: "Personalized" | "Self-Paced" } | null>(null);
     const domains = ["Artificial Intelligence", "Cyber Security", "Blockchain", "Quantum Computing"];
+
+    const handleOpenForm = (domain: string, type: "Personalized" | "Self-Paced") => {
+        setModalData({ domain, type });
+    };
 
     useEffect(() => {
         document.title = "Professional Certification Programs | The Foundry";
@@ -82,13 +88,6 @@ export default function ProfessionalProgramPage() {
                                 Build deep expertise in emerging technologies. A structured introduction to Artificial Intelligence, Cyber Security, Quantum Computing, and Blockchain designed for clarity and application.
                             </p>
                             <div className="flex flex-wrap gap-4">
-                                <Link
-                                    href="/apply"
-                                    style={{ background: customGradient }}
-                                    className="inline-flex items-center gap-2 px-8 py-4 text-white rounded-full font-bold transition-all hover:scale-105 active:scale-95 shadow-lg opacity-90 hover:opacity-100"
-                                >
-                                    Start Application <ArrowUpRight size={18} />
-                                </Link>
                                 <a
                                     href="#curriculum"
                                     onClick={(e) => {
@@ -99,6 +98,13 @@ export default function ProfessionalProgramPage() {
                                 >
                                     Explore Domains
                                 </a>
+                                <Link
+                                    href="/apply-personalized"
+                                    style={{ background: customGradient }}
+                                    className="inline-flex items-center gap-2 px-8 py-4 text-white rounded-full font-bold transition-all hover:scale-105 active:scale-95 shadow-lg opacity-90 hover:opacity-100"
+                                >
+                                    Start Your Application with Personalized Learning <ArrowUpRight size={18} />
+                                </Link>
                             </div>
 
                             {/* Strategic Program Specs - Integrated into Hero */}
@@ -198,6 +204,8 @@ export default function ProfessionalProgramPage() {
                             desc="Move beyond basic Python. Master Neural Networks, NLP, and Computer Vision to build systems that can see, read, and decide."
                             icon={<BrainCircuit />}
                             href="/programs/professional/ai"
+                            onOpenForm={handleOpenForm}
+                            selfPacedHref="https://compass.thefoundrys.com/courses/ai"
                         />
                         <DomainCard
                             title="Cyber Security"
@@ -205,6 +213,8 @@ export default function ProfessionalProgramPage() {
                             desc="The world is digital, and it is under attack. Learn the offensive and defensive strategies required to secure networks and data."
                             icon={<ShieldCheck />}
                             href="/programs/professional/cyber-security"
+                            onOpenForm={handleOpenForm}
+                            selfPacedHref="https://compass.thefoundrys.com/courses/cyber-security"
                         />
                         <DomainCard
                             title="Quantum Computing"
@@ -212,6 +222,8 @@ export default function ProfessionalProgramPage() {
                             desc="Prepare for the paradigm shift. Understanding Qubits and Superposition today is like learning the Internet in 1990."
                             icon={<Cpu />}
                             href="/programs/professional/quantum-computing"
+                            onOpenForm={handleOpenForm}
+                            selfPacedHref="https://compass.thefoundrys.com/courses/quantum-computing"
                         />
                         <DomainCard
                             title="Blockchain"
@@ -219,6 +231,8 @@ export default function ProfessionalProgramPage() {
                             desc="Explore the technology behind Web3. Learn how decentralized ledgers and smart contracts are rewriting the rules of finance and ownership."
                             icon={<Network />}
                             href="/programs/professional/blockchain"
+                            onOpenForm={handleOpenForm}
+                            selfPacedHref="https://compass.thefoundrys.com/"
                         />
                     </div>
                 </div>
@@ -395,6 +409,17 @@ export default function ProfessionalProgramPage() {
 
 
             <Footer />
+
+            <AnimatePresence>
+                {modalData && (
+                    <CareerTransformationModal
+                        isOpen={!!modalData}
+                        onClose={() => setModalData(null)}
+                        domain={modalData.domain}
+                        type={modalData.type}
+                    />
+                )}
+            </AnimatePresence>
         </main>
     );
 }
@@ -441,14 +466,20 @@ function TargetCard({ icon, title, desc }: { icon: any, title: string, desc: str
     )
 }
 
-function DomainCard({ title, tagline, desc, icon, href }: { title: string, tagline?: string, desc: string, icon: any, href: string }) {
+function DomainCard({ title, tagline, desc, icon, href, onOpenForm, selfPacedHref }: { title: string, tagline?: string, desc: string, icon: any, href: string, onOpenForm: (domain: string, type: "Personalized" | "Self-Paced") => void, selfPacedHref?: string }) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group"
+            className="relative flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group"
         >
+            <div className="absolute top-6 right-6 z-10">
+                <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100 whitespace-nowrap">
+                    Professional Program
+                </span>
+            </div>
+
             <div className="p-8 flex-grow">
                 <div className="flex items-start gap-4 mb-6">
                     <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform shrink-0 relative overflow-hidden bg-slate-50">
@@ -457,7 +488,7 @@ function DomainCard({ title, tagline, desc, icon, href }: { title: string, tagli
                             {React.cloneElement(icon, { size: 28, strokeWidth: 1.5 })}
                         </div>
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 pr-28">
                         <h3 className="text-2xl font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">{title}</h3>
                         <div className="text-sm font-semibold text-blue-600">{tagline}</div>
                     </div>
@@ -484,15 +515,33 @@ function DomainCard({ title, tagline, desc, icon, href }: { title: string, tagli
                 </div>
             </div>
 
-            <div className="p-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-4">
-                <div className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100">
-                    Professional Program
-                </div>
+            <div className="p-5 bg-slate-50 border-t border-slate-100 flex flex-wrap items-center justify-start gap-2">
+                {selfPacedHref ? (
+                    <a
+                        href={selfPacedHref}
+                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 bg-blue-900 text-white text-xs md:text-sm rounded-xl font-bold hover:bg-blue-800 transition-all shadow-lg hover:shadow-blue-950/20 whitespace-nowrap active:scale-95"
+                    >
+                        Self-Paced Learning
+                    </a>
+                ) : (
+                    <button
+                        onClick={() => onOpenForm(title, "Self-Paced")}
+                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 bg-blue-900 text-white text-xs md:text-sm rounded-xl font-bold hover:bg-blue-800 transition-all shadow-lg hover:shadow-blue-950/20 whitespace-nowrap active:scale-95"
+                    >
+                        Self-Paced Learning
+                    </button>
+                )}
+                <Link
+                    href={`/apply-personalized?domain=${encodeURIComponent(title)}&pathway=Career+Transformation&level=Mid+Level`}
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 bg-indigo-900 text-white text-xs md:text-sm rounded-xl font-bold hover:bg-indigo-800 transition-all shadow-lg hover:shadow-indigo-950/20 whitespace-nowrap active:scale-95 text-center"
+                >
+                    Personalized Learning
+                </Link>
                 <Link
                     href={href}
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 transition-colors shadow-lg hover:shadow-blue-500/25"
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 bg-slate-900 text-white text-xs md:text-sm rounded-xl font-bold hover:bg-slate-800 transition-colors shadow-lg hover:shadow-slate-950/20 whitespace-nowrap text-center"
                 >
-                    View Programs <ArrowUpRight size={18} />
+                    Learn More <ArrowUpRight size={14} className="shrink-0" />
                 </Link>
             </div>
         </motion.div>

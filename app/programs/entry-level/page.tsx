@@ -2,8 +2,8 @@
 
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
-import { motion } from "framer-motion";
-import { ArrowUpRight, Zap, Terminal, Cpu, Network, ShieldCheck, BrainCircuit, Calendar, Wifi, Target, ArrowDown, FileText, UserCheck, Rocket, Code, Database, Server, Cloud, Box, Activity, GitMerge, Ship, Flame, Link as LinkIcon, Globe, CheckCircle2, Upload, Loader2, Mail, Phone, User, GraduationCap, Briefcase } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight, Zap, Terminal, Cpu, Network, ShieldCheck, BrainCircuit, Calendar, Wifi, Target, ArrowDown, FileText, UserCheck, Rocket, Code, Database, Server, Cloud, Box, Activity, GitMerge, Ship, Flame, Link as LinkIcon, Globe, CheckCircle2, Upload, Loader2, Mail, Phone, User, GraduationCap, Briefcase, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import React from "react";
@@ -17,6 +17,11 @@ const domains = ["Artificial Intelligence", "Cyber Security", "Blockchain", "Qua
 
 export default function EntryLevelProgramPage() {
     const [currentDomainIndex, setCurrentDomainIndex] = useState(0);
+    const [modalData, setModalData] = useState<{ domain: string; type: "Personalized" | "Self-Paced" } | null>(null);
+
+    const handleOpenForm = (domain: string, type: "Personalized" | "Self-Paced") => {
+        setModalData({ domain, type });
+    };
 
     useEffect(() => {
         document.title = "Entry Level Programs | The Foundry";
@@ -83,13 +88,6 @@ export default function EntryLevelProgramPage() {
                                 Build a strong foundation in emerging technologies. Designed for beginners to understand the core concepts of Artificial Intelligence, Cyber Security, Quantum Computing, and Blockchain.
                             </p>
                             <div className="flex flex-wrap gap-4">
-                                <Link
-                                    href="/apply"
-                                    style={{ background: customGradient }}
-                                    className="inline-flex items-center gap-2 px-8 py-4 text-white rounded-full font-bold transition-all hover:scale-105 active:scale-95 shadow-lg opacity-90 hover:opacity-100"
-                                >
-                                    Start Application <ArrowUpRight size={18} />
-                                </Link>
                                 <a
                                     href="#curriculum"
                                     onClick={(e) => {
@@ -100,6 +98,13 @@ export default function EntryLevelProgramPage() {
                                 >
                                     Explore Domains
                                 </a>
+                                <Link
+                                    href="/apply-personalized"
+                                    style={{ background: customGradient }}
+                                    className="inline-flex items-center gap-2 px-8 py-4 text-white rounded-full font-bold transition-all hover:scale-105 active:scale-95 shadow-lg opacity-90 hover:opacity-100"
+                                >
+                                    Start Your Application with Personalized Learning <ArrowUpRight size={18} />
+                                </Link>
                             </div>
 
                             {/* Strategic Program Specs - Integrated into Hero */}
@@ -183,7 +188,7 @@ export default function EntryLevelProgramPage() {
             </section>
 
             {/* Career Transformation Lead Capture Form */}
-            <CareerTransformationSection />
+            {/* <CareerTransformationSection /> */}
 
             {/* Core Domains */}
             <section className="py-24 px-6 bg-white border-y border-slate-200" id="curriculum">
@@ -202,6 +207,8 @@ export default function EntryLevelProgramPage() {
                             desc="Move beyond basic Python. Master Neural Networks, NLP, and Computer Vision to build systems that can see, read, and decide."
                             icon={<BrainCircuit />}
                             href="/programs/entry-level/ai"
+                            onOpenForm={handleOpenForm}
+                            selfPacedHref="https://compass.thefoundrys.com/courses/ai"
                         />
                         <DomainCard
                             title="Cyber Security"
@@ -209,6 +216,8 @@ export default function EntryLevelProgramPage() {
                             desc="The world is digital, and it is under attack. Learn the offensive and defensive strategies required to secure networks and data."
                             icon={<ShieldCheck />}
                             href="/programs/entry-level/cyber-security"
+                            onOpenForm={handleOpenForm}
+                            selfPacedHref="https://compass.thefoundrys.com/courses/cyber-security"
                         />
                         <DomainCard
                             title="Quantum Computing"
@@ -216,6 +225,8 @@ export default function EntryLevelProgramPage() {
                             desc="Prepare for the paradigm shift. Understanding Qubits and Superposition today is like learning the Internet in 1990."
                             icon={<Cpu />}
                             href="/programs/entry-level/quantum-computing"
+                            onOpenForm={handleOpenForm}
+                            selfPacedHref="https://compass.thefoundrys.com/courses/quantum-computing"
                         />
                         <DomainCard
                             title="Blockchain"
@@ -223,6 +234,8 @@ export default function EntryLevelProgramPage() {
                             desc="Explore the technology behind Web3. Learn how decentralized ledgers and smart contracts are rewriting the rules of finance and ownership."
                             icon={<Network />}
                             href="/programs/entry-level/blockchain"
+                            onOpenForm={handleOpenForm}
+                            selfPacedHref="https://compass.thefoundrys.com/"
                         />
                     </div>
                 </div>
@@ -399,6 +412,17 @@ export default function EntryLevelProgramPage() {
 
 
             <Footer />
+
+            <AnimatePresence>
+                {modalData && (
+                    <CareerTransformationModal
+                        isOpen={!!modalData}
+                        onClose={() => setModalData(null)}
+                        domain={modalData.domain}
+                        type={modalData.type}
+                    />
+                )}
+            </AnimatePresence>
         </main>
     );
 }
@@ -429,14 +453,20 @@ function HeroStat({ icon, label, value, sub, extraGap = false }: { icon: React.R
 
 
 
-function DomainCard({ title, tagline, desc, icon, href }: { title: string, tagline?: string, desc: string, icon: React.ReactElement, href: string }) {
+function DomainCard({ title, tagline, desc, icon, href, onOpenForm, selfPacedHref }: { title: string, tagline?: string, desc: string, icon: React.ReactElement, href: string, onOpenForm: (domain: string, type: "Personalized" | "Self-Paced") => void, selfPacedHref?: string }) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group"
+            className="relative flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group"
         >
+            <div className="absolute top-6 right-6 z-10">
+                <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100 whitespace-nowrap">
+                    Professional Program
+                </span>
+            </div>
+
             <div className="p-8 flex-grow">
                 <div className="flex items-start gap-4 mb-6">
                     <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform shrink-0 relative overflow-hidden bg-slate-50">
@@ -446,7 +476,7 @@ function DomainCard({ title, tagline, desc, icon, href }: { title: string, tagli
                             {React.cloneElement(icon as any, { size: 28, strokeWidth: 1.5 })}
                         </div>
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 pr-28">
                         <h3 className="text-2xl font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">{title}</h3>
                         <div className="text-sm font-semibold text-blue-600">{tagline}</div>
                     </div>
@@ -473,15 +503,33 @@ function DomainCard({ title, tagline, desc, icon, href }: { title: string, tagli
                 </div>
             </div>
 
-            <div className="p-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-4">
-                <div className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100">
-                    Professional Program
-                </div>
+            <div className="p-5 bg-slate-50 border-t border-slate-100 flex flex-wrap items-center justify-start gap-2">
+                {selfPacedHref ? (
+                    <a
+                        href={selfPacedHref}
+                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 bg-blue-900 text-white text-xs md:text-sm rounded-xl font-bold hover:bg-blue-800 transition-all shadow-lg hover:shadow-blue-950/20 whitespace-nowrap active:scale-95"
+                    >
+                        Self-Paced Learning
+                    </a>
+                ) : (
+                    <button
+                        onClick={() => onOpenForm(title, "Self-Paced")}
+                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 bg-blue-900 text-white text-xs md:text-sm rounded-xl font-bold hover:bg-blue-800 transition-all shadow-lg hover:shadow-blue-950/20 whitespace-nowrap active:scale-95"
+                    >
+                        Self-Paced Learning
+                    </button>
+                )}
+                <Link
+                    href={`/apply-personalized?domain=${encodeURIComponent(title)}&pathway=Career+Transformation&level=Entry+Level`}
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 bg-indigo-900 text-white text-xs md:text-sm rounded-xl font-bold hover:bg-indigo-800 transition-all shadow-lg hover:shadow-indigo-950/20 whitespace-nowrap active:scale-95 text-center"
+                >
+                    Personalized Learning
+                </Link>
                 <Link
                     href={href}
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 transition-colors shadow-lg hover:shadow-blue-500/25"
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 bg-slate-900 text-white text-xs md:text-sm rounded-xl font-bold hover:bg-slate-800 transition-colors shadow-lg hover:shadow-slate-950/20 whitespace-nowrap text-center"
                 >
-                    View Programs <ArrowUpRight size={18} />
+                    Learn More <ArrowUpRight size={14} className="shrink-0" />
                 </Link>
             </div>
         </motion.div>
@@ -524,11 +572,31 @@ function ToolItem({ name, icon, color }: { name: string, icon: React.ReactNode, 
     )
 }
 
-function CareerTransformationSection() {
+interface CareerTransformationModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    domain: string;
+    type: "Personalized" | "Self-Paced";
+}
+
+export function CareerTransformationModal({ isOpen, onClose, domain, type }: CareerTransformationModalProps) {
     const [resumeFile, setResumeFile] = useState<File | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [error, setError] = useState("");
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [isOpen]);
+
+    if (!isOpen) return null;
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -536,6 +604,12 @@ function CareerTransformationSection() {
         setError("");
 
         const formData = new FormData(e.currentTarget);
+        
+        // Append context info to experienceDetails so it is recorded in CentraCRM & Sheets
+        const originalExp = formData.get("experienceDetails") as string;
+        const modifiedExp = `Selected Program: ${domain} (${type} Learning) | Experience: ${originalExp}`;
+        formData.set("experienceDetails", modifiedExp);
+
         if (resumeFile) {
             formData.set("resume", resumeFile);
         } else {
@@ -563,130 +637,130 @@ function CareerTransformationSection() {
         }
     }
 
-    if (isSuccess) {
-        return (
-            <section className="py-24 px-6 bg-slate-50 border-t border-slate-200" id="career-transformation">
-                <div className="container mx-auto max-w-6xl">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-                        <div className="lg:col-span-5 space-y-6">
-                            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight">
-                                Personalized Career <span className="text-transparent bg-clip-text" style={{ backgroundImage: customGradient }}>Transformation</span> Journey
-                            </h2>
-                            <p className="text-lg text-slate-600 leading-relaxed font-semibold">
-                                Please contact us / Fill in your details.
-                            </p>
-                        </div>
-                        <div className="lg:col-span-7">
-                            <motion.div 
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                className="bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-200 shadow-[0_20px_50px_rgba(0,0,0,0.05)] text-center relative overflow-hidden"
-                            >
-                                <div className="absolute top-0 left-0 right-0 h-1.5" style={{ background: customGradient }}></div>
-                                <div className="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-sm">
-                                    <CheckCircle2 size={40} />
-                                </div>
-                                <h3 className="text-2xl font-bold text-slate-900 mb-3">Submission Successful!</h3>
-                                <p className="text-slate-500 mb-8 max-w-md mx-auto leading-relaxed">
-                                    Your details have been successfully synced to CentraCRM. Our career advisers will review your profile and contact you shortly.
-                                </p>
-                                <button
-                                    onClick={() => setIsSuccess(false)}
-                                    className="px-6 py-3 bg-slate-900 text-white rounded-xl font-bold text-sm hover:bg-blue-600 transition-colors shadow-lg"
-                                >
-                                    Submit Another Profile
-                                </button>
-                            </motion.div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        );
-    }
+    const titleText = type === "Personalized" 
+        ? "Personalized Career Transformation" 
+        : "Self-Paced Learning Journey";
+        
+    const descText = type === "Personalized"
+        ? "Please contact us / Fill in your details. Take the first step toward high-value specializations. Tell us about your background, share your resume, and let us custom-tailor your learning roadmap."
+        : "Please contact us / Fill in your details. Start building a strong foundation at your own pace. Tell us about your background, share your resume, and let us custom-tailor your self-paced learning roadmap.";
 
     return (
-        <section className="py-24 px-6 bg-slate-50 border-t border-slate-200" id="career-transformation">
-            <div className="container mx-auto max-w-6xl">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-                    {/* Left Info Column */}
-                    <div className="lg:col-span-5 space-y-6">
-                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight">
-                            Personalized Career <span className="text-transparent bg-clip-text" style={{ backgroundImage: customGradient }}>Transformation</span> Journey
-                        </h2>
-                        <p className="text-lg text-slate-600 leading-relaxed font-semibold">
-                            Please contact us / Fill in your details.
-                        </p>
-                        <p className="text-slate-500 leading-relaxed">
-                            Take the first step toward high-value specializations. Tell us about your background, share your resume, and let us custom-tailor your learning roadmap.
-                        </p>
-                    </div>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md overflow-y-auto">
+            {/* Modal Container */}
+            <motion.div 
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                className="bg-white rounded-[2rem] border border-slate-200 shadow-2xl w-full max-w-2xl relative overflow-hidden my-8"
+            >
+                {/* Top decorative gradient bar */}
+                <div className="absolute top-0 left-0 right-0 h-1.5" style={{ background: customGradient }}></div>
+                
+                {/* Close Button */}
+                <button 
+                    onClick={onClose}
+                    className="absolute top-6 right-6 p-2 text-slate-400 hover:text-slate-600 rounded-full hover:bg-slate-100 transition-colors z-10 animate-pulse hover:animate-none"
+                    aria-label="Close modal"
+                >
+                    <X size={20} />
+                </button>
 
-                    {/* Right Form Card */}
-                    <div className="lg:col-span-7">
-                        <div className="bg-white p-8 md:p-10 rounded-[2.5rem] border border-slate-200/80 shadow-[0_20px_50px_rgba(0,0,0,0.05)] relative overflow-hidden">
-                            <div className="absolute top-0 left-0 right-0 h-1.5" style={{ background: customGradient }}></div>
-                            
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="p-8 md:p-10">
+                    {isSuccess ? (
+                        <div className="text-center py-6">
+                            <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+                                <CheckCircle2 size={32} />
+                            </div>
+                            <h3 className="text-2xl font-bold text-slate-900 mb-2">Submission Successful!</h3>
+                            <p className="text-slate-500 mb-6 max-w-md mx-auto leading-relaxed text-sm">
+                                Your details have been successfully synced to CentraCRM. Our career advisers will review your profile and contact you shortly.
+                            </p>
+                            <button
+                                onClick={() => {
+                                    setIsSuccess(false);
+                                    onClose();
+                                }}
+                                className="px-6 py-3 bg-slate-900 text-white rounded-xl font-bold text-sm hover:bg-blue-600 transition-colors shadow-lg"
+                            >
+                                Close Window
+                            </button>
+                        </div>
+                    ) : (
+                        <div>
+                            <div className="mb-6 pr-8">
+                                <span className="text-xs font-bold uppercase tracking-widest text-blue-600 mb-1 block">
+                                    {domain}
+                                </span>
+                                <h2 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-tight">
+                                    {titleText}
+                                </h2>
+                                <p className="text-xs text-slate-500 mt-2 leading-relaxed">
+                                    {descText}
+                                </p>
+                            </div>
+
+                            <form onSubmit={handleSubmit} className="space-y-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {/* Full Name */}
-                                    <div className="space-y-2">
-                                        <label className="text-xs font-bold uppercase tracking-widest text-slate-500 block">Full Name</label>
+                                    <div className="space-y-1">
+                                        <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 block">Full Name</label>
                                         <div className="relative">
-                                            <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-slate-400">
-                                                <User size={18} />
+                                            <div className="absolute inset-y-0 left-3.5 flex items-center pointer-events-none text-slate-400">
+                                                <User size={16} />
                                             </div>
                                             <input
                                                 type="text"
                                                 name="name"
                                                 required
                                                 placeholder="Enter full name"
-                                                className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 font-sans"
+                                                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 text-sm font-sans"
                                             />
                                         </div>
                                     </div>
 
                                     {/* Mobile Number */}
-                                    <div className="space-y-2">
-                                        <label className="text-xs font-bold uppercase tracking-widest text-slate-500 block">Mobile Number</label>
+                                    <div className="space-y-1">
+                                        <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 block">Mobile Number</label>
                                         <div className="relative">
-                                            <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-slate-400">
-                                                <Phone size={18} />
+                                            <div className="absolute inset-y-0 left-3.5 flex items-center pointer-events-none text-slate-400">
+                                                <Phone size={16} />
                                             </div>
                                             <input
                                                 type="tel"
                                                 name="phone"
                                                 required
                                                 placeholder="Enter mobile number"
-                                                className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 font-sans"
+                                                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 text-sm font-sans"
                                             />
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {/* Email Address */}
-                                    <div className="space-y-2">
-                                        <label className="text-xs font-bold uppercase tracking-widest text-slate-500 block">Email Address</label>
+                                    <div className="space-y-1">
+                                        <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 block">Email Address</label>
                                         <div className="relative">
-                                            <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-slate-400">
-                                                <Mail size={18} />
+                                            <div className="absolute inset-y-0 left-3.5 flex items-center pointer-events-none text-slate-400">
+                                                <Mail size={16} />
                                             </div>
                                             <input
                                                 type="email"
                                                 name="email"
                                                 required
                                                 placeholder="name@domain.com"
-                                                className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 font-sans"
+                                                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 text-sm font-sans"
                                             />
                                         </div>
                                     </div>
 
                                     {/* Year of Passing */}
-                                    <div className="space-y-2">
-                                        <label className="text-xs font-bold uppercase tracking-widest text-slate-500 block">Year of Passing</label>
+                                    <div className="space-y-1">
+                                        <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 block">Year of Passing</label>
                                         <div className="relative">
-                                            <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-slate-400">
-                                                <GraduationCap size={18} />
+                                            <div className="absolute inset-y-0 left-3.5 flex items-center pointer-events-none text-slate-400">
+                                                <GraduationCap size={16} />
                                             </div>
                                             <input
                                                 type="number"
@@ -695,52 +769,52 @@ function CareerTransformationSection() {
                                                 min="1990"
                                                 max="2035"
                                                 placeholder="e.g. 2026"
-                                                className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 font-sans"
+                                                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 text-sm font-sans"
                                             />
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Experience Details */}
-                                <div className="space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-widest text-slate-500 block">Experience Details</label>
+                                <div className="space-y-1">
+                                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 block">Experience Details</label>
                                     <div className="relative">
-                                        <div className="absolute top-4 left-4 flex items-start pointer-events-none text-slate-400">
-                                            <Briefcase size={18} />
+                                        <div className="absolute top-3 left-3.5 flex items-start pointer-events-none text-slate-400">
+                                            <Briefcase size={16} />
                                         </div>
                                         <textarea
                                             name="experienceDetails"
                                             required
-                                            rows={3}
+                                            rows={2}
                                             placeholder="Summarize your internships, jobs, coding background, or project experience..."
-                                            className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 resize-none font-sans"
+                                            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 text-sm resize-none font-sans"
                                         />
                                     </div>
                                 </div>
 
                                 {/* Resume Upload (PDF/DOC/DOCX) */}
-                                <div className="space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-widest text-slate-500 block">Resume Upload (PDF/DOC/DOCX)</label>
-                                    <label className={`flex flex-col items-center justify-center border-2 border-dashed rounded-2xl p-6 transition-all cursor-pointer group ${resumeFile ? 'border-emerald-500/50 bg-emerald-50/10' : 'border-slate-200 hover:border-blue-500/50 hover:bg-slate-50/50'}`}>
+                                <div className="space-y-1">
+                                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 block">Resume Upload (PDF/DOC/DOCX)</label>
+                                    <label className={`flex flex-col items-center justify-center border-2 border-dashed rounded-xl p-4 transition-all cursor-pointer group ${resumeFile ? 'border-emerald-500/50 bg-emerald-50/10' : 'border-slate-200 hover:border-blue-500/50 hover:bg-slate-50/50'}`}>
                                         <input
                                             type="file"
                                             accept=".pdf,.doc,.docx"
                                             onChange={(e) => setResumeFile(e.target.files?.[0] || null)}
                                             className="hidden"
                                         />
-                                        <div className="flex flex-col items-center gap-2 text-center">
-                                            <div className={`p-3 rounded-full ${resumeFile ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-100 text-slate-400 group-hover:scale-110 transition-transform'}`}>
-                                                <Upload size={20} />
+                                        <div className="flex flex-col items-center gap-1.5 text-center">
+                                            <div className={`p-2 rounded-full ${resumeFile ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-100 text-slate-400 group-hover:scale-105 transition-transform'}`}>
+                                                <Upload size={16} />
                                             </div>
                                             {resumeFile ? (
                                                 <div>
-                                                    <span className="text-sm font-bold text-slate-800 block">{resumeFile.name}</span>
-                                                    <span className="text-xs text-slate-400 font-medium">{(resumeFile.size / 1024 / 1024).toFixed(2)} MB • Click to replace</span>
+                                                    <span className="text-xs font-bold text-slate-800 block">{resumeFile.name}</span>
+                                                    <span className="text-[10px] text-slate-400 font-medium">{(resumeFile.size / 1024 / 1024).toFixed(2)} MB • Click to replace</span>
                                                 </div>
                                             ) : (
                                                 <div>
-                                                    <span className="text-sm font-bold text-slate-700 block font-sans">Choose file to upload</span>
-                                                    <span className="text-xs text-slate-400 font-medium font-sans">Supports PDF, DOC, DOCX up to 10MB</span>
+                                                    <span className="text-xs font-bold text-slate-700 block font-sans">Choose file to upload</span>
+                                                    <span className="text-[10px] text-slate-400 font-medium font-sans">Supports PDF, DOC, DOCX up to 10MB</span>
                                                 </div>
                                             )}
                                         </div>
@@ -748,31 +822,31 @@ function CareerTransformationSection() {
                                 </div>
 
                                 {error && (
-                                    <p className="text-sm text-red-500 font-medium">{error}</p>
+                                    <p className="text-xs text-red-500 font-medium">{error}</p>
                                 )}
 
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
                                     style={{ background: customGradient }}
-                                    className="w-full py-4 text-white rounded-xl font-bold hover:opacity-95 transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50"
+                                    className="w-full py-3 text-white rounded-xl font-bold hover:opacity-95 transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50 text-sm"
                                 >
                                     {isSubmitting ? (
                                         <>
-                                            <Loader2 size={18} className="animate-spin" />
-                                            Submitting Lead Details...
+                                            <Loader2 size={16} className="animate-spin" />
+                                            Submitting Details...
                                         </>
                                     ) : (
                                         <>
-                                            Transform My Career <ArrowUpRight size={18} />
+                                            Transform My Career <ArrowUpRight size={16} />
                                         </>
                                     )}
                                 </button>
                             </form>
                         </div>
-                    </div>
+                    )}
                 </div>
-            </div>
-        </section>
+            </motion.div>
+        </div>
     );
 }
