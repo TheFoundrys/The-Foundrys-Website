@@ -566,8 +566,8 @@ export function Navbar() {
                         </div>
 
                         {/* Desktop CTA */}
-                        <Link href="/apply" onClick={handleHaptic} className="hidden md:block ml-6 px-5 py-2 bg-slate-900 text-white rounded-full text-sm font-bold hover:bg-slate-800 transition-transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl pointer-events-auto">
-                            Apply Now
+                        <Link href="https://compass.thefoundrys.com/login" onClick={handleHaptic} className="hidden md:block ml-6 px-5 py-2 bg-slate-900 text-white rounded-full text-sm font-bold hover:bg-slate-800 transition-transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl pointer-events-auto">
+                            Login
                         </Link>
                     </motion.div>
 
