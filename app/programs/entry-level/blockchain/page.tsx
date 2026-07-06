@@ -37,8 +37,8 @@ export default function EntryLevelBlockchainPage() {
                         <CourseCard
                             sku="BC 001"
                             title="Certified in Block Chain"
-                            priceINR={{ original: "", discounted: "25,000" }}
-                            priceUSD={{ original: "", discounted: "500" }}
+                            priceINR={{ original: "25,000", discounted: "25,000" }}
+                            priceUSD={{ original: "500", discounted: "500" }}
                             desc="Fundamentals of distributed ledger technology, consensus mechanisms, and blockchain architecture basics."
                             symbol={symbol}
                             currency={currency}
@@ -46,8 +46,8 @@ export default function EntryLevelBlockchainPage() {
                         <CourseCard
                             sku="BC 002"
                             title="Certified in NFT"
-                            priceINR={{ original: "", discounted: "37,500" }}
-                            priceUSD={{ original: "", discounted: "750" }}
+                            priceINR={{ original: "37,500", discounted: "37,500" }}
+                            priceUSD={{ original: "750", discounted: "750" }}
                             desc="Introduction to Non-Fungible Tokens, standards, and the creative economy on the blockchain."
                             symbol={symbol}
                             currency={currency}
@@ -55,8 +55,8 @@ export default function EntryLevelBlockchainPage() {
                         <CourseCard
                             sku="BC 003"
                             title="Certified in Decentralized Systems"
-                            priceINR={{ original: "", discounted: "50,000" }}
-                            priceUSD={{ original: "", discounted: "1,000" }}
+                            priceINR={{ original: "50,000", discounted: "50,000" }}
+                            priceUSD={{ original: "1,000", discounted: "1,000" }}
                             desc="Understanding decentralized architectures, peer-to-peer networks, and distributed computing models."
                             symbol={symbol}
                             currency={currency}
@@ -77,7 +77,6 @@ interface PricePair {
 
 function CourseCard({ sku, title, priceINR, priceUSD, desc, symbol, currency }: { sku: string, title: string, priceINR: PricePair, priceUSD: PricePair, desc: string, symbol: string, currency: 'INR' | 'USD' }) {
     const originalPrice = currency === 'USD' ? priceUSD.original : priceINR.original;
-    const discountedPrice = currency === 'USD' ? priceUSD.discounted : priceINR.discounted;
 
     return (
         <motion.div
@@ -107,12 +106,8 @@ function CourseCard({ sku, title, priceINR, priceUSD, desc, symbol, currency }: 
                 <div>
                     <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
                     <div className="flex flex-col">
-                        {originalPrice && <span className="text-sm text-slate-400 line-through font-medium">{symbol}{originalPrice}</span>}
                         <div className="flex items-baseline gap-2">
-                            <span className="text-2xl font-bold text-slate-900">{symbol}{discountedPrice}</span>
-                            {originalPrice && (
-                                <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">50% Discount</span>
-                            )}
+                            <span className="text-2xl font-bold text-slate-900">{symbol}{originalPrice}</span>
                         </div>
                     </div>
                 </div>

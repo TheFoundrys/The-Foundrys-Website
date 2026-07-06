@@ -25,6 +25,7 @@ import { Footer } from "@/components/footer";
 import { AnimatePresence } from "framer-motion";
 
 import { RoleDetailsContent } from "@/components/role-details-content";
+import { SyllabusMindMap } from "@/components/ui/syllabus-mind-map";
 
 // CAREER ROLES DATA
 const CAREER_ROLES = [
@@ -181,6 +182,49 @@ function FAQItem({ question, answer }: { question: string, answer: string }) {
    );
 }
 
+const CURRICULUM_DATA = [
+   {
+      week: 1,
+      title: "Sustainability as a System, Not a Slogan",
+      topics: [
+         "Understand sustainability as an interconnected system",
+         "Learn why most ESG and 'green AI' efforts fail",
+         "Build shared language across business, tech, and governance",
+         "Outcome: You stop thinking in silos and start seeing leverage points."
+      ]
+   },
+   {
+      week: 2,
+      title: "The Hidden Environmental Cost of AI",
+      topics: [
+         "Analyze AI's carbon, water, and energy footprint",
+         "Understand model scale and efficiency trade-offs",
+         "Learn when NOT to use AI",
+         "Outcome: You can evaluate AI decisions beyond hype and benchmarks."
+      ]
+   },
+   {
+      week: 3,
+      title: "AI for Sustainability: From Insight to Impact",
+      topics: [
+         "Explore real-world AI use cases in climate & energy",
+         "Learn impact-driven evaluation metrics",
+         "Design AI systems that improve sustainability outcomes",
+         "Outcome: You move from awareness to applied, defensible solutions."
+      ]
+   },
+   {
+      week: 4,
+      title: "Governance, Ethics, and the Future",
+      topics: [
+         "Understand AI regulation and ESG frameworks",
+         "Learn how sustainability influences funding and strategy",
+         "Design governance-aware AI systems",
+         "Outcome: You gain strategic credibility not just technical literacy."
+      ]
+   }
+];
+
 export default function SustainabilityClient() {
    const containerRef = useRef(null);
    const roleRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -192,7 +236,6 @@ export default function SustainabilityClient() {
    }, []);
 
    const originalPrice = COURSE_PRICING.sustainability.original[currency];
-   const discountedPrice = COURSE_PRICING.sustainability.freshers[currency];
 
    return (
       <div ref={containerRef} className="bg-stone-50 text-stone-900 min-h-screen selection:bg-emerald-200 selection:text-emerald-900 font-sans">
@@ -263,19 +306,18 @@ export default function SustainabilityClient() {
                         <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1">Mode</p>
                         <p className="text-lg font-bold text-stone-900">Hybrid</p>
                      </div>
-                     
+
                      <div className="lg:pr-4">
                         <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>
                         <div className="flex items-center gap-2 justify-center lg:justify-start">
-                           <span className="text-sm text-stone-400 line-through">{symbol}{originalPrice}</span>
-                           <span className="text-lg font-bold text-stone-900">{symbol}{discountedPrice}</span>
+                           <span className="text-lg font-bold text-stone-900">{symbol}{originalPrice}</span>
                         </div>
                      </div>
                   </div>
 
 
                   <div className="w-full lg:w-auto">
-                     <Link href="/enroll/sustainability-in-the-age-of-ai" className="block w-full text-center px-8 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
+                     <Link href="https://compass.thefoundrys.com/courses/sustainability/sustainability-in-the-age-of-ai" className="block w-full text-center px-8 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
                         Enroll Now
                      </Link>
                   </div>
@@ -370,58 +412,23 @@ export default function SustainabilityClient() {
 
 
          {/* CURRICULUM: WEEK BY WEEK */}
-         <section className="py-24 bg-stone-50 border-y border-stone-200">
+         <section className="py-24 bg-gradient-to-br from-stone-50 via-emerald-50/10 to-stone-50 border-y border-stone-200">
             <div className="container mx-auto px-6 max-w-6xl">
-               <h2 className="text-3xl md:text-5xl font-serif text-stone-900 mb-16 text-center">What You&apos;ll Learn</h2>
-
-               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {[
-                     {
-                        week: "Week 1",
-                        title: "Sustainability as a System, Not a Slogan",
-                        focus: ["Understand sustainability as an interconnected system", "Learn why most ESG and 'green AI' efforts fail", "Build shared language across business, tech, and governance"],
-                        outcome: "You stop thinking in silos and start seeing leverage points."
-                     },
-                     {
-                        week: "Week 2",
-                        title: "The Hidden Environmental Cost of AI",
-                        focus: ["Analyze AI's carbon, water, and energy footprint", "Understand model scale and efficiency trade-offs", "Learn when NOT to use AI"],
-                        outcome: "You can evaluate AI decisions beyond hype and benchmarks."
-                     },
-                     {
-                        week: "Week 3",
-                        title: "AI for Sustainability: From Insight to Impact",
-                        focus: ["Explore real-world AI use cases in climate & energy", "Learn impact-driven evaluation metrics", "Design AI systems that improve sustainability outcomes"],
-                        outcome: "You move from awareness to applied, defensible solutions."
-                     },
-                     {
-                        week: "Week 4",
-                        title: "Governance, Ethics, and the Future",
-                        focus: ["Understand AI regulation and ESG frameworks", "Learn how sustainability influences funding and strategy", "Design governance-aware AI systems"],
-                        outcome: "You gain strategic credibility not just technical literacy."
-                     }
-                  ].map((module, i) => (
-                     <div key={i} className="bg-white p-8 border border-stone-200 shadow-sm flex flex-col gap-6 hover:border-emerald-300 transition-colors">
-                        <div>
-                           <span className="text-emerald-600 font-mono text-sm tracking-widest uppercase block mb-2">{module.week}</span>
-                           <h3 className="text-xl font-serif text-stone-900 leading-tight">{module.title}</h3>
-                        </div>
-                        <div>
-                           <ul className="space-y-2 mb-6 text-stone-600 font-light text-sm">
-                              {module.focus.map((item, j) => (
-                                 <li key={j} className="flex gap-2 items-start">
-                                    <CheckCircle2 size={16} className="text-emerald-400 mt-1 shrink-0" />
-                                    <span>{item}</span>
-                                 </li>
-                              ))}
-                           </ul>
-                           <div className="bg-stone-50 p-4 border-l-2 border-emerald-500">
-                              <p className="text-stone-900 text-sm font-medium">Outcome: <span className="font-light text-stone-600">{module.outcome}</span></p>
-                           </div>
-                        </div>
-                     </div>
-                  ))}
+               <div className="text-center mb-12">
+                  <h2 className="text-3xl md:text-5xl font-serif text-stone-900 mb-4">
+                     What You&apos;ll Learn
+                  </h2>
+                  <p className="text-lg text-stone-600 max-w-2xl mx-auto">
+                     A structured 4-week journey through the sustainability and AI landscape
+                  </p>
                </div>
+
+               <SyllabusMindMap
+                  data={CURRICULUM_DATA.map(({ week, title, topics }) => ({ period: week, title, topics }))}
+                  periodLabel="Week"
+                  hubTitle="SUSTAINABILITY"
+                  theme="emerald"
+               />
             </div>
          </section>
 

@@ -289,7 +289,6 @@ function MethodologyItem({ icon: Icon, title, desc, index }: { icon: any, title:
 
 function CourseCard({ sku, title, priceINR, priceUSD, desc, link, delay, active, symbol, currency }: { sku: string, title: string, priceINR: { original: string, discounted: string }, priceUSD: { original: string, discounted: string }, desc: string, link: string, delay: number, active: boolean, symbol: string, currency: 'INR' | 'USD' }) {
     const originalPrice = currency === 'USD' ? priceUSD.original : priceINR.original;
-    const discountedPrice = currency === 'USD' ? priceUSD.discounted : priceINR.discounted;
 
     return (
         <motion.div
@@ -325,8 +324,7 @@ function CourseCard({ sku, title, priceINR, priceUSD, desc, link, delay, active,
                 <div>
                     <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">Tuition Fee</div>
                     <div className="flex items-baseline gap-2">
-                        <span className="text-sm text-slate-400 line-through decoration-slate-400">{symbol}{originalPrice}</span>
-                        <span className="text-xl font-black text-slate-900">{symbol}{discountedPrice}</span>
+                        <span className="text-xl font-black text-slate-900">{symbol}{originalPrice}</span>
                     </div>
                 </div>
                 {active ? (

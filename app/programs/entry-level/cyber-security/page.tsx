@@ -48,7 +48,7 @@ export default function EntryLevelCyberSecurityPage() {
                         <CourseCard
                             sku="CS 002"
                             title="Certified in VAPT for AI"
-                            originalPrice=""
+                            originalPrice="75,000"
                             discountedPrice="75,000"
                             desc="Introduction to Vulnerability Assessment and Penetration Testing with a focus on AI components."
                             symbol={symbol}
@@ -66,7 +66,7 @@ export default function EntryLevelCyberSecurityPage() {
                         <CourseCard
                             sku="CS 004"
                             title="Certified in Security for AI"
-                            originalPrice=""
+                            originalPrice="75,000"
                             discountedPrice="75,000"
                             desc="Understanding the unique security challenges posed by artificial intelligence and how to mitigate them."
                             symbol={symbol}
@@ -74,7 +74,7 @@ export default function EntryLevelCyberSecurityPage() {
                         <CourseCard
                             sku="CS 005"
                             title="Certified in AI Security"
-                            originalPrice=""
+                            originalPrice="75,000"
                             discountedPrice="75,000"
                             desc="Master the core protocols for securing AI systems and protecting neural networks."
                             symbol={symbol}
@@ -137,12 +137,8 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
                     )}
                     <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
                     <div className="flex flex-col">
-                        {originalPrice && <span className="text-sm text-slate-400 line-through font-medium">{symbol}{originalPrice}</span>}
                         <div className="flex items-baseline gap-2">
-                            <span className="text-2xl font-bold text-slate-900">{symbol}{discountedPrice}</span>
-                            {originalPrice && (
-                                <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">{discountLabel}</span>
-                            )}
+                            <span className="text-2xl font-bold text-slate-900">{symbol}{originalPrice}</span>
                         </div>
                     </div>
                 </div>

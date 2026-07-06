@@ -54,7 +54,7 @@ export default function EntryLevelAIPage() {
                             desc="Dive deep into algorithms and model architectures that power modern AI. Learn how to push the boundaries of intelligent systems through research and experimentation."
                             persona="For Data & ML Researchers"
                             symbol={symbol}
-                            href="/programs/entry-level/ai/certified-in-ai-research"
+                            href="/apply?course=Certified in AI Research"
                         />
                         <CourseCard
                             sku="AI 002"
@@ -89,17 +89,6 @@ export default function EntryLevelAIPage() {
                             desc="Master the architecture, training, and deployment of Large Language Models. From transformer foundations to building complex agentic systems."
                             persona="For Developers & AI enthusiasts"
                             href="/programs/entry-level/ai/certified-in-zero-to-one-llm"
-                            symbol={symbol}
-                        />
-                        <CourseCard
-                            sku="AI 005"
-                            title="Certified Professional in AI"
-                            originalPrice={COURSE_PRICING.certifiedProfessionalAI.original[currency]}
-                            discountedPrice={COURSE_PRICING.certifiedProfessionalAI.freshers[currency]}
-                            duration="12 Weeks"
-                            desc="Master the practical application of AI in the modern workplace. From strategy to implementation, lead the AI revolution."
-                            persona="For Business Leaders & Professionals"
-                            href="/programs/entry-level/ai/certified-professional-in-ai"
                             symbol={symbol}
                         />
                         <CourseCard
@@ -182,14 +171,8 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, desc, discount
                     )}
                     <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
                     <div className="flex flex-col">
-                        {originalPrice && (
-                            <span className="text-sm text-slate-400 line-through font-medium">{symbol}{originalPrice}</span>
-                        )}
                         <div className="flex items-baseline gap-2">
-                            <span className="text-2xl font-bold text-slate-900">{symbol}{discountedPrice}</span>
-                            {originalPrice && discountLabel && (
-                                <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">{discountLabel}</span>
-                            )}
+                            <span className="text-2xl font-bold text-slate-900">{symbol}{originalPrice}</span>
                         </div>
                     </div>
                 </div>

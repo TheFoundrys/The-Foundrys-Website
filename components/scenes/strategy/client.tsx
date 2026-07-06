@@ -12,7 +12,6 @@ export function StrategyClient() {
     const { symbol, currency } = useRegionalPricing();
 
     const originalPrice = COURSE_PRICING.certifiedInnovator.original[currency];
-    const discountedPrice = COURSE_PRICING.certifiedInnovator.freshers[currency];
 
     return (
         <main className="min-h-screen bg-neutral-50 font-sans selection:bg-black selection:text-white">
@@ -118,8 +117,7 @@ export function StrategyClient() {
                             <div className="pr-4">
                                 <p className="text-xs text-neutral-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>
                                 <div className="flex items-center gap-2 justify-center md:justify-start">
-                                    <span className="text-sm text-neutral-400 line-through">{symbol}{originalPrice}</span>
-                                    <span className="text-lg font-bold text-neutral-900">{symbol}{discountedPrice}</span>
+                                    <span className="text-lg font-bold text-neutral-900">{symbol}{originalPrice}</span>
                                 </div>
                             </div>
                         </div>

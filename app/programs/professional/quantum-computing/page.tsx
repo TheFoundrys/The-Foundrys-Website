@@ -37,8 +37,8 @@ export default function QuantumPage() {
             <CourseCard
               sku="Q 001"
               title="Certified Professional in Quantum Engineering"
-              priceINR={{ original: "", discounted: "75,000" }}
-              priceUSD={{ original: "", discounted: "1,500" }}
+              priceINR={{ original: "75,000", discounted: "75,000" }}
+              priceUSD={{ original: "1,500", discounted: "1,500" }}
               desc="Hardware-focused track covering quantum gates, circuitry, and the physical implementation of qubits."
               symbol={symbol}
               currency={currency}
@@ -46,8 +46,8 @@ export default function QuantumPage() {
             <CourseCard
               sku="Q 002"
               title="Certified Professional in Quantum Computing"
-              priceINR={{ original: "", discounted: "75,000" }}
-              priceUSD={{ original: "", discounted: "1,500" }}
+              priceINR={{ original: "75,000", discounted: "75,000" }}
+              priceUSD={{ original: "1,500", discounted: "1,500" }}
               desc="Core algorithm track including Shor's, Grover's, and quantum simulation techniques."
               symbol={symbol}
               currency={currency}
@@ -55,8 +55,8 @@ export default function QuantumPage() {
             <CourseCard
               sku="Q 003"
               title="Certified Professional in Quantum Sensing"
-              priceINR={{ original: "", discounted: "75,000" }}
-              priceUSD={{ original: "", discounted: "1,500" }}
+              priceINR={{ original: "75,000", discounted: "75,000" }}
+              priceUSD={{ original: "1,500", discounted: "1,500" }}
               desc="Explore high-precision metrology and imaging using quantum properties."
               symbol={symbol}
               currency={currency}
@@ -64,8 +64,8 @@ export default function QuantumPage() {
             <CourseCard
               sku="Q 004"
               title="Certified Professional in Quantum Communication"
-              priceINR={{ original: "", discounted: "75,000" }}
-              priceUSD={{ original: "", discounted: "1,500" }}
+              priceINR={{ original: "75,000", discounted: "75,000" }}
+              priceUSD={{ original: "1,500", discounted: "1,500" }}
               desc="Secure communication protocols, quantum key distribution (QKD), and the quantum internet."
               symbol={symbol}
               currency={currency}
@@ -73,8 +73,8 @@ export default function QuantumPage() {
             <CourseCard
               sku="Q 005"
               title="Certified Professional in Quantum Information"
-              priceINR={{ original: "", discounted: "75,000" }}
-              priceUSD={{ original: "", discounted: "1,500" }}
+              priceINR={{ original: "75,000", discounted: "75,000" }}
+              priceUSD={{ original: "1,500", discounted: "1,500" }}
               desc="Information theory re-imagined. Entropy, entanglement, and density matrices."
               symbol={symbol}
               currency={currency}
@@ -82,8 +82,8 @@ export default function QuantumPage() {
             <CourseCard
               sku="Q 006"
               title="Certified Professional in Post Quantum Cryptography"
-              priceINR={{ original: "", discounted: "75,000" }}
-              priceUSD={{ original: "", discounted: "1,500" }}
+              priceINR={{ original: "75,000", discounted: "75,000" }}
+              priceUSD={{ original: "1,500", discounted: "1,500" }}
               desc="Preparing classical systems to withstand quantum attacks. Lattice-based cryptography and more."
               symbol={symbol}
               currency={currency}
@@ -91,8 +91,8 @@ export default function QuantumPage() {
             <CourseCard
               sku="QAI 002"
               title="Certified Professional in Quantum AI"
-              priceINR={{ original: "", discounted: "200,000" }}
-              priceUSD={{ original: "", discounted: "4,000" }}
+              priceINR={{ original: "200,000", discounted: "200,000" }}
+              priceUSD={{ original: "4,000", discounted: "4,000" }}
               desc="The intersection of two frontiers. Quantum machine learning algorithms and neural networks."
               symbol={symbol}
               currency={currency}
@@ -113,7 +113,6 @@ interface PricePair {
 
 function CourseCard({ sku, title, priceINR, priceUSD, desc, duration = "Professional 3 Month Course", href = "/apply", symbol, currency }: { sku: string, title: string, priceINR: PricePair, priceUSD: PricePair, desc: string, duration?: string, href?: string, symbol: string, currency: 'INR' | 'USD' }) {
   const originalPrice = currency === 'USD' ? priceUSD.original : priceINR.original;
-  const discountedPrice = currency === 'USD' ? priceUSD.discounted : priceINR.discounted;
 
   return (
     <motion.div
@@ -143,12 +142,8 @@ function CourseCard({ sku, title, priceINR, priceUSD, desc, duration = "Professi
         <div>
           <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
           <div className="flex flex-col">
-            {originalPrice && <span className="text-sm text-slate-400 line-through font-medium">{symbol}{originalPrice}</span>}
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-bold text-slate-900">{symbol}{discountedPrice}</span>
-                            {originalPrice && (
-                                <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">50% Discount</span>
-                            )}
+              <span className="text-2xl font-bold text-slate-900">{symbol}{originalPrice}</span>
             </div>
           </div>
         </div>

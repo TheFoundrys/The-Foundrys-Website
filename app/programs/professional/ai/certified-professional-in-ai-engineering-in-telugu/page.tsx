@@ -284,7 +284,6 @@ export default function AIEngineeringTeluguCoursePage() {
     const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
     const { currency, symbol } = useRegionalPricing();
     const originalPrice = COURSE_PRICING.aiEngineeringTelugu.original[currency];
-    const discountedPrice = COURSE_PRICING.aiEngineeringTelugu.freshers[currency];
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -356,8 +355,7 @@ export default function AIEngineeringTeluguCoursePage() {
                             <div className="lg:pr-4">
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>
                                 <div className="flex items-center gap-2 justify-center lg:justify-start">
-                                    {originalPrice && <span className="text-sm text-slate-400 line-through">{symbol}{originalPrice}</span>}
-                                    <span className="text-lg font-bold text-slate-900">{symbol}{discountedPrice}</span>
+                                    <span className="text-lg font-bold text-slate-900">{symbol}{originalPrice}</span>
                                 </div>
                             </div>
                         </div>

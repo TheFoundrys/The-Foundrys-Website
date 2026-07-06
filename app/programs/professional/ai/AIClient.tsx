@@ -45,7 +45,7 @@ export default function AIClient() {
               currencySymbol={symbol}
               duration="6 Weeks"
               desc="Master the art of original research in Artificial Intelligence. This intensive 7-phase program covers mathematical foundations, SOTA architectures, and experimental rigor. Perfect for aspiring AI Scientists."
-              href="/programs/professional/ai/certified-professional-in-ai-research"
+              href="/apply?course=Certified Professional in AI Research"
               persona="For Aspiring AI Scientists & Research Engineers"
               isBestSeller={true}
             />
@@ -163,12 +163,8 @@ function CourseCard({ sku, title, originalPrice, discountedPrice, currencySymbol
           )}
           <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Starting from</div>
           <div className="flex flex-col">
-            {originalPrice && <span className="text-sm text-slate-400 line-through font-medium">{currencySymbol}{originalPrice}</span>}
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-bold text-slate-900">{currencySymbol}{discountedPrice}</span>
-                            {originalPrice && (
-                                <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wide">{discountLabel}</span>
-                            )}
+              <span className="text-2xl font-bold text-slate-900">{currencySymbol}{originalPrice}</span>
             </div>
           </div>
         </div>
