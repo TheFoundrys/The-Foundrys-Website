@@ -91,7 +91,7 @@ export default function AIClient() {
               currencySymbol={symbol}
               duration="5 Days"
               desc="An intensive 5-day in-person bootcamp in Hyderabad. Build autonomous AI agents with hands-on, instructor-led training. Limited batch size for personalized learning."
-              href="/programs/professional/ai/agentic-ai-bootcamp"
+              href="/apply?course=Agentic AI Bootcamp"
               persona="Engineering + Non-Engineering Backgrounds"
               badges={["In-Person @ Hyderabad", <StartsDate key="starts" fallback="April 2026" />]}
             />
