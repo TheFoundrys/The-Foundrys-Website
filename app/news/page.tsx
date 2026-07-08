@@ -7,6 +7,15 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 
 const NEWS_ITEMS = [
+    {
+        slug: "thefoundrys-partnered-with-ttpoa",
+        title: "The Foundry's Partnered with Telangana Training and Placement Officers Association (TTPOA)",
+        excerpt: "The Foundry’s has officially signed an MOU with the Telangana Training and Placement Officers Association (TTPOA). Additionally, TTPOA President Dr. Jayaram has joined our Advisory Board to align academic training with industry hiring and drive career placements.",
+        date: "Jul 08, 2026",
+        readTime: "2 min",
+        category: "Partnerships",
+        image: "/images/dr-jayaram.jpg"
+    },
     // {
     //     slug: "the-future-of-deep-tech",
     //     title: "The Future of Deep Tech Education: A New Chapter",

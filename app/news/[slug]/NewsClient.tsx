@@ -18,6 +18,48 @@ interface NewsArticle {
 }
 
 const ARTICLES: Record<string, NewsArticle> = {
+    "thefoundrys-partnered-with-ttpoa": {
+        title: "The Foundry's Partnered with Telangana Training and Placement Officers Association (TTPOA)",
+        date: "July 08, 2026",
+        readTime: "2 min read",
+        category: "Partnerships",
+        image: "/images/dr-jayaram.jpg",
+        content: (
+            <>
+                <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
+                    The Foundry’s has officially signed an MOU with the Telangana Training and Placement Officers Association (TTPOA). Additionally, TTPOA President Dr. Jayaram joins The Foundry’s Advisory Board to align academic training with industry hiring and drive career placements.
+                </p>
+
+                <h2>Aligning Academia with Deep Tech Industry Hiring</h2>
+                <p>
+                    This partnership between The Foundry's and the Telangana Training and Placement Officers Association (<a href="https://www.ttpoa.in/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">TTPOA</a>) marks a milestone in empowering engineering graduates across Telangana. By combining forces, we aim to bridge the gap between traditional curriculum models and the rigorous requirements of global technology teams in Artificial Intelligence, Machine Learning, and other deep-tech domains.
+                </p>
+
+                <div className="my-10 p-8 bg-blue-50/50 rounded-3xl border border-blue-100/50 italic text-slate-700">
+                    "Bridging academic curriculum with real-world deployment is critical. Through this strategic alliance, we will ensure that engineering graduates in Telangana are not only trained in deep tech, but are ready to deliver value to industry teams from day one."
+                </div>
+
+                <h2>Welcoming Dr. Jayaram to our Advisory Board</h2>
+                <p>
+                    As part of this partnership, we are honored to welcome Dr. Jayaram to The Foundry's Advisory Board. Dr. Jayaram serves as the President of the Telangana Training and Placement Officers Association (TTPOA) and the Vice President of the All India TPO Association. 
+                </p>
+                <p>
+                    With decades of experience leading campus placements and training ecosystems, his strategic guidance will be invaluable. He will assist in aligning The Foundry's training cohorts directly with the specific needs of tier-1 technology employers, facilitating high-value placement pathways.
+                </p>
+
+                <h2>Key Pillars of the MOU</h2>
+                <ul>
+                    <li><strong>Industry Placement Readiness:</strong> Designing targeted placement bootcamps and assessment frameworks aligned with active hiring standards.</li>
+                    <li><strong>AI & Deep Tech Bootcamps:</strong> Organizing technical workshops and certifications directly accessible to students in member colleges under TTPOA.</li>
+                    <li><strong>Faculty Development:</strong> Providing training programs for placement coordinators and educators on industry shifts and tools.</li>
+                </ul>
+
+                <p>
+                    Through this association, The Foundry's and TTPOA are dedicated to fostering a future-ready engineering ecosystem that connects regional talent with top-tier technology opportunities.
+                </p>
+            </>
+        )
+    },
     "the-future-of-deep-tech": {
         title: "The Future of Deep Tech Education: A New Chapter",
         date: "February 27, 2026",
