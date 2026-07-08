@@ -24,6 +24,7 @@ const ARTICLES: Record<string, NewsArticle> = {
         readTime: "2 min read",
         category: "Partnerships",
         image: "/images/dr-jayaram.jpg",
+        imagePosition: "object-top",
         content: (
             <>
                 <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
@@ -339,11 +340,15 @@ export default function NewsClient({ slug }: { slug: string }) {
                 <article className="bg-white/70 backdrop-blur-xl rounded-[2.5rem] p-6 md:p-12 shadow-[0_8px_32px_rgba(0,0,0,0.04)] border border-white/80 relative overflow-hidden ring-1 ring-white/80">
 
                     {article.image && (
-                        <div className="mb-14 rounded-2xl overflow-hidden shadow-2xl shadow-slate-900/10 relative group transform transition-transform hover:scale-[1.01] duration-700 aspect-video">
+                        <div className="mb-14 rounded-2xl overflow-hidden shadow-2xl shadow-slate-900/10 relative group transform transition-transform hover:scale-[1.01] duration-700 aspect-video bg-slate-50 flex items-center justify-center">
                             <img
                                 src={article.image}
                                 alt={article.title}
-                                className={`w-full h-full object-cover ${article.imagePosition || 'object-center'}`}
+                                className={`w-full h-full ${
+                                    article.imagePosition?.includes('contain') 
+                                        ? 'object-contain' 
+                                        : `object-cover ${article.imagePosition || 'object-center'}`
+                                }`}
                             />
                             <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                         </div>

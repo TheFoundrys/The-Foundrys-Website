@@ -14,7 +14,8 @@ const NEWS_ITEMS = [
         date: "Jul 08, 2026",
         readTime: "2 min",
         category: "Partnerships",
-        image: "/images/dr-jayaram.jpg"
+        image: "/images/dr-jayaram.jpg",
+        imagePosition: "object-top"
     },
     // {
     //     slug: "the-future-of-deep-tech",
@@ -111,11 +112,15 @@ function NewsCard({ slug, title, excerpt, date, readTime, category, image, image
             className="group flex flex-col bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
         >
             {image ? (
-                <Link href={`/news/${slug}`} className="block relative aspect-video overflow-hidden">
+                <Link href={`/news/${slug}`} className="block relative aspect-video overflow-hidden bg-slate-50 flex items-center justify-center">
                     <img
                         src={image}
                         alt={title}
-                        className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ${imagePosition || 'object-center'}`}
+                        className={`w-full h-full group-hover:scale-105 transition-transform duration-700 ${
+                            imagePosition?.includes('contain') 
+                                ? 'object-contain' 
+                                : `object-cover ${imagePosition || 'object-center'}`
+                        }`}
                     />
                     <div className="absolute top-4 left-4">
                         <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur shadow-sm text-blue-600 text-xs font-bold border border-blue-100">
