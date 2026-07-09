@@ -433,10 +433,9 @@ export function ApplyPersonalizedClient() {
                                         <div className="md:col-span-2 space-y-3 group text-slate-900">
                                             <div className="flex items-center gap-2 mb-1">
                                                 <BookOpen size={14} className="text-slate-400 group-focus-within:text-blue-600 transition-colors" />
-                                                <label className="text-xs font-black text-slate-400 uppercase tracking-widest">Edu Background</label>
+                                                <label className="text-xs font-black text-slate-400 uppercase tracking-widest">Edu Background (Optional)</label>
                                             </div>
                                             <input
-                                                required
                                                 name="eduBackground"
                                                 type="text"
                                                 placeholder="e.g. B.Tech"
