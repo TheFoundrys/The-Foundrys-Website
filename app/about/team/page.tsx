@@ -89,6 +89,15 @@ const teamMembers = [
             website: "https://vivekrangabhashyam.com/"
         }
     },
+     {
+        name: "Dr. Jayaram",
+        role: "Advisory Board Member",
+        bio: "President of the Telangana Training and Placement Officers Association (TTPOA) and Vice President of the All India TPO Association. Bringing decades of experience in campus placements and aligning training ecosystems with industry needs.",
+        image: "/images/dr-jayaram.jpg",
+        socials: {
+            linkedin: "#",
+        }
+    },
 ];
 
 export default function TeamPage() {
@@ -124,7 +133,7 @@ export default function TeamPage() {
             <section className="py-24 px-6 bg-white">
                 <div className="container mx-auto max-w-[1600px]">
 
-                    <div className="flex flex-wrap justify-center gap-10 max-w-[1600px] mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto justify-items-center">
                         {teamMembers.map((member, index) => (
                             <SmallTeamCard key={index} member={member} index={index} />
                         ))}

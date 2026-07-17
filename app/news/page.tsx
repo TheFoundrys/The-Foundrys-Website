@@ -14,8 +14,8 @@ const NEWS_ITEMS = [
         date: "Jul 08, 2026",
         readTime: "2 min",
         category: "Partnerships",
-        image: "/images/dr-jayaram.jpg",
-        imagePosition: "object-top"
+        image: "/images/ttpoa-logo.webp",
+        imagePosition: "contain"
     },
     // {
     //     slug: "the-future-of-deep-tech",
