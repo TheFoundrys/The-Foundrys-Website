@@ -465,7 +465,7 @@ export default function PaymentPage({
                 </div>
 
                 <div className="p-6 space-y-4">
-                  {pricing.original[currency] && (
+                  {pricing.original[currency] && pricing.original[currency] !== pricing.freshers[currency] && (
                     <div className="flex justify-between text-sm">
                       <span className="text-slate-500">Program Fee</span>
                       <span className="text-slate-400 line-through">

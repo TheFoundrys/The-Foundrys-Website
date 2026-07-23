@@ -65,7 +65,9 @@ export function ProgramDetailsCard({
                             <h3 className="text-slate-900 text-xl font-bold mb-4">Program Fee</h3>
                             <div className="flex items-baseline gap-3 mb-2">
                                 <span className="text-4xl font-bold text-slate-900">{fee.discounted}</span>
-                                <span className="text-xl text-slate-400 line-through">{fee.original}</span>
+                                {fee.original && fee.original !== fee.discounted && (
+                                    <span className="text-xl text-slate-400 line-through">{fee.original}</span>
+                                )}
                             </div>
                             <div className="flex items-center gap-2 mb-6">
                                 <span className={`${themeColors[theme]} text-xs font-bold px-2 py-1 rounded uppercase`}>
