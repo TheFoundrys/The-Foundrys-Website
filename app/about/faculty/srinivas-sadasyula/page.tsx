@@ -42,7 +42,7 @@ export default function SrinivasSadasyulaPage() {
                             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white mb-2">
                                 Srinivas Sadasyula
                             </h1>
-                            <p className="text-xl text-blue-400 font-medium mb-6">Operations Leader & Systems Architect</p>
+                            <p className="text-xl text-blue-400 font-medium mb-6">Vice President</p>
                             <div className="flex flex-wrap justify-center md:justify-start gap-4">
                                 <a href="https://www.linkedin.com/in/srinivas-sadasyula-411b79161/" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
                                     <Linkedin size={20} className="text-blue-400" />

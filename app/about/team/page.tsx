@@ -4,7 +4,7 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowUpRight, Users } from "lucide-react";
+import { ArrowUpRight, Users, Linkedin } from "lucide-react";
 import Link from "next/link";
 
 const teamMembers = [
@@ -267,9 +267,10 @@ function SmallTeamCard({ member, index }: { member: any, index: number }) {
                             href={member.socials.linkedin} 
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-xs font-bold text-slate-500 hover:text-blue-600 transition-colors"
+                            className="inline-flex items-center justify-center p-1.5 rounded-lg bg-slate-50 hover:bg-blue-50 text-slate-400 hover:text-blue-600 border border-slate-200 hover:border-blue-200 transition-all"
+                            title="View LinkedIn Profile"
                         >
-                            View LinkedIn <ArrowUpRight size={14} />
+                            <Linkedin size={16} />
                         </a>
                     )}
                 </div>

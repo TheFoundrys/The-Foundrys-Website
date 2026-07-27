@@ -12,6 +12,8 @@ const ubuntu = Ubuntu({
 
 export const viewport: Viewport = {
   themeColor: "#0f172a", // slate-900
+  width: "device-width",
+  initialScale: 1,
 };
 
 // Explicitly forcing no-icon to prevent browser defaults
