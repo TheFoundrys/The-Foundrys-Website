@@ -11,7 +11,7 @@ const teamMembers = [
     {
         name: "Vishwanath Akuthota",
         role: "Founder & CEO",
-        bio: "Deep Tech Entrepreneur & AI Architect with over 1.5 decades of experience. Building at the intersection of AI, Quantum, and Human Potential.",
+        bio: "Deep Tech Entrepreneur & AI Architect building at the intersection of AI, Quantum, and Human Potential.",
         image: "/images/vishwa-new.jpg",
         profileLink: "/vishwanathakuthota",
         socials: {
@@ -26,7 +26,17 @@ const teamMembers = [
         image: "/images/pramod-chada.jpg",
         profileLink: "/about/faculty/pramod-chada",
         socials: {
-            linkedin: "#",
+            linkedin: "https://www.linkedin.com/in/pramod-chada-profile/",
+        }
+    },
+    {
+        name: "Srinivas Sadasyula",
+        role: "Vice President",
+        bio: "Veteran operations leader with 35 years of experience in the logistics sector. Bringing large-scale operational rigor to the agility of a venture ecosystem, empowering the next generation to become creators of the future.",
+        image: "/images/srinivas-sadasyula.jpg",
+        profileLink: "/about/faculty/srinivas-sadasyula",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/srinivas-sadasyula-411b79161/",
         }
     },
     {
@@ -36,16 +46,7 @@ const teamMembers = [
         image: "/images/maruthi.jpg",
         profileLink: "/about/faculty/maruthi-ram-prasad-pelluri",
         socials: {
-            linkedin: "#",
-        }
-    },
-    {
-        name: "Thirupathi Reddy",
-        role: "Academics SME",
-        bio: "Holds a Master of Commerce (M.Com) and a Master of Social Work (MSW). Brings over 23 years of teaching experience, including 5 years as a Junior College Principal and 13 years as a Degree College Principal.",
-        image: "/images/ThirupathiReddy.jpeg",
-        socials: {
-            linkedin: "#",
+            linkedin: "https://www.linkedin.com/in/maruthipelluri/",
         }
     },
     {
@@ -55,7 +56,7 @@ const teamMembers = [
         bio: "TEDx Speaker, Author, and Social Entrepreneur helping individuals and enterprises scale through branding.",
         profileLink: "/about/faculty/suman-rangabhashyam",
         socials: {
-            linkedin: "#",
+            linkedin: "https://www.linkedin.com/in/sumiranga/",
         }
     },
     {
@@ -94,6 +95,15 @@ const teamMembers = [
         role: "Advisory Board Member",
         bio: "President of the Telangana Training and Placement Officers Association (TTPOA) and Vice President of the All India TPO Association. Bringing decades of experience in campus placements and aligning training ecosystems with industry needs.",
         image: "/images/dr-jayaram.jpg",
+        socials: {
+            linkedin: "#",
+        }
+    },
+    {
+        name: "Thirupathi Reddy",
+        role: "Academics SME",
+        bio: "Holds a Master of Commerce (M.Com) and a Master of Social Work (MSW). Brings over 23 years of teaching experience, including 5 years as a Junior College Principal and 13 years as a Degree College Principal.",
+        image: "/images/ThirupathiReddy.jpeg",
         socials: {
             linkedin: "#",
         }
@@ -187,7 +197,10 @@ export default function TeamPage() {
                                 role: "Senior Data Analyst",
                                 image: "/images/abhishek shaarma.png",
                                 bio: "Analytical professional with 8+ years of experience in driving organizational performance through deep data insights and actionable dashboards.",
-                                profileLink: "/about/faculty/abhishek-sharma"
+                                profileLink: "/about/faculty/abhishek-sharma",
+                                socials: {
+                                    linkedin: "https://linkedin.com/in/abhishek-sharma-27b585ba"
+                                }
                             }}
                             index={2}
                         />
@@ -235,8 +248,8 @@ function SmallTeamCard({ member, index }: { member: any, index: number }) {
                     {member.bio}
                 </p>
 
-                {member.profileLink && (
-                    <div className="mt-auto">
+                <div className="mt-auto flex items-center justify-between border-t border-slate-100 pt-4">
+                    {member.profileLink ? (
                         <Link 
                             href={member.profileLink} 
                             target={member.profileLink.startsWith('http') ? "_blank" : undefined}
@@ -245,8 +258,21 @@ function SmallTeamCard({ member, index }: { member: any, index: number }) {
                         >
                             View Profile <ArrowUpRight size={14} />
                         </Link>
-                    </div>
-                )}
+                    ) : (
+                        <div />
+                    )}
+
+                    {member.socials?.linkedin && member.socials.linkedin !== "#" && (
+                        <a 
+                            href={member.socials.linkedin} 
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-xs font-bold text-slate-500 hover:text-blue-600 transition-colors"
+                        >
+                            View LinkedIn <ArrowUpRight size={14} />
+                        </a>
+                    )}
+                </div>
             </div>
         </motion.div>
     );

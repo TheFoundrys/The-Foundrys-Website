@@ -13,6 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/about',
         '/about/team',
         '/about/faculty/dr-srikanth-itapu',
+        '/about/faculty/srinivas-sadasyula',
         '/campus',
         '/apply',
         '/blog',
