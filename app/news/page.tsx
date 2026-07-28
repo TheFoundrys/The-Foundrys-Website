@@ -7,51 +7,14 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 
 const NEWS_ITEMS = [
-    // {
-    //     slug: "the-future-of-deep-tech",
-    //     title: "The Future of Deep Tech Education: A New Chapter",
-    //     excerpt: "At the intersection of deep tech and entrepreneurship, we are redefining what it means to be a modern engineer. Our new News section will serve as the central hub for all updates...",
-    //     date: "Feb 27, 2026",
-    //     readTime: "4 min",
-    //     category: "Announcements",
-    //     image: "/news-hero.png"
-    // },
     {
-        slug: "thefoundrys-partnered-with-csi",
-        title: "Thefoundrys Partnered with CSI Computer Society of India",
-        excerpt: "We’re incredibly excited to share that The Foundry’s has officially partnered with the Computer Society of India (CSI)! We’ve signed an MOU to train the next generation of students and professionals in AI and deep tech, equipping them with future-ready skills. Join us in shaping the future!",
-        date: "Feb 28, 2026",
+        slug: "thefoundrys-partnered-with-vareon",
+        title: "The Foundry's Partnered with Vareon",
+        excerpt: "We are thrilled to announce that The Foundry's has officially signed an MoU with Vareon! This partnership aims to collaborate on industry-relevant training, research, and placements, building the future together.",
+        date: "Jul 28, 2026",
         readTime: "2 min",
         category: "Partnerships",
-        image: "/csi-partnership.jpeg"
-    },
-    {
-        slug: "thefoundrys-partnered-with-keshava-college",
-        title: "The Foundrys Partnered with Keshava Degree College for Women",
-        excerpt: "We are proud to announce a strategic partnership with Keshava Degree College for Women, Hanamakonda. This MOU marks a significant step towards empowering women in tech through advanced training in Deep Tech and AI.",
-        date: "Mar 17, 2026",
-        readTime: "2 min",
-        category: "Partnerships",
-        image: "/mou-keshava-college.jpg",
-        imagePosition: "object-top"
-    },
-    {
-        slug: "thefoundrys-partnered-with-ebs",
-        title: "The Foundry's Partnered with EBS Ethames Business School",
-        excerpt: "The Foundry’s is proud to announce a strategic partnership with Ethames Business School (EBS). This  marks a significant step forward in our mission to bring advanced technical education to a broader student body.",
-        date: "Apr 02, 2026",
-        readTime: "2 min",
-        category: "Partnerships",
-        image: "/ebs-partnership.png"
-    },
-    {
-        slug: "thefoundrys-certified-by-startup-india",
-        title: "The Foundry's Officially Certified by Startup India",
-        excerpt: "The Foundry’s is proud to announce its official recognition and certification by Startup India, the Government of India’s flagship initiative to foster innovation and entrepreneurship.",
-        date: "Mar 17, 2026",
-        readTime: "3 min",
-        category: "Achievements",
-        image: "/startup-india-certificate.jpg"
+        image: "/vareon-partnership-graphic.png"
     },
     {
         slug: "thefoundrys-partnered-with-ttpoa",
@@ -64,13 +27,41 @@ const NEWS_ITEMS = [
         imagePosition: "contain"
     },
     {
-        slug: "thefoundrys-partnered-with-vareon",
-        title: "The Foundry's Partnered with Vareon",
-        excerpt: "We are thrilled to announce that The Foundry's has officially signed an MoU with Vareon! This partnership aims to collaborate on industry-relevant training, research, and placements, building the future together.",
-        date: "Jul 28, 2026",
+        slug: "thefoundrys-partnered-with-ebs",
+        title: "The Foundry's Partnered with EBS Ethames Business School",
+        excerpt: "The Foundry’s is proud to announce a strategic partnership with Ethames Business School (EBS). This  marks a significant step forward in our mission to bring advanced technical education to a broader student body.",
+        date: "Apr 02, 2026",
         readTime: "2 min",
         category: "Partnerships",
-        image: "/vareon-partnership-graphic.png"
+        image: "/ebs-partnership.png"
+    },
+    {
+        slug: "thefoundrys-partnered-with-keshava-college",
+        title: "The Foundrys Partnered with Keshava Degree College for Women",
+        excerpt: "We are proud to announce a strategic partnership with Keshava Degree College for Women, Hanamakonda. This MOU marks a significant step towards empowering women in tech through advanced training in Deep Tech and AI.",
+        date: "Mar 17, 2026",
+        readTime: "2 min",
+        category: "Partnerships",
+        image: "/mou-keshava-college.jpg",
+        imagePosition: "object-top"
+    },
+    {
+        slug: "thefoundrys-certified-by-startup-india",
+        title: "The Foundry's Officially Certified by Startup India",
+        excerpt: "The Foundry’s is proud to announce its official recognition and certification by Startup India, the Government of India’s flagship initiative to foster innovation and entrepreneurship.",
+        date: "Mar 17, 2026",
+        readTime: "3 min",
+        category: "Achievements",
+        image: "/startup-india-certificate.jpg"
+    },
+    {
+        slug: "thefoundrys-partnered-with-csi",
+        title: "Thefoundrys Partnered with CSI Computer Society of India",
+        excerpt: "We’re incredibly excited to share that The Foundry’s has officially partnered with the Computer Society of India (CSI)! We’ve signed an MOU to train the next generation of students and professionals in AI and deep tech, equipping them with future-ready skills. Join us in shaping the future!",
+        date: "Feb 28, 2026",
+        readTime: "2 min",
+        category: "Partnerships",
+        image: "/csi-partnership.jpeg"
     }
 ];
 
