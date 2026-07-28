@@ -18,6 +18,48 @@ interface NewsArticle {
 }
 
 const ARTICLES: Record<string, NewsArticle> = {
+    "thefoundrys-partnered-with-vareon": {
+        title: "The Foundry's Partnered with Vareon",
+        date: "July 28, 2026",
+        readTime: "2 min read",
+        category: "Partnerships",
+        image: "/vareon-partnership-graphic.png",
+        content: (
+            <>
+                <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
+                    The Foundry’s has officially signed a Memorandum of Understanding (MOU) with Vareon to build the future of technical skills, innovation, and direct placement opportunities.
+                </p>
+
+                <h2>Building the Future Together</h2>
+                <p>
+                    We are thrilled to share that The Foundry's has entered into a strategic MOU partnership with Vareon! This collaboration represents a strong alignment of values and resources, dedicated to bringing state-of-the-art training, industrial mentorship, and high-performance career paths to students and early-career professionals.
+                </p>
+
+                <div className="my-10 flex justify-center">
+                    <img 
+                        src="/vareon-partnership-mou.jpg" 
+                        alt="The Foundry's and Vareon MOU Signing" 
+                        className="rounded-3xl border border-slate-200 shadow-lg max-w-full md:max-w-2xl"
+                    />
+                </div>
+
+                <div className="my-10 p-8 bg-blue-50/50 rounded-3xl border border-blue-100/50 italic text-slate-700">
+                    "Through this partnership, Vareon and The Foundry's are bringing academic training and real-world deployment closer than ever before. We will deliver industry-relevant programs and foster innovation that creates limitless impact."
+                </div>
+
+                <h2>Key Objectives of the MoU</h2>
+                <ul>
+                    <li><strong>Industry-Aligned Training:</strong> Collaborative design of training programs tailored to modern software engineering, AI engineering, and systems risk architectures.</li>
+                    <li><strong>Innovation & Research:</strong> Enabling shared research pathways and technology-led solutions to bridge technical training and deployment.</li>
+                    <li><strong>Direct Placements:</strong> Creating career transformation pathways and connecting qualified candidates directly to placement opportunities at Vareon.</li>
+                </ul>
+
+                <p>
+                    By merging Vareon's industry expertise with The Foundry's premium finishing school curriculum, we are excited to empower learners with the hands-on competence required to lead in the intelligent age.
+                </p>
+            </>
+        )
+    },
     "thefoundrys-partnered-with-ttpoa": {
         title: "The Foundry's Partnered with Telangana Training and Placement Officers Association (TTPOA)",
         date: "July 08, 2026",

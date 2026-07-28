@@ -62,6 +62,15 @@ const NEWS_ITEMS = [
         category: "Partnerships",
         image: "/images/ttpoa-logo.webp",
         imagePosition: "contain"
+    },
+    {
+        slug: "thefoundrys-partnered-with-vareon",
+        title: "The Foundry's Partnered with Vareon",
+        excerpt: "We are thrilled to announce that The Foundry's has officially signed an MoU with Vareon! This partnership aims to collaborate on industry-relevant training, research, and placements, building the future together.",
+        date: "Jul 28, 2026",
+        readTime: "2 min",
+        category: "Partnerships",
+        image: "/vareon-partnership-graphic.png"
     }
 ];
 

@@ -17,6 +17,7 @@ const LOGOS = [
   "/logos/csi.jpg",
   "/logos/capsim.png",
   "/logos/hive_link_logo.jpg",
+  "/logos/vareon.png",
   "AI COMPASS",
   "OpenVals"
 ];
@@ -37,6 +38,7 @@ const LOGO_LINKS: Record<string, string> = {
   "/logos/Faba.png": "https://biofaba.org.in/",
   "/logos/capsim.png": "https://www.capsim.com/",
   "/logos/redshelid1.png": "https://thefoundrys.com",
+  "/logos/vareon.png": "/news/thefoundrys-partnered-with-vareon",
   "AI COMPASS": "https://openvalidations.com/services/ai-compass"
 };
 

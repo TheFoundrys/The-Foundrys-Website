@@ -10,6 +10,7 @@ export default async function NewsDetailPage({ params }: PageProps) {
 
     // Valid slugs for now
     const validSlugs = [
+        "thefoundrys-partnered-with-vareon",
         "thefoundrys-partnered-with-ttpoa",
         "the-future-of-deep-tech",
         "thefoundrys-partnered-with-csi",
