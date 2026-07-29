@@ -14,8 +14,8 @@ import { AdmissionsOpen } from "@/components/home/admissions-open";
 import { Certifications } from "@/components/home/certifications";
 
 export const metadata: Metadata = {
-  title: "The Foundrys | India's First Deep Tech & Venture School",
-  description: "The Foundrys: India's first Deep Tech & Venture School in Hyderabad. The best alternative to traditional engineering for Class 12 & Intermediate MPC students. Forging innovators, not just Graduates.",
+  title: "The Foundrys - Premium finishing and venture school",
+  description: "The Foundrys is a Premium finishing and venture school in Hyderabad",
   alternates: {
     canonical: "https://thefoundrys.com",
   },

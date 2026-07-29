@@ -20,13 +20,13 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://thefoundrys.com"),
   title: {
-    default: "The Foundrys | Best Deep Tech & AI College in Hyderabad",
+    default: "The Foundrys - Premium finishing and venture school",
     template: "%s | The Foundrys"
   },
-  description: "The Foundrys: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging innovators, not just Graduates.",
-  keywords: [
+  description: "The Foundrys is a Premium finishing and venture school in Hyderabad",
+  keywords: [   
     // Brand Variations & Common Misspellings
-    "The Foundry's", "The Foundry", "TheFoundry", "TheFoundrys", "Foundrys", "Foundry School", "The Foundery", "The Foundries",
+    "The Foundry's", "The Foundry", "TheFoundry", "TheFoundrys", "Foundrys", "Foundry School", "The Foundery", "The Foundries","Premium finishing", "Venture School","Best Finishing School in Hyderabad","Vishwanath Akuthota",
 
     // Competitor & Comparative Keywords (Strategic)
     "Bower School of Entrepreneurship", "Nextwave Hyderabad", "Nextwave Institute of Advanced Technologies",
@@ -76,9 +76,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: "https://thefoundrys.com",
-    title: "The Foundry's | School of Deep Tech, Entrepreneurship & Energy",
-    description: "The Foundry's: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging innovators, not just Graduates.",
-    siteName: "The Foundry's",
+    title: "The Foundry's - Premium finishing and venture school",
+    description: "The Foundrys is a Premium finishing and venture school in Hyderabad",
+    siteName: "The Foundrys",
     images: [
       {
         url: "/logo.png",
@@ -90,8 +90,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "The Foundry's | School of Deep Tech, Entrepreneurship & Energy",
-    description: "The Foundry's: A new era of education in Hyderabad. Bridging the gap in Deep Tech, Sustainability, and Entrepreneurship. Forging innovators, not just Graduates.",
+    title: "The Foundry's - Premium finishing and venture school",
+    description: "The Foundrys is a Premium finishing and venture school in Hyderabad",
     creator: "@thefoundrys",
     images: ["/logo.png"],
   },
