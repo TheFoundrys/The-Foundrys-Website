@@ -20,7 +20,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://thefoundrys.com"),
   title: {
-    default: "The Foundrys - Premium finishing and venture school",
+    default: "The Foundrys -A Premium finishing and venture school",
     template: "%s | The Foundrys"
   },
   description: "The Foundrys is a Premium finishing and venture school in Hyderabad",
