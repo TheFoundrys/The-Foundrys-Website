@@ -40,6 +40,16 @@ const teamMembers = [
         }
     },
     {
+        name: "Pramod J. P.",
+        role: "Head of R&D",
+        bio: "Senior Assistant Professor of Physics & distinguished deep-tech researcher with 3+ decades of expertise in semiconductors, piezotronics, and sustainable energy.",
+        image: "/images/pramod-jp.png",
+        profileLink: "/about/faculty/pramod-jp",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/jp-pramod-a710985a/",
+        }
+    },
+    {
         name: "Maruthi Ram Prasad Pelluri",
         role: "Advisory Board Member",
         bio: "Renowned educator with 36+ years of leadership at HPS Begumpet and Ramadevi Public School. National Award recipient and international ambassador for educational excellence.",
