@@ -110,13 +110,20 @@ export default function PramodJPPage() {
                                 <div className="space-y-4">
                                     <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
                                         <p className="font-bold text-slate-900">Doctor of Philosophy (Ph.D.)</p>
-                                        <p className="text-sm text-slate-600">Material Science (Thesis in review)</p>
+                                        <p className="text-sm text-slate-600">Material Science (Thesis under Review)</p>
                                         <p className="text-sm text-blue-600 font-semibold">Lincoln University, Malaysia</p>
                                         <p className="text-xs text-slate-500 mt-1">In Collaboration with Avira University, Portugal (Lab Work at IITH, IICT, CSIR-I & OU-H)</p>
                                     </div>
                                     <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
                                         <p className="font-bold text-slate-900">Additional Degrees</p>
                                         <p className="text-sm text-slate-600">M.Sc.(Phy), M.Sc.(Psy), M.Ed.(Edtec), PGDES, PGDCA, PGDIPR</p>
+                                    </div>
+                                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                        <p className="font-bold text-slate-900">Awards Received</p>
+                                        <p className="text-sm text-slate-600 font-bold italic">Best Teacher</p>
+                                        <p className="text-sm text-slate-600 font-bold italic">Best Mentor</p>
+                                        <p className="text-sm text-slate-600 font-bold italic">Best Paper</p>
+                                        <p className="text-sm text-slate-600 font-bold italic">Best Poster</p>
                                     </div>
                                 </div>
                             </div>
