@@ -33,7 +33,7 @@ export default function PramodJPPage() {
                                 Head of R&D
                             </p>
                             <div className="flex flex-wrap justify-center md:justify-start gap-4">
-                                <a href="#" className="p-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
+                                <a href="https://www.linkedin.com/in/jp-pramod-a710985a/" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
                                     <Linkedin size={20} className="text-blue-400" />
                                 </a>
                                 <a href="mailto:#" className="p-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
