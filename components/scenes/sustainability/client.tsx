@@ -241,49 +241,41 @@ export default function SustainabilityClient() {
       <div ref={containerRef} className="bg-stone-50 text-stone-900 min-h-screen selection:bg-emerald-200 selection:text-emerald-900 font-sans">
          <Navbar />
 
-         {/* HERO SECTION: FULL PAGE DARK DESIGN */}
-         <section className="relative pt-32 pb-32 md:pb-48 px-6 bg-gradient-to-br from-emerald-950 via-stone-900 to-emerald-900 overflow-hidden">
-            {/* Radial Gradient Overlay */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-600/20 via-transparent to-transparent"></div>
-
-            {/* Subtle Background Pattern */}
-            <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC43IiBudW1PY3RhdmVzPSI0IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNuKSIgb3BhY2l0eT0iMC41Ii8+PC9zdmc+')]"></div>
-
-            {/* Animated Gradient Orbs */}
-            <div className="absolute top-1/4 left-1/4 w-48 h-48 md:w-96 md:h-96 bg-emerald-500/20 rounded-full blur-3xl animate-pulse will-change-transform"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-emerald-400/10 rounded-full blur-3xl animate-pulse will-change-transform"></div>
+         {/* HERO SECTION: FULL PAGE LIGHT DESIGN */}
+         <section className="relative pt-32 pb-32 md:pb-48 px-6 bg-white overflow-hidden">
+            <div className="absolute inset-0 z-0 select-none bg-white" />
 
             <div className="container mx-auto max-w-5xl relative z-10">
                <div className="text-center">
                   {/* Badge */}
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-sm font-medium mb-8 backdrop-blur-sm">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-500/20 text-emerald-700 text-sm font-medium mb-8 backdrop-blur-sm">
                      <Leaf size={16} />
                      <span>Professional Certification Program</span>
                   </div>
 
                   {/* Main Heading */}
-                  <h1 className="text-4xl md:text-6xl lg:text-8xl font-serif text-white mb-6 leading-tight">
+                  <h1 className="text-4xl md:text-6xl lg:text-8xl font-serif text-slate-950 mb-6 leading-tight">
                      Sustainability in the <br className="hidden md:block" />
-                     <span className="text-emerald-400 italic">Age of AI</span>
+                     <span className="text-emerald-600 italic">Age of AI</span>
                   </h1>
 
                   {/* Program Description */}
-                  <p className="text-lg md:text-xl text-emerald-100/80 font-light leading-relaxed max-w-3xl mx-auto mb-12">
+                  <p className="text-lg md:text-xl text-slate-700 font-light leading-relaxed max-w-3xl mx-auto mb-12">
                      A Intensive program designed for professionals shaping the future of technology, climate, and governance.
                   </p>
 
                   {/* Quick Highlights */}
-                  <div className="flex flex-wrap gap-4 md:gap-6 justify-center text-sm text-emerald-100">
-                     <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
-                        <CheckCircle2 size={18} className="text-emerald-400" />
+                  <div className="flex flex-wrap gap-4 md:gap-6 justify-center text-sm text-slate-700">
+                     <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-full border border-slate-200">
+                        <CheckCircle2 size={18} className="text-emerald-600" />
                         <span>Industry-Recognized Certificate</span>
                      </div>
-                     <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
-                        <CheckCircle2 size={18} className="text-emerald-400" />
+                     <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-full border border-slate-200">
+                        <CheckCircle2 size={18} className="text-emerald-600" />
                         <span>Hands-on Capstone Project</span>
                      </div>
-                     <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
-                        <CheckCircle2 size={18} className="text-emerald-400" />
+                     <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-full border border-slate-200">
+                        <CheckCircle2 size={18} className="text-emerald-600" />
                         <span>Expert-Led Sessions</span>
                      </div>
                   </div>
@@ -293,7 +285,7 @@ export default function SustainabilityClient() {
 
 
          {/* Program Details Block - Adjusted below hero */}
-         <div className="relative z-20 px-4 mt-12 mb-12">
+         <div className="relative z-20 px-4 -mt-10 mb-12">
             <div className="mx-auto max-w-5xl">
                <div className="bg-white rounded-2xl shadow-xl border border-stone-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
 
@@ -392,14 +384,14 @@ export default function SustainabilityClient() {
 
                {/* Centered Solution Card */}
                <div className="max-w-4xl mx-auto">
-                  <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 text-white p-8 rounded-xl shadow-xl">
+                  <div className="bg-white border border-slate-200/80 shadow-sm p-8 rounded-xl">
                      <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center shrink-0">
-                           <CheckCircle2 size={24} className="text-white" />
+                        <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center shrink-0">
+                           <CheckCircle2 size={24} className="text-emerald-600" />
                         </div>
                         <div>
-                           <h3 className="text-2xl font-serif mb-3">Our Solution</h3>
-                           <p className="text-emerald-50 font-light leading-relaxed text-lg">
+                           <h3 className="text-2xl font-serif mb-3 text-slate-900">Our Solution</h3>
+                           <p className="text-slate-600 font-light leading-relaxed text-lg">
                               This cohort exists to close that gap—training professionals to navigate the intersection of AI and sustainability with systems thinking, strategic foresight, and responsible decision-making.
                            </p>
                         </div>

@@ -16,7 +16,7 @@ export default function BlockchainClient() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#0A051E] select-none">
+    <main className="min-h-screen bg-slate-50 select-none">
       <Navbar />
       <BlockchainHero />
       <BlockchainWhyUs />

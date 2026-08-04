@@ -13,23 +13,8 @@ export function QuantumClient() {
             <Navbar />
 
             {/* HERO SECTION */}
-            <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
-                {/* Background Image with Overlay */}
-                <div className="absolute inset-0 z-0 select-none">
-                    <motion.div
-                        initial={{ scale: 1.1 }}
-                        animate={{ scale: 1 }}
-                        transition={{ duration: 2, ease: "easeOut" }}
-                        className="w-full h-full"
-                    >
-                        <img
-                            src="/quantum-computer.jpg"
-                            alt="Quantum Computer"
-                            className="w-full h-full object-cover"
-                        />
-                    </motion.div>
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-slate-900/90" />
-                </div>
+            <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden bg-white">
+                <div className="absolute inset-0 z-0 select-none bg-white" />
 
                 <div className="container mx-auto max-w-6xl relative z-10 px-4 text-center">
                     <motion.div
@@ -39,21 +24,21 @@ export function QuantumClient() {
                         className="max-w-5xl mx-auto"
                     >
 
-                        <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white mb-8 leading-[0.9]">
+                        <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-slate-950 mb-8 leading-[0.9]">
                             Quantum <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-white to-violet-200">Supremacy.</span>
+                            <span className="text-slate-950">Supremacy.</span>
                         </h1>
 
-                        <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-light mb-12">
+                        <p className="text-xl md:text-2xl text-slate-700 max-w-3xl mx-auto leading-relaxed font-light mb-12">
                             Rewrite the laws of computation. <br />
-                            <span className="text-white font-medium">Harness the fabric of reality</span> to solve the impossible.
+                            <span className="text-slate-950 font-medium">Harness the fabric of reality</span> to solve the impossible.
                         </p>
 
                         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-                            <Link href="/programs/professional/quantum-computing" className="px-10 py-5 bg-white text-slate-900 rounded-full font-bold text-sm tracking-widest hover:bg-cyan-50 transition-all hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.3)] w-full md:w-auto text-center flex items-center justify-center">
+                            <Link href="/programs/professional/quantum-computing" className="px-10 py-5 bg-slate-950 text-white rounded-full font-bold text-sm tracking-widest hover:bg-slate-800 transition-all hover:scale-105 shadow-lg shadow-slate-900/10 w-full md:w-auto text-center flex items-center justify-center">
                                 Enroll Now
                             </Link>
-                            <Link href="#syllabus" className="px-10 py-5 bg-transparent border border-white/30 text-white rounded-full font-bold text-sm tracking-widest hover:bg-white/10 hover:border-white transition-all w-full md:w-auto backdrop-blur-sm flex items-center justify-center">
+                            <Link href="#syllabus" className="px-10 py-5 bg-white border border-slate-300 text-slate-950 rounded-full font-bold text-sm tracking-widest hover:bg-slate-50 hover:border-slate-950 transition-all w-full md:w-auto flex items-center justify-center">
                                 SYLLABUS
                             </Link>
                         </div>
@@ -65,10 +50,10 @@ export function QuantumClient() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.5, duration: 1 }}
-                    className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50"
+                    className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500"
                 >
                     <span className="text-[10px] uppercase tracking-widest">Scroll</span>
-                    <div className="w-[1px] h-12 bg-gradient-to-b from-white/0 via-white/50 to-white/0" />
+                    <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-slate-400 to-transparent" />
                 </motion.div>
             </section>
 

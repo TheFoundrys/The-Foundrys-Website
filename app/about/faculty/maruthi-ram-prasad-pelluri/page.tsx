@@ -31,7 +31,7 @@ export default function MaruthiPelluriProfile() {
                             transition={{ duration: 0.6 }}
                             className="w-full md:w-1/3 relative"
                         >
-                            <div className="aspect-[3/4] relative rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-800 bg-slate-800 flex items-center justify-center">
+                            <div className="aspect-[3/4] relative rounded-2xl overflow-hidden shadow-2xl bg-slate-800 flex items-center justify-center">
                                 <Image
                                     src="/images/maruthi.jpg"
                                     alt="Maruthi Ram Prasad Pelluri"

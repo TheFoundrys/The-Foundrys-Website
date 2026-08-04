@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
-import { Quote } from 'lucide-react';
+// import { Quote } from 'lucide-react';
 import { text } from 'stream/consumers';
 
 const testimonials = [
@@ -55,18 +55,15 @@ export function Testimonials() {
   const doubledTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="py-8 bg-white relative overflow-hidden" id="testimonials">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-50/50 rounded-full blur-[120px] -translate-x-1/2 translate-y-1/2" />
+    <section className="py-16 bg-white relative overflow-hidden" id="testimonials">
 
-      <div className="container mx-auto px-6 relative z-10 mb-5">
+      <div className="container mx-auto px-6 relative z-10 mb-10">
         <div className="text-center">
-          <h4 className="text-blue-600 font-bold uppercase tracking-widest mb-4">Testimonials</h4>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
+          <h4 className="text-neutral-500 font-bold uppercase tracking-widest mb-4">Testimonials</h4>
+          <h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight">
             Stories of Transformation.
           </h2>
-          <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
+          <p className="mt-4 text-lg text-neutral-500 max-w-2xl mx-auto">
             Hear from our alumni who have successfully transitioned into high-impact roles in AI and Cybersecurity.
           </p>
         </div>
@@ -100,21 +97,24 @@ export function Testimonials() {
                           className="object-cover"
                         />
                       ) : (
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-4xl md:text-5xl uppercase">
+                        <div className="absolute inset-0 bg-neutral-900 flex items-center justify-center text-white font-bold text-4xl md:text-5xl uppercase">
                           {testimonial.name[0]}
                         </div>
                       )}
                     </div>
                     <div className="text-center">
-                      <h3 className="text-xl font-bold text-slate-900">{testimonial.name}</h3>
-                      <p className="text-blue-600 font-semibold text-sm">{testimonial.designation}</p>
+                      <h3 className="text-xl font-bold text-black">{testimonial.name}</h3>
+                      <p className="text-neutral-500 font-semibold text-sm">{testimonial.designation}</p>
                     </div>
                   </div>
 
                   {/* Text Content */}
-                  <div className="flex-1 relative h-full flex items-center">
-                    <Quote className="absolute -top-2 -left-4 text-blue-50/80 w-16 h-16 md:w-24 md:h-24 -z-10" />
-                    <p className="text-sm md:text-base text-slate-600 leading-relaxed italic pr-4">
+                  <div className="flex-1 relative h-full flex items-center pt-4 md:pt-0">
+                    {/* <Quote 
+                      className="absolute -top-6 md:-top-4 -left-4 w-12 h-12 md:w-16 md:h-16 -z-10" 
+                      style={{ color: 'rgba(0, 0, 0, 0.07)' }}
+                    /> */}
+                    <p className="text-sm md:text-base text-neutral-700 leading-relaxed italic pr-4">
                       "{testimonial.text}"
                     </p>
                   </div>

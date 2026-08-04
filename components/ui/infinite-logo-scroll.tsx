@@ -38,7 +38,7 @@ const LOGO_LINKS: Record<string, string> = {
   "/logos/Faba.png": "https://biofaba.org.in/",
   "/logos/capsim.png": "https://www.capsim.com/",
   "/logos/redshelid1.png": "https://thefoundrys.com",
-  "/logos/vareon.png": "/news/thefoundrys-partnered-with-vareon",
+  "/logos/vareon.png": "",
   "AI COMPASS": "https://openvalidations.com/services/ai-compass"
 };
 
@@ -86,6 +86,7 @@ export function InfiniteLogoScroll() {
                 if (l.includes("image")) heightClass = "h-10 md:h-16";
                 if (l.includes("capsim")) heightClass = "h-6 md:h-10";
                 if (l.includes("drpinnacle")) heightClass = "h-10 md:h-16";
+                if (l.includes("vareon")) heightClass = "h-16 md:h-24";
 
                 const inner = (
                   <>

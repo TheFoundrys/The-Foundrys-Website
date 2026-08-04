@@ -143,7 +143,7 @@ export function CareerVision({
                                         >
                                             <div className="p-4 pt-0 border-t border-slate-100">
                                                 <div className="pt-4">
-                                                    <RoleDetailsContent role={role} isDark={isDark} />
+                                                    <RoleDetailsContent role={role} isDark={isDark} themeColor={themeColor} />
                                                 </div>
                                             </div>
                                         </motion.div>
@@ -191,7 +191,7 @@ export function CareerVision({
                         {/* Right: Selected Role Details */}
                         <div className="lg:sticky lg:top-6 h-fit">
                             <div className={`${isDark ? "bg-slate-900/60 border-slate-800 backdrop-blur-sm" : "bg-white border-slate-200"} border-2 rounded-2xl p-8 md:p-10 shadow-sm`}>
-                                <RoleDetailsContent role={roles[selectedCareer]} isDark={isDark} />
+                                <RoleDetailsContent role={roles[selectedCareer]} isDark={isDark} themeColor={themeColor} />
                             </div>
                         </div>
                     </div>

@@ -102,9 +102,65 @@ export interface CoursePricing {
     aiStrategy: PriceTier;
     certifiedInCybersecurity: PriceTier;
     certifiedInMalwareAnalysis: PriceTier;
+    entryLevelAIPackage: PriceTier;
+    entryLevelCyberSecurityPackage: PriceTier;
+    entryLevelQuantumPackage: PriceTier;
+    entryLevelBlockchainPackage: PriceTier;
+    professionalAIPackage: PriceTier;
+    professionalCyberSecurityPackage: PriceTier;
+    professionalQuantumPackage: PriceTier;
+    professionalBlockchainPackage: PriceTier;
 }
 
 export const COURSE_PRICING: CoursePricing = {
+    entryLevelAIPackage: {
+        original: { INR: '1,49,000', USD: '2,000' },
+        freshers: { INR: '1,49,000', USD: '2,000' },
+        zeroToTwo: { INR: '1,49,000', USD: '2,000' },
+        twoToFive: { INR: '1,49,000', USD: '2,000' },
+    },
+    entryLevelCyberSecurityPackage: {
+        original: { INR: '1,99,000', USD: '2,500' },
+        freshers: { INR: '1,99,000', USD: '2,500' },
+        zeroToTwo: { INR: '1,99,000', USD: '2,500' },
+        twoToFive: { INR: '1,99,000', USD: '2,500' },
+    },
+    entryLevelQuantumPackage: {
+        original: { INR: '1,29,000', USD: '1,800' },
+        freshers: { INR: '1,29,000', USD: '1,800' },
+        zeroToTwo: { INR: '1,29,000', USD: '1,800' },
+        twoToFive: { INR: '1,29,000', USD: '1,800' },
+    },
+    entryLevelBlockchainPackage: {
+        original: { INR: '99,000', USD: '1,500' },
+        freshers: { INR: '99,000', USD: '1,500' },
+        zeroToTwo: { INR: '99,000', USD: '1,500' },
+        twoToFive: { INR: '99,000', USD: '1,500' },
+    },
+    professionalAIPackage: {
+        original: { INR: '2,49,000', USD: '3,500' },
+        freshers: { INR: '2,49,000', USD: '3,500' },
+        zeroToTwo: { INR: '2,49,000', USD: '3,500' },
+        twoToFive: { INR: '2,49,000', USD: '3,500' },
+    },
+    professionalCyberSecurityPackage: {
+        original: { INR: '2,99,000', USD: '4,000' },
+        freshers: { INR: '2,99,000', USD: '4,000' },
+        zeroToTwo: { INR: '2,99,000', USD: '4,000' },
+        twoToFive: { INR: '2,99,000', USD: '4,000' },
+    },
+    professionalQuantumPackage: {
+        original: { INR: '3,49,000', USD: '4,500' },
+        freshers: { INR: '3,49,000', USD: '4,500' },
+        zeroToTwo: { INR: '3,49,000', USD: '4,500' },
+        twoToFive: { INR: '3,49,000', USD: '4,500' },
+    },
+    professionalBlockchainPackage: {
+        original: { INR: '1,99,000', USD: '2,500' },
+        freshers: { INR: '1,99,000', USD: '2,500' },
+        zeroToTwo: { INR: '1,99,000', USD: '2,500' },
+        twoToFive: { INR: '1,99,000', USD: '2,500' },
+    },
     promptEngineering: {
         original: { INR: '10,000', USD: '250' },
         freshers: { INR: '10,000', USD: '250' },

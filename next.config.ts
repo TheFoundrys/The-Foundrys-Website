@@ -19,11 +19,7 @@ const nextConfig: NextConfig = {
         destination: '/blog',
         permanent: true,
       },
-      {
-        source: '/programs',
-        destination: 'https://compass.thefoundrys.com',
-        permanent: false,
-      },
+
       {
         source: '/about/faculty/vishwanath-akuthota',
         destination: '/vishwanathakuthota',

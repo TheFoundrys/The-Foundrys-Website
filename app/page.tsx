@@ -56,15 +56,14 @@ export default function Home() {
       <Hero />
       {/* <AdmissionsOpen /> */}
       {/* <Certifications /> */}
-      <Testimonials />
-      <InfiniteLogoScroll />
       {/* <Triad /> */}
       <UniqueNeeds />
-
+<InfiniteLogoScroll />
       {/* <TheForging /> */}
 
       {/* <FaqPreview /> */}
 
+      <Testimonials />
       <Footer />
     </main>
   );

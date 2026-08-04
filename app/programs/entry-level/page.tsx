@@ -527,9 +527,9 @@ function DomainCard({ title, tagline, desc, icon, href, onOpenForm, selfPacedHre
                 </Link>
                 <Link
                     href={href}
-                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 bg-slate-900 text-white text-xs md:text-sm rounded-xl font-bold hover:bg-slate-800 transition-colors shadow-lg hover:shadow-slate-950/20 whitespace-nowrap text-center"
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 bg-slate-900 text-white text-xs md:text-sm rounded-xl font-bold hover:bg-slate-800 transition-colors shadow-lg hover:shadow-slate-950/25 whitespace-nowrap text-center"
                 >
-                    Learn More <ArrowUpRight size={14} className="shrink-0" />
+                    View Package <ArrowUpRight size={14} className="shrink-0" />
                 </Link>
             </div>
         </motion.div>

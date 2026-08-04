@@ -1,32 +1,22 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { triggerHaptic } from "@/lib/haptics";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu, Zap, Leaf, Network, BookOpen, Briefcase, GraduationCap, Calendar, Newspaper, ArrowRight, LineChart, Video, MessageSquare } from "lucide-react";
+import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu, Zap, Leaf, Network, BookOpen, Briefcase, GraduationCap, Calendar, Newspaper, ArrowRight, LineChart, MessageSquare } from "lucide-react";
 
 export function Navbar() {
     const pathname = usePathname();
-    const [isOpen, setIsOpen] = useState(false); // Mobile menu state
-    const [isSchoolsOpen, setIsSchoolsOpen] = useState(false); // Desktop Schools dropdown state
-    const [isProgramsOpen, setIsProgramsOpen] = useState(false); // Desktop Programs dropdown state
-    const [isMoreOpen, setIsMoreOpen] = useState(false); // Desktop More dropdown state
+    const [isOpen, setIsOpen] = useState(false); // Mobile menu open/close state
+    const [hoveredMenu, setHoveredMenu] = useState<"academics" | "research" | "experiences" | "discover" | null>(null);
+    const [isScrolled, setIsScrolled] = useState(false); // Scroll state for sticky header transitions
 
-    const programsTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-    const moreTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-    const [mobileProgramsExpanded, setMobileProgramsExpanded] = useState(false); // Mobile Programs Accordion
-    const [mobileSchoolsExpanded, setMobileSchoolsExpanded] = useState(true); // Mobile Schools Accordion State
-    const [mobileMoreExpanded, setMobileMoreExpanded] = useState(false); // Mobile More Accordion State
-
-    // State for the two-column layout: defaults to 'deep-tech'
-    const [activeCategory, setActiveCategory] = useState<"deep-tech" | "entrepreneurship" | "sustainability" | "energy" | "online">("deep-tech");
-    const [activeProgramCategory, setActiveProgramCategory] = useState<"career-transformation" | "executive-leadership" | "educators-faculty">("career-transformation");
-    const [isVisible, setIsVisible] = useState(true);
-    const [lastScrollY, setLastScrollY] = useState(0);
+    const [mobileAcademicsExpanded, setMobileAcademicsExpanded] = useState(true);
+    const [mobileResearchExpanded, setMobileResearchExpanded] = useState(false);
+    const [mobileExperiencesExpanded, setMobileExperiencesExpanded] = useState(false);
+    const [mobileDiscoverExpanded, setMobileDiscoverExpanded] = useState(false);
 
     // Lock body scroll when mobile menu is open
     useEffect(() => {
@@ -38,45 +28,16 @@ export function Navbar() {
         return () => { document.body.style.overflow = "unset"; };
     }, [isOpen]);
 
+    // Handle scroll events
     useEffect(() => {
-        const controlNavbar = () => {
+        const handleScroll = () => {
             if (typeof window !== "undefined") {
-                if (window.scrollY > lastScrollY && window.scrollY > 150) {
-                    setIsVisible(false);
-                } else {
-                    setIsVisible(true);
-                }
-                setLastScrollY(window.scrollY);
+                setIsScrolled(window.scrollY > 20);
             }
         };
-
-        window.addEventListener("scroll", controlNavbar);
-        return () => window.removeEventListener("scroll", controlNavbar);
-    }, [lastScrollY]);
-
-    // Data Structure for the Categories
-    const SCHOOL_CATEGORIES = [
-        {
-            id: "deep-tech",
-            label: "School of Deep Tech",
-            description: "Engineering & Applied Sciences"
-        },
-        {
-            id: "entrepreneurship",
-            label: "School of Entrepreneurship",
-            description: "Venture Building & Strategy"
-        },
-        {
-            id: "sustainability",
-            label: "School of Sustainability",
-            description: "Climate Resilience & ESG"
-        },
-        {
-            id: "energy",
-            label: "School of Energy",
-            description: "Sustainable Power Systems"
-        }
-    ] as const;
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     const COURSES = {
         "deep-tech": [
@@ -85,510 +46,498 @@ export function Navbar() {
                 label: "Artificial Intelligence",
                 desc: "The Intelligence Layer",
                 icon: BrainCircuit,
-                color: "text-blue-600",
-                bg: "bg-blue-50"
             },
             {
                 href: "/schools/datascience",
                 label: "Data Science",
                 desc: "The Insight Layer",
                 icon: LineChart,
-                color: "text-indigo-600",
-                bg: "bg-indigo-50"
             },
             {
                 href: "/schools/cyber",
                 label: "Cyber Security",
                 desc: "The Defense Layer",
                 icon: ShieldCheck,
-                color: "text-red-600",
-                bg: "bg-red-50"
             },
             {
                 href: "/schools/quantum-computing",
                 label: "Quantum Computing",
                 desc: "The Q-Layer",
                 icon: Atom,
-                color: "text-cyan-400",
-                bg: "bg-cyan-950/30"
             },
             {
                 href: "/schools/blockchain",
                 label: "Blockchain Development",
                 desc: "The Trust Layer",
                 icon: Network,
-                color: "text-purple-600",
-                bg: "bg-purple-50"
             },
         ],
-        "entrepreneurship": [
+        "specialized": [
             {
                 href: "/schools/venture-building",
                 label: "Venture Building",
                 desc: "Zero to One",
                 icon: Rocket,
-                color: "text-amber-600",
-                bg: "bg-amber-50"
             },
             {
                 href: "/schools/certified-innovator",
                 label: "Certified Innovator",
                 desc: "Systems Thinkers",
                 icon: Lightbulb,
-                color: "text-yellow-600",
-                bg: "bg-yellow-50"
-            }
-        ],
-        "sustainability": [
+            },
             {
                 href: "/schools/esg",
-                label: "Environmental, Social, and Governance",
+                label: "ESG & Governance",
                 desc: "Strategic Responsibility",
                 icon: Leaf,
-                color: "text-green-600",
-                bg: "bg-green-50"
             },
             {
                 href: "/programs/sustainability-in-the-age-of-ai",
-                label: "Sustainability in the Age of AI",
+                label: "AI & Sustainability",
                 desc: "Engineering Responsibility",
                 icon: Leaf,
-                color: "text-emerald-600",
-                bg: "bg-emerald-50"
-            }
-        ],
-        "energy": [
+            },
             {
                 href: "/schools/renewable-energy",
                 label: "Renewable Energy",
                 desc: "Powering the Future",
                 icon: Zap,
-                color: "text-emerald-500",
-                bg: "bg-emerald-50"
-            }
+            },
         ],
-        "online": []
-    };
-
-    const PROGRAM_CATEGORIES = [
-        {
-            id: "career-transformation",
-            label: "Career Transformation",
-            description: "Build Your Future"
-        },
-        {
-            id: "executive-leadership",
-            label: "Executive Leadership",
-            description: "Lead with Impact"
-        },
-        {
-            id: "educators-faculty",
-            label: "Educators & Faculty",
-            description: "Empower Your Teaching"
-        }
-    ] as const;
-
-    const PROGRAM_COURSES = {
-        "career-transformation": [
+        "programs": [
             {
                 href: "/programs/entry-level",
-                label: "Entry Level",
+                label: "Entry Level Track",
                 desc: "Start Your Journey",
                 icon: BookOpen,
-                color: "text-blue-600",
-                bg: "bg-blue-50"
             },
             {
                 href: "/programs/professional",
-                label: "Mid Level",
+                label: "Mid Level Track",
                 desc: "Advance Your Career",
                 icon: Briefcase,
-                color: "text-indigo-600",
-                bg: "bg-indigo-50"
-            }
-        ],
-        "executive-leadership": [
+            },
             {
                 href: "/programs/executive",
-                label: "Executive Leadership Program",
+                label: "Executive Leadership",
                 desc: "Strategic Vision",
                 icon: Briefcase,
-                color: "text-amber-600",
-                bg: "bg-amber-50"
-            }
-        ],
-        "educators-faculty": [
+            },
             {
                 href: "/programs/educators",
                 label: "Educators & Faculty",
                 desc: "Modern Pedagogy",
                 icon: GraduationCap,
-                color: "text-purple-600",
-                bg: "bg-purple-50"
-            }
+            },
         ]
     };
+
+    const RESEARCH_CENTRES = [
+        {
+            label: "Centre for Applied Artificial Intelligence (CAAI)",
+            desc: "Fostering breakthroughs in generative models, agentic workflows, and neural architectures.",
+            icon: BrainCircuit,
+            href: "/schools/ai"
+        },
+        {
+            label: "Centre for Cybersecurity & Defense (CCD)",
+            desc: "Researching secure network design, active cryptography, and intelligence protection models.",
+            icon: ShieldCheck,
+            href: "/schools/cyber"
+        },
+        {
+            label: "Quantum Computing Research Initiative (QCRI)",
+            desc: "Exploring quantum entanglement simulation, algorithmic speedups, and industrial optimization.",
+            icon: Atom,
+            href: "/schools/quantum-computing"
+        },
+        {
+            label: "Distributed Ledger & Blockchain Lab (DLBL)",
+            desc: "Advancing decentralization protocols, trust infrastructure, and smart contract optimization.",
+            icon: Network,
+            href: "/schools/blockchain"
+        },
+        {
+            label: "Venture Building & Incubation Institute (VBII)",
+            desc: "Translating cutting-edge deep tech research into scalable commercial startup frameworks.",
+            icon: Rocket,
+            href: "/schools/venture-building"
+        },
+        {
+            label: "Sustainability & Green Tech Policy Centre (SGPC)",
+            desc: "Designing eco-efficiency metrics, ESG systems, and carbon accounting architectures.",
+            icon: Leaf,
+            href: "/schools/esg"
+        }
+    ];
+
+    const EXPERIENCES = [
+        {
+            title: "Campus & Culture",
+            links: [
+                { label: "Hyderabad Campus", href: "/campus", desc: "Heart of Hitech City" },
+                // { label: "Corporate Integration", href: "/campus", desc: "Corporate workspace exposure" },
+                { label: "Venture Ecosystem", href: "/schools/venture-building", desc: "Direct access to seed capital" }
+            ]
+        },
+        {
+            title: "Transformations",
+            links: [
+                { label: "Alumni Stories", href: "/testimonials", desc: "Real transformation narratives" },
+                { label: "Project Showcases", href: "/blog", desc: "Live products built by students" },
+                { label: "Venture Portfolio", href: "/schools/venture-building", desc: "Startups launched at The Foundry" }
+            ]
+        },
+        {
+            title: "Student Life & Events",
+            links: [
+                { label: "Upcoming Events", href: "/events", desc: "Webinars and conferences" },
+                // { label: "Hackathons", href: "/events", desc: "Sprint builds and code sprints" },
+                { label: "Clubs & Guilds", href: "/about", desc: "Collaborative builder groups" }
+            ]
+        }
+    ];
+
+    const DISCOVER = [
+        {
+            title: "About The Foundry",
+            links: [
+                { label: "Mission & Vision", href: "/about" },
+                { label: "About the Team", href: "/about/team" },
+                // { label: "Leadership & Faculty", href: "/about" }
+            ]
+        },
+        {
+            title: "Thought Leadership",
+            links: [
+                { label: "Resources & Blog", href: "/blog" },
+                { label: "Press Room / News", href: "/news" },
+                { label: "Deep Tech FAQ", href: "/faq" }
+            ]
+        },
+        {
+            title: "Connect",
+            links: [
+                { label: "Contact Us", href: "/contact" },
+                // { label: "Office Directory", href: "/contact" },
+                { label: "Venture Fund Support", href: "/schools/venture-building" }
+            ]
+        }
+    ];
 
     const handleHaptic = () => {
         triggerHaptic();
     };
 
+    // White page background: 
+    // Transparent state is ON TOP of Black Hero (needs white text).
+    // Scrolled/Active state is ON TOP of White page / drops white megamenu (needs black text).
+    const isHeaderActive = isScrolled || hoveredMenu !== null || isOpen;
+
     return (
         <>
-            <motion.div
-                initial={{ y: 0 }}
-                animate={{ y: isVisible ? 0 : -120 }}
-                transition={{ duration: 0.3 }}
-                className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none perspective-[2000px]"
-            >
-                {/* Container for floating bubbles */}
-                <div className="flex items-center gap-3 pointer-events-auto relative w-auto justify-center">
-
-                    {/* 1. Main Logo/Nav Bubble */}
+            {/* Full Page Blur Backdrop */}
+            <AnimatePresence>
+                {hoveredMenu !== null && (
                     <motion.div
-                        initial={{ y: -100 }}
-                        animate={{ y: 0 }}
-                        className="glass px-6 py-3 rounded-full flex items-center gap-2 bg-white/70 backdrop-blur-xl border border-white/50 shadow-sm relative z-50"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 pointer-events-none hidden md:block"
+                    />
+                )}
+            </AnimatePresence>
+
+            {/* Static Pinned Two-Tier Header Wrapper */}
+            <header
+                onMouseEnter={() => {}}
+                onMouseLeave={() => setHoveredMenu(null)}
+                className="fixed top-0 left-0 right-0 w-full z-50 bg-white text-black border-b border-neutral-200 shadow-sm transition-all duration-300"
+            >
+
+                {/* Tier 2: Main Navigation Bar */}
+                <div className="max-w-[1900px] mx-auto px-8 md:px-12 lg:px-16 flex items-center justify-between h-20">
+                    
+                    {/* Left Brand Wordmark */}
+                    <Link
+                        href="/"
+                        onClick={() => { setIsOpen(false); handleHaptic(); }}
+                        className="font-bold text-xl tracking-tighter flex items-center gap-2"
                     >
-                        <Link href="/" onClick={handleHaptic} className="font-bold text-xl tracking-tighter flex items-center gap-2 text-slate-900 md:mr-8">
-                            <span>The Foundry&apos;s</span>
-                        </Link>
+                        <span>The Foundry&apos;s</span>
+                    </Link>
 
-                        {/* Desktop Links */}
-                        <div className="hidden md:flex items-center gap-6">
-                            {/* Maps to 'Schools' Dropdown */}
-                            <div
-                                className="relative group"
-                                onMouseEnter={() => {
-                                    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-                                    setIsSchoolsOpen(true);
-                                }}
-                                onMouseLeave={() => {
-                                    timeoutRef.current = setTimeout(() => setIsSchoolsOpen(false), 150);
-                                }}
-                            >
-                                <Link
-                                    href="/schools"
-                                    onClick={handleHaptic}
-                                    className={cn(
-                                        "flex items-center gap-1 text-sm font-medium transition-colors hover:text-blue-600 py-2",
-                                        pathname.startsWith("/schools") ? "text-slate-900 font-bold" : "text-slate-500"
-                                    )}
-                                >
-                                    Schools <ChevronDown size={14} className={`transition-transform duration-200 ${isSchoolsOpen ? "rotate-180" : ""}`} />
-                                </Link>
-
-                                {/* 3D Holographic Dropdown Menu - Two Column Layout */}
-                                <AnimatePresence>
-                                    {isSchoolsOpen && (
-                                        <motion.div
-                                            initial={{ opacity: 0, y: -20, scaleY: 0.4, scaleX: 0.8, filter: "blur(12px)" }}
-                                            animate={{ opacity: 1, y: 0, scaleY: 1, scaleX: 1, filter: "blur(0px)" }}
-                                            exit={{ opacity: 0, y: -10, scaleY: 0.8, scaleX: 0.9, filter: "blur(10px)" }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 220,
-                                                damping: 20,
-                                                mass: 0.8
-                                            }}
-                                            style={{ transformOrigin: "top center" }}
-                                            className="absolute top-full left-0 -translate-x-10 pt-4 min-w-[500px]"
-                                        >
-                                            <div className="p-1 bg-white/95 backdrop-blur-3xl rounded-2xl shadow-[0_30px_80px_-12px_rgba(0,0,0,0.25)] border border-white/80 overflow-hidden ring-1 ring-slate-900/5 flex"
-                                            >
-                                                {/* Spotlight Glow Effect inside dropdown */}
-                                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-20 bg-blue-500/20 blur-[50px] pointer-events-none" />
-
-                                                {/* Left Column: Categories */}
-                                                <div className="w-1/2 p-2 bg-slate-50/50 border-r border-slate-100 flex flex-col gap-1 relative z-10">
-                                                    {SCHOOL_CATEGORIES.map((category) => (
-                                                        <button
-                                                            key={category.id}
-                                                            onMouseEnter={() => setActiveCategory(category.id as "deep-tech" | "entrepreneurship" | "sustainability" | "energy")}
-                                                            className={cn(
-                                                                "text-left p-3 rounded-xl transition-all duration-200 group/cat",
-                                                                activeCategory === category.id
-                                                                    ? "bg-white shadow-sm ring-1 ring-slate-200"
-                                                                    : "hover:bg-white/50 hover:shadow-sm text-slate-500"
-                                                            )}
-                                                        >
-                                                            <div className={cn("font-bold text-sm", activeCategory === category.id ? "text-slate-900" : "text-slate-600 group-hover/cat:text-slate-900")}>
-                                                                {category.label}
-                                                            </div>
-                                                            <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400 mt-0.5">
-                                                                {category.description}
-                                                            </div>
-                                                        </button>
-                                                    ))}
-
-
-
-                                                </div>
-
-                                                {/* Right Column: Courses */}
-                                                <div className="w-1/2 p-2 flex flex-col gap-1 relative z-10">
-                                                    {COURSES[activeCategory].map((prog, i) => (
-                                                        <motion.div
-                                                            key={prog.href}
-                                                            initial={{ opacity: 0, x: 10 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            transition={{ delay: i * 0.05 }}
-                                                        >
-                                                            <Link
-                                                                href={prog.href}
-                                                                onClick={handleHaptic}
-                                                                className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/60 transition-colors group/item relative overflow-hidden"
-                                                            >
-                                                                <div className={`w-10 h-10 rounded-lg ${prog.bg} flex items-center justify-center ${prog.color} group-hover/item:scale-110 transition-transform shadow-sm`}>
-                                                                    <prog.icon size={18} />
-                                                                </div>
-                                                                <div>
-                                                                    <div className="font-bold text-slate-900 text-sm">{prog.label}</div>
-                                                                    <div className="text-[10px] uppercase font-bold tracking-wider text-slate-500/80">{prog.desc}</div>
-                                                                </div>
-                                                            </Link>
-                                                        </motion.div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-
-                            {/* Programs Dropdown */}
-                            <div
-                                className="relative group"
-                                onMouseEnter={() => {
-                                    if (programsTimeoutRef.current) clearTimeout(programsTimeoutRef.current);
-                                    setIsProgramsOpen(true);
-                                }}
-                                onMouseLeave={() => {
-                                    programsTimeoutRef.current = setTimeout(() => setIsProgramsOpen(false), 50);
-                                }}
-                            >
-                                <button
-                                    onClick={(e) => { e.preventDefault(); handleHaptic(); }}
-                                    className={cn(
-                                        "flex items-center gap-1 text-sm font-medium transition-colors hover:text-blue-600 py-2",
-                                        pathname.startsWith("/programs") ? "text-slate-900 font-bold" : "text-slate-500"
-                                    )}
-                                >
-                                    Professional Learning <ChevronDown size={14} className={`transition-transform duration-200 ${isProgramsOpen ? "rotate-180" : ""}`} />
-                                </button>
-
-                                <AnimatePresence>
-                                    {isProgramsOpen && (
-                                        <motion.div
-                                            initial={{ opacity: 0, y: -20, scaleY: 0.4, scaleX: 0.8, filter: "blur(12px)" }}
-                                            animate={{ opacity: 1, y: 0, scaleY: 1, scaleX: 1, filter: "blur(0px)" }}
-                                            exit={{ opacity: 0, y: -10, scaleY: 0.8, scaleX: 0.9, filter: "blur(10px)" }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 500,
-                                                damping: 30,
-                                                mass: 0.8
-                                            }}
-                                            style={{ transformOrigin: "top center" }}
-                                            className="absolute top-full left-1/2 -translate-x-1/2 pt-4 min-w-[500px]"
-                                        >
-                                            <div className="p-1 bg-white/95 backdrop-blur-3xl rounded-2xl shadow-[0_30px_80px_-12px_rgba(0,0,0,0.25)] border border-white/80 overflow-hidden ring-1 ring-slate-900/5 flex"
-                                            >
-                                                {/* Spotlight Glow Effect inside dropdown */}
-                                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-20 bg-blue-500/20 blur-[50px] pointer-events-none" />
-
-                                                {/* Left Column: Categories */}
-                                                <div className="w-1/2 p-2 bg-slate-50/50 border-r border-slate-100 flex flex-col gap-1 relative z-10">
-                                                    {PROGRAM_CATEGORIES.map((category) => (
-                                                        <button
-                                                            key={category.id}
-                                                            onMouseEnter={() => setActiveProgramCategory(category.id as "career-transformation" | "executive-leadership" | "educators-faculty")}
-                                                            className={cn(
-                                                                "text-left p-3 rounded-xl transition-all duration-200 group/cat",
-                                                                activeProgramCategory === category.id
-                                                                    ? "bg-white shadow-sm ring-1 ring-slate-200"
-                                                                    : "hover:bg-white/50 hover:shadow-sm text-slate-500"
-                                                            )}
-                                                        >
-                                                            <div className={cn("font-bold text-sm", activeProgramCategory === category.id ? "text-slate-900" : "text-slate-600 group-hover/cat:text-slate-900")}>
-                                                                {category.label}
-                                                            </div>
-                                                            <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400 mt-0.5">
-                                                                {category.description}
-                                                            </div>
-                                                        </button>
-                                                    ))}
-                                                </div>
-
-                                                {/* Right Column: Courses */}
-                                                <div className="w-1/2 p-2 flex flex-col gap-1 relative z-10">
-                                                    {PROGRAM_COURSES[activeProgramCategory].map((prog, i) => (
-                                                        <motion.div
-                                                            key={prog.href}
-                                                            initial={{ opacity: 0, x: 10 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            transition={{ delay: i * 0.05 }}
-                                                        >
-                                                            <Link
-                                                                href={prog.href}
-                                                                onClick={handleHaptic}
-                                                                className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/60 transition-colors group/item relative overflow-hidden"
-                                                            >
-                                                                <div className={`w-10 h-10 rounded-lg ${prog.bg} flex items-center justify-center ${prog.color} group-hover/item:scale-110 transition-transform shadow-sm`}>
-                                                                    <prog.icon size={18} />
-                                                                </div>
-                                                                <div>
-                                                                    <div className="font-bold text-slate-900 text-sm">{prog.label}</div>
-                                                                    <div className="text-[10px] uppercase font-bold tracking-wider text-slate-500/80">{prog.desc}</div>
-                                                                </div>
-                                                            </Link>
-                                                        </motion.div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-
-                            {/* About Us Link */}
-                            <Link
-                                href="/about"
-                                onClick={handleHaptic}
-                                className={cn(
-                                    "text-sm font-medium transition-colors hover:text-blue-600 py-2",
-                                    pathname === "/about" ? "text-slate-900 font-bold" : "text-slate-500"
-                                )}
-                            >
-                                About Us
-                            </Link>
-
-                            {/* 'More' Dropdown */}
-                            <div
-                                className="relative group"
-                                onMouseEnter={() => {
-                                    if (moreTimeoutRef.current) clearTimeout(moreTimeoutRef.current);
-                                    setIsMoreOpen(true);
-                                }}
-                                onMouseLeave={() => {
-                                    moreTimeoutRef.current = setTimeout(() => setIsMoreOpen(false), 50);
-                                }}
-                            >
-                                <button
-                                    onClick={handleHaptic}
-                                    className={cn(
-                                        "flex items-center gap-1 text-sm font-medium transition-colors hover:text-blue-600 py-2",
-                                        (pathname === "/campus") ? "text-slate-900 font-bold" : "text-slate-500"
-                                    )}
-                                >
-                                    More <ChevronDown size={14} className={`transition-transform duration-200 ${isMoreOpen ? "rotate-180" : ""}`} />
-                                </button>
-
-                                <AnimatePresence>
-                                    {isMoreOpen && (
-                                        <motion.div
-                                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                                            exit={{ opacity: 0, y: 5, scale: 0.95 }}
-                                            transition={{ duration: 0.08 }}
-                                            className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-48"
-                                        >
-                                            <div className="p-1 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-white/80 overflow-hidden ring-1 ring-slate-900/5 flex flex-col gap-1"
-                                            >
-                                                <Link
-                                                    href="/events"
-                                                    onClick={handleHaptic}
-                                                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
-                                                >
-                                                    <div className="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center text-orange-600 group-hover:scale-110 transition-transform">
-                                                        <Calendar size={16} />
-                                                    </div>
-                                                    <span className="text-sm font-bold text-slate-700">Events & Webinars</span>
-                                                </Link>
-                                                <Link
-                                                    href="/testimonials"
-                                                    onClick={handleHaptic}
-                                                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
-                                                >
-                                                    <div className="w-8 h-8 rounded-lg bg-pink-50 flex items-center justify-center text-pink-600 group-hover:scale-110 transition-transform">
-                                                        <MessageSquare size={16} />
-                                                    </div>
-                                                    <span className="text-sm font-bold text-slate-700">Testimonials</span>
-                                                </Link>
-                                                <Link
-                                                    href="/campus"
-                                                    onClick={handleHaptic}
-                                                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
-                                                >
-                                                    <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 group-hover:scale-110 transition-transform">
-                                                        <Building2 size={16} />
-                                                    </div>
-                                                    <span className="text-sm font-bold text-slate-700">Campus</span>
-                                                </Link>
-
-                                                <Link
-                                                    href="/contact"
-                                                    onClick={handleHaptic}
-                                                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
-                                                >
-                                                    <div className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-600 group-hover:scale-110 transition-transform">
-                                                        <Users size={16} />
-                                                    </div>
-                                                    <span className="text-sm font-bold text-slate-700">Contact</span>
-                                                </Link>
-
-                                                <Link
-                                                    href="/blog"
-                                                    onClick={handleHaptic}
-                                                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
-                                                >
-                                                    <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:scale-110 transition-transform">
-                                                        <Library size={16} />
-                                                    </div>
-                                                    <span className="text-sm font-bold text-slate-700">Resources</span>
-                                                </Link>
-
-                                                <Link
-                                                    href="/news"
-                                                    onClick={handleHaptic}
-                                                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
-                                                >
-                                                    <div className="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center text-red-600 group-hover:scale-110 transition-transform">
-                                                        <Newspaper size={16} />
-                                                    </div>
-                                                    <span className="text-sm font-bold text-slate-700">News</span>
-                                                </Link>
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
+                    {/* Central Navigation Headings */}
+                    <nav className="hidden md:flex items-center gap-10 h-full select-none">
+                        <div
+                            onMouseEnter={() => setHoveredMenu("academics")}
+                            className="flex items-center gap-1 cursor-default py-8 text-xs font-bold uppercase tracking-widest relative"
+                        >
+                            <span className={cn("transition-colors hover:text-black", hoveredMenu === "academics" ? "text-black" : "opacity-85")}>Programs</span>
+                            <ChevronDown size={12} className={cn("transition-transform duration-350 opacity-60", hoveredMenu === "academics" ? "rotate-180 opacity-100" : "")} />
                         </div>
 
-                        {/* Desktop CTA */}
-                        <Link href="https://compass.thefoundrys.com/login" onClick={handleHaptic} className="hidden md:block ml-6 px-5 py-2 bg-slate-900 text-white rounded-full text-sm font-bold hover:bg-slate-800 transition-transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl pointer-events-auto">
+                        <div
+                            onMouseEnter={() => setHoveredMenu("research")}
+                            className="flex items-center gap-1 cursor-default py-8 text-xs font-bold uppercase tracking-widest relative"
+                        >
+                            <span className={cn("transition-colors hover:text-black", hoveredMenu === "research" ? "text-black" : "opacity-85")}>Research & Centre Of Excellence</span>
+                            <ChevronDown size={12} className={cn("transition-transform duration-350 opacity-60", hoveredMenu === "research" ? "rotate-180 opacity-100" : "")} />
+                        </div>
+
+                        <div
+                            onMouseEnter={() => setHoveredMenu("experiences")}
+                            className="flex items-center gap-1 cursor-default py-8 text-xs font-bold uppercase tracking-widest relative"
+                        >
+                            <span className={cn("transition-colors hover:text-black", hoveredMenu === "experiences" ? "text-black" : "opacity-85")}>Experiences</span>
+                            <ChevronDown size={12} className={cn("transition-transform duration-350 opacity-60", hoveredMenu === "experiences" ? "rotate-180 opacity-100" : "")} />
+                        </div>
+
+                        <div
+                            onMouseEnter={() => setHoveredMenu("discover")}
+                            className="flex items-center gap-1 cursor-default py-8 text-xs font-bold uppercase tracking-widest relative"
+                        >
+                            <span className={cn("transition-colors hover:text-black", hoveredMenu === "discover" ? "text-black" : "opacity-85")}>Discover</span>
+                            <ChevronDown size={12} className={cn("transition-transform duration-350 opacity-60", hoveredMenu === "discover" ? "rotate-180 opacity-100" : "")} />
+                        </div>
+                    </nav>
+
+                    {/* Right CTA Area */}
+                    <div className="hidden md:flex items-center gap-6">
+                        <Link
+                            href="https://compass.thefoundrys.com/login"
+                            onClick={handleHaptic}
+                            className="px-6 py-2 rounded-full text-xs font-bold transition-all hover:scale-105 active:scale-95 shadow-sm bg-black text-white hover:bg-neutral-800"
+                        >
                             Login
                         </Link>
-                    </motion.div>
+                    </div>
 
-                    {/* 2. Mobile Menu Toggle Bubble (Separate) */}
-                    <motion.button
-                        initial={{ y: -100 }}
-                        animate={{ y: 0 }}
+                    {/* Mobile Hamburger Button */}
+                    <button
                         onClick={() => { setIsOpen(!isOpen); handleHaptic(); }}
-                        className="md:hidden glass w-12 h-12 flex items-center justify-center rounded-full bg-white/70 text-slate-900 backdrop-blur-xl border border-white/50 shadow-sm active:scale-95 transition-all z-50 pointer-events-auto"
+                        className="md:hidden w-10 h-10 flex items-center justify-center rounded-full border border-current active:scale-95 transition-all text-current"
                         aria-label="Toggle Menu"
                     >
-                        {isOpen ? (
-                            <X size={24} className="text-slate-900" />
-                        ) : (
-                            <Menu size={24} className="text-slate-900" />
-                        )}
-                    </motion.button>
+                        {isOpen ? <X size={20} /> : <Menu size={20} />}
+                    </button>
                 </div>
-            </motion.div>
 
-            {/* Mobile Menu Overlay */}
+                {/* Desktop Full-Page Expandable Menu Panel */}
+                <div className="relative w-full">
+                    <AnimatePresence>
+                        {hoveredMenu && (
+                            <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.3, ease: "easeInOut" }}
+                                className="absolute top-0 left-0 right-0 w-full bg-white border-b border-neutral-200 overflow-hidden hidden md:block"
+                            >
+                                <div className="max-w-[1900px] mx-auto px-16 py-16 text-black select-none">
+                                    
+                                    {/* 1. Academics Dropdown Panel */}
+                                    {hoveredMenu === "academics" && (
+                                        <div className="grid grid-cols-4 gap-12">
+                                            {/* Column 1: School of Deep Tech */}
+                                            <div className="flex flex-col gap-6">
+                                                <h3 className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 border-b border-neutral-100 pb-2">
+                                                    School of Deep Tech
+                                                </h3>
+                                                <div className="flex flex-col gap-4">
+                                                    {COURSES["deep-tech"].map((course) => (
+                                                        <Link
+                                                            key={course.href}
+                                                            href={course.href}
+                                                            onClick={() => { setHoveredMenu(null); handleHaptic(); }}
+                                                            className="group flex items-start gap-3 hover:opacity-75 transition-opacity"
+                                                        >
+                                                            <div className="w-8 h-8 rounded-lg bg-neutral-100 flex items-center justify-center text-black shrink-0">
+                                                                <course.icon size={15} />
+                                                            </div>
+                                                            <div>
+                                                                <div className="text-sm font-bold text-black">{course.label}</div>
+                                                                <div className="text-[10px] uppercase font-bold tracking-wider text-neutral-400 mt-0.5">{course.desc}</div>
+                                                            </div>
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            {/* Column 2: Specialized Schools */}
+                                            <div className="flex flex-col gap-6">
+                                                <h3 className="text-[10px] font-bold uppercase tracking-widest text-neutral-500 border-b border-neutral-100 pb-2">
+                                                    Specialized Schools
+                                                </h3>
+                                                <div className="flex flex-col gap-4">
+                                                    {COURSES["specialized"].map((course) => (
+                                                        <Link
+                                                            key={course.href}
+                                                            href={course.href}
+                                                            onClick={() => { setHoveredMenu(null); handleHaptic(); }}
+                                                            className="group flex items-start gap-3 hover:opacity-75 transition-opacity"
+                                                        >
+                                                            <div className="w-8 h-8 rounded-lg bg-neutral-100 flex items-center justify-center text-black shrink-0">
+                                                                <course.icon size={15} />
+                                                            </div>
+                                                            <div>
+                                                                <div className="text-sm font-bold text-black">{course.label}</div>
+                                                                <div className="text-[10px] uppercase font-bold tracking-wider text-neutral-400 mt-0.5">{course.desc}</div>
+                                                            </div>
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            {/* Column 3: Programs */}
+                                            <div className="flex flex-col gap-6">
+                                                <h3 className="text-[10px] font-bold uppercase tracking-widest text-neutral-500 border-b border-neutral-100 pb-2">
+                                                    Programs
+                                                </h3>
+                                                <div className="flex flex-col gap-4">
+                                                    <Link
+                                                        href="/programs"
+                                                        onClick={() => { setHoveredMenu(null); handleHaptic(); }}
+                                                        className="group flex items-start gap-3 hover:opacity-75 transition-opacity"
+                                                    >
+                                                        <div className="w-8 h-8 rounded-lg bg-neutral-100 flex items-center justify-center text-black shrink-0">
+                                                            <BookOpen size={15} />
+                                                        </div>
+                                                        <div>
+                                                            <div className="text-sm font-bold text-black">Programs</div>
+                                                            <div className="text-[10px] uppercase font-bold tracking-wider text-neutral-400 mt-0.5">Explore All Tracks</div>
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            </div>
+
+                                            {/* Column 4: Admissions Card */}
+                                            <div className="flex flex-col gap-6">
+                                                <h3 className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 border-b border-neutral-100 pb-2">
+                                                    Admissions
+                                                </h3>
+                                                <div className="p-6 rounded-2xl bg-white border border-neutral-200 text-black flex flex-col gap-3 relative overflow-hidden group h-full">
+                                                    <div className="relative z-10 flex flex-col justify-between h-full">
+                                                        <div>
+                                                            <span className="text-[9px] font-bold uppercase tracking-widest text-neutral-400 block mb-1">Admissions Open</span>
+                                                            <span className="text-lg font-black block mb-2 leading-tight text-black">Autumn Cohort 2026</span>
+                                                            <span className="text-xs text-neutral-600 block leading-relaxed">India's first Venture School. Transform into an AI, Cyber or Energy architect. Build systems that matter.</span>
+                                                        </div>
+                                                        <Link
+                                                            href="/apply"
+                                                            onClick={() => setHoveredMenu(null)}
+                                                            className="inline-flex items-center gap-1.5 text-xs font-bold text-black border-b border-black pb-0.5 w-fit hover:gap-2.5 transition-all mt-6"
+                                                        >
+                                                            Apply Online <ArrowRight size={12} />
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* 2. Research Dropdown Panel */}
+                                    {hoveredMenu === "research" && (
+                                        <div className="grid grid-cols-3 gap-12">
+                                            {/* Left half: list of Research Institutes */}
+                                            <div className="col-span-2 grid grid-cols-2 gap-x-8 gap-y-6">
+                                                {RESEARCH_CENTRES.map((centre, i) => (
+                                                    <Link
+                                                        key={i}
+                                                        href={centre.href}
+                                                        onClick={() => { setHoveredMenu(null); handleHaptic(); }}
+                                                        className="group flex items-start gap-4 p-3 rounded-xl hover:bg-neutral-50 transition-colors"
+                                                    >
+                                                        <div className="w-10 h-10 rounded-lg bg-neutral-100 flex items-center justify-center text-black shrink-0 group-hover:scale-105 transition-transform">
+                                                            <centre.icon size={18} />
+                                                        </div>
+                                                        <div>
+                                                            <div className="text-sm font-bold text-black leading-snug">{centre.label}</div>
+                                                            <div className="text-xs text-neutral-500 mt-1 leading-relaxed">{centre.desc}</div>
+                                                        </div>
+                                                    </Link>
+                                                ))}
+                                            </div>
+
+                                            {/* Right half: Academic Vision */}
+                                            <div className="flex flex-col gap-6 justify-between border-l border-neutral-100 pl-12">
+                                                <div>
+                                                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block mb-3">Academic Research Vision</h3>
+                                                    <p className="text-sm text-neutral-600 leading-relaxed italic">
+                                                        "We believe that locally relevant, globally respected academic research plays a vital role in creating a vibrant deep tech ecosystem."
+                                                    </p>
+                                                </div>
+                                                <div className="p-5 rounded-2xl bg-neutral-50 border border-neutral-200">
+                                                    <span className="text-[10px] font-bold text-black uppercase tracking-wider block mb-1">Deep Tech Publications</span>
+                                                    <span className="text-xs text-neutral-500 block mb-3">Read research contributions in AI, Cryptography & Quantum Computing.</span>
+                                                    <Link href="/blog" onClick={() => setHoveredMenu(null)} className="text-xs font-bold text-black border-b border-black pb-0.5 inline-flex items-center gap-1">
+                                                        Browse Research <ArrowRight size={10} />
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* 3. Experiences Dropdown Panel */}
+                                    {hoveredMenu === "experiences" && (
+                                        <div className="grid grid-cols-3 gap-12">
+                                            {EXPERIENCES.map((group, i) => (
+                                                <div key={i} className="flex flex-col gap-6">
+                                                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 border-b border-neutral-100 pb-2">
+                                                        {group.title}
+                                                    </h3>
+                                                    <div className="flex flex-col gap-4">
+                                                        {group.links.map((link, j) => (
+                                                            <Link
+                                                                key={j}
+                                                                href={link.href}
+                                                                onClick={() => { setHoveredMenu(null); handleHaptic(); }}
+                                                                className="group flex flex-col hover:opacity-75 transition-opacity"
+                                                            >
+                                                                <span className="text-sm font-bold text-black">{link.label}</span>
+                                                                <span className="text-[10px] text-neutral-500 mt-0.5">{link.desc}</span>
+                                                            </Link>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+
+                                    {/* 4. Discover Dropdown Panel */}
+                                    {hoveredMenu === "discover" && (
+                                        <div className="grid grid-cols-3 gap-12">
+                                            {DISCOVER.map((group, i) => (
+                                                <div key={i} className="flex flex-col gap-6">
+                                                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 border-b border-neutral-100 pb-2">
+                                                        {group.title}
+                                                    </h3>
+                                                    <div className="flex flex-col gap-3">
+                                                        {group.links.map((link, j) => (
+                                                            <Link
+                                                                key={j}
+                                                                href={link.href}
+                                                                onClick={() => { setHoveredMenu(null); handleHaptic(); }}
+                                                                className="text-sm font-semibold text-neutral-700 hover:text-black transition-colors"
+                                                            >
+                                                                {link.label}
+                                                            </Link>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+            </header>
+
+            {/* Mobile Full Screen Menu Overlay */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
@@ -596,171 +545,162 @@ export function Navbar() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed inset-0 z-40 bg-slate-50/95 backdrop-blur-3xl flex flex-col md:hidden overflow-hidden"
+                        className="fixed inset-0 z-40 bg-white text-black flex flex-col md:hidden overflow-hidden"
                     >
                         {/* Scrollable Content Area */}
-                        <div className="flex-1 overflow-y-auto px-6 pt-32 pb-24 touch-pan-y">
+                        <div className="flex-1 overflow-y-auto px-6 pt-28 pb-24 touch-pan-y">
                             <div className="flex flex-col gap-6">
 
-                                {/* Schools Accordion */}
-                                <div className="rounded-2xl bg-white/60 p-1 border border-white/50 shadow-sm">
+                                {/* Academics Accordion */}
+                                <div className="rounded-2xl bg-neutral-50 p-1 border border-neutral-200 shadow-sm">
                                     <button
-                                        onClick={() => { setMobileSchoolsExpanded(!mobileSchoolsExpanded); handleHaptic(); }}
-                                        className="flex items-center justify-between w-full p-4 rounded-xl hover:bg-white/50 transition-colors"
+                                        onClick={() => { setMobileAcademicsExpanded(!mobileAcademicsExpanded); handleHaptic(); }}
+                                        className="flex items-center justify-between w-full p-4 rounded-xl hover:bg-white transition-colors"
                                     >
-                                        <span className="text-xl font-bold text-slate-900">Schools</span>
-                                        <ChevronDown size={20} className={cn("text-slate-500 transition-transform", mobileSchoolsExpanded ? "rotate-180" : "")} />
+                                        <span className="text-lg font-bold text-black">Academics</span>
+                                        <ChevronDown size={18} className={cn("text-neutral-500 transition-transform", mobileAcademicsExpanded ? "rotate-180" : "")} />
                                     </button>
 
                                     <AnimatePresence>
-                                        {mobileSchoolsExpanded && (
+                                        {mobileAcademicsExpanded && (
                                             <motion.div
                                                 initial={{ height: 0, opacity: 0 }}
                                                 animate={{ height: "auto", opacity: 1 }}
                                                 exit={{ height: 0, opacity: 0 }}
                                                 className="overflow-hidden"
                                             >
-                                                <div className="px-2 pb-2 flex flex-col gap-4 pt-2">
+                                                <div className="px-2 pb-3 flex flex-col gap-5 pt-2">
+                                                     {/* Deep Tech Group */}
+                                                     <div>
+                                                         <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-neutral-400">School of Deep Tech</div>
+                                                         <div className="flex flex-col gap-1 mt-1">
+                                                             {COURSES["deep-tech"].map(course => (
+                                                                 <Link
+                                                                     key={course.href}
+                                                                     href={course.href}
+                                                                     onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                                     className="flex items-center gap-3 p-2 rounded-lg hover:bg-neutral-100 transition-colors"
+                                                                 >
+                                                                     <div className="w-8 h-8 rounded-md bg-neutral-100 flex items-center justify-center text-black shrink-0">
+                                                                         <course.icon size={15} />
+                                                                     </div>
+                                                                     <span className="text-sm font-semibold text-neutral-800">{course.label}</span>
+                                                                 </Link>
+                                                             ))}
+                                                         </div>
+                                                     </div>
 
-                                                    {/* Deep Tech Group */}
-                                                    <div>
-                                                        <div className="px-3 py-2 text-xs font-bold uppercase tracking-widest text-slate-400">School of Deep Tech</div>
-                                                        <div className="flex flex-col gap-1">
-                                                            {COURSES["deep-tech"].map(course => (
-                                                                <Link
-                                                                    key={course.href}
-                                                                    href={course.href}
-                                                                    onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                                    className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100/50 transition-colors"
-                                                                >
-                                                                    <div className={`w-8 h-8 rounded-md ${course.bg} flex items-center justify-center ${course.color}`}>
-                                                                        <course.icon size={16} />
-                                                                    </div>
-                                                                    <span className="font-semibold text-slate-700">{course.label}</span>
-                                                                </Link>
-                                                            ))}
-                                                        </div>
-                                                    </div>
+                                                     {/* Specialized Schools */}
+                                                     <div>
+                                                         <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-neutral-400">Specialized Schools</div>
+                                                         <div className="flex flex-col gap-1 mt-1">
+                                                             {COURSES["specialized"].map(course => (
+                                                                 <Link
+                                                                     key={course.href}
+                                                                     href={course.href}
+                                                                     onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                                     className="flex items-center gap-3 p-2 rounded-lg hover:bg-neutral-100 transition-colors"
+                                                                 >
+                                                                     <div className="w-8 h-8 rounded-md bg-neutral-100 flex items-center justify-center text-black shrink-0">
+                                                                         <course.icon size={15} />
+                                                                     </div>
+                                                                     <span className="text-sm font-semibold text-neutral-800">{course.label}</span>
+                                                                 </Link>
+                                                             ))}
+                                                         </div>
+                                                     </div>
 
-                                                    {/* Entrepreneurship Group */}
-                                                    <div>
-                                                        <div className="px-3 py-2 text-xs font-bold uppercase tracking-widest text-slate-400">School of Entrepreneurship</div>
-                                                        <div className="flex flex-col gap-1">
-                                                            {COURSES["entrepreneurship"].map(course => (
-                                                                <Link
-                                                                    key={course.href}
-                                                                    href={course.href}
-                                                                    onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                                    className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100/50 transition-colors"
-                                                                >
-                                                                    <div className={`w-8 h-8 rounded-md ${course.bg} flex items-center justify-center ${course.color}`}>
-                                                                        <course.icon size={16} />
-                                                                    </div>
-                                                                    <span className="font-semibold text-slate-700">{course.label}</span>
-                                                                </Link>
-                                                            ))}
-                                                        </div>
-                                                    </div>
-
-                                                    {/* Sustainability Group */}
-                                                    <div>
-                                                        <div className="px-3 py-2 text-xs font-bold uppercase tracking-widest text-slate-400">School of Sustainability</div>
-                                                        <div className="flex flex-col gap-1">
-                                                            {COURSES["sustainability"].map(course => (
-                                                                <Link
-                                                                    key={course.href}
-                                                                    href={course.href}
-                                                                    onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                                    className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100/50 transition-colors"
-                                                                >
-                                                                    <div className={`w-8 h-8 rounded-md ${course.bg} flex items-center justify-center ${course.color}`}>
-                                                                        <course.icon size={16} />
-                                                                    </div>
-                                                                    <span className="font-semibold text-slate-700">{course.label}</span>
-                                                                </Link>
-                                                            ))}
-                                                        </div>
-                                                    </div>
-
-                                                    {/* Energy Group */}
-                                                    <div>
-                                                        <div className="px-3 py-2 text-xs font-bold uppercase tracking-widest text-slate-400">School of Energy</div>
-                                                        <div className="flex flex-col gap-1">
-                                                            {COURSES["energy"].map(course => (
-                                                                <Link
-                                                                    key={course.href}
-                                                                    href={course.href}
-                                                                    onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                                    className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100/50 transition-colors"
-                                                                >
-                                                                    <div className={`w-8 h-8 rounded-md ${course.bg} flex items-center justify-center ${course.color}`}>
-                                                                        <course.icon size={16} />
-                                                                    </div>
-                                                                    <span className="font-semibold text-slate-700">{course.label}</span>
-                                                                </Link>
-                                                            ))}
-                                                        </div>
-                                                    </div>
-
-                                                    {/* <div className="pt-2 border-t border-slate-100/50 mt-2">
-                                                <Link
-                                                    href="https://compass.thefoundrys.com"
-                                                    target="_blank"
-                                                    onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                    className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100/50 transition-colors"
-                                                >
-                                                    <div className="w-8 h-8 rounded-md bg-blue-50 flex items-center justify-center text-blue-600">
-                                                        <Network size={16} />
-                                                    </div>
-                                                    <div>
-                                                        <span className="font-semibold text-slate-700 block">Online Programs</span>
-                                                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Compass Portal</span>
-                                                    </div>
-                                                </Link>
-                                            </div> */}
+                                                     {/* Programs */}
+                                                     <div>
+                                                         <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-neutral-400">Programs</div>
+                                                         <div className="flex flex-col gap-1 mt-1">
+                                                             <Link
+                                                                 href="/programs"
+                                                                 onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                                 className="flex items-center gap-3 p-2 rounded-lg hover:bg-neutral-100 transition-colors"
+                                                             >
+                                                                 <div className="w-8 h-8 rounded-md bg-neutral-100 flex items-center justify-center text-black shrink-0">
+                                                                     <BookOpen size={15} />
+                                                                 </div>
+                                                                 <span className="text-sm font-semibold text-neutral-800">Programs</span>
+                                                             </Link>
+                                                         </div>
+                                                     </div>
                                                 </div>
                                             </motion.div>
                                         )}
                                     </AnimatePresence>
                                 </div>
 
-                                {/* Programs Accordion (Mobile) */}
-                                <div className="rounded-2xl bg-white/60 p-1 border border-white/50 shadow-sm">
+                                {/* Research Centres Accordion */}
+                                <div className="rounded-2xl bg-neutral-50 p-1 border border-neutral-200 shadow-sm">
                                     <button
-                                        onClick={() => { setMobileProgramsExpanded(!mobileProgramsExpanded); handleHaptic(); }}
-                                        className="flex items-center justify-between w-full p-4 rounded-xl hover:bg-white/50 transition-colors"
+                                        onClick={() => { setMobileResearchExpanded(!mobileResearchExpanded); handleHaptic(); }}
+                                        className="flex items-center justify-between w-full p-4 rounded-xl hover:bg-neutral-100 transition-colors"
                                     >
-                                        <span className="text-xl font-bold text-slate-900">Programs</span>
-                                        <ChevronDown size={20} className={cn("text-slate-500 transition-transform", mobileProgramsExpanded ? "rotate-180" : "")} />
+                                        <span className="text-lg font-bold text-black">Research & Centre Of Excellence</span>
+                                        <ChevronDown size={18} className={cn("text-neutral-500 transition-transform", mobileResearchExpanded ? "rotate-180" : "")} />
                                     </button>
 
                                     <AnimatePresence>
-                                        {mobileProgramsExpanded && (
+                                        {mobileResearchExpanded && (
                                             <motion.div
                                                 initial={{ height: 0, opacity: 0 }}
                                                 animate={{ height: "auto", opacity: 1 }}
                                                 exit={{ height: 0, opacity: 0 }}
                                                 className="overflow-hidden"
                                             >
-                                                <div className="px-2 pb-2 flex flex-col gap-4 pt-2">
-                                                    {PROGRAM_CATEGORIES.map((category) => (
-                                                        <div key={category.id}>
-                                                            <div className="px-3 py-2 text-xs font-bold uppercase tracking-widest text-slate-400">{category.label}</div>
+                                                <div className="px-3 pb-3 flex flex-col gap-1 pt-2">
+                                                    {RESEARCH_CENTRES.map((centre, i) => (
+                                                        <Link
+                                                            key={i}
+                                                            href={centre.href}
+                                                            onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                            className="flex items-center gap-3 p-2 rounded-lg hover:bg-neutral-100 transition-colors"
+                                                        >
+                                                            <div className="w-8 h-8 rounded-md bg-neutral-100 flex items-center justify-center text-black shrink-0">
+                                                                <centre.icon size={15} />
+                                                            </div>
+                                                            <span className="text-sm font-semibold text-neutral-800 leading-snug">{centre.label}</span>
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+
+                                {/* Experiences Accordion */}
+                                <div className="rounded-2xl bg-neutral-50 p-1 border border-neutral-200 shadow-sm">
+                                    <button
+                                        onClick={() => { setMobileExperiencesExpanded(!mobileExperiencesExpanded); handleHaptic(); }}
+                                        className="flex items-center justify-between w-full p-4 rounded-xl hover:bg-neutral-100 transition-colors"
+                                    >
+                                        <span className="text-lg font-bold text-black">Experiences</span>
+                                        <ChevronDown size={18} className={cn("text-neutral-500 transition-transform", mobileExperiencesExpanded ? "rotate-180" : "")} />
+                                    </button>
+
+                                    <AnimatePresence>
+                                        {mobileExperiencesExpanded && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: "auto", opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                className="overflow-hidden"
+                                            >
+                                                <div className="px-3 pb-3 flex flex-col gap-4 pt-2">
+                                                    {EXPERIENCES.map((group, i) => (
+                                                        <div key={i}>
+                                                            <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-1.5">{group.title}</div>
                                                             <div className="flex flex-col gap-1">
-                                                                {PROGRAM_COURSES[category.id].map((prog) => (
+                                                                {group.links.map((link, j) => (
                                                                     <Link
-                                                                        key={prog.href}
-                                                                        href={prog.href}
+                                                                        key={j}
+                                                                        href={link.href}
                                                                         onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                                        className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100/50 transition-colors"
+                                                                        className="text-sm font-semibold text-neutral-700 py-1"
                                                                     >
-                                                                        <div className={`w-8 h-8 rounded-md ${prog.bg} flex items-center justify-center ${prog.color} shrink-0`}>
-                                                                            <prog.icon size={16} />
-                                                                        </div>
-                                                                        <div>
-                                                                            <span className="font-semibold text-slate-700 block text-sm">{prog.label}</span>
-                                                                            <span className="text-[10px] text-slate-500 font-bold">{prog.desc}</span>
-                                                                        </div>
+                                                                        {link.label}
                                                                     </Link>
                                                                 ))}
                                                             </div>
@@ -772,108 +712,59 @@ export function Navbar() {
                                     </AnimatePresence>
                                 </div>
 
-                                {/* About Us (Mobile) */}
-                                <Link
-                                    href="/about"
-                                    onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                    className="flex items-center justify-between w-full p-5 rounded-2xl bg-white/60 border border-white/50 shadow-sm"
-                                >
-                                    <span className="text-xl font-bold text-slate-900">About Us</span>
-                                    <Users size={20} className="text-slate-500" />
-                                </Link>
-
-                                {/* More Accordion */}
-                                <div className="rounded-2xl bg-white/60 p-1 border border-white/50 shadow-sm">
+                                {/* Discover Accordion */}
+                                <div className="rounded-2xl bg-neutral-50 p-1 border border-neutral-200 shadow-sm">
                                     <button
-                                        onClick={() => { setMobileMoreExpanded(!mobileMoreExpanded); handleHaptic(); }}
-                                        className="flex items-center justify-between w-full p-4 rounded-xl hover:bg-white/50 transition-colors"
+                                        onClick={() => { setMobileDiscoverExpanded(!mobileDiscoverExpanded); handleHaptic(); }}
+                                        className="flex items-center justify-between w-full p-4 rounded-xl hover:bg-neutral-100 transition-colors"
                                     >
-                                        <span className="text-xl font-bold text-slate-900">More</span>
-                                        <ChevronDown size={20} className={cn("text-slate-500 transition-transform", mobileMoreExpanded ? "rotate-180" : "")} />
+                                        <span className="text-lg font-bold text-black">Discover</span>
+                                        <ChevronDown size={18} className={cn("text-neutral-500 transition-transform", mobileDiscoverExpanded ? "rotate-180" : "")} />
                                     </button>
 
                                     <AnimatePresence>
-                                        {mobileMoreExpanded && (
+                                        {mobileDiscoverExpanded && (
                                             <motion.div
                                                 initial={{ height: 0, opacity: 0 }}
                                                 animate={{ height: "auto", opacity: 1 }}
                                                 exit={{ height: 0, opacity: 0 }}
                                                 className="overflow-hidden"
                                             >
-                                                <div className="px-2 pb-2 flex flex-col gap-2 pt-2">
-                                                    <Link
-                                                         href="/events"
-                                                         onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                         className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
-                                                     >
-                                                         <div className="w-8 h-8 rounded-md bg-orange-50 flex items-center justify-center text-orange-600">
-                                                             <Calendar size={16} />
-                                                         </div>
-                                                         <span className="font-semibold text-slate-700">Events & Webinars</span>
-                                                     </Link>
-                                                     <Link
-                                                         href="/testimonials"
-                                                         onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                         className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
-                                                     >
-                                                         <div className="w-8 h-8 rounded-md bg-pink-50 flex items-center justify-center text-pink-600">
-                                                             <MessageSquare size={16} />
-                                                         </div>
-                                                         <span className="font-semibold text-slate-700">Testimonials</span>
-                                                     </Link>
-                                                    <Link
-                                                        href="/campus"
-                                                        onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
-                                                    >
-                                                        <div className="w-8 h-8 rounded-md bg-indigo-50 flex items-center justify-center text-indigo-600">
-                                                            <Building2 size={16} />
+                                                <div className="px-3 pb-3 flex flex-col gap-4 pt-2">
+                                                    {DISCOVER.map((group, i) => (
+                                                        <div key={i}>
+                                                            <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-1.5">{group.title}</div>
+                                                            <div className="flex flex-col gap-1">
+                                                                {group.links.map((link, j) => (
+                                                                    <Link
+                                                                        key={j}
+                                                                        href={link.href}
+                                                                        onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                                                        className="text-sm font-semibold text-neutral-700 py-1"
+                                                                    >
+                                                                        {link.label}
+                                                                    </Link>
+                                                                ))}
+                                                            </div>
                                                         </div>
-                                                        <span className="font-semibold text-slate-700">Campus</span>
-                                                    </Link>
-
-                                                    <Link
-                                                        href="/contact"
-                                                        onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
-                                                    >
-                                                        <div className="w-8 h-8 rounded-md bg-slate-100 flex items-center justify-center text-slate-600">
-                                                            <Users size={16} />
-                                                        </div>
-                                                        <span className="font-semibold text-slate-700">Contact Us</span>
-                                                    </Link>
-
-                                                    <Link
-                                                        href="/blog"
-                                                        onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
-                                                    >
-                                                        <div className="w-8 h-8 rounded-md bg-emerald-50 flex items-center justify-center text-emerald-600">
-                                                            <Library size={16} />
-                                                        </div>
-                                                        <span className="font-semibold text-slate-700">Resources</span>
-                                                    </Link>
-                                                    <Link
-                                                        href="/news"
-                                                        onClick={() => { setIsOpen(false); handleHaptic(); }}
-                                                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100/50 transition-colors"
-                                                    >
-                                                        <div className="w-8 h-8 rounded-md bg-red-50 flex items-center justify-center text-red-600">
-                                                            <Newspaper size={16} />
-                                                        </div>
-                                                        <span className="font-semibold text-slate-700">News</span>
-                                                    </Link>
+                                                    ))}
                                                 </div>
                                             </motion.div>
                                         )}
                                     </AnimatePresence>
                                 </div>
 
+                                {/* Mobile CTA */}
+                                <Link
+                                    href="https://compass.thefoundrys.com/login"
+                                    onClick={() => { setIsOpen(false); handleHaptic(); }}
+                                    className="flex items-center justify-center w-full p-4 rounded-2xl bg-black text-white font-bold text-center shadow-lg active:scale-95 transition-all mt-4"
+                                >
+                                    Sign In to Compass Portal
+                                </Link>
+
                             </div>
                         </div>
-
-                        {/* Sticky Mobile Footer CTA */}
-
                     </motion.div>
                 )}
             </AnimatePresence>

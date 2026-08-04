@@ -34,6 +34,7 @@ export function ApplyClient() {
     const PROGRAM_COURSES: Record<string, Record<LevelKey, string[]>> = {
         "AI": {
             "entry-level": [
+                "AI Launchpad Mastery Package",
                 "Certified in AI Engineering",
                 "Certified in Prompt Engineering",
                 "Certified in Zero-to-One LLM",
@@ -43,6 +44,7 @@ export function ApplyClient() {
                 "AI Strategy & Institutional Intelligence",
             ],
             "professional": [
+                "Artificial Intelligence Mastery Package",
                 "Certified Professional in AI Engineering",
                 "Certified Professional in AI Research",
                 "Certified Professional in AI Operations",
@@ -54,6 +56,7 @@ export function ApplyClient() {
         },
         "Cyber Security": {
             "entry-level": [
+                "Cyber Launchpad Mastery Package",
                 "Certified in Cybersecurity",
                 "Certified in Malware Analysis",
                 "Certified in VAPT for AI",
@@ -61,6 +64,7 @@ export function ApplyClient() {
                 "Certified in AI Security",
             ],
             "professional": [
+                "Cyber Security Mastery Package",
                 "Certified Professional in Cyber Security",
                 "Certified Professional in VAPT for AI",
                 "Certified Professional in Security for AI",
@@ -69,11 +73,13 @@ export function ApplyClient() {
         },
         "Blockchain": {
             "entry-level": [
+                "Blockchain Launchpad Mastery Package",
                 "Certified in Block Chain",
                 "Certified in NFT",
                 "Certified in Decentralized Systems",
             ],
             "professional": [
+                "Blockchain Mastery Package",
                 "Certified Professional in Block Chain",
                 "Certified Professional in NFT",
                 "Certified Professional in Decentralized Systems",
@@ -81,9 +87,11 @@ export function ApplyClient() {
         },
         "Quantum Computing": {
             "entry-level": [
+                "Quantum Launchpad Mastery Package",
                 "Certified Professional in Quantum Fundamentals",
             ],
             "professional": [
+                "Quantum Computing Mastery Package",
                 "Certified Professional in Quantum Fundamentals",
             ],
         },

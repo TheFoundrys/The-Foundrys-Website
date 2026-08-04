@@ -465,7 +465,12 @@ export function SyllabusMindMap({
                                     {hubTitle}
                                 </span>
                                 <motion.div
-                                    className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-slate-950 text-white text-[8px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-800 shadow-md whitespace-nowrap animate-pulse"
+                                    style={{
+                                        backgroundColor: "#0f172a",
+                                        color: "#ffffff",
+                                        borderColor: "#1e293b",
+                                    }}
+                                    className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-[8px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border shadow-md whitespace-nowrap animate-pulse"
                                     animate={{
                                         scale: isExpanded ? 0.95 : [1, 1.05, 1],
                                     }}
@@ -493,7 +498,11 @@ export function SyllabusMindMap({
                                         if (!isExpanded) return;
                                         setActivePeriod(isActive ? 0 : item.period);
                                     }}
-                                    style={{ left: coord.left, top: coord.top }}
+                                    style={{
+                                        left: coord.left,
+                                        top: coord.top,
+                                        ...(isActive ? { color: "#ffffff" } : {})
+                                    }}
                                     initial={{ opacity: 0, scale: 0 }}
                                     animate={{
                                         opacity: isExpanded ? (isAnyActive && !isActive ? 0.45 : 1) : 0,
@@ -506,7 +515,7 @@ export function SyllabusMindMap({
                                     }}
                                     className={`absolute -translate-x-1/2 -translate-y-1/2 z-20 ${data.length >= 7 ? "w-36 p-2 rounded-xl" : "w-44 p-3 rounded-2xl"} flex flex-col items-center justify-center text-center border transition-all duration-300 shadow-sm ${!isExpanded ? "pointer-events-none" : ""
                                         } ${isActive
-                                            ? `bg-gradient-to-br ${styles.gradient} text-white ${styles.borderActive} shadow-lg ${styles.shadowActive}`
+                                            ? `bg-gradient-to-br ${styles.gradient} ${styles.borderActive} shadow-lg ${styles.shadowActive}`
                                             : `bg-white text-slate-700 border-slate-200 ${styles.weekHover} hover:bg-slate-50`
                                         }`}
                                 >

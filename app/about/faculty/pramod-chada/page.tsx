@@ -14,7 +14,7 @@ export default function PramodChadaPage() {
                 <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-[100px]" />
                 <div className="container mx-auto max-w-6xl relative z-10">
                     <div className="flex flex-col md:flex-row gap-12 items-center">
-                        <div className="w-64 h-64 md:w-80 md:h-80 relative rounded-2xl overflow-hidden border-4 border-slate-800 shrink-0">
+                        <div className="w-64 h-64 md:w-80 md:h-80 relative rounded-2xl overflow-hidden shrink-0">
                             <Image
                                 src="/images/pramod-chada.jpg"
                                 alt="Pramod Chada"

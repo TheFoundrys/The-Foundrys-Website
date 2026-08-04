@@ -224,7 +224,7 @@ const WhoIsThisForCard = ({ item, index }: { item: any; index: number }) => {
       transition={{ delay: index * 0.1 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      className="group relative bg-slate-900/40 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 hover:border-emerald-500/30 transition-all duration-300"
+      className="group relative bg-slate-900 border border-slate-700 rounded-2xl p-8 hover:border-emerald-500/50 transition-all duration-300"
     >
       <div className="flex items-start gap-5">
         <div className={`shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
@@ -237,7 +237,7 @@ const WhoIsThisForCard = ({ item, index }: { item: any; index: number }) => {
               <DecryptText text={item.title} parentHover={isHovered} />
             </h3>
           </div>
-          <p className="text-slate-400 leading-relaxed font-medium">{item.desc}</p>
+          <p className="text-slate-300 leading-relaxed font-medium">{item.desc}</p>
         </div>
       </div>
     </motion.div>
@@ -283,22 +283,8 @@ export function CyberClient() {
       <Navbar />
 
       {/* HERO SECTION */}
-      <section id="hero" className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0 select-none">
-          <motion.div
-            initial={{ scale: 1.1 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 2, ease: "easeOut" }}
-            className="w-full h-full"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
-              alt="Cybersecurity"
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-slate-900/90" />
-        </div>
+      <section id="hero" className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden bg-white">
+        <div className="absolute inset-0 z-0 select-none bg-white" />
 
         <div className="container mx-auto max-w-6xl relative z-10 px-4 text-center">
           <motion.div
@@ -307,26 +293,26 @@ export function CyberClient() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="max-w-5xl mx-auto"
           >
-            <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white mb-8 leading-[0.9]">
+            <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-slate-950 mb-8 leading-[0.9]">
               Cyber Security.
             </h1>
 
-            <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-light mb-12">
+            <p className="text-xl md:text-2xl text-slate-700 max-w-3xl mx-auto leading-relaxed font-light mb-12">
               A {duration}-year immersive degree merging Offensive & Defensive Security. <br />
-              <span className="text-white font-medium">Defend the digital frontier. Build the future of trust.</span>
+              <span className="text-slate-950 font-medium">Defend the digital frontier. Build the future of trust.</span>
             </p>
 
             {/* Duration Toggle */}
             <div className="flex justify-center gap-4 mb-12">
               <button 
                 onClick={() => setDuration(3)}
-                className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 3 ? 'bg-emerald-600 text-white' : 'bg-slate-900/50 text-slate-400 hover:bg-slate-800 border border-slate-800'}`}
+                className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 3 ? 'bg-emerald-600 text-white' : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200'}`}
               >
                 3-Year Program
               </button>
               <button 
                 onClick={() => setDuration(4)}
-                className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 4 ? 'bg-emerald-600 text-white' : 'bg-slate-900/50 text-slate-400 hover:bg-slate-800 border border-slate-800'}`}
+                className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 4 ? 'bg-emerald-600 text-white' : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200'}`}
               >
                 4-Year Program
               </button>
@@ -339,33 +325,33 @@ export function CyberClient() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50"
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500"
         >
           <span className="text-[10px] uppercase tracking-widest">Scroll</span>
-          <div className="w-[1px] h-12 bg-gradient-to-b from-white/0 via-white/50 to-white/0" />
+          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-slate-400 to-transparent" />
         </motion.div>
       </section>
 
       {/* Program Details Card */}
       <div className="relative z-20 px-4 -mt-14 mb-12">
         <div className="mx-auto max-w-7xl">
-          <div className="bg-slate-900/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-800 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
+          <div className="bg-slate-900 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-700 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
               <div>
-                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Program Length</p>
-                <p className="text-lg font-bold text-white">{duration}-Year Full-Time</p>
+                <p className="text-xs text-slate-400 uppercase tracking-widest font-bold mb-1">Program Length</p>
+                <p className="text-lg font-bold" style={{ color: '#ffffff' }}>{duration}-Year Full-Time</p>
               </div>
               <div>
-                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Delivery Mode</p>
-                <p className="text-lg font-bold text-white">On-Campus, Immersive</p>
+                <p className="text-xs text-slate-400 uppercase tracking-widest font-bold mb-1">Delivery Mode</p>
+                <p className="text-lg font-bold" style={{ color: '#ffffff' }}>On-Campus, Immersive</p>
               </div>
               <div>
-                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Campus</p>
-                <p className="text-lg font-bold text-white">Hyderabad, India</p>
+                <p className="text-xs text-slate-400 uppercase tracking-widest font-bold mb-1">Campus</p>
+                <p className="text-lg font-bold" style={{ color: '#ffffff' }}>Hyderabad, India</p>
               </div>
               <div>
-                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Admissions</p>
-                <p className="text-lg font-bold text-white">Closed</p>
+                <p className="text-xs text-slate-400 uppercase tracking-widest font-bold mb-1">Admissions</p>
+                <p className="text-lg font-bold" style={{ color: '#ffffff' }}>Closed</p>
               </div>
             </div>
             <div className="flex gap-3 w-full lg:w-auto">
@@ -646,7 +632,7 @@ export function CyberClient() {
         title="What You'll Become"
         subtitle="The roles our graduates are being trained to lead. These aren't jobs — they're missions."
         themeColor="emerald"
-        isDark={true}
+        isDark={false}
       />
 
       <Footer isDark={true} />

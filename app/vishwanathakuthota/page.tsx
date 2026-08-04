@@ -31,7 +31,7 @@ export default function VishwanathAkuthotaProfile() {
                             transition={{ duration: 0.6 }}
                             className="w-full md:w-1/3 relative"
                         >
-                            <div className="aspect-[3/4] relative rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-800 bg-slate-800">
+                            <div className="aspect-[3/4] relative rounded-2xl overflow-hidden shadow-2xl bg-slate-800">
                                 <Image
                                     src="/images/vishwa-new.jpg"
                                     alt="Vishwanath Akuthota"
@@ -336,11 +336,11 @@ export default function VishwanathAkuthotaProfile() {
                         </div>
 
                         {/* Philosophy */}
-                        <div className="bg-blue-600 rounded-3xl p-10 text-white mb-16 shadow-xl shadow-blue-200">
-                            <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                                <Zap className="text-white" size={24} /> Professional Philosophy
+                        <div className="bg-slate-50 border border-slate-200 rounded-3xl p-10 mb-16 shadow-sm">
+                            <h3 className="text-2xl font-bold mb-6 flex items-center gap-2 text-slate-900">
+                                <Zap className="text-blue-600" size={24} /> Professional Philosophy
                             </h3>
-                            <p className="italic text-lg text-blue-50 leading-relaxed font-medium">
+                            <p className="italic text-lg text-slate-600 leading-relaxed font-medium">
                                 "Creating valuable products requires an engineering mindset combined with the precision of a mathematician. Our mission is to build responsible, ethical, and trustworthy AI that empowers humanity."
                             </p>
                         </div>

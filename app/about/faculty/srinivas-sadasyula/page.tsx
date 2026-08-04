@@ -20,7 +20,7 @@ export default function SrinivasSadasyulaPage() {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.6 }}
-                            className="w-64 h-64 md:w-80 md:h-80 relative rounded-2xl overflow-hidden border-4 border-slate-800 shrink-0"
+                            className="w-64 h-64 md:w-80 md:h-80 relative rounded-2xl overflow-hidden shrink-0"
                         >
                             <Image
                                 src="/images/srinivas-sadasyula.jpg"

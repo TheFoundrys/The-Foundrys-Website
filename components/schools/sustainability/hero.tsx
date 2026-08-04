@@ -49,7 +49,7 @@ export function SustainabilityHero() {
                     </div>
                 </motion.div>
 
-                <Link href="/apply" className="px-10 py-5 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-700 transition-all flex items-center gap-2 group w-fit mx-auto shadow-xl shadow-emerald-900/20">
+                <Link href="/apply" className="px-10 py-5 bg-slate-950 text-white font-bold rounded-lg hover:bg-slate-900 transition-all flex items-center gap-2 group w-fit mx-auto shadow-xl hover:shadow-2xl active:scale-95">
                     Apply to the School
                     <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>

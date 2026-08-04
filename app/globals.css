@@ -226,4 +226,399 @@ body {
         width: 0 !important;
         height: 0 !important;
     }
-}
+}
+
+/* ==========================================================================
+   GLOBAL MONOCHROMATIC WHITE OVERRIDES (APPLIES TO ALL PAGES)
+   ========================================================================== */
+
+/* Force all section/main backgrounds to white */
+main,
+section,
+.bg-slate-900,
+.bg-slate-950,
+.bg-neutral-900,
+.bg-neutral-950,
+.bg-zinc-900,
+.bg-zinc-950,
+[class*="bg-[#0f172a]"],
+[class*="bg-[#0a0f1d]"],
+[class*="bg-[#090d16]"],
+.bg-black {
+    background-color: #ffffff !important;
+    background-image: none !important;
+}
+
+/* Convert all white typography classes to black */
+.text-white,
+.text-slate-100,
+.text-slate-200,
+.text-slate-300,
+.text-slate-400,
+.text-neutral-100,
+.text-neutral-200,
+.text-neutral-300,
+.text-neutral-400 {
+    color: #000000 !important;
+}
+
+/* Set structural tag fonts in dark regions to black */
+.bg-slate-900 h1,
+.bg-slate-900 h2,
+.bg-slate-900 h3,
+.bg-slate-900 h4,
+.bg-slate-900 h5,
+.bg-slate-900 h6,
+.bg-slate-900 p,
+.bg-slate-900 span,
+.bg-slate-900 li,
+.bg-slate-900 div,
+.bg-slate-950 h1,
+.bg-slate-950 h2,
+.bg-slate-950 h3,
+.bg-slate-950 h4,
+.bg-slate-950 h5,
+.bg-slate-950 h6,
+.bg-slate-950 p,
+.bg-slate-950 span,
+.bg-slate-950 li,
+.bg-slate-950 div,
+.bg-neutral-900 h1,
+.bg-neutral-900 h2,
+.bg-neutral-900 h3,
+.bg-neutral-900 h4,
+.bg-neutral-900 h5,
+.bg-neutral-900 h6,
+.bg-neutral-900 p,
+.bg-neutral-900 span,
+.bg-neutral-900 li,
+.bg-neutral-900 div,
+.bg-neutral-950 h1,
+.bg-neutral-950 h2,
+.bg-neutral-950 h3,
+.bg-neutral-950 h4,
+.bg-neutral-950 h5,
+.bg-neutral-950 h6,
+.bg-neutral-950 p,
+.bg-neutral-950 span,
+.bg-neutral-950 li,
+.bg-neutral-950 div,
+.bg-black h1,
+.bg-black h2,
+.bg-black h3,
+.bg-black h4,
+.bg-black h5,
+.bg-black h6,
+.bg-black p,
+.bg-black span,
+.bg-black li,
+.bg-black div {
+    color: #000000 !important;
+}
+
+/* Allow primary action CTA buttons to remain high-contrast solid black */
+button.bg-black,
+a.bg-black,
+button.bg-neutral-900,
+a.bg-neutral-900,
+.bg-black.rounded-full,
+.bg-neutral-950.text-white,
+.px-6.py-2.rounded-full.bg-black {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+}
+
+/* Force standard dark links/arrows within action containers to use white */
+button.bg-black span,
+a.bg-black span,
+button.bg-black svg,
+a.bg-black svg {
+    color: #ffffff !important;
+}
+
+/* Remove colorful blur shapes and background glow animations */
+div[class*="bg-blue-600/"],
+div[class*="bg-indigo-600/"],
+div[class*="bg-blue-500/"],
+div[class*="bg-indigo-500/"],
+div[class*="blur-3xl"],
+div[class*="blur-[120px]"],
+div[class*="blur-[100px]"],
+div[class*="blur-[150px]"] {
+    display: none !important;
+}
+
+/* ==========================================================================
+   HIGH-CONTRAST MONOCHROMATIC BLACK CARDS & PANELS
+   ========================================================================== */
+
+.stark-black-card,
+[class*="bg-slate-900/50"],
+[class*="bg-slate-900/40"],
+[class*="bg-slate-900/30"],
+[class*="bg-slate-950/40"],
+[class*="bg-slate-950/30"],
+[class*="bg-slate-800/50"] {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    color: #0f172a !important;
+}
+
+.stark-black-pill {
+    background-color: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+    color: #334155 !important;
+}
+
+.stark-black-pill:hover {
+    background-color: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+}
+
+/* Force GitHub button background to be transparent and border-only */
+a.bg-slate-800.rounded-full,
+[class*="bg-slate-800"].rounded-full {
+    background-color: transparent !important;
+    border-color: #cbd5e1 !important;
+    color: #000000 !important;
+}
+a.bg-slate-800.rounded-full svg,
+[class*="bg-slate-800"].rounded-full svg {
+    color: #000000 !important;
+}
+a.bg-slate-800.rounded-full:hover,
+[class*="bg-slate-800"].rounded-full:hover {
+    background-color: #f1f5f9 !important;
+    color: #000000 !important;
+}
+
+/* Force headings and buttons/links inside light panels/cards to stay dark */
+[class*="bg-slate-900/30"] h1,
+[class*="bg-slate-900/30"] h2,
+[class*="bg-slate-900/30"] h3,
+[class*="bg-slate-900/30"] h4,
+[class*="bg-slate-900/30"] h5,
+[class*="bg-slate-900/30"] h6,
+[class*="bg-slate-900/30"] div,
+[class*="bg-slate-900/30"] button,
+[class*="bg-slate-900/30"] a,
+[class*="bg-slate-900/40"] h1,
+[class*="bg-slate-900/40"] h2,
+[class*="bg-slate-900/40"] h3,
+[class*="bg-slate-900/40"] h4,
+[class*="bg-slate-900/40"] h5,
+[class*="bg-slate-900/40"] h6,
+[class*="bg-slate-900/40"] div,
+[class*="bg-slate-900/40"] button,
+[class*="bg-slate-900/40"] a,
+[class*="bg-slate-950/40"] h1,
+[class*="bg-slate-950/40"] h2,
+[class*="bg-slate-950/40"] h3,
+[class*="bg-slate-950/40"] h4,
+[class*="bg-slate-950/40"] h5,
+[class*="bg-slate-950/40"] h6,
+[class*="bg-slate-950/40"] div,
+[class*="bg-slate-950/40"] button,
+[class*="bg-slate-950/40"] a,
+[class*="bg-slate-900/50"] h1,
+[class*="bg-slate-900/50"] h2,
+[class*="bg-slate-900/50"] h3,
+[class*="bg-slate-900/50"] h4,
+[class*="bg-slate-900/50"] h5,
+[class*="bg-slate-900/50"] h6,
+[class*="bg-slate-900/50"] div,
+[class*="bg-slate-900/50"] button,
+[class*="bg-slate-900/50"] a,
+.stark-black-card h1,
+.stark-black-card h2,
+.stark-black-card h3,
+.stark-black-card h4,
+.stark-black-card h5,
+.stark-black-card h6,
+.stark-black-card div,
+.stark-black-card button,
+.stark-black-card a,
+.stark-black-pill h1,
+.stark-black-pill h2,
+.stark-black-pill h3,
+.stark-black-pill h4,
+.stark-black-pill h5,
+.stark-black-pill h6,
+.stark-black-pill div,
+.stark-black-pill button,
+.stark-black-pill a {
+    color: #0f172a !important;
+}
+
+/* Force description text inside light panels/cards to stay readable medium grey */
+[class*="bg-slate-900/30"] p,
+[class*="bg-slate-900/30"] span,
+[class*="bg-slate-900/40"] p,
+[class*="bg-slate-900/40"] span,
+[class*="bg-slate-950/40"] p,
+[class*="bg-slate-950/40"] span,
+[class*="bg-slate-900/50"] p,
+[class*="bg-slate-900/50"] span,
+.stark-black-card p,
+.stark-black-card span,
+.stark-black-pill p,
+.stark-black-pill span {
+    color: #475569 !important;
+}
+
+/* Ensure nested elements with light backgrounds inside dark panels keep their dark text color */
+[class*="bg-slate-900"] .bg-white,
+[class*="bg-slate-950"] .bg-white,
+.stark-black-card .bg-white,
+[class*="bg-slate-900"] .bg-slate-50,
+[class*="bg-slate-950"] .bg-slate-50,
+.stark-black-card .bg-slate-50,
+[class*="bg-"] .bg-white,
+[class*="bg-"] .bg-white *,
+[class*="bg-"] .bg-slate-50,
+[class*="bg-"] .bg-slate-50 *,
+[class*="bg-"] a.bg-white,
+[class*="bg-"] a.bg-white *,
+[class*="bg-"] button.bg-white,
+[class*="bg-"] button.bg-white * {
+    color: #000000 !important;
+}
+
+/* GLOBAL WHITE BUTTON TEXT OVERRIDE: FORCE BLACK TEXT ON SOLID WHITE ELEMENTS */
+.bg-white,
+.bg-white *,
+.bg-slate-50,
+.bg-slate-50 *,
+a.bg-white,
+a.bg-white *,
+button.bg-white,
+button.bg-white * {
+    color: #000000 !important;
+}
+
+/* GLOBAL BLACK BUTTON TEXT OVERRIDE: FORCE WHITE TEXT ON SOLID BLACK ELEMENTS */
+.bg-black,
+.bg-black *,
+a.bg-black,
+a.bg-black *,
+button.bg-black,
+button.bg-black * {
+    color: #ffffff !important;
+}
+
+/* ==========================================================================
+   MINIMALIST SWAP BUTTON: WHITE (NORMAL) -> BLACK (HOVER)
+   ========================================================================== */
+
+.minimalist-swap-button {
+    background-color: #ffffff !important;
+    border-color: #000000 !important;
+    color: #000000 !important;
+}
+
+.minimalist-swap-button * {
+    color: #000000 !important;
+}
+
+.minimalist-swap-button:hover {
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+.minimalist-swap-button:hover * {
+    color: #ffffff !important;
+}
+
+/* Programs page: keep the monochrome white conversion readable. */
+.programs-light-page {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+}
+
+.programs-light-page [class*="bg-slate-900/"],
+.programs-light-page [class*="bg-slate-950/"],
+.programs-light-page [class*="bg-white/5"],
+.programs-light-page [class*="hover:bg-white/10"]:hover,
+.programs-light-page .stark-black-card,
+.programs-light-page .stark-black-pill {
+    background-color: #ffffff !important;
+}
+
+.programs-light-page [class*="bg-slate-950/"],
+.programs-light-page [class*="bg-white/5"],
+.programs-light-page [class*="border-white/"],
+.programs-light-page .stark-black-card,
+.programs-light-page .stark-black-pill {
+    border-color: #e2e8f0 !important;
+}
+
+.programs-light-page .text-white,
+.programs-light-page .text-slate-100,
+.programs-light-page .text-slate-200,
+.programs-light-page .text-transparent,
+.programs-light-page .text-lime-vibrant,
+.programs-light-page .text-neon-blue,
+.programs-light-page .text-sunset-orange,
+.programs-light-page .text-muted,
+.programs-light-page .stark-black-pill-title,
+.programs-light-page .hover\:text-white:hover,
+.programs-light-page .group:hover .group-hover\:text-lime-vibrant,
+.programs-light-page .group:hover .group-hover\:text-neon-blue,
+.programs-light-page .group:hover .group-hover\:text-sunset-orange {
+    color: #0f172a !important;
+    background-image: none !important;
+}
+
+.programs-light-page .text-slate-300,
+.programs-light-page .text-slate-400,
+.programs-light-page .text-slate-500,
+.programs-light-page .stark-black-pill-desc,
+.programs-light-page .group:hover .group-hover\:text-slate-300 {
+    color: #475569 !important;
+}
+
+.programs-light-page .bg-lime-vibrant {
+    background-color: #0f172a !important;
+}
+
+.programs-light-page .bg-black,
+.programs-light-page a.bg-black,
+.programs-light-page button.bg-black {
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+.programs-light-page .bg-black *,
+.programs-light-page a.bg-black *,
+.programs-light-page button.bg-black * {
+    color: #ffffff !important;
+}
+
+/* Force social icons / email icons with bg-slate-800 and rounded-lg to be transparent with border */
+.bg-slate-800.rounded-lg,
+a.bg-slate-800.rounded-lg,
+div.bg-slate-800.rounded-lg,
+.p-2.bg-slate-800 {
+    background-color: transparent !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #334155 !important;
+}
+.bg-slate-800.rounded-lg svg,
+a.bg-slate-800.rounded-lg svg,
+.p-2.bg-slate-800 svg {
+    color: #334155 !important;
+}
+.bg-slate-800.rounded-lg:hover,
+a.bg-slate-800.rounded-lg:hover,
+.p-2.bg-slate-800:hover {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+}
+.bg-slate-800.rounded-lg:hover svg,
+a.bg-slate-800.rounded-lg:hover svg,
+.p-2.bg-slate-800:hover svg {
+    color: #0f172a !important;
+}

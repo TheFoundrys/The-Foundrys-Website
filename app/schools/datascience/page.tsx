@@ -461,13 +461,8 @@ export default function DataScienceSchoolPage() {
             <Navbar />
 
             {/* HERO SECTION */}
-            <section id="hero" className="relative min-h-[90vh] flex items-center bg-[#030712] overflow-hidden">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
-                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2" />
-
-                <div className="absolute right-0 top-0 w-1/2 h-full z-0 hidden lg:block pointer-events-none">
-                    <DataPulse />
-                </div>
+            <section id="hero" className="relative min-h-[90vh] flex items-center bg-white overflow-hidden">
+                <div className="absolute inset-0 z-0 select-none bg-white" />
 
                 <div className="container mx-auto max-w-[1450px] relative z-10 px-4">
                     <div className="flex flex-col justify-center text-left py-24 md:py-32 lg:min-h-[90vh] relative">
@@ -477,43 +472,43 @@ export default function DataScienceSchoolPage() {
                             transition={{ duration: 0.8 }}
                             className="max-w-5xl relative z-10"
                         >
-                            <h1 className="text-6xl sm:text-7xl md:text-[7rem] lg:text-[8.5rem] font-black tracking-tighter text-white mb-8 md:mb-10 leading-[0.85] uppercase">
+                            <h1 className="text-6xl sm:text-7xl md:text-[7rem] lg:text-[8.5rem] font-black tracking-tighter text-slate-950 mb-8 md:mb-10 leading-[0.85] uppercase">
                                 Data <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-200 to-blue-500 pb-2 inline-block pr-8">Science</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 pb-2 inline-block pr-8 animate-pulse">Science</span>
                             </h1>
 
-                            <p className="text-xl md:text-3xl text-slate-300 leading-relaxed font-light mb-16 max-w-3xl">
+                            <p className="text-xl md:text-3xl text-slate-700 leading-relaxed font-light mb-16 max-w-3xl">
                                 A {duration}-year immersive degree merging Advanced Analytics with Entrepreneurship. <br />
-                                <span className="text-white font-medium">Graduate with Insight, Precision & Real-World Impact.</span>
+                                <span className="text-slate-950 font-medium">Graduate with Insight, Precision & Real-World Impact.</span>
                             </p>
 
                             {/* Duration Toggle */}
                             <div className="flex gap-4 mb-12">
                                 <button
                                     onClick={() => setDuration(3)}
-                                    className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 3 ? 'bg-blue-600 text-white' : 'bg-white/10 text-white/60 hover:bg-white/20'}`}
+                                    className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 3 ? 'bg-blue-600 text-white' : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200'}`}
                                 >
                                     3-Year Program
                                 </button>
                                 <button
                                     onClick={() => setDuration(4)}
-                                    className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 4 ? 'bg-blue-600 text-white' : 'bg-white/10 text-white/60 hover:bg-white/20'}`}
+                                    className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 4 ? 'bg-blue-600 text-white' : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200'}`}
                                 >
                                     4-Year Program
                                 </button>
                             </div>
 
-                            <div className="grid sm:grid-cols-3 gap-10 md:gap-16 pt-12 border-t border-white/10 max-w-4xl relative z-10">
+                            <div className="grid sm:grid-cols-3 gap-10 md:gap-16 pt-12 border-t border-slate-200 max-w-4xl relative z-10">
                                 <div>
                                     <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-[0.2em] font-bold mb-4">Available Degrees</p>
                                     <div className="space-y-1.5 border-l-2 border-blue-500/30 pl-4">
                                         {duration === 3 ? (
                                             <>
-                                                <p className="text-sm md:text-base font-semibold text-white tracking-tight">B.Sc in Data Science</p>
+                                                <p className="text-sm md:text-base font-semibold text-slate-900 tracking-tight">B.Sc in Data Science</p>
                                             </>
                                         ) : (
                                             <>
-                                                <p className="text-sm md:text-base font-semibold text-white tracking-tight">B.Tech in Data Science</p>
+                                                <p className="text-sm md:text-base font-semibold text-slate-900 tracking-tight">B.Tech in Data Science</p>
                                             </>
                                         )}
                                     </div>
@@ -523,7 +518,7 @@ export default function DataScienceSchoolPage() {
                                     <div>
                                         <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-[0.2em] font-bold mb-4">Partner Institutions</p>
                                         <div className="space-y-1.5 border-l-2 border-indigo-500/30 pl-4">
-                                            <p className="text-sm md:text-base font-semibold text-white tracking-tight">Keshava Degree College</p>
+                                            <p className="text-sm md:text-base font-semibold text-slate-900 tracking-tight">Keshava Degree College</p>
                                         </div>
                                     </div>
                                 )}
@@ -531,15 +526,15 @@ export default function DataScienceSchoolPage() {
                                     <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-[0.2em] font-bold mb-4">Industry Certifications</p>
                                     <div className="flex gap-5 border-l-2 border-blue-500/30 pl-4 h-full items-start">
                                         <div className="text-left">
-                                            <span className="text-base md:text-lg font-black text-blue-400 tracking-widest block mb-0.5">FCEP</span>
+                                            <span className="text-base md:text-lg font-black text-blue-600 tracking-widest block mb-0.5">FCEP</span>
                                             <span className="text-[9px] text-slate-500 uppercase font-bold tracking-widest block">Exec</span>
                                         </div>
                                         <div className="text-left">
-                                            <span className="text-base md:text-lg font-black text-indigo-400 tracking-widest block mb-0.5">FCIP</span>
+                                            <span className="text-base md:text-lg font-black text-indigo-600 tracking-widest block mb-0.5">FCIP</span>
                                             <span className="text-[9px] text-slate-500 uppercase font-bold tracking-widest block">Pract</span>
                                         </div>
                                         <div className="text-left">
-                                            <span className="text-base md:text-lg font-black text-blue-300 tracking-widest block mb-0.5">FFP</span>
+                                            <span className="text-base md:text-lg font-black text-blue-700 tracking-widest block mb-0.5">FFP</span>
                                             <span className="text-[9px] text-slate-500 uppercase font-bold tracking-widest block">Prof</span>
                                         </div>
                                     </div>
@@ -553,10 +548,10 @@ export default function DataScienceSchoolPage() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.5, duration: 1 }}
-                    className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50"
+                    className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500"
                 >
                     <span className="text-[10px] uppercase tracking-widest">Scroll</span>
-                    <div className="w-[1px] h-12 bg-gradient-to-b from-white/0 via-white/50 to-white/0" />
+                    <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-slate-400 to-transparent" />
                 </motion.div>
             </section>
 

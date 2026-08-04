@@ -10,9 +10,24 @@ interface RoleDetailsContentProps {
         responsibilities: string[];
     };
     isDark?: boolean;
+    themeColor?: "blue" | "emerald" | "indigo" | "stone";
 }
 
-export function RoleDetailsContent({ role, isDark = false }: RoleDetailsContentProps) {
+export function RoleDetailsContent({ role, isDark = false, themeColor = "blue" }: RoleDetailsContentProps) {
+    const skillStyles = {
+        blue: isDark ? "bg-blue-500/10 text-blue-400 border border-blue-500/20" : "bg-blue-50 text-blue-700",
+        emerald: isDark ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" : "bg-emerald-50 text-emerald-700",
+        indigo: isDark ? "bg-indigo-500/10 text-indigo-400 border border-indigo-500/20" : "bg-indigo-50 text-indigo-700",
+        stone: isDark ? "bg-stone-500/10 text-stone-400 border border-stone-500/20" : "bg-stone-50 text-stone-700"
+    };
+
+    const iconStyles = {
+        blue: isDark ? "text-blue-400" : "text-blue-500",
+        emerald: isDark ? "text-emerald-400" : "text-emerald-500",
+        indigo: isDark ? "text-indigo-400" : "text-indigo-500",
+        stone: isDark ? "text-stone-400" : "text-stone-500"
+    };
+
     return (
         <>
             <div className="flex flex-col md:flex-row gap-6 mb-6">
@@ -23,7 +38,7 @@ export function RoleDetailsContent({ role, isDark = false }: RoleDetailsContentP
                     </p>
                     <div className="flex flex-wrap gap-2">
                         {role.skills.map(skill => (
-                            <span key={skill} className={`px-3 py-1 rounded-full text-sm font-semibold ${isDark ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" : "bg-blue-50 text-blue-700"}`}>
+                            <span key={skill} className={`px-3 py-1 rounded-full text-sm font-semibold ${skillStyles[themeColor]}`}>
                                 {skill}
                             </span>
                         ))}
@@ -46,7 +61,7 @@ export function RoleDetailsContent({ role, isDark = false }: RoleDetailsContentP
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {role.responsibilities.map((resp, i) => (
                         <div key={i} className="flex items-start gap-3">
-                            <CheckCircle2 size={18} className={`${isDark ? "text-emerald-500" : "text-blue-500"} mt-0.5 shrink-0`} />
+                            <CheckCircle2 size={18} className={`${iconStyles[themeColor]} mt-0.5 shrink-0`} />
                             <span className={`${isDark ? "text-slate-400" : "text-slate-600"} text-sm font-medium`}>{resp}</span>
                         </div>
                     ))}
