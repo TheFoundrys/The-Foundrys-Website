@@ -74,13 +74,7 @@ export function Navbar() {
         ],
         "specialized": [
             {
-                href: "/schools/venture-building",
-                label: "Venture Building",
-                desc: "Zero to One",
-                icon: Rocket,
-            },
-            {
-                href: "/schools/certified-innovator",
+                href: "/programs/fellow-executive",
                 label: "Certified Innovator",
                 desc: "Systems Thinkers",
                 icon: Lightbulb,
@@ -118,8 +112,8 @@ export function Navbar() {
                 icon: Briefcase,
             },
             {
-                href: "/programs/executive",
-                label: "Executive Leadership",
+                href: "/programs/fellow-executive",
+                label: "Fellow Executive Program",
                 desc: "Strategic Vision",
                 icon: Briefcase,
             },
@@ -137,37 +131,43 @@ export function Navbar() {
             label: "Centre for Applied Artificial Intelligence (CAAI)",
             desc: "Fostering breakthroughs in generative models, agentic workflows, and neural architectures.",
             icon: BrainCircuit,
-            href: "/schools/ai"
+            href: "#"
         },
         {
             label: "Centre for Cybersecurity & Defense (CCD)",
             desc: "Researching secure network design, active cryptography, and intelligence protection models.",
             icon: ShieldCheck,
-            href: "/schools/cyber"
+            href: "#"
         },
         {
             label: "Quantum Computing Research Initiative (QCRI)",
             desc: "Exploring quantum entanglement simulation, algorithmic speedups, and industrial optimization.",
             icon: Atom,
-            href: "/schools/quantum-computing"
+            href: "#"
         },
         {
             label: "Distributed Ledger & Blockchain Lab (DLBL)",
             desc: "Advancing decentralization protocols, trust infrastructure, and smart contract optimization.",
             icon: Network,
-            href: "/schools/blockchain"
+            href: "#"
         },
         {
             label: "Venture Building & Incubation Institute (VBII)",
             desc: "Translating cutting-edge deep tech research into scalable commercial startup frameworks.",
             icon: Rocket,
-            href: "/schools/venture-building"
+            href: "#"
         },
         {
             label: "Sustainability & Green Tech Policy Centre (SGPC)",
             desc: "Designing eco-efficiency metrics, ESG systems, and carbon accounting architectures.",
             icon: Leaf,
-            href: "/schools/esg"
+            href: "#"
+        },
+        {
+            label: "Centre of Excellence (CoE)",
+            desc: "Establish high-performance computing labs, applied curriculum, and research environments.",
+            icon: Building2,
+            href: "#"
         }
     ];
 
@@ -290,7 +290,7 @@ export function Navbar() {
                             onMouseEnter={() => setHoveredMenu("experiences")}
                             className="flex items-center gap-1 cursor-default py-8 text-xs font-bold uppercase tracking-widest relative"
                         >
-                            <span className={cn("transition-colors hover:text-black", hoveredMenu === "experiences" ? "text-black" : "opacity-85")}>Experiences</span>
+                            <span className={cn("transition-colors hover:text-black", hoveredMenu === "experiences" ? "text-black" : "opacity-85")}>Alumni</span>
                             <ChevronDown size={12} className={cn("transition-transform duration-350 opacity-60", hoveredMenu === "experiences" ? "rotate-180 opacity-100" : "")} />
                         </div>
 
@@ -298,7 +298,7 @@ export function Navbar() {
                             onMouseEnter={() => setHoveredMenu("discover")}
                             className="flex items-center gap-1 cursor-default py-8 text-xs font-bold uppercase tracking-widest relative"
                         >
-                            <span className={cn("transition-colors hover:text-black", hoveredMenu === "discover" ? "text-black" : "opacity-85")}>Discover</span>
+                            <span className={cn("transition-colors hover:text-black", hoveredMenu === "discover" ? "text-black" : "opacity-85")}>About Us</span>
                             <ChevronDown size={12} className={cn("transition-transform duration-350 opacity-60", hoveredMenu === "discover" ? "rotate-180 opacity-100" : "")} />
                         </div>
                     </nav>
@@ -343,7 +343,7 @@ export function Navbar() {
                                             {/* Column 1: School of Deep Tech */}
                                             <div className="flex flex-col gap-6">
                                                 <h3 className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 border-b border-neutral-100 pb-2">
-                                                    School of Deep Tech
+                                                    School of DeepTech
                                                 </h3>
                                                 <div className="flex flex-col gap-4">
                                                     {COURSES["deep-tech"].map((course) => (
@@ -471,7 +471,7 @@ export function Navbar() {
                                                 <div className="p-5 rounded-2xl bg-neutral-50 border border-neutral-200">
                                                     <span className="text-[10px] font-bold text-black uppercase tracking-wider block mb-1">Deep Tech Publications</span>
                                                     <span className="text-xs text-neutral-500 block mb-3">Read research contributions in AI, Cryptography & Quantum Computing.</span>
-                                                    <Link href="/blog" onClick={() => setHoveredMenu(null)} className="text-xs font-bold text-black border-b border-black pb-0.5 inline-flex items-center gap-1">
+                                                    <Link href="/blog?category=research" onClick={() => setHoveredMenu(null)} className="text-xs font-bold text-black border-b border-black pb-0.5 inline-flex items-center gap-1">
                                                         Browse Research <ArrowRight size={10} />
                                                     </Link>
                                                 </div>

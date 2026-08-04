@@ -18,11 +18,11 @@ const SCHOOLS = [
         iconBg: "bg-blue-600",
         accent: "blue",
         programs: [
-            { title: "Artificial Intelligence", desc: "3 or 4-Year Track", href: "/schools/ai", icon: BrainCircuit },
-            { title: "Data Science", desc: "3 or 4-Year Track", href: "/schools/datascience", icon: LineChart },
-            { title: "Cyber Security", desc: "3 or 4-Year Track", href: "/schools/cyber", icon: ShieldCheck },
-            { title: "Quantum Computing", desc: "The Q-Layer", href: "/schools/quantum-computing", icon: Atom },
-            { title: "Blockchain", desc: "Trust Layer", href: "/schools/blockchain", icon: Network },
+            { title: "Artificial Intelligence", desc: "3 or 4-Year Track", href: "/programs", icon: BrainCircuit },
+            { title: "Data Science", desc: "3 or 4-Year Track", href: "/programs", icon: LineChart },
+            { title: "Cyber Security", desc: "3 or 4-Year Track", href: "/programs", icon: ShieldCheck },
+            { title: "Quantum Computing", desc: "The Q-Layer", href: "/programs", icon: Atom },
+            { title: "Blockchain", desc: "Trust Layer", href: "/programs", icon: Network },
         ]
     },
     {
@@ -35,9 +35,9 @@ const SCHOOLS = [
         iconBg: "bg-amber-600",
         accent: "amber",
         programs: [
-            { title: "Venture Building", desc: "Zero to One", href: "/schools/venture-building", icon: Rocket },
-            { title: "MBA in AI", desc: "Integrated 3+1", href: "/schools/certified-innovator", icon: Cpu },
-            { title: "MBA in Cyber Venture", desc: "Integrated 3+1", href: "/schools/certified-innovator", icon: ShieldCheck },
+            { title: "Venture Building", desc: "Zero to One", href: "/programs/fellow-executive", icon: Rocket },
+            { title: "MBA in AI", desc: "Integrated 3+1", href: "/programs/fellow-executive", icon: Cpu },
+            { title: "MBA in Cyber Venture", desc: "Integrated 3+1", href: "/programs/fellow-executive", icon: ShieldCheck },
         ]
     },
     {
@@ -50,7 +50,7 @@ const SCHOOLS = [
         iconBg: "bg-emerald-600",
         accent: "emerald",
         programs: [
-            { title: "ESG & Strategy", desc: "Strategic Responsibility", href: "/schools/sustainability", icon: Leaf },
+            { title: "ESG & Strategy", desc: "Strategic Responsibility", href: "/programs", icon: Leaf },
             { title: "AI x Green Tech", desc: "Engineering Duty", href: "/programs/sustainability-in-the-age-of-ai", icon: BrainCircuit },
         ]
     },
@@ -64,7 +64,7 @@ const SCHOOLS = [
         iconBg: "bg-cyan-600",
         accent: "cyan",
         programs: [
-            { title: "Renewable Energy", desc: "Powering Future", href: "/schools/renewable-energy", icon: Zap },
+            { title: "Renewable Energy", desc: "Powering Future", href: "/programs", icon: Zap },
         ]
     }
 ];

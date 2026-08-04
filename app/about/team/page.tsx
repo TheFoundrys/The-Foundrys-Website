@@ -100,7 +100,31 @@ const teamMembers = [
             website: "https://vivekrangabhashyam.com/"
         }
     },
-     {
+    {
+        name: "Abhishek Sharma",
+        role: "Senior Data Analyst",
+        image: "/images/abhishek shaarma.png",
+        bio: "Analytical professional with 8+ years of experience in driving organizational performance through deep data insights and actionable dashboards.",
+        profileLink: "/about/faculty/abhishek-sharma",
+        socials: {
+            linkedin: "https://linkedin.com/in/abhishek-sharma-27b585ba"
+        }
+    },
+    {
+        name: "Akuthota Aravind",
+        role: "Business Development Executive",
+        image: "/images/araavind.png",
+        bio: "Enabling strategic partnerships and expanding market opportunities at the convergence of Deep Tech and Sustainability.",
+        profileLink: "/about/faculty/akuthota-aravind"
+    },
+    {
+        name: "Soujanya Kanagala",
+        role: "Operations Head",
+        image: "/images/soujanya.jpg",
+        bio: "Operations Head with 14 years of experience specializing in business setup, operations, and organizational scaling.",
+        profileLink: "/about/faculty/soujanya-kanagala"
+    },
+    {
         name: "Dr. Jayaram",
         role: "Advisory Board Member",
         bio: "President of the Telangana Training and Placement Officers Association (TTPOA) and Vice President of the All India TPO Association. Bringing decades of experience in campus placements and aligning training ecosystems with industry needs.",
@@ -157,63 +181,6 @@ export default function TeamPage() {
                         {teamMembers.map((member, index) => (
                             <SmallTeamCard key={index} member={member} index={index} />
                         ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Advisory Board Section */}
-            <section className="py-24 px-6 bg-slate-50 border-t border-slate-200">
-                <div className="container mx-auto max-w-[1600px]">
-                    {/* <div className="text-center mb-16">
-
-                        <p className="text-slate-600 max-w-2xl mx-auto">Strategic guidance from industry veterans and visionaries.</p>
-                    </div> */}
-
-                    {/* Centered flex wrapper for members */}
-                    <div className="flex flex-wrap justify-center gap-10 max-w-[1600px] mx-auto">
-                        {/* <SmallTeamCard
-                            member={{
-                                name: "Gunda Lakshmaiah",
-                                role: "Business Development Executive",
-                                image: "/images/laxman.jpg",
-                                bio: "Driving growth at The Foundry’s through strategic partnerships and business opportunities in Deep Tech and Sustainability.",
-                                profileLink: "/about/faculty/gunda-lakshmaiah"
-                            }}
-                            index={1}
-                        /> */}
-                        <SmallTeamCard
-                            member={{
-                                name: "Akuthota Aravind",
-                                role: "Business Development Executive",
-                                image: "/images/araavind.png",
-                                bio: "Enabling strategic partnerships and expanding market opportunities at the convergence of Deep Tech and Sustainability.",
-                                profileLink: "/about/faculty/akuthota-aravind"
-                            }}
-                            index={0}
-                        />
-                        <SmallTeamCard
-                            member={{
-                                name: "Soujanya Kanagala",
-                                role: "Operations Head",
-                                image: "/images/soujanya.jpg",
-                                bio: "Operations Head with 14 years of experience specializing in business setup, operations, and organizational scaling.",
-                                profileLink: "/about/faculty/soujanya-kanagala"
-                            }}
-                            index={1}
-                        />
-                        <SmallTeamCard
-                            member={{
-                                name: "Abhishek Sharma",
-                                role: "Senior Data Analyst",
-                                image: "/images/abhishek shaarma.png",
-                                bio: "Analytical professional with 8+ years of experience in driving organizational performance through deep data insights and actionable dashboards.",
-                                profileLink: "/about/faculty/abhishek-sharma",
-                                socials: {
-                                    linkedin: "https://linkedin.com/in/abhishek-sharma-27b585ba"
-                                }
-                            }}
-                            index={2}
-                        />
                     </div>
                 </div>
             </section>

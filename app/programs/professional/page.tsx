@@ -3,12 +3,10 @@
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, BookOpen, Users, Zap, Briefcase, GraduationCap, CheckCircle2, ChevronRight, Terminal, Cpu, Network, ShieldCheck, BrainCircuit, Globe, Calendar, Wifi, Target, Clock, ArrowDown, ChevronLeft, FileText, UserCheck, Rocket, Code, Database, Server, Cloud, Lock, Box, Activity, GitMerge, Ship, Smile as SmileIcon, Link2, Bug, Search, Settings, HardHat, Flame, Link as LinkIcon } from "lucide-react";
+import { ArrowUpRight, Cpu, Network, ShieldCheck, BrainCircuit, Calendar, Wifi, Target, ArrowDown, CheckCircle2, Zap } from "lucide-react";
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import React from "react";
-import Image from "next/image";
-import { CareerTransformationModal } from "../entry-level/page";
+import { PackageDetailsModal } from "@/components/programs/PackageDetailsModal";
 
 // Custom Gradient Style
 const customGradient = "linear-gradient(to right, lab(44.0605 29.0279 -86.0352) 0%, lab(38.4009 52.6132 -92.3857) 100%)";
@@ -16,12 +14,8 @@ const textGradientClass = "text-transparent bg-clip-text";
 
 export default function ProfessionalProgramPage() {
     const [currentDomainIndex, setCurrentDomainIndex] = useState(0);
-    const [modalData, setModalData] = useState<{ domain: string; type: "Personalized" | "Self-Paced" } | null>(null);
+    const [selectedPackageId, setSelectedPackageId] = useState<string | null>(null);
     const domains = ["Artificial Intelligence", "Cyber Security", "Blockchain", "Quantum Computing"];
-
-    const handleOpenForm = (domain: string, type: "Personalized" | "Self-Paced") => {
-        setModalData({ domain, type });
-    };
 
     useEffect(() => {
         document.title = "Professional Certification Programs | The Foundry";
@@ -39,22 +33,9 @@ export default function ProfessionalProgramPage() {
             <Navbar />
 
             {/* Hero Section */}
-            <section className="pt-32 pb-24 px-6 relative overflow-hidden bg-slate-900 border-b border-slate-800">
-
-                {/* Hero Background Image */}
-                <div className="absolute inset-0 z-0">
-                    <Image
-                        src="/pfl_hero_bg.png"
-                        alt="Professional Learning"
-                        fill
-                        className="object-cover opacity-40 mix-blend-overlay"
-                        priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/50 to-slate-900 z-10" />
-                </div>
-
+            <section className="pt-28 pb-16 px-6 relative overflow-hidden bg-slate-900">
                 <div className="container mx-auto max-w-6xl relative z-20">
-                    <div className="max-w-4xl pt-10">
+                    <div className="max-w-4xl pt-4">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -94,20 +75,13 @@ export default function ProfessionalProgramPage() {
                                         e.preventDefault();
                                         document.getElementById('curriculum')?.scrollIntoView({ behavior: 'smooth' });
                                     }}
-                                    className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-bold hover:bg-white/20 transition-colors"
+                                    className="inline-flex items-center gap-2 px-8 py-4 text-white border-2 border-[#002f86] rounded-full font-bold hover:bg-white/20 transition-colors"
                                 >
                                     Explore Domains
                                 </a>
-                                <Link
-                                    href="/apply-personalized"
-                                    style={{ background: customGradient }}
-                                    className="inline-flex items-center gap-2 px-8 py-4 text-white rounded-full font-bold transition-all hover:scale-105 active:scale-95 shadow-lg opacity-90 hover:opacity-100"
-                                >
-                                    Start Your Application with Personalized Learning <ArrowUpRight size={18} />
-                                </Link>
                             </div>
 
-                            {/* Strategic Program Specs - Integrated into Hero */}
+                            {/* Strategic Program Specs */}
                             <div className="mt-16 pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-8">
                                 <HeroStat icon={<Wifi size={20} />} label="Format" value="Hybrid" sub="In-Person + Virtual" />
                                 <HeroStat icon={<Zap size={20} />} label="Approach" value="Applied" sub="Concept + Practice" />
@@ -119,76 +93,8 @@ export default function ProfessionalProgramPage() {
                 </div>
             </section>
 
-            {/* Value Creation - Why The Foundry? */}
-            <section className="py-24 px-6 bg-slate-50">
-                <div className="container mx-auto max-w-6xl">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Professional Edge</h2>
-                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">Acquire the deep technical expertise and applied skills required to lead in the modern digital economy.</p>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
-                            <div className="flex items-center gap-4 mb-4">
-                                <div className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform relative overflow-hidden shrink-0">
-                                    <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
-                                    <div className="relative z-10 text-slate-900">
-                                        <Target size={24} strokeWidth={1.5} />
-                                    </div>
-                                </div>
-                                <h3 className="text-xl font-bold text-slate-900">Deep Domain Mastery</h3>
-                            </div>
-                            <p className="text-slate-600 leading-relaxed text-sm">
-                                Move beyond surface-level tutorials. We drill down to the core logic and mathematical foundations of emerging tech, giving you the confidence and authority that comes from true understanding.
-                            </p>
-                        </div>
-                        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
-                            <div className="flex items-center gap-4 mb-4">
-                                <div className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform relative overflow-hidden shrink-0">
-                                    <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
-                                    <div className="relative z-10 text-slate-900">
-                                        <Network size={24} strokeWidth={1.5} />
-                                    </div>
-                                </div>
-                                <h3 className="text-xl font-bold text-slate-900">Your Network is Your Net Worth</h3>
-                            </div>
-                            <p className="text-slate-600 leading-relaxed text-sm">
-                                Learning alone is slow. Join a curated cohort of ambitious peers who are as hungry as you are. "Iron sharpens iron" you will grow faster by coding, debugging, and launching projects alongside the best.
-                            </p>
-                        </div>
-                        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
-                            <div className="flex items-center gap-4 mb-4">
-                                <div className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform relative overflow-hidden shrink-0">
-                                    <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
-                                    <div className="relative z-10 text-slate-900">
-                                        <Terminal size={24} strokeWidth={1.5} />
-                                    </div>
-                                </div>
-                                <h3 className="text-xl font-bold text-slate-900">Stop Watching, Start Building</h3>
-                            </div>
-                            <p className="text-slate-600 leading-relaxed text-sm">
-                                Theory is free online. Here, you focus on the friction of practice. You will spend 60% of your time in the "Build Loop"—solving real-world problem statements, fixing bugs, and deploying live solutions.
-                            </p>
-                        </div>
-                        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
-                            <div className="flex items-center gap-4 mb-4">
-                                <div className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform relative overflow-hidden shrink-0">
-                                    <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
-                                    <div className="relative z-10 text-slate-900">
-                                        <BrainCircuit size={24} strokeWidth={1.5} />
-                                    </div>
-                                </div>
-                                <h3 className="text-xl font-bold text-slate-900">Engineer, Don’t Just Code</h3>
-                            </div>
-                            <p className="text-slate-600 leading-relaxed text-sm">
-                                Anyone can memorize syntax. We train you to think like a Senior Engineer. You will learn to deconstruct complex problems, understand why systems work, and architect scalable solutions from the ground up.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             {/* Core Domains */}
-            <section className="py-24 px-6 bg-white border-y border-slate-200" id="curriculum">
+            <section className="py-16 px-6 bg-white" id="curriculum">
                 <div className="container mx-auto max-w-6xl">
                     <div className="mb-16">
                         <h2 className="text-4xl font-bold text-slate-900 mb-6">Choose your career transition</h2>
@@ -203,181 +109,39 @@ export default function ProfessionalProgramPage() {
                             tagline="From Logic to Intelligence."
                             desc="Move beyond basic Python. Master Neural Networks, NLP, and Computer Vision to build systems that can see, read, and decide."
                             icon={<BrainCircuit />}
-                            href="/programs/professional/ai"
-                            onOpenForm={handleOpenForm}
                             selfPacedHref="https://compass.thefoundrys.com/courses/ai"
+                            onOpenPackage={() => setSelectedPackageId("professional-ai")}
                         />
                         <DomainCard
                             title="Cyber Security"
                             tagline="Defend the Digital Frontier."
                             desc="The world is digital, and it is under attack. Learn the offensive and defensive strategies required to secure networks and data."
                             icon={<ShieldCheck />}
-                            href="/programs/professional/cyber-security"
-                            onOpenForm={handleOpenForm}
                             selfPacedHref="https://compass.thefoundrys.com/courses/cyber-security"
+                            onOpenPackage={() => setSelectedPackageId("professional-cyber-security")}
                         />
                         <DomainCard
                             title="Quantum Computing"
                             tagline="The Next Computational Revolution."
                             desc="Prepare for the paradigm shift. Understanding Qubits and Superposition today is like learning the Internet in 1990."
                             icon={<Cpu />}
-                            href="/programs/professional/quantum-computing"
-                            onOpenForm={handleOpenForm}
                             selfPacedHref="https://compass.thefoundrys.com/courses/quantum-computing"
+                            onOpenPackage={() => setSelectedPackageId("professional-quantum-computing")}
                         />
                         <DomainCard
                             title="Blockchain"
                             tagline="Architect the Trust Layer."
                             desc="Explore the technology behind Web3. Learn how decentralized ledgers and smart contracts are rewriting the rules of finance and ownership."
                             icon={<Network />}
-                            href="/programs/professional/blockchain"
-                            onOpenForm={handleOpenForm}
                             selfPacedHref="https://compass.thefoundrys.com/"
+                            onOpenPackage={() => setSelectedPackageId("professional-blockchain")}
                         />
                     </div>
                 </div>
             </section>
 
-            {/* The Career Impact */}
-            <section className="py-24 px-6 bg-white border-b border-slate-200">
-                <div className="container mx-auto max-w-6xl">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Career Impact</h2>
-                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">We don't just offer knowledge. We equip you with the assets you need to accelerate your trajectory.</p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-slate-200 transition-colors group">
-                            <div className="text-6xl font-black text-slate-200 mb-6 group-hover:text-blue-100 transition-colors">01</div>
-                            <h3 className="text-xl font-bold text-slate-900 mb-3">The Production Portfolio</h3>
-                            <p className="text-slate-600 leading-relaxed text-sm">
-                                <strong className="text-slate-900">Your Proof of Competence.</strong> You will finish the track with a GitHub portfolio of 3-5 distinct projects and one major Capstone. When a recruiter asks, "Can you do this?", you won't just say "Yes" you will show them the code.
-                            </p>
-                        </div>
-
-                        <div className="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-slate-200 transition-colors group">
-                            <div className="text-6xl font-black text-slate-200 mb-6 group-hover:text-purple-100 transition-colors">02</div>
-                            <h3 className="text-xl font-bold text-slate-900 mb-3">The Verified Credential</h3>
-                            <p className="text-slate-600 leading-relaxed text-sm">
-                                <strong className="text-slate-900">Your Signal of Quality.</strong> Upon successful assessment, you earn a Certified Professional Credential from The Foundry. This is a digitally verifiable asset that signals your technical rigor to employers and clients worldwide.
-                            </p>
-                        </div>
-
-                        <div className="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-slate-200 transition-colors group">
-                            <div className="text-6xl font-black text-slate-200 mb-6 group-hover:text-emerald-100 transition-colors">03</div>
-                            <h3 className="text-xl font-bold text-slate-900 mb-3">The Foundry Network</h3>
-                            <p className="text-slate-600 leading-relaxed text-sm">
-                                <strong className="text-slate-900">Your Access.</strong> Certification is not the exit; it is the entry. You gain access to The Foundry’s professional community, mentorship channels, and exclusive industry events in Hyderabad—connecting you with the people who are building the future.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Tech Stack Section - Scrolling Ticker */}
-            <section className="py-20 bg-slate-50 border-b border-slate-200 overflow-hidden">
-                <div className="container mx-auto max-w-5xl mb-12 px-6">
-                    <div className="text-center">
-                        <h2 className="text-3xl font-bold text-slate-900">What You’ll Learn</h2>
-                        <p className="text-slate-500 mt-2">Industry-standard languages, frameworks, and platforms.</p>
-                    </div>
-                </div>
-
-                {/* Scrolling Container */}
-                <div className="relative w-full flex overflow-hidden mask-gradient-x">
-                    <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-slate-50 to-transparent z-10"></div>
-                    <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-50 to-transparent z-10"></div>
-
-                    <motion.div
-                        className="flex gap-12 items-center whitespace-nowrap py-4"
-                        animate={{ x: "-50%" }}
-                        transition={{
-                            repeat: Infinity,
-                            ease: "linear",
-                            duration: 60 // Slower duration for longer list
-                        }}
-                    >
-                        {/* Tool List */}
-                        <ToolItem name="Python" icon={<Terminal size={24} />} color="text-blue-500" />
-                        <ToolItem name="TensorFlow" icon={<BrainCircuit size={24} />} color="text-orange-500" />
-                        <ToolItem name="PyTorch" icon={<Flame size={24} />} color="text-red-500" />
-                        <ToolItem name="OpenAI" icon={<Cpu size={24} />} color="text-green-500" />
-                        <ToolItem name="LangChain" icon={<LinkIcon size={24} />} color="text-slate-500" />
-                        <ToolItem name="Pandas" icon={<Database size={24} />} color="text-indigo-500" />
-                        <ToolItem name="NumPy" icon={<Code size={24} />} color="text-blue-400" />
-                        <ToolItem name="ScikitLearn" icon={<Activity size={24} />} color="text-orange-400" />
-                        <ToolItem name="Docker" icon={<Box size={24} />} color="text-blue-600" />
-                        <ToolItem name="Kubernetes" icon={<Ship size={24} />} color="text-blue-700" />
-                        <ToolItem name="AWS" icon={<Cloud size={24} />} color="text-slate-600" />
-                        <ToolItem name="Git" icon={<GitMerge size={24} />} color="text-red-600" />
-                        <ToolItem name="React" icon={<Code size={24} />} color="text-cyan-400" />
-                        <ToolItem name="Next.js" icon={<Globe size={24} />} color="text-slate-900" />
-                        <ToolItem name="Node.js" icon={<Server size={24} />} color="text-green-600" />
-                        <ToolItem name="Linux" icon={<Terminal size={24} />} color="text-slate-800" />
-
-                        {/* Tool List - Duplicate for seamless loop */}
-                        <ToolItem name="Python" icon={<Terminal size={24} />} color="text-blue-500" />
-                        <ToolItem name="TensorFlow" icon={<BrainCircuit size={24} />} color="text-orange-500" />
-                        <ToolItem name="PyTorch" icon={<Flame size={24} />} color="text-red-500" />
-                        <ToolItem name="OpenAI" icon={<Cpu size={24} />} color="text-green-500" />
-                        <ToolItem name="LangChain" icon={<LinkIcon size={24} />} color="text-slate-500" />
-                        <ToolItem name="Pandas" icon={<Database size={24} />} color="text-indigo-500" />
-                        <ToolItem name="NumPy" icon={<Code size={24} />} color="text-blue-400" />
-                        <ToolItem name="ScikitLearn" icon={<Activity size={24} />} color="text-orange-400" />
-                        <ToolItem name="Docker" icon={<Box size={24} />} color="text-blue-600" />
-                        <ToolItem name="Kubernetes" icon={<Ship size={24} />} color="text-blue-700" />
-                        <ToolItem name="AWS" icon={<Cloud size={24} />} color="text-slate-600" />
-                        <ToolItem name="Git" icon={<GitMerge size={24} />} color="text-red-600" />
-                        <ToolItem name="React" icon={<Code size={24} />} color="text-cyan-400" />
-                        <ToolItem name="Next.js" icon={<Globe size={24} />} color="text-slate-900" />
-                        <ToolItem name="Node.js" icon={<Server size={24} />} color="text-green-600" />
-                        <ToolItem name="Linux" icon={<Terminal size={24} />} color="text-slate-800" />
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Certification Section */}
-            <section className="py-24 px-6 bg-white border-y border-slate-200">
-                <div className="container mx-auto max-w-6xl">
-                    <div className="flex flex-col md:flex-row items-center gap-16">
-                        <div className="md:w-1/2">
-                            <div className="relative p-4 bg-slate-50 border border-slate-100 rounded-2xl shadow-xl">
-                                <Image
-                                    src="/sample-certificate.png"
-                                    alt="Foundry Professional Certificate Sample"
-                                    width={600}
-                                    height={400}
-                                    className="rounded-lg shadow-sm"
-                                />
-                                {/* Decorative Elements */}
-                                <div className="absolute -top-6 -left-6 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl" />
-                                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl" />
-                            </div>
-                        </div>
-                        <div className="md:w-1/2">
-                            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Industry Recognized Certification</h2>
-                            <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                                Your effort deserves recognition. Upon successful completion of the professional track, you will receive a verifiable digital certificate from The Foundry, signaling your readiness to industry partners.
-                            </p>
-                            <ul className="space-y-4">
-                                <li className="flex items-center gap-3 text-slate-700 font-medium">
-                                    <div className="p-1 rounded-full bg-blue-100 text-blue-600"><CheckCircle2 size={16} /></div>
-                                    Shareable on LinkedIn & Resumes
-                                </li>
-                                <li className="flex items-center gap-3 text-slate-700 font-medium">
-                                    <div className="p-1 rounded-full bg-amber-100 text-amber-600"><CheckCircle2 size={16} /></div>
-                                    Gateway to Advanced Specializations
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-
             {/* FAQ Section */}
-            <section className="py-24 px-6 bg-slate-50 border-t border-slate-200">
+            <section className="py-16 px-6 bg-slate-50">
                 <div className="container mx-auto max-w-3xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>
@@ -406,17 +170,14 @@ export default function ProfessionalProgramPage() {
                 </div>
             </section>
 
-
-
             <Footer />
 
             <AnimatePresence>
-                {modalData && (
-                    <CareerTransformationModal
-                        isOpen={!!modalData}
-                        onClose={() => setModalData(null)}
-                        domain={modalData.domain}
-                        type={modalData.type}
+                {selectedPackageId && (
+                    <PackageDetailsModal
+                        isOpen={!!selectedPackageId}
+                        onClose={() => setSelectedPackageId(null)}
+                        packageId={selectedPackageId}
                     />
                 )}
             </AnimatePresence>
@@ -424,14 +185,11 @@ export default function ProfessionalProgramPage() {
     );
 }
 
-
-
 // Optimized Stat Component for Hero
 function HeroStat({ icon, label, value, sub, extraGap = false }: { icon: React.ReactNode, label: string, value: string, sub: string, extraGap?: boolean }) {
     return (
         <div className={`flex items-start ${extraGap ? "gap-1" : "gap-4"} group`}>
             <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-slate-400 shrink-0 group-hover:text-white transition-colors">
-                {/* Icon with potential gradient or just white/slate */}
                 {icon}
             </div>
             <div>
@@ -445,28 +203,10 @@ function HeroStat({ icon, label, value, sub, extraGap = false }: { icon: React.R
                 <div className="text-xs text-slate-400 font-medium">{sub}</div>
             </div>
         </div>
-    )
+    );
 }
 
-function TargetCard({ icon, title, desc }: { icon: any, title: string, desc: string }) {
-    return (
-        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
-            {/* Custom Icon Container */}
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform relative overflow-hidden">
-                <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
-                <div style={{ color: "black" }} className="relative z-10 text-slate-900">
-                    {React.cloneElement(icon, { size: 24, strokeWidth: 1.5 })}
-                </div>
-            </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">{title}</h3>
-            <p className="text-slate-600 leading-relaxed">
-                {desc}
-            </p>
-        </div>
-    )
-}
-
-function DomainCard({ title, tagline, desc, icon, href, onOpenForm, selfPacedHref }: { title: string, tagline?: string, desc: string, icon: any, href: string, onOpenForm: (domain: string, type: "Personalized" | "Self-Paced") => void, selfPacedHref?: string }) {
+function DomainCard({ title, tagline, desc, icon, selfPacedHref, onOpenPackage }: { title: string, tagline?: string, desc: string, icon: any, selfPacedHref?: string, onOpenPackage: () => void }) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -516,54 +256,15 @@ function DomainCard({ title, tagline, desc, icon, href, onOpenForm, selfPacedHre
             </div>
 
             <div className="p-5 bg-slate-50 border-t border-slate-100 flex flex-wrap items-center justify-start gap-2">
-                {selfPacedHref ? (
-                    <a
-                        href={selfPacedHref}
-                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 bg-blue-900 text-white text-xs md:text-sm rounded-xl font-bold hover:bg-blue-800 transition-all shadow-lg hover:shadow-blue-950/20 whitespace-nowrap active:scale-95"
-                    >
-                        Self-Paced Learning
-                    </a>
-                ) : (
-                    <button
-                        onClick={() => onOpenForm(title, "Self-Paced")}
-                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 bg-blue-900 text-white text-xs md:text-sm rounded-xl font-bold hover:bg-blue-800 transition-all shadow-lg hover:shadow-blue-950/20 whitespace-nowrap active:scale-95"
-                    >
-                        Self-Paced Learning
-                    </button>
-                )}
-                <Link
-                    href={`/apply-personalized?domain=${encodeURIComponent(title)}&pathway=Career+Transformation&level=Mid+Level`}
-                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 bg-indigo-900 text-white text-xs md:text-sm rounded-xl font-bold hover:bg-indigo-800 transition-all shadow-lg hover:shadow-indigo-950/20 whitespace-nowrap active:scale-95 text-center"
-                >
-                    Personalized Learning
-                </Link>
-                <Link
-                    href={href}
-                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 bg-slate-900 text-white text-xs md:text-sm rounded-xl font-bold hover:bg-slate-800 transition-colors shadow-lg hover:shadow-slate-950/25 whitespace-nowrap text-center"
+                <button
+                    onClick={onOpenPackage}
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 bg-slate-900 text-white text-xs md:text-sm rounded-xl font-bold hover:bg-slate-800 transition-colors shadow-lg hover:shadow-slate-950/25 whitespace-nowrap text-center cursor-pointer border-none outline-none"
                 >
                     View Package <ArrowUpRight size={14} className="shrink-0" />
-                </Link>
+                </button>
             </div>
         </motion.div>
-    )
-}
-
-function ProgressionStep({ title, desc }: { title: string, desc: string }) {
-    return (
-        <div className="flex items-start gap-4">
-            <div className="mt-1">
-                {/* Gradient Icon */}
-                <div className="relative">
-                    <CheckCircle2 size={24} className="text-slate-700" />
-                    <div style={{ background: customGradient }} className="absolute inset-0 mix-blend-screen opacity-50" />
-                </div>
-            </div>
-            <div>
-                <h4 className="text-xl font-bold text-white mb-2">{title}</h4>
-                <p className="text-slate-400 leading-relaxed">{desc}</p>
-            </div>
-        </div>
-    )
+    );
 }
 
 function FAQItem({ question, children }: { question: string, children: React.ReactNode }) {
@@ -588,14 +289,5 @@ function FAQItem({ question, children }: { question: string, children: React.Rea
                 </div>
             </div>
         </div>
-    )
-}
-
-function ToolItem({ name, icon, color }: { name: string, icon: any, color: string }) {
-    return (
-        <div className={`flex items-center gap-3 font-bold text-xl opacity-70 hover:opacity-100 transition-all cursor-default ${color}`}>
-            {icon}
-            <span className="text-slate-600">{name}</span>
-        </div>
-    )
+    );
 }

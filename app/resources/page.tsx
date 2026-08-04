@@ -220,15 +220,15 @@ const resourceSections = [
         icon: FlaskConical,
         accent: "bg-emerald-50 text-emerald-700 border-emerald-100",
     },
-    {
-        title: "Whitepapers",
-        label: "Deep Reports",
-        description: "Structured briefs and long-form technical documents for leaders, builders, and institutional partners.",
-        href: "?category=whitepapers",
-        action: "View whitepapers",
-        icon: FileText,
-        accent: "bg-amber-50 text-amber-700 border-amber-100",
-    },
+    // {
+    //     title: "Whitepapers",
+    //     label: "Deep Reports",
+    //     description: "Structured briefs and long-form technical documents for leaders, builders, and institutional partners.",
+    //     href: "?category=whitepapers",
+    //     action: "View whitepapers",
+    //     icon: FileText,
+    //     accent: "bg-amber-50 text-amber-700 border-amber-100",
+    // },
 ];
 
 export default function BlogListingPage() {

@@ -95,6 +95,14 @@ export function ApplyClient() {
                 "Certified Professional in Quantum Fundamentals",
             ],
         },
+        "Fellowship & Executive": {
+            "entry-level": [],
+            "professional": [
+                "MBA in AI",
+                "MBA in Cybersecurity Venture Building",
+                "Fellow Executive Program",
+            ],
+        },
     };
 
     React.useEffect(() => {
@@ -103,6 +111,14 @@ export function ApplyClient() {
             const domainParam = params.get("domain") || params.get("program");
             const levelParam = params.get("level");
             const courseParam = params.get("course");
+            const typeParam = params.get("type");
+
+            if (typeParam === "executive") {
+                setSelectedProgram("Fellowship & Executive");
+                setSelectedLevel("professional");
+                setSelectedCourse("Fellow Executive Program");
+                return;
+            }
 
             if (courseParam) {
                 const normalize = (str: string) => 
@@ -146,7 +162,8 @@ export function ApplyClient() {
             if (domainParam) {
                 const matchedDomain = Object.keys(PROGRAM_COURSES).find(
                     (key) => key.toLowerCase() === domainParam.toLowerCase() || 
-                             (key === "Cyber Security" && domainParam.toLowerCase() === "cybersecurity")
+                             (key === "Cyber Security" && domainParam.toLowerCase() === "cybersecurity") ||
+                             (key === "Fellowship & Executive" && (domainParam.toLowerCase() === "fellowship & executive" || domainParam.toLowerCase() === "executive"))
                 );
                 if (matchedDomain) {
                     setSelectedProgram(matchedDomain);
@@ -367,6 +384,7 @@ export function ApplyClient() {
                                                 <option value="Blockchain">Blockchain</option>
                                                 <option value="Cyber Security">Cybersecurity</option>
                                                 <option value="Quantum Computing">Quantum Computing</option>
+                                                <option value="Fellowship & Executive">Fellowship & Executive</option>
                                             </select>
                                             <div className="absolute right-0 bottom-5 md:bottom-6 text-slate-300 pointer-events-none">▼</div>
                                         </div>

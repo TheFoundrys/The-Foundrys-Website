@@ -25,6 +25,96 @@ const nextConfig: NextConfig = {
         destination: '/vishwanathakuthota',
         permanent: true,
       },
+      {
+        source: '/programs/entry-level/ai',
+        destination: '/programs/entry-level',
+        permanent: true,
+      },
+      {
+        source: '/programs/entry-level/cyber-security',
+        destination: '/programs/entry-level',
+        permanent: true,
+      },
+      {
+        source: '/programs/entry-level/quantum-computing',
+        destination: '/programs/entry-level',
+        permanent: true,
+      },
+      {
+        source: '/programs/entry-level/blockchain',
+        destination: '/programs/entry-level',
+        permanent: true,
+      },
+      {
+        source: '/programs/professional/ai',
+        destination: '/programs/professional',
+        permanent: true,
+      },
+      {
+        source: '/programs/professional/cyber-security',
+        destination: '/programs/professional',
+        permanent: true,
+      },
+      {
+        source: '/programs/professional/quantum-computing',
+        destination: '/programs/professional',
+        permanent: true,
+      },
+      {
+        source: '/programs/professional/blockchain',
+        destination: '/programs/professional',
+        permanent: true,
+      },
+      {
+        source: '/schools/ai',
+        destination: '#',
+        permanent: true,
+      },
+      {
+        source: '/schools/cyber',
+        destination: '#',
+        permanent: true,
+      },
+      {
+        source: '/schools/quantum-computing',
+        destination: '#',
+        permanent: true,
+      },
+      {
+        source: '/schools/blockchain',
+        destination: '#',
+        permanent: true,
+      },
+      {
+        source: '/schools/venture-building',
+        destination: '#',
+        permanent: true,
+      },
+      {
+        source: '/schools/esg',
+        destination: '#',
+        permanent: true,
+      },
+      {
+        source: '/schools/datascience',
+        destination: '#',
+        permanent: true,
+      },
+      {
+        source: '/schools/sustainability',
+        destination: '#',
+        permanent: true,
+      },
+      {
+        source: '/schools/renewable-energy',
+        destination: '#',
+        permanent: true,
+      },
+      {
+        source: '/schools/strategy',
+        destination: '#',
+        permanent: true,
+      },
     ]
   },
   images: {

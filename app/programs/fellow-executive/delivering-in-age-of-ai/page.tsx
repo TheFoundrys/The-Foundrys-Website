@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     description: "Where Senior Tech Leaders become System Owners. Forge innovation as a framework to design, engineer, deploy, and govern critical systems in an AI-driven world.",
     keywords: ["Executive Leadership", "AI Governance", "Tech Leadership", "System Ownership", "AI Strategy for Executives"],
     alternates: {
-        canonical: "https://thefoundrys.com/programs/executive/delivering-in-age-of-ai",
+        canonical: "https://thefoundrys.com/programs/fellow-executive/delivering-in-age-of-ai",
     },
 };
 
