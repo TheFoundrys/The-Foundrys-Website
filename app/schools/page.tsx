@@ -35,7 +35,7 @@ const SCHOOLS = [
         iconBg: "bg-amber-600",
         accent: "amber",
         programs: [
-            { title: "Venture Building", desc: "Zero to One", href: "/programs/fellow-executive", icon: Rocket },
+            { title: "Venture Building", desc: "Zero to One", href: "/venture-building", icon: Rocket },
             { title: "MBA in AI", desc: "Integrated 3+1", href: "/programs/fellow-executive", icon: Cpu },
             { title: "MBA in Cyber Venture", desc: "Integrated 3+1", href: "/programs/fellow-executive", icon: ShieldCheck },
         ]

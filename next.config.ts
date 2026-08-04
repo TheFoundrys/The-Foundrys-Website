@@ -87,7 +87,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/schools/venture-building',
-        destination: '#',
+        destination: '/venture-building',
+        permanent: true,
+      },
+      {
+        source: '/programs/venture-building',
+        destination: '/venture-building',
         permanent: true,
       },
       {

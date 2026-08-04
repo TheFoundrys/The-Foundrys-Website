@@ -55,15 +55,15 @@ export function Testimonials() {
   const doubledTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="py-16 bg-white relative overflow-hidden" id="testimonials">
+    <section className="py-8 bg-white relative overflow-hidden" id="testimonials">
 
-      <div className="container mx-auto px-6 relative z-10 mb-10">
+      <div className="container mx-auto px-6 relative z-10 mb-6">
         <div className="text-center">
-          <h4 className="text-neutral-500 font-bold uppercase tracking-widest mb-4">Testimonials</h4>
-          <h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight">
+          <h4 className="text-neutral-500 font-bold uppercase tracking-widest mb-1 text-xs">Testimonials</h4>
+          <h2 className="text-3xl md:text-4xl font-bold text-black tracking-tight">
             Stories of Transformation.
           </h2>
-          <p className="mt-4 text-lg text-neutral-500 max-w-2xl mx-auto">
+          <p className="mt-2 text-base text-neutral-500 max-w-2xl mx-auto">
             Hear from our alumni who have successfully transitioned into high-impact roles in AI and Cybersecurity.
           </p>
         </div>
@@ -77,18 +77,18 @@ export function Testimonials() {
 
         <div className="flex w-full overflow-hidden group">
           <div
-            className="flex items-stretch flex-nowrap py-3 animate-infinite-scroll hover:[animation-play-state:paused] will-change-transform"
+            className="flex items-stretch flex-nowrap py-2 animate-infinite-scroll hover:[animation-play-state:paused] will-change-transform"
             style={{ width: "max-content" }}
           >
             {doubledTestimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="flex-none w-[85vw] sm:w-[500px] md:w-[1000px] px-3 md:px-4 flex"
+                className="flex-none w-[85vw] sm:w-[450px] md:w-[750px] px-3 md:px-4 flex"
               >
-                <div className="w-full glass-card p-8 md:p-12 rounded-3xl flex flex-col md:flex-row gap-8 md:gap-12 items-center text-center md:text-left group-hover:shadow-2xl transition-all duration-500 cursor-default overflow-hidden">
+                <div className="w-full glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-6 md:gap-8 items-center text-center md:text-left group-hover:shadow-xl transition-all duration-500 cursor-default overflow-hidden">
                   {/* Image and Info */}
                   <div className="flex flex-col items-center shrink-0">
-                    <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-2xl overflow-hidden border-2 border-white shadow-lg mb-6">
+                    <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden border-2 border-white shadow-md mb-3">
                       {testimonial.image ? (
                         <Image
                           src={testimonial.image}
@@ -97,24 +97,24 @@ export function Testimonials() {
                           className="object-cover"
                         />
                       ) : (
-                        <div className="absolute inset-0 bg-neutral-900 flex items-center justify-center text-white font-bold text-4xl md:text-5xl uppercase">
+                        <div className="absolute inset-0 bg-neutral-900 flex items-center justify-center text-white font-bold text-3xl md:text-4xl uppercase">
                           {testimonial.name[0]}
                         </div>
                       )}
                     </div>
                     <div className="text-center">
-                      <h3 className="text-xl font-bold text-black">{testimonial.name}</h3>
-                      <p className="text-neutral-500 font-semibold text-sm">{testimonial.designation}</p>
+                      <h3 className="text-base font-bold text-black">{testimonial.name}</h3>
+                      <p className="text-neutral-500 font-semibold text-xs">{testimonial.designation}</p>
                     </div>
                   </div>
 
                   {/* Text Content */}
-                  <div className="flex-1 relative h-full flex items-center pt-4 md:pt-0">
+                  <div className="flex-1 relative h-full flex items-center pt-2 md:pt-0">
                     {/* <Quote 
                       className="absolute -top-6 md:-top-4 -left-4 w-12 h-12 md:w-16 md:h-16 -z-10" 
                       style={{ color: 'rgba(0, 0, 0, 0.07)' }}
                     /> */}
-                    <p className="text-sm md:text-base text-neutral-700 leading-relaxed italic pr-4">
+                    <p className="text-xs md:text-sm text-neutral-700 leading-relaxed italic pr-2">
                       "{testimonial.text}"
                     </p>
                   </div>
