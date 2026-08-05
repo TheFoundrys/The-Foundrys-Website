@@ -7,7 +7,46 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, Clock, MapPin, Video, ArrowUpRight, Sparkles, PlayCircle, Filter } from "lucide-react";
 import Link from "next/link";
 
-const allItems = [
+interface EventItem {
+    id: string;
+    title: string;
+    type: string;
+    category: "event" | "webinar";
+    date: string;
+    time: string;
+    dateTime: string;
+    description: string;
+    tags: string[];
+    featured?: boolean;
+    venue?: string;
+    mapsUrl?: string;
+    platform?: string;
+    link?: string;
+    ctaText?: string;
+    image?: string;
+}
+
+const allItems: EventItem[] = [
+    {
+        id: "podcast-self-mastery",
+        title: "Live Podcast: Self-Mastery Is Life Mastery",
+        type: "Live Podcast",
+        category: "webinar",
+        date: "Fri, Aug 7, 2026",
+        time: "4:00 PM IST",
+        dateTime: "2026-08-07T16:00:00+05:30",
+        platform: "The Foundry's Official Channels",
+        link: "https://events.teams.microsoft.com/event/a21b7f98-cf48-4548-a97f-84fdd8bd9dfa@9be43f22-3237-4b73-971b-3e664c641aea",
+        ctaText: "Watch Live",
+        description: `Unlock your true potential in our upcoming Live Podcast: 'Self-Mastery Is Life Mastery' — The Inner Shift That Transforms Everything You Do.
+
+Join our host, Vishwanath Akuthota (Founder of The Foundry's, AI & Cybersecurity Expert, Author, and Global Thought Leader), and our special guest, Swathi Bokka (Transformational Coach & Speaker, dedicated to empowering individuals to rediscover their authentic selves).
+
+This session is designed for learners, for leaders, and for life. Explore the core principles of self-governance, personal growth, and cognitive clarity that will empower you to master your life and inspire the world.`,
+        tags: ["Self-Mastery", "Personal Growth", "Podcast", "Leadership", "Live Stream"],
+        featured: true,
+        image: "/images/self-mastery-podcast.jpg"
+    },
     {
         id: "event-1",
         title: "Join Us for the AI @GenZ",
@@ -64,6 +103,7 @@ Limited Seats Available Register Now and Build a Future-Ready Career in AI`,
 
 export function EventsClient() {
     const [activeFilter, setActiveFilter] = useState<"all" | "event" | "webinar">("all");
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
     const now = new Date();
     const bufferTime = 2 * 60 * 60 * 1000; // 2 hours buffer
@@ -131,11 +171,10 @@ export function EventsClient() {
                             <button
                                 key={filter}
                                 onClick={() => setActiveFilter(filter)}
-                                className={`px-5 py-2 rounded-full text-xs font-bold transition-all uppercase tracking-wider ${
-                                    activeFilter === filter
+                                className={`px-5 py-2 rounded-full text-xs font-bold transition-all uppercase tracking-wider ${activeFilter === filter
                                         ? "bg-blue-600 text-white shadow-md shadow-blue-200"
                                         : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                                }`}
+                                    }`}
                             >
                                 {filter === "all" ? "All Sessions" : filter === "event" ? "Events" : "Webinars"}
                             </button>
@@ -177,11 +216,10 @@ export function EventsClient() {
                                         transition={{ duration: 0.5, delay: i * 0.1 }}
                                     >
                                         <div
-                                            className={`relative rounded-3xl overflow-hidden border ${
-                                                item.featured
+                                            className={`relative rounded-3xl overflow-hidden border ${item.featured
                                                     ? "border-blue-200 bg-gradient-to-br from-blue-50/80 via-white to-indigo-50/50 shadow-xl shadow-blue-100/50"
                                                     : "border-slate-200 bg-white shadow-sm"
-                                            }`}
+                                                }`}
                                         >
                                             {item.featured && (
                                                 <div className="absolute top-6 right-6 z-10">
@@ -192,114 +230,134 @@ export function EventsClient() {
                                                 </div>
                                             )}
 
-                                            <div className="p-8 md:p-10">
-                                                <div className="flex items-center gap-2 mb-5">
-                                                    <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
-                                                        item.category === "event" 
-                                                            ? "bg-orange-100 text-orange-800" 
-                                                            : "bg-blue-100 text-blue-800"
-                                                    }`}>
-                                                        {item.category === "event" ? <Calendar size={12} /> : <Video size={12} />}
-                                                        {item.type}
-                                                    </span>
-                                                </div>
-
-                                                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight mb-4 max-w-2xl">
-                                                    {item.title}
-                                                </h3>
-
-                                                <p className="text-slate-500 text-base md:text-lg leading-relaxed mb-8 max-w-3xl whitespace-pre-line">
-                                                    {item.description}
-                                                </p>
-
-                                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                                                    <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
-                                                        <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
-                                                            <Calendar size={20} />
+                                            <div className="flex flex-col gap-0">
+                                                {item.image && (
+                                                    <div className="relative w-full h-[250px] sm:h-[350px] md:h-[400px] lg:h-[480px] bg-slate-950 flex items-center justify-center overflow-hidden group">
+                                                        {/* Blurred backdrop background */}
+                                                        <img
+                                                            src={item.image}
+                                                            alt=""
+                                                            className="absolute inset-0 w-full h-full object-cover filter blur-3xl opacity-70 scale-150 pointer-events-none"
+                                                        />
+                                                        {/* Main foreground image */}
+                                                        <img
+                                                            src={item.image}
+                                                            alt={item.title}
+                                                            onClick={() => setSelectedImage(item.image || null)}
+                                                            className="relative z-10 h-full w-auto object-contain transition-all duration-500 hover:scale-[1.02] cursor-zoom-in"
+                                                        />
+                                                    </div>
+                                                )}
+                                                <div className="p-8 md:p-10">
+                                                    <div>
+                                                        <div className="flex items-center gap-2 mb-5">
+                                                            <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${item.category === "event"
+                                                                    ? "bg-orange-100 text-orange-800"
+                                                                    : "bg-blue-100 text-blue-800"
+                                                                }`}>
+                                                                {item.category === "event" ? <Calendar size={12} /> : <Video size={12} />}
+                                                                {item.type}
+                                                            </span>
                                                         </div>
-                                                        <div>
-                                                            <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
-                                                                Date
+
+                                                        <h3 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight mb-4 max-w-4xl">
+                                                            {item.title}
+                                                        </h3>
+
+                                                        <p className="text-slate-500 text-base md:text-lg leading-relaxed mb-8 max-w-5xl whitespace-pre-line">
+                                                            {item.description}
+                                                        </p>
+
+                                                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                                                            <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
+                                                                <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                                                                    <Calendar size={20} />
+                                                                </div>
+                                                                <div>
+                                                                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
+                                                                        Date
+                                                                    </div>
+                                                                    <div className="font-bold text-slate-900">
+                                                                        {item.date}
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div className="font-bold text-slate-900">
-                                                                {item.date}
+
+                                                            <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
+                                                                <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 shrink-0">
+                                                                    <Clock size={20} />
+                                                                </div>
+                                                                <div>
+                                                                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
+                                                                        Time
+                                                                    </div>
+                                                                    <div className="font-bold text-slate-900">
+                                                                        {item.time}
+                                                                    </div>
+                                                                </div>
                                                             </div>
+
+                                                            <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
+                                                                <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0">
+                                                                    {item.category === "event" ? <MapPin size={20} /> : <Video size={20} />}
+                                                                </div>
+                                                                <div>
+                                                                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
+                                                                        {item.category === "event" ? "Venue" : "Platform"}
+                                                                    </div>
+                                                                    <div className="font-bold text-slate-900">
+                                                                        {item.category === "event" ? item.venue : item.platform}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="flex flex-wrap gap-2 mb-8">
+                                                            {item.tags.map((tag: string) => (
+                                                                <span
+                                                                    key={tag}
+                                                                    className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-bold"
+                                                                >
+                                                                    {tag}
+                                                                </span>
+                                                            ))}
                                                         </div>
                                                     </div>
 
-                                                    <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
-                                                        <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 shrink-0">
-                                                            <Clock size={20} />
-                                                        </div>
-                                                        <div>
-                                                            <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
-                                                                Time
-                                                            </div>
-                                                            <div className="font-bold text-slate-900">
-                                                                {item.time}
-                                                            </div>
-                                                        </div>
+                                                    <div className="flex flex-col sm:flex-row gap-3">
+                                                        {"link" in item ? (
+                                                            <a
+                                                                href={item.link}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+                                                            >
+                                                                {item.ctaText || "Register Now"}
+                                                                <ArrowUpRight size={16} />
+                                                            </a>
+                                                        ) : (
+                                                            <a
+                                                                href="https://luma.com/cp4d1w4b"
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+                                                            >
+                                                                Register Now
+                                                                <ArrowUpRight size={16} />
+                                                            </a>
+                                                        )}
+                                                        {"mapsUrl" in item && (
+                                                            <a
+                                                                href={item.mapsUrl}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-slate-900 text-white rounded-full font-bold hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+                                                            >
+                                                                <MapPin size={16} />
+                                                                View on Google Maps
+                                                            </a>
+                                                        )}
                                                     </div>
-
-                                                    <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
-                                                        <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0">
-                                                            {item.category === "event" ? <MapPin size={20} /> : <Video size={20} />}
-                                                        </div>
-                                                        <div>
-                                                            <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
-                                                                {item.category === "event" ? "Venue" : "Platform"}
-                                                            </div>
-                                                            <div className="font-bold text-slate-900">
-                                                                {item.category === "event" ? item.venue : item.platform}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div className="flex flex-wrap gap-2 mb-8">
-                                                    {item.tags.map((tag: string) => (
-                                                        <span
-                                                            key={tag}
-                                                            className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-bold"
-                                                        >
-                                                            {tag}
-                                                        </span>
-                                                    ))}
-                                                </div>
-
-                                                <div className="flex flex-col sm:flex-row gap-3">
-                                                    {"link" in item ? (
-                                                        <a
-                                                            href={item.link}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
-                                                        >
-                                                            Register Now
-                                                            <ArrowUpRight size={16} />
-                                                        </a>
-                                                    ) : (
-                                                        <a
-                                                            href="https://luma.com/cp4d1w4b"
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
-                                                        >
-                                                            Register Now
-                                                            <ArrowUpRight size={16} />
-                                                        </a>
-                                                    )}
-                                                    {"mapsUrl" in item && (
-                                                        <a
-                                                            href={item.mapsUrl}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-slate-900 text-white rounded-full font-bold hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
-                                                        >
-                                                            <MapPin size={16} />
-                                                            View on Google Maps
-                                                        </a>
-                                                    )}
                                                 </div>
                                             </div>
                                         </div>
@@ -355,70 +413,90 @@ export function EventsClient() {
                                         transition={{ duration: 0.5, delay: i * 0.1 }}
                                     >
                                         <div className="group relative rounded-3xl overflow-hidden border border-slate-200 bg-white hover:border-blue-200 transition-all duration-300 hover:shadow-xl shadow-sm">
-                                            <div className="p-8 md:p-10">
-                                                <div className="flex items-center justify-between gap-3 mb-6">
-                                                    <div className="flex items-center gap-3">
-                                                        <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                                                            item.category === "event" 
-                                                                ? "bg-orange-50 text-orange-700" 
-                                                                : "bg-blue-50 text-blue-700"
-                                                        }`}>
-                                                            {item.category === "event" ? <Calendar size={10} /> : <Video size={10} />}
-                                                            {item.type}
-                                                        </span>
-                                                        <span className="text-slate-400 text-sm font-semibold">{item.date}</span>
+                                            <div className="flex flex-col gap-0">
+                                                {item.image && (
+                                                    <div className="relative w-full h-[250px] sm:h-[350px] md:h-[400px] lg:h-[480px] bg-slate-950 flex items-center justify-center overflow-hidden group">
+                                                        {/* Blurred backdrop background */}
+                                                        <img
+                                                            src={item.image}
+                                                            alt=""
+                                                            className="absolute inset-0 w-full h-full object-cover filter blur-3xl opacity-70 scale-150 pointer-events-none"
+                                                        />
+                                                        {/* Main foreground image */}
+                                                        <img
+                                                            src={item.image}
+                                                            alt={item.title}
+                                                            onClick={() => setSelectedImage(item.image || null)}
+                                                            className="relative z-10 h-full w-auto object-contain transition-all duration-500 hover:scale-[1.02] cursor-zoom-in"
+                                                        />
                                                     </div>
-                                                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-bold uppercase tracking-wider">
-                                                        <Sparkles size={12} />
-                                                        Completed
+                                                )}
+                                                <div className="p-8 md:p-10">
+                                                    <div>
+                                                        <div className="flex items-center justify-between gap-3 mb-6">
+                                                            <div className="flex items-center gap-3">
+                                                                <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${item.category === "event"
+                                                                        ? "bg-orange-50 text-orange-700"
+                                                                        : "bg-blue-50 text-blue-700"
+                                                                    }`}>
+                                                                    {item.category === "event" ? <Calendar size={10} /> : <Video size={10} />}
+                                                                    {item.type}
+                                                                </span>
+                                                                <span className="text-slate-400 text-sm font-semibold">{item.date}</span>
+                                                            </div>
+                                                            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-bold uppercase tracking-wider">
+                                                                <Sparkles size={12} />
+                                                                Completed
+                                                            </div>
+                                                        </div>
+
+                                                        <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">
+                                                            {item.title}
+                                                        </h3>
+
+                                                        <p className="text-slate-500 text-base leading-relaxed mb-6 whitespace-pre-line">
+                                                            {item.description}
+                                                        </p>
+
+                                                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                                                            <div className="flex items-center gap-2 text-slate-600 text-sm">
+                                                                <Clock size={16} className="text-slate-400" />
+                                                                <span>Time: {item.time}</span>
+                                                            </div>
+                                                            <div className="flex items-center gap-2 text-slate-600 text-sm">
+                                                                {item.category === "event" ? (
+                                                                    <MapPin size={16} className="text-slate-400" />
+                                                                ) : (
+                                                                    <Video size={16} className="text-slate-400" />
+                                                                )}
+                                                                <span>
+                                                                    {item.category === "event" ? "Venue" : "Platform"}: {item.category === "event" ? item.venue : item.platform}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="flex flex-wrap gap-2 mb-6">
+                                                            {item.tags.map((tag: string) => (
+                                                                <span key={tag} className="px-2 py-1 rounded bg-slate-50 text-slate-400 text-[10px] font-bold uppercase">
+                                                                    #{tag}
+                                                                </span>
+                                                            ))}
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">
-                                                    {item.title}
-                                                </h3>
-
-                                                <p className="text-slate-500 text-base leading-relaxed mb-6 whitespace-pre-line">
-                                                    {item.description}
-                                                </p>
-
-                                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                                                    <div className="flex items-center gap-2 text-slate-600 text-sm">
-                                                        <Clock size={16} className="text-slate-400" />
-                                                        <span>Time: {item.time}</span>
-                                                    </div>
-                                                    <div className="flex items-center gap-2 text-slate-600 text-sm">
-                                                        {item.category === "event" ? (
-                                                            <MapPin size={16} className="text-slate-400" />
-                                                        ) : (
-                                                            <Video size={16} className="text-slate-400" />
+                                                    <div className="flex flex-col sm:flex-row gap-3">
+                                                        {"mapsUrl" in item && (
+                                                            <a
+                                                                href={item.mapsUrl}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="inline-flex justify-center items-center gap-2 px-6 py-2.5 bg-slate-900 text-white rounded-full text-sm font-bold hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 shadow-sm"
+                                                            >
+                                                                <MapPin size={14} />
+                                                                View on Google Maps
+                                                            </a>
                                                         )}
-                                                        <span>
-                                                            {item.category === "event" ? "Venue" : "Platform"}: {item.category === "event" ? item.venue : item.platform}
-                                                        </span>
                                                     </div>
-                                                </div>
-
-                                                <div className="flex flex-wrap gap-2 mb-6">
-                                                    {item.tags.map((tag: string) => (
-                                                        <span key={tag} className="px-2 py-1 rounded bg-slate-50 text-slate-400 text-[10px] font-bold uppercase">
-                                                            #{tag}
-                                                        </span>
-                                                    ))}
-                                                </div>
-
-                                                <div className="flex flex-col sm:flex-row gap-3">
-                                                    {"mapsUrl" in item && (
-                                                        <a
-                                                            href={item.mapsUrl}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className="inline-flex justify-center items-center gap-2 px-6 py-2.5 bg-slate-900 text-white rounded-full text-sm font-bold hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 shadow-sm"
-                                                        >
-                                                            <MapPin size={14} />
-                                                            View on Google Maps
-                                                        </a>
-                                                    )}
                                                 </div>
                                             </div>
                                         </div>
@@ -474,6 +552,40 @@ export function EventsClient() {
             </section>
 
             <Footer />
+
+            {/* Lightbox Zoom Modal */}
+            <AnimatePresence>
+                {selectedImage && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setSelectedImage(null)}
+                        className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out"
+                    >
+                        <motion.div
+                            initial={{ scale: 0.95, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.95, opacity: 0 }}
+                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            className="relative max-w-4xl max-h-[90vh] overflow-hidden rounded-2xl bg-slate-950 border border-slate-800 shadow-2xl flex items-center justify-center"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <img
+                                src={selectedImage}
+                                alt="Event flyer"
+                                className="w-full h-auto max-h-[85vh] object-contain"
+                            />
+                            <button
+                                onClick={() => setSelectedImage(null)}
+                                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/50 text-white hover:bg-black/80 transition-colors flex items-center justify-center border border-white/10"
+                            >
+                                <span className="text-xl font-semibold">&times;</span>
+                            </button>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </main>
     );
 }
