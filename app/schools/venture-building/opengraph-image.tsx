@@ -1,0 +1,12 @@
+import { GenerateOgImage } from '@/lib/og-generator';
+
+export const runtime = 'nodejs';
+export const revalidate = 60;
+
+export default async function Image() {
+  return GenerateOgImage({
+    title: "School of Venture Building",
+    category: "School of Entrepreneurship",
+    slug: "schools/venture-building",
+  });
+}

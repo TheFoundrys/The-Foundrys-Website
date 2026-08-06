@@ -1,0 +1,17 @@
+"use strict";
+import { QuantumClient } from "@/components/scenes/quantum/client";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Bachelors of Quantum Computing | The Foundrys",
+  description: "The future of computing is here. Learn Qubits, Superposition, and Quantum Algorithms. Be 10 years ahead of the industry.",
+  keywords: ["Quantum Computing Course India", "Qiskit Training", "Future Technology Jobs", "Advanced Physics Course", "Next Gen Computing"],
+  openGraph: {
+    title: "Bachelors of Quantum Computing | The Foundrys",
+    description: "The future of computing is here. Learn Qubits, Superposition, and Quantum Algorithms.",
+  },
+};
+
+export default function QuantumPage() {
+  return <QuantumClient />;
+}
