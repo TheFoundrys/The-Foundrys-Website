@@ -16,7 +16,7 @@ export default function EntryLevelProgramPage() {
     const [selectedPackageId, setSelectedPackageId] = useState<string | null>(null);
 
     useEffect(() => {
-        document.title = "Entry Level Programs | The Foundry";
+        document.title = "Young Graduate Programs | The Foundry";
     }, []);
 
     return (
@@ -59,12 +59,12 @@ export default function EntryLevelProgramPage() {
                             </div>
 
                             {/* Strategic Program Specs */}
-                            <div className="mt-16 pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-8">
+                            {/* <div className="mt-16 pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-8">
                                 <HeroStat icon={<Wifi size={20} />} label="Format" value="Hybrid" sub="In-Person + Virtual" />
                                 <HeroStat icon={<Zap size={20} />} label="Approach" value="Applied" sub="Concept + Practice" />
                                 <HeroStat icon={<Target size={20} />} label="Outcome" value="Ready" sub="For Specialization" />
                                 <HeroStat icon={<Calendar size={20} />} label="Duration" value="Program-dependent" sub="Intensive Cohort" />
-                            </div>
+                            </div> */}
                         </motion.div>
                     </div>
                 </div>
@@ -76,34 +76,34 @@ export default function EntryLevelProgramPage() {
                     <div className="mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Choose your career path</h2>
                         <p className="text-lg text-slate-600 leading-relaxed max-w-3xl">
-                            Precision-engineered learning tracks. Each domain is structured as a comprehensive, standalone entry-level program allowing you to build a strong foundation in the technology defining your future.
+                            Precision-engineered learning tracks. Each domain is structured as a comprehensive, standalone young graduate program allowing you to build a strong foundation in the technology defining your future.
                         </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <DomainCard
-                            title="Artificial Intelligence"
+                            title="Applied AI & GenAI Program"
                             tagline="From Logic to Intelligence."
                             desc="Move beyond basic Python. Master Neural Networks, NLP, and Computer Vision to build systems that can see, read, and decide."
                             icon={<BrainCircuit />}
                             onOpenPackage={() => setSelectedPackageId("entry-level-ai")}
                         />
                         <DomainCard
-                            title="Cyber Security"
+                            title="Cybersecurity Analyst Program"
                             tagline="Defend the Digital Frontier."
                             desc="The world is digital, and it is under attack. Learn the offensive and defensive strategies required to secure networks and data."
                             icon={<ShieldCheck />}
                             onOpenPackage={() => setSelectedPackageId("entry-level-cyber-security")}
                         />
                         <DomainCard
-                            title="Quantum Computing"
+                            title="Quantum Computing Program"
                             tagline="The Next Computational Revolution."
                             desc="Prepare for the paradigm shift. Understanding Qubits and Superposition today is like learning the Internet in 1990."
                             icon={<Cpu />}
                             onOpenPackage={() => setSelectedPackageId("entry-level-quantum-computing")}
                         />
                         <DomainCard
-                            title="Blockchain"
+                            title="Blockchain Program"
                             tagline="Architect the Trust Layer."
                             desc="Explore the technology behind Web3. Learn how decentralized ledgers and smart contracts are rewriting the rules of finance and ownership."
                             icon={<Network />}
@@ -189,7 +189,7 @@ function DomainCard({ title, tagline, desc, icon, onOpenPackage }: { title: stri
         >
             <div className="absolute top-6 right-6 z-10">
                 <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-100 whitespace-nowrap">
-                    Foundational Program
+                    Young Graduate Program
                 </span>
             </div>
 

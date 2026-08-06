@@ -3,102 +3,30 @@
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useLayoutEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
-    ArrowLeft,
     CheckCircle2,
-    Calendar,
-    Clock,
     Award,
-    ArrowUpRight,
-    Terminal,
     Cpu,
     ShieldCheck,
     Code2,
     Briefcase,
-    ServerCog,
     ChevronDown,
-    Users,
-    BarChart3,
     Rocket,
     BrainCircuit,
     Database,
-    Globe,
     Bot,
     Layers,
-    Cloud,
-    Eye,
-    Settings,
-    Heart,
-    Activity,
-    Zap,
-    Share2,
-    Link as LinkIcon
+    ArrowUpRight,
+    Play
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { CareerVision } from "@/components/schools/shared/career-vision";
 import { SyllabusMindMap } from "@/components/ui/syllabus-mind-map";
-import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
 import { ProgramStats } from "./program-stats";
 import { WhyUs } from "./why-us";
 
-function StickyNav() {
-    const [isSticky, setIsSticky] = useState(false);
-    const [activeSection, setActiveSection] = useState("overview");
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const heroHeight = document.getElementById('hero')?.offsetHeight || 800;
-            setIsSticky(window.scrollY > heroHeight - 100);
-
-            // Active section detection
-            const sections = ['overview', 'curriculum', 'eligibility', 'outcomes'];
-            for (const section of sections) {
-                const el = document.getElementById(section);
-                if (el) {
-                    const rect = el.getBoundingClientRect();
-                    if (rect.top <= 150 && rect.bottom >= 150) {
-                        setActiveSection(section);
-                        break;
-                    }
-                }
-            }
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    const navLinks = [
-        { id: 'overview', label: 'Overview' },
-        { id: 'curriculum', label: 'What you\'ll study' },
-        { id: 'eligibility', label: 'Entry requirements' },
-        { id: 'outcomes', label: 'Career outcomes' },
-    ];
-
-    return (
-        <div className={`sticky top-0 z-50 w-full transition-all duration-300 ${isSticky ? 'bg-white/90 backdrop-blur-md shadow-md py-4' : 'bg-transparent py-0 pointer-events-none opacity-0'
-            }`}>
-            <div className="container mx-auto max-w-7xl px-6 flex justify-between items-center">
-                <div className="flex gap-8">
-                    {navLinks.map((link) => (
-                        <button
-                            key={link.id}
-                            onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })}
-                            className={`text-sm font-bold tracking-tight transition-colors ${activeSection === link.id ? 'text-blue-600' : 'text-slate-600 hover:text-blue-500'
-                                }`}
-                        >
-                            {link.label}
-                        </button>
-                    ))}
-                </div>
-                <Link href="/apply" className="px-6 py-2 bg-blue-600 text-white text-sm font-bold rounded-full hover:bg-blue-500 transition-all shadow-md active:scale-95">
-                    Apply Now
-                </Link>
-            </div>
-        </div>
-    );
-}
 
 const TOOLS = [
     { name: "pandas", cat: "Data & ML", color: "#150458", url: "https://cdn.simpleicons.org/pandas" },
@@ -140,12 +68,12 @@ const TOOLS = [
     { name: "Chainguard", cat: "ML Security", color: "#0B5345", url: "https://cdn.simpleicons.org/chainguard" },
 ];
 
-const TOOLS_ROW_1 = TOOLS.slice(0, 20);
-const TOOLS_ROW_2 = TOOLS.slice(20);
+const TOOLS_ROW_1 = TOOLS.slice(0, 18);
+const TOOLS_ROW_2 = TOOLS.slice(18);
 
 const ToolMarquee = ({ tools, reverse = false, speed = 80 }: { tools: any[], reverse?: boolean, speed?: number }) => {
     return (
-        <div className="flex w-full overflow-hidden select-none py-2 md:py-3 relative bg-white/50 backdrop-blur-sm border-y border-slate-100">
+        <div className="flex w-full overflow-hidden select-none py-2 md:py-3 relative bg-slate-900/40 border-y border-white/5">
             <motion.div
                 className="flex items-center gap-12 md:gap-20 whitespace-nowrap"
                 animate={{ x: reverse ? ["-50%", "0%"] : ["0%", "-50%"] }}
@@ -153,18 +81,18 @@ const ToolMarquee = ({ tools, reverse = false, speed = 80 }: { tools: any[], rev
             >
                 {[...tools, ...tools].map((tool, idx) => (
                     <div key={idx} className="flex items-center gap-4 group cursor-default">
-                        <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center p-2 bg-white rounded-xl shadow-sm border border-slate-100 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+                        <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center p-2 bg-slate-950 rounded-xl shadow-sm border border-white/5 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
                             <img
                                 src={tool.url}
                                 alt={tool.name}
-                                className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
+                                className="w-full h-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
                                 onError={(e) => {
                                     (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${tool.name}&background=random&color=fff&size=128`;
                                 }}
                             />
                         </div>
                         <span
-                            className="text-2xl md:text-4xl font-bold tracking-tighter text-slate-400 group-hover:text-slate-900 transition-colors duration-300"
+                            className="text-2xl md:text-4xl font-bold tracking-tighter text-slate-600 group-hover:text-white transition-colors duration-300 font-sans"
                         >
                             {tool.name}
                         </span>
@@ -361,141 +289,9 @@ const CURRICULUM_DATA = [
     }
 ];
 
-// Organic AI Brain Animation Component
-function NeuralNetwork() {
-    const canvasRef = useRef<HTMLCanvasElement>(null);
 
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
-
-        let animationFrameId: number;
-        let particles: any[] = [];
-        const particleCount = 180; // Significantly more particles for brain detail
-        let rotationAngle = 0;
-
-        const resize = () => {
-            if (!canvas || !canvas.parentElement) return;
-            canvas.width = canvas.parentElement.offsetWidth;
-            canvas.height = canvas.parentElement.offsetHeight;
-        };
-
-        class Particle {
-            x: number; y: number; z: number;
-            baseX: number; baseY: number; baseZ: number;
-
-            constructor() {
-                // Approximate 3-Year Immersive Brain (High-Res Scale)
-                const hemisphere = Math.random() > 0.5 ? 1 : -1;
-                const r = 220 * Math.pow(Math.random(), 0.5); // Much larger
-                const theta = Math.random() * Math.PI * 2;
-                const phi = Math.random() * Math.PI;
-
-                this.baseX = (r * 0.9 * Math.sin(phi) * Math.cos(theta)) + (hemisphere * 40); // Wider split
-                this.baseY = r * 1.1 * Math.sin(phi) * Math.sin(theta);
-                this.baseZ = r * 0.7 * Math.cos(phi);
-
-                this.x = this.baseX;
-                this.y = this.baseY;
-                this.z = this.baseZ;
-            }
-
-            rotate(angle: number) {
-                const cos = Math.cos(angle);
-                const sin = Math.sin(angle);
-
-                this.x = this.baseX * cos - this.baseZ * sin;
-                this.z = this.baseX * sin + this.baseZ * cos;
-                this.y = this.baseY + Math.sin(angle * 0.4) * 20;
-            }
-        }
-
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
-
-        const draw = () => {
-            if (!ctx || !canvas) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            rotationAngle += 0.004;
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height * 0.45; // Centered higher up
-
-            // Brighten Aura significantly
-            const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 400);
-            gradient.addColorStop(0, 'rgba(59, 130, 246, 0.4)'); // BRIGHTER
-            gradient.addColorStop(1, 'rgba(34, 211, 238, 0)');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach((p, i) => {
-                p.rotate(rotationAngle);
-
-                const scale = 600 / (600 + p.z + 100);
-                const x2d = p.x * scale + centerX;
-                const y2d = p.y * scale + centerY;
-                const size = Math.max(0.8, (p.z < 0 ? 5 : 2) * scale); // LARGER DOTS
-                const opacity = (1 - (p.z + 150) / 450) * 0.9; // HIGHER OPACITY
-
-                // Neon Brain Pulse
-                const pulse = Math.sin(Date.now() * 0.003 + p.x * 0.02) * 0.3 + 0.7;
-
-                ctx.beginPath();
-                ctx.arc(x2d, y2d, size, 0, Math.PI * 2);
-                ctx.fillStyle = p.z < 0 ? `rgba(165, 243, 252, ${opacity * pulse})` : `rgba(34, 211, 238, ${opacity * 0.6})`;
-                ctx.fill();
-
-                if (p.z < -50) {
-                    ctx.shadowBlur = 15;
-                    ctx.shadowColor = 'rgba(34, 211, 238, 0.8)';
-                } else {
-                    ctx.shadowBlur = 0;
-                }
-
-                // Connections - Organic synapic clusters
-                for (let j = i + 1; j < particles.length; j += 4) {
-                    const p2 = particles[j];
-                    const dx = p.x - p2.x;
-                    const dy = p.y - p2.y;
-                    const dz = p.z - p2.z;
-                    const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
-
-                    if (dist < 70) {
-                        const x2d2 = p2.x * scale + centerX;
-                        const y2d2 = p2.y * scale + centerY;
-                        const lineOpacity = (1 - dist / 70) * 0.3 * opacity;
-
-                        ctx.beginPath();
-                        ctx.moveTo(x2d, y2d);
-                        ctx.lineTo(x2d2, y2d2);
-                        ctx.strokeStyle = `rgba(147, 197, 253, ${lineOpacity})`;
-                        ctx.lineWidth = 1;
-                        ctx.stroke();
-                    }
-                }
-            });
-
-            animationFrameId = requestAnimationFrame(draw);
-        };
-
-        window.addEventListener('resize', resize);
-        resize();
-        draw();
-
-        return () => {
-            window.removeEventListener('resize', resize);
-            cancelAnimationFrame(animationFrameId);
-        };
-    }, []);
-
-    return <canvas ref={canvasRef} className="w-full h-full" />;
-}
 
 export default function AISchoolPage() {
-    const [activeRole, setActiveRole] = useState(CAREER_ROLES[0]);
     const [duration, setDuration] = useState<3 | 4>(3);
 
     useEffect(() => {
@@ -503,99 +299,121 @@ export default function AISchoolPage() {
     }, []);
 
     return (
-        <main className="min-h-screen bg-slate-50 font-sans selection:bg-blue-100">
+        <main className="min-h-screen bg-slate-950 text-white font-sans selection:bg-blue-500/20 selection:text-blue-400 overflow-x-hidden">
             <Navbar />
 
             {/* HERO SECTION */}
-            <section id="hero" className="relative min-h-[90vh] flex items-center bg-white overflow-hidden">
-                <div className="absolute inset-0 z-0 select-none bg-white" />
+            <section id="hero" className="relative min-h-[95vh] flex items-center bg-slate-950 overflow-hidden pt-20">
+                {/* Mesh & Grid Background */}
+                <div className="absolute inset-0 z-0 select-none">
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
+                    <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
+                    <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-cyan-600/5 rounded-full blur-[120px] pointer-events-none" />
+                </div>
 
-                <div className="container mx-auto max-w-[1450px] relative z-10 px-4">
-                    <div className="flex flex-col justify-center text-left py-24 md:py-32 lg:min-h-[90vh] relative">
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="max-w-5xl relative z-10"
-                        >
-                            {/* Department / Program Label */}
-
-                            <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-[8.5rem] font-black tracking-tighter text-slate-950 mb-8 md:mb-10 leading-[0.85] uppercase">
-                                Artificial <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-600 pb-2 inline-block md:pr-8 animate-pulse">Intelligence</span>
-                            </h1>
-
-                            <p className="text-xl md:text-3xl text-slate-700 leading-relaxed font-light mb-16 max-w-3xl">
-                                A {duration}-year immersive degree merging AI Engineering with Entrepreneurship. <br />
-                                <span className="text-slate-950 font-medium">Graduate with Mastery, Vision & Real-World Impact.</span>
-                            </p>
-
-                            {/* Duration Toggle */}
-                            <div className="flex gap-4 mb-12">
-                                <button
-                                    onClick={() => setDuration(3)}
-                                    className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 3 ? 'bg-blue-600 text-white' : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200'}`}
-                                >
-                                    3-Year Program
-                                </button>
-                                <button
-                                    onClick={() => setDuration(4)}
-                                    className={`px-8 py-3 rounded-full font-bold transition-all ${duration === 4 ? 'bg-blue-600 text-white' : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200'}`}
-                                >
-                                    4-Year Program
-                                </button>
-                            </div>
-
-                            {/* Elegant Inline Content (Replacing Cluttered Boxes) */}
-                            <div className="grid sm:grid-cols-3 gap-10 md:gap-16 pt-12 border-t border-slate-200 max-w-4xl relative z-10">
-                                {/* Degrees */}
-                                <div>
-                                    <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-[0.2em] font-bold mb-4">Available Degrees</p>
-                                    <div className="space-y-1.5 border-l-2 border-cyan-500/30 pl-4">
-                                        {duration === 3 ? (
-                                            <>
-                                                <p className="text-sm md:text-base font-semibold text-slate-900 tracking-tight">BCA in Artificial Intelligence</p>
-                                                <p className="text-sm md:text-base font-semibold text-slate-900 tracking-tight">B.Sc AI / ML Professional</p>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <p className="text-sm md:text-base font-semibold text-slate-900 tracking-tight">BCA in Artificial Intelligence</p>
-                                                <p className="text-sm md:text-base font-semibold text-slate-900 tracking-tight">B.Tech AI / ML Professional</p>
-                                            </>
-                                        )}
-                                    </div>
+                <div className="container mx-auto max-w-[1450px] relative z-10 px-6 sm:px-12 lg:px-16 w-full">
+                    <div className="py-20 lg:py-28 min-h-[85vh] flex flex-col justify-center text-left">
+                        <div className="max-w-5xl w-full">
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8 }}
+                                className="w-full relative z-10"
+                            >
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold mb-6 uppercase tracking-wider backdrop-blur-sm">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+                                    School of Deep Tech
                                 </div>
 
-                                {duration === 3 && (
+                                <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[7.5rem] font-black tracking-tighter text-white mb-8 leading-[0.9] uppercase font-sans">
+                                    Artificial <br />
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-cyan-400 inline-block">Intelligence</span>
+                                </h1>
+
+                                <p className="text-lg md:text-xl text-slate-300 leading-relaxed font-light mb-12 max-w-2xl">
+                                    A {duration}-year immersive degree merging AI Engineering with Entrepreneurship. <br />
+                                    <span className="text-white font-medium">Graduate with Mastery, Vision & Real-World Impact.</span>
+                                </p>
+
+                                {/* Duration Toggle */}
+                                <div className="flex gap-4 mb-12">
+                                    <button
+                                        onClick={() => setDuration(3)}
+                                        className={`px-8 py-3 rounded-full font-bold text-sm tracking-wide transition-all duration-300 ${
+                                            duration === 3 
+                                                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25 scale-105' 
+                                                : 'bg-slate-900 text-slate-400 hover:text-white border border-white/5 hover:bg-slate-800'
+                                        }`}
+                                    >
+                                        3-Year Program
+                                    </button>
+                                    <button
+                                        onClick={() => setDuration(4)}
+                                        className={`px-8 py-3 rounded-full font-bold text-sm tracking-wide transition-all duration-300 ${
+                                            duration === 4 
+                                                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25 scale-105' 
+                                                : 'bg-slate-900 text-slate-400 hover:text-white border border-white/5 hover:bg-slate-800'
+                                        }`}
+                                    >
+                                        4-Year Program
+                                    </button>
+                                </div>
+
+                                {/* Information Boxes */}
+                                <div className="grid sm:grid-cols-3 gap-10 pt-10 border-t border-white/10 max-w-3xl">
+                                    {/* Degrees */}
                                     <div>
-                                        <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-[0.2em] font-bold mb-4">Partner Institutions</p>
-                                        <div className="space-y-1.5 border-l-2 border-blue-500/30 pl-4">
-                                            <p className="text-sm md:text-base font-semibold text-slate-900 tracking-tight">Ethames Business School</p>
-                                            <p className="text-sm md:text-base font-semibold text-slate-900 tracking-tight">Keshava Degree College</p>
+                                        <p className="text-[10px] text-slate-400 uppercase tracking-[0.25em] font-bold mb-4">Available Degrees</p>
+                                        <div className="space-y-2 border-l border-blue-500/30 pl-4">
+                                            {duration === 3 ? (
+                                                <>
+                                                    <p className="text-sm font-semibold text-white tracking-tight leading-tight">BCA in Artificial Intelligence</p>
+                                                    <p className="text-sm font-semibold text-white tracking-tight leading-tight">B.Sc AI / ML Professional</p>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <p className="text-sm font-semibold text-white tracking-tight leading-tight">BCA in Artificial Intelligence</p>
+                                                    <p className="text-sm font-semibold text-white tracking-tight leading-tight">B.Tech AI / ML Professional</p>
+                                                </>
+                                            )}
                                         </div>
                                     </div>
-                                )}
 
-                                {/* Certifications */}
-                                <div>
-                                    <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-[0.2em] font-bold mb-4">Industry Certifications</p>
-                                    <div className="flex gap-5 border-l-2 border-indigo-500/30 pl-4 h-full items-start">
-                                        <div className="text-left">
-                                            <span className="text-base md:text-lg font-black text-cyan-600 tracking-widest block mb-0.5">FCEP</span>
-                                            <span className="text-[9px] text-slate-500 uppercase font-bold tracking-widest block">Exec</span>
+                                    {/* Partners */}
+                                    {duration === 3 && (
+                                        <div>
+                                            <p className="text-[10px] text-slate-400 uppercase tracking-[0.25em] font-bold mb-4">Partner Institutions</p>
+                                            <div className="space-y-2 border-l border-cyan-500/30 pl-4">
+                                                <p className="text-sm font-semibold text-white tracking-tight leading-tight">Ethames Business School</p>
+                                                <p className="text-sm font-semibold text-white tracking-tight leading-tight">Keshava Degree College</p>
+                                            </div>
                                         </div>
-                                        <div className="text-left">
-                                            <span className="text-base md:text-lg font-black text-blue-600 tracking-widest block mb-0.5">FCIP</span>
-                                            <span className="text-[9px] text-slate-500 uppercase font-bold tracking-widest block">Pract</span>
-                                        </div>
-                                        <div className="text-left">
-                                            <span className="text-base md:text-lg font-black text-indigo-600 tracking-widest block mb-0.5">FFP</span>
-                                            <span className="text-[9px] text-slate-500 uppercase font-bold tracking-widest block">Prof</span>
+                                    )}
+
+                                    {/* Certifications */}
+                                    <div className={duration === 4 ? "sm:col-span-2" : ""}>
+                                        <p className="text-[10px] text-slate-400 uppercase tracking-[0.25em] font-bold mb-4">Industry Credentials</p>
+                                        <div className="flex gap-6 border-l border-purple-500/30 pl-4 items-center h-[38px]">
+                                            <div>
+                                                <span className="text-base font-extrabold text-blue-400 tracking-wider block leading-none">FCEP</span>
+                                                <span className="text-[8px] text-slate-400 uppercase tracking-widest font-semibold mt-1 block">Executive</span>
+                                            </div>
+                                            <div>
+                                                <span className="text-base font-extrabold text-cyan-400 tracking-wider block leading-none">FCIP</span>
+                                                <span className="text-[8px] text-slate-400 uppercase tracking-widest font-semibold mt-1 block">Practitioner</span>
+                                            </div>
+                                            <div>
+                                                <span className="text-base font-extrabold text-purple-400 tracking-wider block leading-none">FFP</span>
+                                                <span className="text-[8px] text-slate-400 uppercase tracking-widest font-semibold mt-1 block">Professional</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </motion.div>
+                            </motion.div>
+                        </div>
+
+
+
                     </div>
                 </div>
 
@@ -603,47 +421,43 @@ export default function AISchoolPage() {
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 1.5, duration: 1 }}
-                    className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500"
+                    transition={{ delay: 1.2, duration: 1 }}
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 select-none pointer-events-none"
                 >
                     <span className="text-[10px] uppercase tracking-widest">Scroll</span>
-                    <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-slate-400 to-transparent" />
+                    <div className="w-[1px] h-10 bg-gradient-to-b from-transparent via-slate-500 to-transparent" />
                 </motion.div>
             </section>
 
-            {/* Program Details Card */}
-            <div className="relative z-20 px-4 -mt-10 mb-12">
+            {/* Program Details Floating Specs Card */}
+            <div className="relative z-20 px-6 -mt-10 mb-12">
                 <div className="mx-auto max-w-[1450px]">
-                    {/* Adjusted mobile padding (py-6) while keeping desktop (md:py-5) */}
-                    <div className="bg-white rounded-2xl shadow-xl border border-slate-200 py-6 px-6 md:py-5 md:px-10 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-8">
-
-                        {/* Switched to grid-cols-1 and text-left for better mobile readability */}
-                        <div className="grid grid-cols-1 lg:grid-cols-4 gap-y-5 lg:gap-x-14 flex-1 text-left w-full">
+                    <div className="bg-slate-950/40 backdrop-blur-md rounded-[2rem] shadow-2xl border border-white/5 py-8 px-8 lg:px-12 flex flex-col lg:flex-row items-center justify-between gap-8">
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6 lg:gap-x-14 flex-1 text-left w-full">
                             <div>
-                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-0.5">Program Length</p>
-                                <p className="text-lg font-bold text-slate-900">{duration}-Year Full-Time</p>
+                                <p className="text-[10px] uppercase tracking-wider font-bold mb-1" style={{ color: '#94a3b8' }}>Program Length</p>
+                                <p className="text-base sm:text-lg font-bold" style={{ color: '#ffffff' }}>{duration}-Year Full-Time</p>
                             </div>
                             <div>
-                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-0.5">Delivery Mode</p>
-                                <p className="text-lg font-bold text-slate-900">On-Campus, Immersive</p>
+                                <p className="text-[10px] uppercase tracking-wider font-bold mb-1" style={{ color: '#94a3b8' }}>Delivery Mode</p>
+                                <p className="text-base sm:text-lg font-bold" style={{ color: '#ffffff' }}>On-Campus, Immersive</p>
                             </div>
                             <div>
-                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-0.5">Campus</p>
-                                <p className="text-lg font-bold text-slate-900">{duration === 4 ? "Hyderabad" : "Hyderabad and Warangal"}</p>
+                                <p className="text-[10px] uppercase tracking-wider font-bold mb-1" style={{ color: '#94a3b8' }}>Campus Location</p>
+                                <p className="text-base sm:text-lg font-bold" style={{ color: '#ffffff' }}>{duration === 4 ? "Hyderabad" : "Hyderabad / Warangal"}</p>
                             </div>
                             <div>
-                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-0.5">Admissions</p>
-                                <p className="text-lg font-bold text-slate-900">Closed</p>
+                                <p className="text-[10px] uppercase tracking-wider font-bold mb-1" style={{ color: '#94a3b8' }}>Cohort Status</p>
+                                <p className="text-base sm:text-lg font-bold" style={{ color: '#34d399' }}>Admissions Closed</p>
                             </div>
                         </div>
 
-                        {/* Buttons stack nicely on mobile with the flex-col mobile class if needed, or stay side-by-side */}
-                        <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
-                            <Link href="/apply" className="flex-1 lg:flex-none text-center px-8 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-500 transition-all shadow-lg active:scale-95 whitespace-nowrap">
+                        <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                            <Link href="/apply" className="flex-1 lg:flex-none text-center px-8 py-3.5 bg-white text-slate-950 border border-slate-950 font-bold rounded-xl hover:bg-slate-100 transition-all hover:scale-[1.02] shadow-[0_4px_20px_rgba(255,255,255,0.1)] whitespace-nowrap text-sm">
                                 Apply Now
                             </Link>
-                            <Link href="/contact" className="flex-1 lg:flex-none text-center px-8 py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-slate-50 transition-all border border-slate-300 active:scale-95 whitespace-nowrap">
-                                Contact Now
+                            <Link href="/contact" className="flex-1 lg:flex-none text-center px-8 py-3.5 bg-slate-950 text-white border border-slate-950 font-bold rounded-xl hover:bg-slate-900 transition-all hover:scale-[1.02] whitespace-nowrap text-sm">
+                                Contact Admissions
                             </Link>
                         </div>
                     </div>
@@ -651,185 +465,187 @@ export default function AISchoolPage() {
             </div>
 
 
-            {/* 1. Overview */}
-            <section id="overview" className="py-28 px-6 bg-white overflow-hidden">
-                <div className="container mx-auto max-w-[1450px]">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+            {/* 1. OVERVIEW */}
+            <section id="overview" className="py-32 px-6 bg-slate-950 overflow-hidden relative">
+                <div className="absolute inset-0 opacity-5 pointer-events-none">
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500 rounded-full blur-[150px]" />
+                </div>
+
+                <div className="container mx-auto max-w-[1450px] relative z-10">
+                    <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
                         <div>
-                            <p className="text-blue-600 text-sm font-bold uppercase tracking-widest mb-4">Program Overview</p>
-                            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                            <p className="text-blue-400 text-xs font-bold uppercase tracking-widest mb-4">Program Overview</p>
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight tracking-tight">
                                 A Degree Built for <br />
-                                <span className="text-blue-600">the AI Era.</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">the AI Era.</span>
                             </h2>
-                            <p className="text-lg text-slate-600 leading-relaxed mb-8">
+                            <p className="text-base sm:text-lg text-slate-400 leading-relaxed mb-10">
                                 The Foundry&apos;s {duration}-year AI program combines rigorous academic foundations with hands-on engineering and entrepreneurial execution. Students don&apos;t just learn theory — they architect neural networks, deploy agent systems, and ship production-grade AI products before graduation.
                             </p>
                             <div className="flex flex-wrap gap-3">
-                                {["Neural Networks", "LLMs \u0026 Agents", "MLOps", "Startup Lab", "GPU Clusters", "Ethics \u0026 Safety"].map((tag, i) => (
-                                    <span key={i} className="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-semibold border border-slate-200 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-colors cursor-default">
+                                {["Neural Networks", "LLMs & Agents", "MLOps", "Startup Lab", "GPU Clusters", "Ethics & Safety"].map((tag, i) => (
+                                    <span key={i} className="px-4 py-2 bg-slate-900 border border-white/5 text-slate-300 rounded-full text-xs font-semibold hover:bg-blue-500/10 hover:text-blue-400 hover:border-blue-500/20 transition-colors cursor-default select-none">
                                         {tag}
                                     </span>
                                 ))}
                             </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-5">
+
+                        <div className="grid grid-cols-2 gap-6 w-full">
                             {[
                                 { value: duration.toString(), unit: "Years", label: "Full-time immersive program" },
                                 { value: (duration * 2).toString(), unit: "Semesters", label: "Progressive skill building" },
-                                { value: "100%", unit: "Hands-on", label: "Project-based from day one" },
-                                { value: "100+", unit: "Projects", label: "Real-world problem solving" },
+                                { value: "100%", unit: "Applied", label: "Project-based curriculum" },
+                                { value: "100+", unit: "Concepts", label: "End-to-end industrial execution" },
                             ].map((stat, i) => (
                                 <motion.div
                                     key={i}
-                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    initial={{ opacity: 0, scale: 0.95 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="bg-slate-50 rounded-2xl p-6 border border-slate-200 text-center hover:shadow-lg transition-shadow"
+                                    className="bg-slate-900/40 rounded-2xl p-6 border border-white/5 hover:border-white/10 hover:bg-slate-900/60 shadow-lg text-center transition-all duration-300"
                                 >
-                                    <div className="text-3xl md:text-4xl font-black text-slate-900">{stat.value}</div>
-                                    <div className="text-sm font-bold text-blue-600 uppercase tracking-wider mb-1">{stat.unit}</div>
-                                    <p className="text-xs text-slate-500 font-medium">{stat.label}</p>
+                                    <div className="text-3xl md:text-4xl font-extrabold text-white mb-1 tracking-tight">{stat.value}</div>
+                                    <div className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2">{stat.unit}</div>
+                                    <p className="text-xs text-slate-500 font-medium leading-relaxed">{stat.label}</p>
                                 </motion.div>
                             ))}
                         </div>
                     </div>
                 </div>
             </section>
+
             <ProgramStats />
-            {/* Consolidated: Who Should Join & Eligibility */}
-            <section id="who-and-eligibility" className="py-24 px-6 bg-white overflow-hidden relative border-b border-slate-100">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-blue-50/30 via-transparent to-transparent" />
-                <div className="container mx-auto max-w-7xl relative z-10">
+
+            {/* CONSOLIDATED ELIGIBILITY & WHO SHOULD JOIN */}
+            <section id="eligibility" className="py-32 px-6 bg-slate-950 overflow-hidden relative border-t border-white/5">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(59,130,246,0.05),transparent_60%)]" />
+                <div className="container mx-auto max-w-[1450px] relative z-10">
                     <div className="grid lg:grid-cols-2 gap-20 items-start">
-                        {/* Left side: Who Is This For */}
-                        <div>
-                            <div className="mb-10">
-                                <p className="text-blue-600 text-sm font-bold uppercase tracking-widest mb-3">Built for the next generation</p>
-                                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">Who Is This For</h2>
+                        
+                        {/* Who is this for */}
+                        <div className="space-y-12">
+                            <div>
+                                <p className="text-blue-400 text-xs font-bold uppercase tracking-widest mb-3">Built for the next generation</p>
+                                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">Who Is This For</h2>
                             </div>
                             <div className="space-y-6">
                                 {[
-                                    { num: "01", title: "Aspiring AI Engineers", desc: "Class 12 / Intermediate graduates from any stream — MPC, BiPC, CEC, HEC, or Arts.", icon: Rocket, color: "bg-blue-600 text-white" },
-                                    { num: "02", title: "Future Founders", desc: "Students who want to build AI-powered startups and ship real products before graduation.", icon: BrainCircuit, color: "bg-violet-600 text-white" },
-                                    { num: "03", title: "Zero Coding Background", desc: "No prior programming required. We teach from the ground up starting with logic.", icon: Code2, color: "bg-emerald-600 text-white" }
+                                    { num: "01", title: "Aspiring AI Engineers", desc: "Class 12 / Intermediate graduates from any academic stream — MPC, BiPC, CEC, HEC, or Arts.", color: "bg-blue-600/10 border-blue-500/20 text-blue-400" },
+                                    { num: "02", title: "Future Tech Founders", desc: "Students who want to build AI-powered startups and ship real products before graduation.", color: "bg-purple-600/10 border-purple-500/20 text-purple-400" },
+                                    { num: "03", title: "Zero Coding Background", desc: "No prior programming required. We teach from the ground up starting with basic logic.", color: "bg-emerald-600/10 border-emerald-500/20 text-emerald-400" }
                                 ].map((item, i) => (
-                                    <div key={i} className="flex items-start gap-5 p-6 bg-slate-50 border border-slate-100 rounded-2xl hover:border-blue-200 transition-all hover:bg-white hover:shadow-lg">
-                                        <div className={`shrink-0 w-12 h-12 rounded-xl ${item.color} flex items-center justify-center shadow-lg`}>
-                                            <item.icon size={22} />
+                                    <div key={i} className="flex items-start gap-5 p-6 bg-slate-900/40 border border-white/5 rounded-2xl hover:border-white/10 transition-all hover:bg-slate-900/60 shadow-lg">
+                                        <div className={`shrink-0 w-12 h-12 rounded-xl ${item.color} border flex items-center justify-center`}>
+                                            <span className="font-mono font-bold text-base">{item.num}</span>
                                         </div>
                                         <div>
-                                            <h3 className="text-lg font-bold text-slate-900 mb-1">{item.title}</h3>
-                                            <p className="text-sm text-slate-600 leading-relaxed">{item.desc}</p>
+                                            <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+                                            <p className="text-sm text-slate-400 leading-relaxed font-normal">{item.desc}</p>
                                         </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
-                        {/* Right side: Eligibility */}
-                        <div className="bg-slate-50 border border-slate-100 rounded-[2.5rem] p-10 lg:sticky lg:top-32 h-fit">
-                            <div className="mb-8">
-                                <p className="text-blue-600 text-xs font-black uppercase tracking-[0.3em] mb-4">Academic Criteria</p>
-                                <h2 className="text-3xl font-bold text-slate-900">Academic Eligibility</h2>
+                        {/* Eligibility requirements */}
+                        <div className="bg-slate-900/40 border border-white/5 rounded-[2rem] p-8 lg:p-12 lg:sticky lg:top-32 h-fit backdrop-blur">
+                            <div className="mb-10">
+                                <p className="text-blue-400 text-xs font-bold uppercase tracking-widest mb-4">Academic Criteria</p>
+                                <h2 className="text-3xl font-bold text-white tracking-tight">Academic Eligibility</h2>
                             </div>
                             <div className="space-y-8">
-                                <div className="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm transition-transform hover:scale-[1.02]">
-                                    <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                                        <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs">01</div>
-                                        Standard Pathway
+                                <div className="p-6 bg-slate-950 rounded-2xl border border-white/5 shadow-sm">
+                                    <h4 className="text-base font-bold text-white mb-5 flex items-center gap-3">
+                                        <div className="w-8 h-8 rounded-full bg-blue-500/10 border border-blue-500/25 text-blue-400 flex items-center justify-center text-xs font-bold font-mono">01</div>
+                                        Standard Admission Pathway
                                     </h4>
                                     <ul className="space-y-4">
                                         {[
                                             "Grade 12 / Intermediate from any recognized board.",
                                             "MPC, BiPC, CEC, HEC, or Arts—all streams are eligible.",
-                                            "Minimum 60% aggregate in core subjects."
+                                            "Minimum 60% aggregate in core academic subjects."
                                         ].map((req, j) => (
-                                            <li key={j} className="flex items-start gap-3 text-slate-600 text-sm">
-                                                <CheckCircle2 size={16} className="text-blue-500 mt-0.5 shrink-0" />
+                                            <li key={j} className="flex items-start gap-3.5 text-slate-400 text-sm leading-relaxed">
+                                                <CheckCircle2 size={16} className="text-blue-400 mt-0.5 shrink-0" />
                                                 <span>{req}</span>
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
-                                {/* <Link href="/apply" className="p-6 bg-blue-600 rounded-2xl text-white shadow-xl flex items-center justify-between group cursor-pointer overflow-hidden relative block w-full hover:scale-[1.02] transition-transform">
-                                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
-                                    <div>
-                                        <h4 className="text-lg font-bold mb-1">Admissions Open</h4>
-                                        <p className="text-blue-100 text-sm">Secure your cohort for 2026 today.</p>
-                                    </div>
-                                    <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                </Link> */}
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>
 
-            {/* What You'll Achieve — Merged Design */}
-            <section id="outcomes" className="pt-24 pb-16 px-6 bg-slate-50 overflow-hidden border-y border-slate-100">
-                <div className="container mx-auto max-w-7xl font-sans">
-                    <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-start">
-
-                        {/* Highlights & Timeline */}
+            {/* OUTCOMES & MILESTONES */}
+            <section id="outcomes" className="py-32 px-6 bg-slate-900/20 overflow-hidden border-y border-white/5 relative">
+                <div className="container mx-auto max-w-[1450px]">
+                    <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-16 lg:gap-24 items-start">
+                        
+                        {/* Timeline / Highlights */}
                         <div>
-                            <div className="mb-10">
-                                <p className="text-blue-600 text-sm font-bold uppercase tracking-widest mb-3">Program highlights</p>
-                                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight mb-6">
-                                    Three paths to becoming an <span className="text-blue-600">AI professional</span>
+                            <div className="mb-12">
+                                <p className="text-blue-400 text-xs font-bold uppercase tracking-widest mb-3">Program highlights</p>
+                                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight mb-6">
+                                    Three paths to becoming an <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">AI professional</span>
                                 </h2>
-                                <p className="text-lg text-slate-600 leading-relaxed max-w-xl">
+                                <p className="text-base text-slate-400 leading-relaxed max-w-xl font-light">
                                     This program is structured as a progressive journey — from understanding AI fundamentals to building real systems and operating at an industry level.
                                 </p>
                             </div>
 
                             <div className="flex flex-col gap-0 max-w-xl">
                                 {/* Stage 01 */}
-                                <div className="grid grid-cols-[48px_1fr] gap-x-5 pb-9 relative group">
+                                <div className="grid grid-cols-[48px_1fr] gap-x-6 pb-10 relative group">
                                     <div className="flex flex-col items-center">
-                                        <div className="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center shrink-0 border-2 border-blue-500 group-last:mb-0">
-                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4" /></svg>
+                                        <div className="w-12 h-12 rounded-full bg-slate-950 flex items-center justify-center shrink-0 border border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                                            <span className="font-mono text-xs font-bold text-blue-400">01</span>
                                         </div>
-                                        <div className="w-[2px] bg-slate-200 flex-1 mt-2 group-last:hidden"></div>
+                                        <div className="w-[1px] bg-slate-800 flex-1 mt-2 group-last:hidden"></div>
                                     </div>
                                     <div className="pt-2.5 pb-2 cursor-default">
-                                        <div className="text-blue-600 text-xs font-bold uppercase tracking-wide mb-1">Stage 01</div>
-                                        <div className="text-xl font-bold text-slate-900 mb-2">AI Fluency</div>
-                                        <div className="text-base text-slate-600 leading-relaxed">
+                                        <div className="text-blue-400 text-xs font-bold uppercase tracking-wider mb-1">Stage 01</div>
+                                        <div className="text-xl font-bold text-white mb-2">AI Fluency</div>
+                                        <div className="text-sm text-slate-400 leading-relaxed font-normal">
                                             Learn the core concepts of Artificial Intelligence, Machine Learning, Deep Learning and Neural Networks. Build a confident foundation before you write a single line of code.
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Stage 02 */}
-                                <div className="grid grid-cols-[48px_1fr] gap-x-5 pb-9 relative group">
+                                <div className="grid grid-cols-[48px_1fr] gap-x-6 pb-10 relative group">
                                     <div className="flex flex-col items-center">
-                                        <div className="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center shrink-0 border-2 border-blue-500">
-                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>
+                                        <div className="w-12 h-12 rounded-full bg-slate-950 flex items-center justify-center shrink-0 border border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                                            <span className="font-mono text-xs font-bold text-blue-400">02</span>
                                         </div>
-                                        <div className="w-[2px] bg-slate-200 flex-1 mt-2 group-last:hidden"></div>
+                                        <div className="w-[1px] bg-slate-800 flex-1 mt-2 group-last:hidden"></div>
                                     </div>
-                                    <div className="pt-2.5 pb-2">
-                                        <div className="text-blue-600 text-xs font-bold uppercase tracking-wide mb-1">Stage 02</div>
-                                        <div className="text-xl font-bold text-slate-900 mb-2">AI Builder</div>
-                                        <div className="text-base text-slate-600 leading-relaxed">
+                                    <div className="pt-2.5 pb-2 cursor-default">
+                                        <div className="text-blue-400 text-xs font-bold uppercase tracking-wider mb-1">Stage 02</div>
+                                        <div className="text-xl font-bold text-white mb-2">AI Builder</div>
+                                        <div className="text-sm text-slate-400 leading-relaxed font-normal">
                                             Work on real-world AI projects and develop practical problem-solving skills. Apply your knowledge to challenges that mirror what teams face in production environments today.
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Stage 03 */}
-                                <div className="grid grid-cols-[48px_1fr] gap-x-5 relative group">
+                                <div className="grid grid-cols-[48px_1fr] gap-x-6 relative group">
                                     <div className="flex flex-col items-center">
-                                        <div className="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center shrink-0 border-2 border-blue-500">
-                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3" /><path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" /></svg>
+                                        <div className="w-12 h-12 rounded-full bg-slate-950 flex items-center justify-center shrink-0 border border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                                            <span className="font-mono text-xs font-bold text-blue-400">03</span>
                                         </div>
-                                        <div className="w-[2px] bg-slate-200 flex-1 mt-2 group-last:hidden"></div>
+                                        <div className="w-[1px] bg-slate-800 flex-1 mt-2 group-last:hidden"></div>
                                     </div>
-                                    <div className="pt-2.5 pb-2">
-                                        <div className="text-blue-600 text-xs font-bold uppercase tracking-wide mb-1">Stage 03</div>
-                                        <div className="text-xl font-bold text-slate-900 mb-2">AI Engineer</div>
-                                        <div className="text-base text-slate-600 leading-relaxed">
+                                    <div className="pt-2.5 pb-2 cursor-default">
+                                        <div className="text-blue-400 text-xs font-bold uppercase tracking-wider mb-1">Stage 03</div>
+                                        <div className="text-xl font-bold text-white mb-2">AI Engineer</div>
+                                        <div className="text-sm text-slate-400 leading-relaxed font-normal">
                                             Get guidance and training from experienced professionals in the AI industry. Graduate ready to own systems, communicate decisions, and operate at scale.
                                         </div>
                                     </div>
@@ -837,18 +653,17 @@ export default function AISchoolPage() {
                             </div>
                         </div>
 
-                        {/* Skills and Outcomes Column */}
-                        <div className="flex flex-col gap-6 bg-white border border-slate-200 p-6 md:p-8 rounded-3xl shadow-sm">
-                            {/* What you'll learn */}
+                        {/* Outcomes Details Panel */}
+                        <div className="flex flex-col gap-8 bg-slate-900/40 border border-white/5 p-8 lg:p-10 rounded-[2rem] shadow-2xl backdrop-blur">
                             <div>
-                                <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">
-                                    What you&apos;ll <span className="text-blue-600">learn</span>
+                                <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
+                                    What you&apos;ll <span className="text-blue-400">learn</span>
                                 </h3>
-                                <p className="text-sm text-slate-600 leading-relaxed mb-4 max-w-lg">
+                                <p className="text-sm text-slate-400 leading-relaxed mb-6">
                                     A curriculum built around the skills that AI teams actually need — from system design to governance and reliability.
                                 </p>
 
-                                <div className="flex flex-col">
+                                <div className="flex flex-col divide-y divide-white/5">
                                     {[
                                         "AI system thinking",
                                         "Data-first problem framing",
@@ -858,11 +673,11 @@ export default function AISchoolPage() {
                                         "Cost, latency, and reliability trade-off analysis",
                                         "Human-in-the-loop system design"
                                     ].map((skill, index) => (
-                                        <div key={index} className="flex items-start gap-3 py-2 border-b border-slate-100 last:border-0 hover:bg-slate-50 transition-colors rounded-lg px-2 -mx-2">
-                                            <span className="text-sm font-bold text-blue-600 min-w-[24px] mt-0.5">
+                                        <div key={index} className="flex items-start gap-4 py-3 first:pt-0 last:pb-0 group">
+                                            <span className="text-sm font-bold text-blue-400 min-w-[24px] mt-0.5 font-mono">
                                                 {(index + 1).toString().padStart(2, '0')}
                                             </span>
-                                            <span className="text-base text-slate-700 font-medium">
+                                            <span className="text-sm text-slate-200 font-medium">
                                                 {skill}
                                             </span>
                                         </div>
@@ -870,18 +685,14 @@ export default function AISchoolPage() {
                                 </div>
                             </div>
 
-                            {/* What you'll achieve */}
-                            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200 shadow-sm">
-                                <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">
-                                    What you&apos;ll <span className="text-blue-600">achieve</span>
+                            <div className="bg-slate-950 p-6 rounded-2xl border border-white/5 shadow-sm">
+                                <h3 className="text-lg font-bold text-white mb-2">
+                                    What you&apos;ll <span className="text-blue-400">achieve</span>
                                 </h3>
-                                <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                                <p className="text-xs text-slate-400 leading-relaxed mb-6">
                                     Graduates leave this program with the mindset, vocabulary, and skills to make real decisions in AI-driven organisations.
                                 </p>
 
-                                <div className="text-xs font-bold text-slate-500 mb-4 uppercase tracking-wide">
-                                    You will be able to —
-                                </div>
                                 <div className="flex flex-col gap-3">
                                     {[
                                         "Design AI systems instead of model demos",
@@ -889,11 +700,11 @@ export default function AISchoolPage() {
                                         "Own AI behavior, cost, and risk",
                                         "Communicate AI decisions to engineers, leaders, and regulators"
                                     ].map((outcome, index) => (
-                                        <div key={index} className="flex items-start gap-4 group">
-                                            <div className="w-[24px] h-[24px] rounded-full bg-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex items-center justify-center shrink-0 mt-px border border-blue-200">
-                                                <svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="2,6 5,9 10,3" /></svg>
+                                        <div key={index} className="flex items-start gap-3.5 group">
+                                            <div className="w-5 h-5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/25 group-hover:bg-blue-600 group-hover:text-white transition-colors flex items-center justify-center shrink-0 mt-0.5">
+                                                <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="2,6 5,9 10,3" /></svg>
                                             </div>
-                                            <div className="text-base font-medium text-slate-900">
+                                            <div className="text-xs font-semibold text-slate-200">
                                                 {outcome}
                                             </div>
                                         </div>
@@ -906,13 +717,15 @@ export default function AISchoolPage() {
                 </div>
             </section>
 
-            {/* 3. What You Will Study (Curriculum) */}
-            <section id="curriculum" className="py-24 px-6 bg-white overflow-hidden">
-                <div className="container mx-auto max-w-7xl">
-                    <div className="text-center mb-12">
-                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">What You Will Study</h2>
-                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">From mathematical foundations to building enterprise-scale data architectures. Every year builds on the last.</p>
+            {/* 3. WHAT YOU WILL STUDY (CURRICULUM) */}
+            <section id="curriculum" className="py-32 px-6 bg-slate-950 overflow-hidden relative">
+                <div className="container mx-auto max-w-[1450px]">
+                    <div className="text-center mb-16">
+                        <p className="text-blue-400 text-xs font-bold uppercase tracking-widest mb-3">Academic Map</p>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">What You Will Study</h2>
+                        <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">From mathematical foundations to building enterprise-scale data architectures. Every year builds on the last.</p>
                     </div>
+                    
                     <SyllabusMindMap
                         data={CURRICULUM_DATA.filter((item) => item.year <= duration).map(({ year, title, topics }) => ({ period: year, title, topics }))}
                         periodLabel="Year"
@@ -922,22 +735,20 @@ export default function AISchoolPage() {
                 </div>
             </section>
 
-            {/* Tool Master Section — Contained Design */}
-            <section id="tool-master" className="py-6 bg-slate-50 overflow-hidden relative border-y border-slate-200">
-                <div className="container mx-auto max-w-6xl relative z-10 px-6">
-                    <div className="text-center mb-2">
-                        <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter mb-1 leading-tight">
-                            Industrial Skills
-                        </h2>
-                    </div>
+            {/* INDUSTRIAL SKILLS (TOOL MASTER) */}
+            <section id="tool-master" className="py-20 bg-slate-950 overflow-hidden relative border-t border-white/5">
+                <div className="container mx-auto max-w-6xl relative z-10 px-6 text-center mb-10">
+                    <p className="text-blue-400 text-xs font-bold uppercase tracking-widest mb-3">Core Stack</p>
+                    <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter mb-4 leading-tight">
+                        Industrial Skills
+                    </h2>
                 </div>
 
-                {/* Single Row on Mobile, Dual Row on Desktop */}
-                <div className="relative py-1 md:py-2 overflow-hidden">
+                <div className="relative py-2 overflow-hidden w-full">
                     <div className="flex flex-col gap-1 md:gap-2">
                         <ToolMarquee tools={TOOLS_ROW_1} reverse={false} speed={40} />
                         <div className="hidden md:block">
-                            <ToolMarquee tools={TOOLS_ROW_2} reverse={true} speed={55} />
+                            <ToolMarquee tools={TOOLS_ROW_2} reverse={true} speed={50} />
                         </div>
                     </div>
                 </div>
@@ -963,34 +774,10 @@ export default function AISchoolPage() {
                 subtitle="From mathematical foundations to architecting global cognitive systems. This is your career in 2035."
                 themeColor="blue"
             />
+            
             <WhyUs />
 
             <Footer />
         </main>
     );
 }
-
-function AudienceItem({ icon: Icon, title, desc }: { icon: any, title: string, desc: string }) {
-    return (
-        <div className="flex items-start gap-4 p-5 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-200 transition-colors group">
-            <div className="p-3 bg-white rounded-lg text-blue-600 shadow-sm group-hover:scale-110 transition-transform">
-                <Icon size={20} />
-            </div>
-            <div>
-                <h4 className="font-bold text-slate-900">{title}</h4>
-                <p className="text-sm text-slate-600">{desc}</p>
-            </div>
-        </div>
-    );
-}
-
-function OutcomeItem({ text }: { text: string }) {
-    return (
-        <div className="flex items-center gap-3 p-4 bg-blue-50/50 rounded-xl border border-blue-100/50">
-            <CheckCircle2 size={18} className="text-blue-600 shrink-0" />
-            <span className="text-slate-800 font-medium">{text}</span>
-        </div>
-    );
-}
-
-

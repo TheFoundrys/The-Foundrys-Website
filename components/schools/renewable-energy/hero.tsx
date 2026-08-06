@@ -5,15 +5,7 @@ import Link from "next/link";
 export function RenewableEnergyHero() {
   return (
     <section className="relative pt-32 pb-32 px-4 min-h-[85vh] flex flex-col justify-center bg-slate-900 overflow-hidden">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-             <div 
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80 scale-105"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=2070&auto=format&fit=crop')" }} 
-             />
-             <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
-             <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-transparent to-transparent" />
-        </div>
+
 
         <div className="relative z-10 container mx-auto max-w-6xl">
 

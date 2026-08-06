@@ -413,8 +413,8 @@ export function ApplyClient() {
                                                     className="w-full pb-3 md:pb-4 bg-transparent border-b-2 border-slate-100 focus:border-blue-600 focus:outline-none transition-all font-medium text-base md:text-lg text-slate-900 appearance-none cursor-pointer"
                                                 >
                                                     <option value="" disabled>Select level</option>
-                                                    <option value="entry-level">Entry Level</option>
-                                                    <option value="professional">Professional / Mid-Level</option>
+                                                    <option value="entry-level">Young Graduate</option>
+                                                    <option value="professional">Post Graduate</option>
                                                 </select>
                                                 <div className="absolute right-0 bottom-5 md:bottom-6 text-slate-300 pointer-events-none">▼</div>
                                             </motion.div>

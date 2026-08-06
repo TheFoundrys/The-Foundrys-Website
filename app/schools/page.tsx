@@ -18,11 +18,11 @@ const SCHOOLS = [
         iconBg: "bg-blue-600",
         accent: "blue",
         programs: [
-            { title: "Artificial Intelligence", desc: "3 or 4-Year Track", href: "/programs", icon: BrainCircuit },
-            { title: "Data Science", desc: "3 or 4-Year Track", href: "/programs", icon: LineChart },
-            { title: "Cyber Security", desc: "3 or 4-Year Track", href: "/programs", icon: ShieldCheck },
-            { title: "Quantum Computing", desc: "The Q-Layer", href: "/programs", icon: Atom },
-            { title: "Blockchain", desc: "Trust Layer", href: "/programs", icon: Network },
+            { title: "Artificial Intelligence", desc: "3 or 4-Year Track", href: "/schools/ai", icon: BrainCircuit },
+            { title: "Data Science", desc: "3 or 4-Year Track", href: "/schools/datascience", icon: LineChart },
+            { title: "Cyber Security", desc: "3 or 4-Year Track", href: "/schools/cyber", icon: ShieldCheck },
+            { title: "Quantum Computing", desc: "The Q-Layer", href: "/schools/quantum-computing", icon: Atom },
+            { title: "Blockchain", desc: "Trust Layer", href: "/schools/blockchain", icon: Network },
         ]
     },
     {
@@ -50,7 +50,7 @@ const SCHOOLS = [
         iconBg: "bg-emerald-600",
         accent: "emerald",
         programs: [
-            { title: "ESG & Strategy", desc: "Strategic Responsibility", href: "/programs", icon: Leaf },
+            { title: "ESG & Strategy", desc: "Strategic Responsibility", href: "/schools/esg", icon: Leaf },
             { title: "AI x Green Tech", desc: "Engineering Duty", href: "/programs/sustainability-in-the-age-of-ai", icon: BrainCircuit },
         ]
     },
@@ -64,7 +64,7 @@ const SCHOOLS = [
         iconBg: "bg-cyan-600",
         accent: "cyan",
         programs: [
-            { title: "Renewable Energy", desc: "Powering Future", href: "/programs", icon: Zap },
+            { title: "Renewable Energy", desc: "Powering Future", href: "/schools/renewable-energy", icon: Zap },
         ]
     }
 ];
@@ -142,7 +142,7 @@ export default function SchoolsPage() {
 
                                 {school.programs.map((prog) => (
                                     <Link
-                                        key={prog.href}
+                                        key={prog.title}
                                         href={prog.href}
                                         className="group relative p-8 rounded-[2.5rem] bg-white/60 backdrop-blur-xl border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:bg-white transition-all duration-500 hover:-translate-y-2 ring-1 ring-white"
                                     >

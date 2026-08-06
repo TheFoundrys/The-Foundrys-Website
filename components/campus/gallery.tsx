@@ -49,9 +49,9 @@ export function CampusGallery() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                         
-                        <div className="absolute bottom-0 left-0 p-8 text-white">
-                            <h3 className="text-2xl font-bold mb-2">{space.title}</h3>
-                            <p className="text-slate-300 font-medium">{space.desc}</p>
+                        <div className="absolute bottom-0 left-0 p-8">
+                            <h3 className="text-2xl font-bold mb-2 text-white">{space.title}</h3>
+                            <p className="text-white/95 font-medium">{space.desc}</p>
                         </div>
                     </motion.div>
                 ))}

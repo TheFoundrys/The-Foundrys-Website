@@ -66,26 +66,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/schools/ai',
-        destination: '#',
-        permanent: true,
-      },
-      {
-        source: '/schools/cyber',
-        destination: '#',
-        permanent: true,
-      },
-      {
-        source: '/schools/quantum-computing',
-        destination: '#',
-        permanent: true,
-      },
-      {
-        source: '/schools/blockchain',
-        destination: '#',
-        permanent: true,
-      },
-      {
         source: '/schools/venture-building',
         destination: '/venture-building',
         permanent: true,
@@ -93,31 +73,6 @@ const nextConfig: NextConfig = {
       {
         source: '/programs/venture-building',
         destination: '/venture-building',
-        permanent: true,
-      },
-      {
-        source: '/schools/esg',
-        destination: '#',
-        permanent: true,
-      },
-      {
-        source: '/schools/datascience',
-        destination: '#',
-        permanent: true,
-      },
-      {
-        source: '/schools/sustainability',
-        destination: '#',
-        permanent: true,
-      },
-      {
-        source: '/schools/renewable-energy',
-        destination: '#',
-        permanent: true,
-      },
-      {
-        source: '/schools/strategy',
-        destination: '#',
         permanent: true,
       },
     ]

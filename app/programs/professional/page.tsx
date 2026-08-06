@@ -13,19 +13,10 @@ const customGradient = "linear-gradient(to right, lab(44.0605 29.0279 -86.0352) 
 const textGradientClass = "text-transparent bg-clip-text";
 
 export default function ProfessionalProgramPage() {
-    const [currentDomainIndex, setCurrentDomainIndex] = useState(0);
     const [selectedPackageId, setSelectedPackageId] = useState<string | null>(null);
-    const domains = ["Artificial Intelligence", "Cyber Security", "Blockchain", "Quantum Computing"];
 
     useEffect(() => {
-        document.title = "Professional Certification Programs | The Foundry";
-    }, []);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentDomainIndex((prev) => (prev + 1) % domains.length);
-        }, 3000); // Change every 3 seconds
-        return () => clearInterval(interval);
+        document.title = "Post Graduate Certification Programs | The Foundry";
     }, []);
 
     return (
@@ -41,32 +32,16 @@ export default function ProfessionalProgramPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-                            <div className="space-y-2">
-                                <p className="text-3xl md:text-4xl text-slate-400 font-medium tracking-wide">Become a</p>
-                                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
-                                    Certified Professional
-                                    <br />
-                                    <span className="inline-block relative min-h-[1.2em] mt-2">
-                                        {domains.map((domain, index) => (
-                                            <motion.span
-                                                key={domain}
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{
-                                                    opacity: currentDomainIndex === index ? 1 : 0,
-                                                    y: currentDomainIndex === index ? 0 : 20,
-                                                }}
-                                                transition={{ duration: 0.5, ease: "easeInOut" }}
-                                                style={{ backgroundImage: customGradient }}
-                                                className={`${textGradientClass} ${currentDomainIndex === index ? 'inline-block' : 'absolute top-0 left-0'}`}
-                                            >
-                                                {domain}
-                                            </motion.span>
-                                        ))}
-                                    </span>
+                            <div className="space-y-4">
+                                <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1] max-w-4xl">
+                                    Graduate as a <br/>
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400">Deep Tech Leader</span> with <br/>
+                                    Mastery, Vision & <br/>
+                                    Global Impact.
                                 </h1>
                             </div>
-                            <p className="text-xl md:text-2xl text-slate-300 mb-10 leading-relaxed max-w-3xl font-medium">
-                                Build deep expertise in emerging technologies. A structured introduction to Artificial Intelligence, Cyber Security, Quantum Computing, and Blockchain designed for clarity and application.
+                            <p className="text-xl md:text-2xl text-slate-300 mt-6 mb-10 leading-relaxed max-w-3xl font-normal">
+                                Accelerate your career with our Post Graduate Programs. A rigorous, applied pathway into Applied AI & GenAI, Cybersecurity, Quantum Computing, and Blockchain built by industry leaders for future pioneers.
                             </p>
                             <div className="flex flex-wrap gap-4">
                                 <a
@@ -77,17 +52,17 @@ export default function ProfessionalProgramPage() {
                                     }}
                                     className="inline-flex items-center gap-2 px-8 py-4 text-white border-2 border-[#002f86] rounded-full font-bold hover:bg-white/20 transition-colors"
                                 >
-                                    Explore Domains
+                                    Explore Programs
                                 </a>
                             </div>
 
                             {/* Strategic Program Specs */}
-                            <div className="mt-16 pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-8">
+                            {/* <div className="mt-16 pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-8">
                                 <HeroStat icon={<Wifi size={20} />} label="Format" value="Hybrid" sub="In-Person + Virtual" />
                                 <HeroStat icon={<Zap size={20} />} label="Approach" value="Applied" sub="Concept + Practice" />
                                 <HeroStat icon={<Target size={20} />} label="Outcome" value="Ready" sub="For Specialization" />
                                 <HeroStat icon={<Calendar size={20} />} label="Duration" value="Program-dependent" sub="Intensive Cohort" />
-                            </div>
+                            </div> */}
                         </motion.div>
                     </div>
                 </div>
@@ -99,13 +74,13 @@ export default function ProfessionalProgramPage() {
                     <div className="mb-16">
                         <h2 className="text-4xl font-bold text-slate-900 mb-6">Choose your career transition</h2>
                         <p className="text-lg text-slate-600 leading-relaxed max-w-3xl">
-                            Precision-engineered learning tracks. Each domain is structured as a comprehensive, standalone professional program allowing you to bypass generalities and build deep, vertical expertise in the technology defining your future.
+                            Precision-engineered learning tracks. Each domain is structured as a comprehensive, standalone post graduate program allowing you to bypass generalities and build deep, vertical expertise in the technology defining your future.
                         </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <DomainCard
-                            title="Artificial Intelligence"
+                            title="Applied AI & GenAI Program"
                             tagline="From Logic to Intelligence."
                             desc="Move beyond basic Python. Master Neural Networks, NLP, and Computer Vision to build systems that can see, read, and decide."
                             icon={<BrainCircuit />}
@@ -113,7 +88,7 @@ export default function ProfessionalProgramPage() {
                             onOpenPackage={() => setSelectedPackageId("professional-ai")}
                         />
                         <DomainCard
-                            title="Cyber Security"
+                            title="Cybersecurity Analyst Program"
                             tagline="Defend the Digital Frontier."
                             desc="The world is digital, and it is under attack. Learn the offensive and defensive strategies required to secure networks and data."
                             icon={<ShieldCheck />}
@@ -121,7 +96,7 @@ export default function ProfessionalProgramPage() {
                             onOpenPackage={() => setSelectedPackageId("professional-cyber-security")}
                         />
                         <DomainCard
-                            title="Quantum Computing"
+                            title="Quantum Computing Program"
                             tagline="The Next Computational Revolution."
                             desc="Prepare for the paradigm shift. Understanding Qubits and Superposition today is like learning the Internet in 1990."
                             icon={<Cpu />}
@@ -129,7 +104,7 @@ export default function ProfessionalProgramPage() {
                             onOpenPackage={() => setSelectedPackageId("professional-quantum-computing")}
                         />
                         <DomainCard
-                            title="Blockchain"
+                            title="Blockchain Program"
                             tagline="Architect the Trust Layer."
                             desc="Explore the technology behind Web3. Learn how decentralized ledgers and smart contracts are rewriting the rules of finance and ownership."
                             icon={<Network />}
@@ -216,7 +191,7 @@ function DomainCard({ title, tagline, desc, icon, selfPacedHref, onOpenPackage }
         >
             <div className="absolute top-6 right-6 z-10">
                 <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100 whitespace-nowrap">
-                    Professional Program
+                    Post Graduate Program
                 </span>
             </div>
 

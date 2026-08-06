@@ -6,35 +6,35 @@ const polarData = [
     {
         label: "Academic Sessions",
         percent: 40,
-        color: "#1e3a8a", // Dark Blue
+        color: "#3b82f6", // Vibrant Blue
         radius: 180,
         desc: "Where ideas take shape through Structured learning, Discussions and Case Studies."
     },
     {
         label: "Start-up Lab",
         percent: 25,
-        color: "#2563eb", // Medium Blue
+        color: "#8b5cf6", // Purple/Violet
         radius: 155,
         desc: "Where ideas turn into ventures through experimentation and Mentorship."
     },
     {
         label: "Industry Exposure",
         percent: 15,
-        color: "#60a5fa", // Light Blue
+        color: "#06b6d4", // Cyan
         radius: 130,
         desc: "Masterclasses, Guest Sessions and Workshops that bridge Classroom Learning with real-world insights."
     },
     {
         label: "Beyond Academics",
         percent: 10,
-        color: "#93c5fd", // Lighter Blue
+        color: "#10b981", // Emerald
         radius: 105,
         desc: "Fueling energy, excellence, and enthusiasm through play."
     },
     {
         label: "Student Circles",
         percent: 10,
-        color: "#bfdbfe", // Very Light Blue
+        color: "#ec4899", // Pink
         radius: 80,
         desc: "Collaborative Spaces/Clubs that spark Creativity, Teamwork and Leadership."
     },
@@ -81,19 +81,23 @@ export function ProgramStats() {
     });
 
     return (
-        <section className="py-24 px-4 bg-slate-50 overflow-hidden">
-            <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-16">
+        <section className="py-28 px-4 bg-slate-950 overflow-hidden border-t border-white/5 relative">
+            <div className="absolute inset-0 z-0 opacity-10">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15)_0%,transparent_70%)]" />
+            </div>
+
+            <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-16 relative z-10">
 
                 {/* Left: Stepped Polar Chart */}
                 <div className="md:w-1/2 relative flex justify-center items-center">
                     <div className="w-[300px] h-[300px] md:w-[450px] md:h-[450px] relative">
-                        <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-xl transform -rotate-90 md:rotate-0 transition-transform">
+                        <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_0_30px_rgba(59,130,246,0.2)] transform -rotate-90 md:rotate-0 transition-transform">
                             {paths.map((slice, i) => (
                                 <motion.path
                                     key={i}
                                     d={slice.d}
                                     fill={slice.color}
-                                    stroke="white"
+                                    stroke="#020617"
                                     strokeWidth="2"
                                     initial={{ scale: 0, opacity: 0 }}
                                     whileInView={{ scale: 1, opacity: 1 }}
@@ -101,36 +105,40 @@ export function ProgramStats() {
                                     onClick={() => handleSliceClick(i)}
                                     onMouseEnter={() => setHoveredIndex(i)}
                                     onMouseLeave={() => setHoveredIndex(null)}
-                                    className="hover:opacity-90 cursor-pointer transition-opacity origin-center tap-highlight-transparent"
+                                    className="hover:opacity-95 cursor-pointer transition-opacity origin-center tap-highlight-transparent"
                                     style={{
                                         scale: hoveredIndex === i ? 1.05 : 1,
                                         zIndex: hoveredIndex === i ? 10 : 1
                                     }}
                                 />
                             ))}
-                            {/* Central White Circle */}
-                            <circle cx="200" cy="200" r="40" fill="white" className="drop-shadow-sm" />
+                            {/* Central Dark Circle */}
+                            <circle cx="200" cy="200" r="40" fill="#020617" className="drop-shadow-sm" />
                         </svg>
                     </div>
                 </div>
 
                 {/* Right: Legend / Explainer */}
                 <div className="md:w-1/2 space-y-6 w-full">
-                    <h3 className="text-3xl font-bold text-slate-900 mb-8 text-center md:text-left">The Program Mix</h3>
+                    <h3 className="text-3xl font-bold text-white mb-8 text-center md:text-left tracking-tight">The Program Mix</h3>
                     <div className="space-y-4">
                         {polarData.map((item, i) => (
                             <motion.div
                                 key={i}
                                 ref={(el) => { legendRefs.current[i] = el; }}
-                                className={`p-4 rounded-xl border transition-colors cursor-default ${hoveredIndex === i ? "bg-white border-blue-200 shadow-md scale-105" : "bg-transparent border-transparent hover:bg-white/50"}`}
+                                className={`p-5 rounded-2xl border transition-all duration-300 cursor-default ${
+                                    hoveredIndex === i 
+                                        ? "bg-slate-900 border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.4)] scale-[1.02]" 
+                                        : "bg-slate-900/20 border-transparent hover:bg-slate-900/40 hover:border-white/5"
+                                }`}
                                 onMouseEnter={() => setHoveredIndex(i)}
                                 onMouseLeave={() => setHoveredIndex(null)}
                             >
-                                <div className="flex items-center gap-3 mb-1">
-                                    <div className="w-4 h-4 rounded-full" style={{ backgroundColor: item.color }} />
-                                    <h4 className="font-bold text-slate-900 text-lg">{item.label} <span className="text-slate-400 text-sm ml-2">({item.percent}%)</span></h4>
+                                <div className="flex items-center gap-3 mb-2">
+                                    <div className="w-4.5 h-4.5 rounded-full" style={{ backgroundColor: item.color }} />
+                                    <h4 className="font-bold text-white text-lg">{item.label} <span className="text-slate-400 text-sm ml-2">({item.percent}%)</span></h4>
                                 </div>
-                                <p className="text-slate-500 text-sm leading-relaxed pl-7">{item.desc}</p>
+                                <p className="text-slate-400 text-sm leading-relaxed pl-7">{item.desc}</p>
                             </motion.div>
                         ))}
                     </div>

@@ -466,9 +466,9 @@ export function SyllabusMindMap({
                                 </span>
                                 <motion.div
                                     style={{
-                                        backgroundColor: "#0f172a",
-                                        color: "#ffffff",
-                                        borderColor: "#1e293b",
+                                        backgroundColor: "transparent",
+                                        color: "#0f172a",
+                                        borderColor: "#cbd5e1",
                                     }}
                                     className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-[8px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border shadow-md whitespace-nowrap animate-pulse"
                                     animate={{

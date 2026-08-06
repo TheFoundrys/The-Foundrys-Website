@@ -185,7 +185,7 @@ export function Navbar() {
             links: [
                 { label: "Hyderabad Campus", href: "/campus", desc: "Heart of Hitech City" },
                 // { label: "Corporate Integration", href: "/campus", desc: "Corporate workspace exposure" },
-                { label: "Venture Ecosystem", href: "/schools/venture-building", desc: "Direct access to seed capital" }
+                // { label: "Venture Ecosystem", href: "/schools/venture-building", desc: "Direct access to seed capital" }
             ]
         },
         {
@@ -201,7 +201,7 @@ export function Navbar() {
             links: [
                 { label: "Upcoming Events", href: "/events", desc: "Webinars and conferences" },
                 // { label: "Hackathons", href: "/events", desc: "Sprint builds and code sprints" },
-                { label: "Clubs & Guilds", href: "/about", desc: "Collaborative builder groups" }
+                // { label: "Clubs & Guilds", href: "/about", desc: "Collaborative builder groups" }
             ]
         }
     ];
@@ -228,7 +228,7 @@ export function Navbar() {
             links: [
                 { label: "Contact Us", href: "/contact" },
                 // { label: "Office Directory", href: "/contact" },
-                { label: "Venture Fund Support", href: "/schools/venture-building" }
+                // { label: "Venture Fund Support", href: "/schools/venture-building" }
             ]
         }
     ];

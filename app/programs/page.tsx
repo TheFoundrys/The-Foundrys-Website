@@ -366,10 +366,10 @@ export default function BrandColoredProgramsDirectoryPage() {
                             
                             <div className="space-y-4">
                                 <a 
-                                    href="#catalog" 
+                                    href="#schools-of-thought" 
                                     onClick={(e) => {
                                         e.preventDefault();
-                                        scrollToSection('catalog');
+                                        scrollToSection('schools-of-thought');
                                     }}
                                     className="block p-4 rounded-2xl stark-black-pill border transition-all duration-300 group cursor-pointer"
                                 >
@@ -377,17 +377,6 @@ export default function BrandColoredProgramsDirectoryPage() {
                                     <div className="stark-black-pill-desc text-xs mt-1">Entry-level and mid-level programs in AI and Cybersecurity.</div>
                                 </a>
 
-                                <a 
-                                    href="#personalized" 
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        scrollToSection('personalized');
-                                    }}
-                                    className="block p-4 rounded-2xl stark-black-pill border transition-all duration-300 group cursor-pointer"
-                                >
-                                    <div className="font-bold stark-black-pill-title text-sm group-hover:text-lime-vibrant transition-colors">Build a personalized premium pathway</div>
-                                    <div className="stark-black-pill-desc text-xs mt-1">Private mentorship, custom curriculum and career positioning.</div>
-                                </a>
 
                                 <a 
                                     href="#academic-focus" 
@@ -399,6 +388,18 @@ export default function BrandColoredProgramsDirectoryPage() {
                                 >
                                     <div className="font-bold stark-black-pill-title text-sm group-hover:text-lime-vibrant transition-colors">Lead transformation</div>
                                     <div className="stark-black-pill-desc text-xs mt-1">Executive learning for decision-makers and business leaders.</div>
+                                </a>
+
+                                 <a 
+                                    href="#featured-programs" 
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        scrollToSection('featured-programs');
+                                    }}
+                                    className="block p-4 rounded-2xl stark-black-pill border transition-all duration-300 group cursor-pointer"
+                                >
+                                    <div className="font-bold stark-black-pill-title text-sm group-hover:text-lime-vibrant transition-colors">Build a personalized premium pathway</div>
+                                    <div className="stark-black-pill-desc text-xs mt-1">Private mentorship, custom curriculum and career positioning.</div>
                                 </a>
                             </div>
                         </div>
@@ -431,7 +432,7 @@ export default function BrandColoredProgramsDirectoryPage() {
             </section>
 
             {/* Schools of Thought Section */}
-            <section className="py-24 px-6 sm:px-12 lg:px-16 relative">
+            <section id="schools-of-thought" className="py-24 px-6 sm:px-12 lg:px-16 relative">
                 <div className="max-w-[1900px] mx-auto space-y-16">
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
                         <div className="space-y-4 max-w-2xl">
@@ -535,7 +536,7 @@ export default function BrandColoredProgramsDirectoryPage() {
             </section>
 
             {/* Learning Pathways Section */}
-            <section id="catalog" className="py-24 px-6 sm:px-12 lg:px-16 relative">
+            {/* <section id="catalog" className="py-24 px-6 sm:px-12 lg:px-16 relative">
                 <div className="max-w-[1900px] mx-auto space-y-16">
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
                         <div className="space-y-4 max-w-2xl">
@@ -555,9 +556,9 @@ export default function BrandColoredProgramsDirectoryPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
                         {/* Pathway 1 */}
-                        <div className="p-6 rounded-3xl bg-slate-900/30 border border-white/10 hover:border-lime-vibrant hover:shadow-[0_0_30px_rgba(163,230,53,0.1)] hover:bg-slate-900/60 flex flex-col justify-between relative overflow-hidden group transition-all duration-300">
+                        {/* <div className="p-6 rounded-3xl bg-slate-900/30 border border-white/10 hover:border-lime-vibrant hover:shadow-[0_0_30px_rgba(163,230,53,0.1)] hover:bg-slate-900/60 flex flex-col justify-between relative overflow-hidden group transition-all duration-300"> */}
                             {/* Inner Glow light */}
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-lime-vibrant/0 group-hover:bg-lime-vibrant/10 blur-2xl rounded-full transition-all duration-300" />
+                            {/* <div className="absolute top-0 right-0 w-32 h-32 bg-lime-vibrant/0 group-hover:bg-lime-vibrant/10 blur-2xl rounded-full transition-all duration-300" />
                             <div>
                                 <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500 group-hover:text-lime-vibrant mb-6 block transition-colors">Career Start</span>
                                 <h3 className="text-lg font-bold text-white mb-3">Entry Level</h3>
@@ -573,12 +574,12 @@ export default function BrandColoredProgramsDirectoryPage() {
                             >
                                 Learn More <ChevronRight size={14} />
                             </button>
-                        </div>
+                        </div> */}
 
                         {/* Pathway 2 */}
-                        <div className="p-6 rounded-3xl bg-slate-900/30 border border-white/10 hover:border-lime-vibrant hover:shadow-[0_0_30px_rgba(163,230,53,0.1)] hover:bg-slate-900/60 flex flex-col justify-between relative overflow-hidden group transition-all duration-300">
+                        {/* <div className="p-6 rounded-3xl bg-slate-900/30 border border-white/10 hover:border-lime-vibrant hover:shadow-[0_0_30px_rgba(163,230,53,0.1)] hover:bg-slate-900/60 flex flex-col justify-between relative overflow-hidden group transition-all duration-300"> */}
                             {/* Inner Glow light */}
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-lime-vibrant/0 group-hover:bg-lime-vibrant/10 blur-2xl rounded-full transition-all duration-300" />
+                            {/* <div className="absolute top-0 right-0 w-32 h-32 bg-lime-vibrant/0 group-hover:bg-lime-vibrant/10 blur-2xl rounded-full transition-all duration-300" />
                             <div>
                                 <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500 group-hover:text-lime-vibrant mb-6 block transition-colors">Career Growth</span>
                                 <h3 className="text-lg font-bold text-white mb-3">Mid Level</h3>
@@ -593,13 +594,13 @@ export default function BrandColoredProgramsDirectoryPage() {
                                 className="inline-flex items-center gap-1.5 text-xs font-bold text-lime-vibrant hover:gap-2.5 transition-all cursor-pointer bg-transparent border-none p-0 text-left outline-none self-start"
                             >
                                 Learn More <ChevronRight size={14} />
-                            </button>
-                        </div>
+                            </button> */}
+                        {/* </div> */}
 
                         {/* Pathway 3: Highlighted Card */}
-                        <div id="personalized" className="p-6 rounded-3xl bg-slate-900/30 border border-white/10 hover:border-lime-vibrant hover:shadow-[0_0_30px_rgba(163,230,53,0.1)] hover:bg-slate-900/60 flex flex-col justify-between relative overflow-hidden group transition-all duration-300">
+                        {/* <div id="personalized" className="p-6 rounded-3xl bg-slate-900/30 border border-white/10 hover:border-lime-vibrant hover:shadow-[0_0_30px_rgba(163,230,53,0.1)] hover:bg-slate-900/60 flex flex-col justify-between relative overflow-hidden group transition-all duration-300"> */}
                             {/* Inner Glow light */}
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-lime-vibrant/0 group-hover:bg-lime-vibrant/10 blur-2xl rounded-full transition-all duration-300" />
+                            {/* <div className="absolute top-0 right-0 w-32 h-32 bg-lime-vibrant/0 group-hover:bg-lime-vibrant/10 blur-2xl rounded-full transition-all duration-300" />
                             <div>
                                 <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500 group-hover:text-lime-vibrant mb-6 block transition-colors">Premium</span>
                                 <h3 className="text-lg font-bold text-white mb-3">Personalized Learning</h3>
@@ -608,12 +609,12 @@ export default function BrandColoredProgramsDirectoryPage() {
                             <Link href="/apply-personalized" className="inline-flex items-center gap-1.5 text-xs font-bold text-lime-vibrant group-hover:gap-2.5 transition-all">
                                 Learn More <ChevronRight size={14} />
                             </Link>
-                        </div>
+                        </div> */}
 
                         {/* Pathway 4 */}
-                        <div className="p-6 rounded-3xl bg-slate-900/30 border border-white/10 hover:border-lime-vibrant hover:shadow-[0_0_30px_rgba(163,230,53,0.1)] hover:bg-slate-900/60 flex flex-col justify-between relative overflow-hidden group transition-all duration-300">
+                        {/* <div className="p-6 rounded-3xl bg-slate-900/30 border border-white/10 hover:border-lime-vibrant hover:shadow-[0_0_30px_rgba(163,230,53,0.1)] hover:bg-slate-900/60 flex flex-col justify-between relative overflow-hidden group transition-all duration-300"> */}
                             {/* Inner Glow light */}
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-lime-vibrant/0 group-hover:bg-lime-vibrant/10 blur-2xl rounded-full transition-all duration-300" />
+                            {/* <div className="absolute top-0 right-0 w-32 h-32 bg-lime-vibrant/0 group-hover:bg-lime-vibrant/10 blur-2xl rounded-full transition-all duration-300" />
                             <div>
                                 <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500 group-hover:text-lime-vibrant mb-6 block transition-colors">Leadership</span>
                                 <h3 className="text-lg font-bold text-white mb-3">Executive Level</h3>
@@ -622,12 +623,12 @@ export default function BrandColoredProgramsDirectoryPage() {
                             <Link href="/programs/executive" className="inline-flex items-center gap-1.5 text-xs font-bold text-lime-vibrant hover:gap-2.5 transition-all">
                                 Learn More <ChevronRight size={14} />
                             </Link>
-                        </div>
+                        </div> */}
 
                         {/* Pathway 5 */}
-                        <div className="p-6 rounded-3xl bg-slate-900/30 border border-white/10 hover:border-lime-vibrant hover:shadow-[0_0_30px_rgba(163,230,53,0.1)] hover:bg-slate-900/60 flex flex-col justify-between relative overflow-hidden group transition-all duration-300">
+                        {/* <div className="p-6 rounded-3xl bg-slate-900/30 border border-white/10 hover:border-lime-vibrant hover:shadow-[0_0_30px_rgba(163,230,53,0.1)] hover:bg-slate-900/60 flex flex-col justify-between relative overflow-hidden group transition-all duration-300"> */}
                             {/* Inner Glow light */}
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-lime-vibrant/0 group-hover:bg-lime-vibrant/10 blur-2xl rounded-full transition-all duration-300" />
+                            {/* <div className="absolute top-0 right-0 w-32 h-32 bg-lime-vibrant/0 group-hover:bg-lime-vibrant/10 blur-2xl rounded-full transition-all duration-300" />
                             <div>
                                 <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500 group-hover:text-lime-vibrant mb-6 block transition-colors">Institutional Impact</span>
                                 <h3 className="text-lg font-bold text-white mb-3">Faculty Development</h3>
@@ -639,7 +640,7 @@ export default function BrandColoredProgramsDirectoryPage() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Featured Programs Section */}
             <section id="featured-programs" className="py-24 px-6 sm:px-12 lg:px-16 relative">
@@ -662,8 +663,8 @@ export default function BrandColoredProgramsDirectoryPage() {
                             <div className="flex flex-wrap gap-2 pt-2">
                                 {[
                                     { id: "all", label: "All Programs" },
-                                    { id: "entry", label: "Entry Level" },
-                                    { id: "mid", label: "Mid Level" }
+                                    { id: "entry", label: "Young Graduate Programs" },
+                                    { id: "mid", label: "Post Graduate Programs" }
                                 ].map((tab) => (
                                     <button
                                         key={tab.id}
@@ -681,17 +682,17 @@ export default function BrandColoredProgramsDirectoryPage() {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1900px] mx-auto items-stretch">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1900px] mx-auto items-start">
                         {[
                             {
                                 category: "AI CAREER TRACK",
                                 title: "Applied AI & GenAI Program",
                                 description: "Build practical skills across AI foundations, machine learning, GenAI, prompt engineering, model evaluation and deployment.",
                                 footerLeft: selectedLevel === "entry"
-                                    ? "Entry Level" 
+                                    ? "Young Graduate" 
                                     : selectedLevel === "mid"
-                                        ? "Mid Level"
-                                        : "Entry & Mid Level",
+                                        ? "Post Graduate"
+                                        : "Young Graduate & Post Graduate",
                                 footerRight: "Project Based",
                                 duration: "6 Weeks per track",
                                 price: selectedLevel === "entry" 
@@ -705,14 +706,14 @@ export default function BrandColoredProgramsDirectoryPage() {
                                     "Global professional certification upon successful completion",
                                     "Access to high-performance computing infrastructure"
                                 ],
-                                levels: ["entry", "mid"],
+                                levels: ["Young Graduate", "Post Graduate"],
                                 links: selectedLevel === "entry"
-                                    ? [{ label: "Apply for Entry Level", href: "/programs/entry-level/ai" }]
+                                    ? [{ label: "Apply for Young Graduate Program", href: "/programs/entry-level/ai" }]
                                     : selectedLevel === "mid"
-                                        ? [{ label: "Apply for Professional Track", href: "/programs/professional/ai" }]
+                                        ? [{ label: "Apply for Post Graduate Program", href: "/programs/professional/ai" }]
                                         : [
-                                            { label: "Apply for Entry Level", href: "/programs/entry-level/ai" },
-                                            { label: "Apply for Professional Track", href: "/programs/professional/ai" }
+                                            { label: "Apply for Young Graduate Program", href: "/programs/entry-level/ai" },
+                                            { label: "Apply for Post Graduate Program", href: "/programs/professional/ai" }
                                         ]
                             },
                             {
@@ -720,10 +721,10 @@ export default function BrandColoredProgramsDirectoryPage() {
                                 title: "Cybersecurity Analyst Program",
                                 description: "Develop skills across security operations, threat analysis, SIEM, incident response, cloud security and AI-enabled defence.",
                                 footerLeft: selectedLevel === "entry" 
-                                    ? "Entry Level" 
+                                    ? "Young Graduate" 
                                     : selectedLevel === "mid"
-                                        ? "Mid Level"
-                                        : "Entry & Mid Level",
+                                        ? "Post Graduate"
+                                        : "Young Graduate & Post Graduate",
                                 footerRight: "Industry Ready",
                                 duration: "6 Weeks per track",
                                 price: selectedLevel === "entry" 
@@ -737,14 +738,14 @@ export default function BrandColoredProgramsDirectoryPage() {
                                     "Preparation for industry-recognized global cybersecurity certifications",
                                     "Defense methodologies for cloud and AI-driven environments"
                                 ],
-                                levels: ["entry", "mid"],
+                                levels: ["Young Graduate", "Post Graduate"],
                                 links: selectedLevel === "entry"
-                                    ? [{ label: "Apply for Entry Level", href: "/programs/entry-level/cyber-security" }]
+                                    ? [{ label: "Apply for Young Graduate Program", href: "/programs/entry-level/cyber-security" }]
                                     : selectedLevel === "mid"
-                                        ? [{ label: "Apply for Professional Track", href: "/programs/professional/cyber-security" }]
+                                        ? [{ label: "Apply for Post Graduate Program", href: "/programs/professional/cyber-security" }]
                                         : [
-                                            { label: "Apply for Entry Level", href: "/programs/entry-level/cyber-security" },
-                                            { label: "Apply for Professional Track", href: "/programs/professional/cyber-security" }
+                                            { label: "Apply for Young Graduate Program", href: "/programs/entry-level/cyber-security" },
+                                            { label: "Apply for Post Graduate Program", href: "/programs/professional/cyber-security" }
                                         ]
                             },
                             {
@@ -815,11 +816,15 @@ export default function BrandColoredProgramsDirectoryPage() {
                                 levels: ["institutional"],
                                 links: [{ label: "Discuss Partnership", href: "/contact" }]
                             }
-                        ].filter(prog => selectedLevel === "all" || prog.levels.includes(selectedLevel)).map((prog, index) => (
+                        ].filter(prog => {
+                            if (selectedLevel === "all") return true;
+                            const mappedLevel = selectedLevel === "entry" ? "Young Graduate" : selectedLevel === "mid" ? "Post Graduate" : selectedLevel;
+                            return prog.levels.includes(mappedLevel) || prog.levels.includes(selectedLevel);
+                        }).map((prog, index) => (
                             <div 
                                 onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
                                 key={index} 
-                                className={`h-full min-h-[270px] p-6 sm:p-7 rounded-2xl bg-slate-900/30 border transition-all duration-300 flex flex-col justify-between group cursor-pointer select-none ${
+                                className={`h-fit min-h-[270px] p-6 sm:p-7 rounded-2xl bg-slate-900/30 border transition-all duration-300 flex flex-col justify-between group cursor-pointer select-none ${
                                     expandedIndex === index 
                                         ? "border-lime-vibrant/40 bg-slate-900/50 shadow-[0_0_40px_rgba(163,230,53,0.05)]" 
                                         : "border-white/10 hover:border-lime-vibrant/30 hover:shadow-[0_0_30px_rgba(163,230,53,0.05)] hover:bg-slate-900/40"

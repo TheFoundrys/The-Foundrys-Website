@@ -7,11 +7,6 @@ export function RenewableEnergySkills() {
         <section className="py-24 px-4 bg-slate-950 text-white overflow-hidden relative">
             {/* Background Image & Grids */}
             <div className="absolute inset-0 z-0">
-                <div 
-                    className="absolute inset-0 bg-cover bg-center opacity-40"
-                    style={{ backgroundImage: "url('https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072&auto=format&fit=crop')" }} 
-                />
-                <div className="absolute inset-0 bg-slate-950/80" />
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px]" />
             </div>
             
@@ -85,7 +80,7 @@ export function RenewableEnergySkills() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4 }}
                                 whileHover={{ scale: 1.05 }}
-                                className="bg-gradient-to-br from-green-900/80 to-slate-900 p-6 rounded-3xl border border-white/10"
+                                className="bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/10"
                             >
                                 <div className="text-4xl font-bold text-white mb-1">0 Carbon</div>
                                 <div className="text-xs text-slate-400 uppercase tracking-wider font-bold">Target Emission</div>
