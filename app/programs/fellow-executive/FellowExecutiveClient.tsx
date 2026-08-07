@@ -3,250 +3,113 @@
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, CheckCircle2, ShieldCheck, Users, Target, Zap, Brain, Building2, TrendingUp, Radio, Sparkles, ChevronRight, Cpu, Lightbulb, Globe } from "lucide-react";
+import { ArrowUpRight, Users, Zap, Globe, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
-import { useRegionalPricing } from "@/lib/useRegionalPricing";
+import Image from "next/image";
 import { FutureVision } from "@/components/schools/shared/future-vision";
 
 export default function FellowExecutiveClient() {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: containerRef });
     const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
-    const { symbol, currency } = useRegionalPricing();
 
     return (
-        <main className="min-h-screen bg-white font-sans selection:bg-blue-100 selection:text-blue-900" ref={containerRef}>
+        <main className="min-h-screen bg-white font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden" ref={containerRef}>
             <Navbar />
 
-            {/* Hero Section */}
-            <section className="relative pt-32 pb-32 px-6 bg-slate-950 overflow-hidden min-h-[80vh] flex items-center">
-                {/* Animated Background Elements */}
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/20 via-slate-950 to-slate-950 z-0" />
-                <motion.div
-                    animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.1, 0.2, 0.1]
-                    }}
-                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -top-1/2 -right-1/2 w-[1000px] h-[1000px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none"
+            {/* Banner Image Section */}
+            <section className="relative w-full h-[260px] md:h-[380px] overflow-hidden mt-16">
+                <style dangerouslySetInnerHTML={{
+                    __html: `
+                    .fellow-title-white {
+                        color: #ffffff !important;
+                    }
+                    `
+                }} />
+                <Image 
+                    src="/images/exec_classroom_session.png" 
+                    alt="Fellowship & Executive Programs" 
+                    fill 
+                    priority
+                    className="object-cover object-center brightness-[0.7]" 
                 />
-                <motion.div
-                    animate={{
-                        scale: [1, 1.1, 1],
-                        opacity: [0.1, 0.2, 0.1]
-                    }}
-                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                    className="absolute -bottom-1/2 -left-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-[80px] pointer-events-none"
-                />
-
-                <div className="container mx-auto max-w-6xl relative z-10 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-blue-400 text-sm font-medium mb-8 backdrop-blur-sm"
-                    >
-                        <Building2 size={14} className="text-blue-400" />
-                        <span className="tracking-wide uppercase text-xs font-bold font-sans">Fellow Executive Program</span>
-                    </motion.div>
-
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 tracking-tighter leading-[1.1]"
-                    >
-                        Leadership in the <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Age of Intelligence.</span>
-                    </motion.h1>
-
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed mb-12 font-light"
-                    >
-                        Elite integrated programs and executive tracks designed for CTOs, VPs, senior technical leaders, and future <span className="text-white font-medium">technical CEOs</span>.
-                    </motion.p>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.6 }}
-                    >
-                        <button onClick={(e) => { e.preventDefault(); document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' }); }} className="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-full bg-white px-10 font-bold text-slate-900 transition-all duration-300 hover:bg-blue-600 hover:text-white hover:scale-105 hover:ring-4 hover:ring-blue-500/20 shadow-[0_0_40px_-10px_rgba(255,255,255,0.1)] cursor-pointer border-none outline-none">
-                            <span className="mr-2 text-lg">Explore Paths & Courses</span>
-                            <ArrowUpRight className="transition-transform group-hover:rotate-45" />
-                        </button>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Value Proposition */}
-            <section className="py-24 px-6 bg-white relative border-t border-slate-100">
-                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
-                <div className="container mx-auto max-w-5xl text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <div className="text-blue-600 font-bold tracking-widest uppercase text-xs mb-4">The Strategic Shift</div>
-                        <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-8 tracking-tight">
-                            The boardroom is changing. <br />
-                            <span className="italic text-slate-400 font-serif">Are you?</span>
-                        </h2>
-                        <div className="h-1 w-20 bg-blue-600 mx-auto mb-8 rounded-full" />
-                        <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-4xl mx-auto font-light">
-                            Traditional executive programs focus on general management. We focus on <span className="font-semibold text-slate-900">Technical Leadership</span>.
-                            Move from delivering features to owning the <span className="font-semibold text-slate-900">Systems</span> that drive value, or build high-impact AI/Cyber ventures from the ground up.
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Target Audience */}
-            <section className="py-32 px-6 bg-slate-50 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
-
-                <div className="container mx-auto max-w-7xl relative z-10">
-                    <div className="text-center mb-20">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="inline-block"
-                        >
-                            <div className="text-blue-600 font-bold tracking-widest uppercase text-xs mb-3">Who is this for</div>
-                            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight">Tailored Paths for Future Leaders</h2>
-                        </motion.div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <AudienceCard
-                            icon={ShieldCheck}
-                            title="Senior Tech Leaders"
-                            desc="Delivery Managers, Program Managers, and Architects ready to step into systems-level authority."
-                            delay={0}
-                        />
-                        <AudienceCard
-                            icon={Brain}
-                            title="Founders & CTOs"
-                            desc="Deep-tech founders navigating the complexity of scaling AI-driven organizations."
-                            delay={0.1}
-                        />
-                        <AudienceCard
-                            icon={Target}
-                            title="Product Leaders"
-                            desc="Technical Product Managers operating in high-stakes, regulated domains like BFSI & Health."
-                            delay={0.2}
-                        />
-                        <AudienceCard
-                            icon={Lightbulb}
-                            title="Aspiring Founders"
-                            desc="Innovators seeking integrated technical and business frameworks to launch sovereign deep tech ventures."
-                            delay={0.3}
-                        />
+                <div className="absolute inset-0 bg-black/35" />
+                <div className="absolute inset-0 flex items-center">
+                    <div className="container mx-auto max-w-6xl px-6">
+                        <h1 className="font-serif text-white text-4xl md:text-6xl font-bold tracking-tight fellow-title-white">
+                            Fellow Executive Suite
+                        </h1>
                     </div>
                 </div>
             </section>
 
-            {/* Integrated MBA Programs (Certified Innovator MBA Paths) */}
-            <section id="programs" className="py-28 px-6 bg-white border-t border-slate-100">
+            {/* Introduction Section */}
+            <section className="bg-white px-6 py-16 text-[#031a57]">
                 <div className="container mx-auto max-w-6xl">
-                    <div className="text-center mb-16">
-                        <div className="text-blue-600 font-bold tracking-widest uppercase text-xs mb-3">Pathway 01</div>
-                        <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">Integrated MBA Programs (3+1)</h2>
-                        <p className="text-slate-500 max-w-2xl mx-auto">
-                            Flagship programs designed to produce the next generation of technical CEOs and visionaries.
-                        </p>
-                    </div>
-                    <div className="grid md:grid-cols-2 gap-8 justify-center">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="bg-slate-50 p-10 rounded-3xl border border-slate-200 shadow-sm relative group hover:border-blue-600/30 transition-colors"
-                        >
-                            <div className="absolute top-0 right-0 p-8 font-mono text-xs uppercase tracking-widest text-slate-400 group-hover:text-blue-600/50 transition-colors">
-                                3+1 Years
-                            </div>
-                            <div className="mb-6">
-                                <Cpu className="text-blue-600" size={32} />
-                            </div>
-                            <p className="text-blue-600 text-xs font-bold uppercase tracking-widest mb-1">Specialization 01</p>
-                            <h3 className="text-3xl font-bold text-slate-900 mb-4">MBA in AI</h3>
-                            <p className="text-slate-600 leading-relaxed">
-                                The ultimate track for AI architects. 3 years of deep Intelligence Engineering followed by a 1-year MBA to scale autonomous ventures.
-                            </p>
-                            <div className="mt-8 pt-6 border-t border-slate-200/60">
-                                <Link href="/apply?course=MBA in AI" className="inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700">
-                                    Apply for AI Path <ArrowUpRight size={16} />
-                                </Link>
-                            </div>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="bg-slate-50 p-10 rounded-3xl border border-slate-200 shadow-sm relative group hover:border-blue-600/30 transition-colors"
-                        >
-                            <div className="absolute top-0 right-0 p-8 font-mono text-xs uppercase tracking-widest text-slate-400 group-hover:text-blue-600/50 transition-colors">
-                                3+1 Years
-                            </div>
-                            <div className="mb-6">
-                                <ShieldCheck className="text-blue-600" size={32} />
-                            </div>
-                            <p className="text-blue-600 text-xs font-bold uppercase tracking-widest mb-1">Specialization 02</p>
-                            <h3 className="text-3xl font-bold text-slate-900 mb-4">MBA in Cybersecurity Venture Building</h3>
-                            <p className="text-slate-600 leading-relaxed">
-                                The defense layer. 3 years of Cybersecurity Engineering followed by a 1-year MBA to lead and build security-first global ventures.
-                            </p>
-                            <div className="mt-8 pt-6 border-t border-slate-200/60">
-                                <Link href="/apply?course=MBA in Cybersecurity Venture Building" className="inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700">
-                                    Apply for Security Path <ArrowUpRight size={16} />
-                                </Link>
-                            </div>
-                        </motion.div>
-                    </div>
+                    <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
+                        Introduction
+                    </h2>
+                    <p className="mt-6 text-sm md:text-base leading-relaxed text-slate-700 max-w-4xl">
+                        At The Foundry, we shape technical leaders who thrive amidst complexity, catalyze meaningful change, and redefine board-level metrics. Our Fellowship & Executive Programs are precision-engineered for CTOs, VPs, senior technical leaders, and future technical CEOs. We bypass general management generalities and focus on systems-level authority, deep technical leadership, and strategic venture building to prepare you for the age of intelligence.
+                    </p>
                 </div>
             </section>
 
-            {/* Executive Courses Section */}
-            <section className="py-28 px-6 bg-slate-50 border-t border-slate-200">
+            {/* Programs List Section */}
+            <section className="bg-white px-6 pb-24 text-[#031a57]">
                 <div className="container mx-auto max-w-6xl">
-                    <div className="text-center mb-20">
-                        <div className="text-blue-600 font-bold tracking-widest uppercase text-xs mb-3">Pathway 02</div>
-                        <h2 className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight">Executive Cohort Courses</h2>
-                        <p className="text-slate-500 max-w-2xl mx-auto mt-4">
-                            Intensive tracks designed to fit the schedules of active technology executives and decision-makers.
-                        </p>
-                    </div>
-                    <div className="flex justify-center gap-8">
-                        <div className="w-full max-w-2xl">
-                            <CourseCard
-                                sku="EXE 001"
-                                title="Delivering In the Age of AI"
-                                priceINR={{ original: "1,00,000", discounted: "50,000" }}
-                                priceUSD={{ original: "2,000", discounted: "1,000" }}
-                                desc="Where Senior Tech Leaders become System Owners. Design, engineer, deploy, and govern critical systems in an AI-driven world."
-                                link="/programs/fellow-executive/delivering-in-age-of-ai"
-                                delay={0}
-                                active={true}
-                                symbol={symbol}
-                                currency={currency}
-                            />
-                        </div>
+                    <div className="space-y-16">
+                        {/* Program 1: MBA in AI */}
+                        <ProgramRow 
+                            tag="Integrated MBA Path"
+                            title="MBA in Applied AI & GenAI"
+                            description="The ultimate track for AI architects. 3 years of deep Intelligence Engineering followed by a 1-year MBA to scale autonomous ventures. Learn to design, deploy, and govern cognitive architectures at a board-level scale."
+                            specs={{
+                                mode: "Hybrid (In-Person & Virtual)",
+                                duration: "4 Years (3+1)",
+                                experience: "Aspiring Founders & Tech Leaders",
+                                location: "Hitech City, Hyderabad"
+                            }}
+                            actionLink="/apply?course=MBA in AI"
+                            actionLabel="Apply for AI Path"
+                        />
+
+                        {/* Program 2: MBA in Cybersecurity Venture Building */}
+                        <ProgramRow 
+                            tag="Integrated MBA Path"
+                            title="MBA in Cybersecurity Venture Building"
+                            description="The defense layer. 3 years of Cybersecurity Engineering followed by a 1-year MBA to lead and build security-first global ventures. Master network forensics, penetration testing, and strategic tech risk governance."
+                            specs={{
+                                mode: "Hybrid (In-Person & Virtual)",
+                                duration: "4 Years (3+1)",
+                                experience: "Aspiring Founders & Security Leaders",
+                                location: "Hitech City, Hyderabad"
+                            }}
+                            actionLink="/apply?course=MBA in Cybersecurity Venture Building"
+                            actionLabel="Apply for Security Path"
+                        />
+
+                        {/* Program 3: Delivering in the Age of AI */}
+                        <ProgramRow 
+                            tag="Executive Cohort"
+                            title="Delivering in the Age of AI (EXE 001)"
+                            description="Where Senior Tech Leaders become System Owners. Design, engineer, deploy, and govern critical systems in an AI-driven world. Master peer network frameworks and board-level technical alignment metrics."
+                            specs={{
+                                mode: "Hybrid (In-Person & Virtual)",
+                                duration: "Cohort-based",
+                                experience: "Senior Managers, Directors & VPs",
+                                location: "Hitech City, Hyderabad"
+                            }}
+                            actionLink="/programs/fellow-executive/delivering-in-age-of-ai"
+                            actionLabel="View Program"
+                        />
                     </div>
                 </div>
             </section>
 
             {/* Methodology */}
-            <section className="py-32 px-6 bg-white text-slate-900 relative overflow-hidden border-y border-slate-100">
+            <section className="py-28 px-6 bg-slate-50 text-slate-900 relative overflow-hidden border-y border-slate-200">
                 <motion.div
                     style={{ y }}
                     className="absolute inset-0 bg-[url('/noise.svg')] opacity-5 pointer-events-none"
@@ -255,7 +118,7 @@ export default function FellowExecutiveClient() {
                 <div className="container mx-auto max-w-6xl relative z-10">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
                         <div>
-                            <div className="text-purple-600 font-bold tracking-widest uppercase text-xs mb-3 flex items-center gap-2">
+                            <div className="text-blue-600 font-bold tracking-widest uppercase text-xs mb-3 flex items-center gap-2">
                                 <Zap size={14} /> Methodology
                             </div>
                             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">The Executive Standard</h2>
@@ -334,27 +197,104 @@ export default function FellowExecutiveClient() {
     );
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function AudienceCard({ icon: Icon, title, desc, delay }: { icon: any, title: string, desc: string, delay: number }) {
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay }}
-            whileHover={{ y: -10 }}
-            className="bg-white p-10 rounded-3xl border border-slate-100 relative group overflow-hidden shadow-sm animate-gpu"
-        >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500 ease-in-out pointer-events-none" />
+// Reusable split row component for each program
+interface Specs {
+    mode: string;
+    duration: string;
+    experience: string;
+    location: string;
+}
 
-            <div className="relative z-10">
-                <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-8 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 border border-blue-100">
-                    <Icon size={32} strokeWidth={1.5} />
+function ProgramRow({
+    tag,
+    title,
+    description,
+    specs,
+    actionLink,
+    actionLabel
+}: {
+    tag: string;
+    title: string;
+    description: string;
+    specs: Specs;
+    actionLink: string;
+    actionLabel: string;
+}) {
+    return (
+        <div className="border-t border-slate-200 pt-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+            {/* Left Column */}
+            <div className="lg:col-span-5 flex flex-col justify-between">
+                <div>
+                    <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 mb-2 block font-mono">
+                        {tag}
+                    </span>
+                    <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#002f86] leading-tight mb-6">
+                        {title}
+                    </h3>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">{title}</h3>
-                <p className="text-slate-600 leading-relaxed font-light text-sm">{desc}</p>
+                
+                <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3 mt-6">
+                    <Link
+                        href={actionLink}
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#002f86] bg-[#002f86] text-white hover:bg-white hover:text-[#002f86] rounded-lg font-bold transition-all text-sm cursor-pointer"
+                    >
+                        {actionLabel} <ArrowUpRight size={14} />
+                    </Link>
+                    <Link
+                        href="/apply"
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-lg font-bold transition-all text-sm"
+                    >
+                        Download brochure <span className="text-slate-400 text-base">⤓</span>
+                    </Link>
+                </div>
             </div>
-        </motion.div>
+            
+            {/* Right Column */}
+            <div className="lg:col-span-7 flex flex-col justify-between">
+                <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-8">
+                    {description}
+                </p>
+                
+                {/* Metadata Specifications Grid */}
+                <div className="grid grid-cols-2 gap-x-8 gap-y-4 border-t border-slate-100 pt-6">
+                    <div>
+                        <div className="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1 font-mono">
+                            Mode:
+                        </div>
+                        <div className="text-sm font-semibold text-slate-800">
+                            {specs.mode}
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div className="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1 font-mono">
+                            Duration:
+                        </div>
+                        <div className="text-sm font-semibold text-slate-800">
+                            {specs.duration}
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div className="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1 font-mono">
+                            Work experience:
+                        </div>
+                        <div className="text-sm font-semibold text-slate-800">
+                            {specs.experience}
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div className="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1 font-mono">
+                            Location:
+                        </div>
+                        <div className="text-sm font-semibold text-slate-800">
+                            {specs.location}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
 
@@ -366,7 +306,7 @@ function MethodologyItem({ icon: Icon, title, desc, index }: { icon: any, title:
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="relative p-8 rounded-3xl border border-slate-100 bg-slate-50 backdrop-blur-sm hover:bg-slate-100 transition-colors"
+            className="relative p-8 rounded-3xl border border-slate-200 bg-slate-50 backdrop-blur-sm hover:bg-slate-100 transition-colors"
         >
             <div className="flex items-start gap-5">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-b from-blue-500 to-purple-500 flex items-center justify-center text-white shrink-0 shadow-lg shadow-blue-500/20">
@@ -376,63 +316,6 @@ function MethodologyItem({ icon: Icon, title, desc, index }: { icon: any, title:
                     <h3 className="text-xl font-bold text-slate-900 mb-2">{title}</h3>
                     <p className="text-slate-600 leading-relaxed text-sm">{desc}</p>
                 </div>
-            </div>
-        </motion.div>
-    );
-}
-
-function CourseCard({ sku, title, priceINR, priceUSD, desc, link, delay, active, symbol, currency }: { sku: string, title: string, priceINR: { original: string, discounted: string }, priceUSD: { original: string, discounted: string }, desc: string, link: string, delay: number, active: boolean, symbol: string, currency: 'INR' | 'USD' }) {
-    const originalPrice = currency === 'USD' ? priceUSD.original : priceINR.original;
-
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay }}
-            whileHover={{ y: -5 }}
-            className={`flex flex-col bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 group ${!active ? 'opacity-75 hover:opacity-100' : ''}`}
-        >
-            <div className="p-6 md:p-8 flex-grow relative">
-                <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
-                    <Target size={100} className="text-slate-900" />
-                </div>
-
-                <div className="flex justify-between items-start mb-6 relative z-10">
-                    <span className="text-[10px] font-bold text-slate-400 tracking-widest uppercase bg-slate-100 px-3 py-1.5 rounded-full border border-slate-200">{sku}</span>
-                    <div className={`px-3 py-1 rounded-full text-xs font-bold border flex items-center gap-1 ${active ? 'bg-blue-50 text-blue-600 border-blue-100' : 'bg-slate-100 text-slate-500 border-slate-200'}`}>
-                        {active ? <><CheckCircle2 size={12} /> Enrolling Now</> : 'Coming Soon'}
-                    </div>
-                </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors relative z-10">{title}</h3>
-                <p className="text-slate-600 leading-relaxed mb-6 font-light text-sm relative z-10">{desc}</p>
-
-                <div className="flex items-center gap-4 text-sm text-slate-500 font-medium relative z-10">
-                    <div className="flex items-center gap-1.5"><Radio size={14} className="text-blue-500" /> Hybrid</div>
-                    <div className="w-1 h-1 bg-slate-300 rounded-full" />
-                    <div className="flex items-center gap-1.5"><Sparkles size={14} className="text-amber-500" /> Certificate</div>
-                </div>
-            </div>
-
-            <div className="px-6 py-6 md:px-8 bg-slate-50 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 group-hover:bg-blue-50 transition-colors">
-                <div>
-                    <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">Tuition Fee</div>
-                    <div className="flex items-baseline gap-2">
-                        <span className="text-xl font-black text-slate-900">{symbol}{originalPrice}</span>
-                    </div>
-                </div>
-                {active ? (
-                    <Link
-                        href={link}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-full font-bold hover:bg-blue-600 hover:text-white transition-all shadow-lg hover:shadow-blue-500/25 active:scale-95"
-                    >
-                        View Program <ArrowUpRight size={16} />
-                    </Link>
-                ) : (
-                    <button disabled className="inline-flex items-center gap-2 px-6 py-3 bg-slate-200 text-slate-400 rounded-full font-bold cursor-not-allowed">
-                        Coming Soon
-                    </button>
-                )}
             </div>
         </motion.div>
     );

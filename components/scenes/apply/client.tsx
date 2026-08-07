@@ -44,7 +44,7 @@ export function ApplyClient() {
                 "AI Strategy & Institutional Intelligence",
             ],
             "professional": [
-                "Artificial Intelligence Mastery Package",
+                "AI Professional Mastery Package",
                 "Certified Professional in AI Engineering",
                 "Certified Professional in AI Research",
                 "Certified Professional in AI Operations",
@@ -64,7 +64,7 @@ export function ApplyClient() {
                 "Certified in AI Security",
             ],
             "professional": [
-                "Cyber Security Mastery Package",
+                "Cyber Security Professional Mastery Package",
                 "Certified Professional in Cyber Security",
                 "Certified Professional in VAPT for AI",
                 "Certified Professional in Security for AI",
@@ -79,7 +79,7 @@ export function ApplyClient() {
                 "Certified in Decentralized Systems",
             ],
             "professional": [
-                "Blockchain Mastery Package",
+                "Blockchain Professional Mastery Package",
                 "Certified Professional in Block Chain",
                 "Certified Professional in NFT",
                 "Certified Professional in Decentralized Systems",
@@ -91,7 +91,7 @@ export function ApplyClient() {
                 "Certified Professional in Quantum Fundamentals",
             ],
             "professional": [
-                "Quantum Computing Mastery Package",
+                "Quantum Computing Professional Mastery Package",
                 "Certified Professional in Quantum Fundamentals",
             ],
         },

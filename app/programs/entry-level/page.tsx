@@ -2,15 +2,13 @@
 
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Cpu, Network, ShieldCheck, BrainCircuit, Calendar, Wifi, Target, ArrowDown, CheckCircle2, Zap } from "lucide-react";
+import { AnimatePresence } from "framer-motion";
+import { ArrowDown } from "lucide-react";
 import { useState, useEffect } from "react";
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { PackageDetailsModal } from "@/components/programs/PackageDetailsModal";
-
-// Custom Gradient Style
-const customGradient = "linear-gradient(to right, lab(44.0605 29.0279 -86.0352) 0%, lab(38.4009 52.6132 -92.3857) 100%)";
-const textGradientClass = "text-transparent bg-clip-text";
 
 export default function EntryLevelProgramPage() {
     const [selectedPackageId, setSelectedPackageId] = useState<string | null>(null);
@@ -20,94 +18,105 @@ export default function EntryLevelProgramPage() {
     }, []);
 
     return (
-        <main className="min-h-screen bg-slate-50 font-sans selection:bg-blue-100 selection:text-blue-900">
+        <main className="min-h-screen bg-white font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
             <Navbar />
 
-            {/* Hero Section */}
-            <section className="pt-28 pb-16 px-6 relative overflow-hidden bg-slate-900">
-                <div className="container mx-auto max-w-6xl relative z-20">
-                    <div className="max-w-4xl pt-4">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                        >
-                            <div className="space-y-4">
-                                <p className="text-sm font-bold text-blue-500 uppercase tracking-widest">Foundational Pathways</p>
-                                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
-                                    Start Your Journey in
-                                    <br />
-                                    <span style={{ backgroundImage: customGradient }} className={`${textGradientClass}`}>
-                                        Emerging Tech
-                                    </span>
-                                </h1>
-                            </div>
-                            <p className="text-lg md:text-xl text-slate-300 mt-6 mb-10 leading-relaxed max-w-3xl font-normal">
-                                Build a strong foundation in emerging technologies. Designed for beginners to master the core concepts of Artificial Intelligence, Cyber Security, Quantum Computing, and Blockchain.
-                            </p>
-                            <div className="flex flex-wrap gap-4">
-                                <a
-                                    href="#curriculum"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        document.getElementById('curriculum')?.scrollIntoView({ behavior: 'smooth' });
-                                    }}
-                                    className="inline-flex items-center gap-2 px-8 py-4 text-white border-2 border-[#002f86] rounded-full font-bold hover:bg-white/20 transition-colors"
-                                >
-                                    Explore Programs
-                                </a>
-                            </div>
-
-                            {/* Strategic Program Specs */}
-                            {/* <div className="mt-16 pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-8">
-                                <HeroStat icon={<Wifi size={20} />} label="Format" value="Hybrid" sub="In-Person + Virtual" />
-                                <HeroStat icon={<Zap size={20} />} label="Approach" value="Applied" sub="Concept + Practice" />
-                                <HeroStat icon={<Target size={20} />} label="Outcome" value="Ready" sub="For Specialization" />
-                                <HeroStat icon={<Calendar size={20} />} label="Duration" value="Program-dependent" sub="Intensive Cohort" />
-                            </div> */}
-                        </motion.div>
+            {/* Banner Image Section */}
+            <section className="relative w-full h-[260px] md:h-[380px] overflow-hidden mt-16">
+                <style dangerouslySetInnerHTML={{
+                    __html: `
+                    .ygp-title-white {
+                        color: #ffffff !important;
+                    }
+                    `
+                }} />
+                <Image 
+                    src="/images/ygp_classroom_session.png" 
+                    alt="YGP Suite" 
+                    fill 
+                    priority
+                    className="object-cover object-center brightness-[0.7]" 
+                />
+                <div className="absolute inset-0 bg-black/35" />
+                <div className="absolute inset-0 flex items-center">
+                    <div className="container mx-auto max-w-6xl px-6">
+                        <h1 className="font-serif text-white text-4xl md:text-6xl font-bold tracking-tight ygp-title-white">
+                            YGP Suite
+                        </h1>
                     </div>
                 </div>
             </section>
 
-            {/* Core Domains */}
-            <section className="py-16 px-6 bg-white" id="curriculum">
+            {/* Introduction Section */}
+            <section className="bg-white px-6 py-16 text-[#031a57]">
                 <div className="container mx-auto max-w-6xl">
-                    <div className="mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Choose your career path</h2>
-                        <p className="text-lg text-slate-600 leading-relaxed max-w-3xl">
-                            Precision-engineered learning tracks. Each domain is structured as a comprehensive, standalone young graduate program allowing you to build a strong foundation in the technology defining your future.
-                        </p>
-                    </div>
+                    <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
+                        Introduction
+                    </h2>
+                    <p className="mt-6 text-sm md:text-base leading-relaxed text-slate-700 max-w-4xl">
+                        At The Foundry, we shape leaders who thrive amidst complexity, catalyze meaningful change, and redefine success in deep tech. Our diverse portfolio of foundational young graduate programmes is designed for beginners and early technical learners to master the core concepts of Artificial Intelligence, Cyber Security, Quantum Computing, and Blockchain. Each programme unites world-class academic rigour with global perspectives, delivering transformative educational experiences that cultivate resilient, innovative leaders poised to generate significant impact.
+                    </p>
+                </div>
+            </section>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <DomainCard
-                            title="Applied AI & GenAI Program"
-                            tagline="From Logic to Intelligence."
-                            desc="Move beyond basic Python. Master Neural Networks, NLP, and Computer Vision to build systems that can see, read, and decide."
-                            icon={<BrainCircuit />}
-                            onOpenPackage={() => setSelectedPackageId("entry-level-ai")}
+            {/* Programs List Section */}
+            <section className="bg-white px-6 pb-24 text-[#031a57]">
+                <div className="container mx-auto max-w-6xl">
+                    <div className="space-y-16">
+                        {/* Domain 1: Applied AI & GenAI */}
+                        <ProgramRow 
+                            tag="YGP"
+                            title="Young Graduate Program in Applied AI & GenAI"
+                            description="Build a strong foundation in Artificial Intelligence. Master Neural Networks, NLP, and Computer Vision from the ground up to design intelligent, autonomous applications."
+                            specs={{
+                                mode: "Hybrid (In-Person & Virtual)",
+                                duration: "12 Months",
+                                experience: "Beginners & Undergraduates",
+                                location: "Hitech City, Hyderabad"
+                            }}
+                            onMoreInfo={() => setSelectedPackageId("entry-level-ai")}
                         />
-                        <DomainCard
-                            title="Cybersecurity Analyst Program"
-                            tagline="Defend the Digital Frontier."
-                            desc="The world is digital, and it is under attack. Learn the offensive and defensive strategies required to secure networks and data."
-                            icon={<ShieldCheck />}
-                            onOpenPackage={() => setSelectedPackageId("entry-level-cyber-security")}
+
+                        {/* Domain 2: Cybersecurity */}
+                        <ProgramRow 
+                            tag="YGP"
+                            title="Young Graduate Program in Cybersecurity Analyst"
+                            description="Learn the core principles of network defense, digital forensics, and security audits. Master the foundational tools and strategies required to secure modern business infrastructures."
+                            specs={{
+                                mode: "Hybrid (In-Person & Virtual)",
+                                duration: "12 Months",
+                                experience: "Beginners & Undergraduates",
+                                location: "Hitech City, Hyderabad"
+                            }}
+                            onMoreInfo={() => setSelectedPackageId("entry-level-cyber-security")}
                         />
-                        <DomainCard
-                            title="Quantum Computing Program"
-                            tagline="The Next Computational Revolution."
-                            desc="Prepare for the paradigm shift. Understanding Qubits and Superposition today is like learning the Internet in 1990."
-                            icon={<Cpu />}
-                            onOpenPackage={() => setSelectedPackageId("entry-level-quantum-computing")}
+
+                        {/* Domain 3: Quantum Computing */}
+                        <ProgramRow 
+                            tag="YGP"
+                            title="Young Graduate Program in Quantum Computing"
+                            description="Introduce yourself to the computing paradigms of the future. Master Qubits, superposition, quantum gates, and algorithm design to prepare for tomorrow's computational shift."
+                            specs={{
+                                mode: "Hybrid (In-Person & Virtual)",
+                                duration: "12 Months",
+                                experience: "Beginners & Undergraduates",
+                                location: "Hitech City, Hyderabad"
+                            }}
+                            onMoreInfo={() => setSelectedPackageId("entry-level-quantum-computing")}
                         />
-                        <DomainCard
-                            title="Blockchain Program"
-                            tagline="Architect the Trust Layer."
-                            desc="Explore the technology behind Web3. Learn how decentralized ledgers and smart contracts are rewriting the rules of finance and ownership."
-                            icon={<Network />}
-                            onOpenPackage={() => setSelectedPackageId("entry-level-blockchain")}
+
+                        {/* Domain 4: Blockchain */}
+                        <ProgramRow 
+                            tag="YGP"
+                            title="Young Graduate Program in Blockchain & Web3"
+                            description="Explore decentralized ledger technology. Learn how blockchain protocols, smart contracts, and Web3 networks structure trust and digital finance."
+                            specs={{
+                                mode: "Hybrid (In-Person & Virtual)",
+                                duration: "12 Months",
+                                experience: "Beginners & Undergraduates",
+                                location: "Hitech City, Hyderabad"
+                            }}
+                            onMoreInfo={() => setSelectedPackageId("entry-level-blockchain")}
                         />
                     </div>
                 </div>
@@ -158,86 +167,102 @@ export default function EntryLevelProgramPage() {
     );
 }
 
-// Optimized Stat Component for Hero
-function HeroStat({ icon, label, value, sub }: { icon: React.ReactNode, label: string, value: string, sub: string }) {
-    return (
-        <div className="flex items-start gap-4 group">
-            <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-slate-400 shrink-0 group-hover:text-white transition-colors">
-                {icon}
-            </div>
-            <div>
-                <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">{label}</div>
-                <div
-                    style={{ backgroundImage: customGradient }}
-                    className={`${textGradientClass} font-bold whitespace-nowrap text-base md:text-lg`}
-                >
-                    {value}
-                </div>
-                <div className="text-xs text-slate-400 font-medium">{sub}</div>
-            </div>
-        </div>
-    );
+// Reusable split row component for each program
+interface Specs {
+    mode: string;
+    duration: string;
+    experience: string;
+    location: string;
 }
 
-function DomainCard({ title, tagline, desc, icon, onOpenPackage }: { title: string, tagline?: string, desc: string, icon: React.ReactElement, onOpenPackage: () => void }) {
+function ProgramRow({
+    tag,
+    title,
+    description,
+    specs,
+    onMoreInfo
+}: {
+    tag: string;
+    title: string;
+    description: string;
+    specs: Specs;
+    onMoreInfo: () => void;
+}) {
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group"
-        >
-            <div className="absolute top-6 right-6 z-10">
-                <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-100 whitespace-nowrap">
-                    Young Graduate Program
-                </span>
+        <div className="border-t border-slate-200 pt-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+            {/* Left Column */}
+            <div className="lg:col-span-5 flex flex-col justify-between">
+                <div>
+                    <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 mb-2 block font-mono">
+                        {tag}
+                    </span>
+                    <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#002f86] leading-tight mb-6">
+                        {title}
+                    </h3>
+                </div>
+                
+                <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3 mt-6">
+                    <button
+                        onClick={onMoreInfo}
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#002f86] text-[#002f86] hover:bg-[#002f86] hover:text-white rounded-lg font-bold transition-all text-sm cursor-pointer"
+                    >
+                        More Info <span className="transition-transform group-hover:translate-x-1">→</span>
+                    </button>
+                    <Link
+                        href="/apply"
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-lg font-bold transition-all text-sm"
+                    >
+                        Download brochure <span className="text-slate-400 text-base">⤓</span>
+                    </Link>
+                </div>
             </div>
-
-            <div className="p-8 flex-grow">
-                <div className="flex items-start gap-4 mb-6">
-                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform shrink-0 relative overflow-hidden bg-slate-50">
-                        <div style={{ background: customGradient }} className="absolute inset-0 opacity-10"></div>
-                        <div className="relative z-10 text-slate-900">
-                            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                            {React.cloneElement(icon as any, { size: 28, strokeWidth: 1.5 })}
+            
+            {/* Right Column */}
+            <div className="lg:col-span-7 flex flex-col justify-between">
+                <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-8">
+                    {description}
+                </p>
+                
+                {/* Metadata Specifications Grid */}
+                <div className="grid grid-cols-2 gap-x-8 gap-y-4 border-t border-slate-100 pt-6">
+                    <div>
+                        <div className="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1 font-mono">
+                            Mode:
+                        </div>
+                        <div className="text-sm font-semibold text-slate-800">
+                            {specs.mode}
                         </div>
                     </div>
-                    <div className="flex-1 pr-28">
-                        <h3 className="text-2xl font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">{title}</h3>
-                        <div className="text-sm font-semibold text-blue-600">{tagline}</div>
+                    
+                    <div>
+                        <div className="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1 font-mono">
+                            Duration:
+                        </div>
+                        <div className="text-sm font-semibold text-slate-800">
+                            {specs.duration}
+                        </div>
                     </div>
-                </div>
-                <p className="text-slate-600 leading-relaxed mb-6">{desc}</p>
-
-                <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-slate-500 font-medium">
-                    <div className="flex items-center gap-2">
-                        <CheckCircle2 size={16} className="text-blue-500" />
-                        Hybrid Learning
+                    
+                    <div>
+                        <div className="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1 font-mono">
+                            Work experience:
+                        </div>
+                        <div className="text-sm font-semibold text-slate-800">
+                            {specs.experience}
+                        </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                        <CheckCircle2 size={16} className="text-blue-500" />
-                        Hands-on Projects
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <CheckCircle2 size={16} className="text-blue-500" />
-                        Industry Certification
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <CheckCircle2 size={16} className="text-blue-500" />
-                        Expert Mentorship
+                    
+                    <div>
+                        <div className="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1 font-mono">
+                            Location:
+                        </div>
+                        <div className="text-sm font-semibold text-slate-800">
+                            {specs.location}
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div className="p-5 bg-slate-50 border-t border-slate-100 flex flex-wrap items-center justify-start gap-2">
-                <button
-                    onClick={onOpenPackage}
-                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 bg-slate-900 text-white text-xs md:text-sm rounded-xl font-bold hover:bg-slate-800 transition-colors shadow-lg hover:shadow-slate-950/25 whitespace-nowrap text-center cursor-pointer border-none outline-none"
-                >
-                    View Package <ArrowUpRight size={14} className="shrink-0" />
-                </button>
-            </div>
-        </motion.div>
+        </div>
     );
 }
 

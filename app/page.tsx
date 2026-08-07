@@ -8,6 +8,7 @@ import { Metadata } from "next";
 // import { FaqPreview } from "@/components/home/faq-preview";
 import { TheForging } from "@/components/home/the-forging";
 import { UniqueNeeds } from "@/components/home/unique-needs";
+import { OurStory } from "@/components/home/our-story";
 import { FaqJsonLd } from "@/components/seo/faq-json-ld";
 import { Testimonials } from "@/components/home/testimonials";
 import { AdmissionsOpen } from "@/components/home/admissions-open";
@@ -57,8 +58,9 @@ export default function Home() {
       {/* <AdmissionsOpen /> */}
       {/* <Certifications /> */}
       {/* <Triad /> */}
+      <OurStory />
       <UniqueNeeds />
-<InfiniteLogoScroll />
+      <InfiniteLogoScroll />
       {/* <TheForging /> */}
 
       {/* <FaqPreview /> */}

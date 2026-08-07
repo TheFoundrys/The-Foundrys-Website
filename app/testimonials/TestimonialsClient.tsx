@@ -119,6 +119,13 @@ export function TestimonialsClient() {
 
             {/* Testimonials Grid */}
             <section className="py-20 px-6 bg-slate-50">
+                <style dangerouslySetInnerHTML={{
+                    __html: `
+                    .testimonial-quote {
+                        color: rgba(10, 20, 30, 0.02) !important;
+                    }
+                    `
+                }} />
                 <div className="container mx-auto max-w-6xl">
                     <motion.div
                         initial={{ opacity: 0, y: 15 }}
@@ -135,7 +142,7 @@ export function TestimonialsClient() {
                                 className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-100 transition-all duration-300 flex flex-col justify-between group"
                             >
                                 <div className="relative">
-                                    <Quote className="absolute -top-4 -left-4 text-blue-50 w-12 h-12 -z-0" />
+                                    <Quote className="absolute -top-2 -left-2 w-5 h-5 -z-0 testimonial-quote" />
                                     <p className="text-slate-600 text-sm leading-relaxed italic relative z-10">
                                         "{testimonial.text}"
                                     </p>

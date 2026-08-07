@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 const programmes = [
   {
@@ -78,38 +78,44 @@ export function UniqueNeeds() {
           </Link> */}
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-y-16 gap-x-6 md:grid-cols-2 lg:grid-cols-3 pb-10">
           {programmes.map((programme) => (
-            <article
-              key={programme.title}
-              className="flex min-h-[430px] flex-col justify-between bg-[#f3f8fb] transition-all duration-300 hover:shadow-lg"
-            >
-              <div className="grid h-[250px] grid-rows-[88px_96px_auto] p-8 pb-6">
-                <h3 className="max-w-[13rem] font-serif text-xl font-bold leading-snug text-[#002f86]">
-                  {programme.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-slate-800">
-                  {programme.description}
-                </p>
-                <Link
-                  href={programme.href}
-                  className="inline-flex items-center gap-2 justify-self-end text-sm font-bold text-[#002f86] transition-colors hover:text-black"
-                >
-                  Learn More
-                  <ArrowUpRight size={15} strokeWidth={2.2} />
-                </Link>
-              </div>
-
-              <div className="relative mx-8 mb-8 h-48 overflow-hidden border-t-2 border-[#f2c230] bg-slate-200">
+            <div key={programme.title} className="group relative flex flex-col w-full">
+              {/* Image Container */}
+              <div className="relative w-full h-[280px] overflow-hidden bg-slate-100">
                 <Image
                   src={programme.imageSrc}
                   alt={programme.title}
                   fill
                   sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 90vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-            </article>
+              
+              {/* Overlapping Overlay Box */}
+              <div className="relative z-10 w-[85%] bg-[#f8fafc] border border-slate-200/80 p-6 -mt-16 ml-0 flex flex-col justify-between min-h-[190px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md">
+                <div>
+                  <h3 className="font-serif text-xl font-bold text-[#002f86] mb-3">
+                    {programme.title}
+                  </h3>
+                  <p className="text-xs text-slate-800 leading-relaxed font-sans">
+                    {programme.description}
+                  </p>
+                </div>
+                
+                <Link
+                  href={programme.href}
+                  className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-[#002f86] hover:text-[#0f172a] transition-colors group/link"
+                >
+                  Learn More
+                  <ChevronRight 
+                    size={14} 
+                    strokeWidth={2.5}
+                    className="inline-block transition-transform duration-300 group-hover/link:translate-x-0.5" 
+                  />
+                </Link>
+              </div>
+            </div>
           ))}
         </div>
       </div>
