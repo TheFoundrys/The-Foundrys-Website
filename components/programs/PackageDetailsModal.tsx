@@ -550,14 +550,14 @@ export function PackageDetailsModal({ isOpen, onClose, packageId }: PackageDetai
 
     // Determine badge / border accent colors based on package
     const badgeColor = pkg.id.includes("ai") ? "text-blue-600 border-blue-100 bg-blue-50" :
-                       pkg.id.includes("cyber") ? "text-teal-600 border-teal-100 bg-teal-50" :
-                       pkg.id.includes("quantum") ? "text-purple-600 border-purple-100 bg-purple-50" :
-                       "text-indigo-600 border-indigo-100 bg-indigo-50";
+        pkg.id.includes("cyber") ? "text-teal-600 border-teal-100 bg-teal-50" :
+            pkg.id.includes("quantum") ? "text-purple-600 border-purple-100 bg-purple-50" :
+                "text-indigo-600 border-indigo-100 bg-indigo-50";
 
     const checkColor = pkg.id.includes("ai") ? "text-blue-600" :
-                       pkg.id.includes("cyber") ? "text-teal-600" :
-                       pkg.id.includes("quantum") ? "text-purple-600" :
-                       "text-indigo-600";
+        pkg.id.includes("cyber") ? "text-teal-600" :
+            pkg.id.includes("quantum") ? "text-purple-600" :
+                "text-indigo-600";
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md overflow-y-auto">
@@ -649,7 +649,7 @@ export function PackageDetailsModal({ isOpen, onClose, packageId }: PackageDetai
                                     </div>
                                     <h4 className="text-lg font-bold text-slate-900 mb-2">{course.title}</h4>
                                     <p className="text-xs text-slate-600 leading-relaxed mb-4 flex-grow">{course.desc}</p>
-                                    
+
                                     {course.persona && (
                                         <div className="text-[10px] text-slate-500 font-semibold italic bg-slate-100/50 p-2 rounded-lg">
                                             {course.persona}

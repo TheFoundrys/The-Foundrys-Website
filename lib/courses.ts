@@ -153,9 +153,9 @@ export const COUPONS: Record<string, Coupon> = {
     discountPercent: 99.9,
     active: true,
     validCourses: [
-      'ai-fluency', 
-      'certified-in-prompt-engineering', 
-      'certified-in-ai-engineering', 
+      'ai-fluency',
+      'certified-in-prompt-engineering',
+      'certified-in-ai-engineering',
       'certified-professional-in-ai-engineering',
       'certified-professional-in-ai-research',
       'certified-in-cybersecurity',

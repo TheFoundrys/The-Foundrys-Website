@@ -212,7 +212,7 @@ function ProgramRow({
                         href="/apply"
                         className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-lg font-bold transition-all text-sm"
                     >
-                        Download brochure <span className="text-slate-400 text-base">⤓</span>
+                        Apply Now
                     </Link>
                 </div>
             </div>
