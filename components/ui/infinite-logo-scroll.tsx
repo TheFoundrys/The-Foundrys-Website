@@ -46,16 +46,13 @@ export function InfiniteLogoScroll() {
   const sets = [0, 1, 2, 3];
 
   return (
-    <section className="py-12 bg-white overflow-hidden relative border-y border-slate-50">
+    <section className="py-12 overflow-hidden relative border-y border-slate-200" style={{ backgroundColor: "#F7F7F4" }}>
       <div className="container mx-auto px-4 mb-8 text-center">
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
           Our Alumni Works
         </p>
       </div>
 
-      {/* Gradient Masks */}
-      <div className="absolute top-0 left-0 w-24 md:w-48 h-full bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-24 md:w-48 h-full bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
 
       <div className="flex w-full overflow-hidden">
         <motion.div

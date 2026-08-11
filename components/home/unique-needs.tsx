@@ -6,6 +6,12 @@ import { ChevronRight } from "lucide-react";
 
 const programmes = [
   {
+    title: "Young Graduate programs",
+    description: "Start your journey in emerging technologies with foundational programs designed for beginners.",
+    href: "/programs/entry-level",
+    imageSrc: "/images/entrepreneur-indian.png",
+  },
+  {
     title: "Post Graduate Programs",
     description: "Transformative programs for professionals ready to accelerate leadership, innovation, and cross-industry impact.",
     href: "/programs/professional",
@@ -24,12 +30,6 @@ const programmes = [
     imageSrc: "/images/fellow-programmes.png",
   },
   {
-    title: "Young Graduate programs",
-    description: "Start your journey in emerging technologies with foundational programs designed for beginners.",
-    href: "/programs/entry-level",
-    imageSrc: "/images/entrepreneur-indian.png",
-  },
-  {
     title: "Centre of Excellence",
     description: "Explore our Centre of Excellence, where we conduct cutting-edge research and development in emerging technologies.",
     href: "/programs/centre-of-excellence",
@@ -45,7 +45,7 @@ const programmes = [
 
 export function UniqueNeeds() {
   return (
-    <section className="bg-[#ffffff] px-6 py-16 text-[#031a57] sm:px-10 lg:px-16">
+    <section className="bg-transparent px-6 pt-8 pb-8 text-brand-blue sm:px-10 lg:px-16">
       <style dangerouslySetInnerHTML={{
         __html: `
         .explore-more-text-white {
@@ -63,7 +63,7 @@ export function UniqueNeeds() {
       `}} />
       <div className="mx-auto max-w-6xl">
         <div className="mb-12">
-          <h2 className="mb-4 font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
+          <h2 className="mb-4 font-serif text-3xl font-bold leading-tight text-blue md:text-4xl">
             Our Programmes
           </h2>
           <p className="max-w-xl text-sm leading-relaxed text-slate-700">
@@ -71,7 +71,7 @@ export function UniqueNeeds() {
           </p>
           {/* <Link
             href="/programs"
-            className="mt-6 inline-flex items-center gap-2 border-b border-[#002f86] pb-1 text-sm font-bold text-[#002f86] transition-colors hover:text-black"
+            className="mt-6 inline-flex items-center gap-2 border-b border-brand-purple pb-1 text-sm font-bold text-brand-purple transition-colors hover:text-black"
           >
             Explore All Programmes
             <ArrowUpRight size={16} strokeWidth={2.2} />
@@ -80,7 +80,7 @@ export function UniqueNeeds() {
 
         <div className="grid grid-cols-1 gap-y-16 gap-x-6 md:grid-cols-2 lg:grid-cols-3 pb-10">
           {programmes.map((programme) => (
-            <div key={programme.title} className="group relative flex flex-col w-full">
+            <div key={programme.title} className="group relative flex flex-col w-full h-full">
               {/* Image Container */}
               <div className="relative w-full h-[280px] overflow-hidden bg-slate-100">
                 <Image
@@ -91,27 +91,27 @@ export function UniqueNeeds() {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              
+
               {/* Overlapping Overlay Box */}
-              <div className="relative z-10 w-[85%] bg-[#f8fafc] border border-slate-200/80 p-6 -mt-16 ml-0 flex flex-col justify-between min-h-[190px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md">
+              <div className="relative z-10 w-[85%] bg-[#f8fafc] border border-slate-200/80 p-6 -mt-16 ml-0 flex flex-col justify-between flex-1 min-h-[190px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:bg-[#DCE7F1]">
                 <div>
-                  <h3 className="font-serif text-xl font-bold text-[#002f86] mb-3">
+                  <h3 className="font-serif text-xl font-bold text-brand-purple mb-3">
                     {programme.title}
                   </h3>
                   <p className="text-xs text-slate-800 leading-relaxed font-sans">
                     {programme.description}
                   </p>
                 </div>
-                
+
                 <Link
                   href={programme.href}
-                  className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-[#002f86] hover:text-[#0f172a] transition-colors group/link"
+                  className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand-purple hover:text-[#0f172a] transition-colors group/link"
                 >
                   Learn More
-                  <ChevronRight 
-                    size={14} 
+                  <ChevronRight
+                    size={14}
                     strokeWidth={2.5}
-                    className="inline-block transition-transform duration-300 group-hover/link:translate-x-0.5" 
+                    className="inline-block transition-transform duration-300 group-hover/link:translate-x-0.5"
                   />
                 </Link>
               </div>

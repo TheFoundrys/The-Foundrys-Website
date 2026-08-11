@@ -10,28 +10,31 @@ const cards = [
     description: "Meet the visionary founders, industry veterans and research expertise who make The Foundry what it is.",
     image: "/images/educator-indian.png",
     href: "/about/team",
+    hoverBg: "group-hover:bg-[#DBD4CE]",
   },
   {
     title: "Our Research",
     description: "Rigorous, applied research in Deep Tech, AI, Quantum, and Sustainability that solves real-world industry challenges.",
     image: "/images/research_book_closed.png",
     href: "/blog?category=research",
+    hoverBg: "group-hover:bg-[#DDE7DE]",
   },
   {
     title: "Our Alumni",
     description: "A powerful network of creators, technical leaders, and builders who are driving transformative change across the tech landscape.",
     image: "/images/undergrad-indian.png",
     href: "/testimonials",
+    hoverBg: "group-hover:bg-[#F0DFDF]",
   },
 ];
 
 export function OurStory() {
   return (
-    <section className="bg-white px-6 py-16 text-[#031a57] sm:px-10 lg:px-16">
+    <section className="bg-transparent px-6 pt-16 pb-8 text-brand-purple sm:px-10 lg:px-16">
       <div className="mx-auto max-w-6xl">
         {/* Section Header */}
         <div className="mb-12 max-w-4xl">
-          <h2 className="mb-6 font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
+          <h2 className="mb-6 font-serif text-3xl font-bold leading-tight text-blue md:text-4xl">
             Our Story
           </h2>
           <p className="text-sm md:text-base leading-relaxed text-slate-700">
@@ -42,7 +45,7 @@ export function OurStory() {
         {/* 3-Column Card Grid */}
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-6 lg:gap-8 pb-10">
           {cards.map((card) => (
-            <div key={card.title} className="group relative flex flex-col w-full">
+            <div key={card.title} className="group relative flex flex-col w-full h-full">
               {/* Image Container */}
               <div className="relative w-full h-[280px] overflow-hidden bg-slate-100">
                 <Image
@@ -55,9 +58,9 @@ export function OurStory() {
               </div>
               
               {/* Overlapping Mint Overlay Box */}
-              <div className="relative z-10 w-[85%] bg-[#f8fafc] border border-slate-200/80 p-6 -mt-16 ml-0 flex flex-col justify-between min-h-[190px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md">
+              <div className={`relative z-10 w-[85%] bg-[#f8fafc] border border-slate-200/80 p-6 -mt-16 ml-0 flex flex-col justify-between flex-1 min-h-[190px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md ${card.hoverBg}`}>
                 <div>
-                  <h3 className="font-serif text-xl font-bold text-[#002f86] mb-3">
+                  <h3 className="font-serif text-xl font-bold text-brand-purple mb-3">
                     {card.title}
                   </h3>
                   <p className="text-xs text-slate-800 leading-relaxed font-sans">
@@ -67,7 +70,7 @@ export function OurStory() {
                 
                 <Link
                   href={card.href}
-                  className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-[#002f86] hover:text-[#0f172a] transition-colors group/link"
+                  className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand-purple hover:text-[#0f172a] transition-colors group/link"
                 >
                   Learn More
                   <ChevronRight 

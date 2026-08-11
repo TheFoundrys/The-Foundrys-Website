@@ -408,7 +408,17 @@ export default function BrandColoredProgramsDirectoryPage() {
             </section>
 
             {/* Stats Bar */}
-            <section className="border-y border-white/5 py-8 bg-slate-950">
+            <section id="programs-stats-bar" className="border-y border-white/5 py-8 bg-slate-950">
+                <style dangerouslySetInnerHTML={{
+                    __html: `
+                    #programs-stats-bar .text-white {
+                        color: #ffffff !important;
+                    }
+                    #programs-stats-bar .text-slate-400 {
+                        color: #cbd5e1 !important;
+                    }
+                    `
+                }} />
                 <div className="max-w-[1900px] mx-auto px-6 sm:px-12 lg:px-16">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x md:divide-white/5">
                         <div className="text-left md:px-6">

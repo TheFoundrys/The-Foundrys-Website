@@ -81,9 +81,9 @@ export function ProgramStats() {
     });
 
     return (
-        <section className="py-28 px-4 bg-slate-950 overflow-hidden border-t border-white/5 relative">
-            <div className="absolute inset-0 z-0 opacity-10">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15)_0%,transparent_70%)]" />
+        <section className="py-28 px-4 overflow-hidden border-t relative" style={{ backgroundColor: "#DCE7F1", borderColor: "#c5d8ec" }}>
+            <div className="absolute inset-0 z-0 opacity-20">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.08)_0%,transparent_70%)]" />
             </div>
 
             <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-16 relative z-10">
@@ -91,13 +91,13 @@ export function ProgramStats() {
                 {/* Left: Stepped Polar Chart */}
                 <div className="md:w-1/2 relative flex justify-center items-center">
                     <div className="w-[300px] h-[300px] md:w-[450px] md:h-[450px] relative">
-                        <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_0_30px_rgba(59,130,246,0.2)] transform -rotate-90 md:rotate-0 transition-transform">
+                        <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_0_30px_rgba(59,130,246,0.1)] transform -rotate-90 md:rotate-0 transition-transform">
                             {paths.map((slice, i) => (
                                 <motion.path
                                     key={i}
                                     d={slice.d}
                                     fill={slice.color}
-                                    stroke="#020617"
+                                    stroke="#ffffff"
                                     strokeWidth="2"
                                     initial={{ scale: 0, opacity: 0 }}
                                     whileInView={{ scale: 1, opacity: 1 }}
@@ -112,15 +112,15 @@ export function ProgramStats() {
                                     }}
                                 />
                             ))}
-                            {/* Central Dark Circle */}
-                            <circle cx="200" cy="200" r="40" fill="#020617" className="drop-shadow-sm" />
+                            {/* Central Light Circle */}
+                            <circle cx="200" cy="200" r="40" fill="#ffffff" className="drop-shadow-sm" />
                         </svg>
                     </div>
                 </div>
 
                 {/* Right: Legend / Explainer */}
                 <div className="md:w-1/2 space-y-6 w-full">
-                    <h3 className="text-3xl font-bold text-white mb-8 text-center md:text-left tracking-tight">The Program Mix</h3>
+                    <h3 className="text-3xl font-bold text-[#031a57] font-serif mb-8 text-center md:text-left tracking-tight">The Program Mix</h3>
                     <div className="space-y-4">
                         {polarData.map((item, i) => (
                             <motion.div
@@ -128,17 +128,17 @@ export function ProgramStats() {
                                 ref={(el) => { legendRefs.current[i] = el; }}
                                 className={`p-5 rounded-2xl border transition-all duration-300 cursor-default ${
                                     hoveredIndex === i 
-                                        ? "bg-slate-900 border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.4)] scale-[1.02]" 
-                                        : "bg-slate-900/20 border-transparent hover:bg-slate-900/40 hover:border-white/5"
+                                        ? "bg-slate-50 border-slate-200 shadow-[0_8px_30px_rgba(0,47,134,0.05)] scale-[1.02]" 
+                                        : "bg-white border-slate-100 hover:bg-slate-50/50 hover:border-slate-200"
                                 }`}
                                 onMouseEnter={() => setHoveredIndex(i)}
                                 onMouseLeave={() => setHoveredIndex(null)}
                             >
                                 <div className="flex items-center gap-3 mb-2">
                                     <div className="w-4.5 h-4.5 rounded-full" style={{ backgroundColor: item.color }} />
-                                    <h4 className="font-bold text-white text-lg">{item.label} <span className="text-slate-400 text-sm ml-2">({item.percent}%)</span></h4>
+                                    <h4 className="font-bold text-[#031a57] text-lg font-serif">{item.label} <span className="text-slate-500 text-sm ml-2">({item.percent}%)</span></h4>
                                 </div>
-                                <p className="text-slate-400 text-sm leading-relaxed pl-7">{item.desc}</p>
+                                <p className="text-slate-600 text-sm leading-relaxed pl-7">{item.desc}</p>
                             </motion.div>
                         ))}
                     </div>

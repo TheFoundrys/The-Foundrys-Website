@@ -237,51 +237,72 @@ export default function SustainabilityClient() {
 
    const originalPrice = COURSE_PRICING.sustainability.original[currency];
 
-   return (
-      <div ref={containerRef} className="bg-stone-50 text-stone-900 min-h-screen selection:bg-emerald-200 selection:text-emerald-900 font-sans">
-         <Navbar />
+    return (
+       <div ref={containerRef} className="bg-stone-50 text-stone-900 min-h-screen selection:bg-emerald-200 selection:text-emerald-900 font-sans">
+          <Navbar />
 
-         {/* HERO SECTION: FULL PAGE LIGHT DESIGN */}
-         <section className="relative pt-32 pb-32 md:pb-48 px-6 bg-white overflow-hidden">
-            <div className="absolute inset-0 z-0 select-none bg-white" />
+          {/* 1. TOP BANNER IMAGE SECTION */}
+          <section className="relative h-[260px] md:h-[380px] mt-16 flex items-center justify-center overflow-hidden">
+             <style dangerouslySetInnerHTML={{
+                 __html: `
+                 .school-title-white {
+                     color: #ffffff !important;
+                 }
+                 .school-tag-white {
+                     color: #ffffff !important;
+                     border-color: rgba(255, 255, 255, 0.2) !important;
+                     background-color: rgba(255, 255, 255, 0.1) !important;
+                 }
+                 `
+             }} />
+             {/* Background Image with Overlay */}
+             <div className="absolute inset-0 z-0 select-none">
+                 <img 
+                     src="/images/sustainability-ai.png" 
+                     alt="Sustainability in the Age of AI Banner" 
+                     className="w-full h-full object-cover brightness-[0.7]"
+                 />
+                 <div className="absolute inset-0 bg-black/35" />
+             </div>
 
-            <div className="container mx-auto max-w-5xl relative z-10">
-               <div className="text-center">
-                  {/* Badge */}
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-500/20 text-emerald-700 text-sm font-medium mb-8 backdrop-blur-sm">
-                     <Leaf size={16} />
-                     <span>Professional Certification Program</span>
-                  </div>
+             <div className="container mx-auto max-w-6xl relative z-10 px-4 text-center">
+                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold mb-4 uppercase tracking-wider backdrop-blur-sm school-tag-white">
+                     <Leaf size={14} />
+                     School of Sustainability
+                 </div>
+                 <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight uppercase font-serif school-title-white">
+                     Sustainability in the Age of AI
+                 </h1>
+             </div>
+          </section>
 
-                  {/* Main Heading */}
-                  <h1 className="text-4xl md:text-6xl lg:text-8xl font-serif text-slate-950 mb-6 leading-tight">
-                     Sustainability in the <br className="hidden md:block" />
-                     <span className="text-emerald-600 italic">Age of AI</span>
-                  </h1>
+          {/* 2. INTRODUCTION SECTION */}
+          <section className="py-16 px-6 bg-white relative z-10">
+             <div className="container mx-auto max-w-5xl">
+                <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl mb-6">
+                   Introduction
+                </h2>
+                <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-light mb-8">
+                   An intensive program designed for professionals shaping the future of technology, climate, and governance. Sustainability is no longer a corporate report; it's a technical challenge. Master the intersection of AI, Climate Tech, and ESG.
+                </p>
 
-                  {/* Program Description */}
-                  <p className="text-lg md:text-xl text-slate-700 font-light leading-relaxed max-w-3xl mx-auto mb-12">
-                     A Intensive program designed for professionals shaping the future of technology, climate, and governance.
-                  </p>
-
-                  {/* Quick Highlights */}
-                  <div className="flex flex-wrap gap-4 md:gap-6 justify-center text-sm text-slate-700">
-                     <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-full border border-slate-200">
-                        <CheckCircle2 size={18} className="text-emerald-600" />
-                        <span>Industry-Recognized Certificate</span>
-                     </div>
-                     <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-full border border-slate-200">
-                        <CheckCircle2 size={18} className="text-emerald-600" />
-                        <span>Hands-on Capstone Project</span>
-                     </div>
-                     <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-full border border-slate-200">
-                        <CheckCircle2 size={18} className="text-emerald-600" />
-                        <span>Expert-Led Sessions</span>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </section>
+                {/* Quick Highlights */}
+                <div className="flex flex-wrap gap-4 md:gap-6 text-sm text-slate-700">
+                   <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-full border border-slate-200">
+                      <CheckCircle2 size={18} className="text-emerald-600" />
+                      <span>Industry-Recognized Certificate</span>
+                   </div>
+                   <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-full border border-slate-200">
+                      <CheckCircle2 size={18} className="text-emerald-600" />
+                      <span>Hands-on Capstone Project</span>
+                   </div>
+                   <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-full border border-slate-200">
+                      <CheckCircle2 size={18} className="text-emerald-600" />
+                      <span>Expert-Led Sessions</span>
+                   </div>
+                </div>
+             </div>
+          </section>
 
 
          {/* Program Details Block - Adjusted below hero */}

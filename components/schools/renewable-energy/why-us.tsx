@@ -31,7 +31,7 @@ const reasons = [
 
 export function RenewableEnergyWhyUs() {
     return (
-        <section className="py-24 px-4 bg-white relative overflow-hidden">
+        <section className="py-24 px-4 relative overflow-hidden" style={{ backgroundColor: "#F0DFDF" }}>
              {/* Background Image */}
              <div className="absolute inset-0 z-0">
                 <div 

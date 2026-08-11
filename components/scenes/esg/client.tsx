@@ -11,35 +11,66 @@ export function ESGClient() {
     <main className="min-h-screen bg-slate-50 select-none">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4 min-h-[70vh] flex flex-col justify-center bg-white overflow-hidden">
-        <div className="absolute inset-0 z-0 select-none bg-white" />
+      {/* 1. TOP BANNER IMAGE SECTION */}
+      <section className="relative h-[260px] md:h-[380px] mt-16 flex items-center justify-center overflow-hidden">
+        <style dangerouslySetInnerHTML={{
+            __html: `
+            .school-title-white {
+                color: #ffffff !important;
+            }
+            .school-tag-white {
+                color: #ffffff !important;
+                border-color: rgba(255, 255, 255, 0.2) !important;
+                background-color: rgba(255, 255, 255, 0.1) !important;
+            }
+            `
+        }} />
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0 select-none">
+          <img 
+            src="/images/classroom_session.png" 
+            alt="Classroom Session" 
+            className="w-full h-full object-cover brightness-[0.7]"
+          />
+          <div className="absolute inset-0 bg-black/35" />
+        </div>
 
-        <div className="relative z-10 container mx-auto max-w-6xl">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-            >
-                <div className="inline-block px-4 py-1.5 rounded-full border border-emerald-500/20 bg-emerald-50 text-emerald-700 font-bold tracking-wider text-xs mb-6 uppercase backdrop-blur-sm">
-                    School of Sustainability
-                </div>
-                <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-950 mb-6 leading-[1.1] max-w-5xl">
-                    Master the Trinity of <br/>
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Modern Governance.</span>
-                </h1>
-                <p className="text-xl md:text-2xl text-slate-700 max-w-2xl leading-relaxed mb-10">
-                    Environmental stewardship. Social equity. Corporate governance. <br/>
-                    Become the architect of compliant, ethical, and highly profitable systems for the future economy.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                    <Link href="/apply">
-                        <button className="px-8 py-4 bg-emerald-600 text-white rounded-full font-bold text-lg hover:bg-emerald-700 transition-all shadow-lg hover:shadow-emerald-600/20 transform hover:-translate-y-0.5">
-                            APPLY FOR ESG PROGRAM
-                        </button>
-                    </Link>
-                </div>
-            </motion.div>
+        <div className="container mx-auto max-w-6xl relative z-10 px-4 text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold mb-4 uppercase tracking-wider backdrop-blur-sm school-tag-white">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            School of Sustainability
+          </div>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight uppercase font-serif school-title-white">
+            ESG & Governance
+          </h1>
+        </div>
+      </section>
+
+      {/* 2. INTRODUCTION SECTION */}
+      <section className="py-16 px-6 bg-white relative z-10">
+        <div className="container mx-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl"
+          >
+            <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-3 font-mono">Strategy & Governance</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#031a57] font-serif mb-6 leading-tight">
+              Master the Trinity of Modern Governance.
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-light mb-8">
+              Environmental stewardship. Social equity. Corporate governance. <br/>
+              Become the architect of compliant, ethical, and highly profitable systems for the future economy.
+            </p>
+            <div className="flex gap-4">
+              <Link href="/apply">
+                <button className="px-8 py-3 bg-[#002f86] text-white rounded-full font-bold text-sm tracking-wide hover:bg-[#031a57] transition-all transform hover:-translate-y-0.5 shadow-lg shadow-blue-900/25">
+                  Apply for ESG Program
+                </button>
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
 

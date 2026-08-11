@@ -27,7 +27,7 @@ const features = [
 
 export function VentureWhyUs() {
     return (
-        <section className="py-24 px-6 bg-neutral-50">
+        <section className="py-24 px-6" style={{ backgroundColor: "#DDE7DE" }}>
             <div className="container mx-auto max-max-6xl">
                 <div className="mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 mb-4">Why Venture Building?</h2>

@@ -261,7 +261,7 @@ export function Navbar() {
             <header
                 onMouseEnter={() => { }}
                 onMouseLeave={() => setHoveredMenu(null)}
-                className="fixed top-0 left-0 right-0 w-full z-50 bg-white text-black border-b border-neutral-200 shadow-sm transition-all duration-300"
+                className="fixed top-0 left-0 right-0 w-full z-50 text-black border-b shadow-sm transition-all duration-300" style={{ backgroundColor: "#FFFFFF", borderColor: "#E8E8E3" }}
             >
 
                 {/* Tier 2: Main Navigation Bar */}
@@ -341,7 +341,7 @@ export function Navbar() {
                                 animate={{ height: "auto", opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
                                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                                className="absolute top-0 left-0 right-0 w-full bg-white border-b border-neutral-200 overflow-hidden hidden md:block"
+                                className="absolute top-0 left-0 right-0 w-full overflow-hidden hidden md:block" style={{ backgroundColor: "#FFFFFF", borderBottom: "1px solid #E8E8E3" }}
                             >
                                 <div className="max-w-[1900px] mx-auto px-16 py-16 text-black select-none">
 
@@ -449,7 +449,7 @@ export function Navbar() {
                                                     <h3 className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 border-b border-neutral-100 pb-2 mb-3">
                                                         Admissions
                                                     </h3>
-                                                    <div className="p-5 rounded-2xl bg-white border border-neutral-200 text-black flex flex-col gap-3 relative overflow-hidden group h-full">
+                                                    <div className="p-5 rounded-2xl text-black flex flex-col gap-3 relative overflow-hidden group h-full" style={{ backgroundColor: "#F7F7F4", border: "1px solid #E8E8E3" }}>
                                                         <div className="relative z-10 flex flex-col justify-between h-full">
                                                             <div>
                                                                 <span className="text-[9px] font-bold uppercase tracking-widest text-neutral-400 block mb-1">Admissions Open</span>
@@ -578,7 +578,7 @@ export function Navbar() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed inset-0 z-40 bg-white text-black flex flex-col md:hidden overflow-hidden"
+                        className="fixed inset-0 z-40 text-black flex flex-col md:hidden overflow-hidden" style={{ backgroundColor: "#FFFFFF" }}
                     >
                         {/* Scrollable Content Area */}
                         <div className="flex-1 overflow-y-auto px-6 pt-28 pb-24 touch-pan-y">
@@ -588,7 +588,7 @@ export function Navbar() {
                                 <div className="rounded-2xl bg-neutral-50 p-1 border border-neutral-200 shadow-sm">
                                     <button
                                         onClick={() => { setMobileAcademicsExpanded(!mobileAcademicsExpanded); handleHaptic(); }}
-                                        className="flex items-center justify-between w-full p-4 rounded-xl hover:bg-white transition-colors"
+                                        className="flex items-center justify-between w-full p-4 rounded-xl transition-colors"
                                     >
                                         <span className="text-lg font-bold text-black">Academics</span>
                                         <ChevronDown size={18} className={cn("text-neutral-500 transition-transform", mobileAcademicsExpanded ? "rotate-180" : "")} />

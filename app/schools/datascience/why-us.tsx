@@ -7,41 +7,41 @@ const reasons = [
         icon: Database,
         title: "Big Data Infra",
         desc: "Access to distributed computing clusters for processing massive datasets.",
-        color: "bg-blue-500/10 text-blue-400 border border-blue-500/20 shadow-[0_0_15px_rgba(59,130,246,0.1)]"
+        color: "bg-blue-50 text-blue-600 border border-blue-100"
     },
     {
         icon: LineChart,
         title: "Analytics Labs",
         desc: "Direct mentorship from data scientists uncovering insights from real-world data.",
-        color: "bg-purple-500/10 text-purple-400 border border-purple-500/20 shadow-[0_0_15px_rgba(168,85,247,0.1)]"
+        color: "bg-purple-50 text-purple-600 border border-purple-100"
     },
     {
         icon: Globe,
         title: "Global Standards",
         desc: "Curriculum benchmarked against top Data Science programs at Berkeley & Stanford.",
-        color: "bg-orange-500/10 text-orange-400 border border-orange-500/20 shadow-[0_0_15px_rgba(249,115,22,0.1)]"
+        color: "bg-orange-50 text-orange-600 border border-orange-100"
     },
     {
         icon: Zap,
         title: "Predictive Labs",
         desc: "Specialized labs for building and deploying real-time predictive models.",
-        color: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]"
+        color: "bg-emerald-50 text-emerald-600 border border-emerald-100"
     }
 ];
 
 export function WhyUs() {
     return (
-        <section className="py-28 px-4 bg-slate-950 relative overflow-hidden">
-            {/* Dark background grid pattern */}
-            <div className="absolute inset-0 z-0 opacity-20">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#020617_100%)]" />
+        <section className="py-28 px-4 relative overflow-hidden" style={{ backgroundColor: "#DCE7F1" }}>
+            {/* Light background grid pattern */}
+            <div className="absolute inset-0 z-0 opacity-40">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#ffffff_100%)]" />
             </div>
 
             <div className="container mx-auto max-w-6xl relative z-10">
                 <div className="text-center mb-20">
-                    <span className="text-blue-500 font-bold tracking-widest text-xs uppercase mb-4 block">The Advantage</span>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Why is The Foundry the right place?</h2>
+                    <span className="text-[#002f86] font-bold tracking-widest text-xs uppercase mb-4 block">The Advantage</span>
+                    <h2 className="text-4xl md:text-5xl font-bold text-[#031a57] mb-6 tracking-tight font-serif">Why is The Foundry the right place?</h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -51,13 +51,13 @@ export function WhyUs() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.1 }}
-                            className="group p-8 rounded-3xl bg-slate-900/40 border border-white/5 hover:border-white/10 hover:bg-slate-900/60 hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-all duration-500"
+                            className="group p-8 rounded-3xl bg-slate-50 border border-slate-200/60 hover:border-[#002f86]/30 hover:bg-white hover:shadow-[0_8px_30px_rgba(0,47,134,0.05)] transition-all duration-500"
                         >
                             <div className={`w-14 h-14 rounded-2xl ${r.color} flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500`}>
                                 <r.icon size={28} />
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">{r.title}</h3>
-                            <p className="text-slate-400 leading-relaxed font-normal text-sm">{r.desc}</p>
+                            <h3 className="text-xl font-bold text-[#031a57] mb-3 group-hover:text-[#002f86] transition-colors duration-300 font-serif">{r.title}</h3>
+                            <p className="text-slate-600 leading-relaxed font-normal text-sm">{r.desc}</p>
                         </motion.div>
                     ))}
                 </div>

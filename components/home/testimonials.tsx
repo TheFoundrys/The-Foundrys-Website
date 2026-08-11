@@ -55,7 +55,7 @@ export function Testimonials() {
   const doubledTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="py-8 bg-white relative overflow-hidden" id="testimonials">
+    <section className="bg-transparent py-8 relative overflow-hidden" id="testimonials">
 
       <div className="container mx-auto px-6 relative z-10 mb-6">
         <div className="text-center">

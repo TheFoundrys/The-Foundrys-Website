@@ -198,7 +198,7 @@ export default function MLOpsCoursePage() {
     }, []);
 
     return (
-        <main className="min-h-screen bg-slate-50 font-sans selection:bg-cyan-100">
+        <main className="min-h-screen font-sans selection:bg-cyan-100" style={{ backgroundColor: "#DCE7F1" }}>
             <Navbar />
 
             {/* Hero Section */}

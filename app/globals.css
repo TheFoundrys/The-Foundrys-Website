@@ -8,6 +8,21 @@
     --color-sunset-orange: #f97316;
     --color-lime-vibrant: #a3e635;
     --color-deep-blue: #1e3a8a;
+    --color-brand-purple: #0f172a;
+
+    /* Foundry Design System — Master Brand */
+    --color-foundry-white: #FFFFFF;
+    --color-foundry-off-white: #F7F7F4;
+    --color-foundry-black: #0B0B0B;
+    --color-foundry-text: #171717;
+    --color-foundry-muted: #6D6D6D;
+    --color-foundry-border: #E8E8E3;
+
+    /* School Experience Pastels — identify experiences, not decoration */
+    --color-school-deeptech: #DCE7F1;       /* Deep Tech → Powder Blue */
+    --color-school-entrepreneurship: #DDE7DE; /* Entrepreneurship → Sage */
+    --color-school-sustainability: #EEE5D7;  /* Sustainability → Warm Sand */
+    --color-school-energy: #F0DFDF;          /* Energy → Soft Blush */
 
     --animate-aurora: aurora 20s ease infinite alternate;
     --animate-smoke: smoke 15s ease-in-out infinite alternate;
@@ -141,10 +156,8 @@
 }
 
 :root {
-    --background: #f8fafc;
-    /* Slate 50 */
-    --foreground: #0f172a;
-    /* Slate 900 */
+    --background: #FFFFFF;
+    --foreground: #171717;
 }
 
 html {
@@ -229,282 +242,13 @@ body {
 }
 
 /* ==========================================================================
-   GLOBAL MONOCHROMATIC WHITE OVERRIDES (APPLIES TO ALL PAGES)
+   GLOBAL BACKGROUND OVERRIDES (APPLIES TO ALL PAGES)
    ========================================================================== */
 
-/* Force all section/main backgrounds to white */
-main,
-section,
-.bg-slate-900,
-.bg-slate-950,
-.bg-neutral-900,
-.bg-neutral-950,
-.bg-zinc-900,
-.bg-zinc-950,
-[class*="bg-[#0f172a]"],
-[class*="bg-[#0a0f1d]"],
-[class*="bg-[#090d16]"],
-.bg-black {
-    background-color: #ffffff !important;
+/* Landing page / main wrapper background */
+main {
+    background-color: #F7F7F4 !important;
     background-image: none !important;
-}
-
-/* Convert all white typography classes to black */
-.text-white,
-.text-slate-100,
-.text-slate-200,
-.text-slate-300,
-.text-slate-400,
-.text-neutral-100,
-.text-neutral-200,
-.text-neutral-300,
-.text-neutral-400 {
-    color: #000000 !important;
-}
-
-/* Set structural tag fonts in dark regions to black */
-.bg-slate-900 h1,
-.bg-slate-900 h2,
-.bg-slate-900 h3,
-.bg-slate-900 h4,
-.bg-slate-900 h5,
-.bg-slate-900 h6,
-.bg-slate-900 p,
-.bg-slate-900 span,
-.bg-slate-900 li,
-.bg-slate-900 div,
-.bg-slate-950 h1,
-.bg-slate-950 h2,
-.bg-slate-950 h3,
-.bg-slate-950 h4,
-.bg-slate-950 h5,
-.bg-slate-950 h6,
-.bg-slate-950 p,
-.bg-slate-950 span,
-.bg-slate-950 li,
-.bg-slate-950 div,
-.bg-neutral-900 h1,
-.bg-neutral-900 h2,
-.bg-neutral-900 h3,
-.bg-neutral-900 h4,
-.bg-neutral-900 h5,
-.bg-neutral-900 h6,
-.bg-neutral-900 p,
-.bg-neutral-900 span,
-.bg-neutral-900 li,
-.bg-neutral-900 div,
-.bg-neutral-950 h1,
-.bg-neutral-950 h2,
-.bg-neutral-950 h3,
-.bg-neutral-950 h4,
-.bg-neutral-950 h5,
-.bg-neutral-950 h6,
-.bg-neutral-950 p,
-.bg-neutral-950 span,
-.bg-neutral-950 li,
-.bg-neutral-950 div,
-.bg-black h1,
-.bg-black h2,
-.bg-black h3,
-.bg-black h4,
-.bg-black h5,
-.bg-black h6,
-.bg-black p,
-.bg-black span,
-.bg-black li,
-.bg-black div {
-    color: #000000 !important;
-}
-
-/* Allow primary action CTA buttons to remain high-contrast solid black */
-button.bg-black,
-a.bg-black,
-button.bg-neutral-900,
-a.bg-neutral-900,
-.bg-black.rounded-full,
-.bg-neutral-950.text-white,
-.px-6.py-2.rounded-full.bg-black {
-    background-color: #000000 !important;
-    color: #ffffff !important;
-    border-color: #000000 !important;
-}
-
-/* Force standard dark links/arrows within action containers to use white */
-button.bg-black span,
-a.bg-black span,
-button.bg-black svg,
-a.bg-black svg {
-    color: #ffffff !important;
-}
-
-/* Remove colorful blur shapes and background glow animations */
-div[class*="bg-blue-600/"],
-div[class*="bg-indigo-600/"],
-div[class*="bg-blue-500/"],
-div[class*="bg-indigo-500/"],
-div[class*="blur-3xl"],
-div[class*="blur-[120px]"],
-div[class*="blur-[100px]"],
-div[class*="blur-[150px]"] {
-    display: none !important;
-}
-
-/* ==========================================================================
-   HIGH-CONTRAST MONOCHROMATIC BLACK CARDS & PANELS
-   ========================================================================== */
-
-.stark-black-card,
-[class*="bg-slate-900/50"],
-[class*="bg-slate-900/40"],
-[class*="bg-slate-900/30"],
-[class*="bg-slate-950/40"],
-[class*="bg-slate-950/30"],
-[class*="bg-slate-800/50"] {
-    background-color: #ffffff !important;
-    border-color: #e2e8f0 !important;
-    color: #0f172a !important;
-}
-
-.stark-black-pill {
-    background-color: #f8fafc !important;
-    border-color: #e2e8f0 !important;
-    color: #334155 !important;
-}
-
-.stark-black-pill:hover {
-    background-color: #f1f5f9 !important;
-    border-color: #cbd5e1 !important;
-}
-
-/* Force GitHub button background to be transparent and border-only */
-a.bg-slate-800.rounded-full,
-[class*="bg-slate-800"].rounded-full {
-    background-color: transparent !important;
-    border-color: #cbd5e1 !important;
-    color: #000000 !important;
-}
-a.bg-slate-800.rounded-full svg,
-[class*="bg-slate-800"].rounded-full svg {
-    color: #000000 !important;
-}
-a.bg-slate-800.rounded-full:hover,
-[class*="bg-slate-800"].rounded-full:hover {
-    background-color: #f1f5f9 !important;
-    color: #000000 !important;
-}
-
-/* Force headings and buttons/links inside light panels/cards to stay dark */
-[class*="bg-slate-900/30"] h1,
-[class*="bg-slate-900/30"] h2,
-[class*="bg-slate-900/30"] h3,
-[class*="bg-slate-900/30"] h4,
-[class*="bg-slate-900/30"] h5,
-[class*="bg-slate-900/30"] h6,
-[class*="bg-slate-900/30"] div,
-[class*="bg-slate-900/30"] button,
-[class*="bg-slate-900/30"] a,
-[class*="bg-slate-900/40"] h1,
-[class*="bg-slate-900/40"] h2,
-[class*="bg-slate-900/40"] h3,
-[class*="bg-slate-900/40"] h4,
-[class*="bg-slate-900/40"] h5,
-[class*="bg-slate-900/40"] h6,
-[class*="bg-slate-900/40"] div,
-[class*="bg-slate-900/40"] button,
-[class*="bg-slate-900/40"] a,
-[class*="bg-slate-950/40"] h1,
-[class*="bg-slate-950/40"] h2,
-[class*="bg-slate-950/40"] h3,
-[class*="bg-slate-950/40"] h4,
-[class*="bg-slate-950/40"] h5,
-[class*="bg-slate-950/40"] h6,
-[class*="bg-slate-950/40"] div,
-[class*="bg-slate-950/40"] button,
-[class*="bg-slate-950/40"] a,
-[class*="bg-slate-900/50"] h1,
-[class*="bg-slate-900/50"] h2,
-[class*="bg-slate-900/50"] h3,
-[class*="bg-slate-900/50"] h4,
-[class*="bg-slate-900/50"] h5,
-[class*="bg-slate-900/50"] h6,
-[class*="bg-slate-900/50"] div,
-[class*="bg-slate-900/50"] button,
-[class*="bg-slate-900/50"] a,
-.stark-black-card h1,
-.stark-black-card h2,
-.stark-black-card h3,
-.stark-black-card h4,
-.stark-black-card h5,
-.stark-black-card h6,
-.stark-black-card div,
-.stark-black-card button,
-.stark-black-card a,
-.stark-black-pill h1,
-.stark-black-pill h2,
-.stark-black-pill h3,
-.stark-black-pill h4,
-.stark-black-pill h5,
-.stark-black-pill h6,
-.stark-black-pill div,
-.stark-black-pill button,
-.stark-black-pill a {
-    color: #0f172a !important;
-}
-
-/* Force description text inside light panels/cards to stay readable medium grey */
-[class*="bg-slate-900/30"] p,
-[class*="bg-slate-900/30"] span,
-[class*="bg-slate-900/40"] p,
-[class*="bg-slate-900/40"] span,
-[class*="bg-slate-950/40"] p,
-[class*="bg-slate-950/40"] span,
-[class*="bg-slate-900/50"] p,
-[class*="bg-slate-900/50"] span,
-.stark-black-card p,
-.stark-black-card span,
-.stark-black-pill p,
-.stark-black-pill span {
-    color: #475569 !important;
-}
-
-/* Ensure nested elements with light backgrounds inside dark panels keep their dark text color */
-[class*="bg-slate-900"] .bg-white,
-[class*="bg-slate-950"] .bg-white,
-.stark-black-card .bg-white,
-[class*="bg-slate-900"] .bg-slate-50,
-[class*="bg-slate-950"] .bg-slate-50,
-.stark-black-card .bg-slate-50,
-[class*="bg-"] .bg-white,
-[class*="bg-"] .bg-white *,
-[class*="bg-"] .bg-slate-50,
-[class*="bg-"] .bg-slate-50 *,
-[class*="bg-"] a.bg-white,
-[class*="bg-"] a.bg-white *,
-[class*="bg-"] button.bg-white,
-[class*="bg-"] button.bg-white * {
-    color: #000000 !important;
-}
-
-/* GLOBAL WHITE BUTTON TEXT OVERRIDE: FORCE BLACK TEXT ON SOLID WHITE ELEMENTS */
-.bg-white,
-.bg-white *,
-.bg-slate-50,
-.bg-slate-50 *,
-a.bg-white,
-a.bg-white *,
-button.bg-white,
-button.bg-white * {
-    color: #000000 !important;
-}
-
-/* GLOBAL BLACK BUTTON TEXT OVERRIDE: FORCE WHITE TEXT ON SOLID BLACK ELEMENTS */
-.bg-black,
-.bg-black *,
-a.bg-black,
-a.bg-black *,
-button.bg-black,
-button.bg-black * {
-    color: #ffffff !important;
 }
 
 /* ==========================================================================

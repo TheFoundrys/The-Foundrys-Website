@@ -75,7 +75,7 @@ export function RenewableEnergyStats() {
     });
 
   return (
-    <section className="py-24 px-4 bg-slate-50 overflow-hidden">
+    <section className="py-24 px-4 overflow-hidden" style={{ backgroundColor: "#F0DFDF" }}>
       <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-16">
         
         <div className="md:w-1/2 relative flex justify-center items-center">

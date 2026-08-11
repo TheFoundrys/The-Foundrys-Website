@@ -28,7 +28,7 @@ const REASONS = [
 
 export function BlockchainWhyUs() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24" style={{ backgroundColor: "#DCE7F1" }}>
       <div className="container mx-auto px-6">
         <div className="mb-16">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-slate-900 mb-6">

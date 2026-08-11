@@ -133,15 +133,15 @@ export function Hero() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   return (
-    <section className="relative min-h-screen bg-white overflow-hidden">
+    <section className="relative min-h-screen bg-transparent overflow-hidden">
 
       {/* Content Container */}
       <div className={`relative z-10 w-full h-full min-h-screen flex flex-col justify-center items-center px-6 lg:px-16 pointer-events-none transition-opacity duration-500 ${isVideoOpen ? 'opacity-0' : 'opacity-100'}`}>
 
         {/* Text Content - Centered */}
-        <div className="max-w-5xl pointer-events-auto mt-28 sm:mt-32 lg:mt-40 flex flex-col items-center px-4 sm:px-0 pb-20 sm:pb-24 lg:pb-32 text-center">
+        <div className="max-w-5xl pointer-events-auto mt-28 sm:mt-32 lg:mt-40 flex flex-col items-center px-4 sm:px-0 pb-12 sm:pb-16 lg:pb-20 text-center">
           <div className="mb-6 sm:mb-8 relative w-full flex flex-col items-center">
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-[5.5rem] font-bold tracking-tighter text-black leading-tight md:leading-[1.0] lg:leading-[0.95] select-none uppercase text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-[5.5rem] font-bold tracking-tighter text-brand-purple leading-tight md:leading-[1.0] lg:leading-[0.95] select-none uppercase text-center">
               FORGING INNOVATORS
             </h1>
             <div className="flex flex-col justify-center items-center mt-2 sm:mt-3 lg:mt-6 w-full">
@@ -149,7 +149,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "circOut" }}
-                className="text-3xl sm:text-4xl md:text-6xl lg:text-[5.5rem] font-bold tracking-tighter text-black select-none uppercase leading-tight md:leading-[1.0] lg:leading-[0.95] text-center"
+                className="text-3xl sm:text-4xl md:text-6xl lg:text-[5.5rem] font-bold tracking-tighter text-brand-blue select-none uppercase leading-tight md:leading-[1.0] lg:leading-[0.95] text-center"
               >
                 IN THE AGE OF AI
               </motion.div>
