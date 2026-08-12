@@ -88,7 +88,7 @@ export function Hero() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover pointer-events-none scale-[1.08] origin-center"
+          className="w-full h-full object-cover pointer-events-none scale-[1.15] origin-center"
           style={{ pointerEvents: 'none' }}
           onTimeUpdate={(e) => {
             if (e.currentTarget.currentTime >= 74) {
@@ -127,7 +127,8 @@ export function Hero() {
       {/* Bottom-left Motive Overlay */}
       <div className="absolute bottom-16 left-8 md:bottom-24 md:left-16 lg:left-24 z-30 pointer-events-none select-none max-w-5xl text-left">
         <h2 className={`${instrumentSerif.className} text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] [text-shadow:4px_4px_8px_rgba(0,0,0,0.8)]`}>
-          THE FUTURE ISN’T PREDICTED.<br></br>IT’S FORGED.
+          The future begins with <br></br>what you build today.
+          {/* THE FUTURE ISN’T PREDICTED.<br></br>IT’S FORGED. */}
         </h2>
       </div>
 

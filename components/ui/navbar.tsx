@@ -1,6 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { Instrument_Serif } from "next/font/google";
+
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  subsets: ["latin"],
+  style: "normal",
+  display: "swap",
+});
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { triggerHaptic } from "@/lib/haptics";
@@ -273,9 +281,16 @@ export function Navbar() {
                     <Link
                         href="/"
                         onClick={() => { setIsOpen(false); handleHaptic(); }}
-                        className="font-bold text-xl tracking-tighter flex items-center gap-2"
+                        className="flex items-center gap-3 group"
                     >
-                        <span>The Foundry&apos;s</span>
+                        <img 
+                            src="/logo.jpg" 
+                            alt="The Foundry Logo" 
+                            width={48}
+                            height={48}
+                            className="h-12 w-12 object-contain rounded-full border border-neutral-200 shadow-sm transition-transform duration-300 group-hover:scale-105"
+                        />
+                        <span className={`${instrumentSerif.className} text-3xl sm:text-4xl font-normal tracking-wide text-black`}>The Foundry&apos;s</span>
                     </Link>
 
                     {/* Central Navigation Headings */}
