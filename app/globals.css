@@ -19,10 +19,14 @@
     --color-foundry-border: #E8E8E3;
 
     /* School Experience Pastels — identify experiences, not decoration */
-    --color-school-deeptech: #DCE7F1;       /* Deep Tech → Powder Blue */
-    --color-school-entrepreneurship: #DDE7DE; /* Entrepreneurship → Sage */
-    --color-school-sustainability: #EEE5D7;  /* Sustainability → Warm Sand */
-    --color-school-energy: #F0DFDF;          /* Energy → Soft Blush */
+    --color-school-deeptech: #DCE7F1;
+    /* Deep Tech → Powder Blue */
+    --color-school-entrepreneurship: #DDE7DE;
+    /* Entrepreneurship → Sage */
+    --color-school-sustainability: #EEE5D7;
+    /* Sustainability → Warm Sand */
+    --color-school-energy: #F0DFDF;
+    /* Energy → Soft Blush */
 
     --animate-aurora: aurora 20s ease infinite alternate;
     --animate-smoke: smoke 15s ease-in-out infinite alternate;
@@ -186,12 +190,21 @@ body {
 
 /* Global Responsive Safety */
 @media (max-width: 640px) {
-    h1, h2, h3, h4, h5, h6, p, span, a {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    span,
+    a {
         overflow-wrap: break-word;
         word-wrap: break-word;
         max-width: 100%;
     }
-    
+
     .container {
         overflow-x: hidden;
     }
@@ -227,11 +240,14 @@ body {
 
 /* Hide scrollbars globally on mobile and tablet for a cleaner 'inside scroll' look */
 @media (max-width: 1024px) {
-    html, body, * {
+
+    html,
+    body,
+    * {
         -ms-overflow-style: none !important;
         scrollbar-width: none !important;
     }
-    
+
     html::-webkit-scrollbar,
     body::-webkit-scrollbar,
     *::-webkit-scrollbar {
@@ -350,19 +366,26 @@ div.bg-slate-800.rounded-lg,
     border: 1px solid #cbd5e1 !important;
     color: #334155 !important;
 }
+
 .bg-slate-800.rounded-lg svg,
 a.bg-slate-800.rounded-lg svg,
 .p-2.bg-slate-800 svg {
     color: #334155 !important;
 }
+
 .bg-slate-800.rounded-lg:hover,
 a.bg-slate-800.rounded-lg:hover,
 .p-2.bg-slate-800:hover {
     background-color: #f1f5f9 !important;
     color: #0f172a !important;
 }
+
 .bg-slate-800.rounded-lg:hover svg,
 a.bg-slate-800.rounded-lg:hover svg,
 .p-2.bg-slate-800:hover svg {
     color: #0f172a !important;
+}
+
+#youtube-player-hero {
+    pointer-events: none !important;
 }
