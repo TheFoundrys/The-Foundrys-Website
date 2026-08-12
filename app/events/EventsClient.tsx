@@ -28,6 +28,25 @@ interface EventItem {
 
 const allItems: EventItem[] = [
     {
+        id: "quantum-impact",
+        title: "Quantum Impact: Bridging Industry Innovation and Academic Advancement",
+        type: "Independence Day Special",
+        category: "webinar",
+        date: "Sat, Aug 15, 2026",
+        time: "4:00 PM - 5:00 PM IST",
+        dateTime: "2026-08-15T16:00:00+05:30",
+        platform: "Microsoft Teams",
+        link: "https://events.teams.microsoft.com/event/fe3ca870-5222-4377-a228-19265fbd184b@9be43f22-3237-4b73-971b-3e664c641aea?source=copyLinkOneEventsShareDialog",
+        ctaText: "Join Session",
+        description: `Join us for an insightful conversation exploring the applications of Quantum Computing in Industry and Academia and its potential to shape the future of innovation, research, and education.
+
+Guest Speaker: Dr. Dadamiah PMD Shaik (Associate Professor & HoD, Physics at Vardhaman College of Engineering)
+Host: Mr. Vishwanath Akuthota (Founder, The Foundry's)`,
+        tags: ["Quantum Computing", "Deep Tech", "Innovation", "Research", "Education"],
+        featured: true,
+        image: "/images/quantum-impact-webinar.png"
+    },
+    {
         id: "podcast-self-mastery",
         title: "Live Podcast: Self-Mastery Is Life Mastery",
         type: "Live Podcast",
@@ -184,201 +203,203 @@ export function EventsClient() {
             </section>
 
             {/* Upcoming Events/Webinars Section */}
-            <section className="py-20 px-6 bg-slate-50">
-                <div className="container mx-auto max-w-5xl">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="mb-12"
-                    >
-                        <div className="text-blue-600 font-bold uppercase tracking-widest text-xs mb-3">
-                            Coming Up Next
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
-                            Upcoming Sessions
-                        </h2>
-                        <p className="text-slate-500 mt-3 text-lg max-w-2xl">
-                            Register for our upcoming live sessions and get a chance to interact with experts in real-time.
-                        </p>
-                    </motion.div>
+            {upcomingItems.length > 0 && (
+                <section className="py-20 px-6 bg-slate-50">
+                    <div className="container mx-auto max-w-5xl">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="mb-12"
+                        >
+                            <div className="text-blue-600 font-bold uppercase tracking-widest text-xs mb-3">
+                                Coming Up Next
+                            </div>
+                            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+                                Upcoming Sessions
+                            </h2>
+                            <p className="text-slate-500 mt-3 text-lg max-w-2xl">
+                                Register for our upcoming live sessions and get a chance to interact with experts in real-time.
+                            </p>
+                        </motion.div>
 
-                    <AnimatePresence mode="wait">
-                        {filteredUpcoming.length > 0 ? (
-                            <div className="flex flex-col gap-8">
-                                {filteredUpcoming.map((item, i) => (
-                                    <motion.div
-                                        key={item.id}
-                                        initial={{ opacity: 0, y: 30 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: -30 }}
-                                        transition={{ duration: 0.5, delay: i * 0.1 }}
-                                    >
-                                        <div
-                                            className={`relative rounded-3xl overflow-hidden border ${item.featured
-                                                    ? "border-blue-200 bg-gradient-to-br from-blue-50/80 via-white to-indigo-50/50 shadow-xl shadow-blue-100/50"
-                                                    : "border-slate-200 bg-white shadow-sm"
-                                                }`}
+                        <AnimatePresence mode="wait">
+                            {filteredUpcoming.length > 0 ? (
+                                <div className="flex flex-col gap-8">
+                                    {filteredUpcoming.map((item, i) => (
+                                        <motion.div
+                                            key={item.id}
+                                            initial={{ opacity: 0, y: 30 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -30 }}
+                                            transition={{ duration: 0.5, delay: i * 0.1 }}
                                         >
-                                            {item.featured && (
-                                                <div className="absolute top-6 right-6 z-10">
-                                                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-bold uppercase tracking-wider shadow-lg">
-                                                        <Sparkles size={12} />
-                                                        Featured
-                                                    </div>
-                                                </div>
-                                            )}
-
-                                            <div className="flex flex-col gap-0">
-                                                {item.image && (
-                                                    <div className="relative w-full h-[250px] sm:h-[350px] md:h-[400px] lg:h-[480px] bg-slate-950 flex items-center justify-center overflow-hidden group">
-                                                        {/* Blurred backdrop background */}
-                                                        <img
-                                                            src={item.image}
-                                                            alt=""
-                                                            className="absolute inset-0 w-full h-full object-cover filter blur-3xl opacity-70 scale-150 pointer-events-none"
-                                                        />
-                                                        {/* Main foreground image */}
-                                                        <img
-                                                            src={item.image}
-                                                            alt={item.title}
-                                                            onClick={() => setSelectedImage(item.image || null)}
-                                                            className="relative z-10 h-full w-auto object-contain transition-all duration-500 hover:scale-[1.02] cursor-zoom-in"
-                                                        />
+                                            <div
+                                                className={`relative rounded-3xl overflow-hidden border ${item.featured
+                                                        ? "border-blue-200 bg-gradient-to-br from-blue-50/80 via-white to-indigo-50/50 shadow-xl shadow-blue-100/50"
+                                                        : "border-slate-200 bg-white shadow-sm"
+                                                    }`}
+                                            >
+                                                {item.featured && (
+                                                    <div className="absolute top-6 right-6 z-10">
+                                                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-bold uppercase tracking-wider shadow-lg">
+                                                            <Sparkles size={12} />
+                                                            Featured
+                                                        </div>
                                                     </div>
                                                 )}
-                                                <div className="p-8 md:p-10">
-                                                    <div>
-                                                        <div className="flex items-center gap-2 mb-5">
-                                                            <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${item.category === "event"
-                                                                    ? "bg-orange-100 text-orange-800"
-                                                                    : "bg-blue-100 text-blue-800"
-                                                                }`}>
-                                                                {item.category === "event" ? <Calendar size={12} /> : <Video size={12} />}
-                                                                {item.type}
-                                                            </span>
+
+                                                <div className="flex flex-col gap-0">
+                                                    {item.image && (
+                                                        <div className="relative w-full h-[250px] sm:h-[350px] md:h-[400px] lg:h-[480px] bg-slate-950 flex items-center justify-center overflow-hidden group">
+                                                            {/* Blurred backdrop background */}
+                                                            <img
+                                                                src={item.image}
+                                                                alt=""
+                                                                className="absolute inset-0 w-full h-full object-cover filter blur-3xl opacity-70 scale-150 pointer-events-none"
+                                                            />
+                                                            {/* Main foreground image */}
+                                                            <img
+                                                                src={item.image}
+                                                                alt={item.title}
+                                                                onClick={() => setSelectedImage(item.image || null)}
+                                                                className="relative z-10 h-full w-auto object-contain transition-all duration-500 hover:scale-[1.02] cursor-zoom-in"
+                                                            />
                                                         </div>
-
-                                                        <h3 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight mb-4 max-w-4xl">
-                                                            {item.title}
-                                                        </h3>
-
-                                                        <p className="text-slate-500 text-base md:text-lg leading-relaxed mb-8 max-w-5xl whitespace-pre-line">
-                                                            {item.description}
-                                                        </p>
-
-                                                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                                                            <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
-                                                                <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
-                                                                    <Calendar size={20} />
-                                                                </div>
-                                                                <div>
-                                                                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
-                                                                        Date
-                                                                    </div>
-                                                                    <div className="font-bold text-slate-900">
-                                                                        {item.date}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
-                                                                <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 shrink-0">
-                                                                    <Clock size={20} />
-                                                                </div>
-                                                                <div>
-                                                                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
-                                                                        Time
-                                                                    </div>
-                                                                    <div className="font-bold text-slate-900">
-                                                                        {item.time}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
-                                                                <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0">
-                                                                    {item.category === "event" ? <MapPin size={20} /> : <Video size={20} />}
-                                                                </div>
-                                                                <div>
-                                                                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
-                                                                        {item.category === "event" ? "Venue" : "Platform"}
-                                                                    </div>
-                                                                    <div className="font-bold text-slate-900">
-                                                                        {item.category === "event" ? item.venue : item.platform}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="flex flex-wrap gap-2 mb-8">
-                                                            {item.tags.map((tag: string) => (
-                                                                <span
-                                                                    key={tag}
-                                                                    className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-bold"
-                                                                >
-                                                                    {tag}
+                                                    )}
+                                                    <div className="p-8 md:p-10">
+                                                        <div>
+                                                            <div className="flex items-center gap-2 mb-5">
+                                                                <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${item.category === "event"
+                                                                        ? "bg-orange-100 text-orange-800"
+                                                                        : "bg-blue-100 text-blue-800"
+                                                                    }`}>
+                                                                    {item.category === "event" ? <Calendar size={12} /> : <Video size={12} />}
+                                                                    {item.type}
                                                                 </span>
-                                                            ))}
-                                                        </div>
-                                                    </div>
+                                                            </div>
 
-                                                    <div className="flex flex-col sm:flex-row gap-3">
-                                                        {"link" in item ? (
-                                                            <a
-                                                                href={item.link}
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                                className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
-                                                            >
-                                                                {item.ctaText || "Register Now"}
-                                                                <ArrowUpRight size={16} />
-                                                            </a>
-                                                        ) : (
-                                                            <a
-                                                                href="https://luma.com/cp4d1w4b"
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                                className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
-                                                            >
-                                                                Register Now
-                                                                <ArrowUpRight size={16} />
-                                                            </a>
-                                                        )}
-                                                        {"mapsUrl" in item && (
-                                                            <a
-                                                                href={item.mapsUrl}
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                                className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-slate-900 text-white rounded-full font-bold hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
-                                                            >
-                                                                <MapPin size={16} />
-                                                                View on Google Maps
-                                                            </a>
-                                                        )}
+                                                            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight mb-4 max-w-4xl">
+                                                                {item.title}
+                                                            </h3>
+
+                                                            <p className="text-slate-500 text-base md:text-lg leading-relaxed mb-8 max-w-5xl whitespace-pre-line">
+                                                                {item.description}
+                                                            </p>
+
+                                                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                                                                <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
+                                                                    <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                                                                        <Calendar size={20} />
+                                                                    </div>
+                                                                    <div>
+                                                                        <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
+                                                                            Date
+                                                                        </div>
+                                                                        <div className="font-bold text-slate-900">
+                                                                            {item.date}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
+                                                                    <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 shrink-0">
+                                                                        <Clock size={20} />
+                                                                    </div>
+                                                                    <div>
+                                                                        <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
+                                                                            Time
+                                                                        </div>
+                                                                        <div className="font-bold text-slate-900">
+                                                                            {item.time}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
+                                                                    <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0">
+                                                                        {item.category === "event" ? <MapPin size={20} /> : <Video size={20} />}
+                                                                    </div>
+                                                                    <div>
+                                                                        <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
+                                                                            {item.category === "event" ? "Venue" : "Platform"}
+                                                                        </div>
+                                                                        <div className="font-bold text-slate-900">
+                                                                            {item.category === "event" ? item.venue : item.platform}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="flex flex-wrap gap-2 mb-8">
+                                                                {item.tags.map((tag: string) => (
+                                                                    <span
+                                                                        key={tag}
+                                                                        className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-bold"
+                                                                    >
+                                                                        {tag}
+                                                                    </span>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="flex flex-col sm:flex-row gap-3">
+                                                            {"link" in item ? (
+                                                                <a
+                                                                    href={item.link}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+                                                                >
+                                                                    {item.ctaText || "Register Now"}
+                                                                    <ArrowUpRight size={16} />
+                                                                </a>
+                                                            ) : (
+                                                                <a
+                                                                    href="https://luma.com/cp4d1w4b"
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+                                                                >
+                                                                    Register Now
+                                                                    <ArrowUpRight size={16} />
+                                                                </a>
+                                                            )}
+                                                            {"mapsUrl" in item && (
+                                                                <a
+                                                                    href={item.mapsUrl}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-slate-900 text-white rounded-full font-bold hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+                                                                >
+                                                                    <MapPin size={16} />
+                                                                    View on Google Maps
+                                                                </a>
+                                                            )}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </motion.div>
-                                ))}
-                            </div>
-                        ) : (
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                className="text-center py-20 bg-white rounded-3xl border border-dashed border-slate-300 shadow-sm"
-                            >
-                                <Calendar size={48} className="mx-auto text-slate-300 mb-4" />
-                                <h3 className="text-xl font-bold text-slate-900 mb-2">Something Big is Coming!</h3>
-                                <p className="text-slate-500">We're finalizing our next interactive sessions. Stay tuned for updates.</p>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </div>
-            </section>
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    className="text-center py-20 bg-white rounded-3xl border border-dashed border-slate-300 shadow-sm"
+                                >
+                                    <Calendar size={48} className="mx-auto text-slate-300 mb-4" />
+                                    <h3 className="text-xl font-bold text-slate-900 mb-2">Something Big is Coming!</h3>
+                                    <p className="text-slate-500">We're finalizing our next interactive sessions. Stay tuned for updates.</p>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+                </section>
+            )}
 
             {/* Past Events/Webinars Section */}
             <section className="py-20 px-6 bg-white border-t border-slate-100">
