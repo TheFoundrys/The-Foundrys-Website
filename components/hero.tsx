@@ -88,7 +88,7 @@ export function Hero() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover pointer-events-none scale-[1.3] translate-x-[5%] translate-y-[5%] origin-center"
+          className="w-full h-full object-cover pointer-events-none scale-[1.22] translate-x-[3%] translate-y-[3%] origin-center"
           style={{ pointerEvents: 'none' }}
           onTimeUpdate={(e) => {
             if (e.currentTarget.currentTime >= 74) {
