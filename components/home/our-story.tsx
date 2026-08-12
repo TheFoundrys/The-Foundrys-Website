@@ -8,7 +8,7 @@ const cards = [
   {
     title: "Our Team",
     description: "Meet the visionary founders, industry veterans and research expertise who make The Foundry what it is.",
-    image: "/images/educator-indian.png",
+    image: "/images/our_team_leaders.png",
     href: "/about/team",
     hoverBg: "group-hover:bg-[#DCE7F1]",
   },

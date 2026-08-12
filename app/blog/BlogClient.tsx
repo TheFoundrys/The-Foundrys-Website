@@ -203,6 +203,20 @@ const STATIC_RESEARCH_POSTS: Post[] = [
     }
 ];
 
+const STATIC_BLOG_POSTS: Post[] = [
+    {
+        _id: "blog-1",
+        title: "Building the Future: A Message from the Founder of The Foundry’s",
+        slug: { current: "building-the-future-message-from-founder" },
+        publishedAt: "2026-03-12T00:00:00Z",
+        mainImage: { static: true, url: "/images/building_the_future_cover.png" },
+        category: "Blog",
+        readTime: "5 min",
+        excerpt: "We are living in one of the most exciting eras of human progress. Technology is advancing at an unprecedented pace, industries are being reimagined, and the world is calling for a new generation of builders, thinkers, and leaders who are ready to shape what comes next.",
+        link: "https://www.linkedin.com/pulse/building-future-message-from-founder-foundrys-the-foundry-s-ynhrc"
+    }
+];
+
 const resourceSections = [
     {
         title: "Blog",
@@ -242,11 +256,11 @@ export function BlogClient() {
         const fetchPosts = async () => {
             try {
                 const data = await client.fetch(POSTS_QUERY);
-                const merged = [...(data || []), ...STATIC_RESEARCH_POSTS];
+                const merged = [...(data || []), ...STATIC_RESEARCH_POSTS, ...STATIC_BLOG_POSTS];
                 setPosts(merged);
             } catch (error) {
                 console.error("Failed to fetch posts:", error);
-                setPosts(STATIC_RESEARCH_POSTS);
+                setPosts([...STATIC_RESEARCH_POSTS, ...STATIC_BLOG_POSTS]);
             } finally {
                 setLoading(false);
             }
@@ -433,7 +447,7 @@ export function BlogClient() {
                                             </p>
 
                                             <div className="flex items-center text-slate-900 font-bold text-sm tracking-wide group-hover:gap-4 transition-all">
-                                                {post.link ? "View Publication" : "Read Article"} <ArrowRight size={16} className="ml-2 text-cyan-500" />
+                                                {post.link ? "Read More" : "Read Article"} <ArrowRight size={16} className="ml-2 text-cyan-500" />
                                             </div>
                                         </div>
                                     </motion.div>

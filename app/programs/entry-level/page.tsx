@@ -51,7 +51,7 @@ export default function EntryLevelProgramPage() {
             <div className="mx-4 sm:mx-6 md:mx-auto max-w-6xl bg-white rounded-1xl shadow-sm border border-slate-100/80 my-16 overflow-hidden">
                 {/* Introduction Section */}
                 <section className="text-slate-800 p-8 sm:p-12 md:p-16 bg-white">
-                    <h2 className="font-serif text-3xl font-bold leading-tight text-black md:text-4xl">
+                    <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
                         Introduction
                     </h2>
                     <p className="mt-6 text-sm md:text-base leading-relaxed text-slate-700 max-w-4xl">
@@ -129,30 +129,49 @@ export default function EntryLevelProgramPage() {
 
             {/* FAQ Section */}
             <section className="py-16 px-6 bg-white/40 border-t border-b border-slate-200/60">
-                <div className="container mx-auto max-w-4xl">
+                <div className="container mx-auto max-w-6xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>
                         <p className="text-lg text-slate-600">Common queries about the entry level foundation tracks.</p>
                     </div>
 
-                    <div className="space-y-4">
-                        <FAQItem question="Who is this program designed for?">
-                            <p className="mb-4">This program is structured for three primary groups:</p>
-                            <ul className="list-disc pl-5 space-y-2 text-slate-600">
-                                <li><strong>Engineering Students:</strong> 3rd and 4th year students looking to supplement their academic curriculum with industry-relevant skills.</li>
-                                <li><strong>Undergraduates:</strong> Final-year B.Com/B.Sc students seeking to build technical awareness in a digital-first economy.</li>
-                                <li><strong>Early Professionals:</strong> Graduates with 2+ years experience aiming to build a strong technical base for future roles.</li>
-                            </ul>
-                        </FAQItem>
-                        <FAQItem question="Do I need prior coding experience?">
-                            No prior deep technical expertise is required, but a basic familiarity with computers and a logical mindset is recommended. The program starts with conceptual clarity before moving to application.
-                        </FAQItem>
-                        <FAQItem question="Is this an online or offline program?">
-                            It is a <strong>Hybrid</strong> program. We combine self-paced digital learning modules with in-person or live virtual guided exercises and mentorship sessions.
-                        </FAQItem>
-                        <FAQItem question="Will I receive a certificate?">
-                            Yes. Upon successful completion of the course and assessment, you will receive a verifiable digital certificate from The Foundry, which can be shared on LinkedIn and your resume.
-                        </FAQItem>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                        {/* Column 1 (Left Side) */}
+                        <div className="space-y-4">
+                            <FAQItem question="Who is this program designed for?">
+                                <p className="mb-4">This program is structured for three primary groups:</p>
+                                <ul className="list-disc pl-5 space-y-2 text-slate-600">
+                                    <li><strong>Engineering Students:</strong> 3rd and 4th year students looking to supplement their academic curriculum with industry-relevant skills.</li>
+                                    <li><strong>Undergraduates:</strong> Final-year B.Com/B.Sc students seeking to build technical awareness in a digital-first economy.</li>
+                                    <li><strong>Early Professionals:</strong> Graduates with 2+ years experience aiming to build a strong technical base for future roles.</li>
+                                </ul>
+                            </FAQItem>
+                            <FAQItem question="Do I need prior coding experience?">
+                                No prior deep technical expertise is required, but a basic familiarity with computers and a logical mindset is recommended. The program starts with conceptual clarity before moving to application.
+                            </FAQItem>
+                            <FAQItem question="Is this an online or offline program?">
+                                It is a <strong>Hybrid</strong> program. We combine self-paced digital learning modules with in-person or live virtual guided exercises and mentorship sessions.
+                            </FAQItem>
+                            <FAQItem question="Will I receive a certificate?">
+                                Yes. Upon successful completion of the course and assessment, you will receive a verifiable digital certificate from The Foundry, which can be shared on LinkedIn and your resume.
+                            </FAQItem>
+                        </div>
+
+                        {/* Column 2 (Right Side) */}
+                        <div className="space-y-4">
+                            <FAQItem question="What is the weekly time commitment?">
+                                The program is designed to be manageable alongside college or work. It requires about 10–12 hours per week, including self-paced learning and practical hands-on exercises.
+                            </FAQItem>
+                            <FAQItem question="Are there live interactions with mentors?">
+                                Yes. You will have regular live virtual check-ins, online office hours with industry experts, and in-person review sessions in Hyderabad to clarify doubts and review projects.
+                            </FAQItem>
+                            <FAQItem question="What projects will I build?">
+                                You will build 3 main portfolio projects: a functional AI model/agent, a secure infrastructure setup, and a smart contract deployment on Web3.
+                            </FAQItem>
+                            <FAQItem question="Can I transition to advanced tracks?">
+                                Yes. Top-performing students who demonstrate exceptional technical mastery and commitment can apply to transition into our premium professional tracks or venture incubation programs.
+                            </FAQItem>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -201,7 +220,7 @@ function ProgramRow({
                     <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 mb-2 block font-mono">
                         {tag}
                     </span>
-                    <h3 className="font-serif text-2xl md:text-3xl font-bold text-black leading-tight mb-6">
+                    <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#002f86] leading-tight mb-6">
                         {title}
                     </h3>
                 </div>
