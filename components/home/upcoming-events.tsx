@@ -41,7 +41,7 @@ export function UpcomingEvents() {
       <div className="mx-auto max-w-6xl">
         {/* Section Header */}
         <div className="mb-10">
-          <h2 className="mb-2 font-serif text-3xl font-bold leading-tight text-brand-purple md:text-4xl">
+          <h2 className="mb-2 font-serif text-3xl font-bold leading-tight text-deep-blue md:text-4xl">
             Upcoming Events
           </h2>
           <Link

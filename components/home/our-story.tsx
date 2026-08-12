@@ -10,31 +10,31 @@ const cards = [
     description: "Meet the visionary founders, industry veterans and research expertise who make The Foundry what it is.",
     image: "/images/educator-indian.png",
     href: "/about/team",
-    hoverBg: "group-hover:bg-[#DBD4CE]",
+    hoverBg: "group-hover:bg-[#DCE7F1]",
   },
   {
     title: "Our Research",
     description: "Rigorous, applied research in Deep Tech, AI, Quantum, and Sustainability that solves real-world industry challenges.",
     image: "/images/research_book_closed.png",
     href: "/blog?category=research",
-    hoverBg: "group-hover:bg-[#DDE7DE]",
+    hoverBg: "group-hover:bg-[#DCE7F1]",
   },
   {
     title: "Our Alumni",
     description: "A powerful network of creators, technical leaders, and builders who are driving transformative change across the tech landscape.",
     image: "/images/undergrad-indian.png",
     href: "/testimonials",
-    hoverBg: "group-hover:bg-[#F0DFDF]",
+    hoverBg: "group-hover:bg-[#DCE7F1]",
   },
 ];
 
 export function OurStory() {
   return (
     <section className="bg-transparent px-6 pt-16 pb-8 text-brand-purple sm:px-10 lg:px-16">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl bg-white p-8 sm:p-12 md:p-16 rounded-1xl shadow-sm border border-slate-100/80">
         {/* Section Header */}
         <div className="mb-12 max-w-4xl">
-          <h2 className="mb-6 font-serif text-3xl font-bold leading-tight text-blue md:text-4xl">
+          <h2 className="mb-6 font-serif text-3xl font-bold leading-tight text-deep-blue md:text-4xl">
             Our Story
           </h2>
           <p className="text-sm md:text-base leading-relaxed text-slate-700">
@@ -58,7 +58,7 @@ export function OurStory() {
               </div>
               
               {/* Overlapping Mint Overlay Box */}
-              <div className={`relative z-10 w-[85%] bg-[#f8fafc] border border-slate-200/80 p-6 -mt-16 ml-0 flex flex-col justify-between flex-1 min-h-[190px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md ${card.hoverBg}`}>
+              <div className={`relative z-10 w-[85%] bg-[#F7F7F4] border border-slate-200/80 p-6 -mt-16 ml-0 flex flex-col justify-between flex-1 min-h-[190px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md ${card.hoverBg}`}>
                 <div>
                   <h3 className="font-serif text-xl font-bold text-brand-purple mb-3">
                     {card.title}

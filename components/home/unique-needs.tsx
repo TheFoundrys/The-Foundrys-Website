@@ -45,7 +45,7 @@ const programmes = [
 
 export function UniqueNeeds() {
   return (
-    <section className="bg-transparent px-6 pt-8 pb-8 text-brand-blue sm:px-10 lg:px-16">
+    <section className="bg-white px-6 pt-16 pb-16 text-brand-blue sm:px-10 lg:px-16 border-y border-slate-100">
       <style dangerouslySetInnerHTML={{
         __html: `
         .explore-more-text-white {
@@ -63,7 +63,7 @@ export function UniqueNeeds() {
       `}} />
       <div className="mx-auto max-w-6xl">
         <div className="mb-12">
-          <h2 className="mb-4 font-serif text-3xl font-bold leading-tight text-blue md:text-4xl">
+          <h2 className="mb-4 font-serif text-3xl font-bold leading-tight text-deep-blue md:text-4xl">
             Our Programmes
           </h2>
           <p className="max-w-xl text-sm leading-relaxed text-slate-700">
@@ -93,7 +93,7 @@ export function UniqueNeeds() {
               </div>
 
               {/* Overlapping Overlay Box */}
-              <div className="relative z-10 w-[85%] bg-[#f8fafc] border border-slate-200/80 p-6 -mt-16 ml-0 flex flex-col justify-between flex-1 min-h-[190px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:bg-[#DCE7F1]">
+              <div className="relative z-10 w-[85%] bg-[#F7F7F4] border border-slate-200/80 p-6 -mt-16 ml-0 flex flex-col justify-between flex-1 min-h-[190px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:bg-[#DCE7F1]">
                 <div>
                   <h3 className="font-serif text-xl font-bold text-brand-purple mb-3">
                     {programme.title}

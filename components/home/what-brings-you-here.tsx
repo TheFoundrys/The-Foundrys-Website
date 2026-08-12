@@ -141,11 +141,11 @@ export function WhatBringsYouHere() {
             </h2>
 
             {/* Selector Rows */}
-            <div className="space-y-4 lg:space-y-5 mb-6 lg:mb-8">
+            <div className="space-y-4 lg:space-y-4 mb-6 lg:mb-8">
               
               {/* Selector 1: Role */}
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 justify-between relative">
-                <span className="text-sm font-medium tracking-wide opacity-70 uppercase">I am a</span>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 justify-between relative">
+                <span className="text-sm font-medium tracking-wide opacity-70 uppercase sm:w-28 shrink-0">I am a</span>
                 
                 <div className="relative flex-1" ref={roleRef}>
                   <button
@@ -180,8 +180,8 @@ export function WhatBringsYouHere() {
               </div>
 
               {/* Selector 2: Goal */}
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 justify-between relative">
-                <span className="text-sm font-medium tracking-wide opacity-70 uppercase">looking for</span>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 justify-between relative">
+                <span className="text-sm font-medium tracking-wide opacity-70 uppercase sm:w-28 shrink-0">looking for</span>
                 
                 <div className="relative flex-1" ref={goalRef}>
                   <button

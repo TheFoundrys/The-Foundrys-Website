@@ -277,7 +277,7 @@ main {
 
 /* Programs page: keep the monochrome white conversion readable. */
 .programs-light-page {
-    background-color: #ffffff !important;
+    background-color: #F7F7F4 !important;
     color: #0f172a !important;
 }
 
