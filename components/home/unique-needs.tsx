@@ -20,11 +20,11 @@ const programmes = [
   {
     title: "Advanced Management Programs",
     description: "Specialized learning for professionals to lead with expertise and drive meaningful organizational change.",
-    href: "/apply-personalized",
+    href: "/programs/Advanced-management",
     imageSrc: "/images/executive-indian.png",
   },
   {
-    title: "Fellowship & Executive Programs",
+    title: "Fellowship Programs",
     description: "Research-led learning that blends theory, applied practice, and real-world problem solving.",
     href: "/programs/fellow-executive",
     imageSrc: "/images/fellow-programmes.png",

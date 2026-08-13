@@ -1,7 +1,17 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: 'Sego';
+    src: url('/fonts/SEGO.ttf') format('truetype'),
+         url('/fonts/SEGO.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 @theme {
     --font-sans: var(--font-ubuntu), ui-sans-serif, system-ui, sans-serif;
+    --font-sego: 'Sego', serif;
 
     --color-electric-purple: #7c3aed;
     --color-neon-blue: #0ea5e9;
@@ -263,7 +273,7 @@ body {
 
 /* Landing page / main wrapper background */
 main {
-    background-color: #F7F7F4 !important;
+    background-color: #EAEAE5 !important;
     background-image: none !important;
 }
 
@@ -293,7 +303,7 @@ main {
 
 /* Programs page: keep the monochrome white conversion readable. */
 .programs-light-page {
-    background-color: #F7F7F4 !important;
+    background-color: #EAEAE5 !important;
     color: #0f172a !important;
 }
 

@@ -16,7 +16,7 @@ export function Footer({ hideCTA = false, isDark = false }: FooterProps) {
                 {/* Top Section */}
                 <div className={`mb-4 border-b ${isDark ? 'border-neutral-900' : 'border-neutral-200'} pb-2`}>
                     <div className="max-w-5xl leading-relaxed">
-                        <span className={`font-bold ${isDark ? 'text-white' : 'text-black'} text-xl block mb-0.5`}>
+                        <span className={`font-bold ${isDark ? 'text-white' : 'text-black'} text-xl block mb-0.5 font-sego`}>
                             The Foundry's.
                         </span>
                         <span className="text-sm">

@@ -53,7 +53,7 @@ const homeFaqs = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen select-none" style={{ backgroundColor: "#F7F7F4" }}>
+    <main className="min-h-screen select-none" style={{ backgroundColor: "#EAEAE5" }}>
       <FaqJsonLd questions={homeFaqs} />
       <Navbar />
       <Hero />

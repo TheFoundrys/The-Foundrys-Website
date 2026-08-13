@@ -34,7 +34,7 @@ export function ApplyClient() {
     const PROGRAM_COURSES: Record<string, Record<LevelKey, string[]>> = {
         "AI": {
             "entry-level": [
-                "AI Launchpad Mastery Package",
+                "Young Graduate Program in Applied AI & GenAI",
                 "Certified in AI Engineering",
                 "Certified in Prompt Engineering",
                 "Certified in Zero-to-One LLM",
@@ -44,7 +44,8 @@ export function ApplyClient() {
                 "AI Strategy & Institutional Intelligence",
             ],
             "professional": [
-                "AI Professional Mastery Package",
+                "Post Graduate Program in Applied AI & GenAI",
+                "Advanced Management Program in Applied AI & GenAI",
                 "Certified Professional in AI Engineering",
                 "Certified Professional in AI Research",
                 "Certified Professional in AI Operations",
@@ -56,7 +57,7 @@ export function ApplyClient() {
         },
         "Cyber Security": {
             "entry-level": [
-                "Cyber Launchpad Mastery Package",
+                "Young Graduate Program in Cybersecurity Analyst",
                 "Certified in Cybersecurity",
                 "Certified in Malware Analysis",
                 "Certified in VAPT for AI",
@@ -64,7 +65,8 @@ export function ApplyClient() {
                 "Certified in AI Security",
             ],
             "professional": [
-                "Cyber Security Professional Mastery Package",
+                "Post Graduate Program in Cybersecurity Analyst",
+                "Advanced Management Program in Cybersecurity Analyst",
                 "Certified Professional in Cyber Security",
                 "Certified Professional in VAPT for AI",
                 "Certified Professional in Security for AI",
@@ -73,13 +75,14 @@ export function ApplyClient() {
         },
         "Blockchain": {
             "entry-level": [
-                "Blockchain Launchpad Mastery Package",
+                "Young Graduate Program in Blockchain & Web3",
                 "Certified in Block Chain",
                 "Certified in NFT",
                 "Certified in Decentralized Systems",
             ],
             "professional": [
-                "Blockchain Professional Mastery Package",
+                "Post Graduate Program in Blockchain & Web3",
+                "Advanced Management Program in Blockchain & Web3",
                 "Certified Professional in Block Chain",
                 "Certified Professional in NFT",
                 "Certified Professional in Decentralized Systems",
@@ -87,17 +90,21 @@ export function ApplyClient() {
         },
         "Quantum Computing": {
             "entry-level": [
-                "Quantum Launchpad Mastery Package",
+                "Young Graduate Program in Quantum Computing",
                 "Certified Professional in Quantum Fundamentals",
             ],
             "professional": [
-                "Quantum Computing Professional Mastery Package",
+                "Post Graduate Program in Quantum Computing",
+                "Advanced Management Program in Quantum Computing",
                 "Certified Professional in Quantum Fundamentals",
             ],
         },
         "Fellowship & Executive": {
             "entry-level": [],
             "professional": [
+                "MBA in Applied AI & GenAI",
+                "MBA in Cybersecurity Venture Building",
+                "Delivering in the Age of AI (EXE 001)",
                 "MBA in AI",
                 "MBA in Cybersecurity Venture Building",
                 "Fellow Executive Program",

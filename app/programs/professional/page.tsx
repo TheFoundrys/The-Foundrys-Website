@@ -18,7 +18,7 @@ export default function ProfessionalProgramPage() {
     }, []);
 
     return (
-        <main className="min-h-screen bg-white font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
+        <main className="min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden" style={{ backgroundColor: "#EAEAE5" }}>
             <Navbar />
 
             {/* Banner Image Section */}
@@ -39,7 +39,7 @@ export default function ProfessionalProgramPage() {
                 />
                 <div className="absolute inset-0 bg-black/35" />
                 <div className="absolute inset-0 flex items-center">
-                    <div className="container mx-auto max-w-6xl px-6">
+                    <div className="container mx-auto max-w-8xl px-6">
                         <h1 className="font-serif text-4xl md:text-6xl font-bold tracking-tight pgp-title-white">
                             PGP Suite
                         </h1>
@@ -47,23 +47,22 @@ export default function ProfessionalProgramPage() {
                 </div>
             </section>
 
-            {/* Introduction Section */}
-            <section className="bg-white px-6 py-16 text-[#031a57]">
-                <div className="container mx-auto max-w-6xl">
+            {/* Main Content Card Container */}
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white rounded-1xl shadow-lg shadow-black/15 border border-slate-200/50 mt-[30px] mb-16 overflow-hidden">
+                {/* Introduction Section */}
+                <section className="text-slate-800 p-8 sm:p-12 md:p-16 pb-4 sm:pb-6 md:pb-8 bg-white">
                     <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
                         Introduction
                     </h2>
                     <p className="mt-6 text-sm md:text-base leading-relaxed text-slate-700 max-w-4xl">
                         At The Foundry, we shape leaders who thrive amidst complexity, catalyze meaningful change, and redefine success in deep tech. Our diverse portfolio of post graduate programmes is designed for professionals at every career stage - whether you are an emerging leader establishing foundations, a mid-career professional accelerating growth, or a senior executive preparing for advancement. Each programme unites world-class academic rigour with global perspectives, delivering transformative educational experiences that cultivate resilient, innovative leaders poised to generate significant impact.
                     </p>
-                </div>
-            </section>
+                </section>
 
-            {/* Programs List Section */}
-            <section className="bg-white px-6 pb-24 text-[#031a57]">
-                <div className="container mx-auto max-w-6xl">
-                    <div className="space-y-16">
-                        {/* Domain 1: Applied AI & GenAI */}
+                {/* Programs List Section with Alternating Backgrounds */}
+                <section className="text-slate-800">
+                    {/* Domain 1: Applied AI & GenAI (White bg) */}
+                    <div className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-100">
                         <ProgramRow 
                             tag="PGP"
                             title="Post Graduate Program in Applied AI & GenAI"
@@ -76,8 +75,10 @@ export default function ProfessionalProgramPage() {
                             }}
                             onMoreInfo={() => setSelectedPackageId("professional-ai")}
                         />
+                    </div>
 
-                        {/* Domain 2: Cybersecurity */}
+                    {/* Domain 2: Cybersecurity (Alternating Warm bg) */}
+                    <div className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-b border-slate-200/50">
                         <ProgramRow 
                             tag="PGP"
                             title="Post Graduate Program in Cybersecurity Analyst"
@@ -90,8 +91,10 @@ export default function ProfessionalProgramPage() {
                             }}
                             onMoreInfo={() => setSelectedPackageId("professional-cyber-security")}
                         />
+                    </div>
 
-                        {/* Domain 3: Quantum Computing */}
+                    {/* Domain 3: Quantum Computing (White bg) */}
+                    <div className="p-8 sm:p-12 md:p-16 bg-white">
                         <ProgramRow 
                             tag="PGP"
                             title="Post Graduate Program in Quantum Computing"
@@ -104,8 +107,10 @@ export default function ProfessionalProgramPage() {
                             }}
                             onMoreInfo={() => setSelectedPackageId("professional-quantum-computing")}
                         />
+                    </div>
 
-                        {/* Domain 4: Blockchain */}
+                    {/* Domain 4: Blockchain (Alternating Warm bg) */}
+                    <div className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-b border-slate-200/50">
                         <ProgramRow 
                             tag="PGP"
                             title="Post Graduate Program in Blockchain & Web3"
@@ -119,35 +124,54 @@ export default function ProfessionalProgramPage() {
                             onMoreInfo={() => setSelectedPackageId("professional-blockchain")}
                         />
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
 
-            {/* FAQ Section */}
-            <section className="py-16 px-6 bg-slate-50">
-                <div className="container mx-auto max-w-3xl">
+             {/* FAQ Section */}
+            <section className="py-16 px-6 bg-white border-t border-b border-slate-200/60">
+                <div className="container mx-auto max-w-7xl">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>
-                        <p className="text-lg text-slate-600">Common queries about the professional foundation tracks.</p>
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#002f86] mb-4">Frequently Asked Questions</h2>
+                        <p className="text-lg text-slate-600">Common queries about the entry level foundation tracks.</p>
                     </div>
 
-                    <div className="space-y-4">
-                        <FAQItem question="Who is this program designed for?">
-                            <p className="mb-4">This program is structured for three primary groups:</p>
-                            <ul className="list-disc pl-5 space-y-2 text-slate-600">
-                                <li><strong>Engineering Students:</strong> 3rd and 4th year students looking to supplement their academic curriculum with industry-relevant skills.</li>
-                                <li><strong>Undergraduates:</strong> Final-year B.Com/B.Sc students seeking to build technical awareness in a digital-first economy.</li>
-                                <li><strong>Early Professionals:</strong> Graduates with 2+ years experience aiming to build a strong technical base for future roles.</li>
-                            </ul>
-                        </FAQItem>
-                        <FAQItem question="Do I need prior coding experience?">
-                            No prior deep technical expertise is required, but a basic familiarity with computers and a logical mindset is recommended. The program starts with conceptual clarity before moving to application.
-                        </FAQItem>
-                        <FAQItem question="Is this an online or offline program?">
-                            It is a <strong>Hybrid</strong> program. We combine self-paced digital learning modules with in-person or live virtual guided exercises and mentorship sessions.
-                        </FAQItem>
-                        <FAQItem question="Will I receive a certificate?">
-                            Yes. Upon successful completion of the course and assessment, you will receive a verifiable digital certificate from The Foundry, which can be shared on LinkedIn and your resume.
-                        </FAQItem>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                        {/* Column 1 (Left Side) */}
+                        <div className="space-y-4">
+                            <FAQItem question="Who is this program designed for?">
+                                <p className="mb-4">This program is structured for three primary groups:</p>
+                                <ul className="list-disc pl-5 space-y-2 text-slate-600">
+                                    <li><strong>Engineering Students:</strong> 3rd and 4th year students looking to supplement their academic curriculum with industry-relevant skills.</li>
+                                    <li><strong>Undergraduates:</strong> Final-year B.Com/B.Sc students seeking to build technical awareness in a digital-first economy.</li>
+                                    <li><strong>Early Professionals:</strong> Graduates with 2+ years experience aiming to build a strong technical base for future roles.</li>
+                                </ul>
+                            </FAQItem>
+                            <FAQItem question="Do I need prior coding experience?">
+                                No prior deep technical expertise is required, but a basic familiarity with computers and a logical mindset is recommended. The program starts with conceptual clarity before moving to application.
+                            </FAQItem>
+                            <FAQItem question="Is this an online or offline program?">
+                                It is a <strong>Hybrid</strong> program. We combine self-paced digital learning modules with in-person or live virtual guided exercises and mentorship sessions.
+                            </FAQItem>
+                            <FAQItem question="Will I receive a certificate?">
+                                Yes. Upon successful completion of the course and assessment, you will receive a verifiable digital certificate from The Foundry, which can be shared on LinkedIn and your resume.
+                            </FAQItem>
+                        </div>
+
+                        {/* Column 2 (Right Side) */}
+                        <div className="space-y-4">
+                            <FAQItem question="What is the weekly time commitment?">
+                                The program is designed to be manageable alongside college or work. It requires about 10–12 hours per week, including self-paced learning and practical hands-on exercises.
+                            </FAQItem>
+                            <FAQItem question="Are there live interactions with mentors?">
+                                Yes. You will have regular live virtual check-ins, online office hours with industry experts, and in-person review sessions in Hyderabad to clarify doubts and review projects.
+                            </FAQItem>
+                            <FAQItem question="What projects will I build?">
+                                You will build 3 main portfolio projects: a functional AI model/agent, a secure infrastructure setup, and a smart contract deployment on Web3.
+                            </FAQItem>
+                            <FAQItem question="Can I transition to advanced tracks?">
+                                Yes. Top-performing students who demonstrate exceptional technical mastery and commitment can apply to transition into our premium professional tracks or venture incubation programs.
+                            </FAQItem>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -202,14 +226,8 @@ function ProgramRow({
                 </div>
                 
                 <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3 mt-6">
-                    <button
-                        onClick={onMoreInfo}
-                        className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#002f86] text-[#002f86] hover:bg-[#002f86] hover:text-white rounded-lg font-bold transition-all text-sm cursor-pointer"
-                    >
-                        More Info <span className="transition-transform group-hover:translate-x-1">→</span>
-                    </button>
                     <Link
-                        href="/apply"
+                        href={`/apply?course=${encodeURIComponent(title)}`}
                         className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-lg font-bold transition-all text-sm"
                     >
                         Apply Now
@@ -270,12 +288,12 @@ function FAQItem({ question, children }: { question: string, children: React.Rea
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
+        <div className="bg-[#F7F7F4] border border-slate-200 rounded-xl overflow-hidden">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors"
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-white transition-colors"
             >
-                <span className="text-lg font-bold text-slate-900">{question}</span>
+                <span className="text-lg font-bold text-[#002f86]">{question}</span>
                 <span className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
                     <ArrowDown size={20} className="text-slate-400" />
                 </span>

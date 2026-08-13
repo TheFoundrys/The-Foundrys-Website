@@ -10,11 +10,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { PackageDetailsModal } from "@/components/programs/PackageDetailsModal";
 
-export default function EntryLevelProgramPage() {
+export default function AdvancedManagementProgramPage() {
     const [selectedPackageId, setSelectedPackageId] = useState<string | null>(null);
 
     useEffect(() => {
-        document.title = "Young Graduate Programs | The Foundry";
+        document.title = "Advanced Management Programs | The Foundry";
     }, []);
 
     return (
@@ -25,14 +25,14 @@ export default function EntryLevelProgramPage() {
             <section className="relative w-full h-[260px] md:h-[380px] overflow-hidden mt-16">
                 <style dangerouslySetInnerHTML={{
                     __html: `
-                    .ygp-title-white {
+                    .amp-title-white {
                         color: #ffffff !important;
                     }
                     `
                 }} />
                 <Image
                     src="/images/ygp_classroom_session.png"
-                    alt="YGP Suite"
+                    alt="Advanced Management Suite"
                     fill
                     priority
                     className="object-cover object-center brightness-[0.7]"
@@ -40,8 +40,8 @@ export default function EntryLevelProgramPage() {
                 <div className="absolute inset-0 bg-black/35" />
                 <div className="absolute inset-0 flex items-center">
                     <div className="container mx-auto max-w-8xl px-6">
-                        <h1 className="font-serif text-white text-4xl md:text-6xl font-bold tracking-tight ygp-title-white">
-                            YGP Suite
+                        <h1 className="font-serif text-white text-4xl md:text-6xl font-bold tracking-tight amp-title-white">
+                            Advanced Management Programs
                         </h1>
                     </div>
                 </div>
@@ -55,7 +55,7 @@ export default function EntryLevelProgramPage() {
                         Introduction
                     </h2>
                     <p className="mt-6 text-sm md:text-base leading-relaxed text-slate-700 max-w-4xl">
-                        At The Foundry, we shape leaders who thrive amidst complexity, catalyze meaningful change, and redefine success in deep tech. Our diverse portfolio of foundational young graduate programmes is designed for beginners and early technical learners to master the core concepts of Artificial Intelligence, Cyber Security, Quantum Computing, and Blockchain. Each programme unites world-class academic rigour with global perspectives, delivering transformative educational experiences that cultivate resilient, innovative leaders poised to generate significant impact.
+                        At The Foundry, we shape leaders who thrive amidst complexity, catalyze meaningful change, and redefine success in deep tech. Our diverse portfolio of foundational Advanced Management programmes is designed for professionals and early technical learners to master the core concepts of Artificial Intelligence, Cyber Security, Quantum Computing, and Blockchain. Each programme unites world-class academic rigour with global perspectives, delivering transformative educational experiences that cultivate resilient, innovative leaders poised to generate significant impact.
                     </p>
                 </section>
 
@@ -64,64 +64,64 @@ export default function EntryLevelProgramPage() {
                     {/* Domain 1: Applied AI & GenAI (White bg) */}
                     <div className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-100">
                         <ProgramRow
-                            tag="YGP"
-                            title="Young Graduate Program in Applied AI & GenAI"
+                            tag="AMP"
+                            title="Advanced Management Program in Applied AI & GenAI"
                             description="Build a strong foundation in Artificial Intelligence. Master Neural Networks, NLP, and Computer Vision from the ground up to design intelligent, autonomous applications."
                             specs={{
                                 mode: "Hybrid (In-Person & Virtual)",
                                 duration: "12 Months",
-                                experience: "Beginners & Undergraduates",
+                                experience: "Professionals & Early Technical Learners",
                                 location: "Hitech City, Hyderabad"
                             }}
-                            onMoreInfo={() => setSelectedPackageId("entry-level-ai")}
+                            onMoreInfo={() => setSelectedPackageId("advanced-management-ai")}
                         />
                     </div>
 
                     {/* Domain 2: Cybersecurity (Alternating Warm bg) */}
                     <div className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-b border-slate-200/50">
                         <ProgramRow
-                            tag="YGP"
-                            title="Young Graduate Program in Cybersecurity Analyst"
+                            tag="AMP"
+                            title="Advanced Management Program in Cybersecurity Analyst"
                             description="Learn the core principles of network defense, digital forensics, and security audits. Master the foundational tools and strategies required to secure modern business infrastructures."
                             specs={{
                                 mode: "Hybrid (In-Person & Virtual)",
                                 duration: "12 Months",
-                                experience: "Beginners & Undergraduates",
+                                experience: "Professionals & Early Technical Learners",
                                 location: "Hitech City, Hyderabad"
                             }}
-                            onMoreInfo={() => setSelectedPackageId("entry-level-cyber-security")}
+                            onMoreInfo={() => setSelectedPackageId("advanced-management-cyber-security")}
                         />
                     </div>
 
                     {/* Domain 3: Quantum Computing (White bg) */}
                     <div className="p-8 sm:p-12 md:p-16 bg-white">
                         <ProgramRow
-                            tag="YGP"
-                            title="Young Graduate Program in Quantum Computing"
+                            tag="AMP"
+                            title="Advanced Management Program in Quantum Computing"
                             description="Introduce yourself to the computing paradigms of the future. Master Qubits, superposition, quantum gates, and algorithm design to prepare for tomorrow's computational shift."
                             specs={{
                                 mode: "Hybrid (In-Person & Virtual)",
                                 duration: "12 Months",
-                                experience: "Beginners & Undergraduates",
+                                experience: "Professionals & Early Technical Learners",
                                 location: "Hitech City, Hyderabad"
                             }}
-                            onMoreInfo={() => setSelectedPackageId("entry-level-quantum-computing")}
+                            onMoreInfo={() => setSelectedPackageId("advanced-management-quantum-computing")}
                         />
                     </div>
 
                     {/* Domain 4: Blockchain (Alternating Warm bg) */}
                     <div className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-slate-200/50">
                         <ProgramRow
-                            tag="YGP"
-                            title="Young Graduate Program in Blockchain & Web3"
+                            tag="AMP"
+                            title="Advanced Management Program in Blockchain & Web3"
                             description="Explore decentralized ledger technology. Learn how blockchain protocols, smart contracts, and Web3 networks structure trust and digital finance."
                             specs={{
                                 mode: "Hybrid (In-Person & Virtual)",
                                 duration: "12 Months",
-                                experience: "Beginners & Undergraduates",
+                                experience: "Professionals & Early Technical Learners",
                                 location: "Hitech City, Hyderabad"
                             }}
-                            onMoreInfo={() => setSelectedPackageId("entry-level-blockchain")}
+                            onMoreInfo={() => setSelectedPackageId("advanced-management-blockchain")}
                         />
                     </div>
                 </section>
