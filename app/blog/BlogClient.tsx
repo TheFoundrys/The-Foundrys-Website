@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, FileText, FlaskConical, Loader2, Newspaper } from 'lucide-react';
+import { ArrowRight, ChevronRight, FileText, FlaskConical, Loader2, Newspaper } from 'lucide-react';
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { client } from "@/sanity/client";
@@ -312,10 +312,10 @@ export function BlogClient() {
     }, [posts, selectedCategory]);
 
     return (
-        <main className="min-h-screen bg-slate-50 font-sans selection:bg-cyan-200 selection:text-cyan-900 overflow-x-hidden">
+        <main className="min-h-screen bg-[#eaedea] font-sans selection:bg-cyan-200 selection:text-cyan-900 overflow-x-hidden">
             <Navbar />
 
-            <section className="relative z-10 pt-32 pb-20 px-4 bg-slate-50">
+            <section className="relative z-10 pt-32 pb-8 px-4 bg-[#eaedea]">
                 <div className="container mx-auto max-w-7xl">
                     <div className="mb-10 max-w-3xl">
                         <span className="text-xs font-bold uppercase tracking-[0.24em] text-slate-400">
@@ -376,9 +376,9 @@ export function BlogClient() {
             </section>
 
             {/* Blog Grid */}
-            <section id="resource-feed" className="relative z-10 py-24 px-4 bg-slate-50">
+            <section id="resource-feed" className="relative z-10 pt-4 pb-16 px-4 bg-[#eaedea]">
                 <div className="container mx-auto max-w-7xl">
-                    <div className="flex items-center gap-4 mb-16">
+                    <div className="flex items-center gap-4 mb-8">
                         <div className="h-px bg-slate-200 flex-1" />
                         <span className="text-slate-400 font-mono text-sm uppercase tracking-widest">
                             Latest {selectedCategory === 'blog' ? 'Blog Posts' : selectedCategory === 'research' ? 'Research Papers' : 'Whitepapers'}
@@ -391,11 +391,11 @@ export function BlogClient() {
                             <Loader2 className="w-10 h-10 text-cyan-500 animate-spin" />
                         </div>
                     ) : filteredPosts.length === 0 ? (
-                        <div className="text-center py-20 text-slate-500 bg-slate-50 rounded-2xl border border-dashed border-slate-200">
+                        <div className="text-center py-20 text-slate-500 bg-slate-50 rounded-1xl border border-dashed border-slate-200">
                             <p>No {selectedCategory} transmissions received yet.</p>
                         </div>
                     ) : (
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8">
                             {filteredPosts.map((post, idx) => (
                                 <Link 
                                     href={post.link || `/blog/${post.slug.current}`} 
@@ -407,47 +407,44 @@ export function BlogClient() {
                                     <motion.div
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: idx * 0.1 + 0.2 }}
-                                        className="h-full bg-slate-50 border border-slate-100/50 rounded-3xl overflow-hidden hover:border-cyan-200 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-900/10 flex flex-col group-hover:-translate-y-2 relative"
+                                        transition={{ delay: idx * 0.05 }}
+                                        className="relative flex flex-col w-full h-full"
                                     >
-                                        <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10" />
-
-                                        {/* Image */}
-                                        <div className="h-64 overflow-hidden relative">
+                                        <div className="relative w-full h-[320px] overflow-hidden bg-slate-100">
                                             {post.mainImage ? (
                                                 <img
                                                     src={getPostImageUrl(post.mainImage)}
                                                     alt={post.title}
-                                                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 saturate-0 group-hover:saturate-100"
+                                                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                                                 />
                                             ) : (
-                                                <div className="w-full h-full bg-slate-200 flex items-center justify-center text-slate-400">
-                                                    No Signal
+                                                <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-slate-100 to-[#F7F7F4] flex items-center justify-center text-slate-400 text-xs font-bold uppercase tracking-widest">
+                                                    No Image
                                                 </div>
                                             )}
                                         </div>
 
-                                        {/* Content */}
-                                        <div className="p-8 flex-1 flex flex-col relative z-20">
-                                            <div className="flex justify-between items-center mb-4">
-                                                <span className="text-xs font-bold text-cyan-600 uppercase tracking-wider bg-cyan-50 px-2 py-1 rounded">
+                                        <div className="relative z-10 w-[85%] bg-[#F7F7F4] border border-slate-200/80 p-6 -mt-10 ml-0 flex flex-col justify-between flex-1 min-h-[190px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:bg-[#DCE7F1]">
+                                            <div>
+                                                <h3 className="font-serif text-xl font-bold text-brand-purple mb-1 line-clamp-3">
+                                                    {post.title}
+                                                </h3>
+                                                <div className="text-deep-blue font-semibold text-xs uppercase tracking-wider mb-3">
                                                     {post.category || 'General'}
-                                                </span>
-                                                <span className="text-xs font-mono text-slate-400">
-                                                    {post.readTime || '5m'}
-                                                </span>
+                                                    {post.readTime ? ` · ${post.readTime}` : ''}
+                                                </div>
+                                                <p className="text-xs text-slate-800 leading-relaxed font-sans line-clamp-4">
+                                                    {post.excerpt}
+                                                </p>
                                             </div>
 
-                                            <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-cyan-700 transition-colors leading-tight">
-                                                {post.title}
-                                            </h3>
-
-                                            <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-1 line-clamp-3">
-                                                {post.excerpt}
-                                            </p>
-
-                                            <div className="flex items-center text-slate-900 font-bold text-sm tracking-wide group-hover:gap-4 transition-all">
-                                                {post.link ? "Read More" : "Read Article"} <ArrowRight size={16} className="ml-2 text-cyan-500" />
+                                            <div className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand-purple group-hover:text-[#0f172a] transition-colors">
+                                                {post.link ? 'Read More' : 'Read Article'}
+                                                <ChevronRight
+                                                    size={14}
+                                                    strokeWidth={2.5}
+                                                    className="inline-block transition-transform duration-300 group-hover:translate-x-0.5"
+                                                />
                                             </div>
                                         </div>
                                     </motion.div>

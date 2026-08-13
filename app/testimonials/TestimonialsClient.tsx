@@ -3,8 +3,6 @@
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
-import { Quote, Sparkles, ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 
 const testimonials = [
     {
@@ -23,19 +21,19 @@ const testimonials = [
         name: "Raju Kalla",
         designation: "Cybersecurity Operations",
         image: "/images/testimonials/kalla.jpeg",
-        text: "Hi, This is Raju working at the intersection of cybersecurity operations like application and network security. I’ve been able to grow and achieve this with the guidance of Vishwanath Akuthota, whose mentorship has changed my professional journey. I like the way of teaching made even complex topics like cryptography easy to understand. I’d also like to congratulate him on his great journey with Foundry’s. Wishing him great success ahead!"
+        text: "Hi, This is Raju working at the intersection of cybersecurity operations like application and network security. I've been able to grow and achieve this with the guidance of Vishwanath Akuthota, whose mentorship has changed my professional journey. I like the way of teaching made even complex topics like cryptography easy to understand. I'd also like to congratulate him on his great journey with Foundry's. Wishing him great success ahead!"
     },
     {
         name: "Sai Charan Neeli",
         designation: "Cybersecurity Professional",
         image: "/images/testimonials/charan.jpeg",
-        text: "Hi I am Sai Charan Neeli I am an Cyber security Professional, I had the opportunity to learn from Vishwanath Akuthota, and his guidance played an important role in shaping my understanding of cybersecurity. His practical teaching style made complex concepts easy to understand. He not only teaches concepts but also helps build the right mindset for cybersecurity. I’m truly grateful for his guidance. I would like to congratulate him on his new journey with The Foundry’s in Warangal, and I wish him great success in building an inspiring platform for the cybersecurity community."
+        text: "Hi I am Sai Charan Neeli I am an Cyber security Professional, I had the opportunity to learn from Vishwanath Akuthota, and his guidance played an important role in shaping my understanding of cybersecurity. His practical teaching style made complex concepts easy to understand. He not only teaches concepts but also helps build the right mindset for cybersecurity. I'm truly grateful for his guidance. I would like to congratulate him on his new journey with The Foundry's in Warangal, and I wish him great success in building an inspiring platform for the cybersecurity community."
     },
     {
         name: "Krishna Prasad Avula",
         designation: "AI Researcher",
         image: "/images/testimonials/Krishna.jpeg",
-        text: "Hi, I am Krishna Prasad, and I work as an AI researcher. Before this, I had no idea about AI. I learned AI/ML and data science from Vishwanath. He guided me step by step and made AI concepts very easy to understand. Because of that, I was able to build projects with confidence. I also learned how to apply my knowledge in real-world applications. At the same time, I studied theory like machine learning basics and system design. I am really thankful to Vishwa for his training, and I’m excited about The Foundry’s journey"
+        text: "Hi, I am Krishna Prasad, and I work as an AI researcher. Before this, I had no idea about AI. I learned AI/ML and data science from Vishwanath. He guided me step by step and made AI concepts very easy to understand. Because of that, I was able to build projects with confidence. I also learned how to apply my knowledge in real-world applications. At the same time, I studied theory like machine learning basics and system design. I am really thankful to Vishwa for his training, and I'm excited about The Foundry's journey"
     },
     {
         name: "Yamuna Devi Kallakuri",
@@ -83,125 +81,57 @@ const testimonials = [
 
 export function TestimonialsClient() {
     return (
-        <main className="min-h-screen bg-slate-50 selection:bg-blue-100 selection:text-blue-900">
+        <main className="min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden" style={{ backgroundColor: "#EAEAE5" }}>
             <Navbar />
 
-            {/* Hero Section */}
-            <section className="pt-36 pb-24 px-6 relative overflow-hidden bg-slate-900 text-white">
-                {/* Subtle background decorative blobs */}
-                <div className="absolute inset-0 opacity-30">
-                    <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-600/30 rounded-full blur-[120px]" />
-                    <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px]" />
-                </div>
+            <div className="mx-4 sm:mx-6 md:mx-auto bg-white mt-20">
+                <section className="p-8 sm:p-12 md:p-16 bg-white">
+                    <h1 className="font-serif text-4xl md:text-6xl font-bold tracking-tight text-foundry-text">
+                        Our Alumni Stories.
+                    </h1>
+                    <p className="mt-6 text-sm md:text-base leading-relaxed text-slate-700 max-w-2xl">
+                        Hear from our alumni who transitioned into high-impact roles in Artificial Intelligence, Cybersecurity, and Deep Tech under our practical mentorship.
+                    </p>
+                </section>
+            </div>
 
-                <div className="container mx-auto max-w-5xl relative z-10 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-700 bg-slate-800/50 text-slate-300 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
-                            <Sparkles size={14} className="text-amber-400" />
-                            Stories of Success
-                        </div>
-                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter mb-8 leading-tight">
-                            Stories of <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">
-                                Real Transformation.
-                            </span>
-                        </h1>
-                        <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-                            Hear from our alumni who transitioned into high-impact roles in Artificial Intelligence, Cybersecurity, and Deep Tech under our practical mentorship.
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Testimonials Grid */}
-            <section className="py-20 px-6 bg-slate-50">
-                <style dangerouslySetInnerHTML={{
-                    __html: `
-                    .testimonial-quote {
-                        color: rgba(10, 20, 30, 0.02) !important;
-                    }
-                    `
-                }} />
-                <div className="container mx-auto max-w-6xl">
-                    <motion.div
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4 }}
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                    >
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white rounded-1xl shadow-lg shadow-black/15 border border-slate-200/50 mt-[30px] mb-16 overflow-hidden">
+                <section className="p-8 sm:p-12 md:p-16 text-brand-purple">
+                    <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8">
                         {testimonials.map((testimonial, index) => (
-                            <motion.div
-                                key={testimonial.name}
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4, delay: index * 0.05 }}
-                                className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-100 transition-all duration-300 flex flex-col justify-between group"
-                            >
-                                <div className="relative">
-                                    <Quote className="absolute -top-2 -left-2 w-5 h-5 -z-0 testimonial-quote" />
-                                    <p className="text-slate-600 text-sm leading-relaxed italic relative z-10">
-                                        "{testimonial.text}"
-                                    </p>
-                                </div>
-
-                                <div className="mt-4 border-t border-slate-100 pt-4">
-                                    <div>
-                                        <h4 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                                            {testimonial.name}
-                                        </h4>
-                                        <p className="text-xs text-blue-600 font-semibold mt-0.5">
-                                            {testimonial.designation}
-                                        </p>
-                                    </div>
-                                </div>
-                            </motion.div>
+                            <TestimonialCard key={testimonial.name} testimonial={testimonial} index={index} />
                         ))}
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* CTA Section */}
-            <section className="py-20 md:py-28 px-6 bg-slate-900 text-white relative overflow-hidden">
-                <div className="absolute inset-0 opacity-20">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/30 rounded-full blur-[150px]" />
-                </div>
-                <div className="container mx-auto max-w-3xl text-center relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-                            Start Your Own Journey.
-                        </h2>
-                        <p className="text-lg text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-                            Join India's first Deep Tech & Venture School and build a career that speaks for itself. Get hands-on mentorship, real-world project portfolios, and career transition support.
-                        </p>
-                        <div className="flex flex-col sm:flex-row justify-center gap-4">
-                            <Link
-                                href="/apply"
-                                className="inline-flex justify-center items-center gap-2 px-8 py-4 bg-white text-slate-900 rounded-full font-bold text-lg hover:bg-slate-100 transition-all hover:scale-105 active:scale-95 shadow-xl"
-                            >
-                                Apply Now
-                                <ArrowUpRight size={20} />
-                            </Link>
-                            <Link
-                                href="/contact"
-                                className="inline-flex justify-center items-center gap-2 px-8 py-4 border border-slate-700 text-slate-300 rounded-full font-bold text-lg hover:bg-slate-800 hover:text-white transition-all"
-                            >
-                                Get in Touch
-                            </Link>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
+                    </div>
+                </section>
+            </div>
 
             <Footer />
         </main>
+    );
+}
+
+function TestimonialCard({ testimonial, index }: { testimonial: (typeof testimonials)[number]; index: number }) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.05 }}
+            className="group relative flex flex-col w-full h-full"
+        >
+            <div className="relative z-10 w-full bg-[#F7F7F4] border border-slate-200/80 p-6 flex flex-col justify-between flex-1 min-h-[190px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:bg-[#DCE7F1]">
+                <div>
+                    <h3 className="font-serif text-xl font-bold text-brand-purple mb-1">
+                        {testimonial.name}
+                    </h3>
+                    <div className="text-deep-blue font-semibold text-xs uppercase tracking-wider mb-3">
+                        {testimonial.designation}
+                    </div>
+                    <p className="text-xs text-slate-800 leading-relaxed font-sans line-clamp-6 italic">
+                        &ldquo;{testimonial.text}&rdquo;
+                    </p>
+                </div>
+            </div>
+        </motion.div>
     );
 }

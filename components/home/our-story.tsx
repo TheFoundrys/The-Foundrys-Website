@@ -31,7 +31,7 @@ const cards = [
 export function OurStory() {
   return (
     <section className="bg-transparent px-6 pt-10 pb-8 text-brand-purple sm:px-10 lg:px-16">
-      <div className="mx-auto max-w-8xl bg-white p-8 sm:p-12 md:p-16 rounded-1xl shadow-lg shadow-black/15 border border-slate-200/50">
+      <div className="mx-auto max-w-6xl bg-white p-8 sm:p-12 md:p-16 rounded-1xl shadow-lg shadow-black/15 border border-slate-200/50">
         {/* Section Header */}
         <div className="mb-12 max-w-4xl">
           <h2 className="mb-6 font-serif text-3xl font-bold leading-tight text-deep-blue md:text-4xl">
