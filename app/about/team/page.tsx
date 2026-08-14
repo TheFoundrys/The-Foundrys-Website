@@ -39,16 +39,6 @@ const teamMembers = [
             linkedin: "https://www.linkedin.com/in/jp-pramod-a710985a/",
         }
     },
-     {
-        name: "Maruthi Ram Prasad Pelluri",
-        role: "Advisory Board Member",
-        bio: "Renowned educator with 36+ years of leadership at HPS Begumpet and Ramadevi Public School. National Award recipient and international ambassador for educational excellence.",
-        image: "/images/maruthi.jpg",
-        profileLink: "/about/faculty/maruthi-ram-prasad-pelluri",
-        socials: {
-            linkedin: "https://www.linkedin.com/in/maruthipelluri/",
-        }
-    },
     {
         name: "Srinivas Sadasyula",
         role: "Vice President",
@@ -75,14 +65,20 @@ const teamMembers = [
         role: "Business Development Executive",
         image: "/images/araavind.png",
         bio: "Enabling strategic partnerships and expanding market opportunities at the convergence of Deep Tech and Sustainability.",
-        profileLink: "/about/faculty/akuthota-aravind"
+        profileLink: "/about/faculty/akuthota-aravind",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/akuthota-aravind-608455193/"
+        }
     },
     {
         name: "Soujanya Kanagala",
         role: "Operations Head",
         image: "/images/soujanya.jpg",
         bio: "Operations Head with 14 years of experience specializing in business setup, operations, and organizational scaling.",
-        profileLink: "/about/faculty/soujanya-kanagala"
+        profileLink: "/about/faculty/soujanya-kanagala",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/soujanya-kanagala-07304833/"
+        }
     },
     {
         name: "Dr. Suman Rangabhashyam",
@@ -126,6 +122,26 @@ const teamMembers = [
         }
     },
     {
+        name: "Sai Pramodu",
+        role: "Academic Advisor",
+        bio: "Bringing 15+ years of diverse industry experience across software engineering, research, and strategy consulting. Expert in scaling tech ventures from ideation to market leadership, with a strong focus on emerging technologies, venture building, and go-to-market execution.",
+        image: "/images/testimonials/saipramod.jpeg",
+        // profileLink: "/about/faculty/sai-pramodu",
+        // socials: {
+        //     linkedin: "https://www.linkedin.com/in/maruthipelluri/",
+        // }
+    },
+    {
+        name: "Maruthi Ram Prasad Pelluri",
+        role: "Advisory Member",
+        bio: "Renowned educator with 36+ years of leadership at HPS Begumpet and Ramadevi Public School. National Award recipient and international ambassador for educational excellence.",
+        image: "/images/maruthi.jpg",
+        profileLink: "/about/faculty/maruthi-ram-prasad-pelluri",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/maruthipelluri/",
+        }
+    },
+    {
         name: "Dr. Jayaram",
         role: "Advisory Board Member",
         bio: "President of the Telangana Training and Placement Officers Association (TTPOA) and Vice President of the All India TPO Association. Bringing decades of experience in campus placements and aligning training ecosystems with industry needs.",
@@ -139,6 +155,15 @@ const teamMembers = [
         role: "Academics SME",
         bio: "Holds a Master of Commerce (M.Com) and a Master of Social Work (MSW). Brings over 23 years of teaching experience, including 5 years as a Junior College Principal and 13 years as a Degree College Principal.",
         image: "/images/ThirupathiReddy.jpeg",
+        socials: {
+            linkedin: "#",
+        }
+    },
+    {
+        name: "Krishna",
+        role: "Technical SME",
+        bio: "With over 10 years of hands-on experience in the electronics design and manufacturing industry, Krishna excels in driving engineering excellence from concept to delivery. He holds a Master of Technology (M.Tech) from IIT Madras, complementing a strong foundation in designing complex hardware systems and managing end-to-end product lifecycles in fast-paced environments.",
+        image: "/images/testimonials/Krishna.jpeg",
         socials: {
             linkedin: "#",
         }

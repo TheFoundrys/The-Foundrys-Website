@@ -2,7 +2,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, ChevronRight, FileText, FlaskConical, Loader2, Newspaper } from 'lucide-react';
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
@@ -206,8 +205,19 @@ const STATIC_RESEARCH_POSTS: Post[] = [
 
 const STATIC_BLOG_POSTS: Post[] = [
     {
+        _id: "blog-2",
+        title: "Debunking AI Myths: Understanding the Reality Through Practical Examples",
+        slug: { current: "debunking-ai-myths-understanding-reality-through-practical-examples" },
+        publishedAt: "2026-08-13T17:00:03Z",
+        mainImage: { static: true, url: "/images/debunking_ai_myths_cover.jpg" },
+        category: "Blog",
+        readTime: "4 min",
+        excerpt: "AI is powerful—but how much of what we believe about AI is actually true? From 'AI will replace all jobs' to 'AI is always 100% accurate,' we separate 5 common AI myths from reality using practical, real-world examples.",
+        link: "https://www.linkedin.com/pulse/debunking-ai-myths-understanding-reality-through-practical-4j1cc"
+    },
+    {
         _id: "blog-1",
-        title: "Building the Future: A Message from the Founder of The Foundry’s",
+        title: "Building the Future: A Message from the Founder of The Foundry's",
         slug: { current: "building-the-future-message-from-founder" },
         publishedAt: "2026-03-12T00:00:00Z",
         mainImage: { static: true, url: "/images/building_the_future_cover.png" },
@@ -313,82 +323,75 @@ export function BlogClient() {
     }, [posts, selectedCategory]);
 
     return (
-        <main className="min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden" style={{ backgroundColor: "#EAEAE5" }}>
+        <main className="min-h-screen bg-[#eaedea] font-sans selection:bg-cyan-200 selection:text-cyan-900 overflow-x-hidden">
             <Navbar />
 
-            {/* Hero Container */}
-            <div className="mx-4 sm:mx-6 md:mx-auto bg-white mt-20">
-                <section className="p-8 sm:p-12 md:p-16 bg-white">
-                    <span className="text-xs font-bold uppercase tracking-[0.24em] text-slate-400">
-                        Resources
-                    </span>
-                    <h1 className="mt-4 font-serif text-4xl md:text-6xl font-bold tracking-tight text-foundry-text">
-                        Choose your knowledge stream.
-                    </h1>
-                    <p className="mt-6 text-sm md:text-base leading-relaxed text-slate-700 max-w-2xl">
-                        Explore the latest insights, research, and deep tech perspectives from The Foundry's team and academic ecosystem.
-                    </p>
-                </section>
-            </div>
+            <section className="relative z-10 pt-32 pb-8 px-4 bg-[#eaedea]">
+                <div className="container mx-auto max-w-7xl">
+                    <div className="mb-10 max-w-3xl">
+                        <span className="text-xs font-bold uppercase tracking-[0.24em] text-slate-400">
+                            Resources
+                        </span>
+                        <h1 className="mt-4 text-4xl md:text-6xl font-bold tracking-tight text-slate-950">
+                            Choose your knowledge stream.
+                        </h1>
+                    </div>
 
-            {/* Selector Cards Container */}
-            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] mt-[30px]">
-                <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
-                    {resourceSections.map((section, idx) => {
-                        const Icon = section.icon;
-                        const catKey = section.title.toLowerCase() as 'blog' | 'research' | 'whitepapers';
-                        const isActive = selectedCategory === catKey;
+                    <div className="grid gap-5 md:grid-cols-3">
+                        {resourceSections.map((section, idx) => {
+                            const Icon = section.icon;
+                            const catKey = section.title.toLowerCase() as 'blog' | 'research' | 'whitepapers';
+                            const isActive = selectedCategory === catKey;
 
-                        return (
-                            <Link 
-                                href={section.href} 
-                                key={section.title} 
-                                className="group"
-                                onClick={(e) => handleSectionClick(e, catKey)}
-                            >
-                                <motion.article
-                                    initial={{ opacity: 0, y: 18 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: idx * 0.08 }}
-                                    className={`min-h-[220px] h-full rounded-1xl border p-8 shadow-lg shadow-black/15 border-slate-200/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-                                        isActive 
-                                            ? 'bg-[#DCE7F1] border-slate-300' 
-                                            : 'bg-white border-slate-200/50 hover:border-slate-300'
-                                    }`}
+                            return (
+                                <Link 
+                                    href={section.href} 
+                                    key={section.title} 
+                                    className="group"
+                                    onClick={(e) => handleSectionClick(e, catKey)}
                                 >
-                                    <div className={`mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg border ${
-                                        isActive ? 'bg-white text-brand-purple border-slate-300' : section.accent
-                                    }`}>
-                                        <Icon size={22} strokeWidth={1.8} />
-                                    </div>
+                                    <motion.article
+                                        initial={{ opacity: 0, y: 18 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: idx * 0.08 }}
+                                        className={`min-h-[280px] h-full rounded-lg border p-6 md:p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/5 ${
+                                            isActive 
+                                                ? 'bg-slate-50/70 border-cyan-600/50 ring-1 ring-cyan-600/30' 
+                                                : 'bg-white border-slate-200 hover:border-slate-300'
+                                        }`}
+                                    >
+                                        <div className={`mb-8 inline-flex h-12 w-12 items-center justify-center rounded-lg border ${section.accent}`}>
+                                            <Icon size={22} strokeWidth={1.8} />
+                                        </div>
 
-                                    <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                                        {section.label}
-                                    </p>
-                                    <h2 className="mb-3 font-serif text-2xl font-bold text-brand-purple">
-                                        {section.title}
-                                    </h2>
-                                    <p className="text-xs leading-relaxed text-slate-700">
-                                        {section.description}
-                                    </p>
+                                        <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-slate-400">
+                                            {section.label}
+                                        </p>
+                                        <h2 className="mb-4 text-3xl font-bold tracking-tight text-slate-950">
+                                            {section.title}
+                                        </h2>
+                                        <p className="text-sm leading-6 text-slate-600">
+                                            {section.description}
+                                        </p>
 
-                                    <div className="mt-6 inline-flex items-center gap-1.5 text-xs font-bold text-brand-purple transition-colors group-hover:text-deep-blue">
-                                        {section.action}
-                                        <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                                    </div>
-                                </motion.article>
-                            </Link>
-                        );
-                    })}
+                                        <div className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-slate-950 transition-colors group-hover:text-cyan-700">
+                                            {section.action}
+                                            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                                        </div>
+                                    </motion.article>
+                                </Link>
+                            );
+                        })}
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            {/* Blog Grid Container */}
-            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white rounded-1xl shadow-lg shadow-black/15 border border-slate-200/50 mt-[30px] mb-16 overflow-hidden">
-                <section id="resource-feed" className="p-8 sm:p-12 md:p-16 text-brand-purple">
-                    <div className="flex items-center gap-4 mb-12">
+            {/* Blog Grid */}
+            <section id="resource-feed" className="relative z-10 pt-4 pb-16 px-4 bg-[#eaedea]">
+                <div className="container mx-auto max-w-7xl">
+                    <div className="flex items-center gap-4 mb-8">
                         <div className="h-px bg-slate-200 flex-1" />
-                        <span className="text-slate-400 font-mono text-xs uppercase tracking-[0.2em] font-bold">
+                        <span className="text-slate-400 font-mono text-sm uppercase tracking-widest">
                             Latest {selectedCategory === 'blog' ? 'Blog Posts' : selectedCategory === 'research' ? 'Research Papers' : 'Whitepapers'}
                         </span>
                         <div className="h-px bg-slate-200 flex-1" />
@@ -396,10 +399,10 @@ export function BlogClient() {
 
                     {loading && posts.length === 0 ? (
                         <div className="flex justify-center py-20">
-                            <Loader2 className="w-10 h-10 text-brand-purple animate-spin" />
+                            <Loader2 className="w-10 h-10 text-cyan-500 animate-spin" />
                         </div>
                     ) : filteredPosts.length === 0 ? (
-                        <div className="text-center py-20 text-slate-500 bg-[#F7F7F4] rounded-1xl border border-dashed border-slate-200">
+                        <div className="text-center py-20 text-slate-500 bg-slate-50 rounded-1xl border border-dashed border-slate-200">
                             <p>No {selectedCategory} transmissions received yet.</p>
                         </div>
                     ) : (
@@ -420,12 +423,10 @@ export function BlogClient() {
                                     >
                                         <div className="relative w-full h-[320px] overflow-hidden bg-slate-100">
                                             {post.mainImage ? (
-                                                <Image
+                                                <img
                                                     src={getPostImageUrl(post.mainImage)}
                                                     alt={post.title}
-                                                    fill
-                                                    sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 90vw"
-                                                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                                                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                                                 />
                                             ) : (
                                                 <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-slate-100 to-[#F7F7F4] flex items-center justify-center text-slate-400 text-xs font-bold uppercase tracking-widest">
@@ -462,12 +463,10 @@ export function BlogClient() {
                             ))}
                         </div>
                     )}
-                </section>
-            </div>
+                </div>
+            </section>
 
             <Footer />
         </main>
     );
 }
-
-

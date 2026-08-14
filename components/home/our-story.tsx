@@ -45,7 +45,11 @@ export function OurStory() {
         {/* 3-Column Card Grid */}
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-6 lg:gap-8 pb-10">
           {cards.map((card) => (
-            <div key={card.title} className="group relative flex flex-col w-full h-full">
+            <Link 
+              href={card.href} 
+              key={card.title} 
+              className="group relative flex flex-col w-full h-full cursor-pointer no-underline"
+            >
               {/* Image Container */}
               <div className="relative w-full h-[280px] overflow-hidden bg-slate-100">
                 <Image
@@ -68,19 +72,18 @@ export function OurStory() {
                   </p>
                 </div>
                 
-                <Link
-                  href={card.href}
-                  className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand-purple hover:text-[#0f172a] transition-colors group/link"
+                <div
+                  className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand-purple transition-colors"
                 >
-                  Learn More
+                  <span>Learn More</span>
                   <ChevronRight 
                     size={14} 
                     strokeWidth={2.5}
-                    className="inline-block transition-transform duration-300 group-hover/link:translate-x-0.5" 
+                    className="inline-block transition-transform duration-300 group-hover:translate-x-0.5" 
                   />
-                </Link>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

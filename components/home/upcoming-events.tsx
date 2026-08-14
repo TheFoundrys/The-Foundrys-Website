@@ -56,9 +56,10 @@ export function UpcomingEvents() {
         {/* Card Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {EVENTS.map((event) => (
-            <div
+            <Link
+              href={event.href}
               key={event.title}
-              className="flex flex-col w-full h-full bg-[#f8fafc] border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group"
+              className="flex flex-col w-full h-full bg-[#f8fafc] border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group no-underline cursor-pointer"
             >
               {/* Image Container with overlay Date Tag */}
               <div className="relative w-full h-[220px] overflow-hidden bg-slate-100">
@@ -108,15 +109,14 @@ export function UpcomingEvents() {
                 </div>
 
                 {/* Read More Link */}
-                <Link
-                  href={event.href}
-                  className="inline-flex items-center text-brand-purple font-bold text-sm group-hover:underline"
+                <div
+                  className="inline-flex items-center text-brand-purple font-bold text-sm"
                 >
                   <span>Read More</span>
                   <ChevronRight size={14} className="ml-0.5 group-hover:translate-x-0.5 transition-transform" />
-                </Link>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
