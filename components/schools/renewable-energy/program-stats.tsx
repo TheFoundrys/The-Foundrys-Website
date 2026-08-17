@@ -75,8 +75,8 @@ export function RenewableEnergyStats() {
     });
 
   return (
-    <section className="py-24 px-4 overflow-hidden" style={{ backgroundColor: "#F0DFDF" }}>
-      <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-16">
+    <div className="py-16 relative border-b border-[#c5d8ec]/60 z-10">
+      <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-16 py-4 px-4 md:px-8">
         
         <div className="md:w-1/2 relative flex justify-center items-center">
             <div className="w-[300px] h-[300px] md:w-[450px] md:h-[450px] relative">
@@ -105,29 +105,29 @@ export function RenewableEnergyStats() {
                 </svg>
             </div>
         </div>
-
+ 
         <div className="md:w-1/2 space-y-6 w-full">
-            <h3 className="text-3xl font-bold text-slate-900 mb-8 text-center md:text-left">The Program Mix</h3>
+            <h3 className="text-3xl font-bold text-[#031a57] font-serif mb-8 text-center md:text-left tracking-tight">The Program Mix</h3>
             <div className="space-y-4">
                 {polarData.map((item, i) => (
                     <motion.div 
                         key={i}
                         ref={(el) => { legendRefs.current[i] = el; }}
-                        className={`p-4 rounded-xl border transition-colors cursor-default ${hoveredIndex === i ? "bg-white border-green-200 shadow-md scale-105" : "bg-transparent border-transparent hover:bg-white/50"}`}
+                        className={`p-5 rounded-2xl border transition-all duration-300 cursor-default ${hoveredIndex === i ? "bg-white border-green-200 shadow-md scale-[1.02]" : "bg-transparent border-transparent hover:bg-white/50"}`}
                         onMouseEnter={() => setHoveredIndex(i)}
                         onMouseLeave={() => setHoveredIndex(null)}
                     >
                         <div className="flex items-center gap-3 mb-1">
                             <div className="w-4 h-4 rounded-full" style={{ backgroundColor: item.color }} />
-                            <h4 className="font-bold text-slate-900 text-lg">{item.label} <span className="text-slate-400 text-sm ml-2">({item.percent}%)</span></h4>
+                            <h4 className="font-bold text-[#031a57] text-lg font-serif">{item.label} <span className="text-slate-500 text-sm ml-2">({item.percent}%)</span></h4>
                         </div>
-                        <p className="text-slate-500 text-sm leading-relaxed pl-7">{item.desc}</p>
+                        <p className="text-slate-600 text-sm leading-relaxed pl-7">{item.desc}</p>
                     </motion.div>
                 ))}
             </div>
         </div>
-
+ 
       </div>
-    </section>
+    </div>
   );
 }

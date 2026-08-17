@@ -74,7 +74,7 @@ export function Navbar() {
         ],
         "specialized": [
             {
-                href: "/programs/fellow-executive",
+                href: "/schools/certified-innovator",
                 label: "Certified Innovator",
                 desc: "Systems Thinkers",
                 icon: Lightbulb,
@@ -282,7 +282,7 @@ export function Navbar() {
                             height={48}
                             className="h-10 w-10 object-contain rounded-full border border-neutral-200 shadow-[0_4px_14px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:scale-105"
                         />
-                        <span className="text-3xl sm:text-2xl font-normal tracking-wide text-black font-sego">The Foundry&apos;s</span>
+                        <span className="text-3xl sm:text-2xl font-medium tracking-wide text-black font-cinzel">The Foundry&apos;s</span>
                     </Link>
 
                     {/* Central Navigation Headings */}

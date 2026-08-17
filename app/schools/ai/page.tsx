@@ -290,7 +290,7 @@ export default function AISchoolPage() {
     }, []);
 
     return (
-        <main className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
+        <main className="min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden" style={{ backgroundColor: "#EAEAE5" }}>
             <Navbar />
 
             {/* Banner Image Section */}
@@ -319,190 +319,196 @@ export default function AISchoolPage() {
                 </div>
             </section>
 
-            {/* Introduction & Overview Section */}
-            <section className="bg-white px-6 py-16 text-[#031a57]">
-                <div className="container mx-auto max-w-6xl">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-                        {/* Left Column: Intro & Duration Toggle */}
-                        <div className="lg:col-span-7">
-                            <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl mb-6">
-                                Introduction
-                            </h2>
-                            <p className="text-sm md:text-base leading-relaxed text-slate-700 mb-8 max-w-2xl">
-                                A {duration}-year immersive degree merging AI Engineering with Entrepreneurship. Graduate with Mastery, Vision & Real-World Impact. The Foundry's AI program combines rigorous academic foundations with hands-on engineering and entrepreneurial execution. Students don't just learn theory — they architect neural networks, deploy agent systems, and ship production-grade AI products before graduation.
-                            </p>
-                            
-                            {/* Duration Toggle */}
-                            <div className="flex gap-4">
-                                <button
-                                    onClick={() => setDuration(3)}
-                                    className={`px-6 py-2.5 rounded-full font-bold text-xs tracking-wide transition-all duration-300 cursor-pointer ${
-                                        duration === 3 
-                                            ? 'bg-[#002f86] text-white shadow-md scale-105' 
-                                            : 'bg-slate-100 text-slate-500 hover:text-slate-900 border border-slate-200'
-                                    }`}
-                                >
-                                    3-Year Program
-                                </button>
-                                <button
-                                    onClick={() => setDuration(4)}
-                                    className={`px-6 py-2.5 rounded-full font-bold text-xs tracking-wide transition-all duration-300 cursor-pointer ${
-                                        duration === 4 
-                                            ? 'bg-[#002f86] text-white shadow-md scale-105' 
-                                            : 'bg-slate-100 text-slate-500 hover:text-slate-900 border border-slate-200'
-                                    }`}
-                                >
-                                    4-Year Program
-                                </button>
-                            </div>
-                        </div>
-
-                        {/* Right Column: Info Boxes */}
-                        <div className="lg:col-span-5 bg-slate-50 border border-slate-200/60 rounded-2xl p-6 h-fit space-y-6">
-                            {/* Degrees */}
-                            <div>
-                                <p className="text-[10px] text-slate-400 uppercase tracking-[0.2em] font-bold mb-3 font-mono">Available Degrees</p>
-                                <div className="space-y-2 border-l border-blue-500 pl-4">
-                                    {duration === 3 ? (
-                                        <>
-                                            <p className="text-sm font-bold text-[#031a57]">BCA in Artificial Intelligence</p>
-                                            <p className="text-sm font-bold text-[#031a57]">B.Sc AI / ML Professional</p>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <p className="text-sm font-bold text-[#031a57]">BCA in Artificial Intelligence</p>
-                                            <p className="text-sm font-bold text-[#031a57]">B.Tech AI / ML Professional</p>
-                                        </>
-                                    )}
+            {/* Introduction & Overview Section with Floating Specs Card */}
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white rounded-1xl shadow-lg shadow-black/15 border border-slate-200/50 mt-[30px] mb-8 overflow-hidden">
+                <section className="bg-white p-8 sm:p-12 md:p-16 text-[#031a57]">
+                    <div className="container mx-auto max-w-6xl">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+                            {/* Left Column: Intro & Duration Toggle */}
+                            <div className="lg:col-span-7">
+                                <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl mb-6">
+                                    Introduction
+                                </h2>
+                                <p className="text-sm md:text-base leading-relaxed text-slate-700 mb-8 max-w-2xl">
+                                    A {duration}-year immersive degree merging AI Engineering with Entrepreneurship. Graduate with Mastery, Vision & Real-World Impact. The Foundry's AI program combines rigorous academic foundations with hands-on engineering and entrepreneurial execution. Students don't just learn theory — they architect neural networks, deploy agent systems, and ship production-grade AI products before graduation.
+                                </p>
+                                
+                                {/* Duration Toggle */}
+                                <div className="flex gap-4">
+                                    <button
+                                        onClick={() => setDuration(3)}
+                                        className={`px-6 py-2.5 rounded-full font-bold text-xs tracking-wide transition-all duration-300 cursor-pointer ${
+                                            duration === 3 
+                                                ? 'bg-[#002f86] text-white shadow-md scale-105' 
+                                                : 'bg-slate-100 text-slate-500 hover:text-slate-900 border border-slate-200'
+                                        }`}
+                                    >
+                                        3-Year Program
+                                    </button>
+                                    <button
+                                        onClick={() => setDuration(4)}
+                                        className={`px-6 py-2.5 rounded-full font-bold text-xs tracking-wide transition-all duration-300 cursor-pointer ${
+                                            duration === 4 
+                                                ? 'bg-[#002f86] text-white shadow-md scale-105' 
+                                                : 'bg-slate-100 text-slate-500 hover:text-slate-900 border border-slate-200'
+                                        }`}
+                                    >
+                                        4-Year Program
+                                    </button>
                                 </div>
                             </div>
 
-                            {/* Partners */}
-                            {duration === 3 && (
+                            {/* Right Column: Info Boxes */}
+                            <div className="lg:col-span-5 bg-slate-50 border border-slate-200/60 rounded-2xl p-6 h-fit space-y-6">
+                                {/* Degrees */}
                                 <div>
-                                    <p className="text-[10px] text-slate-400 uppercase tracking-[0.2em] font-bold mb-3 font-mono">Partner Institutions</p>
-                                    <div className="space-y-2 border-l border-cyan-500 pl-4">
-                                        <p className="text-sm font-bold text-[#031a57]">Ethames Business School</p>
-                                        <p className="text-sm font-bold text-[#031a57]">Keshava Degree College</p>
+                                    <p className="text-[10px] text-slate-400 uppercase tracking-[0.2em] font-bold mb-3 font-mono">Available Degrees</p>
+                                    <div className="space-y-2 border-l border-blue-500 pl-4">
+                                        {duration === 3 ? (
+                                            <>
+                                                <p className="text-sm font-bold text-[#031a57]">BCA in Artificial Intelligence</p>
+                                                <p className="text-sm font-bold text-[#031a57]">B.Sc AI / ML Professional</p>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <p className="text-sm font-bold text-[#031a57]">BCA in Artificial Intelligence</p>
+                                                <p className="text-sm font-bold text-[#031a57]">B.Tech AI / ML Professional</p>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
-                            )}
 
-                            {/* Certifications */}
-                            <div>
-                                <p className="text-[10px] text-slate-400 uppercase tracking-[0.2em] font-bold mb-3 font-mono">Industry Credentials</p>
-                                <div className="flex gap-6 border-l border-purple-500 pl-4 items-center h-[38px]">
+                                {/* Partners */}
+                                {duration === 3 && (
                                     <div>
-                                        <span className="text-sm font-extrabold text-blue-600 tracking-wider block leading-none">FCEP</span>
-                                        <span className="text-[8px] text-slate-400 uppercase tracking-widest font-semibold mt-1 block font-mono">Executive</span>
+                                        <p className="text-[10px] text-slate-400 uppercase tracking-[0.2em] font-bold mb-3 font-mono">Partner Institutions</p>
+                                        <div className="space-y-2 border-l border-cyan-500 pl-4">
+                                            <p className="text-sm font-bold text-[#031a57]">Ethames Business School</p>
+                                            <p className="text-sm font-bold text-[#031a57]">Keshava Degree College</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <span className="text-sm font-extrabold text-cyan-600 tracking-wider block leading-none">FCIP</span>
-                                        <span className="text-[8px] text-slate-400 uppercase tracking-widest font-semibold mt-1 block font-mono">Practitioner</span>
-                                    </div>
-                                    <div>
-                                        <span className="text-sm font-extrabold text-purple-600 tracking-wider block leading-none">FFP</span>
-                                        <span className="text-[8px] text-slate-400 uppercase tracking-widest font-semibold mt-1 block font-mono">Professional</span>
+                                )}
+
+                                {/* Certifications */}
+                                <div>
+                                    <p className="text-[10px] text-slate-400 uppercase tracking-[0.2em] font-bold mb-3 font-mono">Industry Credentials</p>
+                                    <div className="flex gap-6 border-l border-purple-500 pl-4 items-center h-[38px]">
+                                        <div>
+                                            <span className="text-sm font-extrabold text-blue-600 tracking-wider block leading-none">FCEP</span>
+                                            <span className="text-[8px] text-slate-400 uppercase tracking-widest font-semibold mt-1 block font-mono">Executive</span>
+                                        </div>
+                                        <div>
+                                            <span className="text-sm font-extrabold text-cyan-600 tracking-wider block leading-none">FCIP</span>
+                                            <span className="text-[8px] text-slate-400 uppercase tracking-widest font-semibold mt-1 block font-mono">Practitioner</span>
+                                        </div>
+                                        <div>
+                                            <span className="text-sm font-extrabold text-purple-600 tracking-wider block leading-none">FFP</span>
+                                            <span className="text-[8px] text-slate-400 uppercase tracking-widest font-semibold mt-1 block font-mono">Professional</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* Program Details Floating Specs Card */}
-            <div className="relative z-20 px-6 -mt-10 mb-12">
-                <div className="mx-auto max-w-[1450px]">
-                    <div className="bg-white rounded-3xl shadow-xl border border-slate-200/60 py-8 px-8 lg:px-12 flex flex-col lg:flex-row items-center justify-between gap-8">
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6 lg:gap-x-14 flex-1 text-left w-full">
-                            <div>
-                                <p className="text-[10px] uppercase tracking-wider font-bold mb-1 font-mono text-slate-400">Program Length</p>
-                                <p className="text-base sm:text-lg font-bold text-[#031a57]">{duration}-Year Full-Time</p>
-                            </div>
-                            <div>
-                                <p className="text-[10px] uppercase tracking-wider font-bold mb-1 font-mono text-slate-400">Delivery Mode</p>
-                                <p className="text-base sm:text-lg font-bold text-[#031a57]">On-Campus, Immersive</p>
-                            </div>
-                            <div>
-                                <p className="text-[10px] uppercase tracking-wider font-bold mb-1 font-mono text-slate-400">Campus Location</p>
-                                <p className="text-base sm:text-lg font-bold text-[#031a57]">{duration === 4 ? "Hyderabad" : "Hyderabad / Warangal"}</p>
-                            </div>
-                            <div>
-                                <p className="text-[10px] uppercase tracking-wider font-bold mb-1 font-mono text-slate-400">Cohort Status</p>
-                                <p className="text-base sm:text-lg font-bold text-emerald-600">Admissions Closed</p>
-                            </div>
+                {/* Program Details specs block (nested inside card) */}
+                <div className="bg-[#F7F7F4] border-t border-slate-200/60 p-8 sm:p-12 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6 lg:gap-x-14 flex-1 text-left w-full">
+                        <div>
+                            <p className="text-[10px] uppercase tracking-wider font-bold mb-1 font-mono text-slate-400">Program Length</p>
+                            <p className="text-base sm:text-lg font-bold text-[#031a57]">{duration}-Year Full-Time</p>
                         </div>
+                        <div>
+                            <p className="text-[10px] uppercase tracking-wider font-bold mb-1 font-mono text-slate-400">Delivery Mode</p>
+                            <p className="text-base sm:text-lg font-bold text-[#031a57]">On-Campus, Immersive</p>
+                        </div>
+                        <div>
+                            <p className="text-[10px] uppercase tracking-wider font-bold mb-1 font-mono text-slate-400">Campus Location</p>
+                            <p className="text-base sm:text-lg font-bold text-[#031a57]">{duration === 4 ? "Hyderabad" : "Hyderabad / Warangal"}</p>
+                        </div>
+                        <div>
+                            <p className="text-[10px] uppercase tracking-wider font-bold mb-1 font-mono text-slate-400">Cohort Status</p>
+                            <p className="text-base sm:text-lg font-bold text-emerald-600">Admissions Closed</p>
+                        </div>
+                    </div>
 
-                        <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-                            <Link href="/apply" className="flex-1 lg:flex-none text-center px-8 py-3.5 bg-[#002f86] text-white border border-[#002f86] font-bold rounded-xl hover:bg-[#002f86]/90 transition-all hover:scale-[1.02] shadow-[0_4px_20px_rgba(0,47,134,0.15)] whitespace-nowrap text-sm">
-                                Apply Now
-                            </Link>
-                            <Link href="/contact" className="flex-1 lg:flex-none text-center px-8 py-3.5 bg-white text-slate-750 border border-slate-200 font-bold rounded-xl hover:bg-slate-50 transition-all hover:scale-[1.02] whitespace-nowrap text-sm">
-                                Contact Admissions
-                            </Link>
-                        </div>
+                    <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                        <Link href="/apply" className="flex-1 lg:flex-none text-center px-8 py-3.5 bg-[#002f86] text-white border border-[#002f86] font-bold rounded-xl hover:bg-[#002f86]/90 transition-all hover:scale-[1.02] shadow-[0_4px_20px_rgba(0,47,134,0.15)] whitespace-nowrap text-sm">
+                            Apply Now
+                        </Link>
+                        <Link href="/contact" className="flex-1 lg:flex-none text-center px-8 py-3.5 bg-white text-slate-750 border border-slate-200 font-bold rounded-xl hover:bg-slate-50 transition-all hover:scale-[1.02] whitespace-nowrap text-sm">
+                            Contact Admissions
+                        </Link>
                     </div>
                 </div>
             </div>
 
             {/* 1. OVERVIEW */}
-            <section id="overview" className="py-24 px-6 bg-white overflow-hidden relative border-t border-slate-100">
-                <div className="absolute inset-0 opacity-5 pointer-events-none">
-                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500 rounded-full blur-[150px]" />
-                </div>
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+                <section id="overview" className="p-8 sm:p-12 md:p-16 bg-white overflow-hidden relative">
+                    <div className="absolute inset-0 opacity-5 pointer-events-none">
+                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500 rounded-full blur-[150px]" />
+                    </div>
 
-                <div className="container mx-auto max-w-[1450px] relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-                        <div>
-                            <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-4 font-mono">Program Overview</p>
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#031a57] font-serif mb-6 leading-tight tracking-tight">
-                                A Degree Built for <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">the AI Era.</span>
-                            </h2>
-                            <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-10">
-                                The Foundry&apos;s {duration}-year AI program combines rigorous academic foundations with hands-on engineering and entrepreneurial execution. Students don&apos;t just learn theory — they architect neural networks, deploy agent systems, and ship production-grade AI products before graduation.
-                            </p>
-                            <div className="flex flex-wrap gap-3">
-                                {["Neural Networks", "LLMs & Agents", "MLOps", "Startup Lab", "GPU Clusters", "Ethics & Safety"].map((tag, i) => (
-                                    <span key={i} className="px-4 py-2 bg-slate-50 border border-slate-200 text-slate-600 rounded-full text-xs font-semibold hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-colors cursor-default select-none">
-                                        {tag}
-                                    </span>
+                    <div className="container mx-auto max-w-6xl relative z-10">
+                        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                            <div>
+                                <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-4 font-mono">Program Overview</p>
+                                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#031a57] font-serif mb-6 leading-tight tracking-tight">
+                                    A Degree Built for <br />
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">the AI Era.</span>
+                                </h2>
+                                <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-10">
+                                    The Foundry&apos;s {duration}-year AI program combines rigorous academic foundations with hands-on engineering and entrepreneurial execution. Students don&apos;t just learn theory — they architect neural networks, deploy agent systems, and ship production-grade AI products before graduation.
+                                </p>
+                                <div className="flex flex-wrap gap-3">
+                                    {["Neural Networks", "LLMs & Agents", "MLOps", "Startup Lab", "GPU Clusters", "Ethics & Safety"].map((tag, i) => (
+                                        <span key={i} className="px-4 py-2 bg-slate-50 border border-slate-200 text-slate-600 rounded-full text-xs font-semibold hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-colors cursor-default select-none">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-6 w-full">
+                                {[
+                                    { value: duration.toString(), unit: "Years", label: "Full-time immersive program" },
+                                    { value: (duration * 2).toString(), unit: "Semesters", label: "Progressive skill building" },
+                                    { value: "100%", unit: "Applied", label: "Project-based curriculum" },
+                                    { value: "100+", unit: "Concepts", label: "End-to-end industrial execution" },
+                                ].map((stat, i) => (
+                                    <motion.div
+                                        key={i}
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: i * 0.1 }}
+                                        className="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-blue-300 hover:bg-white hover:shadow-lg text-center transition-all duration-300"
+                                    >
+                                        <div className="text-3xl md:text-4xl font-extrabold text-[#031a57] font-serif mb-1 tracking-tight">{stat.value}</div>
+                                        <div className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2 font-mono">{stat.unit}</div>
+                                        <p className="text-xs text-slate-500 font-medium leading-relaxed">{stat.label}</p>
+                                    </motion.div>
                                 ))}
                             </div>
                         </div>
-
-                        <div className="grid grid-cols-2 gap-6 w-full">
-                            {[
-                                { value: duration.toString(), unit: "Years", label: "Full-time immersive program" },
-                                { value: (duration * 2).toString(), unit: "Semesters", label: "Progressive skill building" },
-                                { value: "100%", unit: "Applied", label: "Project-based curriculum" },
-                                { value: "100+", unit: "Concepts", label: "End-to-end industrial execution" },
-                            ].map((stat, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-blue-300 hover:bg-white hover:shadow-lg text-center transition-all duration-300"
-                                >
-                                    <div className="text-3xl md:text-4xl font-extrabold text-[#031a57] font-serif mb-1 tracking-tight">{stat.value}</div>
-                                    <div className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2 font-mono">{stat.unit}</div>
-                                    <p className="text-xs text-slate-500 font-medium leading-relaxed">{stat.label}</p>
-                                </motion.div>
-                            ))}
-                        </div>
                     </div>
+                </section>
+            </div>
+
+            {/* PROGRAM STATS & ELIGIBILITY CONSOLIDATED CARD */}
+            <section id="eligibility" className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#DCE7F1] border border-[#c5d8ec] rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+                
+                {/* Program Stats section wrapper (inner) */}
+                <div className="py-16 relative border-b border-[#c5d8ec]/60 z-10">
+                    <ProgramStats />
                 </div>
-            </section>
 
-            <ProgramStats />
-
-            {/* CONSOLIDATED ELIGIBILITY & WHO SHOULD JOIN */}
-            <section id="eligibility" className="py-24 px-6 overflow-hidden relative border-t" style={{ backgroundColor: "#DCE7F1", borderColor: "#c5d8ec" }}>
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(59,130,246,0.03),transparent_60%)]" />
-                <div className="container mx-auto max-w-[1450px] relative z-10">
+                {/* Eligibility section wrapper (inner) */}
+                <div className="py-16 px-6 relative z-10">
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(59,130,246,0.03),transparent_60%)] pointer-events-none" />
+                    <div className="container mx-auto max-w-6xl relative z-10">
                     <div className="grid lg:grid-cols-2 gap-20 items-start">
                         
                         {/* Who is this for */}
@@ -560,163 +566,168 @@ export default function AISchoolPage() {
 
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
             {/* OUTCOMES & MILESTONES */}
-            <section id="outcomes" className="py-24 px-6 bg-white overflow-hidden border-y border-slate-200 relative">
-                <div className="container mx-auto max-w-[1450px]">
-                    <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-16 lg:gap-24 items-start">
-                        
-                        {/* Timeline / Highlights */}
-                        <div>
-                            <div className="mb-12">
-                                <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-3 font-mono">Program highlights</p>
-                                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#031a57] font-serif tracking-tight leading-tight mb-6">
-                                    Three paths to becoming an <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">AI professional</span>
-                                </h2>
-                                <p className="text-base text-slate-600 leading-relaxed max-w-xl font-light">
-                                    This program is structured as a progressive journey — from understanding AI fundamentals to building real systems and operating at an industry level.
-                                </p>
-                            </div>
-
-                            <div className="flex flex-col gap-0 max-w-xl">
-                                {/* Stage 01 */}
-                                <div className="grid grid-cols-[48px_1fr] gap-x-6 pb-10 relative group">
-                                    <div className="flex flex-col items-center">
-                                        <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center shrink-0 border border-blue-250 shadow-sm">
-                                            <span className="font-mono text-xs font-bold text-blue-600">01</span>
-                                        </div>
-                                        <div className="w-[1px] bg-slate-200 flex-1 mt-2 group-last:hidden"></div>
-                                    </div>
-                                    <div className="pt-2.5 pb-2 cursor-default">
-                                        <div className="text-blue-600 text-xs font-bold uppercase tracking-wider mb-1 font-mono">Stage 01</div>
-                                        <div className="text-xl font-bold text-[#031a57] font-serif mb-2">AI Fluency</div>
-                                        <div className="text-sm text-slate-600 leading-relaxed font-normal">
-                                            Learn the core concepts of Artificial Intelligence, Machine Learning, Deep Learning and Neural Networks. Build a confident foundation before you write a single line of code.
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Stage 02 */}
-                                <div className="grid grid-cols-[48px_1fr] gap-x-6 pb-10 relative group">
-                                    <div className="flex flex-col items-center">
-                                        <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center shrink-0 border border-blue-250 shadow-sm">
-                                            <span className="font-mono text-xs font-bold text-blue-600">02</span>
-                                        </div>
-                                        <div className="w-[1px] bg-slate-200 flex-1 mt-2 group-last:hidden"></div>
-                                    </div>
-                                    <div className="pt-2.5 pb-2 cursor-default">
-                                        <div className="text-blue-600 text-xs font-bold uppercase tracking-wider mb-1 font-mono">Stage 02</div>
-                                        <div className="text-xl font-bold text-[#031a57] font-serif mb-2">AI Builder</div>
-                                        <div className="text-sm text-slate-600 leading-relaxed font-normal">
-                                            Work on real-world AI projects and develop practical problem-solving skills. Apply your knowledge to challenges that mirror what teams face in production environments today.
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Stage 03 */}
-                                <div className="grid grid-cols-[48px_1fr] gap-x-6 relative group">
-                                    <div className="flex flex-col items-center">
-                                        <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center shrink-0 border border-blue-250 shadow-sm">
-                                            <span className="font-mono text-xs font-bold text-blue-600">03</span>
-                                        </div>
-                                        <div className="w-[1px] bg-slate-200 flex-1 mt-2 group-last:hidden"></div>
-                                    </div>
-                                    <div className="pt-2.5 pb-2 cursor-default">
-                                        <div className="text-blue-600 text-xs font-bold uppercase tracking-wider mb-1 font-mono">Stage 03</div>
-                                        <div className="text-xl font-bold text-[#031a57] font-serif mb-2">AI Engineer</div>
-                                        <div className="text-sm text-slate-600 leading-relaxed font-normal">
-                                            Get guidance and training from experienced professionals in the AI industry. Graduate ready to own systems, communicate decisions, and operate at scale.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Outcomes Details Panel */}
-                        <div className="flex flex-col gap-8 bg-slate-50 border border-slate-200 p-8 lg:p-10 rounded-[2rem] shadow-sm">
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+                <section id="outcomes" className="p-8 sm:p-12 md:p-16 bg-white overflow-hidden relative">
+                    <div className="container mx-auto max-w-6xl">
+                        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-16 lg:gap-24 items-start">
+                            
+                            {/* Timeline / Highlights */}
                             <div>
-                                <h3 className="text-xl md:text-2xl font-bold text-[#031a57] font-serif mb-2">
-                                    What you&apos;ll <span className="text-blue-600">learn</span>
-                                </h3>
-                                <p className="text-sm text-slate-500 leading-relaxed mb-6">
-                                    A curriculum built around the skills that AI teams actually need — from system design to governance and reliability.
-                                </p>
+                                <div className="mb-12">
+                                    <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-3 font-mono">Program highlights</p>
+                                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#031a57] font-serif tracking-tight leading-tight mb-6">
+                                        Three paths to becoming an <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">AI professional</span>
+                                    </h2>
+                                    <p className="text-base text-slate-600 leading-relaxed max-w-xl font-light">
+                                        This program is structured as a progressive journey — from understanding AI fundamentals to building real systems and operating at an industry level.
+                                    </p>
+                                </div>
 
-                                <div className="flex flex-col divide-y divide-slate-200/60">
-                                    {[
-                                        "AI system thinking",
-                                        "Data-first problem framing",
-                                        "Model selection & evaluation",
-                                        "LLM integration & orchestration",
-                                        "Risk, security, and governance by design",
-                                        "Cost, latency, and reliability trade-off analysis",
-                                        "Human-in-the-loop system design"
-                                    ].map((skill, index) => (
-                                        <div key={index} className="flex items-start gap-4 py-3 first:pt-0 last:pb-0 group">
-                                            <span className="text-sm font-bold text-blue-600 min-w-[24px] mt-0.5 font-mono">
-                                                {(index + 1).toString().padStart(2, '0')}
-                                            </span>
-                                            <span className="text-sm text-slate-700 font-medium">
-                                                {skill}
-                                            </span>
+                                <div className="flex flex-col gap-0 max-w-xl">
+                                    {/* Stage 01 */}
+                                    <div className="grid grid-cols-[48px_1fr] gap-x-6 pb-10 relative group">
+                                        <div className="flex flex-col items-center">
+                                            <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center shrink-0 border border-blue-250 shadow-sm">
+                                                <span className="font-mono text-xs font-bold text-blue-600">01</span>
+                                            </div>
+                                            <div className="w-[1px] bg-slate-200 flex-1 mt-2 group-last:hidden"></div>
                                         </div>
-                                    ))}
+                                        <div className="pt-2.5 pb-2 cursor-default">
+                                            <div className="text-blue-600 text-xs font-bold uppercase tracking-wider mb-1 font-mono">Stage 01</div>
+                                            <div className="text-xl font-bold text-[#031a57] font-serif mb-2">AI Fluency</div>
+                                            <div className="text-sm text-slate-600 leading-relaxed font-normal">
+                                                Learn the core concepts of Artificial Intelligence, Machine Learning, Deep Learning and Neural Networks. Build a confident foundation before you write a single line of code.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Stage 02 */}
+                                    <div className="grid grid-cols-[48px_1fr] gap-x-6 pb-10 relative group">
+                                        <div className="flex flex-col items-center">
+                                            <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center shrink-0 border border-blue-250 shadow-sm">
+                                                <span className="font-mono text-xs font-bold text-blue-600">02</span>
+                                            </div>
+                                            <div className="w-[1px] bg-slate-200 flex-1 mt-2 group-last:hidden"></div>
+                                        </div>
+                                        <div className="pt-2.5 pb-2 cursor-default">
+                                            <div className="text-blue-600 text-xs font-bold uppercase tracking-wider mb-1 font-mono">Stage 02</div>
+                                            <div className="text-xl font-bold text-[#031a57] font-serif mb-2">AI Builder</div>
+                                            <div className="text-sm text-slate-600 leading-relaxed font-normal">
+                                                Work on real-world AI projects and develop practical problem-solving skills. Apply your knowledge to challenges that mirror what teams face in production environments today.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Stage 03 */}
+                                    <div className="grid grid-cols-[48px_1fr] gap-x-6 relative group">
+                                        <div className="flex flex-col items-center">
+                                            <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center shrink-0 border border-blue-250 shadow-sm">
+                                                <span className="font-mono text-xs font-bold text-blue-600">03</span>
+                                            </div>
+                                            <div className="w-[1px] bg-slate-200 flex-1 mt-2 group-last:hidden"></div>
+                                        </div>
+                                        <div className="pt-2.5 pb-2 cursor-default">
+                                            <div className="text-blue-600 text-xs font-bold uppercase tracking-wider mb-1 font-mono">Stage 03</div>
+                                            <div className="text-xl font-bold text-[#031a57] font-serif mb-2">AI Engineer</div>
+                                            <div className="text-sm text-slate-600 leading-relaxed font-normal">
+                                                Get guidance and training from experienced professionals in the AI industry. Graduate ready to own systems, communicate decisions, and operate at scale.
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                                <h3 className="text-lg font-bold text-[#031a57] font-serif mb-2">
-                                    What you&apos;ll <span className="text-blue-600">achieve</span>
-                                </h3>
-                                <p className="text-xs text-slate-500 leading-relaxed mb-6">
-                                    Graduates leave this program with the mindset, vocabulary, and skills to make real decisions in AI-driven organisations.
-                                </p>
+                            {/* Outcomes Details Panel */}
+                            <div className="flex flex-col gap-8 bg-slate-50 border border-slate-200 p-8 lg:p-10 rounded-[2rem] shadow-sm">
+                                <div>
+                                    <h3 className="text-xl md:text-2xl font-bold text-[#031a57] font-serif mb-2">
+                                        What you&apos;ll <span className="text-blue-600">learn</span>
+                                    </h3>
+                                    <p className="text-sm text-slate-500 leading-relaxed mb-6">
+                                        A curriculum built around the skills that AI teams actually need — from system design to governance and reliability.
+                                    </p>
 
-                                <div className="flex flex-col gap-3">
-                                    {[
-                                        "Design AI systems instead of model demos",
-                                        "Evaluate failure before deployment",
-                                        "Own AI behavior, cost, and risk",
-                                        "Communicate AI decisions to engineers, leaders, and regulators"
-                                    ].map((outcome, index) => (
-                                        <div key={index} className="flex items-start gap-3.5 group">
-                                            <div className="w-5 h-5 rounded-full bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center shrink-0 mt-0.5">
-                                                <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="2,6 5,9 10,3" /></svg>
+                                    <div className="flex flex-col divide-y divide-slate-200/60">
+                                        {[
+                                            "AI system thinking",
+                                            "Data-first problem framing",
+                                            "Model selection & evaluation",
+                                            "LLM integration & orchestration",
+                                            "Risk, security, and governance by design",
+                                            "Cost, latency, and reliability trade-off analysis",
+                                            "Human-in-the-loop system design"
+                                        ].map((skill, index) => (
+                                            <div key={index} className="flex items-start gap-4 py-3 first:pt-0 last:pb-0 group">
+                                                <span className="text-sm font-bold text-blue-600 min-w-[24px] mt-0.5 font-mono">
+                                                    {(index + 1).toString().padStart(2, '0')}
+                                                </span>
+                                                <span className="text-sm text-slate-700 font-medium">
+                                                    {skill}
+                                                </span>
                                             </div>
-                                            <div className="text-xs font-semibold text-slate-700">
-                                                {outcome}
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                                    <h3 className="text-lg font-bold text-[#031a57] font-serif mb-2">
+                                        What you&apos;ll <span className="text-blue-600">achieve</span>
+                                    </h3>
+                                    <p className="text-xs text-slate-500 leading-relaxed mb-6">
+                                        Graduates leave this program with the mindset, vocabulary, and skills to make real decisions in AI-driven organisations.
+                                    </p>
+
+                                    <div className="flex flex-col gap-3">
+                                        {[
+                                            "Design AI systems instead of model demos",
+                                            "Evaluate failure before deployment",
+                                            "Own AI behavior, cost, and risk",
+                                            "Communicate AI decisions to engineers, leaders, and regulators"
+                                        ].map((outcome, index) => (
+                                            <div key={index} className="flex items-start gap-3.5 group">
+                                                <div className="w-5 h-5 rounded-full bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center shrink-0 mt-0.5">
+                                                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="2,6 5,9 10,3" /></svg>
+                                                </div>
+                                                <div className="text-xs font-semibold text-slate-700">
+                                                    {outcome}
+                                                </div>
                                             </div>
-                                        </div>
-                                    ))}
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
-
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
 
             {/* 3. WHAT YOU WILL STUDY (CURRICULUM) */}
-            <section id="curriculum" className="py-24 px-6 bg-white overflow-hidden relative">
-                <div className="container mx-auto max-w-[1450px]">
-                    <div className="text-center mb-16">
-                        <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-3 font-mono">Academic Map</p>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#031a57] font-serif mb-6 tracking-tight">What You Will Study</h2>
-                        <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">From mathematical foundations to building enterprise-scale data architectures. Every year builds on the last.</p>
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+                <section id="curriculum" className="p-8 sm:p-12 md:p-16 bg-white overflow-hidden relative">
+                    <div className="container mx-auto max-w-6xl">
+                        <div className="text-center mb-16">
+                            <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-3 font-mono">Academic Map</p>
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#031a57] font-serif mb-6 tracking-tight">What You Will Study</h2>
+                            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">From mathematical foundations to building enterprise-scale data architectures. Every year builds on the last.</p>
+                        </div>
+                        
+                        <SyllabusMindMap
+                            data={CURRICULUM_DATA.filter((item) => item.year <= duration).map(({ year, title, topics }) => ({ period: year, title, topics }))}
+                            periodLabel="Year"
+                            hubTitle="AI DEGREE"
+                            theme="blue"
+                        />
                     </div>
-                    
-                    <SyllabusMindMap
-                        data={CURRICULUM_DATA.filter((item) => item.year <= duration).map(({ year, title, topics }) => ({ period: year, title, topics }))}
-                        periodLabel="Year"
-                        hubTitle="AI DEGREE"
-                        theme="blue"
-                    />
-                </div>
-            </section>
+                </section>
+            </div>
 
             {/* INDUSTRIAL SKILLS (TOOL MASTER) */}
-            <section id="tool-master" className="py-20 overflow-hidden relative border-t" style={{ backgroundColor: "#DCE7F1", borderColor: "#c5d8ec" }}>
+            <section id="tool-master" className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#DCE7F1] border border-[#c5d8ec] rounded-1xl shadow-lg shadow-black/15 py-12 mt-[30px] mb-8 overflow-hidden relative">
                 <div className="container mx-auto max-w-6xl relative z-10 px-6 text-center mb-10">
                     <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-3 font-mono">Core Stack</p>
                     <h2 className="text-3xl md:text-5xl font-black text-[#031a57] tracking-tighter mb-4 leading-tight font-serif">
@@ -734,27 +745,29 @@ export default function AISchoolPage() {
                 </div>
             </section>
 
-            <CareerVision
-                roles={CAREER_ROLES.map(role => ({
-                    icon: role.id === "neural-architect" ? Cpu :
-                        role.id === "agentic-systems-engineer" ? BrainCircuit :
-                            role.id === "ai-security-lead" ? ShieldCheck :
-                                role.id === "chief-ai-officer" ? Briefcase :
-                                    role.id === "embodied-ai-specialist" ? Bot :
-                                        role.id === "synthetic-data-architect" ? Database :
-                                            role.id === "cross-modal-systems-designer" ? Layers : Cpu,
-                    title: role.title,
-                    salary: role.salary,
-                    growth: role.growth,
-                    desc: role.desc,
-                    skills: role.skills,
-                    responsibilities: role.responsibilities
-                }))}
-                title="What You'll Become"
-                subtitle="From mathematical foundations to architecting global cognitive systems. This is your career in 2035."
-                themeColor="blue"
-                isDark={false}
-            />
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+                <CareerVision
+                    roles={CAREER_ROLES.map(role => ({
+                        icon: role.id === "neural-architect" ? Cpu :
+                            role.id === "agentic-systems-engineer" ? BrainCircuit :
+                                role.id === "ai-security-lead" ? ShieldCheck :
+                                    role.id === "chief-ai-officer" ? Briefcase :
+                                        role.id === "embodied-ai-specialist" ? Bot :
+                                            role.id === "synthetic-data-architect" ? Database :
+                                                role.id === "cross-modal-systems-designer" ? Layers : Cpu,
+                        title: role.title,
+                        salary: role.salary,
+                        growth: role.growth,
+                        desc: role.desc,
+                        skills: role.skills,
+                        responsibilities: role.responsibilities
+                    }))}
+                    title="What You'll Become"
+                    subtitle="From mathematical foundations to architecting global cognitive systems. This is your career in 2035."
+                    themeColor="blue"
+                    isDark={false}
+                />
+            </div>
             
             <WhyUs />
 

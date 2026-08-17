@@ -23,14 +23,14 @@ const comparisonData = [
 
 export function RenewableEnergyComparison() {
     return (
-        <section className="py-24 px-4 bg-slate-50 relative overflow-hidden">
+        <section className="py-20 px-6 relative overflow-hidden bg-white">
             {/* Background Image */}
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 z-0 opacity-20">
                 <div 
-                    className="absolute inset-0 bg-cover bg-center opacity-30"
+                    className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: "url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop')" }} 
                 />
-                <div className="absolute inset-0 bg-white/60" />
+                <div className="absolute inset-0 bg-white/80" />
             </div>
 
             <div className="container mx-auto max-w-6xl relative z-10">

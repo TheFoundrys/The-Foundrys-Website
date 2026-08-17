@@ -328,15 +328,6 @@ export function BlogClient() {
 
             <section className="relative z-10 pt-32 pb-8 px-4 bg-[#eaedea]">
                 <div className="container mx-auto max-w-7xl">
-                    <div className="mb-10 max-w-3xl">
-                        <span className="text-xs font-bold uppercase tracking-[0.24em] text-slate-400">
-                            Resources
-                        </span>
-                        <h1 className="mt-4 text-4xl md:text-6xl font-bold tracking-tight text-slate-950">
-                            Choose your knowledge stream.
-                        </h1>
-                    </div>
-
                     <div className="grid gap-5 md:grid-cols-3">
                         {resourceSections.map((section, idx) => {
                             const Icon = section.icon;

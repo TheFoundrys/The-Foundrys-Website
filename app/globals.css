@@ -12,6 +12,7 @@
 @theme {
     --font-sans: var(--font-ubuntu), ui-sans-serif, system-ui, sans-serif;
     --font-sego: 'Sego', serif;
+    --font-cinzel: var(--font-cinzel), serif;
 
     --color-electric-purple: #7c3aed;
     --color-neon-blue: #0ea5e9;

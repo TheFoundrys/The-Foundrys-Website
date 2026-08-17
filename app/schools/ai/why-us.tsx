@@ -31,7 +31,7 @@ const reasons = [
 
 export function WhyUs() {
     return (
-        <section className="py-28 px-4 relative overflow-hidden" style={{ backgroundColor: "#DCE7F1" }}>
+        <section className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#DCE7F1] border border-[#c5d8ec] rounded-1xl shadow-lg shadow-black/15 py-16 px-4 md:px-8 mt-[30px] mb-16 overflow-hidden relative">
             {/* Light background grid pattern */}
             <div className="absolute inset-0 z-0 opacity-40">
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />

@@ -237,8 +237,8 @@ export default function SustainabilityClient() {
 
    const originalPrice = COURSE_PRICING.sustainability.original[currency];
 
-    return (
-       <div ref={containerRef} className="bg-stone-50 text-stone-900 min-h-screen selection:bg-emerald-200 selection:text-emerald-900 font-sans">
+   return (
+       <div ref={containerRef} className="min-h-screen font-sans selection:bg-emerald-100 selection:text-emerald-850 overflow-x-hidden" style={{ backgroundColor: "#EAEAE5" }}>
           <Navbar />
 
           {/* 1. TOP BANNER IMAGE SECTION */}
@@ -276,495 +276,446 @@ export default function SustainabilityClient() {
              </div>
           </section>
 
-          {/* 2. INTRODUCTION SECTION */}
-          <section className="py-16 px-6 bg-white relative z-10">
-             <div className="container mx-auto max-w-5xl">
-                <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl mb-6">
-                   Introduction
-                </h2>
-                <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-light mb-8">
-                   An intensive program designed for professionals shaping the future of technology, climate, and governance. Sustainability is no longer a corporate report; it's a technical challenge. Master the intersection of AI, Climate Tech, and ESG.
-                </p>
+          {/* 2. INTRODUCTION & SPECS SECTION (Combined into unified white card) */}
+          <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white rounded-1xl shadow-lg shadow-black/15 border border-slate-200/50 mt-[30px] mb-8 overflow-hidden relative z-10">
+             <section className="bg-white p-8 sm:p-12 md:p-16 text-[#031a57]">
+                <div className="container mx-auto max-w-5xl">
+                   <h2 className="font-serif text-3xl font-bold leading-tight text-[#031a57] md:text-4xl mb-6">
+                      Introduction
+                   </h2>
+                   <p className="text-base sm:text-lg text-slate-650 leading-relaxed font-light mb-8">
+                      An intensive program designed for professionals shaping the future of technology, climate, and governance. Sustainability is no longer a corporate report; it's a technical challenge. Master the intersection of AI, Climate Tech, and ESG.
+                   </p>
 
-                {/* Quick Highlights */}
-                <div className="flex flex-wrap gap-4 md:gap-6 text-sm text-slate-700">
-                   <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-full border border-slate-200">
-                      <CheckCircle2 size={18} className="text-emerald-600" />
-                      <span>Industry-Recognized Certificate</span>
-                   </div>
-                   <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-full border border-slate-200">
-                      <CheckCircle2 size={18} className="text-emerald-600" />
-                      <span>Hands-on Capstone Project</span>
-                   </div>
-                   <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-full border border-slate-200">
-                      <CheckCircle2 size={18} className="text-emerald-600" />
-                      <span>Expert-Led Sessions</span>
+                   {/* Quick Highlights */}
+                   <div className="flex flex-wrap gap-4 md:gap-6 text-sm text-slate-700">
+                      <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-full border border-slate-200">
+                         <CheckCircle2 size={18} className="text-emerald-600" />
+                         <span>Industry-Recognized Certificate</span>
+                      </div>
+                      <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-full border border-slate-200">
+                         <CheckCircle2 size={18} className="text-emerald-600" />
+                         <span>Hands-on Capstone Project</span>
+                      </div>
+                      <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-full border border-slate-200">
+                         <CheckCircle2 size={18} className="text-emerald-600" />
+                         <span>Expert-Led Sessions</span>
+                      </div>
                    </div>
                 </div>
+             </section>
+
+             {/* Program Details Specs block (nested inside card on light grey bg) */}
+             <div className="bg-[#F7F7F4] border-t border-slate-200/60 p-8 sm:p-12 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-14 flex-1 text-left w-full">
+                   <div>
+                      <p className="text-[10px] uppercase tracking-wider font-bold mb-1" style={{ color: '#64748b' }}>Duration</p>
+                      <p className="text-base sm:text-lg font-bold text-slate-800">4 Weeks</p>
+                   </div>
+                   <div>
+                      <p className="text-[10px] uppercase tracking-wider font-bold mb-1" style={{ color: '#64748b' }}>Delivery Mode</p>
+                      <p className="text-base sm:text-lg font-bold text-slate-800">Hybrid Intensive</p>
+                   </div>
+                   <div>
+                      <p className="text-[10px] uppercase tracking-wider font-bold mb-1" style={{ color: '#64748b' }}>Program Fee</p>
+                      <p className="text-base sm:text-lg font-bold text-slate-800">{symbol}{originalPrice}</p>
+                   </div>
+                </div>
+
+                <div className="w-full lg:w-auto">
+                   <Link href="https://compass.thefoundrys.com/courses/sustainability/sustainability-in-the-age-of-ai" className="block w-full text-center px-8 py-3.5 bg-[#002f86] text-white border border-[#002f86] font-bold rounded-xl hover:bg-[#002f86]/90 transition-all hover:scale-[1.02] shadow-[0_4px_20px_rgba(0,47,134,0.15)] whitespace-nowrap text-sm">
+                      Enroll Now
+                   </Link>
+                </div>
+             </div>
+          </div>
+
+          {/* WHY THIS COHORT EXISTS + WHO IT'S FOR (Consolidated into single pastel-blue card) */}
+          <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#DCE7F1] border border-[#c5d8ec] rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+             <section className="py-16 px-6 bg-[#DCE7F1] relative overflow-hidden">
+                <div className="container mx-auto px-6 max-w-7xl relative z-10">
+                   <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
+                      {/* Left: Why This Cohort Exists */}
+                      <div>
+                         <h2 className="text-3xl md:text-4xl font-serif text-[#031a57] font-bold mb-6">Why This Cohort Exists</h2>
+                         <p className="text-lg text-slate-750 mb-8 font-light italic leading-snug">
+                            The tension between acceleration and sustainability will define the next decade.
+                         </p>
+
+                         {/* Problem Cards */}
+                         <div className="space-y-4">
+                            <div className="border-l-4 border-red-500 bg-white p-5 rounded-r-xl border border-slate-200/50 shadow-sm">
+                               <h4 className="text-xs font-bold text-red-700 uppercase tracking-wider mb-2 font-mono">The Acceleration</h4>
+                               <p className="text-sm text-slate-650 font-normal leading-relaxed">
+                                  AI is accelerating everything—growth, efficiency, consumption, extraction.
+                                </p>
+                            </div>
+
+                            <div className="border-l-4 border-blue-500 bg-white p-5 rounded-r-xl border border-slate-200/50 shadow-sm">
+                               <h4 className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 font-mono">The Slowdown</h4>
+                               <p className="text-sm text-slate-650 font-normal leading-relaxed">
+                                  Sustainability is trying to slow things down—emissions, waste, inequality, collapse.
+                               </p>
+                            </div>
+
+                            <div className="border-l-4 border-amber-500 bg-white p-5 rounded-r-xl border border-slate-200/50 shadow-sm">
+                               <h4 className="text-xs font-bold text-amber-700 uppercase tracking-wider mb-2 font-mono">The Gap</h4>
+                               <p className="text-sm text-slate-650 font-normal leading-relaxed">
+                                  Most professionals are trained in either technology or sustainability. Very few are trained to <span className="font-semibold text-amber-900">think in systems</span>, understand trade-offs, and make AI-era decisions responsibly.
+                               </p>
+                            </div>
+                         </div>
+                      </div>
+
+                      {/* Right: Who This Cohort Is For */}
+                      <div>
+                         <h2 className="text-3xl md:text-4xl font-serif text-[#031a57] font-bold mb-6">Who This Cohort Is For</h2>
+                         <p className="text-lg text-slate-750 mb-8 font-light italic leading-snug">
+                            No deep coding background required. Deep thinking required and trained.
+                         </p>
+
+                         <div className="space-y-3">
+                            {[
+                               { title: "Future-Ready Careers", desc: "Entry-level professionals building future-ready careers.", icon: Users },
+                               { title: "Mid-Career Navigators", desc: "Mid-career professionals navigating AI-driven disruption.", icon: Anchor },
+                               { title: "Upgraders", desc: "Sustainability, ESG, policy, and climate professionals upgrading into AI literacy.", icon: Leaf },
+                               { title: "Cross-Functional", desc: "Engineers, analysts, consultants, and managers moving into cross-functional roles.", icon: Layers }
+                            ].map((item, i) => (
+                               <div key={i} className="flex items-start gap-6 bg-white p-4 border border-slate-200/60 rounded-xl shadow-sm hover:border-emerald-450 transition-all hover:shadow-md group">
+                                  <div className="shrink-0">
+                                     <item.icon size={22} className="text-emerald-600 group-hover:scale-110 transition-transform" />
+                                  </div>
+                                  <div className="flex-1">
+                                     <h3 className="text-base font-serif font-bold text-slate-900 mb-1">{item.title}</h3>
+                                     <p className="text-xs text-slate-500 font-normal leading-relaxed">{item.desc}</p>
+                                  </div>
+                               </div>
+                            ))}
+                         </div>
+                      </div>
+                   </div>
+
+                   {/* Centered Solution Card */}
+                   <div className="max-w-4xl mx-auto">
+                      <div className="bg-white border border-slate-200/80 shadow-sm p-8 rounded-2xl">
+                         <div className="flex items-start gap-4">
+                            <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center shrink-0">
+                               <CheckCircle2 size={24} className="text-emerald-600" />
+                            </div>
+                            <div>
+                               <h3 className="text-xl font-bold font-serif mb-3 text-[#031a57]">Our Solution</h3>
+                               <p className="text-slate-650 font-normal leading-relaxed text-base">
+                                  This cohort exists to close that gap—training professionals to navigate the intersection of AI and sustainability with systems thinking, strategic foresight, and responsible decision-making.
+                               </p>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </section>
+          </div>
+
+          {/* CURRICULUM: WEEK BY WEEK */}
+          <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+             <section className="py-20 px-6 bg-white">
+                <div className="container mx-auto px-6 max-w-6xl">
+                   <div className="text-center mb-12">
+                      <h2 className="text-3xl md:text-5xl font-serif text-[#031a57] font-bold mb-4">
+                         What You&apos;ll Learn
+                      </h2>
+                      <p className="text-base text-slate-500 max-w-2xl mx-auto font-light leading-relaxed">
+                         A structured 4-week journey through the sustainability and AI landscape
+                      </p>
+                   </div>
+
+                   <SyllabusMindMap
+                      data={CURRICULUM_DATA.map(({ week, title, topics }) => ({ period: week, title, topics }))}
+                      periodLabel="Week"
+                      hubTitle="SUSTAINABILITY"
+                      theme="emerald"
+                   />
+                </div>
+             </section>
+          </div>
+
+          {/* TOOLS & FRAMEWORKS */}
+          <section className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#DCE7F1] border border-[#c5d8ec] rounded-1xl shadow-lg shadow-black/15 py-12 mt-[30px] mb-8 overflow-hidden relative">
+             {/* Centered heading */}
+             <div className="container mx-auto px-2 mb-6 text-center max-w-3xl">
+                <h2 className="text-3xl md:text-5xl font-serif text-[#031a57] font-bold mb-4">
+                   Tools & Frameworks
+                </h2>
+             </div>
+
+             {/* Marquee row 1 */}
+             <div className="relative py-2 overflow-hidden w-full flex flex-col gap-4">
+                <motion.div
+                   className="flex items-center gap-12 whitespace-nowrap will-change-transform"
+                   animate={{ x: ["0%", "-50%"] }}
+                   transition={{
+                      repeat: Infinity,
+                      repeatType: "loop",
+                      duration: 120,
+                      ease: "linear",
+                   }}
+                   style={{ width: "max-content" }}
+                >
+                   {[1, 2].map((i) => (
+                      <div
+                         key={i}
+                         className="flex items-center gap-12 text-[#567bb3] font-bold text-sm md:text-lg uppercase tracking-widest"
+                      >
+                         <span>UN Sustainable Development Goals (SDGs)</span> <span>&bull;</span>
+                         <span>Global Reporting Initiative (GRI)</span> <span>&bull;</span>
+                         <span>ESG</span> <span>&bull;</span>
+                         <span>Science Based Targets initiative (SBTi)</span> <span>&bull;</span>
+                         <span>Carbon Disclosure Project (CDP)</span> <span>&bull;</span>
+                         <span>ISO 14001</span> <span>&bull;</span>
+                         <span>OpenLCA</span> <span>&bull;</span>
+                         <span>Brightway</span> <span>&bull;</span>
+                         <span>OpenGHG</span> <span>&bull;</span>
+                         <span>Climate TRACE</span> <span>&bull;</span>
+                         <span>Open Energy Platform</span> <span>&bull;</span>
+                         <span>EnergyPlus</span> <span>&bull;</span>
+                         <span>OpenFOAM</span> <span>&bull;</span>
+                         <span>QGIS</span> <span>&bull;</span>
+                         <span>OSeMOSYS</span> <span>&bull;</span>
+                         <span>Calliope</span> <span>&bull;</span>
+                         <span>World Bank Open Data</span> <span>&bull;</span>
+                         <span>OpenStreetMap</span> <span>&bull;</span>
+                         <span>Global Carbon Atlas</span> <span>&bull;</span>
+                         <span>Our World in Data</span> <span>&bull;</span>
+                         <span>OpenAQ</span>
+                      </div>
+                   ))}
+                </motion.div>
+
+                {/* Marquee row 2 */}
+                <motion.div
+                   className="flex items-center gap-12 whitespace-nowrap will-change-transform"
+                   animate={{ x: ["-50%", "0%"] }}
+                   transition={{
+                      repeat: Infinity,
+                      repeatType: "loop",
+                      duration: 120,
+                      ease: "linear",
+                   }}
+                   style={{ width: "max-content" }}
+                >
+                   {[1, 2].map((i) => (
+                      <div
+                         key={i}
+                         className="flex items-center gap-12 text-[#567bb3] font-bold text-sm md:text-lg uppercase tracking-widest"
+                      >
+                         <span>UN Sustainable Development Goals (SDGs)</span> <span>&bull;</span>
+                         <span>Global Reporting Initiative (GRI)</span> <span>&bull;</span>
+                         <span>ESG</span> <span>&bull;</span>
+                         <span>Science Based Targets initiative (SBTi)</span> <span>&bull;</span>
+                         <span>Carbon Disclosure Project (CDP)</span> <span>&bull;</span>
+                         <span>ISO 14001</span> <span>&bull;</span>
+                         <span>OpenLCA</span> <span>&bull;</span>
+                         <span>Brightway</span> <span>&bull;</span>
+                         <span>OpenGHG</span> <span>&bull;</span>
+                         <span>Climate TRACE</span> <span>&bull;</span>
+                         <span>Open Energy Platform</span> <span>&bull;</span>
+                         <span>EnergyPlus</span> <span>&bull;</span>
+                         <span>OpenFOAM</span> <span>&bull;</span>
+                         <span>QGIS</span> <span>&bull;</span>
+                         <span>OSeMOSYS</span> <span>&bull;</span>
+                         <span>Calliope</span> <span>&bull;</span>
+                         <span>World Bank Open Data</span> <span>&bull;</span>
+                         <span>OpenStreetMap</span> <span>&bull;</span>
+                         <span>Global Carbon Atlas</span> <span>&bull;</span>
+                         <span>Our World in Data</span> <span>&bull;</span>
+                         <span>OpenAQ</span>
+                      </div>
+                   ))}
+                </motion.div>
              </div>
           </section>
 
+          {/* WHAT YOU'LL BECOME */}
+          <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+             <section className="py-20 bg-white">
+                <div className="container mx-auto px-6 max-w-6xl">
+                   {/* Header */}
+                   <div className="text-center mb-16">
+                      <h2 className="text-4xl md:text-5xl font-serif text-[#031a57] font-bold mb-4">What You&apos;ll Become</h2>
+                      <p className="text-base text-slate-500 font-light max-w-2xl mx-auto leading-relaxed">
+                         Explore career paths at the intersection of AI and sustainability
+                      </p>
+                   </div>
 
-         {/* Program Details Block - Adjusted below hero */}
-         <div className="relative z-20 px-4 -mt-10 mb-12">
-            <div className="mx-auto max-w-5xl">
-               <div className="bg-white rounded-2xl shadow-xl border border-stone-200 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12">
+                   <div className="flex flex-col lg:flex-row gap-8 items-start">
+                      {/* Mobile Layout (Accordion) */}
+                      <div className="w-full lg:hidden flex flex-col gap-4">
+                         {CAREER_ROLES.map((role, index) => (
+                            <div
+                               key={index}
+                               ref={(el) => {
+                                  if (el) roleRefs.current[index] = el;
+                               }}
+                               className="bg-white rounded-xl border border-stone-200 overflow-hidden scroll-mt-32"
+                            >
+                               <button
+                                  onClick={() => {
+                                     setSelectedCareer(index);
+                                     setTimeout(() => {
+                                        roleRefs.current[index]?.scrollIntoView({
+                                           behavior: "smooth",
+                                           block: "start"
+                                        });
+                                     }, 100);
+                                  }}
+                                  className={`w-full text-left p-4 min-h-[48px] flex items-center justify-between transition-colors ${selectedCareer === index ? "bg-emerald-50/50" : "bg-white"}`}
+                               >
+                                  <div className="flex items-center gap-4">
+                                     <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${selectedCareer === index ? 'bg-emerald-100' : 'bg-emerald-50'}`}>
+                                        <role.icon size={20} className="text-emerald-600" />
+                                     </div>
+                                     <div>
+                                        <h3 className={`font-serif text-lg ${selectedCareer === index ? "text-emerald-800" : "text-stone-900"}`}>
+                                           {role.title}
+                                        </h3>
+                                        <div className="text-sm font-bold text-emerald-600">
+                                           {role.salary}
+                                        </div>
+                                     </div>
+                                  </div>
+                                  <ChevronDown
+                                     size={20}
+                                     className={`text-stone-400 transition-transform duration-300 ${selectedCareer === index ? "rotate-180 text-emerald-500" : ""}`}
+                                  />
+                               </button>
+                               <AnimatePresence>
+                                  {selectedCareer === index && (
+                                     <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.3 }}
+                                     >
+                                        <div className="p-4 pt-0 border-t border-stone-100">
+                                           <div className="pt-4">
+                                              <RoleDetailsContent role={role} />
+                                           </div>
+                                        </div>
+                                     </motion.div>
+                                  )}
+                               </AnimatePresence>
+                            </div>
+                         ))}
+                      </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12 flex-1 text-center lg:text-left w-full">
-                     <div className="border-r-0 border-stone-100 lg:border-r lg:last:border-r-0 lg:pr-4">
-                        <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1"> Duration</p>
-                        <p className="text-lg font-bold text-stone-900">4 Weeks</p>
-                     </div>
-                     <div className="border-r-0 border-stone-100 lg:border-r lg:last:border-r-0 lg:pr-4">
-                        <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1">Mode</p>
-                        <p className="text-lg font-bold text-stone-900">Hybrid</p>
-                     </div>
+                      {/* Desktop Layout */}
+                      <div className="hidden lg:grid lg:grid-cols-2 gap-8 w-full">
+                         {/* Left: Roles List */}
+                         <div className="space-y-3">
+                            {CAREER_ROLES.map((role, i) => (
+                               <button
+                                  key={i}
+                                  onClick={() => setSelectedCareer(i)}
+                                  className={`w-full p-5 rounded-2xl transition-all text-left ${selectedCareer === i
+                                     ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/10'
+                                     : 'bg-white border-2 border-stone-150 hover:border-emerald-350 hover:shadow-md'
+                                     }`}
+                               >
+                                  <div className="flex items-start gap-4">
+                                     <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${selectedCareer === i ? 'bg-white/20' : 'bg-emerald-50'
+                                        }`}>
+                                        <role.icon size={22} className={selectedCareer === i ? 'text-white' : 'text-emerald-600'} />
+                                     </div>
+                                     <div className="flex-1">
+                                        <h3 className={`text-base font-serif leading-tight mb-1.5 font-bold ${selectedCareer === i ? 'text-white' : 'text-stone-900'
+                                           }`}>
+                                           {role.title}
+                                        </h3>
+                                        <div className={`text-sm font-bold ${selectedCareer === i ? 'text-emerald-100' : 'text-emerald-650'
+                                           }`}>
+                                           {role.salary}
+                                        </div>
+                                     </div>
+                                  </div>
+                               </button>
+                            ))}
+                         </div>
 
-                     <div className="lg:pr-4">
-                        <p className="text-xs text-stone-500 uppercase tracking-widest font-bold mb-1">Program Fee</p>
-                        <div className="flex items-center gap-2 justify-center lg:justify-start">
-                           <span className="text-lg font-bold text-stone-900">{symbol}{originalPrice}</span>
-                        </div>
-                     </div>
-                  </div>
+                         {/* Right: Selected Role Details */}
+                         <div className="lg:sticky lg:top-6 h-fit">
+                            <div className="bg-white border border-slate-200 rounded-3xl p-8 md:p-10 shadow-sm">
+                               <RoleDetailsContent role={CAREER_ROLES[selectedCareer]} />
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </section>
+          </div>
 
+          {/* CERTIFICATION - COMPACT */}
+          <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+             <section className="py-16 bg-white">
+                <div className="container mx-auto px-6 max-w-6xl">
+                   <div className="grid lg:grid-cols-2 gap-12 items-center">
+                      {/* Left: Certificate Image */}
+                      <div className="relative">
+                         <div className="relative p-3 bg-white border border-stone-200 rounded-xl shadow-lg">
+                            <Image src="/sample-certificate.png" alt="Sample Certificate" width={600} height={400} className="w-full h-auto rounded-lg relative z-10" />
+                            {/* Decorative Elements */}
+                            <div className="absolute -top-4 -left-4 w-20 h-20 bg-emerald-500/10 rounded-full blur-2xl" />
+                            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-stone-500/10 rounded-full blur-2xl" />
+                         </div>
+                      </div>
 
-                  <div className="w-full lg:w-auto">
-                     <Link href="https://compass.thefoundrys.com/courses/sustainability/sustainability-in-the-age-of-ai" className="block w-full text-center px-8 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap">
-                        Enroll Now
-                     </Link>
-                  </div>
-               </div>
-            </div>
-         </div>
+                      {/* Right: Description */}
+                      <div>
+                         <h2 className="text-3xl md:text-4xl font-serif text-[#031a57] font-bold mb-4">Certification of Competence</h2>
+                         <p className="text-base text-slate-600 font-light mb-6 leading-relaxed">
+                            Upon passing the capstone review, you will be awarded a Certificate of Competence in Sustainable AI Systems, verifiable via our industry partners.
+                         </p>
 
-         {/* WHY THIS COHORT EXISTS + WHO IT'S FOR - IMPROVED LAYOUT */}
-         <section className="py-12 md:py-20 bg-white relative overflow-hidden">
-            <div className="container mx-auto px-6 max-w-7xl">
-               <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
-                  {/* Left: Why This Cohort Exists */}
-                  <div>
-                     <h2 className="text-3xl md:text-4xl font-serif text-stone-900 mb-6">Why This Cohort Exists</h2>
+                         <div className="space-y-3">
+                            {[
+                               "Industry-recognized credential",
+                               "Verifiable digital certificate",
+                               "Lifetime access to alumni network",
+                               "Portfolio-ready capstone project"
+                            ].map((item, i) => (
+                               <div key={i} className="flex items-center gap-3">
+                                  <div className="w-5 h-5 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
+                                     <CheckCircle2 size={14} className="text-emerald-600" />
+                                  </div>
+                                  <span className="text-sm text-stone-700">{item}</span>
+                               </div>
+                            ))}
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </section>
+          </div>
 
-                     <p className="text-xl text-stone-800 mb-8 font-light italic leading-snug">
-                        The tension between acceleration and sustainability will define the next decade.
-                     </p>
+          {/* FAQ SECTION */}
+          <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-16 overflow-hidden relative">
+             <section className="py-24 bg-white">
+                <div className="container mx-auto px-6 max-w-3xl">
+                   <div className="text-center mb-16">
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-sm font-bold mb-4 font-mono">
+                         <HelpCircle size={16} />
+                         <span>FAQ</span>
+                      </div>
+                      <h2 className="text-3xl md:text-5xl font-serif text-[#031a57] font-bold">Frequently Asked Questions</h2>
+                   </div>
+                   <div className="space-y-6">
+                      {FAQ_DATA.map((item, i) => (
+                         <FAQItem key={i} question={item.question} answer={item.answer} />
+                      ))}
+                   </div>
+                </div>
+             </section>
+          </div>
 
-                     {/* Problem Cards */}
-                     <div className="space-y-4">
-                        <div className="border-l-4 border-red-400 bg-red-50/50 p-5">
-                           <h4 className="text-sm font-bold text-red-900 uppercase tracking-wider mb-2">The Acceleration</h4>
-                           <p className="text-base text-stone-700 font-light">
-                              AI is accelerating everything—growth, efficiency, consumption, extraction.
-                           </p>
-                        </div>
-
-                        <div className="border-l-4 border-blue-400 bg-blue-50/50 p-5">
-                           <h4 className="text-sm font-bold text-blue-900 uppercase tracking-wider mb-2">The Slowdown</h4>
-                           <p className="text-base text-stone-700 font-light">
-                              Sustainability is trying to slow things down—emissions, waste, inequality, collapse.
-                           </p>
-                        </div>
-
-                        <div className="border-l-4 border-amber-400 bg-amber-50/50 p-5">
-                           <h4 className="text-sm font-bold text-amber-900 uppercase tracking-wider mb-2">The Gap</h4>
-                           <p className="text-base text-stone-700 font-light">
-                              Most professionals are trained in either technology or sustainability. Very few are trained to <span className="font-semibold text-amber-900">think in systems</span>, understand trade-offs, and make AI-era decisions responsibly.
-                           </p>
-                        </div>
-                     </div>
-                  </div>
-
-                  {/* Right: Who This Cohort Is For */}
-                  <div>
-                     <h2 className="text-3xl md:text-4xl font-serif text-stone-900 mb-6">Who This Cohort Is For</h2>
-                     <p className="text-xl text-stone-800 mb-8 font-light italic leading-snug">
-                        No deep coding background required. Deep thinking required and trained.
-                     </p>
-
-                     <div className="space-y-2">
-                        {[
-                           { title: "Future-Ready Careers", desc: "Entry-level professionals building future-ready careers.", icon: Users },
-                           { title: "Mid-Career Navigators", desc: "Mid-career professionals navigating AI-driven disruption.", icon: Anchor },
-                           { title: "Upgraders", desc: "Sustainability, ESG, policy, and climate professionals upgrading into AI literacy.", icon: Leaf },
-                           { title: "Cross-Functional", desc: "Engineers, analysts, consultants, and managers moving into cross-functional roles.", icon: Layers }
-                        ].map((item, i) => (
-                           <div key={i} className="flex items-start gap-6 bg-stone-50 p-4 border border-stone-200 rounded-xl shadow-sm hover:border-emerald-300 transition-all hover:shadow-md group">
-                              <div className="shrink-0">
-                                 <item.icon size={24} className="text-emerald-600 group-hover:scale-110 transition-transform" />
-                              </div>
-                              <div className="flex-1">
-                                 <h3 className="text-base font-serif text-stone-900 mb-1">{item.title}</h3>
-                                 <p className="text-sm text-stone-600 font-light leading-relaxed">{item.desc}</p>
-                              </div>
-                           </div>
-                        ))}
-                     </div>
-                  </div>
-               </div>
-
-               {/* Centered Solution Card */}
-               <div className="max-w-4xl mx-auto">
-                  <div className="bg-white border border-slate-200/80 shadow-sm p-8 rounded-xl">
-                     <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center shrink-0">
-                           <CheckCircle2 size={24} className="text-emerald-600" />
-                        </div>
-                        <div>
-                           <h3 className="text-2xl font-serif mb-3 text-slate-900">Our Solution</h3>
-                           <p className="text-slate-600 font-light leading-relaxed text-lg">
-                              This cohort exists to close that gap—training professionals to navigate the intersection of AI and sustainability with systems thinking, strategic foresight, and responsible decision-making.
-                           </p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </section>
-
-
-
-         {/* CURRICULUM: WEEK BY WEEK */}
-         <section className="py-24 bg-gradient-to-br from-stone-50 via-emerald-50/10 to-stone-50 border-y border-stone-200">
-            <div className="container mx-auto px-6 max-w-6xl">
-               <div className="text-center mb-12">
-                  <h2 className="text-3xl md:text-5xl font-serif text-stone-900 mb-4">
-                     What You&apos;ll Learn
-                  </h2>
-                  <p className="text-lg text-stone-600 max-w-2xl mx-auto">
-                     A structured 4-week journey through the sustainability and AI landscape
-                  </p>
-               </div>
-
-               <SyllabusMindMap
-                  data={CURRICULUM_DATA.map(({ week, title, topics }) => ({ period: week, title, topics }))}
-                  periodLabel="Week"
-                  hubTitle="SUSTAINABILITY"
-                  theme="emerald"
-               />
-            </div>
-         </section>
-
-         <section className="py-5 bg-slate-50 border-y border-slate-200 overflow-hidden">
-            {/* Centered heading + description */}
-            <div className="container mx-auto px-2 mb-6 text-center max-w-3xl">
-               <h2 className="text-4xl md:text-5xl font-serif text-stone-900 mb-4">
-                  Tools & Frameworks
-               </h2>
-            </div>
-
-            {/* Marquee row 1 */}
-            <motion.div
-               className="flex items-center gap-12 whitespace-nowrap will-change-transform mb-8"
-               animate={{ x: ["0%", "-50%"] }}
-               transition={{
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 120,
-                  ease: "linear",
-               }}
-               style={{ width: "max-content" }}
-            >
-               {[1, 2].map((i) => (
-                  <div
-                     key={i}
-                     className="flex items-center gap-12 text-slate-400 font-bold text-base md:text-2xl uppercase tracking-widest"
-                  >
-                     <span>UN Sustainable Development Goals (SDGs)</span> <span>&bull;</span>
-                     <span>Global Reporting Initiative (GRI)</span> <span>&bull;</span>
-                     <span>ESG</span> <span>&bull;</span>
-                     <span>Science Based Targets initiative (SBTi)</span> <span>&bull;</span>
-                     <span>Carbon Disclosure Project (CDP)</span> <span>&bull;</span>
-                     <span>ISO 14001</span> <span>&bull;</span>
-                     <span>OpenLCA</span> <span>&bull;</span>
-                     <span>Brightway</span> <span>&bull;</span>
-                     <span>OpenGHG</span> <span>&bull;</span>
-                     <span>Climate TRACE</span> <span>&bull;</span>
-                     <span>Open Energy Platform</span> <span>&bull;</span>
-                     <span>EnergyPlus</span> <span>&bull;</span>
-                     <span>OpenFOAM</span> <span>&bull;</span>
-                     <span>QGIS</span> <span>&bull;</span>
-                     <span>OSeMOSYS</span> <span>&bull;</span>
-                     <span>Calliope</span> <span>&bull;</span>
-                     <span>World Bank Open Data</span> <span>&bull;</span>
-                     <span>OpenStreetMap</span> <span>&bull;</span>
-                     <span>Global Carbon Atlas</span> <span>&bull;</span>
-                     <span>Our World in Data</span> <span>&bull;</span>
-                     <span>OpenAQ</span>
-
-                  </div>
-               ))}
-            </motion.div>
-
-            {/* Marquee row 2 */}
-            <motion.div
-               className="flex items-center gap-12 whitespace-nowrap will-change-transform"
-               animate={{ x: ["-50%", "0%"] }}
-               transition={{
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 120,
-                  ease: "linear",
-               }}
-               style={{ width: "max-content" }}
-            >
-               {[1, 2].map((i) => (
-                  <div
-                     key={i}
-                     className="flex items-center gap-12 text-slate-400 font-bold text-base md:text-2xl uppercase tracking-widest"
-                  >
-                     <span>UN Sustainable Development Goals (SDGs)</span> <span>&bull;</span>
-                     <span>Global Reporting Initiative (GRI)</span> <span>&bull;</span>
-                     <span>ESG</span> <span>&bull;</span>
-                     <span>Science Based Targets initiative (SBTi)</span> <span>&bull;</span>
-                     <span>Carbon Disclosure Project (CDP)</span> <span>&bull;</span>
-                     <span>ISO 14001</span> <span>&bull;</span>
-                     <span>OpenLCA</span> <span>&bull;</span>
-                     <span>Brightway</span> <span>&bull;</span>
-                     <span>OpenGHG</span> <span>&bull;</span>
-                     <span>Climate TRACE</span> <span>&bull;</span>
-                     <span>Open Energy Platform</span> <span>&bull;</span>
-                     <span>EnergyPlus</span> <span>&bull;</span>
-                     <span>OpenFOAM</span> <span>&bull;</span>
-                     <span>QGIS</span> <span>&bull;</span>
-                     <span>OSeMOSYS</span> <span>&bull;</span>
-                     <span>Calliope</span> <span>&bull;</span>
-                     <span>World Bank Open Data</span> <span>&bull;</span>
-                     <span>OpenStreetMap</span> <span>&bull;</span>
-                     <span>Global Carbon Atlas</span> <span>&bull;</span>
-                     <span>Our World in Data</span> <span>&bull;</span>
-                     <span>OpenAQ</span>
-                  </div>
-               ))}
-            </motion.div>
-         </section>
-
-
-         {/* CAPSTONE & TOOLS - CAROUSEL */}
-
-
-         {/* WHAT YOU'LL BECOME - REDESIGNED */}
-         <section className="py-20 bg-gradient-to-b from-white to-stone-50 border-y border-stone-200">
-            <div className="container mx-auto px-6 max-w-6xl">
-               {/* Header */}
-               <div className="text-center mb-16">
-                  <h2 className="text-4xl md:text-5xl font-serif text-stone-900 mb-4">What You&apos;ll Become</h2>
-                  <p className="text-lg text-stone-600 font-light max-w-2xl mx-auto">
-                     Explore career paths at the intersection of AI and sustainability
-                  </p>
-               </div>
-
-               <div className="flex flex-col lg:flex-row gap-8 items-start">
-                  {/* Mobile Layout (Accordion) - Visible only on small screens */}
-                  <div className="w-full lg:hidden flex flex-col gap-4">
-                     {CAREER_ROLES.map((role, index) => (
-                        <div
-                           key={index}
-                           ref={(el) => {
-                              if (el) roleRefs.current[index] = el;
-                           }}
-                           className="bg-white rounded-xl border border-stone-200 overflow-hidden scroll-mt-32"
-                        >
-                           <button
-                              onClick={() => {
-                                 setSelectedCareer(index);
-                                 setTimeout(() => {
-                                    roleRefs.current[index]?.scrollIntoView({
-                                       behavior: "smooth",
-                                       block: "start"
-                                    });
-                                 }, 100);
-                              }}
-                              className={`w-full text-left p-4 min-h-[48px] flex items-center justify-between transition-colors ${selectedCareer === index ? "bg-emerald-50/50" : "bg-white"}`}
-                           >
-                              <div className="flex items-center gap-4">
-                                 <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${selectedCareer === index ? 'bg-emerald-100' : 'bg-emerald-50'}`}>
-                                    <role.icon size={20} className="text-emerald-600" />
-                                 </div>
-                                 <div>
-                                    <h3 className={`font-serif text-lg ${selectedCareer === index ? "text-emerald-800" : "text-stone-900"}`}>
-                                       {role.title}
-                                    </h3>
-                                    <div className="text-sm font-bold text-emerald-600">
-                                       {role.salary}
-                                    </div>
-                                 </div>
-                              </div>
-                              <ChevronDown
-                                 size={20}
-                                 className={`text-stone-400 transition-transform duration-300 ${selectedCareer === index ? "rotate-180 text-emerald-500" : ""}`}
-                              />
-                           </button>
-                           <AnimatePresence>
-                              {selectedCareer === index && (
-                                 <motion.div
-                                    initial={{ height: 0, opacity: 0 }}
-                                    animate={{ height: "auto", opacity: 1 }}
-                                    exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                 >
-                                    <div className="p-4 pt-0 border-t border-stone-100">
-                                       <div className="pt-4">
-                                          <RoleDetailsContent role={role} />
-                                       </div>
-                                    </div>
-                                 </motion.div>
-                              )}
-                           </AnimatePresence>
-                        </div>
-                     ))}
-                  </div>
-
-                  {/* Desktop Layout - Visible only on lg screens and up */}
-                  <div className="hidden lg:grid lg:grid-cols-2 gap-8 w-full">
-                     {/* Left: Roles List */}
-                     <div className="space-y-3">
-                        {CAREER_ROLES.map((role, i) => (
-                           <button
-                              key={i}
-                              onClick={() => setSelectedCareer(i)}
-                              className={`w-full p-5 rounded-lg transition-all text-left ${selectedCareer === i
-                                 ? 'bg-emerald-600 text-white shadow-lg'
-                                 : 'bg-white border-2 border-stone-200 hover:border-emerald-300 hover:shadow-md'
-                                 }`}
-                           >
-                              <div className="flex items-start gap-4">
-                                 <div className={`w-11 h-11 rounded-lg flex items-center justify-center shrink-0 ${selectedCareer === i ? 'bg-white/20' : 'bg-emerald-100'
-                                    }`}>
-                                    <role.icon size={22} className={selectedCareer === i ? 'text-white' : 'text-emerald-600'} />
-                                 </div>
-                                 <div className="flex-1">
-                                    <h3 className={`text-base font-serif leading-tight mb-1.5 ${selectedCareer === i ? 'text-white' : 'text-stone-900'
-                                       }`}>
-                                       {role.title}
-                                    </h3>
-                                    <div className={`text-sm font-bold ${selectedCareer === i ? 'text-emerald-100' : 'text-emerald-600'
-                                       }`}>
-                                       {role.salary}
-                                    </div>
-                                 </div>
-                              </div>
-                           </button>
-                        ))}
-                     </div>
-
-                     {/* Right: Selected Role Details */}
-                     <div className="lg:sticky lg:top-6 h-fit">
-                        <div className="bg-white border-2 border-stone-200 rounded-2xl p-8 md:p-10">
-                           <RoleDetailsContent role={CAREER_ROLES[selectedCareer]} />
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </section>
-
-         {/* WHAT YOU WALK AWAY WITH */}
-         {/* <section className="py-24 bg-stone-50 border-t border-stone-200">
-            <div className="container mx-auto px-6 max-w-5xl">
-               <div className="text-center mb-16">
-                  <h2 className="text-3xl md:text-5xl font-serif text-stone-900 mb-6">What You Walk Away With</h2>
-               </div>
-
-               <div className="grid md:grid-cols-2 gap-12">
-                  <div className="space-y-6">
-                     <h3 className="text-lg font-medium text-stone-900 border-b border-stone-200 pb-2">Competencies</h3>
-                     <ul className="space-y-4">
-                        {[
-                           "Think like a systems designer, not a feature builder",
-                           "Speak fluently across AI, sustainability, and governance",
-                           "Evaluate AI decisions using impact not just performance",
-                           "Be credible in cross-functional and leadership discussions"
-                        ].map((item, i) => (
-                           <li key={i} className="flex gap-3 text-stone-600 font-light">
-                              <CheckCircle2 size={20} className="text-emerald-500 shrink-0" />
-                              {item}
-                           </li>
-                        ))}
-                     </ul>
-                  </div>
-
-                  <div className="space-y-6">
-                     <h3 className="text-lg font-medium text-stone-900 border-b border-stone-200 pb-2">Career Impact</h3>
-                     <div className="space-y-4 text-sm leading-relaxed">
-                        <div>
-                           <strong className="block text-stone-900">Entry-Level</strong>
-                           <span className="text-stone-600 font-light">Gain rare strategic context early before habits harden.</span>
-                        </div>
-                        <div>
-                           <strong className="block text-stone-900">Mid-Career</strong>
-                           <span className="text-stone-600 font-light">Future-proof your relevance in an AI-shaped economy.</span>
-                        </div>
-                        <div>
-                           <strong className="block text-stone-900">Leaders</strong>
-                           <span className="text-stone-600 font-light">Gain language to bridge engineers, executives, and regulators.</span>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </section> */}
-
-         {/* CERTIFICATION - COMPACT */}
-         <section className="py-16 bg-stone-50 border-t border-stone-200">
-            <div className="container mx-auto px-6 max-w-6xl">
-               <div className="grid lg:grid-cols-2 gap-12 items-center">
-                  {/* Left: Certificate Image */}
-                  <div className="relative">
-                     <div className="relative p-3 bg-white border border-stone-200 rounded-xl shadow-lg">
-                        <Image src="/sample-certificate.png" alt="Sample Certificate" width={600} height={400} className="w-full h-auto rounded-lg relative z-10" />
-                        {/* Decorative Elements */}
-                        <div className="absolute -top-4 -left-4 w-20 h-20 bg-emerald-500/10 rounded-full blur-2xl" />
-                        <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-stone-500/10 rounded-full blur-2xl" />
-                     </div>
-                  </div>
-
-                  {/* Right: Description */}
-                  <div>
-                     <h2 className="text-3xl md:text-4xl font-serif text-stone-900 mb-4">Certification of Competence</h2>
-                     <p className="text-base text-stone-600 font-light mb-6 leading-relaxed">
-                        Upon passing the capstone review, you will be awarded a Certificate of Competence in Sustainable AI Systems, verifiable via our industry partners.
-                     </p>
-
-                     <div className="space-y-3">
-                        {[
-                           "Industry-recognized credential",
-                           "Verifiable digital certificate",
-                           "Lifetime access to alumni network",
-                           "Portfolio-ready capstone project"
-                        ].map((item, i) => (
-                           <div key={i} className="flex items-center gap-3">
-                              <div className="w-5 h-5 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
-                                 <CheckCircle2 size={14} className="text-emerald-600" />
-                              </div>
-                              <span className="text-sm text-stone-700">{item}</span>
-                           </div>
-                        ))}
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </section>
-
-         {/* FAQ SECTION */}
-         <section className="py-24 bg-white border-t border-stone-200">
-            <div className="container mx-auto px-6 max-w-3xl">
-               <div className="text-center mb-16">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-sm font-bold mb-4">
-                     <HelpCircle size={16} />
-                     <span>FAQ</span>
-                  </div>
-                  <h2 className="text-3xl md:text-5xl font-serif text-stone-900">Frequently Asked Questions</h2>
-               </div>
-               <div className="space-y-6">
-                  {FAQ_DATA.map((item, i) => (
-                     <FAQItem key={i} question={item.question} answer={item.answer} />
-                  ))}
-               </div>
-            </div>
-         </section>
-
-         <Footer />
-      </div>
-   );
+          <Footer />
+       </div>
+    );
 }

@@ -8,14 +8,14 @@ export function RenewableEnergyCurriculumAccordion() {
     const [openYear, setOpenYear] = useState<number | null>(0); // Default Year 1 open
 
     return (
-        <section id="syllabus" className="py-24 px-4 bg-white relative overflow-hidden">
+        <section id="syllabus" className="py-20 px-6 bg-white relative overflow-hidden">
              {/* Background Image */}
-             <div className="absolute inset-0 z-0">
+             <div className="absolute inset-0 z-0 opacity-20">
                 <div 
-                    className="absolute inset-0 bg-cover bg-center opacity-30"
+                    className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: "url('https://images.unsplash.com/photo-1541462608143-67571c6738dd?q=80&w=2070&auto=format&fit=crop')" }} 
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/60 to-white/90" />
+                <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-white/95" />
             </div>
 
             <div className="container mx-auto max-w-4xl relative z-10">

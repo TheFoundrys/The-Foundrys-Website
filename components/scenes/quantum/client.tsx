@@ -318,7 +318,7 @@ export function QuantumClient() {
     });
 
     return (
-        <main className="min-h-screen bg-white text-slate-950 font-sans selection:bg-violet-100 overflow-x-hidden font-sans">
+        <main className="min-h-screen font-sans selection:bg-violet-100 overflow-x-hidden" style={{ backgroundColor: "#EAEAE5" }}>
             <Navbar />
 
             {/* 1. TOP BANNER IMAGE SECTION */}
@@ -356,319 +356,324 @@ export function QuantumClient() {
                 </div>
             </section>
 
-            {/* 2. INTRODUCTION & TOGGLE SECTION */}
-            <section className="py-16 px-6 bg-white relative z-10">
-                <div className="container mx-auto max-w-6xl">
-                    <div className="grid lg:grid-cols-[1fr_auto] gap-12 items-start">
-                        {/* Left: Intro & Toggles */}
-                        <div className="max-w-3xl">
-                            <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-3 font-mono">Q-Layer & Physics</p>
-                            <h2 className="text-3xl sm:text-4xl font-bold text-[#031a57] font-serif mb-6 leading-tight">
-                                Harness the fabric of reality to solve the impossible.
-                            </h2>
-                            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-light mb-8">
-                                A {duration}-year immersive degree merging Physics, Mathematics, and Computer Science. <br />
-                                <span className="text-[#031a57] font-medium">Graduate prepared to program on quantum hardware and design algorithms that explore multiple paths simultaneously.</span>
-                            </p>
+            {/* Introduction & Overview Section with Floating Specs Card */}
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white rounded-1xl shadow-lg shadow-black/15 border border-slate-200/50 mt-[30px] mb-8 overflow-hidden relative z-10">
+                <section className="bg-white p-8 sm:p-12 md:p-16 text-[#031a57]">
+                    <div className="container mx-auto max-w-6xl">
+                        <div className="grid lg:grid-cols-[1fr_auto] gap-12 items-start">
+                            {/* Left: Intro & Toggles */}
+                            <div className="max-w-3xl">
+                                <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-3 font-mono">Q-Layer & Physics</p>
+                                <h2 className="text-3xl sm:text-4xl font-bold text-[#031a57] font-serif mb-6 leading-tight">
+                                    Harness the fabric of reality to solve the impossible.
+                                </h2>
+                                <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-light mb-8">
+                                    A {duration}-year immersive degree merging Physics, Mathematics, and Computer Science. <br />
+                                    <span className="text-[#031a57] font-medium">Graduate prepared to program on quantum hardware and design algorithms that explore multiple paths simultaneously.</span>
+                                </p>
 
-                            {/* Duration Toggle */}
-                            <div className="flex gap-4">
-                                <button
-                                    onClick={() => setDuration(3)}
-                                    className={`px-8 py-3 rounded-full font-bold text-sm tracking-wide transition-all duration-300 ${
-                                        duration === 3 
-                                            ? 'bg-[#002f86] text-white shadow-lg shadow-blue-900/25 scale-105' 
-                                            : 'bg-slate-50 text-slate-600 hover:text-slate-950 border border-slate-200 hover:bg-slate-100'
-                                    }`}
-                                >
-                                    3-Year Program
-                                </button>
-                                <button
-                                    onClick={() => setDuration(4)}
-                                    className={`px-8 py-3 rounded-full font-bold text-sm tracking-wide transition-all duration-300 ${
-                                        duration === 4 
-                                            ? 'bg-[#002f86] text-white shadow-lg shadow-blue-900/25 scale-105' 
-                                            : 'bg-slate-50 text-slate-600 hover:text-slate-950 border border-slate-200 hover:bg-slate-100'
-                                    }`}
-                                >
-                                    4-Year Program
-                                </button>
-                            </div>
-                        </div>
-
-                        {/* Right: Info Boxes in clean grid */}
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-8 p-8 bg-slate-50 border border-slate-200 rounded-[2rem] min-w-full lg:min-w-[340px]">
-                            {/* Degrees */}
-                            <div>
-                                <p className="text-[10px] text-slate-500 uppercase tracking-[0.25em] font-bold mb-3 font-mono">Available Degrees</p>
-                                <div className="space-y-1.5 border-l-2 border-violet-500 pl-4">
-                                    <p className="text-sm font-bold text-[#031a57]">{duration === 3 ? "B.Sc in Quantum Computing" : "B.Tech in Quantum Computing"}</p>
+                                {/* Duration Toggle */}
+                                <div className="flex gap-4">
+                                    <button
+                                        onClick={() => setDuration(3)}
+                                        className={`px-8 py-3 rounded-full font-bold text-sm tracking-wide transition-all duration-300 ${
+                                            duration === 3 
+                                                ? 'bg-[#002f86] text-white shadow-lg shadow-blue-900/25 scale-105' 
+                                                : 'bg-slate-50 text-slate-600 hover:text-slate-950 border border-slate-200 hover:bg-slate-100'
+                                        }`}
+                                    >
+                                        3-Year Program
+                                    </button>
+                                    <button
+                                        onClick={() => setDuration(4)}
+                                        className={`px-8 py-3 rounded-full font-bold text-sm tracking-wide transition-all duration-300 ${
+                                            duration === 4 
+                                                ? 'bg-[#002f86] text-white shadow-lg shadow-blue-900/25 scale-105' 
+                                                : 'bg-slate-50 text-slate-600 hover:text-slate-950 border border-slate-200 hover:bg-slate-100'
+                                        }`}
+                                    >
+                                        4-Year Program
+                                    </button>
                                 </div>
                             </div>
 
-                            {/* Partners */}
-                            {duration === 3 && (
+                            {/* Right: Info Boxes in clean grid */}
+                            <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-8 p-8 bg-slate-50 border border-slate-200 rounded-[2rem] min-w-full lg:min-w-[340px]">
+                                {/* Degrees */}
                                 <div>
-                                    <p className="text-[10px] text-slate-500 uppercase tracking-[0.25em] font-bold mb-3 font-mono">Partner Institutions</p>
-                                    <div className="space-y-1.5 border-l-2 border-cyan-500 pl-4">
-                                        <p className="text-sm font-bold text-[#031a57]">Keshava Degree College</p>
+                                    <p className="text-[10px] text-slate-500 uppercase tracking-[0.25em] font-bold mb-3 font-mono">Available Degrees</p>
+                                    <div className="space-y-1.5 border-l-2 border-violet-500 pl-4">
+                                        <p className="text-sm font-bold text-[#031a57]">{duration === 3 ? "B.Sc in Quantum Computing" : "B.Tech in Quantum Computing"}</p>
                                     </div>
                                 </div>
-                            )}
 
-                            {/* Certifications */}
-                            <div>
-                                <p className="text-[10px] text-slate-500 uppercase tracking-[0.25em] font-bold mb-3 font-mono">Industry Credentials</p>
-                                <div className="flex gap-4 border-l-2 border-purple-500 pl-4 items-center">
+                                {/* Partners */}
+                                {duration === 3 && (
                                     <div>
-                                        <span className="text-sm font-extrabold text-blue-600 tracking-wider block leading-none">FCEP</span>
-                                        <span className="text-[8px] text-slate-500 uppercase tracking-widest font-semibold mt-1 block">Executive</span>
+                                        <p className="text-[10px] text-slate-500 uppercase tracking-[0.25em] font-bold mb-3 font-mono">Partner Institutions</p>
+                                        <div className="space-y-1.5 border-l-2 border-cyan-500 pl-4">
+                                            <p className="text-sm font-bold text-[#031a57]">Keshava Degree College</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <span className="text-sm font-extrabold text-cyan-600 tracking-wider block leading-none">FCIP</span>
-                                        <span className="text-[8px] text-slate-500 uppercase tracking-widest font-semibold mt-1 block">Practitioner</span>
-                                    </div>
-                                    <div>
-                                        <span className="text-sm font-extrabold text-purple-600 tracking-wider block leading-none">FFP</span>
-                                        <span className="text-[8px] text-slate-500 uppercase tracking-widest font-semibold mt-1 block">Professional</span>
+                                )}
+
+                                {/* Certifications */}
+                                <div>
+                                    <p className="text-[10px] text-slate-500 uppercase tracking-[0.25em] font-bold mb-3 font-mono">Industry Credentials</p>
+                                    <div className="flex gap-4 border-l-2 border-purple-500 pl-4 items-center">
+                                        <div>
+                                            <span className="text-sm font-extrabold text-blue-600 tracking-wider block leading-none">FCEP</span>
+                                            <span className="text-[8px] text-slate-500 uppercase tracking-widest font-semibold mt-1 block">Executive</span>
+                                        </div>
+                                        <div>
+                                            <span className="text-sm font-extrabold text-cyan-600 tracking-wider block leading-none">FCIP</span>
+                                            <span className="text-[8px] text-slate-500 uppercase tracking-widest font-semibold mt-1 block">Practitioner</span>
+                                        </div>
+                                        <div>
+                                            <span className="text-sm font-extrabold text-purple-600 tracking-wider block leading-none">FFP</span>
+                                            <span className="text-[8px] text-slate-500 uppercase tracking-widest font-semibold mt-1 block">Professional</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* Program Details Floating Specs Card */}
-            <div className="relative z-20 px-6 -mt-6 mb-12">
-                <div className="mx-auto max-w-6xl">
-                    <div className="bg-slate-50 rounded-[2rem] shadow-sm border border-slate-200 py-8 px-8 lg:px-12 flex flex-col lg:flex-row items-center justify-between gap-8">
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6 lg:gap-x-14 flex-1 text-left w-full">
-                            <div>
-                                <p className="text-[10px] uppercase tracking-wider font-bold mb-1" style={{ color: '#64748b' }}>Program Length</p>
-                                <p className="text-base sm:text-lg font-bold text-slate-800">{duration}-Year Full-Time</p>
-                            </div>
-                            <div>
-                                <p className="text-[10px] uppercase tracking-wider font-bold mb-1" style={{ color: '#64748b' }}>Delivery Mode</p>
-                                <p className="text-base sm:text-lg font-bold text-slate-800">On-Campus, Immersive</p>
-                            </div>
-                            <div>
-                                <p className="text-[10px] uppercase tracking-wider font-bold mb-1" style={{ color: '#64748b' }}>Campus Location</p>
-                                <p className="text-base sm:text-lg font-bold text-slate-800">Hyderabad, India</p>
-                            </div>
-                            <div>
-                                <p className="text-[10px] uppercase tracking-wider font-bold mb-1" style={{ color: '#64748b' }}>Cohort Status</p>
-                                <p className="text-base sm:text-lg font-bold text-emerald-600">Admissions Closed</p>
-                            </div>
+                {/* Program Details specs block (nested inside card) */}
+                <div className="bg-[#F7F7F4] border-t border-slate-200/60 p-8 sm:p-12 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6 lg:gap-x-14 flex-1 text-left w-full">
+                        <div>
+                            <p className="text-[10px] uppercase tracking-wider font-bold mb-1" style={{ color: '#64748b' }}>Program Length</p>
+                            <p className="text-base sm:text-lg font-bold text-slate-800">{duration}-Year Full-Time</p>
                         </div>
+                        <div>
+                            <p className="text-[10px] uppercase tracking-wider font-bold mb-1" style={{ color: '#64748b' }}>Delivery Mode</p>
+                            <p className="text-base sm:text-lg font-bold text-slate-800">On-Campus, Immersive</p>
+                        </div>
+                        <div>
+                            <p className="text-[10px] uppercase tracking-wider font-bold mb-1" style={{ color: '#64748b' }}>Campus Location</p>
+                            <p className="text-base sm:text-lg font-bold text-slate-800">Hyderabad, India</p>
+                        </div>
+                        <div>
+                            <p className="text-[10px] uppercase tracking-wider font-bold mb-1" style={{ color: '#64748b' }}>Cohort Status</p>
+                            <p className="text-base sm:text-lg font-bold text-emerald-600">Admissions Closed</p>
+                        </div>
+                    </div>
 
-                        <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-                            <Link href="/apply" className="flex-1 lg:flex-none text-center px-8 py-3.5 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition-all hover:scale-[1.02] shadow-sm whitespace-nowrap text-sm">
-                                Apply Now
-                            </Link>
-                            <Link href="/contact" className="flex-1 lg:flex-none text-center px-8 py-3.5 bg-white text-slate-900 border border-slate-200 font-bold rounded-xl hover:bg-slate-50 transition-all hover:scale-[1.02] whitespace-nowrap text-sm">
-                                Contact Admissions
-                            </Link>
-                        </div>
+                    <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                        <Link href="/apply" className="flex-1 lg:flex-none text-center px-8 py-3.5 bg-[#002f86] text-white border border-[#002f86] font-bold rounded-xl hover:bg-[#002f86]/90 transition-all hover:scale-[1.02] shadow-[0_4px_20px_rgba(0,47,134,0.15)] whitespace-nowrap text-sm">
+                            Apply Now
+                        </Link>
+                        <Link href="/contact" className="flex-1 lg:flex-none text-center px-8 py-3.5 bg-white text-slate-750 border border-slate-200 font-bold rounded-xl hover:bg-slate-50 transition-all hover:scale-[1.02] whitespace-nowrap text-sm">
+                            Contact Admissions
+                        </Link>
                     </div>
                 </div>
             </div>
 
             {/* 1. OVERVIEW */}
-            <section id="overview" className="py-24 px-6 bg-white overflow-hidden relative">
-                <div className="container mx-auto max-w-6xl relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-                        <div>
-                            <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-4 font-mono">Program Overview</p>
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#031a57] font-serif mb-6 leading-tight tracking-tight">
-                                A Deep Tech Leap <br />
-                                <span className="text-[#002f86]">Beyond Classical.</span>
-                            </h2>
-                            <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-10 font-light">
-                                Study the core physics, linear algebra, and complex numbers required to write algorithms for superconducting QPUs. Explore superposition and entanglement to solve intractable problems in cryptography, sensing, and chemistry.
-                            </p>
-                            <div className="flex flex-wrap gap-3">
-                                {["Quantum Mechanics", "Linear Algebra", "Qiskit", "BB84 Protocols", "VQE & QAOA", "Transmon Physics"].map((tag, i) => (
-                                    <span key={i} className="px-4 py-2 bg-slate-50 border border-slate-200 text-slate-600 rounded-full text-xs font-semibold hover:bg-violet-50 hover:text-violet-600 hover:border-violet-100 transition-colors cursor-default select-none">
-                                        {tag}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-6 w-full">
-                            {[
-                                { value: duration.toString(), unit: "Years", label: "Full-time immersive program" },
-                                { value: (duration * 2).toString(), unit: "Semesters", label: "Progressive skill building" },
-                                { value: "100%", unit: "Applied", label: "QPU access and execution" },
-                                { value: "Quantum", unit: "Focus", label: "Physics and logic combined" },
-                            ].map((stat, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-slate-300 hover:bg-slate-100/50 shadow-sm text-center transition-all duration-300"
-                                >
-                                    <div className="text-3xl md:text-4xl font-extrabold text-[#031a57] mb-1 tracking-tight font-serif">{stat.value}</div>
-                                    <div className="text-xs font-bold text-violet-600 uppercase tracking-widest mb-2 font-mono">{stat.unit}</div>
-                                    <p className="text-xs text-slate-500 font-medium leading-relaxed">{stat.label}</p>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* PROGRAM MIX SECTION */}
-            <section className="py-28 px-4 bg-white overflow-hidden border-t border-slate-200 relative">
-                <div className="absolute inset-0 z-0 opacity-20">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.08)_0%,transparent_70%)]" />
-                </div>
-
-                <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-16 relative z-10">
-
-                    {/* Left: Chart */}
-                    <div className="md:w-1/2 relative flex justify-center items-center">
-                        <div className="w-[300px] h-[300px] md:w-[450px] md:h-[450px] relative">
-                            <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_0_30px_rgba(139,92,246,0.1)] transform -rotate-90 md:rotate-0 transition-transform">
-                                {paths.map((slice, i) => (
-                                    <motion.path
-                                        key={i}
-                                        d={slice.d}
-                                        fill={slice.color}
-                                        stroke="#ffffff"
-                                        strokeWidth="2"
-                                        initial={{ scale: 0, opacity: 0 }}
-                                        whileInView={{ scale: 1, opacity: 1 }}
-                                        transition={{ delay: i * 0.1, type: "spring", stiffness: 100 }}
-                                        onClick={() => handleSliceClick(i)}
-                                        onMouseEnter={() => setHoveredIndex(i)}
-                                        onMouseLeave={() => setHoveredIndex(null)}
-                                        className="hover:opacity-95 cursor-pointer transition-opacity origin-center tap-highlight-transparent"
-                                        style={{
-                                            scale: hoveredIndex === i ? 1.05 : 1,
-                                            zIndex: hoveredIndex === i ? 10 : 1
-                                        }}
-                                    />
-                                ))}
-                                <circle cx="200" cy="200" r="40" fill="#ffffff" className="drop-shadow-sm" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    {/* Right: Legend */}
-                    <div className="md:w-1/2 space-y-6 w-full">
-                        <h3 className="text-3xl font-bold text-[#031a57] font-serif mb-8 text-center md:text-left tracking-tight">The Program Mix</h3>
-                        <div className="space-y-4">
-                            {polarData.map((item, i) => (
-                                <motion.div
-                                    key={i}
-                                    ref={(el) => { legendRefs.current[i] = el; }}
-                                    className={`p-5 rounded-2xl border transition-all duration-300 cursor-default ${
-                                        hoveredIndex === i 
-                                            ? "bg-slate-50 border-slate-200 shadow-[0_8px_30px_rgba(139,92,246,0.05)] scale-[1.02]" 
-                                            : "bg-white border-slate-100 hover:bg-slate-50/50 hover:border-slate-200"
-                                    }`}
-                                    onMouseEnter={() => setHoveredIndex(i)}
-                                    onMouseLeave={() => setHoveredIndex(null)}
-                                >
-                                    <div className="flex items-center gap-3 mb-2">
-                                        <div className="w-4.5 h-4.5 rounded-full" style={{ backgroundColor: item.color }} />
-                                        <h4 className="font-bold text-[#031a57] text-lg font-serif">{item.label} <span className="text-slate-500 text-sm ml-2">({item.percent}%)</span></h4>
-                                    </div>
-                                    <p className="text-slate-600 text-sm leading-relaxed pl-7">{item.desc}</p>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            {/* CONSOLIDATED ELIGIBILITY & WHO SHOULD JOIN */}
-            <section id="eligibility" className="py-24 px-6 bg-white overflow-hidden relative border-t border-slate-200">
-                <div className="container mx-auto max-w-6xl relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-20 items-start">
-                        
-                        {/* Who is this for */}
-                        <div className="space-y-12">
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+                <section id="overview" className="p-8 sm:p-12 md:p-16 bg-white overflow-hidden relative">
+                    <div className="container mx-auto max-w-6xl relative z-10">
+                        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
                             <div>
-                                <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-3 font-mono">Built for the next generation</p>
-                                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#031a57] font-serif tracking-tight">Who Is This For</h2>
-                            </div>
-                            <div className="space-y-6">
-                                {[
-                                    { num: "01", title: "Future Quantum Builders", desc: "Class 12 / Intermediate graduates from MPC or similar streams ready to explore physical computing logic.", color: "bg-violet-50 border-violet-100 text-violet-600" },
-                                    { num: "02", title: "Physics & Math Enthusiasts", desc: "Students fascinated by linear algebra, quantum states, and complex numbers.", color: "bg-cyan-50 border-cyan-100 text-cyan-600" },
-                                    { num: "03", title: "Zero Coding Background", desc: "We start from the absolute mathematical grounds before deploying circuits.", color: "bg-emerald-50 border-emerald-100 text-emerald-600" }
-                                ].map((item, i) => (
-                                    <div key={i} className="flex items-start gap-5 p-6 bg-slate-50 border border-slate-200/60 rounded-2xl hover:border-slate-300 transition-all hover:bg-slate-100/50 shadow-sm">
-                                        <div className={`shrink-0 w-12 h-12 rounded-xl ${item.color} border flex items-center justify-center`}>
-                                            <span className="font-mono font-bold text-base">{item.num}</span>
-                                        </div>
-                                        <div>
-                                            <h3 className="text-lg font-bold text-[#031a57] mb-2 font-serif">{item.title}</h3>
-                                            <p className="text-sm text-slate-500 leading-relaxed font-normal">{item.desc}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Eligibility requirements */}
-                        <div className="bg-slate-50 border border-slate-200 rounded-[2rem] p-8 lg:p-12 lg:sticky lg:top-32 h-fit">
-                            <div className="mb-10">
-                                <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-4 font-mono">Academic Criteria</p>
-                                <h2 className="text-3xl font-bold text-[#031a57] font-serif tracking-tight">Academic Eligibility</h2>
-                            </div>
-                            <div className="space-y-8">
-                                <div className="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                                    <h4 className="text-base font-bold text-[#031a57] font-serif mb-5 flex items-center gap-3">
-                                        <div className="w-8 h-8 rounded-full bg-violet-50 border border-violet-100 text-violet-600 flex items-center justify-center text-xs font-bold font-mono">01</div>
-                                        Standard Admission Pathway
-                                    </h4>
-                                    <ul className="space-y-4">
-                                        {[
-                                            "Grade 12 / Intermediate from any recognized board.",
-                                            "MPC or equivalent stream is preferred.",
-                                            "Minimum 60% aggregate in mathematics and physics subjects."
-                                        ].map((req, j) => (
-                                            <li key={j} className="flex items-start gap-3.5 text-slate-600 text-sm leading-relaxed">
-                                                <CheckCircle2 size={16} className="text-violet-600 mt-0.5 shrink-0" />
-                                                <span>{req}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
+                                <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-4 font-mono">Program Overview</p>
+                                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#031a57] font-serif mb-6 leading-tight tracking-tight">
+                                    A Deep Tech Leap <br />
+                                    <span className="text-[#002f86]">Beyond Classical.</span>
+                                </h2>
+                                <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-10 font-light">
+                                    Study the core physics, linear algebra, and complex numbers required to write algorithms for superconducting QPUs. Explore superposition and entanglement to solve intractable problems in cryptography, sensing, and chemistry.
+                                </p>
+                                <div className="flex flex-wrap gap-3">
+                                    {["Quantum Mechanics", "Linear Algebra", "Qiskit", "BB84 Protocols", "VQE & QAOA", "Transmon Physics"].map((tag, i) => (
+                                        <span key={i} className="px-4 py-2 bg-slate-50 border border-slate-200 text-slate-600 rounded-full text-xs font-semibold hover:bg-violet-50 hover:text-violet-600 hover:border-violet-100 transition-colors cursor-default select-none">
+                                            {tag}
+                                        </span>
+                                    ))}
                                 </div>
                             </div>
+
+                            <div className="grid grid-cols-2 gap-6 w-full">
+                                {[
+                                    { value: duration.toString(), unit: "Years", label: "Full-time immersive program" },
+                                    { value: (duration * 2).toString(), unit: "Semesters", label: "Progressive skill building" },
+                                    { value: "100%", unit: "Applied", label: "QPU access and execution" },
+                                    { value: "Quantum", unit: "Focus", label: "Physics and logic combined" },
+                                ].map((stat, i) => (
+                                    <motion.div
+                                        key={i}
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: i * 0.1 }}
+                                        className="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-slate-300 hover:bg-slate-100/50 shadow-sm text-center transition-all duration-300"
+                                    >
+                                        <div className="text-3xl md:text-4xl font-extrabold text-[#031a57] mb-1 tracking-tight font-serif">{stat.value}</div>
+                                        <div className="text-xs font-bold text-violet-600 uppercase tracking-widest mb-2 font-mono">{stat.unit}</div>
+                                        <p className="text-xs text-slate-500 font-medium leading-relaxed">{stat.label}</p>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            {/* PROGRAM MIX SECTION */}
+            <section id="eligibility" className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#DCE7F1] border border-[#c5d8ec] rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+                
+                {/* Program stats section wrapper (inner) */}
+                <div className="py-16 relative border-b border-[#c5d8ec]/60 z-10">
+                    <div className="absolute inset-0 z-0 opacity-20">
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.08)_0%,transparent_70%)]" />
+                    </div>
+
+                    <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-16 relative z-10 py-4 px-4 md:px-8">
+                        {/* Left: Chart */}
+                        <div className="md:w-1/2 relative flex justify-center items-center">
+                            <div className="w-[300px] h-[300px] md:w-[450px] md:h-[450px] relative">
+                                <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_0_30px_rgba(139,92,246,0.1)] transform -rotate-90 md:rotate-0 transition-transform">
+                                    {paths.map((slice, i) => (
+                                        <motion.path
+                                            key={i}
+                                            d={slice.d}
+                                            fill={slice.color}
+                                            stroke="#ffffff"
+                                            strokeWidth="2"
+                                            initial={{ scale: 0, opacity: 0 }}
+                                            whileInView={{ scale: 1, opacity: 1 }}
+                                            transition={{ delay: i * 0.1, type: "spring", stiffness: 100 }}
+                                            onClick={() => handleSliceClick(i)}
+                                            onMouseEnter={() => setHoveredIndex(i)}
+                                            onMouseLeave={() => setHoveredIndex(null)}
+                                            className="hover:opacity-95 cursor-pointer transition-opacity origin-center tap-highlight-transparent"
+                                            style={{
+                                                scale: hoveredIndex === i ? 1.05 : 1,
+                                                zIndex: hoveredIndex === i ? 10 : 1
+                                            }}
+                                        />
+                                    ))}
+                                    <circle cx="200" cy="200" r="40" fill="#ffffff" className="drop-shadow-sm" />
+                                </svg>
+                            </div>
                         </div>
 
+                        {/* Right: Legend */}
+                        <div className="md:w-1/2 space-y-6 w-full">
+                            <h3 className="text-3xl font-bold text-[#031a57] font-serif mb-8 text-center md:text-left tracking-tight">The Program Mix</h3>
+                            <div className="space-y-4">
+                                {polarData.map((item, i) => (
+                                    <motion.div
+                                        key={i}
+                                        ref={(el) => { legendRefs.current[i] = el; }}
+                                        className={`p-5 rounded-2xl border transition-all duration-300 cursor-default ${
+                                            hoveredIndex === i 
+                                                ? "bg-slate-50 border-slate-200 shadow-[0_8px_30px_rgba(139,92,246,0.05)] scale-[1.02]" 
+                                                : "bg-white border-slate-100 hover:bg-slate-50/50 hover:border-slate-200"
+                                        }`}
+                                        onMouseEnter={() => setHoveredIndex(i)}
+                                        onMouseLeave={() => setHoveredIndex(null)}
+                                    >
+                                        <div className="flex items-center gap-3 mb-2">
+                                            <div className="w-4.5 h-4.5 rounded-full" style={{ backgroundColor: item.color }} />
+                                            <h4 className="font-bold text-[#031a57] text-lg font-serif">{item.label} <span className="text-slate-500 text-sm ml-2">({item.percent}%)</span></h4>
+                                        </div>
+                                        <p className="text-slate-600 text-sm leading-relaxed pl-7">{item.desc}</p>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Eligibility section wrapper (inner) */}
+                <div className="py-16 px-6 relative z-10">
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(59,130,246,0.03),transparent_60%)] pointer-events-none" />
+                    <div className="container mx-auto max-w-6xl relative z-10">
+                        <div className="grid lg:grid-cols-2 gap-20 items-start">
+                            
+                            {/* Who is this for */}
+                            <div className="space-y-12">
+                                <div>
+                                    <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-3 font-mono">Built for the next generation</p>
+                                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#031a57] font-serif tracking-tight">Who Is This For</h2>
+                                </div>
+                                <div className="space-y-6">
+                                    {[
+                                        { num: "01", title: "Future Quantum Builders", desc: "Class 12 / Intermediate graduates from MPC or similar streams ready to explore physical computing logic.", color: "bg-violet-50 border-violet-100 text-violet-600" },
+                                        { num: "02", title: "Physics & Math Enthusiasts", desc: "Students fascinated by linear algebra, quantum states, and complex numbers.", color: "bg-cyan-50 border-cyan-100 text-cyan-600" },
+                                        { num: "03", title: "Zero Coding Background", desc: "We start from the absolute mathematical grounds before deploying circuits.", color: "bg-emerald-50 border-emerald-100 text-emerald-600" }
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex items-start gap-5 p-6 bg-white border border-slate-200/60 rounded-2xl hover:border-blue-300 transition-all hover:bg-white hover:shadow-lg">
+                                            <div className={`shrink-0 w-12 h-12 rounded-xl ${item.color} border flex items-center justify-center`}>
+                                                <span className="font-mono font-bold text-base">{item.num}</span>
+                                            </div>
+                                            <div>
+                                                <h3 className="text-lg font-bold text-[#031a57] mb-2 font-serif">{item.title}</h3>
+                                                <p className="text-sm text-slate-500 leading-relaxed font-normal">{item.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Eligibility requirements */}
+                            <div className="bg-white border border-slate-200 rounded-[2rem] p-8 lg:p-12 lg:sticky lg:top-32 h-fit">
+                                <div className="mb-10">
+                                    <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-4 font-mono">Academic Criteria</p>
+                                    <h2 className="text-3xl font-bold text-[#031a57] font-serif tracking-tight">Academic Eligibility</h2>
+                                </div>
+                                <div className="space-y-8">
+                                    <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200 shadow-sm">
+                                        <h4 className="text-base font-bold text-[#031a57] font-serif mb-5 flex items-center gap-3">
+                                            <div className="w-8 h-8 rounded-full bg-violet-50 border border-violet-100 text-violet-600 flex items-center justify-center text-xs font-bold font-mono">01</div>
+                                            Standard Admission Pathway
+                                        </h4>
+                                        <ul className="space-y-4">
+                                            {[
+                                                "Grade 12 / Intermediate from any recognized board.",
+                                                "MPC or equivalent stream is preferred.",
+                                                "Minimum 60% aggregate in mathematics and physics subjects."
+                                            ].map((req, j) => (
+                                                <li key={j} className="flex items-start gap-3.5 text-slate-600 text-sm leading-relaxed">
+                                                    <CheckCircle2 size={16} className="text-violet-600 mt-0.5 shrink-0" />
+                                                    <span>{req}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </section>
 
             {/* CURRICULUM SECTION */}
-            <section id="curriculum" className="py-24 px-6 bg-white overflow-hidden relative border-t border-slate-200">
-                <div className="container mx-auto max-w-6xl">
-                    <div className="text-center mb-16">
-                        <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-3 font-mono">Academic Map</p>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#031a57] font-serif mb-6 tracking-tight">What You Will Study</h2>
-                        <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">From physics postulates to programming transmon hardware. Every year builds on the last.</p>
-                    </div>
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+                <section id="curriculum" className="p-8 sm:p-12 md:p-16 bg-white overflow-hidden relative">
+                    <div className="container mx-auto max-w-6xl">
+                        <div className="text-center mb-16">
+                            <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-3 font-mono">Academic Map</p>
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#031a57] font-serif mb-6 tracking-tight">What You Will Study</h2>
+                            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">From physics postulates to programming transmon hardware. Every year builds on the last.</p>
+                        </div>
 
-                    <SyllabusMindMap
-                        data={CURRICULUM_DATA.filter((item) => item.year <= duration).map(({ year, title, topics }) => ({ period: year, title, topics }))}
-                        periodLabel="Year"
-                        hubTitle="QUANTUM COMPUTING"
-                        theme="violet"
-                    />
-                </div>
-            </section>
+                        <SyllabusMindMap
+                            data={CURRICULUM_DATA.filter((item) => item.year <= duration).map(({ year, title, topics }) => ({ period: year, title, topics }))}
+                            periodLabel="Year"
+                            hubTitle="QUANTUM COMPUTING"
+                            theme="violet"
+                        />
+                    </div>
+                </section>
+            </div>
 
             {/* INDUSTRIAL SKILLS */}
-            <section id="tool-master" className="py-20 overflow-hidden relative border-t" style={{ backgroundColor: "#DCE7F1", borderColor: "#c5d8ec" }}>
+            <section id="tool-master" className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#DCE7F1] border border-[#c5d8ec] rounded-1xl shadow-lg shadow-black/15 py-12 mt-[30px] mb-8 overflow-hidden relative">
                 <div className="container mx-auto max-w-6xl relative z-10 px-6 text-center mb-10">
                     <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-3 font-mono">Core Stack</p>
                     <h2 className="text-3xl md:text-5xl font-black text-[#031a57] font-serif tracking-tighter mb-4 leading-tight">
@@ -683,27 +688,29 @@ export function QuantumClient() {
                 </div>
             </section>
 
-            <CareerVision
-                roles={CAREER_ROLES.map(role => ({
-                    icon: role.id === "quantum-software-engineer" ? Cpu :
-                        role.id === "quantum-hardware-architect" ? Atom :
-                            role.id === "quantum-cryptography-specialist" ? Lock :
-                                role.id === "quantum-research-scientist" ? BrainCircuit : Cpu,
-                    title: role.title,
-                    salary: role.salary,
-                    growth: role.growth,
-                    desc: role.desc,
-                    skills: role.skills,
-                    responsibilities: role.responsibilities
-                }))}
-                title="What You'll Become"
-                subtitle="From mathematical foundations to architecting global cognitive systems. This is your career in 2035."
-                themeColor="indigo"
-                isDark={false}
-            />
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+                <CareerVision
+                    roles={CAREER_ROLES.map(role => ({
+                        icon: role.id === "quantum-software-engineer" ? Cpu :
+                            role.id === "quantum-hardware-architect" ? Atom :
+                                role.id === "quantum-cryptography-specialist" ? Lock :
+                                    role.id === "quantum-research-scientist" ? BrainCircuit : Cpu,
+                        title: role.title,
+                        salary: role.salary,
+                        growth: role.growth,
+                        desc: role.desc,
+                        skills: role.skills,
+                        responsibilities: role.responsibilities
+                    }))}
+                    title="What You'll Become"
+                    subtitle="From mathematical foundations to architecting global cognitive systems. This is your career in 2035."
+                    themeColor="indigo"
+                    isDark={false}
+                />
+            </div>
 
             {/* WHY STUDY HERE */}
-            <section className="py-28 px-4 bg-white relative overflow-hidden border-t border-slate-200">
+            <section className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#DCE7F1] border border-[#c5d8ec] rounded-1xl shadow-lg shadow-black/15 py-16 px-4 md:px-8 mt-[30px] mb-16 overflow-hidden relative">
                 <div className="container mx-auto max-w-6xl relative z-10">
                     <div className="text-center mb-20">
                         <span className="text-[#002f86] font-bold tracking-widest text-xs uppercase mb-4 block">The Advantage</span>
