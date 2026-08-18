@@ -59,6 +59,21 @@ const allItems: EventItem[] = [
         featured: true,
         image: "/quantum-computer.jpg",
     },
+    {
+        id: "webinar-quantum-impact",
+        title: "Quantum Impact: Bridging Industry Innovation and Academic Advancement",
+        type: "Independence Day Special",
+        category: "event",
+        date: "Sat, Aug 15, 2026",
+        time: "4:00 PM - 5:00 PM IST",
+        dateTime: "2026-08-15T16:00:00+05:30",
+        platform: "Microsoft Teams",
+        description:
+            "Join us for an insightful conversation exploring the applications of Quantum Computing in Industry and Academia and its potential to shape the future of innovation, research, and education. Guest Speaker: Dr. Dadamiah PMD Shaik (Associate Professor & HoD, Physics at Vardhaman College of Engineering). Host: Mr. Vishwanath Akuthota (Founder, The Foundry's).",
+        tags: ["Quantum Computing", "Deep Tech", "Innovation", "Research", "Education"],
+        featured: false,
+        image: "/quantum-impact.png",
+    },
 ];
 
 const eventSections = [
@@ -107,11 +122,11 @@ function EventCard({ item, idx }: { item: EventItem; idx: number }) {
             className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-lg hover:shadow-slate-900/5"
         >
             <div className="flex flex-col md:flex-row">
-                <div className="relative h-56 w-full shrink-0 md:h-auto md:w-72 lg:w-80">
+                <div className="relative h-60 w-full shrink-0 md:h-auto md:w-80 lg:w-96 bg-[#f5f6f2] flex items-center justify-center p-2">
                     <img
                         src={item.image}
                         alt={item.title}
-                        className="h-full w-full object-cover object-center"
+                        className="max-h-full max-w-full object-contain object-center rounded"
                     />
                     {!upcoming && (
                         <span className="absolute top-4 left-4 rounded-full bg-slate-900/85 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
@@ -312,12 +327,6 @@ export function EventsClient() {
                                                 : "bg-white border-slate-200 hover:border-slate-300"
                                         }`}
                                     >
-                                        <div
-                                            className={`mb-8 inline-flex h-12 w-12 items-center justify-center rounded-lg border ${section.accent}`}
-                                        >
-                                            <Icon size={22} strokeWidth={1.8} />
-                                        </div>
-
                                         <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-slate-400">
                                             {section.label}
                                         </p>

@@ -115,7 +115,7 @@ export function ApplyClient() {
     React.useEffect(() => {
         if (typeof window !== "undefined") {
             const params = new URLSearchParams(window.location.search);
-            const domainParam = params.get("domain") || params.get("program");
+            const domainParam = params.get("domain") || params.get("program") || params.get("centre") || params.get("school");
             const levelParam = params.get("level");
             const courseParam = params.get("course");
             const typeParam = params.get("type");
@@ -124,6 +124,37 @@ export function ApplyClient() {
                 setSelectedProgram("Fellowship & Executive");
                 setSelectedLevel("professional");
                 setSelectedCourse("Fellow Executive Program");
+                return;
+            }
+
+            if (typeParam === "fellowship" || typeParam === "research") {
+                let matchedDomain = "Fellowship & Executive";
+                if (domainParam) {
+                    const lower = domainParam.toLowerCase();
+                    if (lower.includes("ai") || lower.includes("caai") || lower.includes("sgpc") || lower.includes("sustainability")) {
+                        matchedDomain = "AI";
+                    } else if (lower.includes("cyber") || lower.includes("ccd")) {
+                        matchedDomain = "Cyber Security";
+                    } else if (lower.includes("quantum") || lower.includes("qcri")) {
+                        matchedDomain = "Quantum Computing";
+                    } else if (lower.includes("blockchain") || lower.includes("dlbl") || lower.includes("ledger")) {
+                        matchedDomain = "Blockchain";
+                    }
+                }
+
+                setSelectedProgram(matchedDomain);
+                const lvl = levelParam ? (levelParam.toLowerCase().includes("entry") ? "entry-level" : "professional") : "professional";
+                setSelectedLevel(lvl);
+
+                if (matchedDomain === "Fellowship & Executive") {
+                    setSelectedCourse("Fellow Executive Program");
+                } else {
+                    const availableCourses = PROGRAM_COURSES[matchedDomain]?.[lvl as LevelKey] || [];
+                    const researchCourse = availableCourses.find(c => c.toLowerCase().includes("research") || c.toLowerCase().includes("fellow") || c.toLowerCase().includes("applied") || c.toLowerCase().includes("post graduate")) || availableCourses[0];
+                    if (researchCourse) {
+                        setSelectedCourse(researchCourse);
+                    }
+                }
                 return;
             }
 
@@ -167,16 +198,23 @@ export function ApplyClient() {
 
             // Fallback to separate parameters if course match wasn't found
             if (domainParam) {
+                const lowerDomain = domainParam.toLowerCase();
                 const matchedDomain = Object.keys(PROGRAM_COURSES).find(
-                    (key) => key.toLowerCase() === domainParam.toLowerCase() || 
-                             (key === "Cyber Security" && domainParam.toLowerCase() === "cybersecurity") ||
-                             (key === "Fellowship & Executive" && (domainParam.toLowerCase() === "fellowship & executive" || domainParam.toLowerCase() === "executive"))
+                    (key) => key.toLowerCase() === lowerDomain || 
+                             (key === "Cyber Security" && (lowerDomain.includes("cyber") || lowerDomain.includes("ccd"))) ||
+                             (key === "Quantum Computing" && (lowerDomain.includes("quantum") || lowerDomain.includes("qcri"))) ||
+                             (key === "Blockchain" && (lowerDomain.includes("blockchain") || lowerDomain.includes("dlbl"))) ||
+                             (key === "AI" && (lowerDomain.includes("ai") || lowerDomain.includes("caai") || lowerDomain.includes("sgpc"))) ||
+                             (key === "Fellowship & Executive" && (lowerDomain.includes("fellowship") || lowerDomain.includes("executive")))
                 );
                 if (matchedDomain) {
                     setSelectedProgram(matchedDomain);
-                    if (levelParam) {
-                        const matchedLevel = levelParam.toLowerCase() === "entry-level" || levelParam.toLowerCase() === "entry" ? "entry-level" : "professional";
-                        setSelectedLevel(matchedLevel);
+                    const matchedLevel = levelParam ? (levelParam.toLowerCase().includes("entry") ? "entry-level" : "professional") : "professional";
+                    setSelectedLevel(matchedLevel);
+
+                    const availableCourses = PROGRAM_COURSES[matchedDomain]?.[matchedLevel as LevelKey] || [];
+                    if (availableCourses.length > 0) {
+                        setSelectedCourse(availableCourses[0]);
                     }
                 }
             }

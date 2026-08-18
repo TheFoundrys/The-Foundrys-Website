@@ -21,10 +21,10 @@ export default function RenewableEnergyPage() {
     <main className="min-h-screen font-sans selection:bg-emerald-100 selection:text-emerald-800 overflow-x-hidden" style={{ backgroundColor: "#EAEAE5" }}>
       <Navbar />
       <RenewableEnergyHero />
-      <RenewableEnergyWhyUs />
 
-      {/* Consolidated Program Mix (Stats) & Core Competencies (Skills) */}
-      <section className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#DCE7F1] border border-[#c5d8ec] rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+      {/* Consolidated Why Us, Program Mix (Stats) & Core Competencies (Skills) */}
+      <section className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#F0DFDF] border border-[#e2c8c8] rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+        <RenewableEnergyWhyUs />
         <RenewableEnergyStats />
         <RenewableEnergySkills />
       </section>

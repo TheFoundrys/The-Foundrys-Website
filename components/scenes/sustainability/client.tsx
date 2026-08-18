@@ -278,9 +278,9 @@ export default function SustainabilityClient() {
 
           {/* 2. INTRODUCTION & SPECS SECTION (Combined into unified white card) */}
           <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white rounded-1xl shadow-lg shadow-black/15 border border-slate-200/50 mt-[30px] mb-8 overflow-hidden relative z-10">
-             <section className="bg-white p-8 sm:p-12 md:p-16 text-[#031a57]">
+             <section className="bg-white p-8 sm:p-12 md:p-16 text-[#1b4332]">
                 <div className="container mx-auto max-w-5xl">
-                   <h2 className="font-serif text-3xl font-bold leading-tight text-[#031a57] md:text-4xl mb-6">
+                   <h2 className="font-serif text-3xl font-bold leading-tight text-[#1b4332] md:text-4xl mb-6">
                       Introduction
                    </h2>
                    <p className="text-base sm:text-lg text-slate-650 leading-relaxed font-light mb-8">
@@ -323,21 +323,21 @@ export default function SustainabilityClient() {
                 </div>
 
                 <div className="w-full lg:w-auto">
-                   <Link href="https://compass.thefoundrys.com/courses/sustainability/sustainability-in-the-age-of-ai" className="block w-full text-center px-8 py-3.5 bg-[#002f86] text-white border border-[#002f86] font-bold rounded-xl hover:bg-[#002f86]/90 transition-all hover:scale-[1.02] shadow-[0_4px_20px_rgba(0,47,134,0.15)] whitespace-nowrap text-sm">
+                   <Link href="https://compass.thefoundrys.com/courses/sustainability/sustainability-in-the-age-of-ai" className="block w-full text-center px-8 py-3.5 bg-[#1b4332] text-white border border-[#1b4332] font-bold rounded-xl hover:bg-[#143326] transition-all hover:scale-[1.02] shadow-[0_4px_20px_rgba(27,67,50,0.15)] whitespace-nowrap text-sm">
                       Enroll Now
                    </Link>
                 </div>
              </div>
           </div>
 
-          {/* WHY THIS COHORT EXISTS + WHO IT'S FOR (Consolidated into single pastel-blue card) */}
-          <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#DCE7F1] border border-[#c5d8ec] rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
-             <section className="py-16 px-6 bg-[#DCE7F1] relative overflow-hidden">
+          {/* WHY THIS COHORT EXISTS + WHO IT'S FOR (Consolidated into single pastel-green card) */}
+          <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#E5EFE7] border border-[#c2d8c6] rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+             <section className="py-16 px-6 bg-[#E5EFE7] relative overflow-hidden">
                 <div className="container mx-auto px-6 max-w-7xl relative z-10">
                    <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
                       {/* Left: Why This Cohort Exists */}
                       <div>
-                         <h2 className="text-3xl md:text-4xl font-serif text-[#031a57] font-bold mb-6">Why This Cohort Exists</h2>
+                         <h2 className="text-3xl md:text-4xl font-serif text-[#1b4332] font-bold mb-6">Why This Cohort Exists</h2>
                          <p className="text-lg text-slate-750 mb-8 font-light italic leading-snug">
                             The tension between acceleration and sustainability will define the next decade.
                          </p>
@@ -351,8 +351,8 @@ export default function SustainabilityClient() {
                                 </p>
                             </div>
 
-                            <div className="border-l-4 border-blue-500 bg-white p-5 rounded-r-xl border border-slate-200/50 shadow-sm">
-                               <h4 className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 font-mono">The Slowdown</h4>
+                            <div className="border-l-4 border-emerald-600 bg-white p-5 rounded-r-xl border border-slate-200/50 shadow-sm">
+                               <h4 className="text-xs font-bold text-emerald-800 uppercase tracking-wider mb-2 font-mono">The Slowdown</h4>
                                <p className="text-sm text-slate-650 font-normal leading-relaxed">
                                   Sustainability is trying to slow things down—emissions, waste, inequality, collapse.
                                </p>
@@ -369,7 +369,7 @@ export default function SustainabilityClient() {
 
                       {/* Right: Who This Cohort Is For */}
                       <div>
-                         <h2 className="text-3xl md:text-4xl font-serif text-[#031a57] font-bold mb-6">Who This Cohort Is For</h2>
+                         <h2 className="text-3xl md:text-4xl font-serif text-[#1b4332] font-bold mb-6">Who This Cohort Is For</h2>
                          <p className="text-lg text-slate-750 mb-8 font-light italic leading-snug">
                             No deep coding background required. Deep thinking required and trained.
                          </p>
@@ -403,7 +403,7 @@ export default function SustainabilityClient() {
                                <CheckCircle2 size={24} className="text-emerald-600" />
                             </div>
                             <div>
-                               <h3 className="text-xl font-bold font-serif mb-3 text-[#031a57]">Our Solution</h3>
+                               <h3 className="text-xl font-bold font-serif mb-3 text-[#1b4332]">Our Solution</h3>
                                <p className="text-slate-650 font-normal leading-relaxed text-base">
                                   This cohort exists to close that gap—training professionals to navigate the intersection of AI and sustainability with systems thinking, strategic foresight, and responsible decision-making.
                                </p>
@@ -420,7 +420,7 @@ export default function SustainabilityClient() {
              <section className="py-20 px-6 bg-white">
                 <div className="container mx-auto px-6 max-w-6xl">
                    <div className="text-center mb-12">
-                      <h2 className="text-3xl md:text-5xl font-serif text-[#031a57] font-bold mb-4">
+                      <h2 className="text-3xl md:text-5xl font-serif text-[#1b4332] font-bold mb-4">
                          What You&apos;ll Learn
                       </h2>
                       <p className="text-base text-slate-500 max-w-2xl mx-auto font-light leading-relaxed">
@@ -439,10 +439,10 @@ export default function SustainabilityClient() {
           </div>
 
           {/* TOOLS & FRAMEWORKS */}
-          <section className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#DCE7F1] border border-[#c5d8ec] rounded-1xl shadow-lg shadow-black/15 py-12 mt-[30px] mb-8 overflow-hidden relative">
+          <section className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#E5EFE7] border border-[#c2d8c6] rounded-1xl shadow-lg shadow-black/15 py-12 mt-[30px] mb-8 overflow-hidden relative">
              {/* Centered heading */}
              <div className="container mx-auto px-2 mb-6 text-center max-w-3xl">
-                <h2 className="text-3xl md:text-5xl font-serif text-[#031a57] font-bold mb-4">
+                <h2 className="text-3xl md:text-5xl font-serif text-[#1b4332] font-bold mb-4">
                    Tools & Frameworks
                 </h2>
              </div>
@@ -522,200 +522,200 @@ export default function SustainabilityClient() {
                          <span>OpenFOAM</span> <span>&bull;</span>
                          <span>QGIS</span> <span>&bull;</span>
                          <span>OSeMOSYS</span> <span>&bull;</span>
-                         <span>Calliope</span> <span>&bull;</span>
-                         <span>World Bank Open Data</span> <span>&bull;</span>
-                         <span>OpenStreetMap</span> <span>&bull;</span>
-                         <span>Global Carbon Atlas</span> <span>&bull;</span>
-                         <span>Our World in Data</span> <span>&bull;</span>
-                         <span>OpenAQ</span>
-                      </div>
-                   ))}
-                </motion.div>
-             </div>
-          </section>
+                          <span>Calliope</span> <span>&bull;</span>
+                          <span>World Bank Open Data</span> <span>&bull;</span>
+                          <span>OpenStreetMap</span> <span>&bull;</span>
+                          <span>Global Carbon Atlas</span> <span>&bull;</span>
+                          <span>Our World in Data</span> <span>&bull;</span>
+                          <span>OpenAQ</span>
+                       </div>
+                    ))}
+                 </motion.div>
+              </div>
+           </section>
 
-          {/* WHAT YOU'LL BECOME */}
-          <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
-             <section className="py-20 bg-white">
-                <div className="container mx-auto px-6 max-w-6xl">
-                   {/* Header */}
-                   <div className="text-center mb-16">
-                      <h2 className="text-4xl md:text-5xl font-serif text-[#031a57] font-bold mb-4">What You&apos;ll Become</h2>
-                      <p className="text-base text-slate-500 font-light max-w-2xl mx-auto leading-relaxed">
-                         Explore career paths at the intersection of AI and sustainability
-                      </p>
-                   </div>
+           {/* WHAT YOU'LL BECOME */}
+           <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+              <section className="py-20 bg-white">
+                 <div className="container mx-auto px-6 max-w-6xl">
+                    {/* Header */}
+                    <div className="text-center mb-16">
+                       <h2 className="text-4xl md:text-5xl font-serif text-[#1b4332] font-bold mb-4">What You&apos;ll Become</h2>
+                       <p className="text-base text-slate-500 font-light max-w-2xl mx-auto leading-relaxed">
+                          Explore career paths at the intersection of AI and sustainability
+                       </p>
+                    </div>
 
-                   <div className="flex flex-col lg:flex-row gap-8 items-start">
-                      {/* Mobile Layout (Accordion) */}
-                      <div className="w-full lg:hidden flex flex-col gap-4">
-                         {CAREER_ROLES.map((role, index) => (
-                            <div
-                               key={index}
-                               ref={(el) => {
-                                  if (el) roleRefs.current[index] = el;
-                               }}
-                               className="bg-white rounded-xl border border-stone-200 overflow-hidden scroll-mt-32"
-                            >
-                               <button
-                                  onClick={() => {
-                                     setSelectedCareer(index);
-                                     setTimeout(() => {
-                                        roleRefs.current[index]?.scrollIntoView({
-                                           behavior: "smooth",
-                                           block: "start"
-                                        });
-                                     }, 100);
-                                  }}
-                                  className={`w-full text-left p-4 min-h-[48px] flex items-center justify-between transition-colors ${selectedCareer === index ? "bg-emerald-50/50" : "bg-white"}`}
-                               >
-                                  <div className="flex items-center gap-4">
-                                     <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${selectedCareer === index ? 'bg-emerald-100' : 'bg-emerald-50'}`}>
-                                        <role.icon size={20} className="text-emerald-600" />
-                                     </div>
-                                     <div>
-                                        <h3 className={`font-serif text-lg ${selectedCareer === index ? "text-emerald-800" : "text-stone-900"}`}>
-                                           {role.title}
-                                        </h3>
-                                        <div className="text-sm font-bold text-emerald-600">
-                                           {role.salary}
-                                        </div>
-                                     </div>
-                                  </div>
-                                  <ChevronDown
-                                     size={20}
-                                     className={`text-stone-400 transition-transform duration-300 ${selectedCareer === index ? "rotate-180 text-emerald-500" : ""}`}
-                                  />
-                               </button>
-                               <AnimatePresence>
-                                  {selectedCareer === index && (
-                                     <motion.div
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: "auto", opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.3 }}
-                                     >
-                                        <div className="p-4 pt-0 border-t border-stone-100">
-                                           <div className="pt-4">
-                                              <RoleDetailsContent role={role} />
-                                           </div>
-                                        </div>
-                                     </motion.div>
-                                  )}
-                               </AnimatePresence>
-                            </div>
-                         ))}
-                      </div>
+                    <div className="flex flex-col lg:flex-row gap-8 items-start">
+                       {/* Mobile Layout (Accordion) */}
+                       <div className="w-full lg:hidden flex flex-col gap-4">
+                          {CAREER_ROLES.map((role, index) => (
+                             <div
+                                key={index}
+                                ref={(el) => {
+                                   if (el) roleRefs.current[index] = el;
+                                }}
+                                className="bg-white rounded-xl border border-stone-200 overflow-hidden scroll-mt-32"
+                             >
+                                <button
+                                   onClick={() => {
+                                      setSelectedCareer(index);
+                                      setTimeout(() => {
+                                         roleRefs.current[index]?.scrollIntoView({
+                                            behavior: "smooth",
+                                            block: "start"
+                                         });
+                                      }, 100);
+                                   }}
+                                   className={`w-full text-left p-4 min-h-[48px] flex items-center justify-between transition-colors ${selectedCareer === index ? "bg-emerald-50/50" : "bg-white"}`}
+                                >
+                                   <div className="flex items-center gap-4">
+                                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${selectedCareer === index ? 'bg-emerald-100' : 'bg-emerald-50'}`}>
+                                         <role.icon size={20} className="text-emerald-600" />
+                                      </div>
+                                      <div>
+                                         <h3 className={`font-serif text-lg ${selectedCareer === index ? "text-emerald-800" : "text-stone-900"}`}>
+                                            {role.title}
+                                         </h3>
+                                         <div className="text-sm font-bold text-emerald-600">
+                                            {role.salary}
+                                         </div>
+                                      </div>
+                                   </div>
+                                   <ChevronDown
+                                      size={20}
+                                      className={`text-stone-400 transition-transform duration-300 ${selectedCareer === index ? "rotate-180 text-emerald-500" : ""}`}
+                                   />
+                                </button>
+                                <AnimatePresence>
+                                   {selectedCareer === index && (
+                                      <motion.div
+                                         initial={{ height: 0, opacity: 0 }}
+                                         animate={{ height: "auto", opacity: 1 }}
+                                         exit={{ height: 0, opacity: 0 }}
+                                         transition={{ duration: 0.3 }}
+                                      >
+                                         <div className="p-4 pt-0 border-t border-stone-100">
+                                            <div className="pt-4">
+                                               <RoleDetailsContent role={role} themeColor="emerald" />
+                                            </div>
+                                         </div>
+                                      </motion.div>
+                                   )}
+                                </AnimatePresence>
+                             </div>
+                          ))}
+                       </div>
 
-                      {/* Desktop Layout */}
-                      <div className="hidden lg:grid lg:grid-cols-2 gap-8 w-full">
-                         {/* Left: Roles List */}
-                         <div className="space-y-3">
-                            {CAREER_ROLES.map((role, i) => (
-                               <button
-                                  key={i}
-                                  onClick={() => setSelectedCareer(i)}
-                                  className={`w-full p-5 rounded-2xl transition-all text-left ${selectedCareer === i
-                                     ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/10'
-                                     : 'bg-white border-2 border-stone-150 hover:border-emerald-350 hover:shadow-md'
-                                     }`}
-                               >
-                                  <div className="flex items-start gap-4">
-                                     <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${selectedCareer === i ? 'bg-white/20' : 'bg-emerald-50'
-                                        }`}>
-                                        <role.icon size={22} className={selectedCareer === i ? 'text-white' : 'text-emerald-600'} />
-                                     </div>
-                                     <div className="flex-1">
-                                        <h3 className={`text-base font-serif leading-tight mb-1.5 font-bold ${selectedCareer === i ? 'text-white' : 'text-stone-900'
-                                           }`}>
-                                           {role.title}
-                                        </h3>
-                                        <div className={`text-sm font-bold ${selectedCareer === i ? 'text-emerald-100' : 'text-emerald-650'
-                                           }`}>
-                                           {role.salary}
-                                        </div>
-                                     </div>
-                                  </div>
-                               </button>
-                            ))}
-                         </div>
+                       {/* Desktop Layout */}
+                       <div className="hidden lg:grid lg:grid-cols-2 gap-8 w-full">
+                          {/* Left: Roles List */}
+                          <div className="space-y-3">
+                             {CAREER_ROLES.map((role, i) => (
+                                <button
+                                   key={i}
+                                   onClick={() => setSelectedCareer(i)}
+                                   className={`w-full p-5 rounded-2xl transition-all text-left ${selectedCareer === i
+                                      ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/10'
+                                      : 'bg-white border-2 border-stone-150 hover:border-emerald-350 hover:shadow-md'
+                                      }`}
+                                >
+                                   <div className="flex items-start gap-4">
+                                      <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${selectedCareer === i ? 'bg-white/20' : 'bg-emerald-50'
+                                         }`}>
+                                         <role.icon size={22} className={selectedCareer === i ? 'text-white' : 'text-emerald-600'} />
+                                      </div>
+                                      <div className="flex-1">
+                                         <h3 className={`text-base font-serif leading-tight mb-1.5 font-bold ${selectedCareer === i ? 'text-white' : 'text-stone-900'
+                                            }`}>
+                                            {role.title}
+                                         </h3>
+                                         <div className={`text-sm font-bold ${selectedCareer === i ? 'text-emerald-100' : 'text-emerald-650'
+                                            }`}>
+                                            {role.salary}
+                                         </div>
+                                      </div>
+                                   </div>
+                                </button>
+                             ))}
+                          </div>
 
-                         {/* Right: Selected Role Details */}
-                         <div className="lg:sticky lg:top-6 h-fit">
-                            <div className="bg-white border border-slate-200 rounded-3xl p-8 md:p-10 shadow-sm">
-                               <RoleDetailsContent role={CAREER_ROLES[selectedCareer]} />
-                            </div>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </section>
-          </div>
+                          {/* Right: Selected Role Details */}
+                          <div className="lg:sticky lg:top-6 h-fit">
+                             <div className="bg-white border border-slate-200 rounded-3xl p-8 md:p-10 shadow-sm">
+                                <RoleDetailsContent role={CAREER_ROLES[selectedCareer]} themeColor="emerald" />
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </section>
+           </div>
 
-          {/* CERTIFICATION - COMPACT */}
-          <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
-             <section className="py-16 bg-white">
-                <div className="container mx-auto px-6 max-w-6xl">
-                   <div className="grid lg:grid-cols-2 gap-12 items-center">
-                      {/* Left: Certificate Image */}
-                      <div className="relative">
-                         <div className="relative p-3 bg-white border border-stone-200 rounded-xl shadow-lg">
-                            <Image src="/sample-certificate.png" alt="Sample Certificate" width={600} height={400} className="w-full h-auto rounded-lg relative z-10" />
-                            {/* Decorative Elements */}
-                            <div className="absolute -top-4 -left-4 w-20 h-20 bg-emerald-500/10 rounded-full blur-2xl" />
-                            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-stone-500/10 rounded-full blur-2xl" />
-                         </div>
-                      </div>
+           {/* CERTIFICATION - COMPACT */}
+           <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+              <section className="py-16 bg-white">
+                 <div className="container mx-auto px-6 max-w-6xl">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                       {/* Left: Certificate Image */}
+                       <div className="relative">
+                          <div className="relative p-3 bg-white border border-stone-200 rounded-xl shadow-lg">
+                             <Image src="/sample-certificate.png" alt="Sample Certificate" width={600} height={400} className="w-full h-auto rounded-lg relative z-10" />
+                             {/* Decorative Elements */}
+                             <div className="absolute -top-4 -left-4 w-20 h-20 bg-emerald-500/10 rounded-full blur-2xl" />
+                             <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-stone-500/10 rounded-full blur-2xl" />
+                          </div>
+                       </div>
 
-                      {/* Right: Description */}
-                      <div>
-                         <h2 className="text-3xl md:text-4xl font-serif text-[#031a57] font-bold mb-4">Certification of Competence</h2>
-                         <p className="text-base text-slate-600 font-light mb-6 leading-relaxed">
-                            Upon passing the capstone review, you will be awarded a Certificate of Competence in Sustainable AI Systems, verifiable via our industry partners.
-                         </p>
+                       {/* Right: Description */}
+                       <div>
+                          <h2 className="text-3xl md:text-4xl font-serif text-[#1b4332] font-bold mb-4">Certification of Competence</h2>
+                          <p className="text-base text-slate-600 font-light mb-6 leading-relaxed">
+                             Upon passing the capstone review, you will be awarded a Certificate of Competence in Sustainable AI Systems, verifiable via our industry partners.
+                          </p>
 
-                         <div className="space-y-3">
-                            {[
-                               "Industry-recognized credential",
-                               "Verifiable digital certificate",
-                               "Lifetime access to alumni network",
-                               "Portfolio-ready capstone project"
-                            ].map((item, i) => (
-                               <div key={i} className="flex items-center gap-3">
-                                  <div className="w-5 h-5 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
-                                     <CheckCircle2 size={14} className="text-emerald-600" />
-                                  </div>
-                                  <span className="text-sm text-stone-700">{item}</span>
-                               </div>
-                            ))}
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </section>
-          </div>
+                          <div className="space-y-3">
+                             {[
+                                "Industry-recognized credential",
+                                "Verifiable digital certificate",
+                                "Lifetime access to alumni network",
+                                "Portfolio-ready capstone project"
+                             ].map((item, i) => (
+                                <div key={i} className="flex items-center gap-3">
+                                   <div className="w-5 h-5 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
+                                      <CheckCircle2 size={14} className="text-emerald-600" />
+                                   </div>
+                                   <span className="text-sm text-stone-700">{item}</span>
+                                </div>
+                             ))}
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </section>
+           </div>
 
-          {/* FAQ SECTION */}
-          <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-16 overflow-hidden relative">
-             <section className="py-24 bg-white">
-                <div className="container mx-auto px-6 max-w-3xl">
-                   <div className="text-center mb-16">
-                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-sm font-bold mb-4 font-mono">
-                         <HelpCircle size={16} />
-                         <span>FAQ</span>
-                      </div>
-                      <h2 className="text-3xl md:text-5xl font-serif text-[#031a57] font-bold">Frequently Asked Questions</h2>
-                   </div>
-                   <div className="space-y-6">
-                      {FAQ_DATA.map((item, i) => (
-                         <FAQItem key={i} question={item.question} answer={item.answer} />
-                      ))}
-                   </div>
-                </div>
-             </section>
-          </div>
+           {/* FAQ SECTION */}
+           <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-16 overflow-hidden relative">
+              <section className="py-24 bg-white">
+                 <div className="container mx-auto px-6 max-w-3xl">
+                    <div className="text-center mb-16">
+                       <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-sm font-bold mb-4 font-mono">
+                          <HelpCircle size={16} />
+                          <span>FAQ</span>
+                       </div>
+                       <h2 className="text-3xl md:text-5xl font-serif text-[#1b4332] font-bold">Frequently Asked Questions</h2>
+                    </div>
+                    <div className="space-y-6">
+                       {FAQ_DATA.map((item, i) => (
+                          <FAQItem key={i} question={item.question} answer={item.answer} />
+                       ))}
+                    </div>
+                 </div>
+              </section>
+           </div>
 
-          <Footer />
-       </div>
-    );
+           <Footer />
+        </div>
+     );
 }

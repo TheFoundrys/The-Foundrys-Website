@@ -38,7 +38,7 @@ const programmes = [
   {
     title: "Explore Programs",
     description: "Unlock the full spectrum of our physical campus programs, or check out our flexible, cohort-driven online offerings.",
-    href: "/programs",
+    href: "https://edith.thefoundrys.com/courses",
     imageSrc: "/images/k12-indian.png",
   },
 ];

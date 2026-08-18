@@ -4,14 +4,14 @@ import { Battery, Zap, Recycle, Activity, AreaChart, Settings, Globe } from "luc
 
 export function RenewableEnergySkills() {
     return (
-        <div className="py-16 px-6 relative z-10 bg-transparent text-[#031a57]">
+        <div className="py-16 px-6 relative z-10 bg-transparent text-[#4a1525]">
             <div className="container mx-auto max-w-6xl relative z-10">
                 <div className="flex flex-col md:flex-row gap-16 items-center">
                     
                     {/* Left: Text */}
                     <div className="md:w-1/2">
                         <span className="text-green-700 font-mono font-bold tracking-widest text-sm uppercase mb-4 block">Core Competencies</span>
-                        <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-serif text-[#031a57]">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-serif text-[#4a1525]">
                             Energy Skills <br/> That Matter.
                         </h2>
                         <p className="text-base text-slate-650 leading-relaxed mb-8">

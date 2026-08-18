@@ -205,6 +205,39 @@ const STATIC_RESEARCH_POSTS: Post[] = [
 
 const STATIC_BLOG_POSTS: Post[] = [
     {
+        _id: "blog-5",
+        title: "Cybersecurity, Simplified: Protecting Our Digital World",
+        slug: { current: "cybersecurity-simplified-protecting-our-digital-world" },
+        publishedAt: "2026-08-18T14:00:00Z",
+        mainImage: { static: true, url: "/images/cybersecurity_simplified_cover.jpg" },
+        category: "Blog",
+        readTime: "5 min",
+        excerpt: "Cybersecurity is no longer just an IT concern—it is a critical pillar of digital trust. Learn the foundational concepts of cybersecurity, threat landscapes, and how modern organizations protect their digital infrastructure.",
+        link: "https://www.linkedin.com/pulse/cybersecurity-simplified-protecting-our-digital-world-the-foundry-s-bdqfc"
+    },
+    {
+        _id: "blog-4",
+        title: "Skills That Command the Market",
+        slug: { current: "skills-that-command-the-market" },
+        publishedAt: "2026-08-18T12:00:00Z",
+        mainImage: { static: true, url: "/images/skills_command_market_cover.jpg" },
+        category: "Blog",
+        readTime: "5 min",
+        excerpt: "In an era driven by rapid technological shifts and AI adoption, discover the high-impact skills that command the tech market and how builders can future-proof their careers.",
+        link: "https://www.linkedin.com/pulse/skills-command-market-the-foundry-s-adyac"
+    },
+    {
+        _id: "blog-3",
+        title: "Top 5 Deep Tech Roles in Demand — And How to Prepare for Them",
+        slug: { current: "top-5-deep-tech-roles-in-demand-how-to-prepare-for-them" },
+        publishedAt: "2026-08-18T10:00:00Z",
+        mainImage: { static: true, url: "/images/top_5_deep_tech_roles_cover.jpg" },
+        category: "Blog",
+        readTime: "5 min",
+        excerpt: "Deep Tech is reshaping industries worldwide—from AI & Agentic Systems to Quantum Computing and Cybersecurity. Discover the top 5 high-demand deep tech roles and the exact roadmap to prepare for them.",
+        link: "https://www.linkedin.com/pulse/top-5-deep-tech-roles-demand-how-prepare-them-the-foundry-s-z2nuc"
+    },
+    {
         _id: "blog-2",
         title: "Debunking AI Myths: Understanding the Reality Through Practical Examples",
         slug: { current: "debunking-ai-myths-understanding-reality-through-practical-examples" },
@@ -351,10 +384,6 @@ export function BlogClient() {
                                                 : 'bg-white border-slate-200 hover:border-slate-300'
                                         }`}
                                     >
-                                        <div className={`mb-8 inline-flex h-12 w-12 items-center justify-center rounded-lg border ${section.accent}`}>
-                                            <Icon size={22} strokeWidth={1.8} />
-                                        </div>
-
                                         <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-slate-400">
                                             {section.label}
                                         </p>

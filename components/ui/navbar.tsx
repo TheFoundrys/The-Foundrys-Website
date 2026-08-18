@@ -141,25 +141,25 @@ export function Navbar() {
             label: "Centre for Applied Artificial Intelligence (CAAI)",
             desc: "Fostering breakthroughs in generative models, agentic workflows, and neural architectures.",
             icon: BrainCircuit,
-            href: "#"
+            href: "/centres/caai"
         },
         {
             label: "Centre for Cybersecurity & Defense (CCD)",
             desc: "Researching secure network design, active cryptography, and intelligence protection models.",
             icon: ShieldCheck,
-            href: "#"
+            href: "/centres/ccd"
         },
         {
             label: "Quantum Computing Research Initiative (QCRI)",
             desc: "Exploring quantum entanglement simulation, algorithmic speedups, and industrial optimization.",
             icon: Atom,
-            href: "#"
+            href: "/centres/qcri"
         },
         {
             label: "Distributed Ledger & Blockchain Lab (DLBL)",
             desc: "Advancing decentralization protocols, trust infrastructure, and smart contract optimization.",
             icon: Network,
-            href: "#"
+            href: "/centres/dlbl"
         },
         {
             label: "Venture Building & Incubation Institute (VBII)",
@@ -171,16 +171,17 @@ export function Navbar() {
             label: "Sustainability & Green Tech Policy Centre (SGPC)",
             desc: "Designing eco-efficiency metrics, ESG systems, and carbon accounting architectures.",
             icon: Leaf,
-            href: "#"
+            href: "/centres/sgpc"
         },
         {
             label: "Centre of Excellence (CoE)",
             desc: "Establish high-performance computing labs, applied curriculum, and research environments.",
             icon: Building2,
-            href: "#"
+            href: "/centres/coe"
         }
     ];
 
+    
     const EXPERIENCES = [
         {
             title: "Campus & Culture",
@@ -195,7 +196,7 @@ export function Navbar() {
             links: [
                 { label: "Alumni Stories", href: "/testimonials", desc: "Real transformation narratives" },
                 { label: "Project Showcases", href: "/blog", desc: "Live products built by students" },
-                { label: "Venture Portfolio", href: "/schools/venture-building", desc: "Startups launched at The Foundry" }
+                // { label: "Venture Portfolio", href: "/schools/venture-building", desc: "Startups launched at The Foundry" }
             ]
         },
         {
@@ -468,7 +469,7 @@ export function Navbar() {
                                                     </h3>
                                                     <div className="flex flex-col gap-4">
                                                         <Link
-                                                            href="/programs"
+                                                            href="https://edith.thefoundrys.com/courses"
                                                             onClick={() => { setHoveredMenu(null); handleHaptic(); }}
                                                             className="group flex items-start gap-3 hover:opacity-75 transition-opacity"
                                                         >
@@ -476,7 +477,7 @@ export function Navbar() {
                                                                 <BookOpen size={15} />
                                                             </div>
                                                             <div>
-                                                                <div className="text-sm font-bold text-black">Programs</div>
+                                                                <div className="text-sm font-bold text-black">Courses</div>
                                                                 <div className="text-[10px] uppercase font-bold tracking-wider text-neutral-400 mt-0.5">Explore All Tracks</div>
                                                             </div>
                                                         </Link>
@@ -686,7 +687,7 @@ export function Navbar() {
                                                         <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-neutral-400">Programs</div>
                                                         <div className="flex flex-col gap-1 mt-1">
                                                             <Link
-                                                                href="/programs"
+                                                                href="https://edith.thefoundrys.com/courses"
                                                                 onClick={() => { setIsOpen(false); handleHaptic(); }}
                                                                 className="flex items-center gap-3 p-2 rounded-lg hover:bg-neutral-100 transition-colors"
                                                             >

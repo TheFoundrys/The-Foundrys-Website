@@ -67,27 +67,20 @@ const NEWS_ITEMS = [
 
 export default function NewsroomPage() {
     return (
-        <main className="min-h-screen bg-slate-50 font-sans selection:bg-blue-100">
+        <main className="min-h-screen font-sans selection:bg-blue-100 overflow-x-hidden" style={{ backgroundColor: "#EAEAE5" }}>
             <Navbar />
 
             {/* Hero Section */}
-            <section className="pt-32 pb-20 px-6 bg-slate-900 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/40 via-slate-900 to-slate-900 z-0" />
-                <div className="container mx-auto max-w-6xl relative z-10 text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6">
-                        <Newspaper size={16} /> The Foundry's Newsroom
+            <section className="pt-32 pb-8 px-6">
+                <div className="container mx-auto max-w-6xl text-center">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#DCE7F1] border border-[#c5d8ec] text-[#002f86] text-xs font-bold uppercase tracking-wider">
+                        The Foundry's Newsroom
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-                        Latest Transmissions
-                    </h1>
-                    <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                        Insights, updates, and breakthroughs from the architects of tomorrow.
-                    </p>
                 </div>
             </section>
 
             {/* News Grid */}
-            <section className="py-24 px-6">
+            <section className="py-8 px-6">
                 <div className="container mx-auto max-w-6xl">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {NEWS_ITEMS.map((item, index) => (
@@ -109,7 +102,7 @@ function NewsCard({ slug, title, excerpt, date, readTime, category, image, image
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="group flex flex-col bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+            className="group flex flex-col bg-white rounded-1xl border border-slate-200 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
         >
             {image ? (
                 <Link href={`/news/${slug}`} className="block relative aspect-video overflow-hidden bg-slate-50 flex items-center justify-center">
@@ -135,7 +128,6 @@ function NewsCard({ slug, title, excerpt, date, readTime, category, image, image
 
                     {/* Decorative Element */}
                     <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <Newspaper size={120} className="text-white transform translate-x-1/4 -translate-y-1/4 rotate-12" />
                     </div>
 
                     <div className="relative z-10">

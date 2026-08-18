@@ -27,13 +27,13 @@ function getRelatedResults(role: string, goal: string) {
       return [
         { label: "Fellow Executive Suite", href: "/programs/fellow-executive" },
         { label: "Post Graduate Programs", href: "/programs/professional" },
-        { label: "Explore all Programmes", href: "/programs" },
+        { label: "Explore all Programmes", href: "https://edith.thefoundrys.com/courses" },
       ];
     }
     return [
-      { label: "Compare Programmes", href: "/programs" },
-      { label: "Programme Finder", href: "/programs" },
-      { label: "Explore all Programmes", href: "/programs" },
+      { label: "Compare Programmes", href: "https://edith.thefoundrys.com/courses" },
+      { label: "Programme Finder", href: "https://edith.thefoundrys.com/courses" },
+      { label: "Explore all Programmes", href: "https://edith.thefoundrys.com/courses" },
     ];
   }
 

@@ -48,13 +48,13 @@ export function ESGClient() {
  
       {/* 2. INTRODUCTION & SPECS SECTION */}
       <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white rounded-1xl shadow-lg shadow-black/15 border border-slate-200/50 mt-[30px] mb-8 overflow-hidden relative z-10">
-        <section className="bg-white p-8 sm:p-12 md:p-16 text-[#031a57]">
+        <section className="bg-white p-8 sm:p-12 md:p-16 text-[#1b4332]">
           <div className="container mx-auto max-w-6xl">
             <div className="grid lg:grid-cols-[1fr_auto] gap-12 items-start">
               {/* Left: Intro */}
               <div className="max-w-3xl">
-                <p className="text-[#002f86] text-xs font-bold uppercase tracking-widest mb-3 font-mono">Strategy & Governance</p>
-                <h2 className="text-3xl sm:text-4xl font-bold text-[#031a57] font-serif mb-6 leading-tight">
+                <p className="text-[#1b4332] text-xs font-bold uppercase tracking-widest mb-3 font-mono">Strategy & Governance</p>
+                <h2 className="text-3xl sm:text-4xl font-bold text-[#1b4332] font-serif mb-6 leading-tight">
                   Master the Trinity of Modern Governance.
                 </h2>
                 <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-light mb-8">
@@ -63,7 +63,7 @@ export function ESGClient() {
                 </p>
                 <div className="flex gap-4">
                   <Link href="/apply">
-                    <button className="px-8 py-3 bg-[#002f86] text-white rounded-full font-bold text-sm tracking-wide hover:bg-[#031a57] transition-all transform hover:-translate-y-0.5 shadow-lg shadow-blue-900/25">
+                    <button className="px-8 py-3 bg-[#1b4332] text-white rounded-full font-bold text-sm tracking-wide hover:bg-[#143326] transition-all transform hover:-translate-y-0.5 shadow-lg shadow-emerald-900/25">
                       Apply for ESG Program
                     </button>
                   </Link>
@@ -76,7 +76,7 @@ export function ESGClient() {
                 <div>
                   <p className="text-[10px] text-slate-500 uppercase tracking-[0.25em] font-bold mb-3 font-mono">Available Degrees</p>
                   <div className="space-y-1.5 border-l-2 border-emerald-500 pl-4">
-                    <p className="text-sm font-bold text-[#031a57]">B.Sc in ESG & Sustainability</p>
+                    <p className="text-sm font-bold text-[#1b4332]">B.Sc in ESG & Sustainability</p>
                   </div>
                 </div>
 
@@ -84,7 +84,7 @@ export function ESGClient() {
                 <div>
                   <p className="text-[10px] text-slate-500 uppercase tracking-[0.25em] font-bold mb-3 font-mono">Partner Institutions</p>
                   <div className="space-y-1.5 border-l-2 border-cyan-500 pl-4">
-                    <p className="text-sm font-bold text-[#031a57]">Keshava Degree College</p>
+                    <p className="text-sm font-bold text-[#1b4332]">Keshava Degree College</p>
                   </div>
                 </div>
 
@@ -93,11 +93,11 @@ export function ESGClient() {
                   <p className="text-[10px] text-slate-500 uppercase tracking-[0.25em] font-bold mb-3 font-mono">Industry Credentials</p>
                   <div className="flex gap-4 border-l-2 border-purple-500 pl-4 items-center">
                     <div>
-                      <span className="text-sm font-extrabold text-blue-600 tracking-wider block leading-none">FCEP</span>
+                      <span className="text-sm font-extrabold text-emerald-700 tracking-wider block leading-none">FCEP</span>
                       <span className="text-[8px] text-slate-500 uppercase tracking-widest font-semibold mt-1 block">Executive</span>
                     </div>
                     <div>
-                      <span className="text-sm font-extrabold text-cyan-600 tracking-wider block leading-none">FCIP</span>
+                      <span className="text-sm font-extrabold text-teal-600 tracking-wider block leading-none">FCIP</span>
                       <span className="text-[8px] text-slate-500 uppercase tracking-widest font-semibold mt-1 block">Practitioner</span>
                     </div>
                     <div>
@@ -133,7 +133,7 @@ export function ESGClient() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-            <Link href="/apply" className="flex-1 lg:flex-none text-center px-8 py-3.5 bg-[#002f86] text-white border border-[#002f86] font-bold rounded-xl hover:bg-[#002f86]/90 transition-all hover:scale-[1.02] shadow-[0_4px_20px_rgba(0,47,134,0.15)] whitespace-nowrap text-sm">
+            <Link href="/apply" className="flex-1 lg:flex-none text-center px-8 py-3.5 bg-[#1b4332] text-white border border-[#1b4332] font-bold rounded-xl hover:bg-[#143326] transition-all hover:scale-[1.02] shadow-[0_4px_20px_rgba(27,67,50,0.15)] whitespace-nowrap text-sm">
               Apply Now
             </Link>
             <Link href="/contact" className="flex-1 lg:flex-none text-center px-8 py-3.5 bg-white text-slate-750 border border-slate-200 font-bold rounded-xl hover:bg-slate-50 transition-all hover:scale-[1.02] whitespace-nowrap text-sm">
@@ -149,7 +149,7 @@ export function ESGClient() {
           <div className="container mx-auto max-w-6xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-[#031a57] mb-6 tracking-tight font-serif">
+                <h2 className="text-4xl md:text-5xl font-bold text-[#1b4332] mb-6 tracking-tight font-serif">
                   Profit meets <br/>
                   <span className="text-emerald-600">Purpose.</span>
                 </h2>

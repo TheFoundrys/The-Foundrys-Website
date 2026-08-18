@@ -75,7 +75,7 @@ export function RenewableEnergyStats() {
     });
 
   return (
-    <div className="py-16 relative border-b border-[#c5d8ec]/60 z-10">
+    <div className="py-16 relative border-b border-[#e2c8c8]/60 z-10">
       <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-16 py-4 px-4 md:px-8">
         
         <div className="md:w-1/2 relative flex justify-center items-center">
