@@ -205,6 +205,17 @@ const STATIC_RESEARCH_POSTS: Post[] = [
 
 const STATIC_BLOG_POSTS: Post[] = [
     {
+        _id: "blog-6",
+        title: "We Are Producing Degrees for a World That No Longer Exists",
+        slug: { current: "we-are-producing-degrees-for-a-world-that-no-longer-exists" },
+        publishedAt: "2026-08-18T16:00:00Z",
+        mainImage: { static: true, url: "/images/producing_degrees_world_longer_exists_cover.jpg" },
+        category: "Blog",
+        readTime: "5 min",
+        excerpt: "Traditional higher education systems are conferring degrees tailored for yesterday's industrial workforce. In an age dominated by generative AI and rapid technological disruption, discover how applied deep-tech education is bridging the gap.",
+        link: "https://www.linkedin.com/pulse/we-producing-degrees-world-longer-exists-the-foundry-s-gu9uc"
+    },
+    {
         _id: "blog-5",
         title: "Cybersecurity, Simplified: Protecting Our Digital World",
         slug: { current: "cybersecurity-simplified-protecting-our-digital-world" },
@@ -300,11 +311,17 @@ export function BlogClient() {
         const fetchPosts = async () => {
             try {
                 const data = await client.fetch(POSTS_QUERY);
-                const merged = [...(data || []), ...STATIC_RESEARCH_POSTS, ...STATIC_BLOG_POSTS];
-                setPosts(merged);
+                const staticPosts = [...STATIC_BLOG_POSTS, ...STATIC_RESEARCH_POSTS];
+                const staticSlugs = new Set(staticPosts.map(p => p.slug?.current));
+                const filteredSanity = (data || []).filter((p: Post) => 
+                    !staticSlugs.has(p.slug?.current) && 
+                    !p.title?.toLowerCase().includes("producing degrees") &&
+                    !p.slug?.current?.includes("producing-degrees")
+                );
+                setPosts([...staticPosts, ...filteredSanity]);
             } catch (error) {
                 console.error("Failed to fetch posts:", error);
-                setPosts([...STATIC_RESEARCH_POSTS, ...STATIC_BLOG_POSTS]);
+                setPosts([...STATIC_BLOG_POSTS, ...STATIC_RESEARCH_POSTS]);
             } finally {
                 setLoading(false);
             }
