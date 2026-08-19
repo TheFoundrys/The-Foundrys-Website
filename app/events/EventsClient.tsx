@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, Clock, MapPin, Video, ArrowUpRight, Sparkles, PlayCircle, Filter } from "lucide-react";
+import { Calendar, Clock, MapPin, Video, ArrowUpRight, Sparkles, PlayCircle, Filter, Youtube } from "lucide-react";
 import Link from "next/link";
 
 interface EventItem {
@@ -23,10 +23,35 @@ interface EventItem {
     platform?: string;
     link?: string;
     ctaText?: string;
+    secondaryLink?: string;
+    secondaryCtaText?: string;
     image?: string;
 }
 
 const allItems: EventItem[] = [
+    {
+        id: "quantum-computing-podcast",
+        title: "Live Podcast: Quantum Computing and the Next Generation of Emerging Technologies",
+        type: "Live Podcast",
+        category: "webinar",
+        date: "Sat, Aug 22, 2026",
+        time: "4:00 PM - 5:00 PM IST",
+        dateTime: "2026-08-22T16:00:00+05:30",
+        platform: "Microsoft Teams & YouTube Live",
+        link: "https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzhkMmZhYjctYjJhYS00NTVlLTk5MjUtZWU4MjQ5Y2Q0ZDJm%40thread.v2/0?context=%7b%22Tid%22%3a%229be43f22-3237-4b73-971b-3e664c641aea%22%2c%22Oid%22%3a%2244076315-3ad7-4d15-a8d3-3eb81b6ccdeb%22%7d",
+        ctaText: "Join Session (Teams)",
+        secondaryLink: "https://youtube.com/live/cSQhou5nJsQ?feature=share",
+        secondaryCtaText: "Watch on YouTube",
+        description: `Explore the frontier of physics and technology in our upcoming Live Podcast: 'Quantum Computing and the Next Generation of Emerging Technologies — From Physics to Possibilities'.
+
+Guest Speaker: Dr. Ram Soorat (Assistant Professor of Physics, Woxsen University)
+Host: Mr. Vishwanath Akuthota (Founder, The Foundry's)
+
+Live Podcast — One Conversation. Endless Possibilities.`,
+        tags: ["Quantum Computing", "Deep Tech", "Emerging Tech", "Physics", "Podcast"],
+        featured: true,
+        image: "/images/quantum-computing-podcast.jpg"
+    },
     {
         id: "quantum-impact",
         title: "Quantum Impact: Bridging Industry Innovation and Academic Advancement",
@@ -241,14 +266,7 @@ export function EventsClient() {
                                                         : "border-slate-200 bg-white shadow-sm"
                                                     }`}
                                             >
-                                                {item.featured && (
-                                                    <div className="absolute top-6 right-6 z-10">
-                                                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-bold uppercase tracking-wider shadow-lg">
-                                                            <Sparkles size={12} />
-                                                            Featured
-                                                        </div>
-                                                    </div>
-                                                )}
+
 
                                                 <div className="flex flex-col gap-0">
                                                     {item.image && (
@@ -344,8 +362,8 @@ export function EventsClient() {
                                                             </div>
                                                         </div>
 
-                                                        <div className="flex flex-col sm:flex-row gap-3">
-                                                            {"link" in item ? (
+                                                        <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+                                                            {"link" in item && item.link ? (
                                                                 <a
                                                                     href={item.link}
                                                                     target="_blank"
@@ -363,6 +381,18 @@ export function EventsClient() {
                                                                     className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
                                                                 >
                                                                     Register Now
+                                                                    <ArrowUpRight size={16} />
+                                                                </a>
+                                                            )}
+                                                            {item.secondaryLink && (
+                                                                <a
+                                                                    href={item.secondaryLink}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-red-600 text-white rounded-full font-bold hover:bg-red-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+                                                                >
+                                                                    <Youtube size={18} />
+                                                                    {item.secondaryCtaText || "Watch Live Stream on YouTube"}
                                                                     <ArrowUpRight size={16} />
                                                                 </a>
                                                             )}
