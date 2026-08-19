@@ -31,7 +31,7 @@ export default function EntryLevelProgramPage() {
                     `
                 }} />
                 <Image
-                    src="/images/ygp_classroom_session.png"
+                    src="/images/ygp_suite_banner.jpg"
                     alt="YGP Suite"
                     fill
                     priority

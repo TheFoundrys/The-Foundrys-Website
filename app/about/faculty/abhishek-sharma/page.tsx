@@ -4,168 +4,141 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Linkedin, ArrowLeft, Zap, BookOpen, BarChart3, Target, Rocket, GraduationCap, Quote, Database, Code2 } from "lucide-react";
+import { Linkedin, ArrowLeft, Zap, BookOpen, BarChart3, Target, GraduationCap } from "lucide-react";
 import Link from "next/link";
 
 export default function AbhishekSharmaProfile() {
     return (
-        <main className="min-h-screen bg-slate-50 selection:bg-blue-100 selection:text-blue-900">
+        <main className="min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden pt-24 pb-0" style={{ backgroundColor: "#EAEAE5" }}>
             <Navbar />
 
-            {/* Hero Section */}
-            <section className="pt-32 pb-20 px-6 bg-slate-900 text-white relative overflow-hidden">
-                {/* Background Gradients */}
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none" />
+            {/* Master Centered Card Container */}
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 overflow-hidden mb-16 shadow-lg shadow-black/15">
+                
+                {/* Hero / Header Section inside White Card */}
+                <section className="bg-[#F7F7F4] p-8 sm:p-12 md:p-16 border-b border-slate-200/50 relative overflow-hidden">
+                    <div className="relative z-10">
+                        <Link href="/about/team" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors mb-8 text-xs font-bold uppercase tracking-wider font-mono">
+                            <ArrowLeft size={14} /> Back to Team
+                        </Link>
 
-                <div className="container mx-auto max-w-6xl relative z-10">
-                    <Link href="/about/team" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8 text-sm font-bold uppercase tracking-wider">
-                        <ArrowLeft size={16} /> Back to Team
-                    </Link>
-
-                    <div className="flex flex-col md:flex-row gap-12 items-start">
-                        {/* Profile Image */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.6 }}
-                            className="w-full md:w-1/3 relative"
-                        >
-                            <div className="aspect-[3/4] relative rounded-2xl overflow-hidden shadow-2xl bg-slate-800">
-                                <Image
-                                    src="/images/abhishek shaarma.png"
-                                    alt="Abhishek Sharma"
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-                            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-500/20 blur-3xl rounded-full" />
-                        </motion.div>
-
-                        {/* Header Info */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                            className="flex-1 space-y-6"
-                        >
-                            <div>
-                                <div className="inline-block px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-xs font-bold uppercase tracking-widest mb-4">
-                                    Senior Data Analyst
+                        <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-start">
+                            {/* Profile Image */}
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.5 }}
+                                className="w-full lg:w-1/3 shrink-0"
+                            >
+                                <div className="aspect-[3/4] relative overflow-hidden shadow-md bg-white border border-slate-200/80">
+                                    <Image
+                                        src="/images/abhishek shaarma.png"
+                                        alt="Abhishek Sharma"
+                                        fill
+                                        priority
+                                        className="object-cover"
+                                    />
                                 </div>
-                                <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-2">
-                                    Abhishek Sharma
-                                </h1>
-                                <p className="text-xl text-blue-400 font-medium mb-4 italic">
-                                    Senior Data Analyst
-                                </p>
+                            </motion.div>
 
-                                <div className="flex flex-wrap gap-3 mb-6">
+                            {/* Header Information */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.1 }}
+                                className="flex-1 space-y-6"
+                            >
+                                <div>
+                                    <span className="inline-block px-3 py-1 bg-[#002f86] text-white text-[10px] font-bold uppercase tracking-widest font-mono mb-4">
+                                        SME in Data Analytics
+                                    </span>
+                                    <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold tracking-tight text-[#002f86] mb-3 leading-tight">
+                                        Abhishek Sharma
+                                    </h1>
+                                    <p className="text-base sm:text-lg text-slate-600 font-medium italic">
+                                        Senior Data Analyst & Strategic Automation Specialist
+                                    </p>
+                                </div>
+
+                                {/* Social Links */}
+                                <div className="flex flex-wrap gap-3">
                                     <a
                                         href="https://linkedin.com/in/abhishek-sharma-27b585ba"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-full transition-colors"
+                                        className="inline-flex items-center gap-2 px-4 py-2 bg-[#002f86] hover:bg-[#002266] text-white text-xs font-bold transition-colors cursor-pointer"
                                     >
-                                        <Linkedin size={16} /> Connect
+                                        <Linkedin size={15} /> LinkedIn
                                     </a>
                                 </div>
-                            </div>
 
-                            <div className="flex flex-wrap gap-3 text-slate-300">
-                                <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700 text-sm font-medium">
-                                    <BarChart3 size={16} className="text-blue-400" /> 8+ Years Experience
-                                </div>
-                                <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700 text-sm font-medium">
-                                    <Zap size={16} className="text-blue-400" /> 220+ Hours Saved
-                                </div>
-                                <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700 text-sm font-medium">
-                                    <GraduationCap size={16} className="text-blue-400" /> Master in Economics
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Biography Content */}
-            <section className="py-20 px-6">
-                <div className="container mx-auto max-w-4xl">
-                    <div className="prose prose-lg prose-slate max-w-none">
-                        <div className="relative mb-16">
-                            <div className="bg-white rounded-3xl p-10 border border-slate-100 shadow-sm relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50/50 rounded-bl-full -z-10" />
-                                <h2 className="text-3xl font-bold text-slate-900 mb-8 border-b border-slate-100 pb-4">
-                                    A Narrative of Data & Precision
-                                </h2>
-                                <p className="text-slate-700 leading-relaxed mb-6">
-                                    Abhishek Sharma is an analytical and results-driven professional who believes that the true value of data lies in its power to uncover hidden truths. With a career spanning over eight years, he has dedicated himself to impacting organizational performance by digging deep into metrics and transforming complex datasets into actionable business intelligence.
-                                </p>
-                                <p className="text-slate-700 leading-relaxed mb-6">
-                                    His journey is characterized by a relentless drive for efficiency. At Statestreet, he single-handedly revolutionized the daily Mark-to-Market (MTM) reporting process. By integrating Python-driven workflows with AI-integrated analytics, he shifted the paradigm from manual data collection to high-level strategic analysis, saving hundreds of hours of manual labor in the process.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-                            <div>
-                                <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                                    <BookOpen className="text-blue-600" size={24} /> Academic Lens
-                                </h3>
-                                <div className="space-y-4 text-slate-600 leading-relaxed">
-                                    <p>Master in Economics from the University Of Hyderabad, providing a unique lens for interpreting complex market factors.</p>
-                                    <p>Bachelor in Economics from the University Of Delhi, grounding his analytical approach in macroeconomic theory.</p>
-                                    <p>His academic background allows him to blend theoretical economics with modern data engineering to solve aggressive business objectives.</p>
-                                </div>
-                            </div>
-                            <div>
-                                <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                                    <Target className="text-blue-600" size={24} /> Professional Impact
-                                </h3>
-                                <div className="space-y-4 text-slate-600 leading-relaxed">
-                                    <p>Spearheaded function-level Treasury reports for self-service analytics and automated commentary.</p>
-                                    <p>Built KPIs and customer insight platforms for key cloud-native storage solutions at Pure Storage.</p>
-                                    <p>Established Visualization Centers of Excellence (CoE) to set new standards in digital reporting.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h3 className="text-2xl font-bold text-slate-900 mt-16 mb-8">Strategic Automation & AI</h3>
-                        <p className="text-slate-700 leading-relaxed mb-10">
-                            Abhishek is a pioneer in leveraging AI tools like Copilot to shorten development cycles and optimize Python scripts. His work at Statestreet and Pure Storage has consistently bridged the gap between raw data and executive narratives, ensuring that stakeholders from all regions and teams have access to high-fidelity, real-time insights.
-                        </p>
-
-                        <div className="bg-slate-900 rounded-3xl p-10 text-white mb-16">
-                            <div className="flex flex-col md:flex-row gap-8 items-center">
-                                <div className="flex-1 italic text-lg text-slate-300 leading-relaxed">
-                                    "Deep data insights are the only way to navigate aggressive business objectives in a volatile market. Automation is the key to unlocking human potential for strategic thinking."
-                                </div>
-
-                                {/* <div className="flex-1">
-                                    <h4 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                                        <Database className="text-blue-400" size={24} /> Technical Stack
-                                    </h4>
-                                    <div className="flex flex-wrap gap-2">
-                                        {['Tableau', 'Power BI', 'SQL', 'Python', 'Snowflake', 'Looker', 'Copilot'].map(tech => (
-                                            <span key={tech} className="px-3 py-1 bg-white/10 rounded-full text-xs font-bold text-blue-300">{tech}</span>
-                                        ))}
+                                {/* Key Badges */}
+                                <div className="flex flex-wrap gap-2.5 pt-2">
+                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
+                                        <BarChart3 size={14} className="text-[#002f86]" /> 8+ Years Experience
                                     </div>
-                                </div> */}
-                            </div>
-                        </div>
-
-                        <div className="bg-blue-600 rounded-3xl p-10 text-center text-white">
-                            <h3 className="text-3xl font-bold mb-4 italic">Uncovering the Truth in Data.</h3>
-                            <p className="text-blue-100 mb-8 max-w-2xl mx-auto leading-relaxed">
-                                Abhishek represents the future of data analytics—where AI and human intuition combine to drive unprecedented organizational performance.
-                            </p>
-                            <Link href="/about/team" className="inline-block px-8 py-4 bg-white text-blue-600 font-bold rounded-xl transition-all hover:scale-105 active:scale-95 shadow-lg">
-                                Back to Team
-                            </Link>
+                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
+                                        <Zap size={14} className="text-[#002f86]" /> 220+ Hours Saved
+                                    </div>
+                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
+                                        <GraduationCap size={14} className="text-[#002f86]" /> Master in Economics
+                                    </div>
+                                </div>
+                            </motion.div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+
+                {/* Profile Overview Section */}
+                <section className="p-8 sm:p-12 md:p-16 bg-white border-b border-slate-200/50">
+                    <div className="max-w-4xl space-y-6">
+                        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#002f86] mb-4">
+                            A Narrative of Data & Precision
+                        </h2>
+                        <p className="text-slate-700 text-sm md:text-base leading-relaxed font-sans">
+                            Abhishek Sharma is an analytical and results-driven professional who believes that the true value of data lies in its power to uncover hidden truths. With a career spanning over eight years, he has dedicated himself to impacting organizational performance by digging deep into metrics and transforming complex datasets into actionable business intelligence.
+                        </p>
+                        <p className="text-slate-700 text-sm md:text-base leading-relaxed font-sans">
+                            His journey is characterized by a relentless drive for efficiency. At State Street, he single-handedly revolutionized the daily Mark-to-Market (MTM) reporting process. By integrating Python-driven workflows with AI-integrated analytics, he shifted the paradigm from manual data collection to high-level strategic analysis, saving hundreds of hours of manual labor in the process.
+                        </p>
+                    </div>
+                </section>
+
+                {/* Grid Section */}
+                <section className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-b border-slate-200/50">
+                    <div className="max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 className="font-serif text-xl font-bold text-[#002f86] mb-4 flex items-center gap-2">
+                                <BookOpen className="text-[#002f86]" size={22} /> Academic Lens
+                            </h3>
+                            <div className="space-y-3 text-xs md:text-sm text-slate-700 leading-relaxed font-sans">
+                                <p className="p-4 bg-white border border-slate-200/80 shadow-xs">Master in Economics from the University Of Hyderabad, providing a unique lens for interpreting complex market factors.</p>
+                                <p className="p-4 bg-white border border-slate-200/80 shadow-xs">Bachelor in Economics from the University Of Delhi, grounding his analytical approach in macroeconomic theory.</p>
+                                <p className="p-4 bg-white border border-slate-200/80 shadow-xs">His academic background allows him to blend theoretical economics with modern data engineering to solve aggressive business objectives.</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 className="font-serif text-xl font-bold text-[#002f86] mb-4 flex items-center gap-2">
+                                <Target className="text-[#002f86]" size={22} /> Professional Impact
+                            </h3>
+                            <div className="space-y-3 text-xs md:text-sm text-slate-700 leading-relaxed font-sans">
+                                <p className="p-4 bg-white border border-slate-200/80 shadow-xs">Spearheaded function-level Treasury reports for self-service analytics and automated commentary.</p>
+                                <p className="p-4 bg-white border border-slate-200/80 shadow-xs">Built KPIs and customer insight platforms for key cloud-native storage solutions at Pure Storage.</p>
+                                <p className="p-4 bg-white border border-slate-200/80 shadow-xs">Established Visualization Centers of Excellence (CoE) to set new standards in digital reporting.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Quote Section */}
+                <section className="p-8 sm:p-12 md:p-16 bg-white">
+                    <div className="max-w-4xl">
+                        <p className="font-serif italic text-base md:text-xl text-[#002f86] leading-relaxed mb-6">
+                            &quot;Deep data insights are the only way to navigate aggressive business objectives in a volatile market. Automation is the key to unlocking human potential for strategic thinking.&quot;
+                        </p>
+                    </div>
+                </section>
+            </div>
 
             <Footer />
         </main>

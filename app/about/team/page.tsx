@@ -21,7 +21,7 @@ const teamMembers = [
     },
     {
         name: "Pramod Chada",
-        role: "Advisory Board Member",
+        role: "Cheif opernation officer",
         bio: "Visionary IT leader with 2.5 decades of expertise in SDLC evolution. Co-founder and CEO of TechOptima, driving business transformation through cutting-edge AI solutions.",
         image: "/images/pramod-chada.jpg",
         profileLink: "/about/faculty/pramod-chada",
@@ -40,24 +40,13 @@ const teamMembers = [
         }
     },
     {
-        name: "Srinivas Sadasyula",
-        role: "Vice President",
-        bio: "Veteran operations leader with 35 years of experience in the logistics sector. Bringing large-scale operational rigor to the agility of a venture ecosystem, empowering the next generation to become creators of the future.",
-        image: "/images/srinivas-sadasyula.jpg",
-        profileLink: "/about/faculty/srinivas-sadasyula",
+        name: "Soujanya Kanagala",
+        role: "Operations Head",
+        image: "/images/soujanya.jpg",
+        bio: "Operations Head with 14 years of experience specializing in business setup, operations, and organizational scaling.",
+        profileLink: "/about/faculty/soujanya-kanagala",
         socials: {
-            linkedin: "https://www.linkedin.com/in/srinivas-sadasyula-411b79161/",
-        }
-    },
-{
-        name: "Abhishek Sharma",
-        role: "Senior Data Analyst",
-        image: "/images/abhishek shaarma.png",
-        imageClass: "brightness-125 contrast-110 object-[center_20%]",
-        bio: "Analytical professional with 8+ years of experience in driving organizational performance through deep data insights and actionable dashboards.",
-        profileLink: "/about/faculty/abhishek-sharma",
-        socials: {
-            linkedin: "https://linkedin.com/in/abhishek-sharma-27b585ba"
+            linkedin: "https://www.linkedin.com/in/soujanya-kanagala-07304833/"
         }
     },
     {
@@ -71,13 +60,24 @@ const teamMembers = [
         }
     },
     {
-        name: "Soujanya Kanagala",
-        role: "Operations Head",
-        image: "/images/soujanya.jpg",
-        bio: "Operations Head with 14 years of experience specializing in business setup, operations, and organizational scaling.",
-        profileLink: "/about/faculty/soujanya-kanagala",
+        name: "Srinivas Sadasyula",
+        role: "Vice President",
+        bio: "Veteran operations leader with 35 years of experience in the logistics sector. Bringing large-scale operational rigor to the agility of a venture ecosystem, empowering the next generation to become creators of the future.",
+        image: "/images/srinivas-sadasyula.jpg",
+        profileLink: "/about/faculty/srinivas-sadasyula",
         socials: {
-            linkedin: "https://www.linkedin.com/in/soujanya-kanagala-07304833/"
+            linkedin: "https://www.linkedin.com/in/srinivas-sadasyula-411b79161/",
+        }
+    },
+{
+        name: "Abhishek Sharma",
+        role: "SME in Data analytics",
+        image: "/images/abhishek shaarma.png",
+        imageClass: "brightness-125 contrast-110 object-[center_20%]",
+        bio: "Analytical professional with 8+ years of experience in driving organizational performance through deep data insights and actionable dashboards.",
+        profileLink: "/about/faculty/abhishek-sharma",
+        socials: {
+            linkedin: "https://linkedin.com/in/abhishek-sharma-27b585ba"
         }
     },
     {
@@ -122,14 +122,13 @@ const teamMembers = [
         }
     },
     {
-        name: "Sai Pramodu",
-        role: "Academic Advisor",
-        bio: "Bringing 15+ years of diverse industry experience across software engineering, research, and strategy consulting. Expert in scaling tech ventures from ideation to market leadership, with a strong focus on emerging technologies, venture building, and go-to-market execution.",
-        image: "/images/testimonials/saipramod.jpeg",
-        // profileLink: "/about/faculty/sai-pramodu",
-        // socials: {
-        //     linkedin: "https://www.linkedin.com/in/maruthipelluri/",
-        // }
+        name: "Thirupathi Reddy",
+        role: "SME in Academics",
+        bio: "Holds a Master of Commerce (M.Com) and a Master of Social Work (MSW). Brings over 23 years of teaching experience, including 5 years as a Junior College Principal and 13 years as a Degree College Principal.",
+        image: "/images/ThirupathiReddy.jpeg",
+        socials: {
+            linkedin: "#",
+        }
     },
     {
         name: "Maruthi Ram Prasad Pelluri",
@@ -143,18 +142,9 @@ const teamMembers = [
     },
     {
         name: "Dr. Jayaram",
-        role: "Advisory Board Member",
+        role: "Advisory Member",
         bio: "President of the Telangana Training and Placement Officers Association (TTPOA) and Vice President of the All India TPO Association. Bringing decades of experience in campus placements and aligning training ecosystems with industry needs.",
         image: "/images/dr-jayaram.jpg",
-        socials: {
-            linkedin: "#",
-        }
-    },
-    {
-        name: "Thirupathi Reddy",
-        role: "Academics SME",
-        bio: "Holds a Master of Commerce (M.Com) and a Master of Social Work (MSW). Brings over 23 years of teaching experience, including 5 years as a Junior College Principal and 13 years as a Degree College Principal.",
-        image: "/images/ThirupathiReddy.jpeg",
         socials: {
             linkedin: "#",
         }

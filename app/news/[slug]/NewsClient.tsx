@@ -1,8 +1,9 @@
 "use client";
-import React, { useEffect, useState } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowLeft, Clock, Share2, Tag, Calendar, User } from 'lucide-react';
+import { ArrowLeft, Clock, Share2, Calendar, User } from 'lucide-react';
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 
@@ -26,36 +27,36 @@ const ARTICLES: Record<string, NewsArticle> = {
         image: "/vareon-partnership-graphic.png",
         content: (
             <>
-                <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
+                <p className="text-lg md:text-xl text-slate-700 font-serif italic mb-8 border-l-4 border-[#002f86] pl-6">
                     The Foundry’s has officially signed a Memorandum of Understanding (MOU) with Vareon to build the future of technical skills, innovation, and direct placement opportunities.
                 </p>
 
-                <h2>Building the Future Together</h2>
-                <p>
-                    We are thrilled to share that The Foundry's has entered into a strategic MOU partnership with Vareon! This collaboration represents a strong alignment of values and resources, dedicated to bringing state-of-the-art training, industrial mentorship, and high-performance career paths to students and early-career professionals.
+                <h2 className="font-serif text-2xl font-bold text-[#002f86] mt-8 mb-4">Building the Future Together</h2>
+                <p className="text-slate-700 leading-relaxed mb-6 font-sans">
+                    We are thrilled to share that The Foundry&apos;s has entered into a strategic MOU partnership with Vareon! This collaboration represents a strong alignment of values and resources, dedicated to bringing state-of-the-art training, industrial mentorship, and high-performance career paths to students and early-career professionals.
                 </p>
 
-                <div className="my-10 flex justify-center">
+                <div className="my-8 flex justify-center">
                     <img 
                         src="/vareon-partnership-mou.jpg" 
                         alt="The Foundry's and Vareon MOU Signing" 
-                        className="rounded-3xl border border-slate-200 shadow-lg max-w-full md:max-w-2xl"
+                        className="border border-slate-200/80 shadow-md max-w-full md:max-w-2xl"
                     />
                 </div>
 
-                <div className="my-10 p-8 bg-blue-50/50 rounded-3xl border border-blue-100/50 italic text-slate-700">
-                    "Through this partnership, Vareon and The Foundry's are bringing academic training and real-world deployment closer than ever before. We will deliver industry-relevant programs and foster innovation that creates limitless impact."
+                <div className="my-8 p-6 bg-[#F7F7F4] border border-slate-200/80 italic text-slate-800 font-serif">
+                    &quot;Through this partnership, Vareon and The Foundry&apos;s are bringing academic training and real-world deployment closer than ever before. We will deliver industry-relevant programs and foster innovation that creates limitless impact.&quot;
                 </div>
 
-                <h2>Key Objectives of the MoU</h2>
-                <ul>
+                <h2 className="font-serif text-2xl font-bold text-[#002f86] mt-8 mb-4">Key Objectives of the MoU</h2>
+                <ul className="list-disc pl-6 space-y-2 text-slate-700 font-sans mb-6">
                     <li><strong>Industry-Aligned Training:</strong> Collaborative design of training programs tailored to modern software engineering, AI engineering, and systems risk architectures.</li>
                     <li><strong>Innovation & Research:</strong> Enabling shared research pathways and technology-led solutions to bridge technical training and deployment.</li>
                     <li><strong>Direct Placements:</strong> Creating career transformation pathways and connecting qualified candidates directly to placement opportunities at Vareon.</li>
                 </ul>
 
-                <p>
-                    By merging Vareon's industry expertise with The Foundry's premium finishing school curriculum, we are excited to empower learners with the hands-on competence required to lead in the intelligent age.
+                <p className="text-slate-700 leading-relaxed font-sans">
+                    By merging Vareon&apos;s industry expertise with The Foundry&apos;s premium finishing school curriculum, we are excited to empower learners with the hands-on competence required to lead in the intelligent age.
                 </p>
             </>
         )
@@ -69,62 +70,43 @@ const ARTICLES: Record<string, NewsArticle> = {
         imagePosition: "contain",
         content: (
             <>
-                <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
+                <p className="text-lg md:text-xl text-slate-700 font-serif italic mb-8 border-l-4 border-[#002f86] pl-6">
                     The Foundry’s has officially signed an MOU with the Telangana Training and Placement Officers Association (TTPOA). Additionally, TTPOA President Dr. Jayaram joins The Foundry’s Advisory Board to align academic training with industry hiring and drive career placements.
                 </p>
 
-                <h2>Aligning Academia with Deep Tech Industry Hiring</h2>
-                <p>
-                    This partnership between The Foundry's and the Telangana Training and Placement Officers Association (<a href="https://www.ttpoa.in/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">TTPOA</a>) marks a milestone in empowering engineering graduates across Telangana. By combining forces, we aim to bridge the gap between traditional curriculum models and the rigorous requirements of global technology teams in Artificial Intelligence, Machine Learning, and other deep-tech domains.
+                <h2 className="font-serif text-2xl font-bold text-[#002f86] mt-8 mb-4">Aligning Academia with Deep Tech Industry Hiring</h2>
+                <p className="text-slate-700 leading-relaxed mb-6 font-sans">
+                    This partnership between The Foundry&apos;s and the Telangana Training and Placement Officers Association (<a href="https://www.ttpoa.in/" target="_blank" rel="noopener noreferrer" className="text-[#002f86] hover:underline font-bold">TTPOA</a>) marks a milestone in empowering engineering graduates across Telangana. By combining forces, we aim to bridge the gap between traditional curriculum models and the rigorous requirements of global technology teams.
                 </p>
 
-                <div className="my-10 p-8 bg-blue-50/50 rounded-3xl border border-blue-100/50 italic text-slate-700">
-                    "Bridging academic curriculum with real-world deployment is critical. Through this strategic alliance, we will ensure that engineering graduates in Telangana are not only trained in deep tech, but are ready to deliver value to industry teams from day one."
+                <div className="my-8 p-6 bg-[#F7F7F4] border border-slate-200/80 italic text-slate-800 font-serif">
+                    &quot;Bridging academic curriculum with real-world deployment is critical. Through this strategic alliance, we will ensure that engineering graduates in Telangana are not only trained in deep tech, but are ready to deliver value to industry teams from day one.&quot;
                 </div>
 
-                <h2>Key Pillars of the MOU</h2>
-                <ul>
+                <h2 className="font-serif text-2xl font-bold text-[#002f86] mt-8 mb-4">Key Pillars of the MOU</h2>
+                <ul className="list-disc pl-6 space-y-2 text-slate-700 font-sans mb-6">
                     <li><strong>Industry Placement Readiness:</strong> Designing targeted placement bootcamps and assessment frameworks aligned with active hiring standards.</li>
                     <li><strong>AI & Deep Tech Bootcamps:</strong> Organizing technical workshops and certifications directly accessible to students in member colleges under TTPOA.</li>
                     <li><strong>Faculty Development:</strong> Providing training programs for placement coordinators and educators on industry shifts and tools.</li>
                 </ul>
-
-                <p>
-                    Through this association, The Foundry's and TTPOA are dedicated to fostering a future-ready engineering ecosystem that connects regional talent with top-tier technology opportunities.
-                </p>
             </>
         )
     },
-    "the-future-of-deep-tech": {
-        title: "The Future of Deep Tech Education: A New Chapter",
-        date: "February 27, 2026",
-        readTime: "4 min read",
-        category: "Announcements",
-        image: "/news-hero.png",
+    "thefoundrys-certified-by-startup-india": {
+        title: "The Foundry's Officially Certified by Startup India",
+        date: "March 17, 2026",
+        readTime: "3 min read",
+        category: "Achievements",
+        image: "/startup-india-certificate.jpg",
         content: (
             <>
-                <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
-                    The following is an announcement regarding the expansion of The Foundry's curriculum and global presence.
+                <p className="text-lg md:text-xl text-slate-700 font-serif italic mb-8 border-l-4 border-[#002f86] pl-6">
+                    The Foundry’s is proud to announce its official recognition and certification by Startup India, the Government of India’s flagship initiative to foster innovation and entrepreneurship.
                 </p>
 
-                <h2>Forging the Next Generation of Architects</h2>
-                <p>
-                    At the intersection of deep tech and entrepreneurship, we are redefining what it means to be a modern engineer. Our new "News" section will serve as the central hub for all updates, industry insights, and academic breakthroughs emerging from our schools.
-                </p>
-
-                <div className="my-10 p-8 bg-blue-50/50 rounded-3xl border border-blue-100/50 italic text-slate-700">
-                    "Innovation is not just about building new tools; it's about forging the mindset that understands why they are being built."
-                </div>
-
-                <h2>What to Expect</h2>
-                <ul>
-                    <li><strong>Weekly Insights:</strong> Deep dives into AI, Cybersecurity, and Sustainability.</li>
-                    <li><strong>Campus Updates:</strong> New facilities, events, and student achievements.</li>
-                    <li><strong>Global Partnerships:</strong> Collaborations with industry leaders and global universities.</li>
-                </ul>
-
-                <p>
-                    Stay tuned as we prepare to launch our full editorial series. The Foundry's is more than a school; it's a protocol for the future.
+                <h2 className="font-serif text-2xl font-bold text-[#002f86] mt-8 mb-4">Recognized for Deep Tech Excellence</h2>
+                <p className="text-slate-700 leading-relaxed mb-6 font-sans">
+                    This recognition validates our commitment to building an ecosystem that merges deep technology education, venture acceleration, and strategic industry collaboration.
                 </p>
             </>
         )
@@ -137,130 +119,13 @@ const ARTICLES: Record<string, NewsArticle> = {
         image: "/csi-partnership.jpeg",
         content: (
             <>
-                <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
+                <p className="text-lg md:text-xl text-slate-700 font-serif italic mb-8 border-l-4 border-[#002f86] pl-6">
                     We’re incredibly excited to share that The Foundry’s has officially partnered with the Computer Society of India (CSI)!
                 </p>
 
-                <h2>Empowering Next-Generation Tech Leaders</h2>
-                <p>
-                    We’ve signed an MOU to train the next generation of students and professionals in AI and deep tech, equipping them with future-ready skills. This collaboration aims to empower students, researchers, and tech enthusiasts by providing unparalleled access to state-of-the-art resources, deep tech education, and an expansive network of industry professionals.
-                </p>
-
-                <div className="my-10 p-8 bg-blue-50/50 rounded-3xl border border-blue-100/50 italic text-slate-700">
-                    "This partnership with CSI represents a crucial step forward in our mission to bridge the gap between academic learning and industry demands in the rapidly evolving tech landscape."
-                </div>
-
-                <h2>Join Us in Shaping the Future</h2>
-                <ul>
-                    <li><strong>Collaborative Programs:</strong> Joint workshops, seminars, and certification programs focusing on emerging technologies.</li>
-                    <li><strong>Research Initiatives:</strong> Shared resources to foster innovation and support groundbreaking research projects.</li>
-                    <li><strong>Community Building:</strong> Creating a robust ecosystem for knowledge exchange among students and seasoned tech veterans.</li>
-                </ul>
-
-                <p>
-                    Together with CSI, Thefoundrys is set to accelerate the development of world-class engineering talent, driving forward the tech ecosystem locally and globally. Join us in shaping the future!
-                </p>
-            </>
-        )
-    },
-    "thefoundrys-partnered-with-keshava-college": {
-        title: "The Foundrys Partnered with Keshava Degree College for Women",
-        date: "March 17, 2026",
-        readTime: "2 min read",
-        category: "Partnerships",
-        image: "/mou-keshava-college.jpg",
-        imagePosition: "object-top",
-        content: (
-            <>
-                <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
-                    The Foundry’s is proud to announce a strategic partnership with Keshava Degree College for Women, Hanamakonda.
-                </p>
-
-                <h2>Empowering Women in Deep Tech</h2>
-                <p>
-                    This Memorandum of Understanding (MOU) marks a significant step forward in our mission to bring advanced technical education to a broader student body. By partnering with Keshava Degree College for Women, we are committed to providing the next generation of female tech leaders with the tools, mentorship, and training required to excel in Artificial Intelligence and Deep Tech.
-                </p>
-
-                <div className="my-10 p-8 bg-blue-50/50 rounded-3xl border border-blue-100/50 italic text-slate-700">
-                    "Bridging the gender gap in technical leadership is not just a social imperative, but an economic one. Our collaboration with Keshava College is a blueprint for empowering women to lead the future of innovation."
-                </div>
-
-                <h2>Future-Ready Training and Mentorship</h2>
-                <ul>
-                    <li><strong>Specialized AI Training:</strong> Hands-on workshops focusing on Generative AI, LLM development, and Machine Learning.</li>
-                    <li><strong>Industry Mentorship:</strong> Exclusive access to a network of industry experts and deep-tech entrepreneurs.</li>
-                    <li><strong>Strategic Ecosystem:</strong> Building a robust ecosystem of innovation, where students can transition from academic learning to building real-world applications.</li>
-                </ul>
-
-                <p>
-                    The Foundry’s remains dedicated to creating inclusive, accessible, and high-impact educational pathways. We look forward to seeing the breakthroughs and innovations that emerge from this exciting new partnership.
-                </p>
-            </>
-        )
-    },
-    "thefoundrys-partnered-with-ebs": {
-        title: "The Foundry's Partnered with EBS Ethames Business School",
-        date: "April 02, 2026",
-        readTime: "2 min read",
-        category: "Partnerships",
-        image: "/ebs-partnership.png",
-        content: (
-            <>
-                <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
-                    The Foundry’s is proud to announce a strategic partnership with Ethames Business School (EBS).
-                </p>
-
-
-                <p>
-                    This Memorandum of Understanding (MOU) marks a significant step forward in our mission to bring advanced technical education to a broader student body. By partnering with EBS, we are committed to providing the next generation of tech leaders with the tools, mentorship, and training required to excel in Artificial Intelligence and Deep Tech.
-                </p>
-
-                <div className="my-10 p-8 bg-blue-50/50 rounded-3xl border border-blue-100/50 italic text-slate-700">
-                    "This partnership with EBS represents a crucial step forward in our mission to bridge the gap between academic learning and industry demands in the rapidly evolving tech landscape."
-                </div>
-
-                <h2>Future-Ready Training and Mentorship</h2>
-                <ul>
-                    <li><strong>Specialized AI Training:</strong> Hands-on workshops focusing on Generative AI, LLM development, and Machine Learning.</li>
-                    <li><strong>Industry Mentorship:</strong> Exclusive access to a network of industry experts and deep-tech entrepreneurs.</li>
-                    <li><strong>Strategic Ecosystem:</strong> Building a robust ecosystem of innovation, where students can transition from academic learning to building real-world applications.</li>
-                </ul>
-
-                <p>
-                    The Foundry’s remains dedicated to creating inclusive, accessible, and high-impact educational pathways. We look forward to seeing the breakthroughs and innovations that emerge from this exciting new partnership.
-                </p>
-            </>
-        )
-    },
-    "thefoundrys-certified-by-startup-india": {
-        title: "The Foundry's Officially Certified by Startup India",
-        date: "March 17, 2026",
-        readTime: "3 min read",
-        category: "Achievements",
-        image: "/startup-india-certificate.jpg",
-        content: (
-            <>
-                <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
-                    The Foundry’s is proud to announce its official recognition and certification by Startup India, the Government of India’s flagship initiative.
-                </p>
-
-                <h2>A Milestone in Innovation</h2>
-                <p>
-                    This recognition by the Department for Promotion of Industry and Internal Trade (DPIIT) is a testament to our commitment to building cutting-edge deep tech solutions in India. Being part of the Startup India ecosystem provides us with a robust framework to scale our operations and continue our mission of technical excellence.
-                </p>
-
-                <div className="my-10 p-8 bg-blue-50/50 rounded-3xl border border-blue-100/50 italic text-slate-700">
-                    "Recognition by Startup India is more than just a certification; it's a validation of our vision to position India as a global leader in AI and Deep Tech innovation."
-                </div>
-
-                <h2>Fueling the Deep Tech Revolution</h2>
-                <p>
-                    As a certified startup, we gain access to strategic resources, tax benefits, and a network of mentors and investors who share our passion for transformative technology. This milestone enables us to accelerate our research and development in Generative AI, LLM frameworks, and responsible AI architectures.
-                </p>
-
-                <h2>The Road Ahead</h2>
-                <p>
-                    We remain dedicated to fostering a culture of innovation and mentorship. This certification empowers us to further bridge the gap between academic brilliance and industrial application, creating world-class AI products that solve real-world challenges.
+                <h2 className="font-serif text-2xl font-bold text-[#002f86] mt-8 mb-4">Empowering Next-Generation Tech Leaders</h2>
+                <p className="text-slate-700 leading-relaxed mb-6 font-sans">
+                    We’ve signed an MOU to train the next generation of students and professionals in AI and deep tech, equipping them with future-ready skills.
                 </p>
             </>
         )
@@ -268,148 +133,90 @@ const ARTICLES: Record<string, NewsArticle> = {
 };
 
 export default function NewsClient({ slug }: { slug: string }) {
-    const article = ARTICLES[slug];
     const [copied, setCopied] = useState(false);
-    const { scrollYProgress } = useScroll();
-    const scaleX = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001
-    });
+    const article = ARTICLES[slug] || ARTICLES["thefoundrys-partnered-with-vareon"];
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
-    const handleShare = async () => {
-        const shareData = {
-            title: article.title,
-            text: article.excerpt || article.title,
-            url: window.location.href,
-        };
-
-        if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
-            try {
-                await navigator.share(shareData);
-            } catch (err) {
-                console.error('Error sharing:', err);
-            }
-        } else {
-            try {
-                await navigator.clipboard.writeText(window.location.href);
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2000);
-            } catch (err) {
-                console.error('Error copying to clipboard:', err);
-            }
+    const handleShare = () => {
+        if (typeof window !== "undefined") {
+            navigator.clipboard.writeText(window.location.href);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 3000);
         }
     };
 
-    if (!article) {
-        return (
-            <div className="min-h-screen flex items-center justify-center bg-slate-50">
-                <div className="text-center">
-                    <h1 className="text-4xl font-bold text-slate-900 mb-4">Article Not Found</h1>
-                    <Link href="/news" className="text-blue-600 hover:underline">Back to Newsroom</Link>
-                </div>
-            </div>
-        );
-    }
-
     return (
-        <main className="min-h-screen bg-slate-50 font-sans selection:bg-blue-200 selection:text-blue-900 text-slate-700 relative overflow-hidden">
+        <main className="min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden pt-24 pb-0" style={{ backgroundColor: "#EAEAE5" }}>
             <Navbar />
 
-            {/* Background Effect */}
-            <div className="fixed inset-0 z-0 pointer-events-none">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-100/30 via-slate-50 to-slate-50" />
-            </div>
-
-            {/* Reading Progress Bar */}
-            <motion.div
-                className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-indigo-500 to-blue-600 origin-left z-50 shadow-[0_0_15px_rgba(59,130,246,0.5)]"
-                style={{ scaleX }}
-            />
-
-            {/* Article Container */}
-            <div className="relative z-10 pt-32 pb-24 px-4 container mx-auto max-w-4xl">
-
+            {/* Master Centered Card Container */}
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 overflow-hidden mb-16 shadow-lg shadow-black/15">
+                
                 {/* Header Section */}
-                <header className="mb-12 text-center relative">
-                    <Link href="/news" className="inline-flex items-center gap-2 text-xs font-bold font-mono text-slate-500 hover:text-blue-600 mb-8 transition-colors group uppercase tracking-[0.2em] px-4 py-2 bg-white/50 backdrop-blur-md rounded-full border border-white/60 shadow-sm hover:shadow-md hover:-translate-y-0.5">
-                        <ArrowLeft size={12} className="group-hover:-translate-x-1 transition-transform" />
-                        Back to Newsroom
-                    </Link>
+                <section className="bg-[#F7F7F4] p-8 sm:p-12 md:p-16 border-b border-slate-200/50">
+                    <div className="max-w-4xl">
+                        <Link href="/news" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors mb-6 text-xs font-bold uppercase tracking-wider font-mono">
+                            <ArrowLeft size={14} /> Back to Newsroom
+                        </Link>
 
-                    <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-slate-800 to-slate-600 mb-8 leading-tight tracking-tight">
-                        {article.title}
-                    </h1>
-
-                    <div className="flex flex-wrap items-center justify-center gap-4 text-sm font-medium text-slate-500 bg-white/40 backdrop-blur-sm inline-flex px-6 py-3 rounded-2xl border border-white/50 shadow-sm">
-                        <span className="flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-                                <User size={14} className="text-blue-600" />
-                            </div>
-                            <span className="text-slate-800 font-bold">The Foundry's Editorial</span>
-                        </span>
-                        <div className="h-4 w-px bg-slate-300/50" />
-                        <span className="flex items-center gap-1.5">
-                            <Calendar size={14} className="text-slate-400" />
-                            {article.date}
-                        </span>
-                        <div className="h-4 w-px bg-slate-300/50" />
-                        <span className="flex items-center gap-1.5">
-                            <Clock size={14} className="text-blue-600" />
-                            {article.readTime}
-                        </span>
-                        <div className="h-4 w-px bg-slate-300/50" />
-                        <span className="flex items-center gap-1.5 text-blue-700 bg-blue-50/80 px-2.5 py-0.5 rounded-md border border-blue-100/50">
-                            <Tag size={12} />
-                            {article.category}
-                        </span>
-                    </div>
-                </header>
-
-                {/* Main Content Card */}
-                <article className="bg-white/70 backdrop-blur-xl rounded-[2.5rem] p-6 md:p-12 shadow-[0_8px_32px_rgba(0,0,0,0.04)] border border-white/80 relative overflow-hidden ring-1 ring-white/80">
-
-                    {article.image && (
-                        <div className="mb-14 rounded-2xl overflow-hidden shadow-2xl shadow-slate-900/10 relative group transform transition-transform hover:scale-[1.01] duration-700 aspect-video bg-slate-50 flex items-center justify-center">
-                            <img
-                                src={article.image}
-                                alt={article.title}
-                                className={`w-full h-full ${
-                                    article.imagePosition?.includes('contain') 
-                                        ? 'object-contain' 
-                                        : `object-cover ${article.imagePosition || 'object-center'}`
-                                }`}
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                        <div className="mb-4">
+                            <span className="inline-block px-3 py-1 bg-[#002f86] text-white text-[10px] font-bold uppercase tracking-widest font-mono">
+                                {article.category}
+                            </span>
                         </div>
-                    )}
 
-                    <div className="prose prose-lg prose-slate max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-slate-900 prose-p:text-slate-700 prose-p:leading-relaxed prose-a:text-blue-600 hover:prose-a:text-blue-500 prose-img:rounded-2xl">
-                        {article.content}
+                        <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#002f86] mb-6 leading-tight">
+                            {article.title}
+                        </h1>
+
+                        <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-500 border-t border-slate-200/80 pt-4">
+                            <span className="flex items-center gap-1.5">
+                                <User size={14} className="text-[#002f86]" /> The Foundry&apos;s Editorial
+                            </span>
+                            <span>•</span>
+                            <span className="flex items-center gap-1.5">
+                                <Calendar size={14} className="text-[#002f86]" /> {article.date}
+                            </span>
+                            <span>•</span>
+                            <span className="flex items-center gap-1.5">
+                                <Clock size={14} className="text-[#002f86]" /> {article.readTime}
+                            </span>
+                        </div>
                     </div>
+                </section>
 
-                    {/* Footer / Share */}
-                    <div className="mt-20 pt-10 border-t border-slate-200/60 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
+                {/* Article Content Section */}
+                <section className="p-8 sm:p-12 md:p-16 bg-white">
+                    <div className="max-w-4xl">
+                        {article.image && (
+                            <div className="mb-10 aspect-video bg-[#F7F7F4] border border-slate-200/80 overflow-hidden flex items-center justify-center p-3">
+                                <img
+                                    src={article.image}
+                                    alt={article.title}
+                                    className={`max-h-full max-w-full ${
+                                        article.imagePosition?.includes('contain') 
+                                            ? 'object-contain' 
+                                            : `object-cover ${article.imagePosition || 'object-center'}`
+                                    }`}
+                                />
+                            </div>
+                        )}
 
-                        <div className="flex gap-4">
+                        <div className="prose prose-lg max-w-none text-slate-700 font-sans">
+                            {article.content}
+                        </div>
+
+                        {/* Share Action */}
+                        <div className="mt-12 pt-8 border-t border-slate-200/60 flex items-center justify-between">
                             <button
                                 onClick={handleShare}
-                                className={`flex items-center gap-2 transition-all font-bold px-6 py-3 rounded-full active:scale-95 duration-200 shadow-sm hover:shadow-lg ${copied
-                                    ? "bg-green-500 text-white"
-                                    : "text-slate-600 bg-slate-100/50 hover:text-white hover:bg-slate-900"
-                                    }`}
+                                className="inline-flex items-center gap-2 px-6 py-3 bg-[#002f86] hover:bg-[#002266] text-white text-xs font-bold font-mono transition-colors cursor-pointer"
                             >
-                                <Share2 size={16} />
+                                <Share2 size={15} />
                                 {copied ? "Link Copied!" : "Share Article"}
                             </button>
                         </div>
                     </div>
-                </article>
-
+                </section>
             </div>
 
             <Footer />

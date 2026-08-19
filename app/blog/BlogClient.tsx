@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -10,15 +11,15 @@ import { urlForImage } from "@/sanity/image";
 
 // Type definition for a Post
 interface Post {
-  _id: string;
-  title: string;
-  slug: { current: string };
-  publishedAt: string;
-  mainImage: unknown;
-  category: string;
-  readTime: string;
-  excerpt?: string;
-  link?: string;
+    _id: string;
+    title: string;
+    slug: { current: string };
+    publishedAt: string;
+    mainImage: unknown;
+    category: string;
+    readTime: string;
+    excerpt?: string;
+    link?: string;
 }
 
 const POSTS_QUERY = `*[_type == "post"] | order(publishedAt desc) {
@@ -31,8 +32,6 @@ const POSTS_QUERY = `*[_type == "post"] | order(publishedAt desc) {
   readTime,
   "excerpt": array::join(string::split((pt::text(body)), "")[0..120], "") + "..."
 }`;
-
-
 
 const getPostImageUrl = (image: unknown) => {
     if (image && typeof image === "object" && "static" in image && "url" in image) {
@@ -205,6 +204,17 @@ const STATIC_RESEARCH_POSTS: Post[] = [
 
 const STATIC_BLOG_POSTS: Post[] = [
     {
+        _id: "blog-8",
+        title: "The Developer Toolkit: Git, Docker, Postman & VS Code",
+        slug: { current: "the-developer-toolkit" },
+        publishedAt: "2026-08-19T06:00:00Z",
+        mainImage: { static: true, url: "/images/developer_toolkit_cover.jpg" },
+        category: "Blog",
+        readTime: "4 min",
+        excerpt: "Git, Docker, Postman & VS Code — Tools That Turn Ideas into Working Software. Great software is rarely built with a single tool. From the first line of code to testing, deployment, collaboration, and maintenance, discover how developers leverage these essential tools to build faster.",
+        link: "https://www.linkedin.com/pulse/developer-toolkit-the-foundry-s-klmyc"
+    },
+    {
         _id: "blog-6",
         title: "We Are Producing Degrees for a World That No Longer Exists",
         slug: { current: "we-are-producing-degrees-for-a-world-that-no-longer-exists" },
@@ -272,40 +282,10 @@ const STATIC_BLOG_POSTS: Post[] = [
     }
 ];
 
-const resourceSections = [
-    {
-        title: "Blog",
-        label: "Editorial Signals",
-        description: "Short-form perspectives, updates, and field notes from The Foundry's deep tech ecosystem.",
-        href: "?category=blog",
-        action: "Read blog",
-        icon: Newspaper,
-        accent: "bg-cyan-50 text-cyan-700 border-cyan-100",
-    },
-    {
-        title: "Research",
-        label: "Applied Inquiry",
-        description: "Research notes, institute thinking, and technical explorations across AI, cyber, quantum, and climate systems.",
-        href: "?category=research",
-        action: "Browse research",
-        icon: FlaskConical,
-        accent: "bg-emerald-50 text-emerald-700 border-emerald-100",
-    },
-    // {
-    //     title: "Whitepapers",
-    //     label: "Deep Reports",
-    //     description: "Structured briefs and long-form technical documents for leaders, builders, and institutional partners.",
-    //     href: "?category=whitepapers",
-    //     action: "View whitepapers",
-    //     icon: FileText,
-    //     accent: "bg-amber-50 text-amber-700 border-amber-100",
-    // },
-];
-
 export function BlogClient() {
     const [posts, setPosts] = useState<Post[]>([]);
     const [loading, setLoading] = useState(true);
-    const [selectedCategory, setSelectedCategory] = useState<'blog' | 'research' | 'whitepapers'>('blog');
+    const [selectedTab, setSelectedTab] = useState<'blog' | 'research'>('blog');
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -313,10 +293,12 @@ export function BlogClient() {
                 const data = await client.fetch(POSTS_QUERY);
                 const staticPosts = [...STATIC_BLOG_POSTS, ...STATIC_RESEARCH_POSTS];
                 const staticSlugs = new Set(staticPosts.map(p => p.slug?.current));
-                const filteredSanity = (data || []).filter((p: Post) => 
-                    !staticSlugs.has(p.slug?.current) && 
+                const filteredSanity = (data || []).filter((p: Post) =>
+                    !staticSlugs.has(p.slug?.current) &&
                     !p.title?.toLowerCase().includes("producing degrees") &&
-                    !p.slug?.current?.includes("producing-degrees")
+                    !p.slug?.current?.includes("producing-degrees") &&
+                    !p.title?.toLowerCase().includes("moving beyond") &&
+                    !p.slug?.current?.includes("moving-beyond")
                 );
                 setPosts([...staticPosts, ...filteredSanity]);
             } catch (error) {
@@ -334,11 +316,9 @@ export function BlogClient() {
             const params = new URLSearchParams(window.location.search);
             const cat = params.get('category');
             if (cat === 'research') {
-                setSelectedCategory('research');
-            } else if (cat === 'whitepapers' || cat === 'whitepaper') {
-                setSelectedCategory('whitepapers');
+                setSelectedTab('research');
             } else {
-                setSelectedCategory('blog');
+                setSelectedTab('blog');
             }
         };
 
@@ -347,108 +327,71 @@ export function BlogClient() {
         return () => window.removeEventListener('popstate', handleLocationChange);
     }, []);
 
-    const handleSectionClick = (e: React.MouseEvent, category: 'blog' | 'research' | 'whitepapers') => {
-        e.preventDefault();
-        setSelectedCategory(category);
-        
-        const url = new URL(window.location.href);
-        url.searchParams.set('category', category);
-        window.history.pushState({}, '', url.toString());
-
-        const feedElement = document.getElementById('resource-feed');
-        if (feedElement) {
-            feedElement.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
     const filteredPosts = useMemo(() => {
-        if (selectedCategory === 'research') {
+        if (selectedTab === 'research') {
             return posts.filter(post => post.category?.toLowerCase() === 'research');
         }
-        if (selectedCategory === 'whitepapers') {
-            return posts.filter(post => post.category?.toLowerCase() === 'whitepaper' || post.category?.toLowerCase() === 'whitepapers');
-        }
-        // Default to blog (exclude research and whitepapers)
         return posts.filter(post => !['research', 'whitepaper', 'whitepapers'].includes(post.category?.toLowerCase() || ''));
-    }, [posts, selectedCategory]);
+    }, [posts, selectedTab]);
 
     return (
-        <main className="min-h-screen bg-[#eaedea] font-sans selection:bg-cyan-200 selection:text-cyan-900 overflow-x-hidden">
+        <main className="min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden pt-28 pb-0" style={{ backgroundColor: "#EAEAE5" }}>
             <Navbar />
 
-            <section className="relative z-10 pt-32 pb-8 px-4 bg-[#eaedea]">
-                <div className="container mx-auto max-w-7xl">
-                    <div className="grid gap-5 md:grid-cols-3">
-                        {resourceSections.map((section, idx) => {
-                            const Icon = section.icon;
-                            const catKey = section.title.toLowerCase() as 'blog' | 'research' | 'whitepapers';
-                            const isActive = selectedCategory === catKey;
+            {/* Main Centered White Card Container matching About / Story page design */}
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white shadow-lg shadow-black/15 border border-slate-200/50 overflow-hidden mb-16">
 
-                            return (
-                                <Link 
-                                    href={section.href} 
-                                    key={section.title} 
-                                    className="group"
-                                    onClick={(e) => handleSectionClick(e, catKey)}
-                                >
-                                    <motion.article
-                                        initial={{ opacity: 0, y: 18 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: idx * 0.08 }}
-                                        className={`min-h-[280px] h-full rounded-lg border p-6 md:p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/5 ${
-                                            isActive 
-                                                ? 'bg-slate-50/70 border-cyan-600/50 ring-1 ring-cyan-600/30' 
-                                                : 'bg-white border-slate-200 hover:border-slate-300'
-                                        }`}
-                                    >
-                                        <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-slate-400">
-                                            {section.label}
-                                        </p>
-                                        <h2 className="mb-4 text-3xl font-bold tracking-tight text-slate-950">
-                                            {section.title}
-                                        </h2>
-                                        <p className="text-sm leading-6 text-slate-600">
-                                            {section.description}
-                                        </p>
+                {/* Story / Header Section */}
+                <section className="text-slate-800 p-8 sm:p-12 md:p-16 pb-6 sm:pb-8 md:pb-10 bg-white">
+                    <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-[#002f86] mb-6">
+                        Blog & Research
+                    </h1>
+                    <p className="text-sm md:text-base leading-relaxed text-slate-700 max-w-4xl mb-8">
+                        The Foundry&apos;s is a premium Finishing and Venture School at the innovation hub of Hyderabad. We bridge the gap between academic theory and the raw velocity of the deep tech industry through applied research, technical whitepapers, and field notes.
+                    </p>
 
-                                        <div className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-slate-950 transition-colors group-hover:text-cyan-700">
-                                            {section.action}
-                                            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-                                        </div>
-                                    </motion.article>
-                                </Link>
-                            );
-                        })}
+                    {/* Filter Tabs */}
+                    <div className="flex items-center gap-2 bg-[#F7F7F4] p-1.5 border border-slate-200/80 w-fit">
+                        <button
+                            onClick={() => setSelectedTab("blog")}
+                            className={`px-5 py-2 text-xs font-bold transition-all cursor-pointer ${
+                                selectedTab === "blog"
+                                    ? "bg-[#002f86] text-white shadow-xs"
+                                    : "text-slate-600 hover:text-slate-900"
+                            }`}
+                        >
+                            Blogs
+                        </button>
+                        <button
+                            onClick={() => setSelectedTab("research")}
+                            className={`px-5 py-2 text-xs font-bold transition-all cursor-pointer ${
+                                selectedTab === "research"
+                                    ? "bg-[#002f86] text-white shadow-xs"
+                                    : "text-slate-600 hover:text-slate-900"
+                            }`}
+                        >
+                            Research
+                        </button>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* Blog Grid */}
-            <section id="resource-feed" className="relative z-10 pt-4 pb-16 px-4 bg-[#eaedea]">
-                <div className="container mx-auto max-w-7xl">
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="h-px bg-slate-200 flex-1" />
-                        <span className="text-slate-400 font-mono text-sm uppercase tracking-widest">
-                            Latest {selectedCategory === 'blog' ? 'Blog Posts' : selectedCategory === 'research' ? 'Research Papers' : 'Whitepapers'}
-                        </span>
-                        <div className="h-px bg-slate-200 flex-1" />
-                    </div>
-
+                {/* Blog Grid Feed Section */}
+                <section id="resource-feed" className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-slate-200/50">
                     {loading && posts.length === 0 ? (
                         <div className="flex justify-center py-20">
-                            <Loader2 className="w-10 h-10 text-cyan-500 animate-spin" />
+                            <Loader2 className="w-10 h-10 text-[#002f86] animate-spin" />
                         </div>
                     ) : filteredPosts.length === 0 ? (
-                        <div className="text-center py-20 text-slate-500 bg-slate-50 rounded-1xl border border-dashed border-slate-200">
-                            <p>No {selectedCategory} transmissions received yet.</p>
+                        <div className="text-center py-20 text-slate-500 bg-white border border-dashed border-slate-200">
+                            <p>No publications found for this filter.</p>
                         </div>
                     ) : (
-                        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8">
+                        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                             {filteredPosts.map((post, idx) => (
-                                <Link 
-                                    href={post.link || `/blog/${post.slug.current}`} 
-                                    key={post._id} 
-                                    className="group"
+                                <Link
+                                    href={post.link || `/blog/${post.slug.current}`}
+                                    key={post._id}
+                                    className="group flex flex-col h-full"
                                     target={post.link ? "_blank" : undefined}
                                     rel={post.link ? "noopener noreferrer" : undefined}
                                 >
@@ -456,9 +399,9 @@ export function BlogClient() {
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: idx * 0.05 }}
-                                        className="relative flex flex-col w-full h-full"
+                                        className="flex flex-col w-full h-full bg-white border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#002f86]"
                                     >
-                                        <div className="relative w-full h-[320px] overflow-hidden bg-slate-100">
+                                        <div className="relative w-full h-[220px] overflow-hidden bg-slate-100">
                                             {post.mainImage ? (
                                                 <img
                                                     src={getPostImageUrl(post.mainImage)}
@@ -466,33 +409,28 @@ export function BlogClient() {
                                                     className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                                                 />
                                             ) : (
-                                                <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-slate-100 to-[#F7F7F4] flex items-center justify-center text-slate-400 text-xs font-bold uppercase tracking-widest">
+                                                <div className="absolute inset-0 bg-slate-100 flex items-center justify-center text-slate-400 text-xs font-bold uppercase tracking-widest">
                                                     No Image
                                                 </div>
                                             )}
                                         </div>
 
-                                        <div className="relative z-10 w-[85%] bg-[#F7F7F4] border border-slate-200/80 p-6 -mt-10 ml-0 flex flex-col justify-between flex-1 min-h-[190px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:bg-[#DCE7F1]">
+                                        <div className="p-6 flex flex-col justify-between flex-1 gap-4">
                                             <div>
-                                                <h3 className="font-serif text-xl font-bold text-brand-purple mb-1 line-clamp-3">
+                                                <h3 className="font-serif text-xl font-bold text-slate-900 group-hover:text-[#002f86] transition-colors leading-snug mb-2 line-clamp-2">
                                                     {post.title}
                                                 </h3>
-                                                <div className="text-deep-blue font-semibold text-xs uppercase tracking-wider mb-3">
-                                                    {post.category || 'General'}
-                                                    {post.readTime ? ` · ${post.readTime}` : ''}
+                                                <div className="text-slate-500 font-mono text-xs uppercase tracking-wider mb-3">
+                                                    {post.readTime ? `${post.readTime} read` : 'Article'}
                                                 </div>
-                                                <p className="text-xs text-slate-800 leading-relaxed font-sans line-clamp-4">
+                                                <p className="text-xs text-slate-600 leading-relaxed font-sans line-clamp-3">
                                                     {post.excerpt}
                                                 </p>
                                             </div>
 
-                                            <div className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand-purple group-hover:text-[#0f172a] transition-colors">
-                                                {post.link ? 'Read More' : 'Read Article'}
-                                                <ChevronRight
-                                                    size={14}
-                                                    strokeWidth={2.5}
-                                                    className="inline-block transition-transform duration-300 group-hover:translate-x-0.5"
-                                                />
+                                            <div className="pt-3 border-t border-slate-100 inline-flex items-center gap-1.5 text-xs font-bold text-[#002f86] group-hover:gap-2.5 transition-all">
+                                                <span>{post.link ? 'Read Article' : 'Read Full Post'}</span>
+                                                <ChevronRight size={14} />
                                             </div>
                                         </div>
                                     </motion.div>
@@ -500,8 +438,8 @@ export function BlogClient() {
                             ))}
                         </div>
                     )}
-                </div>
-            </section>
+                </section>
+            </div>
 
             <Footer />
         </main>

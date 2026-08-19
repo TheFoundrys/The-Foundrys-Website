@@ -668,7 +668,7 @@ export default function BrandColoredProgramsDirectoryPage() {
                         </div>
                         <div className="flex flex-col gap-6 max-w-xl w-full">
                             <p className="text-slate-400 text-sm leading-relaxed">
-                                Every program combines structured learning, project execution, assessment, mentorship and career relevance through the Skill Compass learning ecosystem.
+                                Every program combines structured learning, project execution, assessment, mentorship and career relevance through the Edith learning ecosystem.
                             </p>
                             <div className="flex flex-wrap gap-2 pt-2">
                                 {[

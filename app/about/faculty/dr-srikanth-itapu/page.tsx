@@ -4,183 +4,146 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Linkedin, Mail, ArrowLeft } from "lucide-react";
+import { Linkedin, ArrowLeft, BookOpen, Award, Zap } from "lucide-react";
 import Link from "next/link";
 
 export default function DrSrikanthProfile() {
     return (
-        <main className="min-h-screen bg-slate-50 selection:bg-blue-100 selection:text-blue-900">
+        <main className="min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden pt-24 pb-0" style={{ backgroundColor: "#EAEAE5" }}>
             <Navbar />
 
-            {/* Hero Section */}
-            <section className="pt-32 pb-20 px-6 bg-slate-900 text-white relative overflow-hidden">
-                {/* Background Gradients */}
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none" />
+            {/* Master Centered Card Container */}
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 overflow-hidden mb-16 shadow-lg shadow-black/15">
+                
+                {/* Hero / Header Section inside White Card */}
+                <section className="bg-[#F7F7F4] p-8 sm:p-12 md:p-16 border-b border-slate-200/50 relative overflow-hidden">
+                    <div className="relative z-10">
+                        <Link href="/about/team" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors mb-8 text-xs font-bold uppercase tracking-wider font-mono">
+                            <ArrowLeft size={14} /> Back to Team
+                        </Link>
 
-                <div className="container mx-auto max-w-6xl relative z-10">
-                    <Link href="/about/team" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8 text-sm font-bold uppercase tracking-wider">
-                        <ArrowLeft size={16} /> Back to Team
-                    </Link>
+                        <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-start">
+                            {/* Profile Image */}
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.5 }}
+                                className="w-full lg:w-1/3 shrink-0"
+                            >
+                                <div className="aspect-[3/4] relative overflow-hidden shadow-md bg-white border border-slate-200/80">
+                                    <Image
+                                        src="/images/dr-itapu-srikanth.jpg"
+                                        alt="Dr. Srikanth Itapu"
+                                        fill
+                                        priority
+                                        className="object-cover"
+                                    />
+                                </div>
+                            </motion.div>
 
-                    <div className="flex flex-col md:flex-row gap-12 items-start">
-                        {/* Profile Image */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.6 }}
-                            className="w-full md:w-1/3 relative"
-                        >
-                            <div className="aspect-[3/4] relative rounded-2xl overflow-hidden shadow-2xl bg-slate-800">
-                                <Image
-                                    src="/images/dr-itapu-srikanth.jpg"
-                                    alt="Dr. Srikanth Itapu"
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-                            {/* Decorative elements */}
-                            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-500/20 blur-3xl rounded-full" />
-                        </motion.div>
+                            {/* Header Information */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.1 }}
+                                className="flex-1 space-y-6"
+                            >
+                                <div>
+                                    <span className="inline-block px-3 py-1 bg-[#002f86] text-white text-[10px] font-bold uppercase tracking-widest font-mono mb-4">
+                                        Faculty & Leadership
+                                    </span>
+                                    <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold tracking-tight text-[#002f86] mb-3 leading-tight">
+                                        Dr. Srikanth Itapu
+                                    </h1>
+                                    <p className="text-base sm:text-lg text-slate-600 font-medium italic">
+                                        SME in Quantum Technologies & Semiconductor Devices
+                                    </p>
+                                </div>
 
-                        {/* Header Info */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                            className="flex-1 space-y-6"
-                        >
-                            <div>
-                                <div className="inline-block px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-xs font-bold uppercase tracking-widest mb-4">
-                                    Faculty & Leadership
+                                {/* Social Link */}
+                                <div className="flex flex-wrap gap-3">
+                                    <a
+                                        href="https://www.linkedin.com/in/sitapu/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 px-4 py-2 bg-[#002f86] hover:bg-[#002266] text-white text-xs font-bold transition-colors cursor-pointer"
+                                    >
+                                        <Linkedin size={15} /> LinkedIn Profile
+                                    </a>
                                 </div>
-                                <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-2">
-                                    Dr. Srikanth Itapu
-                                </h1>
-                                <p className="text-xl text-blue-400 font-medium mb-4">
-                                    SME in the Quantum Technologies
-                                </p>
 
-                                <a
-                                    href="https://www.linkedin.com/in/sitapu/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-full transition-colors mb-6"
-                                >
-                                    <Linkedin size={16} /> Connect on LinkedIn
-                                </a>
-                            </div>
-
-                            <div className="flex flex-wrap gap-3">
-                                <div className="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700 text-slate-300 text-sm font-medium">
-                                    Quantum Technologies
+                                {/* Key Badges */}
+                                <div className="flex flex-wrap gap-2.5 pt-2">
+                                    {["Quantum Technologies", "Advanced Materials", "Semiconductor Devices", "Spintronics"].map((tag) => (
+                                        <div key={tag} className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
+                                            {tag}
+                                        </div>
+                                    ))}
                                 </div>
-                                <div className="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700 text-slate-300 text-sm font-medium">
-                                    Advanced Materials
-                                </div>
-                                <div className="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700 text-slate-300 text-sm font-medium">
-                                    Semiconductor Devices
-                                </div>
-                                <div className="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700 text-slate-300 text-sm font-medium">
-                                    Spintronics
-                                </div>
-                            </div>
-                        </motion.div>
+                            </motion.div>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* Biography & Research Content */}
-            <section className="py-20 px-6">
-                <div className="container mx-auto max-w-4xl">
-                    <div className="prose prose-lg prose-slate max-w-none">
-                        <p className="lead text-xl text-slate-700 font-medium leading-relaxed mb-8">
+                {/* Profile Overview Section */}
+                <section className="p-8 sm:p-12 md:p-16 bg-white border-b border-slate-200/50">
+                    <div className="max-w-4xl space-y-6">
+                        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#002f86] mb-4">
+                            Research & Leadership Overview
+                        </h2>
+                        <p className="text-slate-700 text-sm md:text-base leading-relaxed font-sans">
                             Dr. Srikanth Itapu is a subject matter expert in quantum technologies, advanced materials, and semiconductor devices, with over 12 years of international research experience and significant leadership roles in academia and innovation ecosystems.
                         </p>
+                    </div>
+                </section>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 my-12">
-                            <div>
-                                <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                                    <BookOpen className="text-blue-600" size={24} /> Research Expertise
-                                </h3>
-                                <p className="text-slate-600 leading-relaxed text-base">
-                                    His expertise spans quantum materials, spintronics, solid-state qubits, nano-fabrication, and energy-efficient quantum hardware. He has led interdisciplinary programs integrating quantum physics, materials science, and sustainable energy technologies.
-                                </p>
-                            </div>
-                            <div>
-                                <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                                    <Award className="text-blue-600" size={24} /> Leadership
-                                </h3>
-                                <p className="text-slate-600 leading-relaxed text-base">
-                                    Director of E-Spin Lab and Chair of ECE at Alliance University. Extensive experience in curriculum design, workforce development, and mentoring talent in quantum engineering and VLSI domains.
-                                </p>
-                            </div>
+                {/* Grid Section */}
+                <section className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-b border-slate-200/50">
+                    <div className="max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 className="font-serif text-xl font-bold text-[#002f86] mb-4 flex items-center gap-2">
+                                <BookOpen className="text-[#002f86]" size={22} /> Research Expertise
+                            </h3>
+                            <p className="p-5 bg-white border border-slate-200/80 text-xs md:text-sm text-slate-700 leading-relaxed font-sans shadow-xs">
+                                His expertise spans quantum materials, spintronics, solid-state qubits, nano-fabrication, and energy-efficient quantum hardware. He has led interdisciplinary programs integrating quantum physics, materials science, and sustainable energy technologies.
+                            </p>
                         </div>
+                        <div>
+                            <h3 className="font-serif text-xl font-bold text-[#002f86] mb-4 flex items-center gap-2">
+                                <Award className="text-[#002f86]" size={22} /> Leadership & Impact
+                            </h3>
+                            <p className="p-5 bg-white border border-slate-200/80 text-xs md:text-sm text-slate-700 leading-relaxed font-sans shadow-xs">
+                                Director of E-Spin Lab and Chair of ECE at Alliance University. Extensive experience in curriculum design, workforce development, and mentoring talent in quantum engineering and VLSI domains.
+                            </p>
+                        </div>
+                    </div>
+                </section>
 
-                        {/* Publications Section */}
-                        <h3 className="text-2xl font-bold text-slate-900 mt-16 mb-8 flex items-center gap-2">
-                            Select Publications
-                        </h3>
-                        <div className="space-y-6 bg-white rounded-3xl p-8 border border-slate-100 shadow-sm mb-16">
+                {/* Publications Section */}
+                <section className="p-8 sm:p-12 md:p-16 bg-white border-b border-slate-200/50">
+                    <div className="max-w-4xl">
+                        <h2 className="font-serif text-2xl font-bold text-[#002f86] mb-6 flex items-center gap-2">
+                            <Zap className="text-[#002f86]" size={24} /> Select Publications
+                        </h2>
+                        <div className="space-y-3">
                             {[
                                 "Vamsi Borra, Srikanth Itapu, et al., \"Modification of Metal Surfaces by Surface Plasmon Polariton Excitation\", IEEE Transactions on Materials and Device Reliability, 2021.",
                                 "Selvendran S, I. Srikanth, et al., \"Impact of different types of modulators on optical hybrid FSO/Fiber communication\", Optical and Quantum Electronics, 2021.",
                                 "P. Manoj Reddy, Srikanth Itapu, et al., \"Tuning the electrical parameters of p-NiOx based TFTs by pulsed laser irradiation\", Condensed Matter, 2021.",
                                 "I B Madhuri and Srikanth Itapu, \"Rationally designed graphene-PVA composite fillers for modern manufacturing applications\", Journal of Materials Science Research and Reviews, 2020.",
                                 "Srikanth Itapu, et al., \"Laser-based fabrication of microstructures on nickel thin films and its application in on-chip spiral inductors\", IEEE Transactions on Nanotechnology, 2020.",
-                                "Kamruzzaman Khan, Srikanth Itapu, et al., \"Negative Differential Resistance (NDR) behavior Nickel Oxide (NiO) based MIS Structures\", Journal of Electronic Materials, 2020.",
-                                "Srikanth Itapu, et al., \"A computational study of native defects in non-stoichimetric NiO and doping Pd, Pt in stoichiometric NiO\", Condensed Matter, 2018.",
-                                "Vamsi Borra, Srikanth Itapu, et al., \"Sn whisker mitigation by using NiO sublayer\", Journal of Physics D: Applied Physics, 2017.",
-                                "Srikanth Itapu, et al., \"Modification of reactively sputtered NiOx thin films by pulsed laser irradiation\", Physica Status Solidi A, 2017.",
-                                "Srikanth Itapu, et al., \"Effect of UV laser irradiation on the properties of NiO and NiO/ZnO heterostructures\", MRS Advances, 2016."
+                                "Kamruzzaman Khan, Srikanth Itapu, et al., \"Negative Differential Resistance (NDR) behavior Nickel Oxide (NiO) based MIS Structures\", Journal of Electronic Materials, 2020."
                             ].map((pub, idx) => (
-                                <div key={idx} className="flex gap-4 group">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2.5 flex-shrink-0 group-hover:scale-125 transition-transform" />
-                                    <p className="text-sm text-slate-600 leading-relaxed m-0">{pub}</p>
+                                <div key={idx} className="p-4 bg-[#F7F7F4] border border-slate-200/80 text-xs md:text-sm text-slate-700 leading-relaxed font-sans">
+                                    {pub}
                                 </div>
                             ))}
                         </div>
-
-                        {/* Patents Section */}
-                        <h3 className="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2">
-                            Patents
-                        </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-                            <div className="p-6 rounded-2xl bg-slate-900 text-white border border-slate-800">
-                                <span className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2 block">US Patent 10,967,463</span>
-                                <h4 className="text-lg font-bold mb-2">Sn whisker growth mitigation by using NiO sublayers</h4>
-                                <p className="text-sm text-slate-400 leading-relaxed">April 2021 • Inventors: Vamsi Borra, Daniel G Georgiev, Srikanth Itapu</p>
-                            </div>
-                            <div className="p-6 rounded-2xl bg-slate-900 text-white border border-slate-800">
-                                <span className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2 block">India Patent 202041003461A</span>
-                                <h4 className="text-lg font-bold mb-2">Intelligent medicinal and aromatic plant specimen detection system</h4>
-                                <p className="text-sm text-slate-400 leading-relaxed">January 2020 • Integrated IoT solutions for medicinal botany.</p>
-                            </div>
-                        </div>
-
-                        {/* Research Network */}
-                        <h3 className="text-2xl font-bold text-slate-900 mb-8">Research Network & Collaborators</h3>
-                        <p className="text-slate-600 leading-relaxed mb-10">
-                            Dr. Itapu maintains a robust global research network, frequently collaborating with leading experts in micro-electronics and materials science, including colleagues from the <span className="text-blue-600 font-semibold">University of Toledo (USA)</span> and <span className="text-blue-600 font-semibold">Alliance University</span>. His work bridges fundamental science with scalable device engineering through industry–academia partnerships.
-                        </p>
-
-                        <div className="bg-blue-600 rounded-3xl p-10 text-center text-white">
-                            <h3 className="text-2xl font-bold mb-4">Explore Deep Tech at The Foundry</h3>
-                            <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
-                                Join Dr. Srikanth Itapu and our team of architects as we build the next generation of Quantum and Semiconductor systems.
-                            </p>
-                            <Link href="/schools/quantum-computing" className="inline-block px-8 py-4 bg-white text-blue-600 font-bold rounded-xl transition-all hover:scale-105 active:scale-95">
-                                Join the Program
-                            </Link>
-                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
 
             <Footer />
         </main>
     );
 }
-
-// Add these imports at the top
-import { BookOpen, Award } from "lucide-react";

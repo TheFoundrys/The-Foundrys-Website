@@ -31,7 +31,7 @@ export default function AdvancedManagementProgramPage() {
                     `
                 }} />
                 <Image
-                    src="/images/ygp_classroom_session.png"
+                    src="/images/amp_suite_banner.jpg"
                     alt="Advanced Management Suite"
                     fill
                     priority

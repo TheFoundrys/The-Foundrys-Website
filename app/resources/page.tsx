@@ -240,7 +240,11 @@ export default function BlogListingPage() {
         const fetchPosts = async () => {
             try {
                 const data = await client.fetch(POSTS_QUERY);
-                const merged = [...(data || []), ...STATIC_RESEARCH_POSTS];
+                const filteredSanity = (data || []).filter((p: Post) =>
+                    !p.title?.toLowerCase().includes("moving beyond") &&
+                    !p.slug?.current?.includes("moving-beyond")
+                );
+                const merged = [...filteredSanity, ...STATIC_RESEARCH_POSTS];
                 setPosts(merged);
             } catch (error) {
                 console.error("Failed to fetch posts:", error);

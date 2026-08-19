@@ -49,33 +49,33 @@ const testimonials = [
     },
     {
         name: "Veda Bharathi Bhagavatula",
-        designation: "Skill Compass Alumna",
-        text: "Hi, I'm Veda Bharathi. I personally found the whole experience to be very efficient and intuitive, and I now have a clear understanding of various courses. I would definitely recommend Skill Compass for other students or professionals because of its curated content, which is structured in a proper format."
+        designation: "Edith Alumna",
+        text: "Hi, I'm Veda Bharathi. I personally found the whole experience to be very efficient and intuitive, and I now have a clear understanding of various courses. I would definitely recommend Edith for other students or professionals because of its curated content, which is structured in a proper format."
     },
     {
         name: "Akshitha Reddy",
         designation: "AI Intern",
-        text: "Hi, I am Akshitha Reddy. I'm currently studying at CBIT, and for the past month I've been working as an intern. Skill Compass helped me to learn key concepts and also dive deep into concepts like NLP and LLMs. My favorite feature of Skill Compass is the AI assistance. It made my learning much faster and also helped me learn complex topics easily. I would recommend Skill Compass to anyone who is looking for a smarter and more personalized way of learning with the help of AI assistance."
+        text: "Hi, I am Akshitha Reddy. I'm currently studying at CBIT, and for the past month I've been working as an intern. Edith helped me to learn key concepts and also dive deep into concepts like NLP and LLMs. My favorite feature of Edith is the AI assistance. It made my learning much faster and also helped me learn complex topics easily. I would recommend Edith to anyone who is looking for a smarter and more personalized way of learning with the help of AI assistance."
     },
     {
         name: "Hansika",
         designation: "Research Intern",
-        text: "Hi, I am Hansika. I joined the company as a research intern. For the past month, I've been working on full stack development projects, which includes role-based access control systems used for user authentication and authorization. The most valuable part of Skill Compass was the AI-powered assistant and structured learning path, which made complex tasks easier to solve in an interactive way. I would recommend Skill Compass to anyone looking for a smart, interactive way to learn concepts easily."
+        text: "Hi, I am Hansika. I joined the company as a research intern. For the past month, I've been working on full stack development projects, which includes role-based access control systems used for user authentication and authorization. The most valuable part of Edith was the AI-powered assistant and structured learning path, which made complex tasks easier to solve in an interactive way. I would recommend Edith to anyone looking for a smart, interactive way to learn concepts easily."
     },
     {
         name: "Hriday",
         designation: "AI Intern",
-        text: "Hello, my name is Hriday, and I'm currently working as an AI Intern. Skill Compass was a great platform to upskill myself and equip myself better in the current market. I think the AI Tutor feature was the best feature in Skill Compass and it really helped me understand concepts better. It's an excellent platform for anyone who's looking to position themselves better in their career. I would absolutely recommend it to anyone who's willing to upskill themselves and position themselves better in their career."
+        text: "Hello, my name is Hriday, and I'm currently working as an AI Intern. Edith was a great platform to upskill myself and equip myself better in the current market. I think the AI Tutor feature was the best feature in Edith and it really helped me understand concepts better. It's an excellent platform for anyone who's looking to position themselves better in their career. I would absolutely recommend it to anyone who's willing to upskill themselves and position themselves better in their career."
     },
     {
         name: "Preethika",
         designation: "Web Development Intern",
-        text: "Hi, I'm Preethika and I'm doing an internship in web development. I used Skill Compass for testing my skills and reading documents to learn more about AI and ML. There is an AI chatbot where you can just listen to it and learn what is in the document. I recommend this to my friends and people who are very interested in learning about new topics such as AI and ML."
+        text: "Hi, I'm Preethika and I'm doing an internship in web development. I used Edith for testing my skills and reading documents to learn more about AI and ML. There is an AI chatbot where you can just listen to it and learn what is in the document. I recommend this to my friends and people who are very interested in learning about new topics such as AI and ML."
     },
     {
         name: "Anirudh",
         designation: "AI/ML Student",
-        text: "Hi, my name is Anirudh. I've done an AI/ML course and it has been really helpful for me, especially since I'm a beginner. My favorite feature in Skill Compass is the voice assistant that teaches us and gives us a quiz after every concept. I would recommend Skill Compass to my friends and to my colleagues. It's a really good tool."
+        text: "Hi, my name is Anirudh. I've done an AI/ML course and it has been really helpful for me, especially since I'm a beginner. My favorite feature in Edith is the voice assistant that teaches us and gives us a quiz after every concept. I would recommend Edith to my friends and to my colleagues. It's a really good tool."
     }
 ];
 

@@ -7,31 +7,28 @@ import { ChevronRight } from "lucide-react";
 
 const EVENTS = [
   {
+    title: "Quantum Computing & Emerging Tech",
+    description: "From Physics to Possibilities. Join our live podcast with guest Dr. Ram Soorat (Assistant Professor of Physics, Woxsen University) and host Vishwanath Akuthota.",
+    month: "Aug",
+    day: "22",
+    image: "/quantum-computing-podcast.jpg",
+    href: "/events"
+  },
+  {
     title: "Next-Gen AI & LLM Builder Workshop",
     description: "Learn to build, fine-tune, and deploy large language models (LLMs) and custom RAG pipelines. A hands-on, practical session for class 12th/Intermediate MPC students and coding enthusiasts.",
     month: "Sep",
     day: "12",
-    tags: ["Deep Tech"],
     image: "/images/classroom_session.png",
-    href: "/contact"
+    href: "/events"
   },
   {
     title: "Foundry Venture Pitch Day 2026",
     description: "Watch our student-founders pitch their live startups and products to top VC firms, angel investors, and incubators. Connect with recruiters and explore venture opportunities.",
     month: "Oct",
     day: "05",
-    tags: ["Venture Building"],
     image: "/images/exec_classroom_session.png",
-    href: "/contact"
-  },
-  {
-    title: "Cyber Shield Hackathon",
-    description: "Test your skills in red-teaming, cryptography, and network defense in our 48-hour cybersecurity challenge. Winners secure incubation support and cash prizes.",
-    month: "Nov",
-    day: "15",
-    tags: ["Cyber Security"],
-    image: "/images/ygp_classroom_session.png",
-    href: "/contact"
+    href: "/events"
   }
 ];
 
@@ -85,17 +82,6 @@ export function UpcomingEvents() {
               {/* Text content area */}
               <div className="p-6 flex flex-col justify-between flex-1 gap-5">
                 <div className="space-y-4">
-                  {/* Category Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {event.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="bg-slate-200 text-slate-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
 
                   {/* Title */}
                   <h3 className="font-serif text-xl font-bold text-slate-900 group-hover:text-brand-purple transition-colors leading-snug">

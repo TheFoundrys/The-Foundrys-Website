@@ -31,7 +31,7 @@ export default function ProfessionalProgramPage() {
                     `
                 }} />
                 <Image 
-                    src="/images/classroom_session.png" 
+                    src="/images/pgp_suite_banner.jpg" 
                     alt="PGP Suite" 
                     fill 
                     priority

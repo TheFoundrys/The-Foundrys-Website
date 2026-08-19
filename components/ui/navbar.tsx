@@ -177,7 +177,7 @@ export function Navbar() {
             label: "Centre of Excellence (CoE)",
             desc: "Establish high-performance computing labs, applied curriculum, and research environments.",
             icon: Building2,
-            href: "/centres/coe"
+            href: "/programs/centre-of-excellence"
         }
     ];
 
@@ -283,7 +283,7 @@ export function Navbar() {
                             height={48}
                             className="h-10 w-10 object-contain rounded-full border border-neutral-200 shadow-[0_4px_14px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:scale-105"
                         />
-                        <span className="text-3xl sm:text-2xl font-medium tracking-wide text-black font-cinzel">The Foundry&apos;s</span>
+                        <span className="text-3xl sm:text-2xl font-medium tracking-wide text-black font-cinzel">THE FOUNDRY&apos;s</span>
                     </Link>
 
                     {/* Central Navigation Headings */}
@@ -437,34 +437,34 @@ export function Navbar() {
                                             </div>
 
                                             {/* Column 3: School Of Sustainability */}
-                                            <div className="flex flex-col gap-6">
-                                                <h3 className="text-[10px] font-bold uppercase tracking-widest text-neutral-500 border-b border-neutral-100 pb-2">
-                                                    School Of Sustainability
-                                                </h3>
-                                                <div className="flex flex-col gap-4">
-                                                    {COURSES["sustainability"].map((course) => (
-                                                        <Link
-                                                            key={course.label}
-                                                            href={course.href}
-                                                            onClick={() => { setHoveredMenu(null); handleHaptic(); }}
-                                                            className="group flex items-start gap-3 hover:opacity-75 transition-opacity"
-                                                        >
-                                                            <div className="w-8 h-8 rounded-lg bg-neutral-100 flex items-center justify-center text-black shrink-0">
-                                                                <course.icon size={15} />
-                                                            </div>
-                                                            <div>
-                                                                <div className="text-sm font-bold text-black">{course.label}</div>
-                                                                <div className="text-[10px] uppercase font-bold tracking-wider text-neutral-400 mt-0.5">{course.desc}</div>
-                                                            </div>
-                                                        </Link>
-                                                    ))}
+                                            {/* Column 3: Sustainability & Programs */}
+                                            <div className="flex flex-col gap-8">
+                                                <div className="flex flex-col gap-6">
+                                                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-neutral-500 border-b border-neutral-100 pb-2">
+                                                        School Of Sustainability
+                                                    </h3>
+                                                    <div className="flex flex-col gap-4">
+                                                        {COURSES["sustainability"].map((course) => (
+                                                            <Link
+                                                                key={course.label}
+                                                                href={course.href}
+                                                                onClick={() => { setHoveredMenu(null); handleHaptic(); }}
+                                                                className="group flex items-start gap-3 hover:opacity-75 transition-opacity"
+                                                            >
+                                                                <div className="w-8 h-8 rounded-lg bg-neutral-100 flex items-center justify-center text-black shrink-0">
+                                                                    <course.icon size={15} />
+                                                                </div>
+                                                                <div>
+                                                                    <div className="text-sm font-bold text-black">{course.label}</div>
+                                                                    <div className="text-[10px] uppercase font-bold tracking-wider text-neutral-400 mt-0.5">{course.desc}</div>
+                                                                </div>
+                                                            </Link>
+                                                        ))}
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            {/* Column 4: Programs & Admissions */}
-                                            <div className="flex flex-col gap-6">
-                                                <div>
-                                                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-neutral-500 border-b border-neutral-100 pb-2 mb-3">
+                                                <div className="flex flex-col gap-6">
+                                                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-neutral-500 border-b border-neutral-100 pb-2">
                                                         Programs
                                                     </h3>
                                                     <div className="flex flex-col gap-4">
@@ -483,7 +483,10 @@ export function Navbar() {
                                                         </Link>
                                                     </div>
                                                 </div>
+                                            </div>
 
+                                            {/* Column 4: Admissions */}
+                                            <div className="flex flex-col gap-6">
                                                 <div>
                                                     <h3 className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 border-b border-neutral-100 pb-2 mb-3">
                                                         Admissions

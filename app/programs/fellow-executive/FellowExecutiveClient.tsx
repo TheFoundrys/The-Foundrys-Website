@@ -28,7 +28,7 @@ export default function FellowExecutiveClient() {
                     `
                 }} />
                 <Image
-                    src="/images/exec_classroom_session.png"
+                    src="/images/fellow-programmes.png"
                     alt="Fellowship & Executive Programs"
                     fill
                     priority
