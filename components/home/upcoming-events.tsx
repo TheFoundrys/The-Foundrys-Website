@@ -7,6 +7,14 @@ import { ChevronRight } from "lucide-react";
 
 const EVENTS = [
   {
+    title: "Can India Become a Deep-Tech Manufacturing Powerhouse?",
+    description: "Building Technology. Building India. Join our live podcast with guest Col. Merugu Solomon Saneev (Defence Technology & Aerospace Expert) and host Vishwanath Akuthota.",
+    month: "Aug",
+    day: "21",
+    image: "/images/deeptech-manufacturing-podcast.png",
+    href: "/events"
+  },
+  {
     title: "Quantum Computing & Emerging Tech",
     description: "From Physics to Possibilities. Join our live podcast with guest Dr. Ram Soorat (Assistant Professor of Physics, Woxsen University) and host Vishwanath Akuthota.",
     month: "Aug",

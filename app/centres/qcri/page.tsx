@@ -13,7 +13,8 @@ import {
     Copy,
     FileText,
     Plus,
-    Minus
+    Minus,
+    ExternalLink
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -35,7 +36,7 @@ const RESEARCH_PILLARS = [
         stats: { metrics: "128+", label: "Simulated Qubit Capacity" },
         specPaper: {
             title: "Technical Spec Paper 01: Sub-Quadratic Quantum Entanglement Simulation",
-            downloadUrl: "#publications"
+            downloadUrl: "https://ieeexplore.ieee.org/document/11525967"
         }
     },
     {
@@ -53,7 +54,7 @@ const RESEARCH_PILLARS = [
         stats: { metrics: "99.8%", label: "Quantum Gate Fidelity" },
         specPaper: {
             title: "Technical Spec Paper 02: Enterprise Quantum Portfolio Optimization Solvers",
-            downloadUrl: "#publications"
+            downloadUrl: "https://ieeexplore.ieee.org/document/11526131"
         }
     },
     {
@@ -71,7 +72,7 @@ const RESEARCH_PILLARS = [
         stats: { metrics: "100%", label: "Verifiable Quantum Accuracy" },
         specPaper: {
             title: "Technical Spec Paper 03: Quantum Chemical Solvers for Carbon Fixation Catalysts",
-            downloadUrl: "#publications"
+            downloadUrl: "https://ieeexplore.ieee.org/document/11040757"
         }
     },
     {
@@ -89,7 +90,7 @@ const RESEARCH_PILLARS = [
         stats: { metrics: "< 2ms", label: "Quantum Grid Solve Latency" },
         specPaper: {
             title: "Technical Spec Paper 04: Quantum Tensor Network Algorithms for Sovereign Grids",
-            downloadUrl: "#publications"
+            downloadUrl: "https://ieeexplore.ieee.org/document/11525967"
         }
     }
 ];
@@ -630,13 +631,23 @@ export default function QCRIResearchCentrePage() {
                                 <p>• Status: Peer Reviewed & Verified</p>
                             </div>
 
-                            <div className="flex items-center gap-3">
+                            <div className="flex flex-col gap-3">
+                                <a
+                                    href={activePillarObj.specPaper.downloadUrl}
+                                    target={activePillarObj.specPaper.downloadUrl.startsWith("http") ? "_blank" : undefined}
+                                    rel={activePillarObj.specPaper.downloadUrl.startsWith("http") ? "noopener noreferrer" : undefined}
+                                    onClick={() => setActiveSpecModal(null)}
+                                    className="w-full py-3 px-4 rounded-lg bg-[#002f86] hover:bg-[#002266] text-white text-center font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+                                >
+                                    <ExternalLink size={14} />
+                                    <span>Read Full Research Paper (IEEE Xplore)</span>
+                                </a>
                                 <a
                                     href="#publications"
                                     onClick={() => setActiveSpecModal(null)}
-                                    className="w-full py-3 px-4 rounded-lg bg-[#002f86] hover:bg-[#002266] text-white text-center font-bold text-xs shadow-md transition-all block"
+                                    className="w-full py-2.5 px-4 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-center font-bold text-xs transition-all block cursor-pointer"
                                 >
-                                    Browse All Research Papers
+                                    Browse All Papers on Page
                                 </a>
                             </div>
                         </motion.div>

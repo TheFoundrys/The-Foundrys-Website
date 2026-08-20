@@ -13,7 +13,8 @@ import {
     Copy,
     FileText,
     Plus,
-    Minus
+    Minus,
+    ExternalLink
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -35,7 +36,7 @@ const RESEARCH_PILLARS = [
         stats: { metrics: "15,000+", label: "Transactions/Sec (TPS)" },
         specPaper: {
             title: "Technical Spec Paper 01: Sub-Second BFT Consensus & Parallel EVM Execution",
-            downloadUrl: "#publications"
+            downloadUrl: "https://ieeexplore.ieee.org/document/11526131"
         }
     },
     {
@@ -53,7 +54,7 @@ const RESEARCH_PILLARS = [
         stats: { metrics: "99.99%", label: "Ledger Network Reliability" },
         specPaper: {
             title: "Technical Spec Paper 02: Sovereign Institutional Settlement Infrastructure",
-            downloadUrl: "#publications"
+            downloadUrl: "https://ieeexplore.ieee.org/document/10456393"
         }
     },
     {
@@ -71,7 +72,7 @@ const RESEARCH_PILLARS = [
         stats: { metrics: "99.9%", label: "Energy Reduction vs PoW" },
         specPaper: {
             title: "Technical Spec Paper 03: Immutable Carbon Credit Provenance via PoS Ledgers",
-            downloadUrl: "#publications"
+            downloadUrl: "https://ieeexplore.ieee.org/document/11429262"
         }
     },
     {
@@ -89,7 +90,7 @@ const RESEARCH_PILLARS = [
         stats: { metrics: "< 3ms", label: "Oracle Telemetry Settlement" },
         specPaper: {
             title: "Technical Spec Paper 04: Cryptographic Microgrid Energy Oracles & P2P Trading",
-            downloadUrl: "#publications"
+            downloadUrl: "https://ieeexplore.ieee.org/document/11526131"
         }
     }
 ];
@@ -631,13 +632,23 @@ export default function DLBLResearchCentrePage() {
                                 <p>• Status: Peer Reviewed & Verified</p>
                             </div>
 
-                            <div className="flex items-center gap-3">
+                            <div className="flex flex-col gap-3">
+                                <a
+                                    href={activePillarObj.specPaper.downloadUrl}
+                                    target={activePillarObj.specPaper.downloadUrl.startsWith("http") ? "_blank" : undefined}
+                                    rel={activePillarObj.specPaper.downloadUrl.startsWith("http") ? "noopener noreferrer" : undefined}
+                                    onClick={() => setActiveSpecModal(null)}
+                                    className="w-full py-3 px-4 rounded-lg bg-[#002f86] hover:bg-[#002266] text-white text-center font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+                                >
+                                    <ExternalLink size={14} />
+                                    <span>Read Full Research Paper (IEEE Xplore)</span>
+                                </a>
                                 <a
                                     href="#publications"
                                     onClick={() => setActiveSpecModal(null)}
-                                    className="w-full py-3 px-4 rounded-lg bg-[#002f86] hover:bg-[#002266] text-white text-center font-bold text-xs shadow-md transition-all block"
+                                    className="w-full py-2.5 px-4 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-center font-bold text-xs transition-all block cursor-pointer"
                                 >
-                                    Browse All Research Papers
+                                    Browse All Papers on Page
                                 </a>
                             </div>
                         </motion.div>

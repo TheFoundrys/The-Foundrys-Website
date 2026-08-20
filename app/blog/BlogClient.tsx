@@ -204,6 +204,28 @@ const STATIC_RESEARCH_POSTS: Post[] = [
 
 const STATIC_BLOG_POSTS: Post[] = [
     {
+        _id: "blog-10",
+        title: "Why Your Strategy Fails Without a Story",
+        slug: { current: "why-your-strategy-fails-without-a-story" },
+        publishedAt: "2026-08-20T12:00:00Z",
+        mainImage: { static: true, url: "/images/why_your_strategy_fails_without_story_cover.jpg" },
+        category: "Blog",
+        readTime: "6 min",
+        excerpt: "In the high-stakes world of technology, we have a fetish for the 'fix.' When revenue dips, churn increases, or a product launch falls flat, the corporate machine springs into action. Discover why strategy fails without a compelling story.",
+        link: "https://www.linkedin.com/pulse/why-your-strategy-fails-without-story-the-foundry-s-4lqdc"
+    },
+    {
+        _id: "blog-9",
+        title: "Resume Smarter for Tech Roles",
+        slug: { current: "resume-smarter-for-tech-roles" },
+        publishedAt: "2026-08-20T10:00:00Z",
+        mainImage: { static: true, url: "/images/resume_smarter_tech_roles_cover.jpg" },
+        category: "Blog",
+        readTime: "4 min",
+        excerpt: "What to Highlight — And the Common Mistakes to Avoid. Your resume is more than a document listing your education and experience. It is often your first professional impression. Discover how to communicate your technical skills effectively to stand out, get interviewed, and get hired.",
+        link: "https://www.linkedin.com/pulse/resume-smarter-tech-roles-the-foundry-s-wtixc"
+    },
+    {
         _id: "blog-8",
         title: "The Developer Toolkit: Git, Docker, Postman & VS Code",
         slug: { current: "the-developer-toolkit" },

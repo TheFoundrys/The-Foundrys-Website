@@ -14,7 +14,8 @@ import {
     Check,
     FileText,
     Plus,
-    Minus
+    Minus,
+    ExternalLink
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -36,7 +37,7 @@ const RESEARCH_PILLARS = [
         stats: { metrics: "1.2B+", label: "Tokens Processed/Sec" },
         specPaper: {
             title: "Technical Spec Paper 01: Sub-Millisecond LLM Inference & Triton Kernels",
-            downloadUrl: "#publications"
+            downloadUrl: "https://ieeexplore.ieee.org/document/11525902/"
         }
     },
     {
@@ -54,7 +55,7 @@ const RESEARCH_PILLARS = [
         stats: { metrics: "99.4%", label: "Venture Execution Accuracy" },
         specPaper: {
             title: "Technical Spec Paper 02: Multi-Agent Swarms in Non-Deterministic Workflows",
-            downloadUrl: "#publications"
+            downloadUrl: "https://ieeexplore.ieee.org/document/11429303"
         }
     },
     {
@@ -72,7 +73,7 @@ const RESEARCH_PILLARS = [
         stats: { metrics: "100%", label: "Verifiable ESG Coverage" },
         specPaper: {
             title: "Technical Spec Paper 03: Closed-Loop Carbon Analytics via AI Informatics",
-            downloadUrl: "#publications"
+            downloadUrl: "https://ieeexplore.ieee.org/document/11118759"
         }
     },
     {
@@ -90,7 +91,7 @@ const RESEARCH_PILLARS = [
         stats: { metrics: "< 4ms", label: "Grid Telemetry Latency" },
         specPaper: {
             title: "Technical Spec Paper 04: Real-Time Smart Grid Load Optimization & Microgrids",
-            downloadUrl: "#publications"
+            downloadUrl: "https://ieeexplore.ieee.org/document/11429262"
         }
     }
 ];
@@ -502,9 +503,6 @@ export default function CAAIReseachCentrePage() {
                 <section id="publications" className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-200/50">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-8">
                         <div>
-                            <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
-                                IEEE Peer-Reviewed Publications
-                            </h2>
                             <p className="text-sm text-slate-600 mt-2">
                                 Research outputs published in top international computer science and AI venues.
                             </p>
@@ -642,13 +640,23 @@ export default function CAAIReseachCentrePage() {
                                 <p>• Status: Peer Reviewed & Verified</p>
                             </div>
 
-                            <div className="flex items-center gap-3">
+                            <div className="flex flex-col gap-3">
+                                <a
+                                    href={activePillarObj.specPaper.downloadUrl}
+                                    target={activePillarObj.specPaper.downloadUrl.startsWith("http") ? "_blank" : undefined}
+                                    rel={activePillarObj.specPaper.downloadUrl.startsWith("http") ? "noopener noreferrer" : undefined}
+                                    onClick={() => setActiveSpecModal(null)}
+                                    className="w-full py-3 px-4 rounded-lg bg-[#002f86] hover:bg-[#002266] text-white text-center font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+                                >
+                                    <ExternalLink size={14} />
+                                    <span>Read Full Research Paper (IEEE Xplore)</span>
+                                </a>
                                 <a
                                     href="#publications"
                                     onClick={() => setActiveSpecModal(null)}
-                                    className="w-full py-3 px-4 rounded-lg bg-[#002f86] hover:bg-[#002266] text-white text-center font-bold text-xs shadow-md transition-all block"
+                                    className="w-full py-2.5 px-4 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-center font-bold text-xs transition-all block cursor-pointer"
                                 >
-                                    Browse All Research Papers
+                                    Browse All Papers on Page
                                 </a>
                             </div>
                         </motion.div>

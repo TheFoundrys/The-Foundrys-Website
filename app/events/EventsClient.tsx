@@ -29,6 +29,23 @@ interface EventItem {
 
 const allItems: EventItem[] = [
     {
+        id: "webinar-deep-tech-manufacturing-podcast",
+        title: "Can India Become a Deep-Tech Manufacturing Powerhouse?",
+        type: "Live Podcast",
+        category: "event",
+        date: "Fri, Aug 21, 2026",
+        time: "4:00 PM - 5:00 PM IST",
+        dateTime: "2026-08-21T16:00:00+05:30",
+        platform: "Microsoft Teams & YouTube",
+        link: "https://events.teams.microsoft.com/event/dd70cce1-367c-46a2-bdce-9d789715747b@9be43f22-3237-4b73-971b-3e664c641aea?source=copyLinkOneEventsShareDialog",
+        youtubeUrl: "https://youtube.com/live/AiYNjL789D0?feature=share",
+        description:
+            "Building Technology. Building India. Join us for an exclusive live podcast discussing Defence, Aerospace, AI, Robotics, Semiconductors, Cybersecurity, and Space. Guest Speaker: Col. Merugu Solomon Saneev (Defence Technology, R&D in Weapons, Ammunition and Aerospace Operations Expert). Host: Mr. Vishwanath Akuthota (Founder, The Foundry's).",
+        tags: ["Deep Tech", "Manufacturing", "Podcast", "Defence", "Aerospace", "AI", "Robotics", "Semiconductors", "Cybersecurity", "Space"],
+        featured: true,
+        image: "/images/deeptech-manufacturing-podcast.png",
+    },
+    {
         id: "event-1",
         title: "Join Us for the AI @GenZ",
         type: "Community Event",
@@ -241,12 +258,18 @@ export function EventsClient() {
     }, [selectedTab]);
 
     const upcomingItems = useMemo(
-        () => filteredItems.filter((item) => isUpcoming(item.dateTime)),
+        () =>
+            filteredItems
+                .filter((item) => isUpcoming(item.dateTime))
+                .sort((a, b) => new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime()),
         [filteredItems]
     );
 
     const pastItems = useMemo(
-        () => filteredItems.filter((item) => !isUpcoming(item.dateTime)),
+        () =>
+            filteredItems
+                .filter((item) => !isUpcoming(item.dateTime))
+                .sort((a, b) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime()),
         [filteredItems]
     );
 
@@ -255,10 +278,8 @@ export function EventsClient() {
 
         return (
             <div className="mb-12 last:mb-0">
-                <div className="flex items-center gap-4 mb-8">
-                    <div className="h-px bg-slate-200 flex-1" />
+                <div className="mb-6">
                     <span className="text-slate-400 font-mono text-xs uppercase tracking-widest font-bold">{title}</span>
-                    <div className="h-px bg-slate-200 flex-1" />
                 </div>
 
                 <div className="flex flex-col gap-6">
