@@ -30,6 +30,31 @@ interface EventItem {
 
 const allItems: EventItem[] = [
     {
+        id: "podcast-deep-tech-manufacturing",
+        title: "Live Podcast: Can India Become a Deep-Tech Manufacturing Powerhouse?",
+        type: "Live Podcast",
+        category: "webinar",
+        date: "Fri, Aug 21, 2026",
+        time: "4:00 PM - 5:00 PM IST",
+        dateTime: "2026-08-21T16:00:00+05:30",
+        platform: "Microsoft Teams",
+        link: "https://events.teams.microsoft.com/event/dd70cce1-367c-46a2-bdce-9d789715747b@9be43f22-3237-4b73-971b-3e664c641aea?source=copyLinkOneEventsShareDialog",
+        ctaText: "Join Session",
+        secondaryLink: "https://youtube.com/live/AiYNjL789D0?feature=share",
+        secondaryCtaText: "Watch on YouTube",
+        description: `Can India Become a Deep-Tech Manufacturing Powerhouse?
+
+Guest Speaker: Col. Merugu Solomon Saneev (Defence Technology, R&D in Weapons, Ammunition and Aerospace Operations Expert)
+Host: Mr. Vishwanath Akuthota (Founder, The Foundry's)
+
+Defence • Aerospace • AI • Robotics • Semiconductors • Cybersecurity • Space
+
+Building Technology. Building India.`,
+        tags: ["Deep Tech", "Manufacturing", "Defence", "Aerospace", "AI", "Robotics", "Semiconductors", "Cybersecurity", "Space", "Podcast"],
+        featured: true,
+        image: "/images/deep-tech-podcast.jpg"
+    },
+    {
         id: "quantum-computing-podcast",
         title: "Live Podcast: Quantum Computing and the Next Generation of Emerging Technologies",
         type: "Live Podcast",
