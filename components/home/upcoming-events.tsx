@@ -29,14 +29,6 @@ const EVENTS = [
     day: "12",
     image: "/images/classroom_session.png",
     href: "/events"
-  },
-  {
-    title: "Foundry Venture Pitch Day 2026",
-    description: "Watch our student-founders pitch their live startups and products to top VC firms, angel investors, and incubators. Connect with recruiters and explore venture opportunities.",
-    month: "Oct",
-    day: "05",
-    image: "/images/exec_classroom_session.png",
-    href: "/events"
   }
 ];
 

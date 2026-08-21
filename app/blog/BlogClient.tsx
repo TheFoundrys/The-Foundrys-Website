@@ -204,6 +204,17 @@ const STATIC_RESEARCH_POSTS: Post[] = [
 
 const STATIC_BLOG_POSTS: Post[] = [
     {
+        _id: "blog-11",
+        title: "LLMs, Simplified",
+        slug: { current: "llms-simplified" },
+        publishedAt: "2026-08-20T15:30:00Z",
+        mainImage: { static: true, url: "/images/llms_simplified_cover.jpg" },
+        category: "Blog",
+        readTime: "7 min",
+        excerpt: "What Large Language Models Are, How They Work, and Where We Use Them. Artificial Intelligence has moved from research laboratories into our everyday lives. Discover how LLMs process, generate, and transform information across modern industries.",
+        link: "https://www.linkedin.com/pulse/llms-simplified-the-foundry-s-5wvfc"
+    },
+    {
         _id: "blog-10",
         title: "Why Your Strategy Fails Without a Story",
         slug: { current: "why-your-strategy-fails-without-a-story" },
