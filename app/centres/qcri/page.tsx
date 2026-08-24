@@ -95,45 +95,6 @@ const RESEARCH_PILLARS = [
     }
 ];
 
-// Featured Quantum Projects Data
-const FEATURED_PROJECTS = [
-    {
-        id: "q-entangle",
-        name: "Project Q-Entangle",
-        category: "Quantum Algorithms",
-        status: "Live Beta",
-        desc: "High-fidelity 128-qubit quantum circuit simulator utilizing GPU-accelerated tensor networks for multi-qubit entanglement verification.",
-        tags: ["Tensor Networks", "Quantum Circuit", "Entanglement", "GPU Acceleration"],
-        metrics: "128-Qubit State Space"
-    },
-    {
-        id: "quantumvqe",
-        name: "QuantumVQE Chemical Core",
-        category: "Quantum Chemistry",
-        status: "In Production",
-        desc: "Variational Quantum Eigensolver engine calculating ground-state molecular energies for novel battery electrolytes with chemical precision.",
-        tags: ["VQE Solvers", "Quantum Chemistry", "Battery Informatics", "Qiskit Integration"],
-        metrics: "10^-5 Hartree Precision"
-    },
-    {
-        id: "q-optimizer",
-        name: "Q-Optimizer Logistics Engine",
-        category: "Industrial Solvers",
-        status: "Research Paper",
-        desc: "Quantum Approximate Optimization Algorithm (QAOA) suite delivering 14x faster solving times for NP-hard global fleet routing problems.",
-        tags: ["QAOA Solvers", "Combinatorial Math", "Fleet Routing", "QPU Solvers"],
-        metrics: "14x Faster Route Solve"
-    },
-    {
-        id: "q-crypto",
-        name: "Q-Crypto Lattice Suite",
-        category: "Quantum Defense",
-        status: "Grant Project",
-        desc: "Post-quantum cryptographic key distribution framework resilient against Shor's algorithm, verified against quantum adversary simulations.",
-        tags: ["Post-Quantum Crypto", "Lattice Cryptography", "Cyber Defense"],
-        metrics: "NIST Level 5 Quantum Safe"
-    }
-];
 
 // Research Publications Data
 const PUBLICATIONS = [
@@ -424,52 +385,6 @@ export default function QCRIResearchCentrePage() {
                     </div>
                 </section>
 
-                {/* Featured Quantum Innovations */}
-                <section className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-200/50">
-                    <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl mb-8">
-                        Featured Quantum Innovations
-                    </h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {FEATURED_PROJECTS.map((project) => (
-                            <div
-                                key={project.id}
-                                className="p-6 rounded-lg bg-[#F7F7F4] border border-slate-200/80 hover:border-[#002f86] transition-all flex flex-col justify-between"
-                            >
-                                <div>
-                                    <div className="flex items-center justify-between mb-3">
-                                        <span className="px-2.5 py-0.5 rounded bg-[#DCE7F1] text-[#002f86] text-[11px] font-bold font-mono">
-                                            {project.status}
-                                        </span>
-                                        <span className="text-xs font-bold text-[#002f86]">{project.metrics}</span>
-                                    </div>
-                                    <h3 className="font-serif text-xl font-bold text-slate-900 mb-2">
-                                        {project.name}
-                                    </h3>
-                                    <p className="text-slate-700 text-xs sm:text-sm leading-relaxed mb-4 font-sans">
-                                        {project.desc}
-                                    </p>
-                                    <div className="flex flex-wrap gap-1.5 mb-4">
-                                        {project.tags.map((tag, i) => (
-                                            <span key={i} className="px-2.5 py-0.5 rounded bg-white text-[11px] font-medium text-slate-600 border border-slate-200">
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="pt-3 border-t border-slate-200 flex items-center justify-end">
-                                    <a
-                                        href="#publications"
-                                        className="text-xs font-bold text-[#002f86] hover:underline flex items-center gap-1"
-                                    >
-                                        <span>View Quantum Specs</span>
-                                        <ChevronRight size={14} />
-                                    </a>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
 
                 {/* Dilution Refrigerator & Quantum Cryo Labs */}
                 <section className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-slate-200/50">
@@ -491,10 +406,7 @@ export default function QCRIResearchCentrePage() {
                 <section id="publications" className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-200/50">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-8">
                         <div>
-                            <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
-                                IEEE Peer-Reviewed Quantum Publications
-                            </h2>
-                            <p className="text-sm text-slate-600 mt-2">
+                            <p className="text-sm text-slate-600">
                                 Scientific outputs published in top international physics, quantum computing, and IEEE venues.
                             </p>
                         </div>

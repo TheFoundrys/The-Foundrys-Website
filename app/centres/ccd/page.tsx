@@ -95,45 +95,6 @@ const RESEARCH_PILLARS = [
     }
 ];
 
-// Featured Cyber Projects Data
-const FEATURED_PROJECTS = [
-    {
-        id: "aegis-vapt",
-        name: "Project Aegis-VAPT",
-        category: "Vulnerability Auditing",
-        status: "Live Beta",
-        desc: "Automated vulnerability scanner combining Small Language Models with RAG vector search to audit source code and flag zero-day flaws.",
-        tags: ["SLM Code Audit", "VAPT", "RAG Vector Search", "Zero-Day Protection"],
-        metrics: "98.7% Detection Rate"
-    },
-    {
-        id: "sentinel-phish",
-        name: "Sentinel-Phish Engine",
-        category: "Multi-Agent Security",
-        status: "In Production",
-        desc: "Multi-agent VLM & LLM reasoning system detecting and neutralizing sophisticated spear-phishing attacks in enterprise email pipelines.",
-        tags: ["Multi-Agent VLM", "Phishing Defense", "Email Security", "LLM Reasoning"],
-        metrics: "Sub-Second Neutralization"
-    },
-    {
-        id: "gridguard-ids",
-        name: "GridGuard SCADA IDS",
-        category: "Industrial Defense",
-        status: "Research Paper",
-        desc: "Deep learning packet inspection firewall designed for SCADA and Modbus protocols in renewable power substations.",
-        tags: ["SCADA Security", "Modbus Firewall", "Industrial IoT", "Deep Learning"],
-        metrics: "< 1ms Inspection Latency"
-    },
-    {
-        id: "ciphermesh",
-        name: "CipherMesh Zero-Trust",
-        category: "Network Defense",
-        status: "Grant Project",
-        desc: "Quantum-resistant micro-segmentation network mesh securing distributed enterprise microservices against lateral movement.",
-        tags: ["Zero-Trust Mesh", "Post-Quantum Crypto", "Microsegmentation"],
-        metrics: "NIST Level 5 Compliant"
-    }
-];
 
 // Research Publications Data - Official IEEE Papers from The Foundry
 const PUBLICATIONS = [
@@ -246,7 +207,7 @@ export default function CCDResearchCentrePage() {
 
             {/* Main Content Card Container matching Entry-Level page design */}
             <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white rounded-1xl shadow-lg shadow-black/15 border border-slate-200/50 mt-[30px] mb-16 overflow-hidden">
-                
+
                 {/* Introduction Section */}
                 <section className="text-slate-800 p-8 sm:p-12 md:p-16 pb-6 sm:pb-8 md:pb-10 bg-white">
                     <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
@@ -291,9 +252,8 @@ export default function CCDResearchCentrePage() {
                     {RESEARCH_PILLARS.map((pillar, idx) => (
                         <div
                             key={pillar.id}
-                            className={`p-8 sm:p-12 md:p-16 ${
-                                idx % 2 === 0 ? "bg-white" : "bg-[#F7F7F4]"
-                            } border-t border-slate-200/50`}
+                            className={`p-8 sm:p-12 md:p-16 ${idx % 2 === 0 ? "bg-white" : "bg-[#F7F7F4]"
+                                } border-t border-slate-200/50`}
                         >
                             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
                                 {/* Left Column */}
@@ -354,15 +314,14 @@ export default function CCDResearchCentrePage() {
                             <p className="text-slate-700 text-sm leading-relaxed mb-6 font-sans">
                                 Witness how CCD&apos;s multi-agent defense architecture ingests exploit payloads, performs AST vulnerability analysis, synthesizes mitigation hot-patches, and deploys zero-trust policies.
                             </p>
-                            
+
                             <button
                                 onClick={runSimulation}
                                 disabled={isSimulating}
-                                className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-bold text-sm text-white transition-all shadow-md cursor-pointer ${
-                                    isSimulating
+                                className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-bold text-sm text-white transition-all shadow-md cursor-pointer ${isSimulating
                                         ? "bg-slate-500 cursor-not-allowed"
                                         : "bg-[#002f86] hover:bg-[#002266]"
-                                }`}
+                                    }`}
                             >
                                 <PlayCircle className="w-4 h-4" />
                                 <span>{isSimulating ? "Simulating Cyber Defense..." : "Simulate Threat Defense"}</span>
@@ -390,13 +349,12 @@ export default function CCDResearchCentrePage() {
                                         return (
                                             <div
                                                 key={idx}
-                                                className={`p-3 rounded-md border transition-all ${
-                                                    isActive
+                                                className={`p-3 rounded-md border transition-all ${isActive
                                                         ? "bg-[#DCE7F1] border-[#002f86] text-slate-900"
                                                         : isDone
-                                                        ? "bg-slate-50 border-slate-200 text-slate-600"
-                                                        : "bg-white border-slate-100 text-slate-400"
-                                                }`}
+                                                            ? "bg-slate-50 border-slate-200 text-slate-600"
+                                                            : "bg-white border-slate-100 text-slate-400"
+                                                    }`}
                                             >
                                                 <div className="flex items-center justify-between font-sans mb-1">
                                                     <span className="font-bold text-xs text-slate-900 flex items-center gap-2">
@@ -423,52 +381,6 @@ export default function CCDResearchCentrePage() {
                     </div>
                 </section>
 
-                {/* Featured Cyber Defense Projects */}
-                <section className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-200/50">
-                    <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl mb-8">
-                        Featured Defense Innovations
-                    </h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {FEATURED_PROJECTS.map((project) => (
-                            <div
-                                key={project.id}
-                                className="p-6 rounded-lg bg-[#F7F7F4] border border-slate-200/80 hover:border-[#002f86] transition-all flex flex-col justify-between"
-                            >
-                                <div>
-                                    <div className="flex items-center justify-between mb-3">
-                                        <span className="px-2.5 py-0.5 rounded bg-[#DCE7F1] text-[#002f86] text-[11px] font-bold font-mono">
-                                            {project.status}
-                                        </span>
-                                        <span className="text-xs font-bold text-[#002f86]">{project.metrics}</span>
-                                    </div>
-                                    <h3 className="font-serif text-xl font-bold text-slate-900 mb-2">
-                                        {project.name}
-                                    </h3>
-                                    <p className="text-slate-700 text-xs sm:text-sm leading-relaxed mb-4 font-sans">
-                                        {project.desc}
-                                    </p>
-                                    <div className="flex flex-wrap gap-1.5 mb-4">
-                                        {project.tags.map((tag, i) => (
-                                            <span key={i} className="px-2.5 py-0.5 rounded bg-white text-[11px] font-medium text-slate-600 border border-slate-200">
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="pt-3 border-t border-slate-200 flex items-center justify-end">
-                                    <a
-                                        href="#publications"
-                                        className="text-xs font-bold text-[#002f86] hover:underline flex items-center gap-1"
-                                    >
-                                        <span>View Cyber Specifications</span>
-                                        <ChevronRight size={14} />
-                                    </a>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
 
                 {/* Cyber Range & Air-Gapped Labs Infrastructure */}
                 <section className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-slate-200/50">
@@ -490,10 +402,7 @@ export default function CCDResearchCentrePage() {
                 <section id="publications" className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-200/50">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-8">
                         <div>
-                            <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
-                                IEEE Peer-Reviewed Cyber Publications
-                            </h2>
-                            <p className="text-sm text-slate-600 mt-2">
+                            <p className="text-sm text-slate-600">
                                 Research outputs published in top international computer security and IEEE journals.
                             </p>
                         </div>

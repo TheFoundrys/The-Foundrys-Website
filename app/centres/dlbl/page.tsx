@@ -95,45 +95,6 @@ const RESEARCH_PILLARS = [
     }
 ];
 
-// Featured Blockchain Projects Data
-const FEATURED_PROJECTS = [
-    {
-        id: "trustledger",
-        name: "Project TrustLedger",
-        category: "ZKP Scalability",
-        status: "Live Beta",
-        desc: "Zero-Knowledge Rollup framework providing private, sub-second transaction batching with L1 Ethereum security guarantees.",
-        tags: ["Zero-Knowledge Proofs", "zk-SNARKs", "L2 Rollup", "EVM Compatible"],
-        metrics: "15,000+ Scaled TPS"
-    },
-    {
-        id: "smartaudit",
-        name: "SmartAudit Engine",
-        category: "Smart Contract Verification",
-        status: "In Production",
-        desc: "Automated formal verification tool static-analyzing smart contract bytecode to eliminate reentrancy and integer overflow exploits.",
-        tags: ["Formal Verification", "Bytecode Audit", "Solidity Security"],
-        metrics: "0 Exploit Vulnerabilities"
-    },
-    {
-        id: "gridchallan-ledger",
-        name: "A-Challan Tax & Energy Ledger",
-        category: "Government & Grid",
-        status: "Research Paper",
-        desc: "Decentralized ledger system integrating ML, LLMs, and QML to audit tax revenues and clear microgrid energy credits.",
-        tags: ["A-Challan Tax", "QML Integration", "Microgrid Settlement"],
-        metrics: "IEEE Verified Framework"
-    },
-    {
-        id: "sovereignid",
-        name: "SovereignID Infrastructure",
-        category: "Decentralized Identity",
-        status: "Grant Project",
-        desc: "Self-sovereign identity protocol allowing users to control verifiable credentials without centralized identity providers.",
-        tags: ["Self-Sovereign ID", "Verifiable Credentials", "W3C Standard"],
-        metrics: "W3C Compliant Standard"
-    }
-];
 
 // Research Publications Data - Official IEEE Papers from The Foundry
 const PUBLICATIONS = [
@@ -425,52 +386,6 @@ export default function DLBLResearchCentrePage() {
                     </div>
                 </section>
 
-                {/* Featured Blockchain Innovations */}
-                <section className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-200/50">
-                    <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl mb-8">
-                        Featured Protocol Innovations
-                    </h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {FEATURED_PROJECTS.map((project) => (
-                            <div
-                                key={project.id}
-                                className="p-6 rounded-lg bg-[#F7F7F4] border border-slate-200/80 hover:border-[#002f86] transition-all flex flex-col justify-between"
-                            >
-                                <div>
-                                    <div className="flex items-center justify-between mb-3">
-                                        <span className="px-2.5 py-0.5 rounded bg-[#DCE7F1] text-[#002f86] text-[11px] font-bold font-mono">
-                                            {project.status}
-                                        </span>
-                                        <span className="text-xs font-bold text-[#002f86]">{project.metrics}</span>
-                                    </div>
-                                    <h3 className="font-serif text-xl font-bold text-slate-900 mb-2">
-                                        {project.name}
-                                    </h3>
-                                    <p className="text-slate-700 text-xs sm:text-sm leading-relaxed mb-4 font-sans">
-                                        {project.desc}
-                                    </p>
-                                    <div className="flex flex-wrap gap-1.5 mb-4">
-                                        {project.tags.map((tag, i) => (
-                                            <span key={i} className="px-2.5 py-0.5 rounded bg-white text-[11px] font-medium text-slate-600 border border-slate-200">
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="pt-3 border-t border-slate-200 flex items-center justify-end">
-                                    <a
-                                        href="#publications"
-                                        className="text-xs font-bold text-[#002f86] hover:underline flex items-center gap-1"
-                                    >
-                                        <span>View Protocol Specs</span>
-                                        <ChevronRight size={14} />
-                                    </a>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
 
                 {/* Distributed Validator & ZK Prover Infrastructure */}
                 <section className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-slate-200/50">
@@ -492,10 +407,7 @@ export default function DLBLResearchCentrePage() {
                 <section id="publications" className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-200/50">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-8">
                         <div>
-                            <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
-                                IEEE Peer-Reviewed Blockchain Publications
-                            </h2>
-                            <p className="text-sm text-slate-600 mt-2">
+                            <p className="text-sm text-slate-600">
                                 Research outputs published in top international distributed ledger, cryptography, and IEEE venues.
                             </p>
                         </div>

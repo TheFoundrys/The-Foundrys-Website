@@ -95,45 +95,6 @@ const RESEARCH_PILLARS = [
     }
 ];
 
-// Featured Sustainability Projects Data
-const FEATURED_PROJECTS = [
-    {
-        id: "ecosense-vlm",
-        name: "Project EcoSense-VLM",
-        category: "Material Informatics",
-        status: "Live Beta",
-        desc: "Deep learning ensemble combining Vision Language Models for automated microplastics classification in aquatic ecosystems.",
-        tags: ["Vision Language Models", "Microplastics Detection", "Ocean Health", "Ensemble AI"],
-        metrics: "96.4% Classification Accuracy"
-    },
-    {
-        id: "carbontrack-ai",
-        name: "CarbonTrack-AI Engine",
-        category: "Carbon Accounting",
-        status: "In Production",
-        desc: "Real-time Scope 1-3 industrial emissions auditing platform tracking supply chain carbon footprints with zero manual input.",
-        tags: ["Scope 1-3 Telemetry", "Carbon Audit", "ESG Accounting", "IoT Sensors"],
-        metrics: "Sub-Second Emission Tracking"
-    },
-    {
-        id: "biemat-informatics",
-        name: "BioMat Polymer Simulator",
-        category: "Green Chemistry",
-        status: "Research Paper",
-        desc: "Generative AI material science framework predicting biodegradable polymer structures to replace single-use petroleum plastics.",
-        tags: ["Generative Materials", "Biodegradable Polymers", "AI Chemistry"],
-        metrics: "3.2x Faster Material Discovery"
-    },
-    {
-        id: "greenpolicy-vault",
-        name: "GreenPolicy ESG Vault",
-        category: "Climate Policy",
-        status: "Grant Project",
-        desc: "Verifiable climate compliance framework auditing municipal carbon offset programs against international ESG standards.",
-        tags: ["ESG Compliance", "Climate Policy", "Anti-Greenwashing Vault"],
-        metrics: "ISO 14064 Compliant"
-    }
-];
 
 // Research Publications Data - Official IEEE Papers from The Foundry
 const PUBLICATIONS = [
@@ -425,52 +386,6 @@ export default function SGPCResearchCentrePage() {
                     </div>
                 </section>
 
-                {/* Featured Sustainability Innovations */}
-                <section className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-200/50">
-                    <h2 className="font-serif text-3xl font-bold leading-tight text-[#1b4332] md:text-4xl mb-8">
-                        Featured Clean-Tech Innovations
-                    </h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {FEATURED_PROJECTS.map((project) => (
-                            <div
-                                key={project.id}
-                                className="p-6 rounded-lg bg-[#F7F7F4] border border-slate-200/80 hover:border-[#1b4332] hover:bg-[#edf4ee] transition-all flex flex-col justify-between"
-                            >
-                                <div>
-                                    <div className="flex items-center justify-between mb-3">
-                                        <span className="px-2.5 py-0.5 rounded bg-[#E5EFE7] text-[#1b4332] text-[11px] font-bold font-mono">
-                                            {project.status}
-                                        </span>
-                                        <span className="text-xs font-bold text-[#1b4332]">{project.metrics}</span>
-                                    </div>
-                                    <h3 className="font-serif text-xl font-bold text-slate-900 mb-2">
-                                        {project.name}
-                                    </h3>
-                                    <p className="text-slate-700 text-xs sm:text-sm leading-relaxed mb-4 font-sans">
-                                        {project.desc}
-                                    </p>
-                                    <div className="flex flex-wrap gap-1.5 mb-4">
-                                        {project.tags.map((tag, i) => (
-                                            <span key={i} className="px-2.5 py-0.5 rounded bg-white text-[11px] font-medium text-slate-600 border border-slate-200">
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="pt-3 border-t border-slate-200 flex items-center justify-end">
-                                    <a
-                                        href="#publications"
-                                        className="text-xs font-bold text-[#1b4332] hover:underline flex items-center gap-1"
-                                    >
-                                        <span>View Technical Specs</span>
-                                        <ChevronRight size={14} />
-                                    </a>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
 
                 {/* Ecological Infrastructure */}
                 <section className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-slate-200/50">
@@ -492,10 +407,7 @@ export default function SGPCResearchCentrePage() {
                 <section id="publications" className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-200/50">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-8">
                         <div>
-                            <h2 className="font-serif text-3xl font-bold leading-tight text-[#1b4332] md:text-4xl">
-                                IEEE Peer-Reviewed Sustainability Publications
-                            </h2>
-                            <p className="text-sm text-slate-600 mt-2">
+                            <p className="text-sm text-slate-600">
                                 Research outputs published in top international environmental sensing, bio-informatics, and IEEE journals.
                             </p>
                         </div>
