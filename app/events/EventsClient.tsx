@@ -130,7 +130,7 @@ function EventCard({ item, idx }: { item: EventItem; idx: number }) {
             className="overflow-hidden border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:border-[#002f86] hover:shadow-md"
         >
             <div className="flex flex-col md:flex-row">
-                <div className="relative h-60 w-full shrink-0 md:h-auto md:w-80 lg:w-96 bg-[#F7F7F4] flex items-center justify-center p-3">
+                <div className="relative h-60 w-full shrink-0 md:h-auto md:w-80 lg:w-96 bg-[#F1F1EC] flex items-center justify-center p-3">
                     <img
                         src={item.image}
                         alt={item.title}
@@ -164,21 +164,21 @@ function EventCard({ item, idx }: { item: EventItem; idx: number }) {
                         </p>
 
                         <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                            <div className="flex items-start gap-3 border border-slate-200/80 bg-[#F7F7F4] p-3">
+                            <div className="flex items-start gap-3 border border-slate-200/80 p-3">
                                 <Calendar size={16} className="mt-0.5 shrink-0 text-[#002f86]" />
                                 <div>
                                     <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-mono">Date</p>
                                     <p className="text-xs font-semibold text-slate-900 mt-0.5">{item.date}</p>
                                 </div>
                             </div>
-                            <div className="flex items-start gap-3 border border-slate-200/80 bg-[#F7F7F4] p-3">
+                            <div className="flex items-start gap-3 border border-slate-200/80 p-3">
                                 <Clock size={16} className="mt-0.5 shrink-0 text-[#002f86]" />
                                 <div>
                                     <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-mono">Time</p>
                                     <p className="text-xs font-semibold text-slate-900 mt-0.5">{item.time}</p>
                                 </div>
                             </div>
-                            <div className="flex items-start gap-3 border border-slate-200/80 bg-[#F7F7F4] p-3">
+                            <div className="flex items-start gap-3 border border-slate-200/80 p-3">
                                 {item.category === "event" ? (
                                     <MapPin size={16} className="mt-0.5 shrink-0 text-[#002f86]" />
                                 ) : (
@@ -277,10 +277,12 @@ export function EventsClient() {
         if (items.length === 0) return null;
 
         return (
-            <div className="mb-12 last:mb-0">
-                <div className="mb-6">
-                    <span className="text-slate-400 font-mono text-xs uppercase tracking-widest font-bold">{title}</span>
-                </div>
+            <div className="mb-8 last:mb-0">
+                {title ? (
+                    <div className="mb-4">
+                        <span className="text-slate-400 font-mono text-xs uppercase tracking-widest font-bold">{title}</span>
+                    </div>
+                ) : null}
 
                 <div className="flex flex-col gap-6">
                     {items.map((item, idx) => (
@@ -299,8 +301,8 @@ export function EventsClient() {
             <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white shadow-lg shadow-black/15 border border-slate-200/50 mb-16 overflow-hidden">
                 
                 {/* Introduction Section */}
-                <section className="text-slate-800 p-8 sm:p-12 md:p-16 pb-6 sm:pb-8 md:pb-10 bg-white">
-                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+                <section className="text-slate-800 p-6 sm:p-10 md:p-12 pb-5 sm:pb-6 md:pb-6 bg-white">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                         <div>
                             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-[#002f86] mb-4">
                                 Upcoming & Past Events
@@ -313,7 +315,7 @@ export function EventsClient() {
                 </section>
 
                 {/* Events Feed Section */}
-                <section id="events-feed" className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-slate-200/50">
+                <section id="events-feed" className="p-6 sm:p-10 md:p-12 pt-5 sm:pt-6 md:pt-6 border-t border-slate-200/50">
                     {filteredItems.length === 0 ? (
                         <div className="text-center py-20 text-slate-500 bg-white border border-dashed border-slate-200">
                             <p>No sessions found for this filter.</p>
@@ -321,7 +323,7 @@ export function EventsClient() {
                     ) : (
                         <>
                             {renderFeedSection("Upcoming Sessions", upcomingItems)}
-                            {renderFeedSection("Past Sessions", pastItems)}
+                            {renderFeedSection("", pastItems)}
                         </>
                     )}
                 </section>

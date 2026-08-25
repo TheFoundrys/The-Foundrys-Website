@@ -24,7 +24,7 @@ export function AboutClient() {
             <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 overflow-hidden mb-16 shadow-lg shadow-black/15">
                 
                 {/* Introduction Section */}
-                <section className="p-8 sm:p-12 md:p-16 border-b border-slate-200/50 bg-white">
+                <section className="p-6 sm:p-10 md:p-12 pb-5 sm:pb-6 md:pb-6 border-b border-slate-200/50 bg-white">
                     <div className="max-w-4xl space-y-6">
                         <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-[#002f86] mb-4 leading-tight">
                             We didn&apos;t build a school. <br />
@@ -34,12 +34,12 @@ export function AboutClient() {
                             Replacing rote memorization with rigorous creation. We forge sovereign innovators who architect the new foundations of the Deep Tech economy.
                         </p>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-                            <div className="p-6 bg-[#F7F7F4] border border-slate-200/80">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                            <div className="p-6 bg-[#F1F1EC] border border-slate-200/80">
                                 <h4 className="font-serif text-lg font-bold text-[#002f86] mb-2">The Vision</h4>
                                 <p className="text-slate-600 text-xs md:text-sm leading-relaxed font-sans">Forge a generation of innovators who don&apos;t just participate—they architect the future.</p>
                             </div>
-                            <div className="p-6 bg-[#F7F7F4] border border-slate-200/80">
+                            <div className="p-6 bg-[#F1F1EC] border border-slate-200/80">
                                 <h4 className="font-serif text-lg font-bold text-[#002f86] mb-2">The Mission</h4>
                                 <p className="text-slate-600 text-xs md:text-sm leading-relaxed font-sans">Bridging the void between academic theory and the raw velocity of deep tech industry.</p>
                             </div>
@@ -48,8 +48,8 @@ export function AboutClient() {
                 </section>
 
                 {/* Philosophy Section */}
-                <section className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-b border-slate-200/50">
-                    <div className="max-w-4xl space-y-8">
+                <section className="p-6 sm:p-10 md:p-12 pt-5 sm:pt-6 md:pt-6 pb-5 sm:pb-6 md:pb-6 border-b border-slate-200/50">
+                    <div className="max-w-4xl space-y-6">
                         <div>
                             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#002f86] mb-4">
                                 Degrees are printed. Skills are forged.
@@ -59,11 +59,11 @@ export function AboutClient() {
                             </p>
                             
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs md:text-sm font-bold text-slate-800 font-sans">
-                                <div className="p-4 bg-white border border-slate-200/80 flex items-center justify-between">
+                                <div className="p-4 bg-[#F1F1EC] border border-slate-200/80 flex items-center justify-between">
                                     <span className="text-slate-400 line-through">Memorize Syntax</span>
                                     <span className="text-[#002f86]">Architect Logic</span>
                                 </div>
-                                <div className="p-4 bg-white border border-slate-200/80 flex items-center justify-between">
+                                <div className="p-4 bg-[#F1F1EC] border border-slate-200/80 flex items-center justify-between">
                                     <span className="text-slate-400 line-through">Pass Written Exams</span>
                                     <span className="text-[#002f86]">Deploy Real Products</span>
                                 </div>
@@ -72,10 +72,10 @@ export function AboutClient() {
 
                         {/* Archetypes Grid */}
                         <div>
-                            <h3 className="font-serif text-xl font-bold text-[#002f86] mb-6">Core Schools & Disciplines</h3>
+                            <h3 className="font-serif text-xl font-bold text-[#002f86] mb-4">Core Schools & Disciplines</h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {ARCHETYPES.map((arch) => (
-                                    <div key={arch.title} className="p-6 bg-white border border-slate-200/80 hover:border-[#002f86] transition-colors shadow-xs">
+                                    <div key={arch.title} className="p-6 bg-[#F1F1EC] border border-slate-200/80 hover:border-[#002f86] transition-colors shadow-xs">
                                         <arch.icon className="text-[#002f86] mb-3" size={28} />
                                         <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#002f86] block mb-1">{arch.school}</span>
                                         <h4 className="font-bold text-slate-900 text-sm mb-2">{arch.title}</h4>
@@ -88,11 +88,11 @@ export function AboutClient() {
                 </section>
 
                 {/* Founder Spotlight Section */}
-                <section className="p-8 sm:p-12 md:p-16 bg-white">
+                <section className="p-6 sm:p-10 md:p-12 pt-5 sm:pt-6 md:pt-6 bg-white">
                     <div className="max-w-4xl flex flex-col md:flex-row gap-10 items-start">
                         <div className="w-full md:w-1/3 shrink-0">
-                            <div className="aspect-[3/4] relative overflow-hidden shadow-md bg-[#F7F7F4] border border-slate-200/80">
-                                <Image src="/images/vishwa-new.jpg" alt="Vishwanath Akuthota" fill className="object-cover" />
+                            <div className="aspect-[3/4] relative overflow-hidden shadow-md bg-[#F1F1EC] border border-slate-200/80">
+                                <Image src="/images/vishwa-new.jpg" alt="Vishwanath Akuthota" fill className="object-cover object-top" />
                             </div>
                         </div>
                         <div className="flex-1 space-y-6">

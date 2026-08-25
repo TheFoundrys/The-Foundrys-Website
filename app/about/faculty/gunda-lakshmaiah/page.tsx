@@ -4,7 +4,7 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowLeft, Mail, Phone, MapPin, Briefcase, Target, Users } from "lucide-react";
+import { ArrowLeft, Mail, Phone, MapPin, Briefcase, Target, Users, Landmark, TrendingUp, Shield } from "lucide-react";
 import Link from "next/link";
 
 export default function GundaLakshmaiahProfile() {
@@ -16,7 +16,7 @@ export default function GundaLakshmaiahProfile() {
             <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 overflow-hidden mb-16 shadow-lg shadow-black/15">
                 
                 {/* Hero / Header Section inside White Card */}
-                <section className="bg-[#F7F7F4] p-8 sm:p-12 md:p-16 border-b border-slate-200/50 relative overflow-hidden">
+                <section className="bg-white p-6 sm:p-10 md:p-12 pb-5 sm:pb-6 md:pb-6 border-b border-slate-200/50 relative overflow-hidden">
                     <div className="relative z-10">
                         <Link href="/about/team" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors mb-8 text-xs font-bold uppercase tracking-wider font-mono">
                             <ArrowLeft size={14} /> Back to Team
@@ -50,13 +50,13 @@ export default function GundaLakshmaiahProfile() {
                             >
                                 <div>
                                     <span className="inline-block px-3 py-1 bg-[#002f86] text-white text-[10px] font-bold uppercase tracking-widest font-mono mb-4">
-                                        Strategic Growth
+                                        Chief Finance Executive
                                     </span>
                                     <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold tracking-tight text-[#002f86] mb-3 leading-tight">
                                         Gunda Lakshmaiah
                                     </h1>
                                     <p className="text-base sm:text-lg text-slate-600 font-medium italic">
-                                        Business Development Executive | The Foundry’s
+                                        Pioneering Strategic Financial Governance & Deep Tech Capital Allocation
                                     </p>
                                 </div>
 

@@ -53,7 +53,7 @@ export function ContactClient() {
             <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 overflow-hidden mb-16 shadow-lg shadow-black/15 rounded-none">
                 
                 {/* Introduction Section */}
-                <section className="p-8 sm:p-12 md:p-16 border-b border-slate-200/50 bg-white">
+                <section className="p-6 sm:p-10 md:p-12 pb-5 sm:pb-6 md:pb-6 border-b border-slate-200/50 bg-white">
                     <div className="max-w-4xl">
                         <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-[#002f86] mb-4 leading-tight">
                             Get in Touch
@@ -65,16 +65,16 @@ export function ContactClient() {
                 </section>
 
                 {/* Quick Contact Cards */}
-                <section className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-b border-slate-200/50">
+                <section className="p-6 sm:p-10 md:p-12 pt-5 sm:pt-6 md:pt-6 pb-5 sm:pb-6 md:pb-6 border-b border-slate-200/50">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <motion.a
                             href="tel:+917981171474"
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4 }}
-                            className="flex flex-col p-8 bg-white border border-slate-200/80 hover:border-[#002f86] transition-all group shadow-xs cursor-pointer rounded-none"
+                            className="flex flex-col p-8 bg-[#F1F1EC] border border-slate-200/80 hover:border-[#002f86] transition-all group shadow-xs cursor-pointer rounded-none"
                         >
-                            <div className="w-12 h-12 bg-blue-50 border border-blue-100 flex items-center justify-center text-[#002f86] mb-6 group-hover:scale-105 transition-transform rounded-none">
+                            <div className="w-12 h-12 bg-white border border-blue-100 flex items-center justify-center text-[#002f86] mb-6 group-hover:scale-105 transition-transform rounded-none">
                                 <Phone size={22} />
                             </div>
                             <span className="text-xs font-bold font-mono text-[#002f86] uppercase tracking-widest mb-2">Call Us Directly</span>
@@ -86,9 +86,9 @@ export function ContactClient() {
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4, delay: 0.1 }}
-                            className="flex flex-col p-8 bg-white border border-slate-200/80 hover:border-[#002f86] transition-all group shadow-xs cursor-pointer rounded-none"
+                            className="flex flex-col p-8 bg-[#F1F1EC] border border-slate-200/80 hover:border-[#002f86] transition-all group shadow-xs cursor-pointer rounded-none"
                         >
-                            <div className="w-12 h-12 bg-blue-50 border border-blue-100 flex items-center justify-center text-[#002f86] mb-6 group-hover:scale-105 transition-transform rounded-none">
+                            <div className="w-12 h-12 bg-white border border-blue-100 flex items-center justify-center text-[#002f86] mb-6 group-hover:scale-105 transition-transform rounded-none">
                                 <Mail size={22} />
                             </div>
                             <span className="text-xs font-bold font-mono text-[#002f86] uppercase tracking-widest mb-2">Email Admissions & Support</span>
@@ -98,7 +98,7 @@ export function ContactClient() {
                 </section>
 
                 {/* Global Locations Section */}
-                <section className="p-8 sm:p-12 md:p-16 bg-white">
+                <section className="p-6 sm:p-10 md:p-12 pt-5 sm:pt-6 md:pt-6 bg-white">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
                         <div>
                             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#002f86] mb-2">Our Global Campuses & Offices</h2>
@@ -114,7 +114,7 @@ export function ContactClient() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.05 }}
-                                className="bg-[#F7F7F4] p-6 border border-slate-200/80 hover:border-[#002f86] transition-colors flex flex-col justify-between rounded-none"
+                                className="bg-[#F1F1EC] p-6 border border-slate-200/80 hover:border-[#002f86] transition-colors flex flex-col justify-between rounded-none"
                             >
                                 <div>
                                     <div className="flex items-center gap-2 mb-3">

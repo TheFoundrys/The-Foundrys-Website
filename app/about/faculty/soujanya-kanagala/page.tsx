@@ -4,7 +4,7 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowLeft, Briefcase, Target, Zap, Award } from "lucide-react";
+import { ArrowLeft, Briefcase, Target, Zap, Award, Layers, Cpu } from "lucide-react";
 import Link from "next/link";
 
 export default function SoujanyaKanagalaProfile() {
@@ -16,7 +16,7 @@ export default function SoujanyaKanagalaProfile() {
             <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 overflow-hidden mb-16 shadow-lg shadow-black/15">
                 
                 {/* Hero / Header Section inside White Card */}
-                <section className="bg-[#F7F7F4] p-8 sm:p-12 md:p-16 border-b border-slate-200/50 relative overflow-hidden">
+                <section className="bg-white p-6 sm:p-10 md:p-12 pb-5 sm:pb-6 md:pb-6 border-b border-slate-200/50 relative overflow-hidden">
                     <div className="relative z-10">
                         <Link href="/about/team" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors mb-8 text-xs font-bold uppercase tracking-wider font-mono">
                             <ArrowLeft size={14} /> Back to Team
@@ -50,26 +50,23 @@ export default function SoujanyaKanagalaProfile() {
                             >
                                 <div>
                                     <span className="inline-block px-3 py-1 bg-[#002f86] text-white text-[10px] font-bold uppercase tracking-widest font-mono mb-4">
-                                        Advisory Board Member
+                                        Head of Design & Product Development
                                     </span>
                                     <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold tracking-tight text-[#002f86] mb-3 leading-tight">
                                         Soujanya Kanagala
                                     </h1>
                                     <p className="text-base sm:text-lg text-slate-600 font-medium italic">
-                                        Management Consultant | 14 Years of Industry Experience
+                                        Human-Centric UX & Scalable Digital Architecture Specialist
                                     </p>
                                 </div>
 
                                 {/* Key Badges */}
                                 <div className="flex flex-wrap gap-2.5 pt-2">
-                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
-                                        <Briefcase size={14} className="text-[#002f86]" /> Business Strategy
+                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F1F1EC] border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
+                                        <Layers size={14} className="text-[#002f86]" /> Design Systems
                                     </div>
-                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
-                                        <Zap size={14} className="text-[#002f86]" /> Operations Management
-                                    </div>
-                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
-                                        <Award size={14} className="text-[#002f86]" /> Organizational Leadership
+                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F1F1EC] border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
+                                        <Cpu size={14} className="text-[#002f86]" /> Product Strategy
                                     </div>
                                 </div>
                             </motion.div>
@@ -78,7 +75,7 @@ export default function SoujanyaKanagalaProfile() {
                 </section>
 
                 {/* Profile Overview Section */}
-                <section className="p-8 sm:p-12 md:p-16 bg-white border-b border-slate-200/50">
+                <section className="p-6 sm:p-10 md:p-12 pt-5 sm:pt-6 md:pt-6 pb-5 sm:pb-6 md:pb-6 bg-white border-b border-slate-200/50">
                     <div className="max-w-4xl space-y-6">
                         <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#002f86] mb-4">
                             Professional Experience

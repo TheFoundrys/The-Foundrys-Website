@@ -16,7 +16,7 @@ export default function VishwanathAkuthotaProfile() {
             <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 overflow-hidden mb-16 shadow-lg shadow-black/15">
                 
                 {/* Hero / Header Section inside White Card */}
-                <section className="bg-[#F7F7F4] p-8 sm:p-12 md:p-16 border-b border-slate-200/50 relative overflow-hidden">
+                <section className="bg-white p-6 sm:p-10 md:p-12 pb-5 sm:pb-6 md:pb-6 border-b border-slate-200/50 relative overflow-hidden">
                     <div className="relative z-10">
                         <Link href="/about/team" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors mb-8 text-xs font-bold uppercase tracking-wider font-mono">
                             <ArrowLeft size={14} /> Back to Team
@@ -82,7 +82,7 @@ export default function VishwanathAkuthotaProfile() {
                                         href="https://ieeexplore.ieee.org/author/231984777844193"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-[#002f86] border border-slate-200/80 hover:bg-slate-50 text-xs font-bold transition-colors cursor-pointer shadow-xs"
+                                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#F1F1EC] text-[#002f86] border border-slate-200/80 hover:bg-slate-200 text-xs font-bold transition-colors cursor-pointer shadow-xs"
                                     >
                                         <svg viewBox="0 0 110 136" fill="currentColor" className="w-3.5 h-3.5">
                                             <path d="M55.1 106.6L8.4 60.1 55.1 13.6l46.7 46.5-46.7 46.5zm0-76.4l-12.6 12.6h25.1L55.1 30.2zm0 59.8l-25.1-25.1 25.1 25.1 25.1-25.1-25.1 25.1zM55.1 50.1V39.6l-10.5 10.5h21L55.1 39.6v10.5zm0 21.1v-10.5l-10.5 10.5h21L55.1 60.7v10.5z" />
@@ -93,7 +93,7 @@ export default function VishwanathAkuthotaProfile() {
                                         href="https://www.researchgate.net/profile/Vishwanath-Akuthota"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-[#002f86] border border-slate-200/80 hover:bg-slate-50 text-xs font-bold transition-colors cursor-pointer shadow-xs"
+                                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#F1F1EC] text-[#002f86] border border-slate-200/80 hover:bg-slate-200 text-xs font-bold transition-colors cursor-pointer shadow-xs"
                                     >
                                         <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
                                             <path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9 9 0 0 0-.05.727c-.01.282-.013.621-.013 1.016a31.121 31.123 0 0 0 .014 1.017 9 9 0 0 0 .05.727 7.946 7.946 0 0 0 .077.53h-.005a3.334 3.334 0 0 0 .113.438c.245.743.65 1.303 1.214 1.68.565.376 1.256.564 2.075.564.8 0 1.536-.213 2.105-.603.57-.39.94-.916 1.175-1.65.076-.235.135-.558.177-.93a10.9 10.9 0 0 0 .043-1.207v-.82c0-.095-.047-.142-.14-.142h-3.064c-.094 0-.14.047-.14.141v.956c0 .094.046.14.14.14h1.666c.056 0 .084.03.084.086 0 .36 0 .62-.036.865-.038.244-.1.447-.147.606-.108.385-.348.664-.638.876-.29.212-.738.35-1.227.35-.545 0-.901-.15-1.21-.353-.306-.203-.517-.454-.67-.915a3.136 3.136 0 0 1-.147-.762 17.366 17.367 0 0 1-.034-.656c-.01-.26-.014-.572-.014-.939a26.401 26.403 0 0 1 .014-.938 15.821 15.822 0 0 1 .035-.656 3.19 3.19 0 0 1 .148-.76 1.89 1.89 0 0 1 .742-1.01c.344-.244.593-.352 1.137-.352.508 0 .815.096 1.144.303.33.207.528.492.764.925.047.094.111.118.198.07l1.044-.43c.075-.048.09-.115.042-.199a3.549 3.549 0 0 0-.466-.742 3 3 0 0 0-.679-.607 3.313 3.313 0 0 0-.903-.41A4.068 4.068 0 0 0 19.586 0zM8.217 5.836c-1.69 0-3.036.086-4.297.086-1.146 0-2.291 0-3.007-.029v.831l1.088.2c.744.144 1.174.488 1.174 2.264v11.288c0 1.777-.43 2.12-1.174 2.263l-1.088.2v.832c.773-.029 2.12-.086 3.465-.086 1.29 0 2.951.057 3.667.086v-.831l-1.49-.2c-.773-.115-1.174-.487-1.174-2.264v-4.784c.688.057 1.29.057 2.206.057 1.748 3.123 3.41 5.472 4.355 6.56.86 1.032 2.177 1.691 3.839 1.691.487 0 1.003-.086 1.318-.23v-.744c-1.031 0-2.063-.716-2.808-1.518-1.26-1.376-2.95-3.582-4.355-6.074 2.32-.545 4.04-2.722 4.04-4.9 0-3.208-2.492-4.698-5.758-4.698zm-.515 1.29c2.406 0 3.839 1.26 3.839 3.552 0 2.263-1.547 3.782-4.097 3.782-.974 0-1.404-.03-2.063-.086v-7.19c.66-.059 1.547-.059 2.32-.059z" />
@@ -104,13 +104,13 @@ export default function VishwanathAkuthotaProfile() {
 
                                 {/* Focus Areas */}
                                 <div className="flex flex-wrap gap-2.5 pt-2">
-                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
+                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F1F1EC] border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
                                         <Target size={14} className="text-[#002f86]" /> Generative AI (GenAI)
                                     </div>
-                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
+                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F1F1EC] border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
                                         <Rocket size={14} className="text-[#002f86]" /> LLM Development
                                     </div>
-                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
+                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F1F1EC] border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
                                         <Zap size={14} className="text-[#002f86]" /> Deep Tech Architecture
                                     </div>
                                 </div>
@@ -120,9 +120,9 @@ export default function VishwanathAkuthotaProfile() {
                 </section>
 
                 {/* Profile Overview Section */}
-                <section className="p-8 sm:p-12 md:p-16 bg-white border-b border-slate-200/50">
+                <section className="p-6 sm:p-10 md:p-12 pt-5 sm:pt-6 md:pt-6 pb-5 sm:pb-6 md:pb-6 bg-white border-b border-slate-200/50">
                     <div className="max-w-4xl">
-                        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#002f86] mb-6">
+                        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#002f86] mb-4">
                             Professional Summary
                         </h2>
                         <p className="text-slate-700 text-sm md:text-base leading-relaxed mb-4 font-sans">
@@ -135,7 +135,7 @@ export default function VishwanathAkuthotaProfile() {
                 </section>
 
                 {/* Research & Publications Section */}
-                <section className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-b border-slate-200/50">
+                <section className="p-6 sm:p-10 md:p-12 pt-5 sm:pt-6 md:pt-6 bg-white border-b border-slate-200/50">
                     <div className="max-w-4xl">
                         <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#002f86] mb-8 flex items-center gap-3">
                             <BookOpen className="text-[#002f86]" size={28} /> IEEE Publications & Peer-Reviewed Research
@@ -182,11 +182,11 @@ export default function VishwanathAkuthotaProfile() {
                                             link: "https://ieeexplore.ieee.org/document/11526131"
                                         }
                                     ].map((pub, idx) => (
-                                        <div key={idx} className="bg-white p-5 border border-slate-200/80 shadow-xs hover:border-[#002f86] transition-colors">
+                                        <div key={idx} className="bg-[#EAEAE5] p-5 border border-slate-200/80 shadow-xs hover:border-[#002f86] transition-colors">
                                             <h4 className="font-bold text-slate-900 text-sm md:text-base mb-1">{pub.title}</h4>
                                             <p className="text-xs text-slate-500 mb-3 font-sans">{pub.venue}</p>
                                             <div className="flex items-center justify-between">
-                                                <span className="text-[10px] font-bold text-[#002f86] bg-blue-50 px-2 py-0.5 font-mono">{pub.year}</span>
+                                                <span className="text-[10px] font-bold text-[#002f86] bg-white px-2 py-0.5 font-mono">{pub.year}</span>
                                                 <a href={pub.link} target="_blank" rel="noopener noreferrer" className="text-[#002f86] text-xs font-bold flex items-center gap-1 hover:underline">
                                                     View Publication <Globe size={13} />
                                                 </a>
@@ -218,16 +218,16 @@ export default function VishwanathAkuthotaProfile() {
                                             link: "https://ieeexplore.ieee.org/document/10940937"
                                         },
                                         {
-                                            title: "Hybrid Q-Learning with VLMs Reasoning Features",
-                                            venue: "2025 3rd International Conference on Artificial Intelligence and Machine Learning Applications (AIMLA)",
+                                            title: "Agentic AI Framework for Automated Vulnerability Detection",
+                                            venue: " 2025 2nd International Conference on Intelligent Algorithms for Computational Intelligence Systems (IACIS)",
                                             year: "2025",
-                                            link: "https://ieeexplore.ieee.org/document/11040757"
+                                            link: "https://ieeexplore.ieee.org/document/11211048"
                                         },
                                         {
-                                            title: "Hybrid ML-SLM RAG System for Large Technical PDFs",
+                                            title: "Accurate Precision Machine Inspection and Monitoring using Small VLMs and LLMs",
                                             venue: "2025 International Conference on Computing Technologies (ICOCT)",
                                             year: "2025",
-                                            link: "https://ieeexplore.ieee.org/document/11118759"
+                                            link: "https://ieeexplore.ieee.org/document/11118670"
                                         },
                                         {
                                             title: "RAG-Enhanced Multi-Model Ensemble for Automated Vulnerability Detection Using SLMs",
@@ -236,11 +236,11 @@ export default function VishwanathAkuthotaProfile() {
                                             link: "https://ieeexplore.ieee.org/document/11429262"
                                         }
                                     ].map((pub, idx) => (
-                                        <div key={idx} className="bg-white p-5 border border-slate-200/80 shadow-xs hover:border-[#002f86] transition-colors">
+                                        <div key={idx} className="bg-[#EAEAE5] p-5 border border-slate-200/80 shadow-xs hover:border-[#002f86] transition-colors">
                                             <h4 className="font-bold text-slate-900 text-sm md:text-base mb-1">{pub.title}</h4>
                                             <p className="text-xs text-slate-500 mb-3 font-sans">{pub.venue}</p>
                                             <div className="flex items-center justify-between">
-                                                <span className="text-[10px] font-bold text-[#002f86] bg-blue-50 px-2 py-0.5 font-mono">{pub.year}</span>
+                                                <span className="text-[10px] font-bold text-[#002f86] bg-white px-2 py-0.5 font-mono">{pub.year}</span>
                                                 <a href={pub.link} target="_blank" rel="noopener noreferrer" className="text-[#002f86] text-xs font-bold flex items-center gap-1 hover:underline">
                                                     View Publication <Globe size={13} />
                                                 </a>
@@ -284,11 +284,11 @@ export default function VishwanathAkuthotaProfile() {
                                             link: "https://ieeexplore.ieee.org/document/11118347"
                                         }
                                     ].map((pub, idx) => (
-                                        <div key={idx} className="bg-white p-5 border border-slate-200/80 shadow-xs hover:border-[#002f86] transition-colors">
+                                        <div key={idx} className="bg-[#EAEAE5] p-5 border border-slate-200/80 shadow-xs hover:border-[#002f86] transition-colors">
                                             <h4 className="font-bold text-slate-900 text-sm md:text-base mb-1">{pub.title}</h4>
                                             <p className="text-xs text-slate-500 mb-3 font-sans">{pub.venue}</p>
                                             <div className="flex items-center justify-between">
-                                                <span className="text-[10px] font-bold text-[#002f86] bg-blue-50 px-2 py-0.5 font-mono">{pub.year}</span>
+                                                <span className="text-[10px] font-bold text-[#002f86] bg-white px-2 py-0.5 font-mono">{pub.year}</span>
                                                 <a href={pub.link} target="_blank" rel="noopener noreferrer" className="text-[#002f86] text-xs font-bold flex items-center gap-1 hover:underline">
                                                     View Publication <Globe size={13} />
                                                 </a>

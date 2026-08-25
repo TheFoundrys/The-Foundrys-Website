@@ -16,7 +16,7 @@ export default function SrinivasSadasyulaPage() {
             <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 overflow-hidden mb-16 shadow-lg shadow-black/15">
                 
                 {/* Hero / Header Section inside White Card */}
-                <section className="bg-[#F7F7F4] p-8 sm:p-12 md:p-16 border-b border-slate-200/50 relative overflow-hidden">
+                <section className="bg-white p-6 sm:p-10 md:p-12 pb-5 sm:pb-6 md:pb-6 border-b border-slate-200/50 relative overflow-hidden">
                     <div className="relative z-10">
                         <Link href="/about/team" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors mb-8 text-xs font-bold uppercase tracking-wider font-mono">
                             <ArrowLeft size={14} /> Back to Team
@@ -36,7 +36,7 @@ export default function SrinivasSadasyulaPage() {
                                         alt="Srinivas Sadasyula"
                                         fill
                                         priority
-                                        className="object-cover object-top"
+                                        className="object-cover"
                                     />
                                 </div>
                             </motion.div>
@@ -50,13 +50,13 @@ export default function SrinivasSadasyulaPage() {
                             >
                                 <div>
                                     <span className="inline-block px-3 py-1 bg-[#002f86] text-white text-[10px] font-bold uppercase tracking-widest font-mono mb-4">
-                                        Vice President
+                                        Head of Artificial Intelligence
                                     </span>
                                     <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold tracking-tight text-[#002f86] mb-3 leading-tight">
                                         Srinivas Sadasyula
                                     </h1>
                                     <p className="text-base sm:text-lg text-slate-600 font-medium italic">
-                                        Vice President | 35+ Years of Operational Mastery
+                                        Pioneering Autonomous Systems, Generative AI, & Enterprise ML Infrastructure
                                     </p>
                                 </div>
 

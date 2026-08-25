@@ -386,16 +386,16 @@ export function BlogClient() {
             <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white shadow-lg shadow-black/15 border border-slate-200/50 overflow-hidden mb-16">
 
                 {/* Story / Header Section */}
-                <section className="text-slate-800 p-8 sm:p-12 md:p-16 pb-6 sm:pb-8 md:pb-10 bg-white">
-                    <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-[#002f86] mb-6">
+                <section className="text-slate-800 p-6 sm:p-10 md:p-12 pb-5 sm:pb-6 md:pb-6 bg-white">
+                    <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-[#002f86] mb-4">
                         Blog & Research
                     </h1>
-                    <p className="text-sm md:text-base leading-relaxed text-slate-700 max-w-4xl mb-8">
+                    <p className="text-sm md:text-base leading-relaxed text-slate-700 max-w-4xl mb-6">
                         The Foundry&apos;s is a premium Finishing and Venture School at the innovation hub of Hyderabad. We bridge the gap between academic theory and the raw velocity of the deep tech industry through applied research, technical whitepapers, and field notes.
                     </p>
 
                     {/* Filter Tabs */}
-                    <div className="flex items-center gap-2 bg-[#F7F7F4] p-1.5 border border-slate-200/80 w-fit">
+                    <div className="flex items-center gap-2 bg-[#F1F1EC] p-1.5 border border-slate-200/80 w-fit">
                         <button
                             onClick={() => setSelectedTab("blog")}
                             className={`px-5 py-2 text-xs font-bold transition-all cursor-pointer ${
@@ -420,13 +420,13 @@ export function BlogClient() {
                 </section>
 
                 {/* Blog Grid Feed Section */}
-                <section id="resource-feed" className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-slate-200/50">
+                <section id="resource-feed" className="p-6 sm:p-10 md:p-12 pt-5 sm:pt-6 md:pt-6 bg-white border-t border-slate-200/50">
                     {loading && posts.length === 0 ? (
                         <div className="flex justify-center py-20">
                             <Loader2 className="w-10 h-10 text-[#002f86] animate-spin" />
                         </div>
                     ) : filteredPosts.length === 0 ? (
-                        <div className="text-center py-20 text-slate-500 bg-white border border-dashed border-slate-200">
+                        <div className="text-center py-20 text-slate-500 bg-[#F1F1EC] border border-dashed border-slate-200">
                             <p>No publications found for this filter.</p>
                         </div>
                     ) : (
@@ -443,7 +443,7 @@ export function BlogClient() {
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: idx * 0.05 }}
-                                        className="flex flex-col w-full h-full bg-white border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#002f86]"
+                                        className="flex flex-col w-full h-full bg-[#F1F1EC] border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#002f86]"
                                     >
                                         <div className="relative w-full h-[220px] overflow-hidden bg-slate-100">
                                             {post.mainImage ? (

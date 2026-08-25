@@ -187,8 +187,7 @@ export function Navbar() {
             title: "Campus & Culture",
             links: [
                 { label: "Hyderabad Campus", href: "/campus", desc: "Heart of Hitech City" },
-                // { label: "Corporate Integration", href: "/campus", desc: "Corporate workspace exposure" },
-                // { label: "Venture Ecosystem", href: "/schools/venture-building", desc: "Direct access to seed capital" }
+                { label: "Warangal Campus", href: "/campus/warangal", desc: "Hanamkonda Innovation Hub" },
             ]
         },
         {

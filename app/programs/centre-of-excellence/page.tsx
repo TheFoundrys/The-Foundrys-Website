@@ -127,19 +127,19 @@ export default function CentreOfExcellencePage() {
 
                     {/* Metric Stats Cards */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-slate-100">
-                        <div className="p-4 rounded-lg bg-[#F7F7F4] border border-slate-200/80 text-center">
+                        <div className="p-4 rounded-lg bg-white border border-slate-200/80 text-center">
                             <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">50+</p>
                             <p className="text-xs text-slate-600 font-medium mt-1">CoE Hubs Established</p>
                         </div>
-                        <div className="p-4 rounded-lg bg-[#F7F7F4] border border-slate-200/80 text-center">
+                        <div className="p-4 rounded-lg bg-white border border-slate-200/80 text-center">
                             <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">25,000+</p>
                             <p className="text-xs text-slate-600 font-medium mt-1">Faculty & Students Trained</p>
                         </div>
-                        <div className="p-4 rounded-lg bg-[#F7F7F4] border border-slate-200/80 text-center">
+                        <div className="p-4 rounded-lg bg-white border border-slate-200/80 text-center">
                             <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">$20M+</p>
                             <p className="text-xs text-slate-600 font-medium mt-1">Supercomputing Equipment</p>
                         </div>
-                        <div className="p-4 rounded-lg bg-[#F7F7F4] border border-slate-200/80 text-center">
+                        <div className="p-4 rounded-lg bg-white border border-slate-200/80 text-center">
                             <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">100%</p>
                             <p className="text-xs text-slate-600 font-medium mt-1">Industry Accreditation</p>
                         </div>

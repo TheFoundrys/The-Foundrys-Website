@@ -16,7 +16,7 @@ export default function MaruthiPelluriProfile() {
             <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 overflow-hidden mb-16 shadow-lg shadow-black/15">
                 
                 {/* Hero / Header Section inside White Card */}
-                <section className="bg-[#F7F7F4] p-8 sm:p-12 md:p-16 border-b border-slate-200/50 relative overflow-hidden">
+                <section className="bg-white p-6 sm:p-10 md:p-12 pb-5 sm:pb-6 md:pb-6 border-b border-slate-200/50 relative overflow-hidden">
                     <div className="relative z-10">
                         <Link href="/about/team" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors mb-8 text-xs font-bold uppercase tracking-wider font-mono">
                             <ArrowLeft size={14} /> Back to Team
@@ -62,13 +62,13 @@ export default function MaruthiPelluriProfile() {
 
                                 {/* Key Badges */}
                                 <div className="flex flex-wrap gap-2.5 pt-2">
-                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
+                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F1F1EC] border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
                                         <Award size={14} className="text-[#002f86]" /> National Awardee
                                     </div>
-                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
+                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F1F1EC] border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
                                         <Globe size={14} className="text-[#002f86]" /> Global Outreach
                                     </div>
-                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
+                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F1F1EC] border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
                                         <Shield size={14} className="text-[#002f86]" /> NCC Commissioned Officer
                                     </div>
                                 </div>
@@ -78,7 +78,7 @@ export default function MaruthiPelluriProfile() {
                 </section>
 
                 {/* Profile Overview Section */}
-                <section className="p-8 sm:p-12 md:p-16 bg-white border-b border-slate-200/50">
+                <section className="p-6 sm:p-10 md:p-12 pt-5 sm:pt-6 md:pt-6 pb-5 sm:pb-6 md:pb-6 bg-white border-b border-slate-200/50">
                     <div className="max-w-4xl space-y-6">
                         <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#002f86] mb-4">
                             A Legacy of Educational Leadership

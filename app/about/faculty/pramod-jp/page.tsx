@@ -16,7 +16,7 @@ export default function PramodJPPage() {
             <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 overflow-hidden mb-16 shadow-lg shadow-black/15">
                 
                 {/* Hero / Header Section inside White Card */}
-                <section className="bg-[#F7F7F4] p-8 sm:p-12 md:p-16 border-b border-slate-200/50 relative overflow-hidden">
+                <section className="bg-white p-6 sm:p-10 md:p-12 pb-5 sm:pb-6 md:pb-6 border-b border-slate-200/50 relative overflow-hidden">
                     <div className="relative z-10">
                         <Link href="/about/team" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors mb-8 text-xs font-bold uppercase tracking-wider font-mono">
                             <ArrowLeft size={14} /> Back to Team
@@ -56,7 +56,7 @@ export default function PramodJPPage() {
                                         Pramod J. P.
                                     </h1>
                                     <p className="text-base sm:text-lg text-slate-600 font-medium italic">
-                                        Head of R&D | Piezotronics, Ferroelectric Ceramics & Green Energy Systems
+                                        3+ Decades in Semiconductors, Piezotronics, & Sustainable Energy Research
                                     </p>
                                 </div>
 

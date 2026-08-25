@@ -230,19 +230,19 @@ export default function CAAIReseachCentrePage() {
 
                     {/* Metric Stats Cards */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-slate-100">
-                        <div className="p-4 rounded-lg bg-[#F7F7F4] border border-slate-200/80 text-center">
+                        <div className="p-4 bg-white border border-slate-200/80 text-center">
                             <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">15+ TFLOPS</p>
                             <p className="text-xs text-slate-600 font-medium mt-1">Dedicated Compute</p>
                         </div>
-                        <div className="p-4 rounded-lg bg-[#F7F7F4] border border-slate-200/80 text-center">
+                        <div className="p-4 bg-white border border-slate-200/80 text-center">
                             <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">45+</p>
                             <p className="text-xs text-slate-600 font-medium mt-1">Peer-Reviewed Papers</p>
                         </div>
-                        <div className="p-4 rounded-lg bg-[#F7F7F4] border border-slate-200/80 text-center">
+                        <div className="p-4 bg-white border border-slate-200/80 text-center">
                             <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">12 Swarms</p>
                             <p className="text-xs text-slate-600 font-medium mt-1">Active Agent Systems</p>
                         </div>
-                        <div className="p-4 rounded-lg bg-[#F7F7F4] border border-slate-200/80 text-center">
+                        <div className="p-4 bg-white border border-slate-200/80 text-center">
                             <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">$5M+</p>
                             <p className="text-xs text-slate-600 font-medium mt-1">Lab Infrastructure</p>
                         </div>
@@ -284,7 +284,7 @@ export default function CAAIReseachCentrePage() {
                                     <div className="flex flex-wrap gap-3 mt-4">
                                         <button
                                             onClick={() => setActiveSpecModal(pillar.id)}
-                                            className="inline-flex items-center gap-2 px-6 py-3 bg-[#002f86] hover:bg-[#002266] text-white rounded-lg font-bold text-sm transition-all shadow-sm cursor-pointer"
+                                            className="inline-flex items-center gap-2 px-6 py-3 bg-[#002f86] hover:bg-[#002266] text-white font-bold text-sm transition-all shadow-sm cursor-pointer"
                                         >
                                             <FileText size={16} />
                                             <span>Technical Spec Paper</span>
@@ -300,7 +300,7 @@ export default function CAAIReseachCentrePage() {
 
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
                                         {pillar.highlights.map((item, hIdx) => (
-                                            <div key={hIdx} className="flex items-start gap-2.5 p-3 rounded-lg bg-white/80 border border-slate-200/80 shadow-xs">
+                                            <div key={hIdx} className="flex items-start gap-2.5 p-3 bg-white/80 border border-slate-200/80">
                                                 <CheckCircle2 className="w-4 h-4 text-[#002f86] shrink-0 mt-0.5" />
                                                 <span className="text-xs text-slate-800 font-medium">{item}</span>
                                             </div>
@@ -330,7 +330,7 @@ export default function CAAIReseachCentrePage() {
                             <button
                                 onClick={runSimulation}
                                 disabled={isSimulating}
-                                className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-bold text-sm text-white transition-all shadow-md cursor-pointer ${isSimulating
+                                className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-sm text-white transition-all shadow-md cursor-pointer ${isSimulating
                                         ? "bg-slate-500 cursor-not-allowed"
                                         : "bg-[#002f86] hover:bg-[#002266]"
                                     }`}
@@ -341,7 +341,7 @@ export default function CAAIReseachCentrePage() {
                         </div>
 
                         <div className="lg:col-span-7">
-                            <div className="p-6 rounded-lg bg-white border border-slate-200/80 shadow-md font-mono text-xs">
+                            <div className="p-6 bg-white border border-slate-200/80 font-mono text-xs">
                                 <div className="flex items-center justify-between pb-3 border-b border-slate-200 mb-4 font-sans">
                                     <div className="flex items-center gap-1.5">
                                         <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
@@ -401,7 +401,7 @@ export default function CAAIReseachCentrePage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         {INFRA_STATS.map((stat, idx) => (
-                            <div key={idx} className="p-6 rounded-lg bg-white border border-slate-200 text-center shadow-sm">
+                            <div key={idx} className="p-6 bg-white border border-slate-200 text-center shadow-sm">
                                 <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-2 font-mono">{stat.label}</h4>
                                 <p className="text-sm font-bold text-slate-900">{stat.value}</p>
                             </div>
@@ -425,7 +425,7 @@ export default function CAAIReseachCentrePage() {
 
                     <div className="space-y-4">
                         {PUBLICATIONS.map((pub) => (
-                            <div key={pub.id} className="p-6 rounded-lg bg-[#F7F7F4] border border-slate-200/80 hover:border-slate-300 transition-all">
+                            <div key={pub.id} className="p-6 bg-[#F7F7F4] border border-slate-200/80 hover:border-slate-300 transition-all">
                                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                                     <span className="px-2.5 py-0.5 rounded bg-[#DCE7F1] text-[#002f86] text-[11px] font-bold font-mono">
                                         {pub.venue}
@@ -543,7 +543,7 @@ export default function CAAIReseachCentrePage() {
                                 Detailed technical architecture spec paper covering experimental methodology, model benchmarks, and production deployment specifications for {activePillarObj.title}.
                             </p>
 
-                            <div className="p-4 rounded-lg bg-[#F7F7F4] border border-slate-200 text-xs font-mono text-slate-700 mb-6 space-y-1">
+                            <div className="p-4 bg-[#F7F7F4] border border-slate-200 text-xs font-mono text-slate-700 mb-6 space-y-1">
                                 <p className="font-bold text-slate-900 font-sans">Spec Details:</p>
                                 <p>• Publication ID: CAAI-SPEC-2026-04</p>
                                 <p>• Format: IEEE PDF / Research Document</p>
@@ -556,7 +556,7 @@ export default function CAAIReseachCentrePage() {
                                     target={activePillarObj.specPaper.downloadUrl.startsWith("http") ? "_blank" : undefined}
                                     rel={activePillarObj.specPaper.downloadUrl.startsWith("http") ? "noopener noreferrer" : undefined}
                                     onClick={() => setActiveSpecModal(null)}
-                                    className="w-full py-3 px-4 rounded-lg bg-[#002f86] hover:bg-[#002266] text-white text-center font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+                                    className="w-full py-3 px-4 bg-[#002f86] hover:bg-[#002266] text-white text-center font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
                                 >
                                     <ExternalLink size={14} />
                                     <span>Read Full Research Paper (IEEE Xplore)</span>
@@ -564,7 +564,7 @@ export default function CAAIReseachCentrePage() {
                                 <a
                                     href="#publications"
                                     onClick={() => setActiveSpecModal(null)}
-                                    className="w-full py-2.5 px-4 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-center font-bold text-xs transition-all block cursor-pointer"
+                                    className="w-full py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 text-center font-bold text-xs transition-all block cursor-pointer"
                                 >
                                     Browse All Papers on Page
                                 </a>
@@ -581,7 +581,7 @@ function FAQItem({ question, children }: { question: string; children: React.Rea
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="bg-[#F7F7F4] rounded-lg border border-slate-200/80 overflow-hidden transition-all duration-300">
+        <div className="bg-[#F7F7F4] border border-slate-200/80 overflow-hidden transition-all duration-300">
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full flex items-center justify-between p-5 text-left font-bold text-slate-900 hover:text-[#002f86] transition-colors"

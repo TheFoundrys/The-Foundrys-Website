@@ -4,10 +4,10 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowLeft, Award, Zap, BookOpen, Heart, Briefcase } from "lucide-react";
+import { ArrowLeft, Award, BookOpen, GraduationCap, Users, Shield, Briefcase } from "lucide-react";
 import Link from "next/link";
 
-export default function SumanRangabhashyamProfile() {
+export default function DrJayaramProfile() {
     return (
         <main className="min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden pt-24 pb-0" style={{ backgroundColor: "#EAEAE5" }}>
             <Navbar />
@@ -30,13 +30,13 @@ export default function SumanRangabhashyamProfile() {
                                 transition={{ duration: 0.5 }}
                                 className="w-full lg:w-1/3 shrink-0"
                             >
-                                <div className="aspect-[3/4] relative overflow-hidden shadow-md bg-white border border-slate-200/80">
+                                <div className="aspect-[3/4] relative overflow-hidden shadow-md bg-white border border-slate-200/80 max-w-[320px] mx-auto lg:max-w-none">
                                     <Image
-                                        src="/images/suman rangabhasyam.jpg"
-                                        alt="Suman Rangabhashyam"
+                                        src="/images/dr-jayaram.jpg"
+                                        alt="Dr. Jayaram"
                                         fill
                                         priority
-                                        className="object-cover"
+                                        className="object-cover object-top"
                                     />
                                 </div>
                             </motion.div>
@@ -50,23 +50,26 @@ export default function SumanRangabhashyamProfile() {
                             >
                                 <div>
                                     <span className="inline-block px-3 py-1 bg-[#002f86] text-white text-[10px] font-bold uppercase tracking-widest font-mono mb-4">
-                                        Advisory Board Member
+                                        Advisory Member
                                     </span>
                                     <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold tracking-tight text-[#002f86] mb-3 leading-tight">
-                                        Suman Rangabhashyam
+                                        Dr. Jayaram
                                     </h1>
                                     <p className="text-base sm:text-lg text-slate-600 font-medium italic">
-                                        Strategic Advisor | Executive Leadership & Institutional Scale
+                                        President of TTPOA & Vice President of All India TPO Association
                                     </p>
                                 </div>
 
                                 {/* Key Badges */}
                                 <div className="flex flex-wrap gap-2.5 pt-2">
                                     <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F1F1EC] border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
-                                        <Briefcase size={14} className="text-[#002f86]" /> Strategic Advisory
+                                        <Award size={14} className="text-[#002f86]" /> TTPOA President
                                     </div>
                                     <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F1F1EC] border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
-                                        <Award size={14} className="text-[#002f86]" /> Executive Leadership
+                                        <Users size={14} className="text-[#002f86]" /> All India TPO VP
+                                    </div>
+                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F1F1EC] border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
+                                        <Briefcase size={14} className="text-[#002f86]" /> Placement Leadership
                                     </div>
                                 </div>
                             </motion.div>
@@ -78,57 +81,54 @@ export default function SumanRangabhashyamProfile() {
                 <section className="p-6 sm:p-10 md:p-12 pt-5 sm:pt-6 md:pt-6 pb-5 sm:pb-6 md:pb-6 bg-white border-b border-slate-200/50">
                     <div className="max-w-4xl space-y-6">
                         <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#002f86] mb-4">
-                            A Journey of Resilience & Purpose
+                            Aligning Academic Talent with Industry Demand
                         </h2>
                         <p className="text-slate-700 text-sm md:text-base leading-relaxed font-sans">
-                            Coming from a proud family that dedicated itself to the service of the nation, daughter of an Air Commodore, wife of ace fighter pilot and Group Captain, Suman has spent her life exemplifying leadership, strength, and dedication.
+                            Dr. Jayaram serves as the President of the Telangana Training and Placement Officers Association (TTPOA) and Vice President of the All India TPO Association. With decades of leadership in campus placements, institutional training ecosystems, and corporate relations, he plays a strategic advisory role at The Foundry.
                         </p>
                         <p className="text-slate-700 text-sm md:text-base leading-relaxed font-sans">
-                            She is the Director of Markitome Pvt Ltd, a branding agency that has successfully empowered numerous individuals and enterprises to establish their market presence and scale up across FMCG, Tech, Fintech, and Digital Commerce.
+                            His extensive work spans forging high-impact industry partnerships, establishing corporate hiring benchmarks, and ensuring that emerging engineering and deep tech graduates transition smoothly into high-demand technology roles nationwide.
                         </p>
                     </div>
                 </section>
 
                 {/* Grid Section */}
-                <section className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-b border-slate-200/50">
+                <section className="p-8 sm:p-12 md:p-16 bg-[#F1F1EC] border-b border-slate-200/50">
                     <div className="max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
                             <h3 className="font-serif text-xl font-bold text-[#002f86] mb-4 flex items-center gap-2">
-                                <BookOpen className="text-[#002f86]" size={22} /> Academic Excellence
+                                <BookOpen className="text-[#002f86]" size={22} /> Strategic Leadership
                             </h3>
                             <div className="space-y-3 text-xs md:text-sm text-slate-700 leading-relaxed font-sans">
-                                <p className="p-4 bg-white border border-slate-200/80 shadow-xs">Graduation in Science, BEd, Masters in English, Diploma holder in French.</p>
-                                <p className="p-4 bg-white border border-slate-200/80 shadow-xs">Masters in Reiki, MBA in Finance and Marketing, PhD in Management.</p>
-                                <p className="p-4 bg-white border border-slate-200/80 shadow-xs">Certified Independent Director from Indian Institute of Corporate Affairs.</p>
+                                <p className="p-4 bg-white border border-slate-200/80 shadow-xs">Pioneer in standardizing training & placement frameworks for technical institutions across Telangana.</p>
+                                <p className="p-4 bg-white border border-slate-200/80 shadow-xs">Key advisor on aligning curriculum outcomes with real-world enterprise requirements.</p>
                             </div>
                         </div>
                         <div>
                             <h3 className="font-serif text-xl font-bold text-[#002f86] mb-4 flex items-center gap-2">
-                                <Zap className="text-[#002f86]" size={22} /> Professional Impact
+                                <Briefcase className="text-[#002f86]" size={22} /> Industry Alignment
                             </h3>
                             <div className="space-y-3 text-xs md:text-sm text-slate-700 leading-relaxed font-sans">
-                                <p className="p-4 bg-white border border-slate-200/80 shadow-xs">Invited to speak on effective management and humanity across 11 countries.</p>
-                                <p className="p-4 bg-white border border-slate-200/80 shadow-xs">28,000+ students mentored across 600+ management sessions.</p>
-                                <p className="p-4 bg-white border border-slate-200/80 shadow-xs">6,500+ hours of keynote speaking in over 30 public forums.</p>
+                                <p className="p-4 bg-white border border-slate-200/80 shadow-xs">Facilitates large-scale recruitment drives and national placement initiatives for top-tier tech talent.</p>
+                                <p className="p-4 bg-white border border-slate-200/80 shadow-xs">Guides deep tech finishing programs to match current hiring standards in AI, Quantum, and Software Engineering.</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* Quote & Humanity Section */}
+                {/* Quote Section */}
                 <section className="p-8 sm:p-12 md:p-16 bg-white">
-                    <div className="max-w-4xl space-y-6">
-                        <p className="font-serif italic text-base md:text-xl text-[#002f86] leading-relaxed">
-                            &quot;Create more wealth and use it for a good cause. When opportunity knocks on your door, open it wide and share your light with the world.&quot;
+                    <div className="max-w-4xl">
+                        <p className="font-serif italic text-base md:text-xl text-[#002f86] leading-relaxed mb-6">
+                            &quot;The gap between degree completion and enterprise readiness is bridged when students learn by building production-grade solutions from day one.&quot;
                         </p>
-                        <div className="p-6 bg-[#F7F7F4] border border-slate-200/80 flex items-start gap-4">
-                            <Heart className="w-6 h-6 text-red-500 shrink-0 mt-1" />
-                            <div>
-                                <h4 className="font-serif text-base font-bold text-slate-900 mb-1">Humanity First</h4>
-                                <p className="text-xs md:text-sm text-slate-600 leading-relaxed font-sans">
-                                    Deeply committed to social welfare and animal rescue, Dr. Suman actively supports underprivileged communities and animal shelters 24/7.
-                                </p>
-                            </div>
+                        <div className="p-6 bg-[#F1F1EC] border border-slate-200/80">
+                            <h4 className="font-serif text-lg font-bold text-[#002f86] mb-2 flex items-center gap-2">
+                                <GraduationCap size={20} /> Advisory Impact
+                            </h4>
+                            <p className="text-xs md:text-sm text-slate-600 leading-relaxed font-sans">
+                                As an Advisory Member at The Foundry, Dr. Jayaram guides strategic placement channels and corporate engagement initiatives, ensuring our graduates enter the industry as job-ready creators and problem solvers.
+                            </p>
                         </div>
                     </div>
                 </section>

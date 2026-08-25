@@ -75,7 +75,7 @@ export default function NewsroomPage() {
             <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 overflow-hidden mb-16 shadow-lg shadow-black/15">
                 
                 {/* Introduction Section */}
-                <section className="p-6 sm:p-10 md:p-12 border-b border-slate-200/50 bg-white">
+                <section className="p-6 sm:p-10 md:p-12 pb-5 sm:pb-6 md:pb-6 border-b border-slate-200/50 bg-white">
                     <div className="max-w-4xl">
                         <h1 className="font-serif text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-[#002f86] mb-3 leading-tight">
                             News & Press Releases
@@ -87,7 +87,7 @@ export default function NewsroomPage() {
                 </section>
 
                 {/* News Grid */}
-                <section className="p-6 sm:p-10 md:p-12 bg-[#F7F7F4]">
+                <section className="p-6 sm:p-10 md:p-12 pt-5 sm:pt-6 md:pt-6 bg-white">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {NEWS_ITEMS.map((item, index) => (
                             <NewsCard key={item.slug} {...item} index={index} />
@@ -108,7 +108,7 @@ function NewsCard({ slug, title, excerpt, date, readTime, category, image, image
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.05 }}
-            className="group flex flex-col bg-white border border-slate-200/80 hover:border-[#002f86] transition-all duration-300 shadow-xs"
+            className="group flex flex-col bg-[#F1F1EC] border border-slate-200/80 hover:border-[#002f86] transition-all duration-300 shadow-xs"
         >
             {image && (
                 <Link href={`/news/${slug}`} className="block relative h-44 overflow-hidden bg-slate-50 border-b border-slate-100">

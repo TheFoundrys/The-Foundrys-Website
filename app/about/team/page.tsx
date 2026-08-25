@@ -11,7 +11,6 @@ const teamMembers = [
     {
         name: "Vishwanath Akuthota",
         role: "Founder & CEO",
-        bio: "Deep Tech Entrepreneur & AI Architect building at the intersection of AI, Quantum, and Human Potential.",
         image: "/images/vishwa-new.jpg",
         profileLink: "/vishwanathakuthota",
         socials: {
@@ -22,7 +21,6 @@ const teamMembers = [
     {
         name: "Pramod Chada",
         role: "Cheif opernation officer",
-        bio: "Visionary IT leader with 2.5 decades of expertise in SDLC evolution. Co-founder and CEO of TechOptima, driving business transformation through cutting-edge AI solutions.",
         image: "/images/pramod-chada.jpg",
         profileLink: "/about/faculty/pramod-chada",
         socials: {
@@ -32,7 +30,6 @@ const teamMembers = [
     {
         name: "Pramod J. P.",
         role: "Head of R&D",
-        bio: "Senior Assistant Professor of Physics & distinguished deep-tech researcher with 3+ decades of expertise in semiconductors, piezotronics, and sustainable energy.",
         image: "/images/pramod-jp.png",
         profileLink: "/about/faculty/pramod-jp",
         socials: {
@@ -43,7 +40,6 @@ const teamMembers = [
         name: "Soujanya Kanagala",
         role: "Operations Head",
         image: "/images/soujanya.jpg",
-        bio: "Operations Head with 14 years of experience specializing in business setup, operations, and organizational scaling.",
         profileLink: "/about/faculty/soujanya-kanagala",
         socials: {
             linkedin: "https://www.linkedin.com/in/soujanya-kanagala-07304833/"
@@ -53,7 +49,6 @@ const teamMembers = [
         name: "Akuthota Aravind",
         role: "Business Development Executive",
         image: "/images/araavind.png",
-        bio: "Enabling strategic partnerships and expanding market opportunities at the convergence of Deep Tech and Sustainability.",
         profileLink: "/about/faculty/akuthota-aravind",
         socials: {
             linkedin: "https://www.linkedin.com/in/akuthota-aravind-608455193/"
@@ -62,7 +57,6 @@ const teamMembers = [
     {
         name: "Srinivas Sadasyula",
         role: "Vice President",
-        bio: "Veteran operations leader with 35 years of experience in the logistics sector. Bringing large-scale operational rigor to the agility of a venture ecosystem, empowering the next generation to become creators of the future.",
         image: "/images/srinivas-sadasyula.jpg",
         profileLink: "/about/faculty/srinivas-sadasyula",
         socials: {
@@ -74,7 +68,6 @@ const teamMembers = [
         role: "SME in Data analytics",
         image: "/images/abhishek shaarma.png",
         imageClass: "brightness-125 contrast-110 object-[center_20%]",
-        bio: "Analytical professional with 8+ years of experience in driving organizational performance through deep data insights and actionable dashboards.",
         profileLink: "/about/faculty/abhishek-sharma",
         socials: {
             linkedin: "https://linkedin.com/in/abhishek-sharma-27b585ba"
@@ -84,7 +77,6 @@ const teamMembers = [
         name: "Dr. Suman Rangabhashyam",
         role: "SME in Social Entrepreneurship",
         image: "/images/suman rangabhasyam.jpg",
-        bio: "TEDx Speaker, Author, and Social Entrepreneur helping individuals and enterprises scale through branding.",
         profileLink: "/about/faculty/suman-rangabhashyam",
         socials: {
             linkedin: "https://www.linkedin.com/in/sumiranga/",
@@ -93,7 +85,6 @@ const teamMembers = [
     {
         name: "Dr. Srikanth Itapu",
         role: "SME in the Quantum Technologies",
-        bio: "Subject matter expert in quantum technologies, advanced materials, and semiconductor devices with over 12 years of research experience.",
         image: "/images/dr-itapu-srikanth.jpg",
         profileLink: "/about/faculty/dr-srikanth-itapu",
         socials: {
@@ -103,7 +94,6 @@ const teamMembers = [
     {
         name: "P. Venkata Nagendra Reddy",
         role: "SME in Sustainability",
-        bio: "Veteran operator and Sustainability Architect with 19+ years of experience. Leading the transition to a 'Cultivation Economy' through tech-driven ESG compliance and biological scaling principles.",
         image: "/images/venkat-reddy.jpg",
         profileLink: "/about/faculty/p-venkata-nagendra-reddy",
         socials: {
@@ -113,7 +103,6 @@ const teamMembers = [
     {
         name: "Vivek Rangabhashyam",
         role: "SME in Graphic Design",
-        bio: "Veteran 3D Animation Specialist and entrepreneur. Former Google 'GXBO' contributor and founder of Markitome, specializing in startup mentorship and global networking.",
         image: "/images/Vivek.jpg",
         profileLink: "/about/faculty/vivek-rangabhashyam",
         socials: {
@@ -124,8 +113,8 @@ const teamMembers = [
     {
         name: "Thirupathi Reddy",
         role: "SME in Academics",
-        bio: "Holds a Master of Commerce (M.Com) and a Master of Social Work (MSW). Brings over 23 years of teaching experience, including 5 years as a Junior College Principal and 13 years as a Degree College Principal.",
         image: "/images/ThirupathiReddy.jpeg",
+        profileLink: "/about/faculty/thirupathi-reddy",
         socials: {
             linkedin: "#",
         }
@@ -133,7 +122,6 @@ const teamMembers = [
     {
         name: "Maruthi Ram Prasad Pelluri",
         role: "Advisory Member",
-        bio: "Renowned educator with 36+ years of leadership at HPS Begumpet and Ramadevi Public School. National Award recipient and international ambassador for educational excellence.",
         image: "/images/maruthi.jpg",
         profileLink: "/about/faculty/maruthi-ram-prasad-pelluri",
         socials: {
@@ -143,17 +131,8 @@ const teamMembers = [
     {
         name: "Dr. Jayaram",
         role: "Advisory Member",
-        bio: "President of the Telangana Training and Placement Officers Association (TTPOA) and Vice President of the All India TPO Association. Bringing decades of experience in campus placements and aligning training ecosystems with industry needs.",
         image: "/images/dr-jayaram.jpg",
-        socials: {
-            linkedin: "#",
-        }
-    },
-    {
-        name: "Krishna",
-        role: "Technical SME",
-        bio: "With over 10 years of hands-on experience in the electronics design and manufacturing industry, Krishna excels in driving engineering excellence from concept to delivery. He holds a Master of Technology (M.Tech) from IIT Madras, complementing a strong foundation in designing complex hardware systems and managing end-to-end product lifecycles in fast-paced environments.",
-        image: "/images/testimonials/Krishna.jpeg",
+        profileLink: "/about/faculty/dr-jayaram",
         socials: {
             linkedin: "#",
         }
@@ -178,8 +157,8 @@ export default function TeamPage() {
 
             {/* Team Grid Container */}
             <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white rounded-1xl shadow-lg shadow-black/15 border border-slate-200/50 mt-[30px] mb-16 overflow-hidden">
-                <section className="p-8 sm:p-12 md:p-16 text-brand-purple">
-                    <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8">
+                <section className="p-6 sm:p-10 md:p-12 text-brand-purple">
+                    <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                         {teamMembers.map((member, index) => (
                             <SmallTeamCard key={index} member={member} index={index} />
                         ))}
@@ -201,7 +180,7 @@ function SmallTeamCard({ member, index }: { member: any, index: number }) {
             transition={{ delay: index * 0.05 }}
             className="group relative flex flex-col w-full h-full"
         >
-            <div className="relative w-full h-[320px] overflow-hidden bg-slate-100">
+            <div className="relative w-full h-[280px] overflow-hidden bg-slate-100 border border-slate-200/80">
                 {member.image ? (
                     <Image
                         src={member.image}
@@ -220,30 +199,27 @@ function SmallTeamCard({ member, index }: { member: any, index: number }) {
                 )}
             </div>
 
-            <div className="relative z-10 w-[85%] bg-[#F7F7F4] border border-slate-200/80 p-6 -mt-10 ml-0 flex flex-col justify-between flex-1 min-h-[190px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:bg-[#DCE7F1]">
+            <div className="relative z-10 w-[88%] bg-[#F1F1EC] border border-slate-200/80 p-4 -mt-6 mx-auto flex flex-col justify-between h-[105px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:bg-[#DCE7F1]">
                 <div>
-                    <h3 className="font-serif text-xl font-bold text-brand-purple mb-1">
+                    <h3 className="font-serif text-base sm:text-lg font-bold text-brand-purple mb-0.5 truncate" title={member.name}>
                         {member.name}
                     </h3>
-                    <div className="text-deep-blue font-semibold text-xs uppercase tracking-wider mb-3">
+                    <div className="text-deep-blue font-semibold text-[10px] sm:text-[11px] uppercase tracking-wider truncate mb-1" title={member.role}>
                         {member.role}
                     </div>
-                    <p className="text-xs text-slate-800 leading-relaxed font-sans line-clamp-4">
-                        {member.bio}
-                    </p>
                 </div>
 
-                <div className="mt-4 flex items-center justify-between">
+                <div className="mt-auto pt-1 flex items-center justify-between">
                     {member.profileLink ? (
                         <Link
                             href={member.profileLink}
                             target={member.profileLink.startsWith("http") ? "_blank" : undefined}
                             rel={member.profileLink.startsWith("http") ? "noopener noreferrer" : undefined}
-                            className="inline-flex items-center gap-1 text-xs font-bold text-brand-purple hover:text-[#0f172a] transition-colors group/link"
+                            className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold text-brand-purple hover:text-[#0f172a] transition-colors group/link"
                         >
                             View Profile
                             <ChevronRight
-                                size={14}
+                                size={13}
                                 strokeWidth={2.5}
                                 className="inline-block transition-transform duration-300 group-hover/link:translate-x-0.5"
                             />
@@ -257,10 +233,10 @@ function SmallTeamCard({ member, index }: { member: any, index: number }) {
                             href={member.socials.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center p-1.5 rounded-lg bg-white hover:bg-blue-50 text-slate-400 hover:text-blue-600 border border-slate-200 hover:border-blue-200 transition-all"
+                            className="inline-flex items-center justify-center p-1 rounded-lg bg-white hover:bg-blue-50 text-slate-400 hover:text-blue-600 border border-slate-200 hover:border-blue-200 transition-all"
                             title="View LinkedIn Profile"
                         >
-                            <Linkedin size={16} />
+                            <Linkedin size={14} />
                         </a>
                     )}
                 </div>
