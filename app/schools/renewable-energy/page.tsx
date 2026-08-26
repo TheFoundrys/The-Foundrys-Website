@@ -22,15 +22,19 @@ export default function RenewableEnergyPage() {
       <Navbar />
       <RenewableEnergyHero />
 
-      {/* Consolidated Why Us, Program Mix (Stats) & Core Competencies (Skills) */}
+      {/* Consolidated Why Us & Program Mix (Stats) */}
       <section className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#F0DFDF] border border-[#e2c8c8] rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
         <RenewableEnergyWhyUs />
         <RenewableEnergyStats />
+      </section>
+
+      {/* Core Competencies (Skills) - Separate Card Container */}
+      <section className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-[#e2c8c8] rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
         <RenewableEnergySkills />
       </section>
 
       {/* Comparison block */}
-      <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+      <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#F0DFDF] border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
         <RenewableEnergyComparison />
       </div>
 

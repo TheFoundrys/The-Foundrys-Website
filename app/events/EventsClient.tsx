@@ -299,7 +299,7 @@ export function EventsClient() {
 
             {/* Master Centered Card Container */}
             <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white shadow-lg shadow-black/15 border border-slate-200/50 mb-16 overflow-hidden">
-                
+
                 {/* Introduction Section */}
                 <section className="text-slate-800 p-6 sm:p-10 md:p-12 pb-5 sm:pb-6 md:pb-6 bg-white">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">

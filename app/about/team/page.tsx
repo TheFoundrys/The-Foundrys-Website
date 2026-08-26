@@ -199,7 +199,7 @@ function SmallTeamCard({ member, index }: { member: any, index: number }) {
                 )}
             </div>
 
-            <div className="relative z-10 w-[88%] bg-[#F1F1EC] border border-slate-200/80 p-4 -mt-6 mx-auto flex flex-col justify-between h-[105px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:bg-[#DCE7F1]">
+            <div className="relative z-10 w-[88%] bg-[#F1F1EC] border border-slate-200/80 p-4 -mt-6 mx-auto flex flex-col justify-between h-[105px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:bg-[#E5EAF0]">
                 <div>
                     <h3 className="font-serif text-base sm:text-lg font-bold text-brand-purple mb-0.5 truncate" title={member.name}>
                         {member.name}

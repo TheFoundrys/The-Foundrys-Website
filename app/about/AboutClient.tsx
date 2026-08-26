@@ -35,11 +35,11 @@ export function AboutClient() {
                         </p>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-                            <div className="p-6 bg-[#F1F1EC] border border-slate-200/80">
+                            <div className="p-6 bg-[#E5EAF0] border border-slate-200/80">
                                 <h4 className="font-serif text-lg font-bold text-[#002f86] mb-2">The Vision</h4>
                                 <p className="text-slate-600 text-xs md:text-sm leading-relaxed font-sans">Forge a generation of innovators who don&apos;t just participate—they architect the future.</p>
                             </div>
-                            <div className="p-6 bg-[#F1F1EC] border border-slate-200/80">
+                            <div className="p-6 bg-[#E5EAF0] border border-slate-200/80">
                                 <h4 className="font-serif text-lg font-bold text-[#002f86] mb-2">The Mission</h4>
                                 <p className="text-slate-600 text-xs md:text-sm leading-relaxed font-sans">Bridging the void between academic theory and the raw velocity of deep tech industry.</p>
                             </div>
@@ -59,11 +59,11 @@ export function AboutClient() {
                             </p>
                             
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs md:text-sm font-bold text-slate-800 font-sans">
-                                <div className="p-4 bg-[#F1F1EC] border border-slate-200/80 flex items-center justify-between">
+                                <div className="p-4 bg-[#E5EAF0] border border-slate-200/80 flex items-center justify-between">
                                     <span className="text-slate-400 line-through">Memorize Syntax</span>
                                     <span className="text-[#002f86]">Architect Logic</span>
                                 </div>
-                                <div className="p-4 bg-[#F1F1EC] border border-slate-200/80 flex items-center justify-between">
+                                <div className="p-4 bg-[#E5EAF0] border border-slate-200/80 flex items-center justify-between">
                                     <span className="text-slate-400 line-through">Pass Written Exams</span>
                                     <span className="text-[#002f86]">Deploy Real Products</span>
                                 </div>
@@ -75,7 +75,7 @@ export function AboutClient() {
                             <h3 className="font-serif text-xl font-bold text-[#002f86] mb-4">Core Schools & Disciplines</h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {ARCHETYPES.map((arch) => (
-                                    <div key={arch.title} className="p-6 bg-[#F1F1EC] border border-slate-200/80 hover:border-[#002f86] transition-colors shadow-xs">
+                                    <div key={arch.title} className="p-6 bg-[#E5EAF0] border border-slate-200/80 hover:border-[#002f86] transition-colors shadow-xs">
                                         <arch.icon className="text-[#002f86] mb-3" size={28} />
                                         <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#002f86] block mb-1">{arch.school}</span>
                                         <h4 className="font-bold text-slate-900 text-sm mb-2">{arch.title}</h4>

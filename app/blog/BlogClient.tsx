@@ -204,6 +204,28 @@ const STATIC_RESEARCH_POSTS: Post[] = [
 
 const STATIC_BLOG_POSTS: Post[] = [
     {
+        _id: "blog-13",
+        title: "AI in Action",
+        slug: { current: "ai-in-action" },
+        publishedAt: "2026-08-26T12:00:00Z",
+        mainImage: { static: true, url: "/images/ai_in_action_cover.jpg" },
+        category: "Blog",
+        readTime: "5 min",
+        excerpt: "Real Tools. Real Impact. Real Jobs. Discover how tools like ChatGPT, GitHub Copilot, Midjourney, Notion AI, and Zapier AI are accelerating productivity and transforming career opportunities across industries.",
+        link: "https://www.linkedin.com/pulse/ai-action-the-foundry-s-hhz0c"
+    },
+    {
+        _id: "blog-12",
+        title: "Inside a Tech Giant",
+        slug: { current: "inside-a-tech-giant" },
+        publishedAt: "2026-08-26T10:00:00Z",
+        mainImage: { static: true, url: "/images/inside_tech_giant_cover.jpg" },
+        category: "Blog",
+        readTime: "6 min",
+        excerpt: "Career Opportunities, Skills, and Roles Shaping the Future. Discover what it takes to build products used by millions and how AI, Software Engineering, Cloud, Cybersecurity, Data, and Product teams collaborate inside tech giants.",
+        link: "https://www.linkedin.com/pulse/inside-tech-giant-the-foundry-s-ajt2c"
+    },
+    {
         _id: "blog-11",
         title: "LLMs, Simplified",
         slug: { current: "llms-simplified" },
@@ -443,7 +465,7 @@ export function BlogClient() {
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: idx * 0.05 }}
-                                        className="flex flex-col w-full h-full bg-[#F1F1EC] border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#002f86]"
+                                        className="flex flex-col w-full h-full bg-[#F1F1EC] border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#002f86] group-hover:bg-[#E5EAF0]"
                                     >
                                         <div className="relative w-full h-[220px] overflow-hidden bg-slate-100">
                                             {post.mainImage ? (

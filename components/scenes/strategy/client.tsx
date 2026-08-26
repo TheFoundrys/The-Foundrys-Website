@@ -129,9 +129,9 @@ export function StrategyClient() {
                 </div>
             </div>
 
-            {/* Section 2: The "Why" (Consolidated into single pastel-blue card) */}
-            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#DCE7F1] border border-[#c5d8ec] rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
-                <section className="p-8 sm:p-12 md:p-16 bg-[#DCE7F1] relative overflow-hidden">
+            {/* Section 2: The "Why" (Consolidated into single pastel card) */}
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#DDE7DE] border border-[#c8dac7] rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+                <section className="p-8 sm:p-12 md:p-16 bg-[#DDE7DE] relative overflow-hidden">
                     <div className="container mx-auto max-w-6xl relative z-10">
                         <div className="grid md:grid-cols-2 gap-16 items-center">
                             <div>
@@ -247,8 +247,8 @@ export function StrategyClient() {
             </div>
 
             {/* Section 4: Career Paths */}
-            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
-                <section className="p-8 sm:p-12 md:p-16 bg-white">
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#DDE7DE] border border-[#c8dac7] rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+                <section className="p-8 sm:p-12 md:p-16 bg-[#DDE7DE]">
                     <div className="container mx-auto max-w-6xl">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl md:text-5xl font-bold text-[#031a57] font-serif mb-4">Career Paths</h2>
@@ -329,8 +329,8 @@ export function StrategyClient() {
                                             key={i}
                                             onClick={() => setSelectedCareer(i)}
                                             className={`w-full flex items-center gap-3 p-4 rounded-xl transition-all text-left ${selectedCareer === i
-                                                ? 'bg-gradient-to-r from-blue-500/10 to-transparent border-2 border-blue-500/30 shadow-md'
-                                                : 'bg-neutral-50 border border-neutral-250 hover:border-blue-300 hover:bg-blue-50/30'
+                                                ? 'bg-white border-2 border-[#002f86]/40 shadow-md'
+                                                : 'bg-white/60 border border-slate-200/60 hover:border-[#002f86]/30 hover:bg-white'
                                                 }`}
                                         >
                                             <div className={`shrink-0 w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${selectedCareer === i
@@ -348,7 +348,7 @@ export function StrategyClient() {
                             </div>
 
                             {/* Right: Annual Income Details */}
-                            <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8">
+                            <div className="bg-white/90 border border-slate-200/80 rounded-3xl p-8 shadow-sm">
                                 {(() => {
                                     const roles = [
                                         {

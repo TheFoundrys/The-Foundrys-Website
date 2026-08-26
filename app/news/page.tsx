@@ -108,7 +108,7 @@ function NewsCard({ slug, title, excerpt, date, readTime, category, image, image
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.05 }}
-            className="group flex flex-col bg-[#F1F1EC] border border-slate-200/80 hover:border-[#002f86] transition-all duration-300 shadow-xs"
+            className="group flex flex-col bg-[#F1F1EC] border border-slate-200/80 hover:border-[#002f86] hover:bg-[#E5EAF0] transition-all duration-300 shadow-xs"
         >
             {image && (
                 <Link href={`/news/${slug}`} className="block relative h-44 overflow-hidden bg-slate-50 border-b border-slate-100">

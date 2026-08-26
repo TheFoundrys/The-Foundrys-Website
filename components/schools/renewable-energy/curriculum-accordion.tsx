@@ -26,12 +26,12 @@ export function RenewableEnergyCurriculumAccordion() {
 
                 <div className="space-y-8">
                     {renewableEnergyCurriculum.years.map((year, yearIdx) => (
-                        <div key={yearIdx} className="border border-slate-200 rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
+                        <div key={yearIdx} className="border border-[#e2c8c8] rounded-3xl overflow-hidden bg-[#F0DFDF] shadow-sm hover:shadow-md transition-shadow">
                             
                             {/* Year Header - Toggle */}
                             <button 
                                 onClick={() => setOpenYear(openYear === yearIdx ? null : yearIdx)}
-                                className="w-full flex items-center justify-between p-6 md:p-8 bg-slate-50 hover:bg-slate-100 transition-colors text-left"
+                                className="w-full flex items-center justify-between p-6 md:p-8 bg-[#F0DFDF] hover:bg-[#e8d5d5] transition-colors text-left"
                             >
                                 <div>
                                     <div className="text-xs font-bold uppercase tracking-widest text-green-600 mb-1">{year.title}</div>

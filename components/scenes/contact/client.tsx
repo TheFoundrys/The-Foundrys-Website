@@ -72,7 +72,7 @@ export function ContactClient() {
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4 }}
-                            className="flex flex-col p-8 bg-[#F1F1EC] border border-slate-200/80 hover:border-[#002f86] transition-all group shadow-xs cursor-pointer rounded-none"
+                            className="flex flex-col p-8 bg-[#F1F1EC] border border-slate-200/80 hover:border-[#002f86] hover:bg-[#E5EAF0] transition-all group shadow-xs cursor-pointer rounded-none"
                         >
                             <div className="w-12 h-12 bg-white border border-blue-100 flex items-center justify-center text-[#002f86] mb-6 group-hover:scale-105 transition-transform rounded-none">
                                 <Phone size={22} />
@@ -86,7 +86,7 @@ export function ContactClient() {
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4, delay: 0.1 }}
-                            className="flex flex-col p-8 bg-[#F1F1EC] border border-slate-200/80 hover:border-[#002f86] transition-all group shadow-xs cursor-pointer rounded-none"
+                            className="flex flex-col p-8 bg-[#F1F1EC] border border-slate-200/80 hover:border-[#002f86] hover:bg-[#E5EAF0] transition-all group shadow-xs cursor-pointer rounded-none"
                         >
                             <div className="w-12 h-12 bg-white border border-blue-100 flex items-center justify-center text-[#002f86] mb-6 group-hover:scale-105 transition-transform rounded-none">
                                 <Mail size={22} />
@@ -114,7 +114,7 @@ export function ContactClient() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.05 }}
-                                className="bg-[#F1F1EC] p-6 border border-slate-200/80 hover:border-[#002f86] transition-colors flex flex-col justify-between rounded-none"
+                                className="bg-[#F1F1EC] p-6 border border-slate-200/80 hover:border-[#002f86] hover:bg-[#E5EAF0] transition-colors flex flex-col justify-between rounded-none"
                             >
                                 <div>
                                     <div className="flex items-center gap-2 mb-3">

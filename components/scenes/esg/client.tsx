@@ -143,15 +143,15 @@ export function ESGClient() {
         </div>
       </div>
  
-      {/* Curriculum / Philosophy */}
-      <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-16 overflow-hidden relative">
-        <section className="p-8 sm:p-12 md:p-16 bg-white">
+      {/* Curriculum / Philosophy (Card Container #DDE7DE) */}
+      <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#DDE7DE] border border-[#c8dac7] rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-16 overflow-hidden relative">
+        <section className="p-8 sm:p-12 md:p-16 bg-[#DDE7DE]">
           <div className="container mx-auto max-w-6xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
               <div>
                 <h2 className="text-4xl md:text-5xl font-bold text-[#1b4332] mb-6 tracking-tight font-serif">
                   Profit meets <br/>
-                  <span className="text-emerald-600">Purpose.</span>
+                  <span className="text-[#1b4332]">Purpose.</span>
                 </h2>
                 <p className="text-base text-slate-650 leading-relaxed mb-6 font-light">
                   ESG is no longer a &quot;nice to have&quot;. It is the fundamental operating system of modern capitalism. Investors demand it, customers expect it, and the planet needs it.
@@ -161,22 +161,22 @@ export function ESGClient() {
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200/65 shadow-sm">
+                <div className="p-6 bg-white border border-slate-200/80 rounded-2xl shadow-sm">
                   <Leaf className="w-10 h-10 text-emerald-600 mb-4" />
                   <h3 className="font-bold text-slate-900 mb-2 font-serif">Environmental</h3>
                   <p className="text-xs text-slate-500 leading-relaxed font-medium">Carbon footprints, resource efficiency, and biodiversity.</p>
                 </div>
-                <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200/65 shadow-sm">
+                <div className="p-6 bg-white border border-slate-200/80 rounded-2xl shadow-sm">
                   <Users className="w-10 h-10 text-blue-600 mb-4" />
                   <h3 className="font-bold text-slate-900 mb-2 font-serif">Social</h3>
                   <p className="text-xs text-slate-500 leading-relaxed font-medium">Labor standards, community impact, and DEI.</p>
                 </div>
-                <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200/65 shadow-sm">
+                <div className="p-6 bg-white border border-slate-200/80 rounded-2xl shadow-sm">
                   <Scale className="w-10 h-10 text-indigo-600 mb-4" />
                   <h3 className="font-bold text-slate-900 mb-2 font-serif">Governance</h3>
                   <p className="text-xs text-slate-500 leading-relaxed font-medium">Board structure, ethics, and executive pay.</p>
                 </div>
-                <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200/65 shadow-sm">
+                <div className="p-6 bg-white border border-slate-200/80 rounded-2xl shadow-sm">
                   <TrendingUp className="w-10 h-10 text-amber-600 mb-4" />
                   <h3 className="font-bold text-slate-900 mb-2 font-serif">Green Finance</h3>
                   <p className="text-xs text-slate-500 leading-relaxed font-medium">Sustainable investing and carbon markets.</p>
