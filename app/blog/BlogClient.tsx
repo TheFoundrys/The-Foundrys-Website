@@ -204,6 +204,17 @@ const STATIC_RESEARCH_POSTS: Post[] = [
 
 const STATIC_BLOG_POSTS: Post[] = [
     {
+        _id: "blog-14",
+        title: "Lessons From Building in the Real World",
+        slug: { current: "lessons-from-building-real-world" },
+        publishedAt: "2026-08-27T12:00:00Z",
+        mainImage: { static: true, url: "/images/lessons_building_real_world_cover.jpg" },
+        category: "Blog",
+        readTime: "5 min",
+        excerpt: "What Founders Learn About Risk, Resilience, People, and Turning Ideas Into Impact. Building something from scratch sounds exciting, but the real world rarely follows the plan. Discover key insights from the founder's journey.",
+        link: "https://www.linkedin.com/pulse/lessons-from-building-real-world-the-foundry-s-cu68c"
+    },
+    {
         _id: "blog-13",
         title: "AI in Action",
         slug: { current: "ai-in-action" },
