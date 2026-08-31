@@ -204,6 +204,17 @@ const STATIC_RESEARCH_POSTS: Post[] = [
 
 const STATIC_BLOG_POSTS: Post[] = [
     {
+        _id: "blog-15",
+        title: "Top 5 Deep Tech Interview Questions",
+        slug: { current: "top-5-deep-tech-interview-questions" },
+        publishedAt: "2026-08-31T12:00:00Z",
+        mainImage: { static: true, url: "/images/top_5_deep_tech_interview_questions_cover.jpg" },
+        category: "Blog",
+        readTime: "6 min",
+        excerpt: "What Hiring Teams Want to Hear — and How to Answer with Confidence. Deep technology roles come with deeper expectations. Discover what hiring teams look for in AI, Machine Learning, Robotics, Quantum Computing, Cybersecurity, and Software Engineering interviews.",
+        link: "https://www.linkedin.com/pulse/top-5-deep-tech-interview-questions-the-foundry-s-07uzc"
+    },
+    {
         _id: "blog-14",
         title: "Lessons From Building in the Real World",
         slug: { current: "lessons-from-building-real-world" },
