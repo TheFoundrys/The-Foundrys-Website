@@ -204,6 +204,17 @@ const STATIC_RESEARCH_POSTS: Post[] = [
 
 const STATIC_BLOG_POSTS: Post[] = [
     {
+        _id: "blog-16",
+        title: "System Design, Simplified",
+        slug: { current: "system-design-simplified" },
+        publishedAt: "2026-09-01T12:00:00Z",
+        mainImage: { static: true, url: "/images/system_design_simplified_cover.jpg" },
+        category: "Blog",
+        readTime: "6 min",
+        excerpt: "Understand the Basics Through Real-World Examples. System design can sound complicated, especially when you hear terms like scalability, load balancing, caching, APIs, databases, queues, and distributed systems. But at its core, system design is about something simple: How do we design a system that works reliably and scales smoothly.",
+        link: "https://www.linkedin.com/pulse/system-design-simplified-the-foundry-s-eez5c"
+    },
+    {
         _id: "blog-15",
         title: "Top 5 Deep Tech Interview Questions",
         slug: { current: "top-5-deep-tech-interview-questions" },
