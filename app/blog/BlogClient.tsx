@@ -204,6 +204,17 @@ const STATIC_RESEARCH_POSTS: Post[] = [
 
 const STATIC_BLOG_POSTS: Post[] = [
     {
+        _id: "blog-17",
+        title: "Emerging Technologies to Watch",
+        slug: { current: "emerging-technologies-to-watch" },
+        publishedAt: "2026-09-03T12:00:00Z",
+        mainImage: { static: true, url: "/images/emerging_technologies_watch_cover.jpg" },
+        category: "Blog",
+        readTime: "7 min",
+        excerpt: "New Technologies. New Skills. Limitless Impact. Explore eight emerging technology areas shaping tomorrow—from Artificial Intelligence, Quantum Computing, and Robotics to Spatial Computing, Cybersecurity, BioTech, IoT, and CleanTech—and the career opportunities they create.",
+        link: "https://www.linkedin.com/pulse/emerging-technologies-watch-the-foundry-s-zdzbc"
+    },
+    {
         _id: "blog-16",
         title: "System Design, Simplified",
         slug: { current: "system-design-simplified" },
