@@ -4,10 +4,10 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Linkedin, ArrowLeft, Cpu, Layers, Zap, Award, BookOpen } from "lucide-react";
+import { Linkedin, ArrowLeft, Shield, Brain, Zap, Target, Lock } from "lucide-react";
 import Link from "next/link";
 
-export default function MvsrReddyProfile() {
+export default function VenkataShivaRangaReddyProfile() {
     return (
         <main className="min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden pt-24 pb-0" style={{ backgroundColor: "#EAEAE5" }}>
             <Navbar />
@@ -33,7 +33,7 @@ export default function MvsrReddyProfile() {
                                 <div className="aspect-[3/4] relative overflow-hidden shadow-md bg-white border border-slate-200/80">
                                     <Image
                                         src="/images/testimonials/shiva.jpeg"
-                                        alt="MVSR Reddy (Venkat)"
+                                        alt="Venkata Shiva Ranga Reddy"
                                         fill
                                         priority
                                         className="object-cover"
@@ -52,11 +52,11 @@ export default function MvsrReddyProfile() {
                                     <span className="inline-block px-3 py-1 bg-[#002f86] text-white text-[10px] font-bold uppercase tracking-widest font-mono mb-4">
                                         Subject Matter Expert
                                     </span>
-                                    <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold tracking-tight text-[#002f86] mb-3 leading-tight">
-                                        Venkat (MVSR Reddy)
+                                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-[#002f86] mb-3 leading-tight">
+                                        Venkata Shiva Ranga Reddy
                                     </h1>
                                     <p className="text-base sm:text-lg text-slate-600 font-medium italic">
-                                        SME in Embedded Systems | IoT, Microcontrollers & Hardware Engineering
+                                        AI Security & Technology Intelligence | AI Governance & Red Teaming
                                     </p>
                                 </div>
 
@@ -74,7 +74,14 @@ export default function MvsrReddyProfile() {
 
                                 {/* Key Skills */}
                                 <div className="flex flex-wrap gap-2.5 pt-2">
-                                    {["Embedded Systems", "IoT", "Microcontrollers", "Hardware Design", "Firmware Development", "RTOS"].map((skill) => (
+                                    {[
+                                        "AI Security (AISec)",
+                                        "Enterprise Risk Management (ERM)",
+                                        "Technology Intelligence",
+                                        "AI Governance",
+                                        "Cybersecurity Strategy",
+                                        "Red Teaming"
+                                    ].map((skill) => (
                                         <div key={skill} className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
                                             {skill}
                                         </div>
@@ -89,10 +96,13 @@ export default function MvsrReddyProfile() {
                 <section className="p-8 sm:p-12 md:p-16 bg-white border-b border-slate-200/50">
                     <div className="max-w-4xl space-y-6">
                         <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#002f86] mb-4">
-                            Pioneering Embedded Systems & Hardware Engineering
+                            Securing the Future of Humanity in the Age of AI
                         </h2>
                         <p className="text-slate-700 text-sm md:text-base leading-relaxed font-sans">
-                            Venkat (MVSR Reddy) is a Subject Matter Expert in Embedded Systems at The Foundry’s. With deep technical competence spanning microcontroller architectures, real-time operating systems, low-level firmware engineering, and IoT hardware integration, he guides emerging engineers and founders in building robust, industrial-grade hardware systems.
+                            Venkata Shiva Ranga Reddy leads a strategic initiative to secure the future of humanity in the age of AI. Building at the intersection where Artificial Intelligence and Cybersecurity converge, he recognized that legacy analyst firms were struggling to keep pace with the rapid speed of AI, inspiring him to create a new paradigm for technology intelligence.
+                        </p>
+                        <p className="text-slate-700 text-sm md:text-base leading-relaxed font-sans">
+                            His work centers on leveraging AI to synthesize vast amounts of data, delivering actionable insights that move at the speed of innovation. Believing that true security requires combining deep research with practical application, he goes beyond identifying AI adoption challenges—from compliance to red-teaming—by spearheading cutting-edge tools that empower enterprise organizations to test, validate, and harden their AI defenses.
                         </p>
                     </div>
                 </section>
@@ -102,18 +112,18 @@ export default function MvsrReddyProfile() {
                     <div className="max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
                             <h3 className="font-serif text-xl font-bold text-[#002f86] mb-4 flex items-center gap-2">
-                                <Cpu className="text-[#002f86]" size={22} /> Firmware & Hardware Architecture
+                                <Shield className="text-[#002f86]" size={22} /> AI Security & Red Teaming
                             </h3>
                             <p className="p-5 bg-white border border-slate-200/80 text-xs md:text-sm text-slate-700 leading-relaxed font-sans shadow-xs">
-                                Extensive experience in bare-metal programming, C/C++ optimization, ARM Cortex architectures, and hardware-level communication protocols including SPI, I2C, UART, and CAN bus integration.
+                                Spearheading the development of advanced tools and methodologies for red-teaming AI models, evaluating risk profiles, and validating enterprise AI defenses against hostile exploitation.
                             </p>
                         </div>
                         <div>
                             <h3 className="font-serif text-xl font-bold text-[#002f86] mb-4 flex items-center gap-2">
-                                <Layers className="text-[#002f86]" size={22} /> Smart Systems & IoT Ecosystems
+                                <Brain className="text-[#002f86]" size={22} /> Technology Intelligence & Governance
                             </h3>
                             <p className="p-5 bg-white border border-slate-200/80 text-xs md:text-sm text-slate-700 leading-relaxed font-sans shadow-xs">
-                                Building scalable IoT edge devices, real-time sensor processing networks, and energy-efficient embedded devices designed for industrial and real-world deployment.
+                                Synthesizing technology data into real-time intelligence, aligning Enterprise Risk Management (ERM) frameworks with robust AI governance to guide leaders navigating complex tech transitions.
                             </p>
                         </div>
                     </div>
@@ -123,7 +133,7 @@ export default function MvsrReddyProfile() {
                 <section className="p-8 sm:p-12 md:p-16 bg-white">
                     <div className="max-w-4xl">
                         <p className="font-serif italic text-base md:text-xl text-[#002f86] leading-relaxed">
-                            &quot;True innovation in technology happens at the boundary where physical hardware meets intelligent, resource-efficient software.&quot;
+                            &quot;My goal is to provide enterprise leaders with a complete toolkit: unparalleled foresight and the practical means to act on it.&quot;
                         </p>
                     </div>
                 </section>

@@ -138,8 +138,8 @@ const teamMembers = [
         }
     },
     {
-        name: "Venkat",
-        role: "SME in Embedded Systems",
+        name: "Venkata Shiva Ranga Reddy",
+        role: "SME in AI Security & Tech Intelligence",
         image: "/images/testimonials/shiva.jpeg",
         profileLink: "/about/faculty/mvsr-reddy",
         socials: {
