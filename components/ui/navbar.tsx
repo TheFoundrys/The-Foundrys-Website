@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { triggerHaptic } from "@/lib/haptics";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Building2, Users, Library, Menu, Zap, Leaf, Network, BookOpen, Briefcase, GraduationCap, Calendar, Newspaper, ArrowRight, LineChart, MessageSquare } from "lucide-react";
+import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Users, Library, Menu, Zap, Leaf, Network, BookOpen, Briefcase, GraduationCap, Calendar, Newspaper, ArrowRight, LineChart, MessageSquare } from "lucide-react";
 
 export function Navbar() {
     const pathname = usePathname();
@@ -150,34 +150,28 @@ export function Navbar() {
             href: "/centres/ccd"
         },
         {
-            label: "Quantum Computing Research Initiative (QCRI)",
+            label: "Centre for Quantum Computing Research Initiative (QCRI)",
             desc: "Exploring quantum entanglement simulation, algorithmic speedups, and industrial optimization.",
             icon: Atom,
             href: "/centres/qcri"
         },
         {
-            label: "Distributed Ledger & Blockchain Lab (DLBL)",
+            label: "Centre for Distributed Ledger & Blockchain Research (DLBL)",
             desc: "Advancing decentralization protocols, trust infrastructure, and smart contract optimization.",
             icon: Network,
             href: "/centres/dlbl"
         },
         {
-            label: "Venture Building & Incubation Institute (VBII)",
-            desc: "Translating cutting-edge deep tech research into scalable commercial startup frameworks.",
-            icon: Rocket,
-            href: "#"
+            label: "Centre for Renewable Energy Systems (CRES)",
+            desc: "Advancing solar, wind, smart grid architectures, energy storage, and clean tech transition.",
+            icon: Zap,
+            href: "/centres/cres"
         },
         {
-            label: "Sustainability & Green Tech Policy Centre (SGPC)",
+            label: "Centre for Sustainability & Green Tech Policy (SGPC)",
             desc: "Designing eco-efficiency metrics, ESG systems, and carbon accounting architectures.",
             icon: Leaf,
             href: "/centres/sgpc"
-        },
-        {
-            label: "Centre of Excellence (CoE)",
-            desc: "Establish high-performance computing labs, applied curriculum, and research environments.",
-            icon: Building2,
-            href: "/programs/centre-of-excellence"
         }
     ];
 
@@ -299,7 +293,7 @@ export function Navbar() {
                             onMouseEnter={() => setHoveredMenu("research")}
                             className="flex items-center gap-1 cursor-default py-8 text-[15px] font-medium font-[system-ui] relative whitespace-nowrap text-black"
                         >
-                            <span className={cn("transition-colors hover:text-black", hoveredMenu === "research" ? "text-black" : "opacity-85")}>Research & Centre of Excellence</span>
+                            <span className={cn("transition-colors hover:text-black", hoveredMenu === "research" ? "text-black" : "opacity-85")}>Research</span>
                             <ChevronDown size={14} className={cn("transition-transform duration-350 opacity-60", hoveredMenu === "research" ? "rotate-180 opacity-100" : "")} />
                         </div>
 
@@ -712,7 +706,7 @@ export function Navbar() {
                                         onClick={() => { setMobileResearchExpanded(!mobileResearchExpanded); handleHaptic(); }}
                                         className="flex items-center justify-between w-full p-4 rounded-xl hover:bg-neutral-100 transition-colors"
                                     >
-                                        <span className="text-lg font-bold text-black">Research & Centre Of Excellence</span>
+                                        <span className="text-lg font-bold text-black">Research</span>
                                         <ChevronDown size={18} className={cn("text-neutral-500 transition-transform", mobileResearchExpanded ? "rotate-180" : "")} />
                                     </button>
 

@@ -14,7 +14,19 @@ import {
     FileText,
     Plus,
     Minus,
-    ExternalLink
+    ExternalLink,
+    Leaf,
+    Cpu,
+    Server,
+    Sparkles,
+    Layers,
+    ShieldCheck,
+    Zap,
+    Rocket,
+    Activity,
+    Code2,
+    Globe,
+    TreePine
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -26,6 +38,8 @@ const RESEARCH_PILLARS = [
         title: "Deep Tech & Ecological Intelligence",
         shortDesc: "Material informatics, VLM microplastics classification, and AI climate risk modeling.",
         badge: "Pillar 01",
+        icon: Leaf,
+        accentColor: "from-emerald-600 to-teal-600",
         fullDesc: "Our Ecological Intelligence lab pioneers Vision-Language Models for microplastics detection, AI-driven bio-synthetic polymer design, and predictive climate analytics to solve planetary environmental degradation.",
         highlights: [
             "Vision Language Model (VLM) Microplastics Classification",
@@ -44,6 +58,8 @@ const RESEARCH_PILLARS = [
         title: "Entrepreneurship & Green Venture",
         shortDesc: "ESG asset compliance engines, circular economy startups, and carbon credit markets.",
         badge: "Pillar 02",
+        icon: Rocket,
+        accentColor: "from-indigo-600 to-purple-600",
         fullDesc: "Commercializing sustainability research into scalable clean-tech enterprises. We design enterprise ESG compliance tools, circular economy material loops, and carbon credit verification platforms for global corporations.",
         highlights: [
             "Commercial ESG Asset Verification & Audit Suites",
@@ -62,6 +78,8 @@ const RESEARCH_PILLARS = [
         title: "Sustainability & Carbon Accounting",
         shortDesc: "Real-time Scope 1/2/3 emission telemetry, closed-loop eco-metrics, and bio-informatics.",
         badge: "Pillar 03",
+        icon: TreePine,
+        accentColor: "from-green-600 to-emerald-700",
         fullDesc: "Engineering precision carbon accounting systems. We deploy IoT emissions telemetry, closed-loop life cycle assessment (LCA) algorithms, and automated carbon ledger reporting to eliminate greenwashing.",
         highlights: [
             "Scope 1, 2, and 3 Real-Time Automated Emissions Telemetry",
@@ -80,6 +98,8 @@ const RESEARCH_PILLARS = [
         title: "Renewable Energy & Climate Policy",
         shortDesc: "Clean power transition models, grid decarbonization policy, and solar microgrid telemetry.",
         badge: "Pillar 04",
+        icon: Zap,
+        accentColor: "from-amber-500 to-orange-600",
         fullDesc: "Drafting evidence-based climate policy and grid decarbonization architectures. We model clean energy transition dynamics, municipal solar adoption policies, and sovereign renewable grid regulations.",
         highlights: [
             "National & Municipal Grid Decarbonization Policy Frameworks",
@@ -95,8 +115,39 @@ const RESEARCH_PILLARS = [
     }
 ];
 
+// Decarbonization Architecture Stack Layers
+const ECOLOGICAL_STACK_LAYERS = [
+    {
+        num: "01",
+        name: "Satellite & Sensor Sensing",
+        desc: "Hyperspectral Satellite Feeds, VLM Microplastics Classification, & IoT Gas Telemetry",
+        icon: Globe,
+        badge: "Hyperspectral Sensing"
+    },
+    {
+        num: "02",
+        name: "Material Informatics Engine",
+        desc: "Macromolecular Polymer Design, Degradation Simulation, & Bio-Synthetic Modeling",
+        icon: Cpu,
+        badge: "Bio-Synthetic Design"
+    },
+    {
+        num: "03",
+        name: "Scope 1-3 Carbon Ledger",
+        desc: "Automated Life Cycle Assessment (LCA), Immutable Audits, & Anti-Greenwashing Proofs",
+        icon: Layers,
+        badge: "Scope 1-3 Telemetry"
+    },
+    {
+        num: "04",
+        name: "Decarbonization Policy API",
+        desc: "Sovereign Carbon Tax Modeling, Municipal Solar Grid Transition, & Tariff Optimization",
+        icon: Server,
+        badge: "Policy API"
+    }
+];
 
-// Research Publications Data - Official IEEE Papers from The Foundry
+// Research Publications Data
 const PUBLICATIONS = [
     {
         id: "pub-1",
@@ -133,13 +184,7 @@ const PUBLICATIONS = [
     }
 ];
 
-// Compute & Lab Stats
-const INFRA_STATS = [
-    { label: "Environmental Satellite Ingest", value: "Real-Time Hyperspectral Feed" },
-    { label: "Material Synthesis Lab", value: "Biodegradable Polymer Benchmarks" },
-    { label: "Simulated Carbon Avoided", value: "4.8M Metric Tons Tracked" },
-    { label: "Active Green Tech Fellows", value: "35+ Climate Scientists & Policy Analysts" }
-];
+
 
 export default function SGPCResearchCentrePage() {
     const [selectedPillar, setSelectedPillar] = useState(RESEARCH_PILLARS[0].id);
@@ -148,13 +193,13 @@ export default function SGPCResearchCentrePage() {
     const [activeSpecModal, setActiveSpecModal] = useState<string | null>(null);
     const [copiedCitationId, setCopiedCitationId] = useState<string | null>(null);
 
-    // Interactive Eco-Metric & Carbon Accounting Simulator steps
+    // Interactive Sustainability Simulator steps
     const simSteps = [
-        { label: "Industrial Telemetry Ingestion", status: "Ingesting Scope 1-3 IoT sensor data...", detail: "Extracted real-time flue-gas emissions & supply chain fuel metrics" },
-        { label: "VLM Spectral Material Analysis", status: "Running VLM image classifier...", detail: "Detected 96.4% microplastic particle density in water effluent sample" },
-        { label: "AI Carbon Audit & LCA Solver", status: "Calculating lifecycle carbon footprint...", detail: "Computed product lifecycle emissions; verified 18.4% carbon reduction" },
-        { label: "ESG Policy Synthesis", status: "Generating ISO 14064 compliance report...", detail: "Synthesized anti-greenwashing proof certificate for corporate filing" },
-        { label: "Verifiable Carbon Finality", status: "Audit Complete!", detail: "Published verified carbon offset ledger entry with 100% ESG compliance" }
+        { label: "Hyperspectral Telemetry Ingest", status: "Ingesting satellite water spectral imagery...", detail: "Detected 96.4% confidence microplastics particle concentration in coastal runoff" },
+        { label: "VLM Spectral Classification", status: "Vision Language Model analyzing polymers...", detail: "Identified polyethylene terephthalate (PET) vs bio-degradable PLA polymer spectral signature" },
+        { label: "Material Informatics Synthesis", status: "Modeling bio-synthetic degradation loop...", detail: "Synthesized bio-based enzyme catalyst reducing degradation lifespan from 450 yrs to 45 days" },
+        { label: "Scope 1-3 Carbon Ledger Verification", status: "Running IoT emissions audit...", detail: "Verified 4.8M tons carbon avoidance calculation with zero-greenwashing immutable proof" },
+        { label: "Decarbonization Policy Report", status: "Policy Dispatch Verified!", detail: "Generated municipal clean water & carbon credit policy specification with 100% compliance" }
     ];
 
     const runSimulation = () => {
@@ -186,162 +231,310 @@ export default function SGPCResearchCentrePage() {
         <main className="min-h-screen font-sans selection:bg-emerald-100 selection:text-emerald-900 overflow-x-hidden" style={{ backgroundColor: "#EAEAE5" }}>
             <Navbar />
 
-            {/* Banner Image Section matching Entry-Level / Program pages */}
-            <section className="relative w-full h-[260px] md:h-[380px] overflow-hidden mt-16">
+            {/* Banner Image Section with Visual Glass Badges */}
+            <section className="relative w-full h-[280px] md:h-[400px] overflow-hidden mt-16">
                 <Image
                     src="/images/sgpc_banner.jpg"
-                    alt="Sustainability & Green Power Centre"
+                    alt="Sustainability & Green Tech Policy Centre"
                     fill
                     priority
-                    className="object-cover object-center brightness-[0.7]"
+                    className="object-cover object-center brightness-[0.65]"
                 />
-                <div className="absolute inset-0 bg-black/35" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
                 <div className="absolute inset-0 flex items-center">
-                    <div className="container mx-auto max-w-8xl px-6">
-                        <h1 className="font-serif text-white text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight">
-                            Sustainability & Green Power Centre (SGPC)
+                    <div className="container mx-auto max-w-7xl px-6">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-200 text-xs font-mono font-semibold mb-4 backdrop-blur-md">
+                            <Leaf className="w-3.5 h-3.5 text-emerald-300" />
+                            <span>Sustainability Research Centre of Excellence</span>
+                        </div>
+                        <h1 className="font-serif text-white text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight max-w-4xl">
+                            Sustainability & Green Tech Policy Centre (SGPC)
                         </h1>
+                        <p className="text-slate-200 text-sm md:text-base mt-3 max-w-2xl font-light">
+                            Pioneering VLM microplastics detection, material informatics, precision Scope 1-3 carbon accounting, and climate policy.
+                        </p>
+
+                        {/* Quick Anchor Badges */}
+                        <div className="flex flex-wrap gap-2 mt-6">
+                            <a href="#pillars" className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-sm transition-all">
+                                Core Pillars
+                            </a>
+                            <a href="#architecture" className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-sm transition-all">
+                                Decarbonization Stack
+                            </a>
+                            <a href="#simulator" className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-sm transition-all">
+                                Ecological Simulator
+                            </a>
+                            <a href="#publications" className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-sm transition-all">
+                                IEEE Papers
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* Main Content Card Container matching Entry-Level page design */}
-            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white rounded-1xl shadow-lg shadow-black/15 border border-slate-200/50 mt-[30px] mb-16 overflow-hidden">
-                
-                {/* Introduction Section */}
-                <section className="text-slate-800 p-8 sm:p-12 md:p-16 pb-6 sm:pb-8 md:pb-10 bg-white">
-                    <h2 className="font-serif text-3xl font-bold leading-tight text-[#1b4332] md:text-4xl">
-                        Introduction
-                    </h2>
-                    <p className="mt-6 text-sm md:text-base leading-relaxed text-slate-700 max-w-4xl">
-                        The Sustainability & Green Power Centre (SGPC) at The Foundry leads research into Vision-Language microplastics sensing, material informatics for bio-degradable polymers, automated Scope 1-3 carbon accounting, and renewable grid transition policies.
-                    </p>
+            {/* Main Content Container */}
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white rounded-2xl shadow-xl shadow-black/10 border border-slate-200/60 mt-[30px] mb-16 overflow-hidden">
 
-                    {/* Metric Stats Cards */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-slate-100">
-                        <div className="p-4 bg-white border border-slate-200/80 text-center">
-                            <p className="text-2xl sm:text-3xl font-sans font-bold text-[#1b4332]">96.4%</p>
-                            <p className="text-xs text-slate-600 font-medium mt-1">Microplastics Accuracy</p>
+                {/* Introduction & Visual Key Stats Grid */}
+                <section className="text-slate-800 p-8 sm:p-12 md:p-16 pb-8 bg-white">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div className="lg:col-span-7">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-50 text-emerald-900 text-xs font-bold font-mono mb-3">
+                                🌿 Planetary Sustainability & Policy
+                            </div>
+                            <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
+                                Engineering Technologies for a Permanent Future
+                            </h2>
+                            <p className="mt-4 text-sm md:text-base leading-relaxed text-slate-700">
+                                The Sustainability & Green Tech Policy Centre (SGPC) at The Foundry leads research into Vision-Language microplastics sensing, material informatics for bio-degradable polymers, automated Scope 1-3 carbon accounting, and renewable grid transition policies.
+                            </p>
                         </div>
-                        <div className="p-4 bg-white border border-slate-200/80 text-center">
-                            <p className="text-2xl sm:text-3xl font-sans font-bold text-[#1b4332]">4.8M Tons</p>
-                            <p className="text-xs text-slate-600 font-medium mt-1">Carbon Tracked</p>
-                        </div>
-                        <div className="p-4 bg-white border border-slate-200/80 text-center">
-                            <p className="text-2xl sm:text-3xl font-sans font-bold text-[#1b4332]">100%</p>
-                            <p className="text-xs text-slate-600 font-medium mt-1">Verifiable ESG Coverage</p>
-                        </div>
-                        <div className="p-4 bg-white border border-slate-200/80 text-center">
-                            <p className="text-2xl sm:text-3xl font-sans font-bold text-[#1b4332]">35+</p>
-                            <p className="text-xs text-slate-600 font-medium mt-1">Climate Fellows</p>
+
+                        {/* Interactive Visual Stat Cards */}
+                        <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+                            <div className="p-5 rounded-xl bg-gradient-to-br from-emerald-50 to-teal-50/50 border border-emerald-100/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
+                                <div className="w-10 h-10 rounded-lg bg-[#002f86] text-white flex items-center justify-center mb-3 shadow-sm">
+                                    <Leaf size={20} />
+                                </div>
+                                <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">96.4%</p>
+                                <p className="text-xs text-slate-600 font-medium mt-0.5">VLM Detection Accuracy</p>
+                            </div>
+
+                            <div className="p-5 rounded-xl bg-gradient-to-br from-slate-50 to-blue-50/40 border border-slate-200/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
+                                <div className="w-10 h-10 rounded-lg bg-blue-600 text-white flex items-center justify-center mb-3 shadow-sm">
+                                    <FileText size={20} />
+                                </div>
+                                <p className="text-2xl sm:text-3xl font-sans font-bold text-slate-900">35+</p>
+                                <p className="text-xs text-slate-600 font-medium mt-0.5">IEEE & Top Papers</p>
+                            </div>
+
+                            <div className="p-5 rounded-xl bg-gradient-to-br from-emerald-50 to-teal-50/40 border border-emerald-100/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
+                                <div className="w-10 h-10 rounded-lg bg-emerald-600 text-white flex items-center justify-center mb-3 shadow-sm">
+                                    <TreePine size={20} />
+                                </div>
+                                <p className="text-2xl sm:text-3xl font-sans font-bold text-emerald-950">4.8M Tons</p>
+                                <p className="text-xs text-slate-600 font-medium mt-0.5">Carbon Avoided</p>
+                            </div>
+
+                            <div className="p-5 rounded-xl bg-gradient-to-br from-indigo-50 to-purple-50/40 border border-indigo-100/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
+                                <div className="w-10 h-10 rounded-lg bg-indigo-600 text-white flex items-center justify-center mb-3 shadow-sm">
+                                    <Server size={20} />
+                                </div>
+                                <p className="text-2xl sm:text-3xl font-sans font-bold text-indigo-950">$5M+</p>
+                                <p className="text-xs text-slate-600 font-medium mt-0.5">Material Labs & Satellites</p>
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                {/* Core Research Pillars - Row Layout matching Program Rows */}
-                <section className="text-slate-800 border-t border-slate-200/50" id="pillars">
-                    <div className="p-8 sm:p-12 md:p-16 pb-4 bg-[#F7F7F4]">
-                        <h2 className="font-serif text-3xl font-bold leading-tight text-[#1b4332] md:text-4xl mb-2">
-                            Core Sustainability Research Pillars
-                        </h2>
-                        <p className="text-sm text-slate-600 max-w-3xl">
-                            Our institute centers its environmental investigations around the four core pillars of The Foundry.
+                {/* Core Research Pillars - Interactive Tab Switcher & Visual Cards */}
+                <section className="text-slate-800 border-t border-slate-200/50 bg-[#F7F7F4] p-8 sm:p-12 md:p-16" id="pillars">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-8">
+                        <div>
+                            <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 block font-mono mb-1">
+                                Sustainability Research Matrix
+                            </span>
+                            <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
+                                Core Ecological Research Pillars
+                            </h2>
+                        </div>
+                        <p className="text-xs text-slate-500 max-w-md mt-2 md:mt-0 font-medium">
+                            Select a pillar to explore specialized environmental labs, eco-highlights, and technical whitepapers.
                         </p>
                     </div>
 
-                    {RESEARCH_PILLARS.map((pillar, idx) => (
-                        <div
-                            key={pillar.id}
-                            className={`p-8 sm:p-12 md:p-16 ${
-                                idx % 2 === 0 ? "bg-white" : "bg-[#F7F7F4]"
-                            } border-t border-slate-200/50`}
+                    {/* Interactive Tab Switcher */}
+                    <div className="flex flex-wrap gap-2 mb-8 border-b border-slate-200 pb-4">
+                        {RESEARCH_PILLARS.map((pillar) => {
+                            const IconComp = pillar.icon;
+                            const isSelected = selectedPillar === pillar.id;
+                            return (
+                                <button
+                                    key={pillar.id}
+                                    onClick={() => setSelectedPillar(pillar.id)}
+                                    className={`flex items-center gap-2.5 px-5 py-3 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer ${isSelected
+                                            ? "bg-[#002f86] text-white shadow-md scale-102"
+                                            : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
+                                        }`}
+                                >
+                                    <IconComp size={16} className={isSelected ? "text-white" : "text-slate-500"} />
+                                    <span>{pillar.title}</span>
+                                </button>
+                            );
+                        })}
+                    </div>
+
+                    {/* Active Pillar Card Showcase */}
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activePillarObj.id}
+                            initial={{ opacity: 0, y: 12 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -12 }}
+                            transition={{ duration: 0.25 }}
+                            className="bg-white rounded-2xl border border-slate-200 p-8 sm:p-10 shadow-sm"
                         >
-                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-                                {/* Left Column */}
-                                <div className="lg:col-span-5 flex flex-col justify-between">
+                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                                <div className="lg:col-span-7 flex flex-col justify-between">
                                     <div>
-                                        <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 mb-2 block font-mono">
-                                            {pillar.badge}
-                                        </span>
-                                        <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#1b4332] leading-tight mb-4">
-                                            {pillar.title}
+                                        <div className="flex items-center gap-3 mb-3">
+                                            <span className="text-xs uppercase font-bold tracking-widest text-slate-400 font-mono">
+                                                {activePillarObj.badge}
+                                            </span>
+                                            <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-900 text-[10px] font-bold font-mono">
+                                                {activePillarObj.stats.metrics} • {activePillarObj.stats.label}
+                                            </span>
+                                        </div>
+
+                                        <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#002f86] mb-3">
+                                            {activePillarObj.title}
                                         </h3>
-                                        <p className="text-sm text-slate-600 leading-relaxed mb-6 font-sans">
-                                            {pillar.shortDesc}
+                                        <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-6 font-sans">
+                                            {activePillarObj.fullDesc}
                                         </p>
                                     </div>
 
-                                    <div className="flex flex-wrap gap-3 mt-4">
-                                        <button
-                                            onClick={() => setActiveSpecModal(pillar.id)}
-                                            className="inline-flex items-center gap-2 px-6 py-3 bg-[#1b4332] hover:bg-[#143326] text-white rounded-lg font-bold text-sm transition-all shadow-sm cursor-pointer"
-                                        >
-                                            <FileText size={16} />
-                                            <span>Technical Sustainability Spec</span>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                {/* Right Column */}
-                                <div className="lg:col-span-7 flex flex-col justify-between">
-                                    <p className="text-sm md:text-base text-slate-700 leading-relaxed mb-6">
-                                        {pillar.fullDesc}
-                                    </p>
-
+                                    {/* Highlights Checklist */}
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-                                        {pillar.highlights.map((item, hIdx) => (
-                                            <div key={hIdx} className="flex items-start gap-2.5 p-3 bg-white/80 border border-slate-200/80 shadow-xs">
-                                                <CheckCircle2 className="w-4 h-4 text-[#1b4332] shrink-0 mt-0.5" />
-                                                <span className="text-xs text-slate-800 font-medium">{item}</span>
+                                        {activePillarObj.highlights.map((item, hIdx) => (
+                                            <div key={hIdx} className="flex items-start gap-2.5 p-3 rounded-lg bg-[#F7F7F4] border border-slate-200/70">
+                                                <CheckCircle2 className="w-4 h-4 text-[#002f86] shrink-0 mt-0.5" />
+                                                <span className="text-xs text-slate-800 font-semibold">{item}</span>
                                             </div>
                                         ))}
                                     </div>
 
+                                    <div className="flex flex-wrap gap-3">
+                                        <button
+                                            onClick={() => setActiveSpecModal(activePillarObj.id)}
+                                            className="inline-flex items-center gap-2 px-6 py-3 bg-[#002f86] hover:bg-[#002266] text-white rounded-xl font-bold text-xs sm:text-sm transition-all shadow-md cursor-pointer"
+                                        >
+                                            <FileText size={16} />
+                                            <span>Read Technical Sustainability Spec</span>
+                                        </button>
+                                    </div>
+                                </div>
 
+                                {/* Right Graphic Card Preview */}
+                                <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 via-[#001f5c] to-slate-900 rounded-xl p-6 text-white shadow-lg relative overflow-hidden font-mono text-xs">
+                                    <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+                                        <Leaf size={160} />
+                                    </div>
+                                    <div className="relative z-10">
+                                        <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-4 font-sans">
+                                            <span className="text-emerald-300 font-bold text-xs">SPEC PAPER PREVIEW</span>
+                                            <span className="text-slate-400 text-[10px]">IEEE XPLORE VERIFIED</span>
+                                        </div>
+                                        <p className="text-white font-serif text-base font-bold mb-3 leading-snug">
+                                            {activePillarObj.specPaper.title}
+                                        </p>
+                                        <p className="text-slate-300 text-xs font-sans leading-relaxed mb-6">
+                                            Detailed VLM spectral classification benchmarks, carbon accounting telemetry proofs, and policy transition models.
+                                        </p>
+
+                                        <a
+                                            href={activePillarObj.specPaper.downloadUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-2 px-4 py-2 bg-white text-[#002f86] rounded-lg font-bold text-xs hover:bg-emerald-50 transition-colors cursor-pointer"
+                                        >
+                                            <ExternalLink size={14} />
+                                            <span>IEEE Document Link</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        </motion.div>
+                    </AnimatePresence>
                 </section>
 
-                {/* Interactive Eco-Metric & Carbon Accounting Simulator Section */}
-                <section className="p-8 sm:p-12 md:p-16 bg-[#E5EFE7] border-t border-slate-200/50">
+                {/* Planetary Decarbonization Architecture Stack Diagram Section */}
+                <section className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-200/50" id="architecture">
+                    <div className="text-center max-w-3xl mx-auto mb-12">
+                        <span className="text-[10px] uppercase font-bold tracking-widest text-[#002f86] font-mono block mb-2">
+                            SYSTEM ARCHITECTURE
+                        </span>
+                        <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl mb-3">
+                            The Decarbonization Stack
+                        </h2>
+                        <p className="text-sm text-slate-600">
+                            Our four-tier architecture combining VLM satellite sensing, material informatics, Scope 1-3 ledgers, and climate policy.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {ECOLOGICAL_STACK_LAYERS.map((layer, idx) => {
+                            const LayerIcon = layer.icon;
+                            return (
+                                <div
+                                    key={idx}
+                                    className="p-6 rounded-2xl bg-[#F7F7F4] border border-slate-200/80 hover:border-emerald-400 hover:bg-emerald-50/30 transition-all duration-300 relative group flex flex-col justify-between"
+                                >
+                                    <div>
+                                        <div className="flex items-center justify-between mb-4">
+                                            <span className="text-xs font-mono font-bold text-slate-400">{layer.num}</span>
+                                            <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-900 text-[10px] font-bold font-mono">
+                                                {layer.badge}
+                                            </span>
+                                        </div>
+                                        <div className="w-12 h-12 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-[#002f86] mb-4 shadow-xs group-hover:scale-110 transition-transform">
+                                            <LayerIcon size={24} />
+                                        </div>
+                                        <h3 className="font-serif text-lg font-bold text-slate-900 mb-2">
+                                            {layer.name}
+                                        </h3>
+                                        <p className="text-xs text-slate-600 leading-relaxed font-sans">
+                                            {layer.desc}
+                                        </p>
+                                    </div>
+                                    <div className="mt-4 pt-3 border-t border-slate-200/60 flex items-center gap-1.5 text-[11px] font-bold text-[#002f86]">
+                                        <CheckCircle2 size={13} />
+                                        <span>Verified Ecological Framework</span>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </section>
+
+                {/* Interactive Ecological Simulator Section */}
+                <section className="p-8 sm:p-12 md:p-16 bg-[#DCE7F1] border-t border-slate-200/50" id="simulator">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                         <div className="lg:col-span-5">
-                            <span className="text-[10px] uppercase font-bold tracking-widest text-[#1b4332] mb-2 block font-mono">
+                            <span className="text-[10px] uppercase font-bold tracking-widest text-[#002f86] mb-2 block font-mono">
                                 Interactive Lab Simulation
                             </span>
-                            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#1b4332] mb-4">
-                                Eco-Metric & Carbon Telemetry
+                            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#002f86] mb-4">
+                                Autonomous Microplastics & Carbon Simulator
                             </h2>
                             <p className="text-slate-700 text-sm leading-relaxed mb-6 font-sans">
-                                Witness how SGPC&apos;s ecological intelligence architecture ingests Scope 1-3 IoT sensor data, classifies spectral microplastics via VLMs, and generates verifiable anti-greenwashing ESG proofs.
+                                Witness how SGPC&apos;s VLM spectral engine ingests satellite coastal imagery, classifies microplastics polymers, models bio-degradation catalyst loops, and verifies Scope 1-3 carbon ledgers.
                             </p>
-                            
+
                             <button
                                 onClick={runSimulation}
                                 disabled={isSimulating}
-                                className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-sm text-white transition-all shadow-md cursor-pointer ${
-                                    isSimulating
+                                className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-sm text-white transition-all shadow-md cursor-pointer rounded-xl ${isSimulating
                                         ? "bg-slate-500 cursor-not-allowed"
-                                        : "bg-[#1b4332] hover:bg-[#143326]"
-                                }`}
+                                        : "bg-[#002f86] hover:bg-[#002266]"
+                                    }`}
                             >
                                 <PlayCircle className="w-4 h-4" />
-                                <span>{isSimulating ? "Simulating Eco-Metrics..." : "Simulate Eco-Metric Telemetry"}</span>
+                                <span>{isSimulating ? "Simulating Environmental Telemetry..." : "Simulate Ecological Telemetry"}</span>
                             </button>
                         </div>
 
                         <div className="lg:col-span-7">
-                            <div className="p-6 bg-white border border-slate-200/80 shadow-md font-mono text-xs">
+                            <div className="p-6 bg-white border border-slate-200/80 font-mono text-xs rounded-2xl shadow-md">
                                 <div className="flex items-center justify-between pb-3 border-b border-slate-200 mb-4 font-sans">
                                     <div className="flex items-center gap-1.5">
                                         <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
                                         <div className="w-2.5 h-2.5 rounded-full bg-teal-500" />
-                                        <div className="w-2.5 h-2.5 rounded-full bg-[#1b4332]" />
-                                        <span className="text-slate-500 text-[11px] font-semibold ml-1.5">sgpc-carbon-runtime v2.4</span>
+                                        <div className="w-2.5 h-2.5 rounded-full bg-blue-500" />
+                                        <span className="text-slate-500 text-[11px] font-semibold ml-1.5">sgpc-eco-runtime v3.4</span>
                                     </div>
-                                    <span className="text-[#1b4332] text-[11px] font-bold">
+                                    <span className="text-[#002f86] text-[11px] font-bold">
                                         Step {simStep + 1} of {simSteps.length}
                                     </span>
                                 </div>
@@ -353,20 +546,19 @@ export default function SGPCResearchCentrePage() {
                                         return (
                                             <div
                                                 key={idx}
-                                                className={`p-3 rounded-md border transition-all ${
-                                                    isActive
-                                                        ? "bg-[#E5EFE7] border-[#1b4332] text-slate-900"
+                                                className={`p-3 rounded-lg border transition-all ${isActive
+                                                        ? "bg-[#DCE7F1] border-[#002f86] text-slate-900"
                                                         : isDone
-                                                        ? "bg-slate-50 border-slate-200 text-slate-600"
-                                                        : "bg-white border-slate-100 text-slate-400"
-                                                }`}
+                                                            ? "bg-slate-50 border-slate-200 text-slate-600"
+                                                            : "bg-white border-slate-100 text-slate-400"
+                                                    }`}
                                             >
                                                 <div className="flex items-center justify-between font-sans mb-1">
                                                     <span className="font-bold text-xs text-slate-900 flex items-center gap-2">
                                                         {isDone ? (
                                                             <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                                                         ) : isActive ? (
-                                                            <div className="w-2 h-2 rounded-full bg-[#1b4332] animate-ping" />
+                                                            <div className="w-2 h-2 rounded-full bg-[#002f86] animate-ping" />
                                                         ) : (
                                                             <div className="w-2 h-2 rounded-full bg-slate-300" />
                                                         )}
@@ -387,31 +579,19 @@ export default function SGPCResearchCentrePage() {
                 </section>
 
 
-                {/* Ecological Infrastructure */}
-                <section className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-slate-200/50">
-                    <h2 className="font-serif text-3xl font-bold leading-tight text-[#1b4332] md:text-4xl mb-8">
-                        Ecological & Satellite Sensing Labs
-                    </h2>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        {INFRA_STATS.map((stat, idx) => (
-                            <div key={idx} className="p-6 bg-white border border-slate-200 text-center shadow-sm">
-                                <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-2 font-mono">{stat.label}</h4>
-                                <p className="text-sm font-bold text-slate-900">{stat.value}</p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
 
                 {/* Publications & Papers Section */}
                 <section id="publications" className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-200/50">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-8">
                         <div>
-                            <p className="text-sm text-slate-600">
-                                Research outputs published in top international environmental sensing, bio-informatics, and IEEE journals.
-                            </p>
+                            <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 block font-mono mb-1">
+                                IEEE & ECOLOGICAL VENUES
+                            </span>
+                            <h2 className="font-serif text-3xl font-bold text-[#002f86]">
+                                Research Publications
+                            </h2>
                         </div>
-                        <Link href="/blog?category=research" className="mt-4 md:mt-0 text-sm font-bold text-[#1b4332] hover:underline flex items-center gap-1">
+                        <Link href="/blog?category=research" className="mt-4 md:mt-0 text-sm font-bold text-[#002f86] hover:underline flex items-center gap-1">
                             <span>View All Publications</span>
                             <ChevronRight size={16} />
                         </Link>
@@ -419,14 +599,14 @@ export default function SGPCResearchCentrePage() {
 
                     <div className="space-y-4">
                         {PUBLICATIONS.map((pub) => (
-                            <div key={pub.id} className="p-6 bg-[#F7F7F4] border border-slate-200/80 hover:border-slate-300 transition-all">
+                            <div key={pub.id} className="p-6 bg-[#F7F7F4] border border-slate-200/80 hover:border-slate-300 rounded-xl transition-all">
                                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                                    <span className="px-2.5 py-0.5 rounded bg-[#E5EFE7] text-[#1b4332] text-[11px] font-bold font-mono">
+                                    <span className="px-2.5 py-0.5 rounded-full bg-[#DCE7F1] text-[#002f86] text-[11px] font-bold font-mono">
                                         {pub.venue}
                                     </span>
                                     <span className="text-xs text-slate-500 font-mono">{pub.year} • {pub.topic}</span>
                                 </div>
-                                <h3 className="font-serif text-lg font-bold text-slate-900 mb-1 hover:text-[#1b4332] transition-colors">
+                                <h3 className="font-serif text-lg font-bold text-slate-900 mb-1 hover:text-[#002f86] transition-colors">
                                     <a href={pub.pdfLink} target="_blank" rel="noopener noreferrer">
                                         {pub.title}
                                     </a>
@@ -442,7 +622,7 @@ export default function SGPCResearchCentrePage() {
                                         href={pub.pdfLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="text-xs font-bold text-[#1b4332] hover:underline flex items-center gap-1"
+                                        className="text-xs font-bold text-[#002f86] hover:underline flex items-center gap-1"
                                     >
                                         <span>Download IEEE PDF</span>
                                         <ArrowRight size={14} />
@@ -461,38 +641,38 @@ export default function SGPCResearchCentrePage() {
                 </section>
             </div>
 
-            {/* FAQ Section matching Entry-Level Program Page */}
+            {/* FAQ Section */}
             <section className="py-16 px-6 bg-white border-t border-b border-slate-200/60">
                 <div className="container mx-auto max-w-7xl">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-[#1b4332] mb-4">Frequently Asked Questions</h2>
-                        <p className="text-lg text-slate-600">Common queries about SGPC research fellowships, ESG audits, and clean-tech grants.</p>
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#002f86] mb-4">Frequently Asked Questions</h2>
+                        <p className="text-lg text-slate-600">Common queries about SGPC research fellowships, ESG audit suites, and satellite telemetry access.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                         {/* Column 1 */}
                         <div className="space-y-4">
                             <FAQItem question="What is SGPC's primary research focus?">
-                                SGPC conducts environmental research across 4 core pillars: Deep Tech & Ecological Intelligence, Entrepreneurship & Green Venture, Sustainability & Carbon Accounting, and Renewable Energy & Climate Policy.
+                                SGPC conducts research across 4 core pillars: Deep Tech & Ecological Intelligence, Entrepreneurship & Green Venture, Sustainability & Carbon Accounting, and Renewable Energy & Climate Policy.
                             </FAQItem>
-                            <FAQItem question="How does VLM microplastics detection work?">
-                                SGPC deploys Vision-Language Model ensembles trained on multispectral microscope feeds to identify and classify microplastic polymer types automatically.
+                            <FAQItem question="How can researchers apply for Green Tech Fellowships?">
+                                Climate scientists, material informatics researchers, and policy analysts can apply for fellowships through our open application calls or sponsored sustainability grants.
                             </FAQItem>
-                            <FAQItem question="Are SGPC publications open access?">
-                                Yes. All environmental scientific papers are published in peer-reviewed IEEE journals and open-access climate whitepapers.
+                            <FAQItem question="Can corporations request automated ESG asset verification?">
+                                Yes. Enterprises partner with SGPC to implement Scope 1-3 carbon telemetry, life-cycle impact modeling (LCA), and anti-greenwashing audit verifiers.
                             </FAQItem>
                         </div>
 
                         {/* Column 2 */}
                         <div className="space-y-4">
-                            <FAQItem question="How do corporate ESG partnerships work at SGPC?">
-                                Corporate partners collaborate with SGPC to implement automated Scope 1-3 emissions telemetry, conduct lifecycle carbon audits, and eliminate greenwashing.
+                            <FAQItem question="What satellite infrastructure powers SGPC labs?">
+                                SGPC ingests real-time hyperspectral satellite feeds for automated microplastics ocean detection, deforestation tracking, and municipal heat island modeling.
                             </FAQItem>
-                            <FAQItem question="Can clean-tech startups incubate at SGPC?">
-                                Yes. Through Pillar 02 (Green Venture), environmental startups receive satellite data feed access, material lab bench space, and incubation grants.
+                            <FAQItem question="Are SGPC research publications open access?">
+                                Yes. All research outputs produced by SGPC are published in peer-reviewed IEEE venues and open-access climate whitepapers.
                             </FAQItem>
-                            <FAQItem question="What background is required for SGPC Fellowships?">
-                                Researchers with backgrounds in Environmental Science, Chemical Engineering, Computer Vision, or Public Policy can apply for research fellowships.
+                            <FAQItem question="How does SGPC support clean-tech startups?">
+                                Through Pillar 02 (Green Venture), early-stage climate tech startups receive satellite data access, ESG compliance verification, and incubation support.
                             </FAQItem>
                         </div>
                     </div>
@@ -525,8 +705,8 @@ export default function SGPCResearchCentrePage() {
                                 <X className="w-5 h-5" />
                             </button>
 
-                            <span className="px-2.5 py-0.5 rounded bg-[#E5EFE7] text-[#1b4332] text-[10px] font-bold uppercase tracking-wider font-mono">
-                                SGPC Technical Spec
+                            <span className="px-2.5 py-0.5 rounded bg-[#DCE7F1] text-[#002f86] text-[10px] font-bold uppercase tracking-wider font-mono">
+                                SGPC Technical Sustainability Spec
                             </span>
 
                             <h3 className="font-serif text-xl sm:text-2xl font-bold text-slate-900 mt-3 mb-2">
@@ -534,13 +714,13 @@ export default function SGPCResearchCentrePage() {
                             </h3>
 
                             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 font-sans">
-                                Detailed technical environmental whitepaper covering VLM sensing methodology, carbon telemetry math, and bio-polymer simulation specifications for {activePillarObj.title}.
+                                Detailed technical sustainability whitepaper covering VLM spectral classification, carbon accounting telemetry, and decarbonization proofs for {activePillarObj.title}.
                             </p>
 
                             <div className="p-4 bg-[#F7F7F4] border border-slate-200 text-xs font-mono text-slate-700 mb-6 space-y-1">
                                 <p className="font-bold text-slate-900 font-sans">Spec Details:</p>
-                                <p>• Publication ID: SGPC-SPEC-2026-04</p>
-                                <p>• Format: IEEE Xplore / Environmental PDF</p>
+                                <p>• Publication ID: SGPC-SPEC-2026-01</p>
+                                <p>• Format: IEEE Xplore / Sustainability PDF</p>
                                 <p>• Status: Peer Reviewed & Verified</p>
                             </div>
 
@@ -578,10 +758,10 @@ function FAQItem({ question, children }: { question: string; children: React.Rea
         <div className="bg-[#F7F7F4] border border-slate-200/80 overflow-hidden transition-all duration-300">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full flex items-center justify-between p-5 text-left font-bold text-slate-900 hover:text-[#1b4332] transition-colors"
+                className="w-full flex items-center justify-between p-5 text-left font-bold text-slate-900 hover:text-[#002f86] transition-colors"
             >
                 <span className="font-serif text-base">{question}</span>
-                <span className={`ml-4 flex-shrink-0 w-7 h-7 rounded-full bg-white flex items-center justify-center border border-slate-200 text-slate-600 transition-transform ${isOpen ? "rotate-180 bg-[#E5EFE7] text-[#1b4332]" : ""}`}>
+                <span className={`ml-4 flex-shrink-0 w-7 h-7 rounded-full bg-white flex items-center justify-center border border-slate-200 text-slate-600 transition-transform ${isOpen ? "rotate-180 bg-[#DCE7F1] text-[#002f86]" : ""}`}>
                     {isOpen ? <Minus size={16} /> : <Plus size={16} />}
                 </span>
             </button>

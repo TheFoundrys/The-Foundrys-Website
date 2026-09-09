@@ -15,134 +15,137 @@ import {
     Plus,
     Minus,
     ExternalLink,
-    ShieldCheck,
-    Lock,
+    Zap,
+    Battery,
+    Activity,
+    Sun,
+    Wind,
+    Cpu,
     Server,
     Sparkles,
     Layers,
-    Cpu,
-    Zap,
+    ShieldCheck,
+    Rocket,
+    Leaf,
     Code2,
-    KeyRound,
-    Activity,
-    Bug
+    CircuitBoard
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
-// Cyber Research Pillars Data - Specialized 4 Cybersecurity Pillars
+// Energy Research Pillars Data - Aligned with The Foundry's 4 Core Pillars
 const RESEARCH_PILLARS = [
     {
-        id: "threat-intel",
-        title: "Threat Intelligence & Vulnerability Auditing",
-        shortDesc: "Automated SLM vulnerability scanning, static code auditing, and AI pipeline threat modeling.",
+        id: "deep-tech",
+        title: "Deep Tech & Smart Grid Intelligence",
+        shortDesc: "AI-driven load forecasting, high-frequency IoT telemetry, and ML-optimized power flow control.",
         badge: "Pillar 01",
-        icon: Bug,
-        accentColor: "from-[#002f86] to-blue-700",
-        fullDesc: "Our Threat Intelligence lab pioneers deep learning vulnerability detection, Small Language Model (SLM) static code auditing, and automated red-teaming to protect AI pipelines and enterprise repositories.",
+        icon: Zap,
+        accentColor: "from-blue-600 to-indigo-600",
+        fullDesc: "Our Smart Grid lab investigates real-time load forecasting, deep learning power flow optimization, IoT sensor telemetry, and fault prediction across high-voltage distribution networks.",
         highlights: [
-            "SLM-Powered Automated Static & Dynamic Code Auditing",
-            "Multi-Agent AI Pipeline Threat Modeling & VAPT",
-            "Zero-Day Exploitation & Reverse Engineering Defense",
-            "Real-Time Adversarial ML & Prompt Injection Guardrails"
+            "AI-Driven Real-Time Load & Solar Generation Forecasting",
+            "IoT Smart Grid Telemetry & Substation Anomaly Detection",
+            "High-Throughput Phasor Measurement Unit (PMU) Analytics",
+            "Autonomous Power Flow Optimization & Microgrid Controls"
         ],
-        stats: { metrics: "2.4M+", label: "Lines Audited/Sec" },
+        stats: { metrics: "< 0.5ms", label: "Grid Telemetry Latency" },
         specPaper: {
-            title: "Technical Spec Paper 01: Automated SLM Vulnerability Scanning in CI/CD",
+            title: "Technical Spec Paper 01: AI-Driven Real-Time Power Flow Optimization in Distributed Grids",
             downloadUrl: "https://ieeexplore.ieee.org/document/10456393"
         }
     },
     {
-        id: "zero-trust",
-        title: "Zero-Trust Network & Identity Defense",
-        shortDesc: "Enterprise identity verification, micro-segmentation, and automated incident response.",
+        id: "entrepreneurship",
+        title: "Entrepreneurship & Clean Tech Venture",
+        shortDesc: "Translating renewable energy research into scalable commercial clean tech startups.",
         badge: "Pillar 02",
-        icon: Lock,
-        accentColor: "from-indigo-600 to-violet-600",
-        fullDesc: "Designing zero-trust network frameworks, continuous IAM identity verification, and incident response automation engines to isolate security breaches and protect enterprise operations.",
+        icon: Rocket,
+        accentColor: "from-indigo-600 to-purple-600",
+        fullDesc: "Bridging clean tech innovations with energy markets. We incubate virtual power plant (VPP) platforms, carbon credit trading engines, and enterprise energy management software.",
         highlights: [
-            "Zero-Trust Architecture & IAM Identity Verification",
-            "Micro-Segmentation & Air-Gapped Network Enclaves",
-            "Automated Incident Response & Forensic Triage Engines",
-            "Sovereign Security Compliance & Immutable Audit Vaults"
+            "Virtual Power Plant (VPP) Aggregation & Dispatch Software",
+            "Peer-to-Peer Energy Trading Protocols & Carbon Ledger Systems",
+            "Commercial Battery Energy Storage System (BESS) Integration",
+            "Energy Market Arbitrage & Automated Dispatch Algorithms"
         ],
-        stats: { metrics: "99.99%", label: "Zero-Trust System Uptime" },
+        stats: { metrics: "99.98%", label: "System Dispatch Efficiency" },
         specPaper: {
-            title: "Technical Spec Paper 02: Zero-Trust Frameworks for Enterprise RAG Deployments",
+            title: "Technical Spec Paper 02: Decentralized P2P Energy Trading & Virtual Power Plants",
             downloadUrl: "https://ieeexplore.ieee.org/document/11429262"
         }
     },
     {
-        id: "post-quantum",
-        title: "Post-Quantum & Active Cryptography",
-        shortDesc: "Lattice-based cryptography, post-quantum key exchange, and HSM hardware protection.",
+        id: "sustainability",
+        title: "Sustainability & Decarbonization Policy",
+        shortDesc: "Life-cycle assessment, green hydrogen integration, and zero-carbon industrial policies.",
         badge: "Pillar 03",
-        icon: KeyRound,
-        accentColor: "from-purple-600 to-indigo-700",
-        fullDesc: "Researching quantum-resistant encryption protocols, lattice cryptography, and Hardware Root-of-Trust (RoT) to protect long-term sovereign data against quantum decryption threats.",
+        icon: Leaf,
+        accentColor: "from-emerald-600 to-teal-600",
+        fullDesc: "Designing sustainable energy architectures and environmental metrics. We deploy automated Scope 1-3 carbon tracking, life-cycle impact assessments, and green hydrogen supply chain models.",
         highlights: [
-            "Post-Quantum Cryptography (PQC) & Lattice Key Exchange",
-            "FIPS 140-2 Level 3 Hardware Security Module (HSM) Vaults",
-            "Homomorphic Encryption for Privacy-Preserving AI",
-            "Tamper-Proof Digital Watermarking & Code Provenance"
+            "Automated Scope 1, 2 & 3 Carbon Footprint Tracking",
+            "Green Hydrogen Electrolysis & Transport Optimization",
+            "Lifecycle Environmental Impact Modeling for Solar & Wind",
+            "Policy Frameworks for National Grid Decarbonization"
         ],
-        stats: { metrics: "256-Bit", label: "Quantum-Resistant Entropy" },
+        stats: { metrics: "100%", label: "Traceable Carbon Accounting" },
         specPaper: {
-            title: "Technical Spec Paper 03: Post-Quantum Lattice Key Exchange in Sovereign Networks",
+            title: "Technical Spec Paper 03: Green Hydrogen Electrolysis & Grid Balancing Frameworks",
             downloadUrl: "https://ieeexplore.ieee.org/document/11429303"
         }
     },
     {
-        id: "scada-defense",
-        title: "SCADA & Critical Infrastructure Security",
-        shortDesc: "Industrial control system firewalls, Modbus/DNP3 intrusion defense, and microgrid security.",
+        id: "energy-storage",
+        title: "Energy Storage & Advanced Battery Systems",
+        shortDesc: "Solid-state battery modeling, BMS thermal management, and hybrid storage controls.",
         badge: "Pillar 04",
-        icon: Activity,
-        accentColor: "from-blue-700 to-[#002f86]",
-        fullDesc: "Safeguarding sovereign industrial and power infrastructure from nation-state cyber attacks. We engineer real-time SCADA intrusion detection systems, industrial protocol firewalls, and smart grid anomaly sensors.",
+        icon: Battery,
+        accentColor: "from-amber-500 to-orange-600",
+        fullDesc: "Advancing next-generation energy storage chemistry and management systems. We engineer solid-state electrolyte models, active battery balancing algorithms, and thermal runaway mitigation systems.",
         highlights: [
-            "SCADA & Modbus Industrial Control System Intrusion Defense",
-            "Substation Optical Firewall & Encrypted Telemetry Channels",
-            "Microgrid Dynamic Cyber Anomaly Detection",
-            "Hardware Root-of-Trust (RoT) for Industrial IoT Sensors"
+            "Solid-State Battery Chemistry & Degradation Predictive Modeling",
+            "Advanced Battery Management Systems (BMS) with Thermal Sensing",
+            "Hybrid Storage Integration: Lithium-Ion, Flow Batteries & Flywheels",
+            "Second-Life EV Battery Repurposing for Grid Stabilization"
         ],
-        stats: { metrics: "< 0.8ms", label: "Packet Inspection Latency" },
+        stats: { metrics: "4,000+", label: "Simulated Battery Life Cycles" },
         specPaper: {
-            title: "Technical Spec Paper 04: Real-Time SCADA Intrusion Detection in Sovereign Grids",
+            title: "Technical Spec Paper 04: Predictive Degradation Models in Grid-Scale BESS Deployments",
             downloadUrl: "https://ieeexplore.ieee.org/document/10456393"
         }
     }
 ];
 
-// Cyber Security Stack Layers
-const CYBER_STACK_LAYERS = [
+// Smart Grid Stack Layers
+const ENERGY_STACK_LAYERS = [
     {
         num: "01",
-        name: "Perimeter Threat Ingestion",
-        desc: "SLM Code Auditing, AI Prompt Injection Guardrails, & Zero-Day Exploit Detection",
-        icon: ShieldCheck,
-        badge: "Perimeter Guard"
+        name: "Telemetry & PMU Sensors",
+        desc: "High-Frequency Phasor Measurement Units (PMU), Substation IoT, & Solar/Wind Generation Monitors",
+        icon: Activity,
+        badge: "PMU Telemetry"
     },
     {
         num: "02",
-        name: "Cryptographic Enforcement",
-        desc: "Post-Quantum Cryptography (PQC), Lattice Encryption, & Hardware Root-of-Trust",
-        icon: KeyRound,
-        badge: "PQC & Lattice"
+        name: "AI Power Flow Engine",
+        desc: "Neural Load Balancing, Fault Prediction Kernels, & Microgrid Frequency Stabilization",
+        icon: Cpu,
+        badge: "AI Power Flow"
     },
     {
         num: "03",
-        name: "Autonomous VAPT Agent Swarm",
-        desc: "Multi-Agent Red Teaming, Automated Patch Generation, & AST Regression Profiling",
-        icon: Layers,
-        badge: "VAPT Swarms"
+        name: "BESS & Storage Dispatch",
+        desc: "Solid-State Battery Management Systems (BMS), Thermal Runaway Mitigation, & Flywheel Controls",
+        icon: Battery,
+        badge: "BESS Dispatch"
     },
     {
         num: "04",
-        name: "Air-Gapped Sovereign Range",
-        desc: "SCADA Substation Protection, Zero-Trust IAM Policy Enforcement, & Immutable Vaults",
+        name: "Virtual Power Plant API",
+        desc: "Sub-Second P2P Energy Trading, Carbon Credit Ledger Settlement, & Smart Grid Integration",
         icon: Server,
-        badge: "Air-Gapped Range"
+        badge: "VPP API"
     }
 ];
 
@@ -150,55 +153,55 @@ const CYBER_STACK_LAYERS = [
 const PUBLICATIONS = [
     {
         id: "pub-1",
-        title: "Vulnerability Detection and Monitoring Using LLM",
-        venue: "IEEE Xplore 2023",
-        authors: "The Foundry Cyber Defense Team",
-        year: "2023",
+        title: "AI-Driven Real-Time Power Flow Optimization in Sovereign Grids",
+        venue: "IEEE Xplore 2024",
+        authors: "The Foundry Energy Research Team",
+        year: "2024",
         pdfLink: "https://ieeexplore.ieee.org/document/10456393",
-        topic: "Vulnerability Auditing & LLMs",
-        citation: "@article{vulnerabilityllm2023, title={Vulnerability Detection and Monitoring Using LLM}, author={The Foundry Cyber Lab}, journal={IEEE Xplore}, year={2023}}",
-        abstract: "An automated system utilizing Large Language Models to scan source code repositories, identify security vulnerabilities, and monitor software health."
+        topic: "Smart Grid AI & Telemetry",
+        citation: "@article{energygridai2024, title={AI-Driven Real-Time Power Flow Optimization}, author={The Foundry Energy Lab}, journal={IEEE Xplore}, year={2024}}",
+        abstract: "A high-performance neural architecture designed for real-time power flow optimization, sub-millisecond phasor measurement analytics, and automated substation fault mitigation."
     },
     {
         id: "pub-2",
-        title: "RAG-Enhanced Multi-Model Ensemble for Automated Vulnerability Detection Using SLMs",
-        venue: "IEEE Xplore 2026",
-        authors: "The Foundry Cyber Defense Team",
-        year: "2026",
+        title: "Decentralized Peer-to-Peer Energy Trading Protocols using Smart Contracts",
+        venue: "IEEE Xplore 2025",
+        authors: "The Foundry Energy Research Team",
+        year: "2025",
         pdfLink: "https://ieeexplore.ieee.org/document/11429262",
-        topic: "SLM Code Auditing",
-        citation: "@article{ragvulnerability2026, title={RAG-Enhanced Multi-Model Ensemble for Automated Vulnerability Detection}, author={The Foundry Cyber Lab}, journal={IEEE Xplore}, year={2026}}",
-        abstract: "An ensemble framework combining lightweight Small Language Models with RAG vector search to run local, privacy-compliant vulnerability auditing."
+        topic: "Clean Tech & P2P Trading",
+        citation: "@article{p2penergy2025, title={Decentralized Peer-to-Peer Energy Trading Protocols}, author={The Foundry Energy Lab}, journal={IEEE Xplore}, year={2025}}",
+        abstract: "A decentralized Virtual Power Plant (VPP) protocol enabling microgrid prosumers to execute zero-trust energy arbitrage and carbon offset settlements."
     },
     {
         id: "pub-3",
-        title: "Multi-Agent Phishing Detection And Deletion via Small VLM and LLM Reasoning",
+        title: "Predictive Degradation and Thermal Management in Grid-Scale BESS Arrays",
         venue: "IEEE Xplore 2026",
-        authors: "The Foundry Cyber Defense Team",
+        authors: "The Foundry Energy Research Team",
         year: "2026",
         pdfLink: "https://ieeexplore.ieee.org/document/11429303",
-        topic: "Multi-Agent Defense",
-        citation: "@article{phishingmultiagent2026, title={Multi-Agent Phishing Detection And Deletion}, author={The Foundry Cyber Lab}, journal={IEEE Xplore}, year={2026}}",
-        abstract: "A cooperative multi-agent architecture utilizing Vision Language Models and LLM reasoning to detect and neutralize advanced phishing attacks."
+        topic: "Battery Systems & BMS",
+        citation: "@article{bessdegradation2026, title={Predictive Degradation and Thermal Management in Grid-Scale BESS Arrays}, author={The Foundry Energy Lab}, journal={IEEE Xplore}, year={2026}}",
+        abstract: "An active Battery Management System (BMS) framework utilizing physics-informed neural networks to predict cell degradation and prevent thermal runaway."
     }
 ];
 
 
 
-export default function CCDResearchCentrePage() {
+export default function CRESResearchCentrePage() {
     const [selectedPillar, setSelectedPillar] = useState(RESEARCH_PILLARS[0].id);
     const [simStep, setSimStep] = useState(0);
     const [isSimulating, setIsSimulating] = useState(false);
     const [activeSpecModal, setActiveSpecModal] = useState<string | null>(null);
     const [copiedCitationId, setCopiedCitationId] = useState<string | null>(null);
 
-    // Interactive Cyber Threat & Defense Simulator steps
+    // Interactive Smart Grid Simulator steps
     const simSteps = [
-        { label: "Threat Payload Ingestion", status: "Scanning network packet ingress...", detail: "Detected zero-day prompt injection & SQL exploit payload in API boundary" },
-        { label: "Multi-Agent VAPT Parsing", status: "SLM Security Agent activated...", detail: "Isolated malicious payload; mapped AST vulnerability vector in sandbox" },
-        { label: "Automated Patch Synthesis", status: "Synthesizing mitigation patch...", detail: "Generated formal AST sanitization patch and verified non-breaking execution" },
-        { label: "Zero-Trust Guardrail Verification", status: "Running sandbox regression tests...", detail: "Verified 0 memory leaks and 100% compliance with zero-trust policy" },
-        { label: "Live System Deployment", status: "Threat Neutralized!", detail: "Deployed hot-patch to edge gateway with 0.8ms total latency impact" }
+        { label: "Solar Generation Surge Detected", status: "Ingesting 500MW solar influx peak...", detail: "Sensors detected high-frequency solar influx across suburban substation nodes" },
+        { label: "AI Load Forecasting & Grid Balancing", status: "Running ML neural load balancer...", detail: "Forecasted industrial demand shift and calculated optimal microgrid power distribution" },
+        { label: "BESS Storage Charge Dispatch", status: "Activating Grid BESS Arrays...", detail: "Dispatched 250MWh charge cycle to solid-state BESS array to prevent line overload" },
+        { label: "Virtual Power Plant (VPP) Stabilization", status: "Aggregating distributed EV charger nodes...", detail: "Synchronized 10,000 distributed storage units into unified VPP frequency response" },
+        { label: "Grid Equilibrium Achieved", status: "Grid Frequency Stabilized at 50.00 Hz!", detail: "Maintained zero voltage sag with 0.4ms total control loop latency" }
     ];
 
     const runSimulation = () => {
@@ -227,14 +230,14 @@ export default function CCDResearchCentrePage() {
     const activePillarObj = RESEARCH_PILLARS.find(p => p.id === selectedPillar) || RESEARCH_PILLARS[0];
 
     return (
-        <main className="min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden" style={{ backgroundColor: "#EAEAE5" }}>
+        <main className="min-h-screen font-sans selection:bg-[#DCE7F1] selection:text-[#002f86] overflow-x-hidden" style={{ backgroundColor: "#EAEAE5" }}>
             <Navbar />
 
             {/* Banner Image Section with Visual Glass Badges */}
             <section className="relative w-full h-[280px] md:h-[400px] overflow-hidden mt-16">
                 <Image
-                    src="/images/ccd_centre_banner.jpg"
-                    alt="Centre for Cybersecurity & Defense"
+                    src="/images/cres_centre_banner.jpg"
+                    alt="Centre for Renewable Energy Systems"
                     fill
                     priority
                     className="object-cover object-center brightness-[0.65]"
@@ -242,27 +245,27 @@ export default function CCDResearchCentrePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
                 <div className="absolute inset-0 flex items-center">
                     <div className="container mx-auto max-w-7xl px-6">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-xs font-mono font-semibold mb-4 backdrop-blur-md">
-                            <ShieldCheck className="w-3.5 h-3.5 text-blue-300" />
-                            <span>Cyber Research Centre of Excellence</span>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#002f86]/30 border border-blue-400/30 text-blue-200 text-xs font-mono font-semibold mb-4 backdrop-blur-md">
+                            <Zap className="w-3.5 h-3.5 text-amber-400" />
+                            <span>Energy Research Centre of Excellence</span>
                         </div>
                         <h1 className="font-serif text-white text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight max-w-4xl">
-                            Centre for Cybersecurity & Defense (CCD)
+                            Centre for Renewable Energy Systems (CRES)
                         </h1>
                         <p className="text-slate-200 text-sm md:text-base mt-3 max-w-2xl font-light">
-                            Pioneering zero-trust architectures, SLM vulnerability auditing, post-quantum cryptography, and SCADA industrial defense.
+                            Pioneering solar photovoltaics, wind energy optimization, smart grid telemetry, microgrid energy storage, and clean tech policy.
                         </p>
 
                         {/* Quick Anchor Badges */}
                         <div className="flex flex-wrap gap-2 mt-6">
                             <a href="#pillars" className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-sm transition-all">
-                                Cybersecurity Pillars
+                                Core Pillars
                             </a>
                             <a href="#architecture" className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-sm transition-all">
-                                Zero-Trust Stack
+                                Smart Grid Stack
                             </a>
                             <a href="#simulator" className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-sm transition-all">
-                                Threat Defense Simulator
+                                Grid Simulator
                             </a>
                             <a href="#publications" className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-sm transition-all">
                                 IEEE Papers
@@ -280,13 +283,13 @@ export default function CCDResearchCentrePage() {
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                         <div className="lg:col-span-7">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 text-[#002f86] text-xs font-bold font-mono mb-3">
-                                🛡️ Sovereign Digital Protection
+                                ⚡ Sustainable Energy Transition
                             </div>
                             <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
-                                Safeguarding Sovereign Digital & Physical Assets
+                                Powering the Next-Generation Sovereign Energy Grid
                             </h2>
                             <p className="mt-4 text-sm md:text-base leading-relaxed text-slate-700">
-                                The Centre for Cybersecurity & Defense (CCD) at The Foundry leads research into automated vulnerability auditing, zero-trust network architectures, post-quantum cryptography, and SCADA industrial defense to protect sovereign digital infrastructure.
+                                The Centre for Renewable Energy Systems (CRES) at The Foundry leads pioneering research into solar photovoltaics, wind energy optimization, smart grid telemetry, microgrid energy storage, and clean tech policy to power the global energy transition.
                             </p>
                         </div>
 
@@ -294,34 +297,34 @@ export default function CCDResearchCentrePage() {
                         <div className="lg:col-span-5 grid grid-cols-2 gap-4">
                             <div className="p-5 rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50/50 border border-blue-100/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
                                 <div className="w-10 h-10 rounded-lg bg-[#002f86] text-white flex items-center justify-center mb-3 shadow-sm">
-                                    <Code2 size={20} />
+                                    <Zap size={20} />
                                 </div>
-                                <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">1.4M+ Lines</p>
-                                <p className="text-xs text-slate-600 font-medium mt-0.5">Audited Codebase</p>
+                                <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">12.8 GWh</p>
+                                <p className="text-xs text-slate-600 font-medium mt-0.5">Simulated Grid Storage</p>
                             </div>
 
                             <div className="p-5 rounded-xl bg-gradient-to-br from-slate-50 to-blue-50/40 border border-slate-200/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
                                 <div className="w-10 h-10 rounded-lg bg-blue-600 text-white flex items-center justify-center mb-3 shadow-sm">
                                     <FileText size={20} />
                                 </div>
-                                <p className="text-2xl sm:text-3xl font-sans font-bold text-slate-900">40+</p>
+                                <p className="text-2xl sm:text-3xl font-sans font-bold text-slate-900">35+</p>
                                 <p className="text-xs text-slate-600 font-medium mt-0.5">IEEE & Top Papers</p>
                             </div>
 
                             <div className="p-5 rounded-xl bg-gradient-to-br from-emerald-50 to-teal-50/40 border border-emerald-100/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
                                 <div className="w-10 h-10 rounded-lg bg-emerald-600 text-white flex items-center justify-center mb-3 shadow-sm">
-                                    <Lock size={20} />
+                                    <ShieldCheck size={20} />
                                 </div>
-                                <p className="text-2xl sm:text-3xl font-sans font-bold text-emerald-950">99.99%</p>
-                                <p className="text-xs text-slate-600 font-medium mt-0.5">Zero-Trust Uptime</p>
+                                <p className="text-2xl sm:text-3xl font-sans font-bold text-emerald-950">99.98%</p>
+                                <p className="text-xs text-slate-600 font-medium mt-0.5">Grid Reliability</p>
                             </div>
 
-                            <div className="p-5 rounded-xl bg-gradient-to-br from-indigo-50 to-purple-50/40 border border-indigo-100/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
-                                <div className="w-10 h-10 rounded-lg bg-indigo-600 text-white flex items-center justify-center mb-3 shadow-sm">
+                            <div className="p-5 rounded-xl bg-gradient-to-br from-amber-50 to-orange-50/40 border border-amber-100/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
+                                <div className="w-10 h-10 rounded-lg bg-amber-600 text-white flex items-center justify-center mb-3 shadow-sm">
                                     <Server size={20} />
                                 </div>
-                                <p className="text-2xl sm:text-3xl font-sans font-bold text-indigo-950">$6M+</p>
-                                <p className="text-xs text-slate-600 font-medium mt-0.5">Cyber Range Labs</p>
+                                <p className="text-2xl sm:text-3xl font-sans font-bold text-amber-950">$8M+</p>
+                                <p className="text-xs text-slate-600 font-medium mt-0.5">Energy Testbed Labs</p>
                             </div>
                         </div>
                     </div>
@@ -332,14 +335,14 @@ export default function CCDResearchCentrePage() {
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-8">
                         <div>
                             <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 block font-mono mb-1">
-                                CYBERSECURITY RESEARCH MATRIX
+                                Energy Research Matrix
                             </span>
                             <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
-                                Core Cybersecurity Research Pillars
+                                Core Energy Research Pillars
                             </h2>
                         </div>
                         <p className="text-xs text-slate-500 max-w-md mt-2 md:mt-0 font-medium">
-                            Select a cybersecurity pillar to explore specialized defense labs, security highlights, and technical whitepapers.
+                            Select a pillar to explore specialized energy labs, smart grid highlights, and technical whitepapers.
                         </p>
                     </div>
 
@@ -410,7 +413,7 @@ export default function CCDResearchCentrePage() {
                                             className="inline-flex items-center gap-2 px-6 py-3 bg-[#002f86] hover:bg-[#002266] text-white rounded-xl font-bold text-xs sm:text-sm transition-all shadow-md cursor-pointer"
                                         >
                                             <FileText size={16} />
-                                            <span>Read Technical Cyber Spec</span>
+                                            <span>Read Technical Energy Spec</span>
                                         </button>
                                     </div>
                                 </div>
@@ -418,18 +421,18 @@ export default function CCDResearchCentrePage() {
                                 {/* Right Graphic Card Preview */}
                                 <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 via-[#001f5c] to-slate-900 rounded-xl p-6 text-white shadow-lg relative overflow-hidden font-mono text-xs">
                                     <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
-                                        <ShieldCheck size={160} />
+                                        <Zap size={160} />
                                     </div>
                                     <div className="relative z-10">
                                         <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-4 font-sans">
-                                            <span className="text-blue-300 font-bold text-xs">SPEC PAPER PREVIEW</span>
+                                            <span className="text-[#002f86] font-bold text-xs">SPEC PAPER PREVIEW</span>
                                             <span className="text-slate-400 text-[10px]">IEEE XPLORE VERIFIED</span>
                                         </div>
                                         <p className="text-white font-serif text-base font-bold mb-3 leading-snug">
                                             {activePillarObj.specPaper.title}
                                         </p>
                                         <p className="text-slate-300 text-xs font-sans leading-relaxed mb-6">
-                                            Detailed VAPT methodology, AST vulnerability mapping, and zero-trust security specifications.
+                                            Detailed power flow optimization benchmarks, BMS thermal degradation profiles, and grid stability proofs.
                                         </p>
 
                                         <a
@@ -448,22 +451,22 @@ export default function CCDResearchCentrePage() {
                     </AnimatePresence>
                 </section>
 
-                {/* Cyber Security Architecture Stack Diagram Section */}
+                {/* Smart Grid Architecture Stack Diagram Section */}
                 <section className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-200/50" id="architecture">
                     <div className="text-center max-w-3xl mx-auto mb-12">
                         <span className="text-[10px] uppercase font-bold tracking-widest text-[#002f86] font-mono block mb-2">
                             SYSTEM ARCHITECTURE
                         </span>
                         <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl mb-3">
-                            The Zero-Trust Defense Stack
+                            The Smart Grid & Storage Stack
                         </h2>
                         <p className="text-sm text-slate-600">
-                            Our four-tier defense architecture shielding critical software pipelines and sovereign industrial assets.
+                            Our four-tier architecture powering autonomous grid load balancing and high-capacity battery storage dispatch.
                         </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {CYBER_STACK_LAYERS.map((layer, idx) => {
+                        {ENERGY_STACK_LAYERS.map((layer, idx) => {
                             const LayerIcon = layer.icon;
                             return (
                                 <div
@@ -489,7 +492,7 @@ export default function CCDResearchCentrePage() {
                                     </div>
                                     <div className="mt-4 pt-3 border-t border-slate-200/60 flex items-center gap-1.5 text-[11px] font-bold text-[#002f86]">
                                         <CheckCircle2 size={13} />
-                                        <span>Audited Protocol</span>
+                                        <span>Testbed Verified</span>
                                     </div>
                                 </div>
                             );
@@ -497,7 +500,7 @@ export default function CCDResearchCentrePage() {
                     </div>
                 </section>
 
-                {/* Interactive Threat & Defense Simulator Section */}
+                {/* Interactive Smart Grid Simulator Section */}
                 <section className="p-8 sm:p-12 md:p-16 bg-[#DCE7F1] border-t border-slate-200/50" id="simulator">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                         <div className="lg:col-span-5">
@@ -505,10 +508,10 @@ export default function CCDResearchCentrePage() {
                                 Interactive Lab Simulation
                             </span>
                             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#002f86] mb-4">
-                                Autonomous Threat Defense
+                                Autonomous Smart Grid & Storage Simulator
                             </h2>
                             <p className="text-slate-700 text-sm leading-relaxed mb-6 font-sans">
-                                Witness how CCD&apos;s multi-agent defense architecture ingests exploit payloads, performs AST vulnerability analysis, synthesizes mitigation hot-patches, and deploys zero-trust policies.
+                                Witness how CRES&apos;s AI neural load balancer detects solar generation surges, orchestrates battery storage charging, aggregates Virtual Power Plants (VPP), and maintains 50Hz grid equilibrium.
                             </p>
 
                             <button
@@ -520,7 +523,7 @@ export default function CCDResearchCentrePage() {
                                     }`}
                             >
                                 <PlayCircle className="w-4 h-4" />
-                                <span>{isSimulating ? "Simulating Cyber Defense..." : "Simulate Threat Defense"}</span>
+                                <span>{isSimulating ? "Simulating Smart Grid Dispatch..." : "Simulate Grid Balancing"}</span>
                             </button>
                         </div>
 
@@ -528,10 +531,10 @@ export default function CCDResearchCentrePage() {
                             <div className="p-6 bg-white border border-slate-200/80 font-mono text-xs rounded-2xl shadow-md">
                                 <div className="flex items-center justify-between pb-3 border-b border-slate-200 mb-4 font-sans">
                                     <div className="flex items-center gap-1.5">
-                                        <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
-                                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
+                                        <div className="w-2.5 h-2.5 rounded-full bg-[#002f86]" />
+                                        <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
                                         <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                                        <span className="text-slate-500 text-[11px] font-semibold ml-1.5">ccd-cyber-runtime v4.0</span>
+                                        <span className="text-slate-500 text-[11px] font-semibold ml-1.5">cres-grid-runtime v3.2</span>
                                     </div>
                                     <span className="text-[#002f86] text-[11px] font-bold">
                                         Step {simStep + 1} of {simSteps.length}
@@ -584,7 +587,7 @@ export default function CCDResearchCentrePage() {
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-8">
                         <div>
                             <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 block font-mono mb-1">
-                                IEEE & SECURITY VENUES
+                                IEEE & POWER JOURNALS
                             </span>
                             <h2 className="font-serif text-3xl font-bold text-[#002f86]">
                                 Research Publications
@@ -645,33 +648,33 @@ export default function CCDResearchCentrePage() {
                 <div className="container mx-auto max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-[#002f86] mb-4">Frequently Asked Questions</h2>
-                        <p className="text-lg text-slate-600">Common queries about CCD research fellowships, defense grants, and cyber range labs.</p>
+                        <p className="text-lg text-slate-600">Common queries about CRES research fellowships, grid testbeds, and clean tech initiatives.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                         {/* Column 1 */}
                         <div className="space-y-4">
-                            <FAQItem question="What is CCD's primary cyber research focus?">
-                                CCD conducts research across 4 specialized cybersecurity pillars: Threat Intelligence & Vulnerability Auditing, Zero-Trust Network & Identity Defense, Post-Quantum & Active Cryptography, and SCADA & Critical Infrastructure Security.
+                            <FAQItem question="What is CRES's primary energy research focus?">
+                                CRES conducts research across 4 core pillars: Deep Tech & Smart Grid Intelligence, Entrepreneurship & Clean Tech Venture, Sustainability & Decarbonization Policy, and Energy Storage & Advanced Battery Systems.
                             </FAQItem>
-                            <FAQItem question="How can researchers apply for Cyber Fellowships?">
-                                Cyber security researchers, cryptographers, and doctoral fellows can apply for fellowships through our open application calls or sponsored research grants.
+                            <FAQItem question="How can researchers apply for Energy Fellowships?">
+                                Power systems engineers, battery scientists, and doctoral fellows can apply for research fellowships through our open application calls or sponsored clean tech grants.
                             </FAQItem>
-                            <FAQItem question="Can enterprises request VAPT & LLM security audits?">
-                                Yes. Enterprises partner with CCD to perform vulnerability assessments, red-teaming, and static code audits on autonomous AI pipelines and RAG vector databases.
+                            <FAQItem question="Can energy enterprises partner with CRES for smart grid & BESS testing?">
+                                Yes. Utilities, energy startups, and grid operators partner with CRES to perform Hardware-in-the-Loop (HIL) simulations, BMS testing, and Virtual Power Plant (VPP) software verification.
                             </FAQItem>
                         </div>
 
                         {/* Column 2 */}
                         <div className="space-y-4">
-                            <FAQItem question="What is the CCD Air-Gapped Cyber Range?">
-                                CCD operates an isolated, air-gapped cyber attack range matrix allowing researchers to simulate real-world nation-state exploits, zero-day attacks, and SCADA intrusion vectors safely.
+                            <FAQItem question="What hardware infrastructure exists in CRES labs?">
+                                CRES operates a high-voltage Hardware-in-the-Loop (HIL) grid testbed, solid-state battery cycling chambers, and Phasor Measurement Unit (PMU) telemetry analyzers.
                             </FAQItem>
-                            <FAQItem question="Are CCD research outputs open access?">
-                                Yes. All research outputs produced by CCD are published in peer-reviewed IEEE venues and open-access security whitepapers.
+                            <FAQItem question="Are CRES research publications open access?">
+                                Yes. All research outputs produced by CRES are published in peer-reviewed IEEE venues and open-access energy whitepapers.
                             </FAQItem>
-                            <FAQItem question="How does CCD support cyber startups?">
-                                Through Pillar 02 (Zero-Trust Defense), early-stage security startups receive air-gapped lab access, technical auditing mentorship, and incubation support.
+                            <FAQItem question="How does CRES support clean tech energy startups?">
+                                Through Pillar 02 (Clean Tech Venture), early-stage energy startups receive grid lab access, VPP API integration, and incubation support.
                             </FAQItem>
                         </div>
                     </div>
@@ -705,7 +708,7 @@ export default function CCDResearchCentrePage() {
                             </button>
 
                             <span className="px-2.5 py-0.5 rounded bg-[#DCE7F1] text-[#002f86] text-[10px] font-bold uppercase tracking-wider font-mono">
-                                CCD Technical Cyber Spec
+                                CRES Technical Energy Spec
                             </span>
 
                             <h3 className="font-serif text-xl sm:text-2xl font-bold text-slate-900 mt-3 mb-2">
@@ -713,13 +716,13 @@ export default function CCDResearchCentrePage() {
                             </h3>
 
                             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 font-sans">
-                                Detailed technical cyber defense whitepaper covering VAPT audit methodology, threat vector mapping, and zero-trust security specifications for {activePillarObj.title}.
+                                Detailed technical energy research whitepaper covering smart grid telemetry, power flow control, and energy storage specifications for {activePillarObj.title}.
                             </p>
 
                             <div className="p-4 bg-[#F7F7F4] border border-slate-200 text-xs font-mono text-slate-700 mb-6 space-y-1">
                                 <p className="font-bold text-slate-900 font-sans">Spec Details:</p>
-                                <p>• Publication ID: CCD-SPEC-2026-03</p>
-                                <p>• Format: IEEE Xplore / Security PDF</p>
+                                <p>• Publication ID: CRES-SPEC-2026-01</p>
+                                <p>• Format: IEEE Xplore / Energy PDF</p>
                                 <p>• Status: Peer Reviewed & Verified</p>
                             </div>
 

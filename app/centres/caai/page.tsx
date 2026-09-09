@@ -15,84 +15,134 @@ import {
     FileText,
     Plus,
     Minus,
-    ExternalLink
+    ExternalLink,
+    BrainCircuit,
+    Cpu,
+    Server,
+    Sparkles,
+    Layers,
+    ShieldCheck,
+    Database,
+    Zap,
+    Code2,
+    Bot
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
-// Research Pillars Data - Aligned with The Foundry's 4 Core Pillars
+// Research Pillars Data - Specialized 4 AI Pillars
 const RESEARCH_PILLARS = [
     {
-        id: "deep-tech",
-        title: "Deep Tech & Applied AI",
-        shortDesc: "Mastering the fundamental layers of the intelligence age — LLMs, Neural Networks, and Quantum Compute.",
+        id: "foundation-models",
+        title: "Generative AI & Multimodal LLMs",
+        shortDesc: "Multimodal LLMs, Vision-Language models, fine-tuning, and RAG vector fabrics.",
         badge: "Pillar 01",
-        fullDesc: "Our Deep Tech lab investigates core machine learning foundations, Large Language Models (LLMs), neural compute optimization, and quantum-classical hybrid algorithms to power next-generation software and hardware.",
+        icon: BrainCircuit,
+        accentColor: "from-blue-600 to-indigo-600",
+        fullDesc: "Our Foundation Models lab investigates core machine learning foundations, Large Language Models (LLMs), vision-language processing, and graph-augmented retrieval systems for high-reasoning enterprise tasks.",
         highlights: [
             "Generative Models & Multimodal LLM Engineering",
-            "Neural Architectures & Sub-Millisecond Triton Kernels",
-            "Quantum-Classical Hybrid Computing & QML Algorithms",
-            "High-Throughput Vector Databases & Graph RAG Fabrics"
+            "Retrieval-Augmented Generation (RAG) & Graph Vector Fabrics",
+            "Small Language Models (SLM) Fine-Tuning & Quantization",
+            "Non-Deterministic Reasoning & Safety Evaluation Benchmark"
         ],
         stats: { metrics: "1.2B+", label: "Tokens Processed/Sec" },
         specPaper: {
-            title: "Technical Spec Paper 01: Sub-Millisecond LLM Inference & Triton Kernels",
+            title: "Technical Spec Paper 01: Sub-Millisecond LLM Inference & Vector Fabrics",
             downloadUrl: "https://ieeexplore.ieee.org/document/11525902/"
         }
     },
     {
-        id: "entrepreneurship",
-        title: "Entrepreneurship & Venture Building",
-        shortDesc: "Translating cutting-edge research into zero-to-one commercial tech ventures.",
+        id: "neural-compute",
+        title: "Neural Compute & Triton Kernel Engineering",
+        shortDesc: "Custom Triton kernels, FlashAttention acceleration, and sub-millisecond FP8 execution.",
         badge: "Pillar 02",
-        fullDesc: "Bridging technical breakthroughs with market leadership. We build autonomous multi-agent frameworks, enterprise operations, and incubation systems that scale deep tech innovations into global enterprises.",
+        icon: Cpu,
+        accentColor: "from-indigo-600 to-violet-600",
+        fullDesc: "Optimizing the silicon execution layer for generative AI. We write custom GPU Triton kernels, memory-efficient attention operations, and low-precision FP8 quantization passes to maximize throughput.",
         highlights: [
-            "Zero-to-One Deep Tech Venture Incubation",
-            "Autonomous Multi-Agent Swarm Orchestration",
-            "Enterprise AI Strategy & Leadership Frameworks",
-            "Commercialization & IP Translation Models"
+            "Sub-Millisecond Custom Triton CUDA Kernel Synthesis",
+            "FlashAttention-3 & Linear Attention Memory Reductions",
+            "FP8 / INT4 Quantization Passes for Edge Hardware",
+            "High-Throughput Distributed Tensor Parallelism"
         ],
-        stats: { metrics: "99.4%", label: "Venture Execution Accuracy" },
+        stats: { metrics: "3.8x", label: "Kernel Execution Speedup" },
         specPaper: {
-            title: "Technical Spec Paper 02: Multi-Agent Swarms in Non-Deterministic Workflows",
-            downloadUrl: "https://ieeexplore.ieee.org/document/11429303"
-        }
-    },
-    {
-        id: "sustainability",
-        title: "Sustainability & Green Tech",
-        shortDesc: "Designing eco-efficiency metrics, ESG systems, and AI-driven climate solutions.",
-        badge: "Pillar 03",
-        fullDesc: "Engineering for a permanent future. We fuse artificial intelligence with ESG compliance, material informatics, and carbon accounting to solve pressing global environmental challenges.",
-        highlights: [
-            "AI-Driven Carbon Accounting & ESG Compliance",
-            "Material Informatics & Bio-Synthetic Modeling",
-            "Resource Optimization & Closed-Loop Eco-Metrics",
-            "Climate Risk Modeling & Predictive Analytics"
-        ],
-        stats: { metrics: "100%", label: "Verifiable ESG Coverage" },
-        specPaper: {
-            title: "Technical Spec Paper 03: Closed-Loop Carbon Analytics via AI Informatics",
+            title: "Technical Spec Paper 02: High-Throughput Triton Kernels for Edge Inference",
             downloadUrl: "https://ieeexplore.ieee.org/document/11118759"
         }
     },
     {
-        id: "energy",
-        title: "Renewable Energy & Power Systems",
-        shortDesc: "Fueling the next civilization with smart grids, solar, and clean power architectures.",
-        badge: "Pillar 04",
-        fullDesc: "Optimizing the power core of the future. We develop smart grid algorithms, power distribution intelligence, and renewable storage models to ensure sovereign, sustainable energy infrastructure.",
+        id: "agentic-swarms",
+        title: "Autonomous Multi-Agent Swarms & Reasoning",
+        shortDesc: "Multi-agent planning, tool-use execution loops, and self-reflective safety guardrails.",
+        badge: "Pillar 03",
+        icon: Bot,
+        accentColor: "from-purple-600 to-pink-600",
+        fullDesc: "Engineering autonomous agent swarms capable of multi-step tool call reasoning, code synthesis, self-reflection, and sandboxed safety verification for complex software engineering workflows.",
         highlights: [
-            "Smart Grid Optimization & Real-Time Power Routing",
-            "Solar & Wind Predictive Maintenance Algorithms",
-            "Sub-Station Load Balancing & Microgrid Controls",
-            "Clean Power Storage & Energy Metric Monitoring"
+            "Autonomous Multi-Agent Swarm Orchestration",
+            "Tool-Use Reasoning Loops & External API Integration",
+            "Self-Reflective AST Verification & Code Synthesis",
+            "Real-Time Safety Guardrails & Context Pruning"
         ],
-        stats: { metrics: "< 4ms", label: "Grid Telemetry Latency" },
+        stats: { metrics: "99.4%", label: "Tool Call Execution Accuracy" },
         specPaper: {
-            title: "Technical Spec Paper 04: Real-Time Smart Grid Load Optimization & Microgrids",
+            title: "Technical Spec Paper 03: Multi-Agent Swarms in Non-Deterministic Workflows",
+            downloadUrl: "https://ieeexplore.ieee.org/document/11429303"
+        }
+    },
+    {
+        id: "sovereign-ai",
+        title: "Sovereign Enterprise & Edge AI",
+        shortDesc: "Air-gapped VPC deployments, local privacy-compliant SLMs, and zero-trust data vaults.",
+        badge: "Pillar 04",
+        icon: Server,
+        accentColor: "from-[#002f86] to-blue-800",
+        fullDesc: "Deploying sovereign AI architectures within air-gapped enterprise environments. We build zero-leakage local inference engines, private vector vaults, and sovereign compliance guardrails.",
+        highlights: [
+            "Air-Gapped Private VPC Deployment Architectures",
+            "Zero-Leakage Local SLM Inference & Privacy Protection",
+            "Enterprise Access-Control Vector Data Vaults",
+            "Sovereign AI Governance & Audit Frameworks"
+        ],
+        stats: { metrics: "0.0%", label: "External Data Leakage" },
+        specPaper: {
+            title: "Technical Spec Paper 04: Sovereign Enterprise Air-Gapped AI Deployments",
             downloadUrl: "https://ieeexplore.ieee.org/document/11429262"
         }
+    }
+];
+
+// Cognitive Architecture Layers
+const COGNITIVE_LAYERS = [
+    {
+        num: "01",
+        name: "Foundation Models Layer",
+        desc: "Generative Multimodal LLMs, Vision-Language Transformers, & Small Language Models (SLMs)",
+        icon: BrainCircuit,
+        badge: "Generative AI"
+    },
+    {
+        num: "02",
+        name: "Neural Compute Engine",
+        desc: "Sub-Millisecond Triton Kernels, FlashAttention-3, & CUDA Parallel Execution Acceleration",
+        icon: Cpu,
+        badge: "Triton & CUDA"
+    },
+    {
+        num: "03",
+        name: "Agentic Swarm Fabric",
+        desc: "Autonomous Planning, Multi-Tool Reasoning Loops, & Self-Reflective Safety Guardrails",
+        icon: Layers,
+        badge: "Multi-Agent Swarm"
+    },
+    {
+        num: "04",
+        name: "Sovereign Enterprise API",
+        desc: "Air-Gapped Private VPC Deployment, Graph RAG Retrieval, & Real-Time Substation Telemetry",
+        icon: Server,
+        badge: "Production API"
     }
 ];
 
@@ -121,7 +171,7 @@ const PUBLICATIONS = [
         abstract: "A cooperative multi-agent architecture utilizing Vision Language Models and LLM reasoning to detect and neutralize advanced phishing attacks."
     },
     {
-        id: "pub-3",
+        id: "pub-[#002f86]",
         title: "Hybrid ML-SLM RAG System for Large Technical PDFs",
         venue: "IEEE Xplore 2025",
         authors: "The Foundry Applied AI Research Team",
@@ -144,13 +194,7 @@ const PUBLICATIONS = [
     }
 ];
 
-// Compute & Lab Stats
-const INFRA_STATS = [
-    { label: "AI Compute Infrastructure", value: "NVIDIA H100 / A100 Superclusters" },
-    { label: "High-Speed Interconnect", value: "3.2 Tbps InfiniBand Fabric" },
-    { label: "Vector & Graph Storage", value: "Petabyte-Scale Low-Latency Memory" },
-    { label: "Active Research Fellows", value: "45+ Doctoral & Postdoc Researchers" }
-];
+
 
 export default function CAAIReseachCentrePage() {
     const [selectedPillar, setSelectedPillar] = useState(RESEARCH_PILLARS[0].id);
@@ -197,124 +241,275 @@ export default function CAAIReseachCentrePage() {
         <main className="min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden" style={{ backgroundColor: "#EAEAE5" }}>
             <Navbar />
 
-            {/* Banner Image Section matching Entry-Level / Program pages */}
-            <section className="relative w-full h-[260px] md:h-[380px] overflow-hidden mt-16">
+            {/* Banner Image Section with Visual Glass Badges */}
+            <section className="relative w-full h-[280px] md:h-[400px] overflow-hidden mt-16">
                 <Image
                     src="/images/caai_centre_banner.jpg"
                     alt="Centre for Applied Artificial Intelligence"
                     fill
                     priority
-                    className="object-cover object-center brightness-[0.7]"
+                    className="object-cover object-center brightness-[0.65]"
                 />
-                <div className="absolute inset-0 bg-black/35" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
                 <div className="absolute inset-0 flex items-center">
-                    <div className="container mx-auto max-w-8xl px-6">
-                        <h1 className="font-serif text-white text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight">
+                    <div className="container mx-auto max-w-7xl px-6">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-xs font-mono font-semibold mb-4 backdrop-blur-md">
+                            <Sparkles className="w-3.5 h-3.5 text-blue-300" />
+                            <span>AI Research Centre of Excellence</span>
+                        </div>
+                        <h1 className="font-serif text-white text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight max-w-4xl">
                             Centre for Applied Artificial Intelligence (CAAI)
                         </h1>
+                        <p className="text-slate-200 text-sm md:text-base mt-3 max-w-2xl font-light">
+                            Engineering sovereign cognitive systems, multi-agent swarms, and sub-millisecond neural compute architectures.
+                        </p>
+
+                        {/* Quick Anchor Badges */}
+                        <div className="flex flex-wrap gap-2 mt-6">
+                            <a href="#pillars" className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-sm transition-all">
+                                AI Pillars
+                            </a>
+                            <a href="#architecture" className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-sm transition-all">
+                                Cognitive Stack
+                            </a>
+                            <a href="#simulator" className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-sm transition-all">
+                                Agentic Simulator
+                            </a>
+                            <a href="#publications" className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-sm transition-all">
+                                IEEE Papers
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* Main Content Card Container matching Entry-Level page design */}
-            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white rounded-1xl shadow-lg shadow-black/15 border border-slate-200/50 mt-[30px] mb-16 overflow-hidden">
+            {/* Main Content Container */}
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white rounded-2xl shadow-xl shadow-black/10 border border-slate-200/60 mt-[30px] mb-16 overflow-hidden">
 
-                {/* Introduction Section */}
-                <section className="text-slate-800 p-8 sm:p-12 md:p-16 pb-6 sm:pb-8 md:pb-10 bg-white">
-                    <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
-                        Introduction
-                    </h2>
-                    <p className="mt-6 text-sm md:text-base leading-relaxed text-slate-700 max-w-4xl">
-                        The Centre for Applied Artificial Intelligence (CAAI) at The Foundry bridges fundamental scientific research with real-world enterprise implementation. We engineer sovereign cognitive systems, multi-agent frameworks, and high-performance neural computing architectures to solve the world&apos;s most demanding technological challenges.
-                    </p>
+                {/* Introduction & Visual Key Stats Grid */}
+                <section className="text-slate-800 p-8 sm:p-12 md:p-16 pb-8 bg-white">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div className="lg:col-span-7">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 text-[#002f86] text-xs font-bold font-mono mb-3">
+                                🧠 Sovereign AI Frameworks
+                            </div>
+                            <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
+                                Bridging Frontier AI Research with Enterprise Scale
+                            </h2>
+                            <p className="mt-4 text-sm md:text-base leading-relaxed text-slate-700">
+                                The Centre for Applied Artificial Intelligence (CAAI) at The Foundry bridges fundamental scientific research with real-world enterprise implementation. We engineer sovereign cognitive systems, multi-agent frameworks, and high-performance neural computing architectures to solve the world&apos;s most demanding technological challenges.
+                            </p>
+                        </div>
 
-                    {/* Metric Stats Cards */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-slate-100">
-                        <div className="p-4 bg-white border border-slate-200/80 text-center">
-                            <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">15+ TFLOPS</p>
-                            <p className="text-xs text-slate-600 font-medium mt-1">Dedicated Compute</p>
-                        </div>
-                        <div className="p-4 bg-white border border-slate-200/80 text-center">
-                            <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">45+</p>
-                            <p className="text-xs text-slate-600 font-medium mt-1">Peer-Reviewed Papers</p>
-                        </div>
-                        <div className="p-4 bg-white border border-slate-200/80 text-center">
-                            <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">12 Swarms</p>
-                            <p className="text-xs text-slate-600 font-medium mt-1">Active Agent Systems</p>
-                        </div>
-                        <div className="p-4 bg-white border border-slate-200/80 text-center">
-                            <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">$5M+</p>
-                            <p className="text-xs text-slate-600 font-medium mt-1">Lab Infrastructure</p>
+                        {/* Interactive Visual Stat Cards */}
+                        <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+                            <div className="p-5 rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50/50 border border-blue-100/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
+                                <div className="w-10 h-10 rounded-lg bg-[#002f86] text-white flex items-center justify-center mb-3 shadow-sm">
+                                    <Cpu size={20} />
+                                </div>
+                                <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">15+ TFLOPS</p>
+                                <p className="text-xs text-slate-600 font-medium mt-0.5">Dedicated AI Compute</p>
+                            </div>
+
+                            <div className="p-5 rounded-xl bg-gradient-to-br from-slate-50 to-blue-50/40 border border-slate-200/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
+                                <div className="w-10 h-10 rounded-lg bg-blue-600 text-white flex items-center justify-center mb-3 shadow-sm">
+                                    <FileText size={20} />
+                                </div>
+                                <p className="text-2xl sm:text-3xl font-sans font-bold text-slate-900">45+</p>
+                                <p className="text-xs text-slate-600 font-medium mt-0.5">IEEE & Top Papers</p>
+                            </div>
+
+                            <div className="p-5 rounded-xl bg-gradient-to-br from-slate-50 to-indigo-50/40 border border-slate-200/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
+                                <div className="w-10 h-10 rounded-lg bg-indigo-600 text-white flex items-center justify-center mb-3 shadow-sm">
+                                    <BrainCircuit size={20} />
+                                </div>
+                                <p className="text-2xl sm:text-3xl font-sans font-bold text-indigo-950">12 Swarms</p>
+                                <p className="text-xs text-slate-600 font-medium mt-0.5">Active Agent Systems</p>
+                            </div>
+
+                            <div className="p-5 rounded-xl bg-gradient-to-br from-emerald-50 to-teal-50/40 border border-emerald-100/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
+                                <div className="w-10 h-10 rounded-lg bg-emerald-600 text-white flex items-center justify-center mb-3 shadow-sm">
+                                    <Server size={20} />
+                                </div>
+                                <p className="text-2xl sm:text-3xl font-sans font-bold text-emerald-950">$5M+</p>
+                                <p className="text-xs text-slate-600 font-medium mt-0.5">H100 Supercluster</p>
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                {/* Core Research Pillars - Row Layout matching Program Rows */}
-                <section className="text-slate-800 border-t border-slate-200/50" id="pillars">
-                    <div className="p-8 sm:p-12 md:p-16 pb-4 bg-[#F7F7F4]">
-                        <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl mb-2">
-                            Core Research Pillars
-                        </h2>
-                        <p className="text-sm text-slate-600 max-w-3xl">
-                            Our institute centers its scientific investigations around the four core pillars of The Foundry.
+                {/* Core Research Pillars - Interactive Tab Switcher & Visual Cards */}
+                <section className="text-slate-800 border-t border-slate-200/50 bg-[#F7F7F4] p-8 sm:p-12 md:p-16" id="pillars">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-8">
+                        <div>
+                            <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 block font-mono mb-1">
+                                AI RESEARCH MATRIX
+                            </span>
+                            <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl">
+                                Core Applied AI Research Pillars
+                            </h2>
+                        </div>
+                        <p className="text-xs text-slate-500 max-w-md mt-2 md:mt-0 font-medium">
+                            Select an AI research pillar to explore specialized neural labs, kernel highlights, and technical whitepapers.
                         </p>
                     </div>
 
-                    {RESEARCH_PILLARS.map((pillar, idx) => (
-                        <div
-                            key={pillar.id}
-                            className={`p-8 sm:p-12 md:p-16 ${idx % 2 === 0 ? "bg-white" : "bg-[#F7F7F4]"
-                                } border-t border-slate-200/50`}
+                    {/* Interactive Tab Switcher */}
+                    <div className="flex flex-wrap gap-2 mb-8 border-b border-slate-200 pb-4">
+                        {RESEARCH_PILLARS.map((pillar) => {
+                            const IconComp = pillar.icon;
+                            const isSelected = selectedPillar === pillar.id;
+                            return (
+                                <button
+                                    key={pillar.id}
+                                    onClick={() => setSelectedPillar(pillar.id)}
+                                    className={`flex items-center gap-2.5 px-5 py-3 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer ${isSelected
+                                            ? "bg-[#002f86] text-white shadow-md scale-102"
+                                            : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
+                                        }`}
+                                >
+                                    <IconComp size={16} className={isSelected ? "text-white" : "text-slate-500"} />
+                                    <span>{pillar.title}</span>
+                                </button>
+                            );
+                        })}
+                    </div>
+
+                    {/* Active Pillar Card Showcase */}
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activePillarObj.id}
+                            initial={{ opacity: 0, y: 12 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -12 }}
+                            transition={{ duration: 0.25 }}
+                            className="bg-white rounded-2xl border border-slate-200 p-8 sm:p-10 shadow-sm"
                         >
-                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-                                {/* Left Column */}
-                                <div className="lg:col-span-5 flex flex-col justify-between">
+                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                                <div className="lg:col-span-7 flex flex-col justify-between">
                                     <div>
-                                        <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 mb-2 block font-mono">
-                                            {pillar.badge}
-                                        </span>
-                                        <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#002f86] leading-tight mb-4">
-                                            {pillar.title}
+                                        <div className="flex items-center gap-3 mb-3">
+                                            <span className="text-xs uppercase font-bold tracking-widest text-slate-400 font-mono">
+                                                {activePillarObj.badge}
+                                            </span>
+                                            <span className="px-2.5 py-0.5 rounded-full bg-blue-50 text-[#002f86] text-[10px] font-bold font-mono">
+                                                {activePillarObj.stats.metrics} • {activePillarObj.stats.label}
+                                            </span>
+                                        </div>
+
+                                        <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#002f86] mb-3">
+                                            {activePillarObj.title}
                                         </h3>
-                                        <p className="text-sm text-slate-600 leading-relaxed mb-6 font-sans">
-                                            {pillar.shortDesc}
+                                        <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-6 font-sans">
+                                            {activePillarObj.fullDesc}
                                         </p>
                                     </div>
 
-                                    <div className="flex flex-wrap gap-3 mt-4">
-                                        <button
-                                            onClick={() => setActiveSpecModal(pillar.id)}
-                                            className="inline-flex items-center gap-2 px-6 py-3 bg-[#002f86] hover:bg-[#002266] text-white font-bold text-sm transition-all shadow-sm cursor-pointer"
-                                        >
-                                            <FileText size={16} />
-                                            <span>Technical Spec Paper</span>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                {/* Right Column */}
-                                <div className="lg:col-span-7 flex flex-col justify-between">
-                                    <p className="text-sm md:text-base text-slate-700 leading-relaxed mb-6">
-                                        {pillar.fullDesc}
-                                    </p>
-
+                                    {/* Highlights Checklist */}
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-                                        {pillar.highlights.map((item, hIdx) => (
-                                            <div key={hIdx} className="flex items-start gap-2.5 p-3 bg-white/80 border border-slate-200/80">
+                                        {activePillarObj.highlights.map((item, hIdx) => (
+                                            <div key={hIdx} className="flex items-start gap-2.5 p-3 rounded-lg bg-[#F7F7F4] border border-slate-200/70">
                                                 <CheckCircle2 className="w-4 h-4 text-[#002f86] shrink-0 mt-0.5" />
-                                                <span className="text-xs text-slate-800 font-medium">{item}</span>
+                                                <span className="text-xs text-slate-800 font-semibold">{item}</span>
                                             </div>
                                         ))}
                                     </div>
 
+                                    <div className="flex flex-wrap gap-3">
+                                        <button
+                                            onClick={() => setActiveSpecModal(activePillarObj.id)}
+                                            className="inline-flex items-center gap-2 px-6 py-3 bg-[#002f86] hover:bg-[#002266] text-white rounded-xl font-bold text-xs sm:text-sm transition-all shadow-md cursor-pointer"
+                                        >
+                                            <FileText size={16} />
+                                            <span>Read Technical AI Spec</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* Right Graphic Card Preview */}
+                                <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 via-[#001f5c] to-slate-900 rounded-xl p-6 text-white shadow-lg relative overflow-hidden font-mono text-xs">
+                                    <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+                                        <BrainCircuit size={160} />
+                                    </div>
+                                    <div className="relative z-10">
+                                        <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-4 font-sans">
+                                            <span className="text-blue-300 font-bold text-xs">SPEC PAPER PREVIEW</span>
+                                            <span className="text-slate-400 text-[10px]">IEEE XPLORE VERIFIED</span>
+                                        </div>
+                                        <p className="text-white font-serif text-base font-bold mb-3 leading-snug">
+                                            {activePillarObj.specPaper.title}
+                                        </p>
+                                        <p className="text-slate-300 text-xs font-sans leading-relaxed mb-6">
+                                            Includes benchmark datasets, CUDA kernel profiles, and formal latency proofs under heavy multi-tenant load.
+                                        </p>
+
+                                        <a
+                                            href={activePillarObj.specPaper.downloadUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-2 px-4 py-2 bg-white text-[#002f86] rounded-lg font-bold text-xs hover:bg-blue-50 transition-colors cursor-pointer"
+                                        >
+                                            <ExternalLink size={14} />
+                                            <span>IEEE Document Link</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        </motion.div>
+                    </AnimatePresence>
+                </section>
+
+                {/* Cognitive Architecture Stack Diagram Section */}
+                <section className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-200/50" id="architecture">
+                    <div className="text-center max-w-3xl mx-auto mb-12">
+                        <span className="text-[10px] uppercase font-bold tracking-widest text-[#002f86] font-mono block mb-2">
+                            SYSTEM ARCHITECTURE
+                        </span>
+                        <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl mb-3">
+                            The Cognitive Systems Stack
+                        </h2>
+                        <p className="text-sm text-slate-600">
+                            Our proprietary four-tier architecture powering autonomous multi-agent reasoning and low-latency neural inference.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {COGNITIVE_LAYERS.map((layer, idx) => {
+                            const LayerIcon = layer.icon;
+                            return (
+                                <div
+                                    key={idx}
+                                    className="p-6 rounded-2xl bg-[#F7F7F4] border border-slate-200/80 hover:border-blue-400 hover:bg-blue-50/30 transition-all duration-300 relative group flex flex-col justify-between"
+                                >
+                                    <div>
+                                        <div className="flex items-center justify-between mb-4">
+                                            <span className="text-xs font-mono font-bold text-slate-400">{layer.num}</span>
+                                            <span className="px-2 py-0.5 rounded bg-blue-100 text-[#002f86] text-[10px] font-bold font-mono">
+                                                {layer.badge}
+                                            </span>
+                                        </div>
+                                        <div className="w-12 h-12 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-[#002f86] mb-4 shadow-xs group-hover:scale-110 transition-transform">
+                                            <LayerIcon size={24} />
+                                        </div>
+                                        <h3 className="font-serif text-lg font-bold text-slate-900 mb-2">
+                                            {layer.name}
+                                        </h3>
+                                        <p className="text-xs text-slate-600 leading-relaxed font-sans">
+                                            {layer.desc}
+                                        </p>
+                                    </div>
+                                    <div className="mt-4 pt-3 border-t border-slate-200/60 flex items-center gap-1.5 text-[11px] font-bold text-[#002f86]">
+                                        <CheckCircle2 size={13} />
+                                        <span>Production Verified</span>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
                 </section>
 
                 {/* Interactive Agent Simulator Section */}
-                <section className="p-8 sm:p-12 md:p-16 bg-[#DCE7F1] border-t border-slate-200/50">
+                <section className="p-8 sm:p-12 md:p-16 bg-[#DCE7F1] border-t border-slate-200/50" id="simulator">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                         <div className="lg:col-span-5">
                             <span className="text-[10px] uppercase font-bold tracking-widest text-[#002f86] mb-2 block font-mono">
@@ -330,23 +525,23 @@ export default function CAAIReseachCentrePage() {
                             <button
                                 onClick={runSimulation}
                                 disabled={isSimulating}
-                                className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-sm text-white transition-all shadow-md cursor-pointer ${isSimulating
+                                className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-sm text-white transition-all shadow-md cursor-pointer rounded-xl ${isSimulating
                                         ? "bg-slate-500 cursor-not-allowed"
                                         : "bg-[#002f86] hover:bg-[#002266]"
                                     }`}
                             >
                                 <PlayCircle className="w-4 h-4" />
-                                <span>{isSimulating ? "Running Simulation..." : "Simulate Agent Workflow"}</span>
+                                <span>{isSimulating ? "Running Agent Simulation..." : "Simulate Agent Workflow"}</span>
                             </button>
                         </div>
 
                         <div className="lg:col-span-7">
-                            <div className="p-6 bg-white border border-slate-200/80 font-mono text-xs">
+                            <div className="p-6 bg-white border border-slate-200/80 font-mono text-xs rounded-2xl shadow-md">
                                 <div className="flex items-center justify-between pb-3 border-b border-slate-200 mb-4 font-sans">
                                     <div className="flex items-center gap-1.5">
                                         <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
                                         <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-                                        <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
+                                        <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
                                         <span className="text-slate-500 text-[11px] font-semibold ml-1.5">caai-agentic-runtime v2.4</span>
                                     </div>
                                     <span className="text-[#002f86] text-[11px] font-bold">
@@ -361,7 +556,7 @@ export default function CAAIReseachCentrePage() {
                                         return (
                                             <div
                                                 key={idx}
-                                                className={`p-3 rounded-md border transition-all ${isActive
+                                                className={`p-3 rounded-lg border transition-all ${isActive
                                                         ? "bg-[#DCE7F1] border-[#002f86] text-slate-900"
                                                         : isDone
                                                             ? "bg-slate-50 border-slate-200 text-slate-600"
@@ -393,41 +588,30 @@ export default function CAAIReseachCentrePage() {
                     </div>
                 </section>
 
-                {/* Compute Infrastructure & Hardware Labs */}
-                <section className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-slate-200/50">
-                    <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl mb-8">
-                        Compute Infrastructure & Hardware Labs
-                    </h2>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        {INFRA_STATS.map((stat, idx) => (
-                            <div key={idx} className="p-6 bg-white border border-slate-200 text-center shadow-sm">
-                                <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-2 font-mono">{stat.label}</h4>
-                                <p className="text-sm font-bold text-slate-900">{stat.value}</p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
 
                 {/* Publications & Papers Section */}
                 <section id="publications" className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-200/50">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-8">
                         <div>
-                            <p className="text-sm text-slate-600 mt-2">
-                                Research outputs published in top international computer science and AI venues.
-                            </p>
+                            <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 block font-mono mb-1">
+                                IEEE & PEER REVIEWED
+                            </span>
+                            <h2 className="font-serif text-3xl font-bold text-[#002f86]">
+                                Research Publications
+                            </h2>
                         </div>
                         <Link href="/blog?category=research" className="mt-4 md:mt-0 text-sm font-bold text-[#002f86] hover:underline flex items-center gap-1">
-                            <span>View All Publications</span>
+                            <span>Browse All Research Articles</span>
                             <ChevronRight size={16} />
                         </Link>
                     </div>
 
                     <div className="space-y-4">
                         {PUBLICATIONS.map((pub) => (
-                            <div key={pub.id} className="p-6 bg-[#F7F7F4] border border-slate-200/80 hover:border-slate-300 transition-all">
+                            <div key={pub.id} className="p-6 bg-[#F7F7F4] border border-slate-200/80 hover:border-slate-300 rounded-xl transition-all">
                                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                                    <span className="px-2.5 py-0.5 rounded bg-[#DCE7F1] text-[#002f86] text-[11px] font-bold font-mono">
+                                    <span className="px-2.5 py-0.5 rounded-full bg-[#DCE7F1] text-[#002f86] text-[11px] font-bold font-mono">
                                         {pub.venue}
                                     </span>
                                     <span className="text-xs text-slate-500 font-mono">{pub.year} • {pub.topic}</span>
@@ -467,38 +651,38 @@ export default function CAAIReseachCentrePage() {
                 </section>
             </div>
 
-            {/* FAQ Section matching Entry-Level Program Page */}
+            {/* FAQ Section */}
             <section className="py-16 px-6 bg-white border-t border-b border-slate-200/60">
                 <div className="container mx-auto max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-[#002f86] mb-4">Frequently Asked Questions</h2>
-                        <p className="text-lg text-slate-600">Common queries about CAAI research fellowships, grants, and labs.</p>
+                        <p className="text-lg text-slate-600">Common queries about CAAI research fellowships, compute grants, and industry partnerships.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                         {/* Column 1 */}
                         <div className="space-y-4">
-                            <FAQItem question="What is CAAI's primary research mission?">
-                                CAAI conducts applied AI research focusing on 4 pillars: Deep Tech & Applied AI, Entrepreneurship & Venture Building, Sustainability & Green Tech, and Renewable Energy Systems.
+                            <FAQItem question="What is CAAI's primary research focus?">
+                                CAAI conducts research across 4 specialized AI pillars: Generative AI & Multimodal LLMs, Neural Compute & Triton Kernel Engineering, Autonomous Multi-Agent Swarms & Reasoning, and Sovereign Enterprise & Edge AI.
                             </FAQItem>
-                            <FAQItem question="How can researchers join CAAI?">
-                                Postdoctoral candidates, doctoral fellows, and master&apos;s researchers can apply for Research Fellowships through our annual open calls or enterprise co-sponsored grant projects.
+                            <FAQItem question="How can researchers apply for AI Fellowships?">
+                                Doctoral fellows, AI engineers, and computer scientists can apply for fellowships through our open application calls or sponsored research grants.
                             </FAQItem>
-                            <FAQItem question="Are CAAI publications open access?">
-                                Yes. All research outputs produced by CAAI are published in top-tier peer-reviewed conferences (such as IEEE Xplore) and open-access spec whitepapers.
+                            <FAQItem question="Can enterprises request custom Triton kernel optimization?">
+                                Yes. Enterprises partner with CAAI to optimize proprietary LLMs, write sub-millisecond Triton kernels, and build autonomous multi-agent pipelines.
                             </FAQItem>
                         </div>
 
                         {/* Column 2 */}
                         <div className="space-y-4">
-                            <FAQItem question="How do enterprise partnerships work?">
-                                Enterprises partner with CAAI to deploy custom multi-agent agentic workflows, benchmark Triton GPU kernels, or co-develop proprietary deep tech IP.
+                            <FAQItem question="What hardware infrastructure powers CAAI labs?">
+                                CAAI operates dedicated NVIDIA H100 and A100 Tensor Core superclusters connected via 3.2 Tbps InfiniBand high-speed interconnect fabric.
                             </FAQItem>
-                            <FAQItem question="What compute facilities are available at CAAI?">
-                                CAAI operates dedicated NVIDIA H100/A100 GPU superclusters connected via 3.2 Tbps InfiniBand high-speed interconnect fabric for high-throughput model training.
+                            <FAQItem question="Are CAAI research publications open access?">
+                                Yes. All research outputs produced by CAAI are published in peer-reviewed IEEE venues and open-access AI repositories.
                             </FAQItem>
-                            <FAQItem question="Can startups incubate their research at CAAI?">
-                                Yes. Through Pillar 02 (Venture Building), zero-to-one deep tech startups receive compute resources, engineering mentorship, and incubation support.
+                            <FAQItem question="How does CAAI support deep tech startups?">
+                                Through Pillar 04 (Sovereign Enterprise), early-stage AI startups receive supercluster compute access, technical auditing, and incubation support.
                             </FAQItem>
                         </div>
                     </div>
@@ -532,7 +716,7 @@ export default function CAAIReseachCentrePage() {
                             </button>
 
                             <span className="px-2.5 py-0.5 rounded bg-[#DCE7F1] text-[#002f86] text-[10px] font-bold uppercase tracking-wider font-mono">
-                                CAAI Technical Whitepaper
+                                CAAI Technical AI Spec
                             </span>
 
                             <h3 className="font-serif text-xl sm:text-2xl font-bold text-slate-900 mt-3 mb-2">
@@ -540,13 +724,13 @@ export default function CAAIReseachCentrePage() {
                             </h3>
 
                             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 font-sans">
-                                Detailed technical architecture spec paper covering experimental methodology, model benchmarks, and production deployment specifications for {activePillarObj.title}.
+                                Detailed technical research whitepaper covering Triton kernel benchmarks, CUDA memory profiles, and multi-agent reasoning specifications for {activePillarObj.title}.
                             </p>
 
                             <div className="p-4 bg-[#F7F7F4] border border-slate-200 text-xs font-mono text-slate-700 mb-6 space-y-1">
                                 <p className="font-bold text-slate-900 font-sans">Spec Details:</p>
-                                <p>• Publication ID: CAAI-SPEC-2026-04</p>
-                                <p>• Format: IEEE PDF / Research Document</p>
+                                <p>• Publication ID: CAAI-SPEC-2026-01</p>
+                                <p>• Format: IEEE Xplore / AI PDF</p>
                                 <p>• Status: Peer Reviewed & Verified</p>
                             </div>
 
