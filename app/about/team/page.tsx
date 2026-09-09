@@ -63,7 +63,7 @@ const teamMembers = [
             linkedin: "https://www.linkedin.com/in/srinivas-sadasyula-411b79161/",
         }
     },
-{
+    {
         name: "Abhishek Sharma",
         role: "SME in Data analytics",
         image: "/images/abhishek shaarma.png",
@@ -135,6 +135,15 @@ const teamMembers = [
         profileLink: "/about/faculty/dr-jayaram",
         socials: {
             linkedin: "#",
+        }
+    },
+    {
+        name: "Venkat",
+        role: "SME in Embedded Systems",
+        image: "/images/testimonials/shiva.jpeg",
+        profileLink: "/about/faculty/mvsr-reddy",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/mvsrreddy/",
         }
     },
 ];
