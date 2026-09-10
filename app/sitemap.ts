@@ -15,6 +15,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/about/faculty/dr-srikanth-itapu',
         '/about/faculty/srinivas-sadasyula',
         '/about/faculty/mvsr-reddy',
+        '/about/faculty/sai-pramod',
+        '/about/faculty/jayavardhan-reddy',
         '/campus',
         '/apply',
         '/blog',

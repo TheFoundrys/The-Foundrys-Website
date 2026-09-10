@@ -146,6 +146,24 @@ const teamMembers = [
             linkedin: "https://www.linkedin.com/in/mvsrreddy/",
         }
     },
+    {
+        name: "Sai Pramod",
+        role: "Software Developer",
+        image: "/images/testimonials/saipramod.jpeg",
+        profileLink: "/about/faculty/sai-pramod",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/v-ananda-naga-sai-pramodu/",
+        }
+    },
+    {
+        name: "Jayavardhan Reddy",
+        role: "Full Stack Developer",
+        image: "/images/testimonials/jayavardhan-reddy.jpeg",
+        profileLink: "/about/faculty/jayavardhan-reddy",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/jayavardhan-reddy-/",
+        }
+    },
 ];
 
 export default function TeamPage() {

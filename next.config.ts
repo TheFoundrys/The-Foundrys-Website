@@ -26,6 +26,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/about/faculty/saipramod',
+        destination: '/about/faculty/sai-pramod',
+        permanent: true,
+      },
+      {
+        source: '/about/faculty/manikanta',
+        destination: '/about/faculty/jayavardhan-reddy',
+        permanent: true,
+      },
+      {
         source: '/programs/entry-level/ai',
         destination: '/programs/entry-level',
         permanent: true,
