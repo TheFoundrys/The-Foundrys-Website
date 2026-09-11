@@ -204,6 +204,17 @@ const STATIC_RESEARCH_POSTS: Post[] = [
 
 const STATIC_BLOG_POSTS: Post[] = [
     {
+        _id: "blog-18",
+        title: "500 Learners. One AI-Powered Journey.",
+        slug: { current: "500-learners-one-ai-powered-journey" },
+        publishedAt: "2026-09-08T12:00:00Z",
+        mainImage: { static: true, url: "/images/500_learners_one_ai_powered_journey_cover.jpg" },
+        category: "Blog",
+        readTime: "5 min",
+        excerpt: "People. Skills. Brighter Futures. Discover how The Foundry's Skill Compass guides 500+ learners across technical skills, real-world projects, expert guidance, and career growth in an AI-powered world.",
+        link: "https://www.linkedin.com/pulse/500-learners-one-ai-powered-journey-the-foundry-s-kkzic"
+    },
+    {
         _id: "blog-17",
         title: "Emerging Technologies to Watch",
         slug: { current: "emerging-technologies-to-watch" },
