@@ -204,6 +204,17 @@ const STATIC_RESEARCH_POSTS: Post[] = [
 
 const STATIC_BLOG_POSTS: Post[] = [
     {
+        _id: "blog-19",
+        title: "5 Myths About AI Careers",
+        slug: { current: "5-myths-about-ai-careers" },
+        publishedAt: "2026-09-17T12:00:00Z",
+        mainImage: { static: true, url: "/images/5_myths_about_ai_careers_cover.jpg" },
+        category: "Blog",
+        readTime: "5 min",
+        excerpt: "Real Skills. Real Careers. A Brighter Tomorrow. Artificial Intelligence is transforming the workplace—and with that transformation comes a growing interest in AI-related careers. Discover 5 common myths about AI careers and what professionals should think about instead.",
+        link: "https://www.linkedin.com/pulse/5-myths-ai-careers-the-foundry-s-we9sc"
+    },
+    {
         _id: "blog-18",
         title: "500 Learners. One AI-Powered Journey.",
         slug: { current: "500-learners-one-ai-powered-journey" },
