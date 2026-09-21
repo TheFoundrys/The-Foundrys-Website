@@ -226,6 +226,17 @@ const STATIC_RESEARCH_POSTS: Post[] = [
 
 const STATIC_BLOG_POSTS: Post[] = [
     {
+        _id: "blog-20",
+        title: "From Learning to Opportunity",
+        slug: { current: "from-learning-opportunity" },
+        publishedAt: "2026-09-21T12:00:00Z",
+        mainImage: { static: true, url: "/images/from_learning_to_opportunity_cover.jpg" },
+        category: "Blog",
+        readTime: "5 min",
+        excerpt: "How Students Turn Knowledge Into Projects — and Projects Into Possibilities. Learning is the beginning of a journey, but learning alone is not always enough. Discover how students navigate the four-step journey—Learn, Build, Showcase, and Opportunity—to transform theoretical knowledge into real-world capability and impact.",
+        link: "https://www.linkedin.com/pulse/from-learning-opportunity-the-foundry-s-yzygf"
+    },
+    {
         _id: "blog-19",
         title: "5 Myths About AI Careers",
         slug: { current: "5-myths-about-ai-careers" },
