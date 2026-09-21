@@ -7,6 +7,14 @@ import { ChevronRight } from "lucide-react";
 
 const EVENTS = [
   {
+    title: "Leading AI Transformation – Stay In-Step with Technology That Never Stops",
+    description: "How do businesses stay ahead when tech never stops evolving? Join Vishwanath Akuthota (Founder & CEO, The Foundry's) and Shalini (Founder & CEO, NineGuide Consulting) exploring AI transformation, emerging tech, and leadership.",
+    month: "Sep",
+    day: "17",
+    image: "/images/leading-ai-transformation-podcast.jpg",
+    href: "/events"
+  },
+  {
     title: "Can India Become a Deep-Tech Manufacturing Powerhouse?",
     description: "Building Technology. Building India. Join our live podcast with guest Col. Merugu Solomon Saneev (Defence Technology & Aerospace Expert) and host Vishwanath Akuthota.",
     month: "Aug",
@@ -22,14 +30,7 @@ const EVENTS = [
     image: "/quantum-computing-podcast.jpg",
     href: "/events"
   },
-  {
-    title: "Next-Gen AI & LLM Builder Workshop",
-    description: "Learn to build, fine-tune, and deploy large language models (LLMs) and custom RAG pipelines. A hands-on, practical session for class 12th/Intermediate MPC students and coding enthusiasts.",
-    month: "Sep",
-    day: "12",
-    image: "/images/classroom_session.png",
-    href: "/events"
-  }
+  
 ];
 
 export function UpcomingEvents() {

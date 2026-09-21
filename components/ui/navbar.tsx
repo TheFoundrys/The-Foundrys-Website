@@ -2,10 +2,17 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Cinzel } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { triggerHaptic } from "@/lib/haptics";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronDown, BrainCircuit, ShieldCheck, Atom, Rocket, Lightbulb, Users, Library, Menu, Zap, Leaf, Network, BookOpen, Briefcase, GraduationCap, Calendar, Newspaper, ArrowRight, LineChart, MessageSquare } from "lucide-react";
+
+const cinzelFont = Cinzel({
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
+    display: "swap",
+});
 
 export function Navbar() {
     const pathname = usePathname();
@@ -276,7 +283,7 @@ export function Navbar() {
                             height={48}
                             className="h-10 w-10 object-contain rounded-full border border-neutral-200 shadow-[0_4px_14px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:scale-105"
                         />
-                        <span className="text-3xl sm:text-2xl font-medium tracking-wide text-black font-cinzel">THE FOUNDRY&apos;s</span>
+                        <span className={cn("text-3xl sm:text-2xl font-medium tracking-wide text-black font-cinzel", cinzelFont.className)}>The Foundry&apos;s</span>
                     </Link>
 
                     {/* Central Navigation Headings */}

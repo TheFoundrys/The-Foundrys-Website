@@ -21,13 +21,34 @@ interface EventItem {
     mapsUrl?: string;
     link?: string;
     youtubeUrl?: string;
+    teamsUrl?: string;
     description: string;
     tags: string[];
     featured: boolean;
     image: string;
+    status?: "upcoming" | "completed";
 }
 
 const allItems: EventItem[] = [
+    {
+        id: "webinar-leading-ai-transformation",
+        title: "Leading AI Transformation – Stay In-Step with Technology That Never Stops",
+        type: "Live Podcast",
+        category: "event",
+        date: "Thu, Sep 17, 2026",
+        time: "8:30 AM IST",
+        dateTime: "2026-09-17T08:30:00+05:30",
+        platform: "Microsoft Teams & YouTube Live",
+        link: "https://lnkd.in/gBbeRjrp",
+        youtubeUrl: "https://lnkd.in/g3AWANT7",
+        teamsUrl: "https://lnkd.in/gVPmNk4y",
+        description:
+            "How do businesses stay ahead when technology never stops evolving? Join Vishwanath Akuthota, Founder & CEO – The Foundry's, as he hosts a conversation with Shalini, Founder & CEO – NineGuide Consulting, exploring AI transformation, emerging technologies, business strategy, innovation and leadership.",
+        tags: ["AI Transformation", "Leadership", "Business Strategy", "Emerging Tech", "Live Podcast", "Innovation"],
+        featured: false,
+        status: "completed",
+        image: "/images/leading-ai-transformation-podcast.jpg",
+    },
     {
         id: "webinar-deep-tech-manufacturing-podcast",
         title: "Can India Become a Deep-Tech Manufacturing Powerhouse?",
@@ -113,13 +134,15 @@ const allItems: EventItem[] = [
     },
 ];
 
-const isUpcoming = (dateTime: string) => {
+const isUpcoming = (item: EventItem) => {
+    if (item.status === "upcoming") return true;
+    if (item.status === "completed") return false;
     const bufferTime = 2 * 60 * 60 * 1000;
-    return new Date(dateTime).getTime() + bufferTime > Date.now();
+    return new Date(item.dateTime).getTime() + bufferTime > Date.now();
 };
 
 function EventCard({ item, idx }: { item: EventItem; idx: number }) {
-    const upcoming = isUpcoming(item.dateTime);
+    const upcoming = isUpcoming(item);
     const href = item.link || item.mapsUrl || "/contact";
 
     return (
@@ -208,16 +231,40 @@ function EventCard({ item, idx }: { item: EventItem; idx: number }) {
                     </div>
 
                     <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                        <a
-                            href={href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2 bg-[#002f86] hover:bg-[#002266] px-6 py-3 text-xs font-bold text-white transition-all shadow-sm"
-                        >
-                            {upcoming && item.link ? "Join Event" : "View Details"}
-                            <ArrowUpRight size={14} />
-                        </a>
-                        {item.youtubeUrl && (
+                        {upcoming && item.link && (
+                            <a
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 bg-[#002f86] hover:bg-[#002266] px-6 py-3 text-xs font-bold text-white transition-all shadow-sm"
+                            >
+                                Register to Join
+                                <ArrowUpRight size={14} />
+                            </a>
+                        )}
+                        {!upcoming && item.youtubeUrl && (
+                            <a
+                                href={item.youtubeUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 px-6 py-3 text-xs font-bold text-white transition-all shadow-sm"
+                            >
+                                <Youtube size={14} className="text-white" />
+                                Watch Recording
+                            </a>
+                        )}
+                        {!upcoming && !item.youtubeUrl && item.link && (
+                            <a
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 bg-[#002f86] hover:bg-[#002266] px-6 py-3 text-xs font-bold text-white transition-all shadow-sm"
+                            >
+                                View Details
+                                <ArrowUpRight size={14} />
+                            </a>
+                        )}
+                        {upcoming && item.youtubeUrl && (
                             <a
                                 href={item.youtubeUrl}
                                 target="_blank"
@@ -225,7 +272,18 @@ function EventCard({ item, idx }: { item: EventItem; idx: number }) {
                                 className="inline-flex items-center justify-center gap-2 border border-red-200 bg-red-50 px-6 py-3 text-xs font-bold text-red-700 transition-all hover:border-red-300 hover:bg-red-100"
                             >
                                 <Youtube size={14} className="text-red-600" />
-                                Watch on YouTube
+                                YouTube Live
+                            </a>
+                        )}
+                        {upcoming && item.teamsUrl && (
+                            <a
+                                href={item.teamsUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 border border-blue-200 bg-blue-50 px-6 py-3 text-xs font-bold text-blue-700 transition-all hover:border-blue-300 hover:bg-blue-100"
+                            >
+                                <Video size={14} className="text-[#002f86]" />
+                                Direct MS Teams
                             </a>
                         )}
                         {item.mapsUrl && (
@@ -260,7 +318,7 @@ export function EventsClient() {
     const upcomingItems = useMemo(
         () =>
             filteredItems
-                .filter((item) => isUpcoming(item.dateTime))
+                .filter((item) => isUpcoming(item))
                 .sort((a, b) => new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime()),
         [filteredItems]
     );
@@ -268,7 +326,7 @@ export function EventsClient() {
     const pastItems = useMemo(
         () =>
             filteredItems
-                .filter((item) => !isUpcoming(item.dateTime))
+                .filter((item) => !isUpcoming(item))
                 .sort((a, b) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime()),
         [filteredItems]
     );

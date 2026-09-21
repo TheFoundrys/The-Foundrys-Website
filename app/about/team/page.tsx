@@ -20,7 +20,7 @@ const teamMembers = [
     },
     {
         name: "Pramod Chada",
-        role: "Cheif opernation officer",
+        role: "Chief Operation Officer",
         image: "/images/pramod-chada.jpg",
         profileLink: "/about/faculty/pramod-chada",
         socials: {
@@ -46,21 +46,21 @@ const teamMembers = [
         }
     },
     {
-        name: "Akuthota Aravind",
-        role: "Business Development Executive",
-        image: "/images/araavind.png",
-        profileLink: "/about/faculty/akuthota-aravind",
-        socials: {
-            linkedin: "https://www.linkedin.com/in/akuthota-aravind-608455193/"
-        }
-    },
-    {
         name: "Srinivas Sadasyula",
         role: "Vice President",
         image: "/images/srinivas-sadasyula.jpg",
         profileLink: "/about/faculty/srinivas-sadasyula",
         socials: {
             linkedin: "https://www.linkedin.com/in/srinivas-sadasyula-411b79161/",
+        }
+    },
+    {
+        name: "Akuthota Aravind",
+        role: "Business Development Executive",
+        image: "/images/araavind.png",
+        profileLink: "/about/faculty/akuthota-aravind",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/akuthota-aravind-608455193/"
         }
     },
     {
@@ -138,8 +138,17 @@ const teamMembers = [
         }
     },
     {
+        name: "Krishana Prasad",
+        role: "AI Research Engineer",
+        image: "/images/testimonials/Krishna.jpeg",
+        profileLink: "/about/faculty/krishana-prasad",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/krishnaprasadavula/",
+        }
+    },
+    {
         name: "Venkata Shiva Ranga Reddy",
-        role: "SME in AI Security & Tech Intelligence",
+        role: "AI Security & Tech Intelligence",
         image: "/images/testimonials/shiva.jpeg",
         profileLink: "/about/faculty/mvsr-reddy",
         socials: {
