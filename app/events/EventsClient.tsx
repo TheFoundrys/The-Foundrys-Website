@@ -31,6 +31,25 @@ interface EventItem {
 
 const allItems: EventItem[] = [
     {
+        id: "webinar-deep-tech-workforce-podcast",
+        title: "Who Builds India’s Deep Tech Workforce — Enterprises or Institutions?",
+        type: "Live Podcast",
+        category: "event",
+        date: "Thu, Sep 24, 2026",
+        time: "8:30 AM – 9:30 AM IST",
+        dateTime: "2026-09-24T08:30:00+05:30",
+        platform: "Microsoft Teams & YouTube Live",
+        link: "https://tinyurl.com/2v2crwex",
+        youtubeUrl: "https://tinyurl.com/3kk3c9zs",
+        teamsUrl: "https://tinyurl.com/yp5dy2xv",
+        description:
+            "India’s deep-tech future depends on building talent equipped for AI, Cyber Security, Quantum Computing, and emerging technologies. But who should take the lead — enterprises, institutions, or a stronger collaboration between both? Join Shalini, Founder & CEO of NineGuide Consulting, in conversation with Vishwanath Akuthota, Founder & CEO of The Foundry’s, as they explore industry readiness, education, skills, innovation, and the future of India’s deep-tech workforce.",
+        tags: ["Deep Tech", "Workforce", "AI", "Cyber Security", "Quantum Computing", "Live Podcast", "Higher Education"],
+        featured: true,
+        status: "upcoming",
+        image: "/images/deep-tech-workforce-podcast.png",
+    },
+    {
         id: "webinar-leading-ai-transformation",
         title: "Leading AI Transformation – Stay In-Step with Technology That Never Stops",
         type: "Live Podcast",

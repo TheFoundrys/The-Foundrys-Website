@@ -7,6 +7,14 @@ import { ChevronRight } from "lucide-react";
 
 const EVENTS = [
   {
+    title: "Who Builds India’s Deep Tech Workforce — Enterprises or Institutions?",
+    description: "Join Shalini (Founder & CEO, NineGuide Consulting) in conversation with Vishwanath Akuthota (Founder & CEO, The Foundry's) exploring industry readiness, education, skills, and the future of India's deep-tech workforce.",
+    month: "Sep",
+    day: "24",
+    image: "/images/deep-tech-workforce-podcast.png",
+    href: "/events"
+  },
+  {
     title: "Leading AI Transformation – Stay In-Step with Technology That Never Stops",
     description: "How do businesses stay ahead when tech never stops evolving? Join Vishwanath Akuthota (Founder & CEO, The Foundry's) and Shalini (Founder & CEO, NineGuide Consulting) exploring AI transformation, emerging tech, and leadership.",
     month: "Sep",
@@ -22,15 +30,6 @@ const EVENTS = [
     image: "/images/deeptech-manufacturing-podcast.png",
     href: "/events"
   },
-  {
-    title: "Quantum Computing & Emerging Tech",
-    description: "From Physics to Possibilities. Join our live podcast with guest Dr. Ram Soorat (Assistant Professor of Physics, Woxsen University) and host Vishwanath Akuthota.",
-    month: "Aug",
-    day: "22",
-    image: "/quantum-computing-podcast.jpg",
-    href: "/events"
-  },
-  
 ];
 
 export function UpcomingEvents() {
