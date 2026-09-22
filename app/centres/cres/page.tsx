@@ -245,10 +245,6 @@ export default function CRESResearchCentrePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
                 <div className="absolute inset-0 flex items-center">
                     <div className="container mx-auto max-w-7xl px-6">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#002f86]/30 border border-blue-400/30 text-blue-200 text-xs font-mono font-semibold mb-4 backdrop-blur-md">
-                            <Zap className="w-3.5 h-3.5 text-amber-400" />
-                            <span>Energy Research Centre of Excellence</span>
-                        </div>
                         <h1 className="font-serif text-white text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight max-w-4xl">
                             Centre for Renewable Energy Systems (CRES)
                         </h1>
@@ -293,39 +289,16 @@ export default function CRESResearchCentrePage() {
                             </p>
                         </div>
 
-                        {/* Interactive Visual Stat Cards */}
-                        <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-                            <div className="p-5 rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50/50 border border-blue-100/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
-                                <div className="w-10 h-10 rounded-lg bg-[#002f86] text-white flex items-center justify-center mb-3 shadow-sm">
-                                    <Zap size={20} />
-                                </div>
-                                <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">12.8 GWh</p>
-                                <p className="text-xs text-slate-600 font-medium mt-0.5">Simulated Grid Storage</p>
-                            </div>
-
-                            <div className="p-5 rounded-xl bg-gradient-to-br from-slate-50 to-blue-50/40 border border-slate-200/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
-                                <div className="w-10 h-10 rounded-lg bg-blue-600 text-white flex items-center justify-center mb-3 shadow-sm">
-                                    <FileText size={20} />
-                                </div>
-                                <p className="text-2xl sm:text-3xl font-sans font-bold text-slate-900">35+</p>
-                                <p className="text-xs text-slate-600 font-medium mt-0.5">IEEE & Top Papers</p>
-                            </div>
-
-                            <div className="p-5 rounded-xl bg-gradient-to-br from-emerald-50 to-teal-50/40 border border-emerald-100/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
-                                <div className="w-10 h-10 rounded-lg bg-emerald-600 text-white flex items-center justify-center mb-3 shadow-sm">
-                                    <ShieldCheck size={20} />
-                                </div>
-                                <p className="text-2xl sm:text-3xl font-sans font-bold text-emerald-950">99.98%</p>
-                                <p className="text-xs text-slate-600 font-medium mt-0.5">Grid Reliability</p>
-                            </div>
-
-                            <div className="p-5 rounded-xl bg-gradient-to-br from-amber-50 to-orange-50/40 border border-amber-100/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
-                                <div className="w-10 h-10 rounded-lg bg-amber-600 text-white flex items-center justify-center mb-3 shadow-sm">
-                                    <Server size={20} />
-                                </div>
-                                <p className="text-2xl sm:text-3xl font-sans font-bold text-amber-950">$8M+</p>
-                                <p className="text-xs text-slate-600 font-medium mt-0.5">Energy Testbed Labs</p>
-                            </div>
+                        {/* Visual Research Image */}
+                        <div className="lg:col-span-5 relative w-full h-[280px] sm:h-[320px] rounded-lg overflow-hidden border border-slate-200/80 shadow-lg">
+                            <Image
+                                src="/images/cres_research_lab.jpg"
+                                alt="Centre for Renewable Energy Systems Research Laboratory"
+                                fill
+                                sizes="(max-width: 1024px) 100vw, 40vw"
+                                className="object-cover object-center"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
                         </div>
                     </div>
                 </section>

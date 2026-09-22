@@ -242,10 +242,6 @@ export default function CCDResearchCentrePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
                 <div className="absolute inset-0 flex items-center">
                     <div className="container mx-auto max-w-7xl px-6">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-xs font-mono font-semibold mb-4 backdrop-blur-md">
-                            <ShieldCheck className="w-3.5 h-3.5 text-blue-300" />
-                            <span>Cyber Research Centre of Excellence</span>
-                        </div>
                         <h1 className="font-serif text-white text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight max-w-4xl">
                             Centre for Cybersecurity & Defense (CCD)
                         </h1>
@@ -290,39 +286,16 @@ export default function CCDResearchCentrePage() {
                             </p>
                         </div>
 
-                        {/* Interactive Visual Stat Cards */}
-                        <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-                            <div className="p-5 rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50/50 border border-blue-100/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
-                                <div className="w-10 h-10 rounded-lg bg-[#002f86] text-white flex items-center justify-center mb-3 shadow-sm">
-                                    <Code2 size={20} />
-                                </div>
-                                <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">1.4M+ Lines</p>
-                                <p className="text-xs text-slate-600 font-medium mt-0.5">Audited Codebase</p>
-                            </div>
-
-                            <div className="p-5 rounded-xl bg-gradient-to-br from-slate-50 to-blue-50/40 border border-slate-200/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
-                                <div className="w-10 h-10 rounded-lg bg-blue-600 text-white flex items-center justify-center mb-3 shadow-sm">
-                                    <FileText size={20} />
-                                </div>
-                                <p className="text-2xl sm:text-3xl font-sans font-bold text-slate-900">40+</p>
-                                <p className="text-xs text-slate-600 font-medium mt-0.5">IEEE & Top Papers</p>
-                            </div>
-
-                            <div className="p-5 rounded-xl bg-gradient-to-br from-emerald-50 to-teal-50/40 border border-emerald-100/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
-                                <div className="w-10 h-10 rounded-lg bg-emerald-600 text-white flex items-center justify-center mb-3 shadow-sm">
-                                    <Lock size={20} />
-                                </div>
-                                <p className="text-2xl sm:text-3xl font-sans font-bold text-emerald-950">99.99%</p>
-                                <p className="text-xs text-slate-600 font-medium mt-0.5">Zero-Trust Uptime</p>
-                            </div>
-
-                            <div className="p-5 rounded-xl bg-gradient-to-br from-indigo-50 to-purple-50/40 border border-indigo-100/80 shadow-xs text-left group hover:scale-[1.02] transition-transform">
-                                <div className="w-10 h-10 rounded-lg bg-indigo-600 text-white flex items-center justify-center mb-3 shadow-sm">
-                                    <Server size={20} />
-                                </div>
-                                <p className="text-2xl sm:text-3xl font-sans font-bold text-indigo-950">$6M+</p>
-                                <p className="text-xs text-slate-600 font-medium mt-0.5">Cyber Range Labs</p>
-                            </div>
+                        {/* Visual Research Image */}
+                        <div className="lg:col-span-5 relative w-full h-[280px] sm:h-[320px] rounded-lg overflow-hidden border border-slate-200/80 shadow-lg">
+                            <Image
+                                src="/images/ccd_research_lab.jpg"
+                                alt="Centre for Cybersecurity and Defense Research Operations Center"
+                                fill
+                                sizes="(max-width: 1024px) 100vw, 40vw"
+                                className="object-cover object-center"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
                         </div>
                     </div>
                 </section>

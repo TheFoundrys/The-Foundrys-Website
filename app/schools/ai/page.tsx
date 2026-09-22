@@ -304,7 +304,7 @@ export default function AISchoolPage() {
                 }} />
                 <Image 
                     src="/images/school-ai.png" 
-                    alt="School of Artificial Intelligence" 
+                    alt="Deep Tech in Artificial Intelligence" 
                     fill 
                     priority
                     className="object-cover object-center brightness-[0.7]" 
@@ -313,7 +313,7 @@ export default function AISchoolPage() {
                 <div className="absolute inset-0 flex items-center">
                     <div className="container mx-auto max-w-6xl px-6">
                         <h1 className="font-serif text-white text-4xl md:text-6xl font-bold tracking-tight school-title-white">
-                            School of Artificial Intelligence
+                            Deep Tech in Artificial Intelligence
                         </h1>
                     </div>
                 </div>

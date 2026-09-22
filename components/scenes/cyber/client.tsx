@@ -345,19 +345,15 @@ export function CyberClient() {
         <div className="absolute inset-0 z-0 select-none">
           <img 
             src="/images/school-cybersecurity.png" 
-            alt="School of Cyber Security" 
+            alt="Deep Tech in Cyber Security" 
             className="w-full h-full object-cover brightness-[0.7]"
           />
           <div className="absolute inset-0 bg-black/35" />
         </div>
 
         <div className="container mx-auto max-w-6xl relative z-10 px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold mb-4 uppercase tracking-wider backdrop-blur-sm school-tag-white">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            School of Deep Tech
-          </div>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight uppercase font-serif school-title-white">
-            School of Cyber Security
+            Deep Tech in Cyber Security
           </h1>
         </div>
       </section>

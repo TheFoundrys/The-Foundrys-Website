@@ -5,7 +5,7 @@ export const revalidate = 60;
 
 export default async function Image() {
   return GenerateOgImage({
-    title: "School of Data Science",
+    title: "Deep Tech in Data Science",
     category: "School of Deep Tech",
     slug: "schools/datascience",
   });
