@@ -25,10 +25,36 @@ interface EventItem {
     ctaText?: string;
     secondaryLink?: string;
     secondaryCtaText?: string;
+    meetingLink?: string;
+    meetingCtaText?: string;
     image?: string;
 }
 
 const allItems: EventItem[] = [
+    {
+        id: "webinar-deep-tech-workforce-podcast",
+        title: "Who Builds India’s Deep Tech Workforce — Enterprises or Institutions?",
+        type: "Live Podcast",
+        category: "webinar",
+        date: "Thu, Sep 24, 2026",
+        time: "8:30 AM – 9:30 AM IST",
+        dateTime: "2026-09-24T08:30:00+05:30",
+        platform: "Microsoft Teams & YouTube Live",
+        link: "https://tinyurl.com/2v2crwex",
+        ctaText: "Register Now",
+        secondaryLink: "https://tinyurl.com/3kk3c9zs",
+        secondaryCtaText: "Watch on YouTube",
+        meetingLink: "https://tinyurl.com/yp5dy2xv",
+        meetingCtaText: "Direct Meeting Link",
+        description: `India’s deep-tech future depends on building talent equipped for AI, Cyber Security, Quantum Computing, and emerging technologies.
+
+But who should take the lead — enterprises, institutions, or a stronger collaboration between both?
+
+Join Shalini, Founder & CEO of NineGuide Consulting, in conversation with Vishwanath Akuthota, Founder & CEO of The Foundry’s, as they explore industry readiness, education, skills, innovation, and the future of India’s deep-tech workforce.`,
+        tags: ["Deep Tech", "Workforce", "AI", "Cyber Security", "Quantum Computing", "Live Podcast", "Higher Education"],
+        featured: true,
+        image: "/images/deep-tech-workforce-podcast.png",
+    },
     {
         id: "podcast-deep-tech-manufacturing",
         title: "Live Podcast: Can India Become a Deep-Tech Manufacturing Powerhouse?",
@@ -418,6 +444,18 @@ export function EventsClient() {
                                                                 >
                                                                     <Youtube size={18} />
                                                                     {item.secondaryCtaText || "Watch Live Stream on YouTube"}
+                                                                    <ArrowUpRight size={16} />
+                                                                </a>
+                                                            )}
+                                                            {item.meetingLink && (
+                                                                <a
+                                                                    href={item.meetingLink}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-indigo-600 text-white rounded-full font-bold hover:bg-indigo-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+                                                                >
+                                                                    <Video size={18} />
+                                                                    {item.meetingCtaText || "Direct Meeting Link"}
                                                                     <ArrowUpRight size={16} />
                                                                 </a>
                                                             )}
