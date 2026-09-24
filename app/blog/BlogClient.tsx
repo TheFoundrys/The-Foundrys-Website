@@ -226,6 +226,17 @@ const STATIC_RESEARCH_POSTS: Post[] = [
 
 const STATIC_BLOG_POSTS: Post[] = [
     {
+        _id: "blog-21",
+        title: "Prompt Engineering in 5 Practical Steps",
+        slug: { current: "prompt-engineering-5-practical-steps" },
+        publishedAt: "2026-09-24T10:00:00Z",
+        mainImage: { static: true, url: "/images/prompt_engineering_in_5_practical_steps_cover.jpg" },
+        category: "Blog",
+        readTime: "5 min",
+        excerpt: "Turn Vague Instructions Into Clear, Useful AI Outputs. Artificial Intelligence can be incredibly powerful, but getting useful results isn't only about choosing the right tool. Discover 5 practical steps—Goal, Context, Role, Output, and Refinement—to master structured prompting and communicate effectively with AI.",
+        link: "https://www.linkedin.com/pulse/prompt-engineering-5-practical-steps-the-foundry-s-a5hcf"
+    },
+    {
         _id: "blog-20",
         title: "From Learning to Opportunity",
         slug: { current: "from-learning-opportunity" },
