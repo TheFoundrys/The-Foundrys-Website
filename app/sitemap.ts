@@ -52,6 +52,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/programs/sustainability-in-the-age-of-ai',
         '/resources',
         '/events',
+        '/news',
+        '/news/thefoundrys-partnered-with-pratibha-degree-college',
         '/testimonials',
         '/contact',
         '/faq',

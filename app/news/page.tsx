@@ -8,6 +8,15 @@ import { Footer } from "@/components/footer";
 
 const NEWS_ITEMS = [
     {
+        slug: "thefoundrys-partnered-with-pratibha-degree-college",
+        title: "The Foundry's Partnered with Pratibha Degree & PG College, Siddipet",
+        excerpt: "The Foundry’s has officially signed an MOU with Pratibha Degree & PG College, Siddipet to deliver advanced technology training in Artificial Intelligence, Data Science, Cloud, and Cyber Security to empower students.",
+        date: "Sep 24, 2026",
+        readTime: "2 min",
+        category: "News",
+        image: "/mou-pratibha-college.jpg"
+    },
+    {
         slug: "thefoundrys-partnered-with-vareon",
         title: "The Foundry's Partnered with Vareon",
         excerpt: "We are thrilled to announce that The Foundry's has officially signed an MoU with Vareon! This partnership aims to collaborate on industry-relevant training, research, and placements, building the future together.",

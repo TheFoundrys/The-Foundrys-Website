@@ -18,6 +18,43 @@ interface NewsArticle {
 }
 
 const ARTICLES: Record<string, NewsArticle> = {
+    "thefoundrys-partnered-with-pratibha-degree-college": {
+        title: "The Foundry's Partnered with Pratibha Degree & PG College, Siddipet",
+        date: "September 24, 2026",
+        readTime: "2 min read",
+        category: "News",
+        image: "/mou-pratibha-college.jpg",
+        content: (
+            <>
+                <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
+                    The Foundry’s has officially signed a Memorandum of Understanding (MOU) with Pratibha Degree & PG College, Siddipet to deliver advanced technology training and empower students with future-ready skills.
+                </p>
+
+                <h2>Empowering Students Through Advanced Technology Training</h2>
+                <p>
+                    The Foundry's has entered into a strategic collaboration with Pratibha Degree & PG College, Siddipet. This Memorandum of Understanding (MOU) marks a significant step forward in bringing industry-aligned training, deep-tech skills, and practical technology education to degree and postgraduate students.
+                </p>
+
+                <h2>Key Technology Domains Covered</h2>
+                <ul>
+                    <li><strong>Artificial Intelligence (AI):</strong> Foundations of AI, prompt engineering, applied LLMs, and real-world machine learning workflows.</li>
+                    <li><strong>Data Science:</strong> Data analytics, statistical modeling, and data-driven decision-making tools.</li>
+                    <li><strong>Cloud Technologies:</strong> Modern cloud infrastructure, deployment pipelines, and scalable computing environments.</li>
+                    <li><strong>Cyber Security:</strong> Essential security protocols, systems protection, and threat defense fundamentals.</li>
+                    <li><strong>Robotics & Automation:</strong> Automation principles, intelligent agents, and robotics control workflows.</li>
+                    <li><strong>Software Development:</strong> Modern software development practices, full-stack engineering, and industry-standard coding conventions.</li>
+                </ul>
+
+                <h2>Leadership &amp; Vision</h2>
+                <p>
+                    The MOU ceremony was attended by college leadership and representatives of The Foundry&apos;s. Dr. Suryaprakash Rao Datharu, Principal of Pratibha Degree &amp; PG College, Siddipet, emphasized the importance of bringing global curriculum and practical industry exposure directly to college classrooms.
+                </p>
+                <p>
+                    The Foundry&apos;s representative, J P Pramod, commended the college management&apos;s proactive dedication to their students&apos; future and reinforced The Foundry&apos;s commitment to bridging the gap between academia and modern tech industry requirements.
+                </p>
+            </>
+        )
+    },
     "thefoundrys-partnered-with-vareon": {
         title: "The Foundry's Partnered with Vareon",
         date: "July 28, 2026",
