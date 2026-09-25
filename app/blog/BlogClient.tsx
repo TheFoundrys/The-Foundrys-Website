@@ -226,6 +226,17 @@ const STATIC_RESEARCH_POSTS: Post[] = [
 
 const STATIC_BLOG_POSTS: Post[] = [
     {
+        _id: "blog-22",
+        title: "The AI Job Market Is Not Asking for “AI Knowledge” Alone",
+        slug: { current: "ai-job-market-asking-knowledge-alone" },
+        publishedAt: "2026-09-25T13:30:00Z",
+        mainImage: { static: true, url: "/images/ai_job_market_asking_knowledge_alone_cover.jpg" },
+        category: "Blog",
+        readTime: "6 min",
+        excerpt: "5 Deep-Tech Skills Employers Are Looking For in 2026. Knowing about AI is no longer enough. Employers increasingly need professionals who can combine AI capabilities with strong technical foundations, engineering thinking, business understanding, and human problem-solving skills.",
+        link: "https://www.linkedin.com/pulse/ai-job-market-asking-knowledge-alone-the-foundry-s-zw58f"
+    },
+    {
         _id: "blog-21",
         title: "Prompt Engineering in 5 Practical Steps",
         slug: { current: "prompt-engineering-5-practical-steps" },
