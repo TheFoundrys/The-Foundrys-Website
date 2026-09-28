@@ -32,6 +32,40 @@ interface EventItem {
 
 const allItems: EventItem[] = [
     {
+        id: "podcast-rethinking-ip-in-the-age-of-ai",
+        title: "Rethinking IP in the Age of AI",
+        type: "Live Podcast",
+        category: "webinar",
+        date: "Fri, Oct 2, 2026",
+        time: "3:00 PM – 4:00 PM IST",
+        dateTime: "2026-10-02T15:00:00+05:30",
+        platform: "Microsoft Teams & YouTube Live",
+        link: "https://tinyurl.com/3vx28rt4",
+        ctaText: "Join Session (Teams)",
+        secondaryLink: "https://tinyurl.com/frdthxnt",
+        secondaryCtaText: "Watch on YouTube",
+        meetingLink: "https://tinyurl.com/3vx28rt4",
+        meetingCtaText: "Direct Meeting Link",
+        description: `AI is transforming the way ideas are created, developed, and commercialized — bringing new questions around Intellectual Property, ownership, attribution, and innovation.
+
+Join us for an engaging conversation on how AI is reshaping the future of IP, featuring:
+
+👤 Uday Wagh — Founder & CEO, TwinSim AI
+🎤 In conversation with Vishwanath Akuthota — Founder & CEO, The Foundry’s
+
+💡 Topics include:
+• How AI is changing Intellectual Property
+• Ownership and attribution of AI-generated innovation
+• The evolving role of creators and organizations
+• Opportunities and challenges for businesses
+• What the future of IP may look like in an AI-driven world
+
+We invite entrepreneurs, innovators, professionals, researchers, and anyone interested in AI, Intellectual Property, and the future of innovation to join the conversation.`,
+        tags: ["Intellectual Property", "AI", "TwinSim AI", "Live Podcast", "Deep Tech", "Innovation"],
+        featured: true,
+        image: "/images/rethinking-ip-in-the-age-of-ai.png",
+    },
+    {
         id: "webinar-deep-tech-workforce-podcast",
         title: "Who Builds India’s Deep Tech Workforce — Enterprises or Institutions?",
         type: "Live Podcast",
@@ -52,7 +86,7 @@ But who should take the lead — enterprises, institutions, or a stronger collab
 
 Join Shalini, Founder & CEO of NineGuide Consulting, in conversation with Vishwanath Akuthota, Founder & CEO of The Foundry’s, as they explore industry readiness, education, skills, innovation, and the future of India’s deep-tech workforce.`,
         tags: ["Deep Tech", "Workforce", "AI", "Cyber Security", "Quantum Computing", "Live Podcast", "Higher Education"],
-        featured: true,
+        featured: false,
         image: "/images/deep-tech-workforce-podcast.png",
     },
     {
