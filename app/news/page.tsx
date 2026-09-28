@@ -14,7 +14,8 @@ const NEWS_ITEMS = [
         date: "Sep 24, 2026",
         readTime: "2 min",
         category: "News",
-        image: "/mou-pratibha-college.jpg"
+        image: "/mou-pratibha-college.jpg",
+        imagePosition: "contain"
     },
     {
         slug: "thefoundrys-partnered-with-vareon",
@@ -112,6 +113,8 @@ export default function NewsroomPage() {
 }
 
 function NewsCard({ slug, title, excerpt, date, readTime, category, image, imagePosition, index }: any) {
+    const isContain = imagePosition?.includes('contain');
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -121,18 +124,18 @@ function NewsCard({ slug, title, excerpt, date, readTime, category, image, image
             className="group flex flex-col bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
         >
             {image ? (
-                <Link href={`/news/${slug}`} className="block relative aspect-video overflow-hidden bg-slate-50 flex items-center justify-center">
+                <Link href={`/news/${slug}`} className="block relative aspect-video overflow-hidden bg-white flex items-center justify-center">
                     <img
                         src={image}
                         alt={title}
-                        className={`w-full h-full group-hover:scale-105 transition-transform duration-700 ${
-                            imagePosition?.includes('contain') 
+                        className={`w-full h-full transition-transform duration-700 ${
+                            isContain 
                                 ? 'object-contain' 
-                                : `object-cover ${imagePosition || 'object-center'}`
+                                : `object-cover group-hover:scale-105 ${imagePosition || 'object-center'}`
                         }`}
                     />
-                    <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur shadow-sm text-blue-600 text-xs font-bold border border-blue-100">
+                    <div className="absolute top-4 left-4 z-10">
+                        <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur shadow-sm text-blue-600 text-xs font-bold border border-blue-100/80">
                             {category}
                         </span>
                     </div>
