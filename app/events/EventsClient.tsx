@@ -31,6 +31,25 @@ interface EventItem {
 
 const allItems: EventItem[] = [
     {
+        id: "webinar-rethinking-ip-in-the-age-of-ai",
+        title: "Rethinking IP in the Age of AI",
+        type: "Live Podcast",
+        category: "event",
+        date: "Fri, Oct 2, 2026",
+        time: "3:00 PM – 4:00 PM IST",
+        dateTime: "2026-10-02T15:00:00+05:30",
+        platform: "Microsoft Teams & YouTube Live",
+        link: "https://tinyurl.com/3vx28rt4",
+        youtubeUrl: "https://tinyurl.com/frdthxnt",
+        teamsUrl: "https://tinyurl.com/3vx28rt4",
+        description:
+            "AI is transforming the way ideas are created, developed, and commercialized — bringing new questions around Intellectual Property, ownership, attribution, and innovation. Join us for an engaging conversation on how AI is reshaping the future of IP, featuring guest Uday Wagh (Founder & CEO, TwinSim AI) in conversation with host Vishwanath Akuthota (Founder & CEO, The Foundry’s). Topics include ownership and attribution of AI-generated innovation, evolving roles of creators and organizations, and what the future of IP looks like in an AI-driven world.",
+        tags: ["Intellectual Property", "Artificial Intelligence", "TwinSim AI", "Innovation", "Live Podcast", "Deep Tech"],
+        featured: true,
+        status: "upcoming",
+        image: "/images/rethinking-ip-in-the-age-of-ai.png",
+    },
+    {
         id: "webinar-deep-tech-workforce-podcast",
         title: "Who Builds India’s Deep Tech Workforce — Enterprises or Institutions?",
         type: "Live Podcast",
@@ -45,8 +64,8 @@ const allItems: EventItem[] = [
         description:
             "India’s deep-tech future depends on building talent equipped for AI, Cyber Security, Quantum Computing, and emerging technologies. But who should take the lead — enterprises, institutions, or a stronger collaboration between both? Join Shalini, Founder & CEO of NineGuide Consulting, in conversation with Vishwanath Akuthota, Founder & CEO of The Foundry’s, as they explore industry readiness, education, skills, innovation, and the future of India’s deep-tech workforce.",
         tags: ["Deep Tech", "Workforce", "AI", "Cyber Security", "Quantum Computing", "Live Podcast", "Higher Education"],
-        featured: true,
-        status: "upcoming",
+        featured: false,
+        status: "completed",
         image: "/images/deep-tech-workforce-podcast.png",
     },
     {

@@ -7,6 +7,14 @@ import { ChevronRight } from "lucide-react";
 
 const EVENTS = [
   {
+    title: "Rethinking IP in the Age of AI",
+    description: "AI is transforming how ideas are created, developed, and commercialized. Join Uday Wagh (Founder & CEO, TwinSim AI) in conversation with Vishwanath Akuthota (Founder & CEO, The Foundry's) exploring AI, Intellectual Property, ownership, and innovation.",
+    month: "Oct",
+    day: "02",
+    image: "/images/rethinking-ip-in-the-age-of-ai.png",
+    href: "/events"
+  },
+  {
     title: "Who Builds India’s Deep Tech Workforce — Enterprises or Institutions?",
     description: "Join Shalini (Founder & CEO, NineGuide Consulting) in conversation with Vishwanath Akuthota (Founder & CEO, The Foundry's) exploring industry readiness, education, skills, and the future of India's deep-tech workforce.",
     month: "Sep",
@@ -20,14 +28,6 @@ const EVENTS = [
     month: "Sep",
     day: "17",
     image: "/images/leading-ai-transformation-podcast.jpg",
-    href: "/events"
-  },
-  {
-    title: "Can India Become a Deep-Tech Manufacturing Powerhouse?",
-    description: "Building Technology. Building India. Join our live podcast with guest Col. Merugu Solomon Saneev (Defence Technology & Aerospace Expert) and host Vishwanath Akuthota.",
-    month: "Aug",
-    day: "21",
-    image: "/images/deeptech-manufacturing-podcast.png",
     href: "/events"
   },
 ];
