@@ -46,6 +46,17 @@ const getPostImageUrl = (image: unknown) => {
 
 const STATIC_RESEARCH_POSTS: Post[] = [
     {
+        _id: "res-fctls-co3o4",
+        title: "Co3O4 Nanostructures for Oxygen Evolution Reaction: A Mini Review",
+        slug: { current: "co3o4-nanostructures-oxygen-evolution-reaction-mini-review" },
+        publishedAt: "2026-09-23T00:00:00Z",
+        mainImage: { static: true, url: "/images/research/co3o4_nanostructures_oer_cover.jpg" },
+        category: "Research",
+        readTime: "Journal",
+        excerpt: "Frontiers in Catalysis (ISSN: 2673-7841) review summarizing advances in cobalt oxide (Co3O4) nanostructures for oxygen evolution reaction, focusing on electrocatalysis, nanostructure engineering, and renewable hydrogen production.",
+        link: "https://www.frontiersin.org/journals/catalysis/articles/10.3389/fctls.2026.1949223/full"
+    },
+    {
         _id: "res-edu-4",
         title: "Education 4.0: Integrating Artificial Intelligence (AI) for Personalized and Adaptive Learning",
         slug: { current: "education-4-0-ai-personalized-learning" },

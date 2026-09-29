@@ -47,6 +47,17 @@ const getPostImageUrl = (image: unknown) => {
 
 const STATIC_RESEARCH_POSTS: Post[] = [
     {
+        _id: "res-fctls-co3o4",
+        title: "Co3O4 Nanostructures for Oxygen Evolution Reaction: A Mini Review",
+        slug: { current: "co3o4-nanostructures-oxygen-evolution-reaction-mini-review" },
+        publishedAt: "2026-09-23T00:00:00Z",
+        mainImage: { static: true, url: "/images/research/co3o4_nanostructures_oer_cover.jpg" },
+        category: "Research",
+        readTime: "Journal",
+        excerpt: "Frontiers in Catalysis (ISSN: 2673-7841) review summarizing advances in cobalt oxide (Co3O4) nanostructures for oxygen evolution reaction, focusing on electrocatalysis, nanostructure engineering, and renewable hydrogen production.",
+        link: "https://www.frontiersin.org/journals/catalysis/articles/10.3389/fctls.2026.1949223/full"
+    },
+    {
         _id: "res-edu-4",
         title: "Education 4.0: Integrating Artificial Intelligence (AI) for Personalized and Adaptive Learning",
         slug: { current: "education-4-0-ai-personalized-learning" },
@@ -59,14 +70,14 @@ const STATIC_RESEARCH_POSTS: Post[] = [
     },
     {
         _id: "res-hkijrs",
-        title: "Hong Kong International Journal of Research Studies (ISSN: 3078-4018)",
-        slug: { current: "hong-kong-international-journal-of-research-studies" },
+        title: "Green AI Strategy Compass: A Comparative Framework for Sustainable AI Design",
+        slug: { current: "green-ai-strategy-compass-a-comparative-framework-for-sustainable-ai-design" },
         publishedAt: "2026-09-21T00:00:00Z",
-        mainImage: { static: true, url: "/images/research/hkijrs_journal_cover.jpg" },
+        mainImage: { static: true, url: "/images/research/green_ai_strategy_compass_cover.jpg" },
         category: "Research",
         readTime: "Journal",
         excerpt: "Hong Kong International Journal of Research Studies (HKIJRS) is an international open-access, peer-reviewed journal publishing innovative research studies, technology developments, and scientific insights. ISSN: 3078-4018.",
-        link: "https://octopuspublication.com/index.php/hkijrs"
+        link: "https://octopuspublication.com/article/vol-4-issue-2-green-ai-strategy-compass-a-comparative-framework-for-sustainable-ai-design"
     },
     {
         _id: "res-1",
