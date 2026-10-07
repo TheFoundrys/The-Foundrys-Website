@@ -46,6 +46,15 @@ const teamMembers = [
         }
     },
     {
+        name: "Sanjeeva Reddy Gaddam",
+        role: "Technology Operations Head",
+        image: "/images/sanjeeva-reddy-v2.png",
+        profileLink: "/about/faculty/sanjeeva-reddy-gaddam",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/sanjeevareddygaddam/",
+        }
+    },
+    {
         name: "Srinivas Sadasyula",
         role: "Vice President",
         image: "/images/srinivas-sadasyula.jpg",
