@@ -37,24 +37,6 @@ const teamMembers = [
         }
     },
     {
-        name: "Soujanya Kanagala",
-        role: "Operations Head",
-        image: "/images/soujanya.jpg",
-        profileLink: "/about/faculty/soujanya-kanagala",
-        socials: {
-            linkedin: "https://www.linkedin.com/in/soujanya-kanagala-07304833/"
-        }
-    },
-    {
-        name: "Sanjeeva Reddy Gaddam",
-        role: "Technology Operations Head",
-        image: "/images/sanjeeva-reddy-v2.png",
-        profileLink: "/about/faculty/sanjeeva-reddy-gaddam",
-        socials: {
-            linkedin: "https://www.linkedin.com/in/sanjeevareddygaddam/",
-        }
-    },
-    {
         name: "Srinivas Sadasyula",
         role: "Vice President",
         image: "/images/srinivas-sadasyula.jpg",
@@ -64,6 +46,43 @@ const teamMembers = [
         }
     },
     {
+        name: "Sanjeeva Reddy Gaddam",
+        role: "Partner-runElix",
+        image: "/images/sanjeeva-reddy-v2.png",
+        profileLink: "/about/faculty/sanjeeva-reddy-gaddam",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/sanjeevareddygaddam/",
+        }
+    },
+     {
+        name: "Ananth Ayyangar",
+        role: "Partner-Zythri",
+        image: "/images/ananth-ayyangar.jpg",
+        imageClass: "object-[center_14%]",
+        profileLink: "/about/faculty/ananth-ayyangar",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/ananth-ayyangar-a06b6726/"
+        }
+    },
+    {
+        name: "Soujanya Kanagala",
+        role: "Operations Head",
+        image: "/images/soujanya.jpg",
+        profileLink: "/about/faculty/soujanya-kanagala",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/soujanya-kanagala-07304833/"
+        }
+    },
+    {
+        name: "Ravikanth N",
+        role: "Manager - Sales and Business Development (Enterprises & Products)",
+        image: "/images/ravikanth.png",
+        profileLink: "/about/faculty/ravikanth-n",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/ravikanth-n-5973ba164/"
+        }
+    },
+     {
         name: "Akuthota Aravind",
         role: "Business Development Executive",
         image: "/images/araavind.png",
@@ -232,7 +251,7 @@ function SmallTeamCard({ member, index }: { member: any, index: number }) {
                         alt={member.name}
                         fill
                         sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 90vw"
-                        className={`object-cover object-top transition-transform duration-500 group-hover:scale-105 ${member.imageClass ?? ""}`}
+                        className={`object-cover ${member.imageClass ?? "object-top"} transition-transform duration-500 group-hover:scale-105`}
                     />
                 ) : (
                     <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-slate-100 to-foundry-off-white flex flex-col items-center justify-center p-4 text-center">
