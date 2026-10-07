@@ -9,6 +9,24 @@ import { Footer } from "@/components/footer";
 
 const NEWS_ITEMS = [
     {
+        slug: "thefoundrys-partnered-with-ekashila-degree-college",
+        title: "The Foundry's Partnered with Ekashila Degree College, Jangaon",
+        excerpt: "The Foundry’s has officially signed an MOU with Ekashila Degree College, Jangaon (Affiliated to Kakatiya University) to deliver advanced technology training in Artificial Intelligence, Cloud, and Software Development.",
+        date: "Oct 07, 2026",
+        readTime: "2 min",
+        category: "Partnerships",
+        image: "/mou-ekashila-college-card.jpg"
+    },
+    {
+        slug: "thefoundrys-partnered-with-pratibha-degree-college",
+        title: "The Foundry's Partnered with Pratibha Degree & PG College, Siddipet",
+        excerpt: "The Foundry’s has officially signed an MOU with Pratibha Degree & PG College, Siddipet to deliver advanced technology training in Artificial Intelligence, Data Science, Cloud, and Cyber Security to empower students.",
+        date: "Sep 24, 2026",
+        readTime: "2 min",
+        category: "News",
+        image: "/mou-pratibha-college.jpg"
+    },
+    {
         slug: "thefoundrys-partnered-with-vareon",
         title: "The Foundry's Partnered with Vareon",
         excerpt: "We are thrilled to announce that The Foundry's has officially signed an MoU with Vareon to collaborate on training, research, and direct placements.",
@@ -111,7 +129,7 @@ function NewsCard({ slug, title, excerpt, date, readTime, category, image, image
             className="group flex flex-col bg-[#F1F1EC] border border-slate-200/80 hover:border-[#002f86] hover:bg-[#E5EAF0] transition-all duration-300 shadow-xs"
         >
             {image && (
-                <Link href={`/news/${slug}`} className="block relative h-44 overflow-hidden bg-slate-50 border-b border-slate-100">
+                <Link href={`/news/${slug}`} className="block relative aspect-[3/2] overflow-hidden bg-slate-50 border-b border-slate-100">
                     <img
                         src={image}
                         alt={title}

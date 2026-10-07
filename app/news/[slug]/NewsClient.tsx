@@ -19,6 +19,82 @@ interface NewsArticle {
 }
 
 const ARTICLES: Record<string, NewsArticle> = {
+    "thefoundrys-partnered-with-ekashila-degree-college": {
+        title: "The Foundry's Partnered with Ekashila Degree College, Jangaon",
+        date: "October 07, 2026",
+        readTime: "2 min read",
+        category: "Partnerships",
+        image: "/mou-ekashila-college.jpg",
+        content: (
+            <>
+                <p className="text-lg md:text-xl text-slate-700 font-serif italic mb-8 border-l-4 border-[#002f86] pl-6">
+                    The Foundry’s has officially signed a Memorandum of Understanding (MOU) with Ekashila Degree College, Jangaon (Affiliated to Kakatiya University) to empower undergraduate students with industry-aligned training in Artificial Intelligence and modern deep technologies.
+                </p>
+
+                <h2 className="font-serif text-2xl font-bold text-[#002f86] mt-8 mb-4">Empowering Regional Talent in Deep Tech</h2>
+                <p className="text-slate-700 leading-relaxed mb-6 font-sans">
+                    The Foundry&apos;s has entered into a strategic collaboration with Ekashila Degree College, Jangaon. Established in 1993 and affiliated with Kakatiya University, Ekashila Degree College has long served as a key higher-education institution in the region. This partnership marks an important milestone in bringing practical industry mentorship, future-ready curricula, and placement-driven learning models to students in computer science, physical sciences, life sciences, and commerce streams.
+                </p>
+
+                <div className="my-8 p-6 bg-[#F7F7F4] border border-slate-200/80 italic text-slate-800 font-serif">
+                    &quot;Bringing world-class deep-tech training and practical industry exposure directly to college classrooms is fundamental to democratizing opportunities for students across Telangana.&quot;
+                </div>
+
+                <h2 className="font-serif text-2xl font-bold text-[#002f86] mt-8 mb-4">Key Focus Areas of the Partnership</h2>
+                <ul className="list-disc pl-6 space-y-2 text-slate-700 font-sans mb-6">
+                    <li><strong>Artificial Intelligence &amp; Data Science:</strong> Practical coursework in applied machine learning, prompt engineering, generative AI, and data analytics.</li>
+                    <li><strong>Full Stack &amp; Software Development:</strong> Hands-on project work covering modern software development, full-stack frameworks, and industry coding standards.</li>
+                    <li><strong>Cloud Computing &amp; Cybersecurity:</strong> Foundational architecture training covering cloud deployment, infrastructure management, and digital defense.</li>
+                    <li><strong>Career Readiness &amp; Placements:</strong> Direct mentorship, interview preparation, and skill bootcamps to transition graduates into high-growth technology roles.</li>
+                </ul>
+
+                <h2 className="font-serif text-2xl font-bold text-[#002f86] mt-8 mb-4">Academic Vision &amp; Leadership</h2>
+                <p className="text-slate-700 leading-relaxed mb-6 font-sans">
+                    The MOU exchange was conducted in the presence of college management and representatives from The Foundry&apos;s, including J P Pramod. The leadership of Ekashila Degree College highlighted their commitment to ensuring students gain tangible, hands-on competencies that match global technological demands.
+                </p>
+                <p className="text-slate-700 leading-relaxed font-sans">
+                    Through this collaboration, The Foundry&apos;s reinforces its mission to connect academic talent with frontier industry opportunities, building the next generation of builders and technologists.
+                </p>
+            </>
+        )
+    },
+    "thefoundrys-partnered-with-pratibha-degree-college": {
+        title: "The Foundry's Partnered with Pratibha Degree & PG College, Siddipet",
+        date: "September 24, 2026",
+        readTime: "2 min read",
+        category: "News",
+        image: "/mou-pratibha-college.jpg",
+        content: (
+            <>
+                <p className="text-lg md:text-xl text-slate-700 font-serif italic mb-8 border-l-4 border-[#002f86] pl-6">
+                    The Foundry’s has officially signed a Memorandum of Understanding (MOU) with Pratibha Degree & PG College, Siddipet to deliver advanced technology training and empower students with future-ready skills.
+                </p>
+
+                <h2 className="font-serif text-2xl font-bold text-[#002f86] mt-8 mb-4">Empowering Students Through Advanced Technology Training</h2>
+                <p className="text-slate-700 leading-relaxed mb-6 font-sans">
+                    The Foundry&apos;s has entered into a strategic collaboration with Pratibha Degree & PG College, Siddipet. This Memorandum of Understanding (MOU) marks a significant step forward in bringing industry-aligned training, deep-tech skills, and practical technology education to degree and postgraduate students.
+                </p>
+
+                <h2 className="font-serif text-2xl font-bold text-[#002f86] mt-8 mb-4">Key Technology Domains Covered</h2>
+                <ul className="list-disc pl-6 space-y-2 text-slate-700 font-sans mb-6">
+                    <li><strong>Artificial Intelligence (AI):</strong> Foundations of AI, prompt engineering, applied LLMs, and real-world machine learning workflows.</li>
+                    <li><strong>Data Science:</strong> Data analytics, statistical modeling, and data-driven decision-making tools.</li>
+                    <li><strong>Cloud Technologies:</strong> Modern cloud infrastructure, deployment pipelines, and scalable computing environments.</li>
+                    <li><strong>Cyber Security:</strong> Essential security protocols, systems protection, and threat defense fundamentals.</li>
+                    <li><strong>Robotics & Automation:</strong> Automation principles, intelligent agents, and robotics control workflows.</li>
+                    <li><strong>Software Development:</strong> Modern software development practices, full-stack engineering, and industry-standard coding conventions.</li>
+                </ul>
+
+                <h2 className="font-serif text-2xl font-bold text-[#002f86] mt-8 mb-4">Leadership &amp; Vision</h2>
+                <p className="text-slate-700 leading-relaxed mb-6 font-sans">
+                    The MOU ceremony was attended by college leadership and representatives of The Foundry&apos;s. Dr. Suryaprakash Rao Datharu, Principal of Pratibha Degree &amp; PG College, Siddipet, emphasized the importance of bringing global curriculum and practical industry exposure directly to college classrooms.
+                </p>
+                <p className="text-slate-700 leading-relaxed font-sans">
+                    The Foundry&apos;s representative, J P Pramod, commended the college management&apos;s proactive dedication to their students&apos; future and reinforced The Foundry&apos;s commitment to bridging the gap between academia and modern tech industry requirements.
+                </p>
+            </>
+        )
+    },
     "thefoundrys-partnered-with-vareon": {
         title: "The Foundry's Partnered with Vareon",
         date: "July 28, 2026",
@@ -92,6 +168,74 @@ const ARTICLES: Record<string, NewsArticle> = {
             </>
         )
     },
+    "thefoundrys-partnered-with-ebs": {
+        title: "The Foundry's Partnered with EBS Ethames Business School",
+        date: "April 02, 2026",
+        readTime: "2 min read",
+        category: "Partnerships",
+        image: "/ebs-partnership.png",
+        content: (
+            <>
+                <p className="text-lg md:text-xl text-slate-700 font-serif italic mb-8 border-l-4 border-[#002f86] pl-6">
+                    The Foundry’s is proud to announce a strategic partnership with Ethames Business School (EBS).
+                </p>
+
+                <p className="text-slate-700 leading-relaxed mb-6 font-sans">
+                    This Memorandum of Understanding (MOU) marks a significant step forward in our mission to bring advanced technical education to a broader student body. By partnering with EBS, we are committed to providing the next generation of tech leaders with the tools, mentorship, and training required to excel in Artificial Intelligence and Deep Tech.
+                </p>
+
+                <div className="my-8 p-6 bg-[#F7F7F4] border border-slate-200/80 italic text-slate-800 font-serif">
+                    &quot;This partnership with EBS represents a crucial step forward in our mission to bridge the gap between academic learning and industry demands in the rapidly evolving tech landscape.&quot;
+                </div>
+
+                <h2 className="font-serif text-2xl font-bold text-[#002f86] mt-8 mb-4">Future-Ready Training and Mentorship</h2>
+                <ul className="list-disc pl-6 space-y-2 text-slate-700 font-sans mb-6">
+                    <li><strong>Specialized AI Training:</strong> Hands-on workshops focusing on Generative AI, LLM development, and Machine Learning.</li>
+                    <li><strong>Industry Mentorship:</strong> Exclusive access to a network of industry experts and deep-tech entrepreneurs.</li>
+                    <li><strong>Strategic Ecosystem:</strong> Building a robust ecosystem of innovation, where students can transition from academic learning to building real-world applications.</li>
+                </ul>
+
+                <p className="text-slate-700 leading-relaxed font-sans">
+                    The Foundry&apos;s remains dedicated to creating inclusive, accessible, and high-impact educational pathways. We look forward to seeing the breakthroughs and innovations that emerge from this exciting new partnership.
+                </p>
+            </>
+        )
+    },
+    "thefoundrys-partnered-with-keshava-college": {
+        title: "The Foundrys Partnered with Keshava Degree College for Women",
+        date: "March 17, 2026",
+        readTime: "2 min read",
+        category: "Partnerships",
+        image: "/mou-keshava-college.jpg",
+        imagePosition: "object-top",
+        content: (
+            <>
+                <p className="text-lg md:text-xl text-slate-700 font-serif italic mb-8 border-l-4 border-[#002f86] pl-6">
+                    The Foundry’s is proud to announce a strategic partnership with Keshava Degree College for Women, Hanamakonda.
+                </p>
+
+                <h2 className="font-serif text-2xl font-bold text-[#002f86] mt-8 mb-4">Empowering Women in Deep Tech</h2>
+                <p className="text-slate-700 leading-relaxed mb-6 font-sans">
+                    This Memorandum of Understanding (MOU) marks a significant step forward in our mission to bring advanced technical education to a broader student body. By partnering with Keshava Degree College for Women, we are committed to providing the next generation of female tech leaders with the tools, mentorship, and training required to excel in Artificial Intelligence and Deep Tech.
+                </p>
+
+                <div className="my-8 p-6 bg-[#F7F7F4] border border-slate-200/80 italic text-slate-800 font-serif">
+                    &quot;Bridging the gender gap in technical leadership is not just a social imperative, but an economic one. Our collaboration with Keshava College is a blueprint for empowering women to lead the future of innovation.&quot;
+                </div>
+
+                <h2 className="font-serif text-2xl font-bold text-[#002f86] mt-8 mb-4">Future-Ready Training and Mentorship</h2>
+                <ul className="list-disc pl-6 space-y-2 text-slate-700 font-sans mb-6">
+                    <li><strong>Specialized AI Training:</strong> Hands-on workshops focusing on Generative AI, LLM development, and Machine Learning.</li>
+                    <li><strong>Industry Mentorship:</strong> Exclusive access to a network of industry experts and deep-tech entrepreneurs.</li>
+                    <li><strong>Strategic Ecosystem:</strong> Building a robust ecosystem of innovation, where students can transition from academic learning to building real-world applications.</li>
+                </ul>
+
+                <p className="text-slate-700 leading-relaxed font-sans">
+                    The Foundry&apos;s remains dedicated to creating inclusive, accessible, and high-impact educational pathways. We look forward to seeing the breakthroughs and innovations that emerge from this exciting new partnership.
+                </p>
+            </>
+        )
+    },
     "thefoundrys-certified-by-startup-india": {
         title: "The Foundry's Officially Certified by Startup India",
         date: "March 17, 2026",
@@ -153,7 +297,7 @@ export default function NewsClient({ slug }: { slug: string }) {
                 
                 {/* Header Section */}
                 <section className="bg-[#F7F7F4] p-8 sm:p-12 md:p-16 border-b border-slate-200/50">
-                    <div className="max-w-4xl">
+                    <div className="max-w-4xl mx-auto">
                         <Link href="/news" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors mb-6 text-xs font-bold uppercase tracking-wider font-mono">
                             <ArrowLeft size={14} /> Back to Newsroom
                         </Link>
@@ -186,17 +330,13 @@ export default function NewsClient({ slug }: { slug: string }) {
 
                 {/* Article Content Section */}
                 <section className="p-8 sm:p-12 md:p-16 bg-white">
-                    <div className="max-w-4xl">
+                    <div className="max-w-4xl mx-auto">
                         {article.image && (
-                            <div className="mb-10 aspect-video bg-[#F7F7F4] border border-slate-200/80 overflow-hidden flex items-center justify-center p-3">
+                            <div className="mb-10 bg-[#F7F7F4] border border-slate-200/80 overflow-hidden flex items-center justify-center p-2 sm:p-4 mx-auto">
                                 <img
                                     src={article.image}
                                     alt={article.title}
-                                    className={`max-h-full max-w-full ${
-                                        article.imagePosition?.includes('contain') 
-                                            ? 'object-contain' 
-                                            : `object-cover ${article.imagePosition || 'object-center'}`
-                                    }`}
+                                    className="w-auto max-w-full max-h-[550px] object-contain shadow-xs mx-auto block"
                                 />
                             </div>
                         )}

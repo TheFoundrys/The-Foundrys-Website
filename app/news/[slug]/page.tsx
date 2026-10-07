@@ -10,6 +10,8 @@ export default async function NewsDetailPage({ params }: PageProps) {
 
     // Valid slugs for now
     const validSlugs = [
+        "thefoundrys-partnered-with-ekashila-degree-college",
+        "thefoundrys-partnered-with-pratibha-degree-college",
         "thefoundrys-partnered-with-vareon",
         "thefoundrys-partnered-with-ttpoa",
         "the-future-of-deep-tech",
