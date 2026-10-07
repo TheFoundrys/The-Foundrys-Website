@@ -8,6 +8,16 @@ import { Footer } from "@/components/footer";
 
 const NEWS_ITEMS = [
     {
+        slug: "thefoundrys-partnered-with-ekashila-degree-college",
+        title: "The Foundry's Partnered with Ekashila Degree College, Warangal",
+        excerpt: "The Foundry’s has officially signed an MOU with Ekashila Degree College (Affiliated to Kakatiya University) to deliver specialized tech training in AI, Data Science, and modern software skills to empower undergraduate students.",
+        date: "Oct 07, 2026",
+        readTime: "2 min",
+        category: "Partnerships",
+        image: "/mou-ekashila-college.jpg",
+        imagePosition: "contain"
+    },
+    {
         slug: "thefoundrys-partnered-with-pratibha-degree-college",
         title: "The Foundry's Partnered with Pratibha Degree & PG College, Siddipet",
         excerpt: "The Foundry’s has officially signed an MOU with Pratibha Degree & PG College, Siddipet to deliver advanced technology training in Artificial Intelligence, Data Science, Cloud, and Cyber Security to empower students.",
@@ -124,13 +134,19 @@ function NewsCard({ slug, title, excerpt, date, readTime, category, image, image
             className="group flex flex-col bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
         >
             {image ? (
-                <Link href={`/news/${slug}`} className="block relative aspect-video overflow-hidden bg-white flex items-center justify-center">
+                <Link href={`/news/${slug}`} className="block relative aspect-video overflow-hidden bg-slate-900/5 flex items-center justify-center">
+                    {isContain && (
+                        <div 
+                            className="absolute inset-0 bg-cover bg-center blur-md opacity-25 scale-110 pointer-events-none"
+                            style={{ backgroundImage: `url(${image})` }}
+                        />
+                    )}
                     <img
                         src={image}
                         alt={title}
-                        className={`w-full h-full transition-transform duration-700 ${
+                        className={`w-full h-full transition-transform duration-700 relative z-[1] ${
                             isContain 
-                                ? 'object-contain' 
+                                ? 'object-contain p-1 group-hover:scale-105' 
                                 : `object-cover group-hover:scale-105 ${imagePosition || 'object-center'}`
                         }`}
                     />

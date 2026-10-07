@@ -18,6 +18,45 @@ interface NewsArticle {
 }
 
 const ARTICLES: Record<string, NewsArticle> = {
+    "thefoundrys-partnered-with-ekashila-degree-college": {
+        title: "The Foundry's Partnered with Ekashila Degree College, Warangal",
+        date: "October 07, 2026",
+        readTime: "2 min read",
+        category: "Partnerships",
+        image: "/mou-ekashila-college.jpg",
+        content: (
+            <>
+                <p className="text-xl text-slate-600 font-light mb-12 border-l-4 border-blue-500 pl-6 italic">
+                    The Foundry’s has officially entered into a Memorandum of Understanding (MOU) with Ekashila Degree College (Affiliated to Kakatiya University) to equip undergraduate students with industry-grade competencies in Artificial Intelligence, Data Science, and modern technical stacks.
+                </p>
+
+                <h2>Bridging Academia and Deep-Tech Industry Demands</h2>
+                <p>
+                    We are excited to announce our strategic partnership with Ekashila Degree College, Warangal. Through this Memorandum of Understanding (MOU), The Foundry’s and Ekashila Degree College join forces to deliver high-impact, practical technology curriculums and immersive finishing-school training directly to students across science, commerce, and computer application disciplines.
+                </p>
+
+                <div className="my-10 p-8 bg-blue-50/50 rounded-3xl border border-blue-100/50 italic text-slate-700">
+                    &ldquo;Undergraduate education is undergoing a foundational shift. By partnering with Ekashila Degree College, we are ensuring students don&apos;t just graduate with a degree, but with demonstrable capabilities in modern AI, data workflows, and engineering problem-solving.&rdquo;
+                </div>
+
+                <h2>Key Focus Areas of the Partnership</h2>
+                <ul>
+                    <li><strong>Applied Artificial Intelligence:</strong> Practical machine learning pipelines, prompt engineering, generative models, and intelligent workflow automation.</li>
+                    <li><strong>Data Science &amp; Business Intelligence:</strong> Data wrangling, statistical modeling, exploratory analytics, and insight-driven application development.</li>
+                    <li><strong>Software Engineering &amp; Modern Web:</strong> Clean architecture, full-stack development methodologies, and hands-on production deployment practices.</li>
+                    <li><strong>Career Transformation &amp; Industry Placement:</strong> Mentorship from tech veterans, real-world portfolio building, technical interviews prep, and dedicated hiring linkages.</li>
+                </ul>
+
+                <h2>Leadership &amp; Academic Vision</h2>
+                <p>
+                    The official exchange ceremony was attended by the leadership of Ekashila Degree College alongside representatives from The Foundry’s, including J P Pramod. The leadership of Ekashila Degree College reaffirmed their vision to provide their students with state-of-the-art technological acumen and prepare them for ambitious roles across premier technology firms and high-growth startups.
+                </p>
+                <p>
+                    The Foundry’s continues to expand its mission to transform regional collegiate hubs into centers of tech excellence, cultivating the next generation of engineers, builders, and digital leaders.
+                </p>
+            </>
+        )
+    },
     "thefoundrys-partnered-with-pratibha-degree-college": {
         title: "The Foundry's Partnered with Pratibha Degree & PG College, Siddipet",
         date: "September 24, 2026",

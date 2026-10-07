@@ -53,6 +53,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/resources',
         '/events',
         '/news',
+        '/news/thefoundrys-partnered-with-ekashila-degree-college',
         '/news/thefoundrys-partnered-with-pratibha-degree-college',
         '/testimonials',
         '/contact',
