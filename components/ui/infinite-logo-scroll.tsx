@@ -7,27 +7,24 @@ const LOGOS = [
   "/logos/drpinnacle.png",
   "/logos/Faba.png",
   "/logos/redshelid1.png",
-  "/logos/optgpt.png",
+  "/logos/runelix.png",
   "/logos/ApplyuniNow.png",
   "/logos/markitome.png",
   "/logos/image.png",
   "/logos/techop.png",
-  "/logos/OptGrad_logo.png",
   "/logos/optsearch.png",
   "/logos/csi.jpg",
   "/logos/capsim.png",
   "/logos/hive_link_logo.jpg",
   "/logos/vareon.png",
-  "AI COMPASS",
   "OpenVals"
 ];
 
 /* URL map for clickable logos */
 const LOGO_LINKS: Record<string, string> = {
   "/logos/techop.png": "https://techoptima.ai/",
-  "/logos/optgpt.png": "https://optgpt.in",
+  "/logos/runelix.png": "https://runelix.com",
   "/logos/ApplyuniNow.png": "https://www.ApplyUniNow.com",
-  "/logos/OptGrad_logo.png": "https://optgpt.in",
   "/logos/optsearch.png": "https://optsearch.in",
   "/logos/drpinnacle.png": "https://drpinnacle.com/",
   "/logos/csi.jpg": "https://csi.org",
@@ -38,8 +35,7 @@ const LOGO_LINKS: Record<string, string> = {
   "/logos/Faba.png": "https://biofaba.org.in/",
   "/logos/capsim.png": "https://www.capsim.com/",
   "/logos/redshelid1.png": "https://thefoundrys.com",
-  "/logos/vareon.png": "",
-  "AI COMPASS": "https://openvalidations.com/services/ai-compass"
+  "/logos/vareon.png": ""
 };
 
 export function InfiniteLogoScroll() {
@@ -79,7 +75,7 @@ export function InfiniteLogoScroll() {
                 // Normalizing sizes using height classes (layout-aware) instead of scale
                 let heightClass = "h-8 md:h-12";
                 if (l.includes("csi")) heightClass = "h-14 md:h-22";
-                if (l.includes("techop") || l.includes("optgrad") || l.includes("optsearch") || l.includes("optgpt")) heightClass = "h-12 md:h-18";
+                if (l.includes("techop") || l.includes("optsearch")) heightClass = "h-12 md:h-18";
                 if (l.includes("image")) heightClass = "h-10 md:h-16";
                 if (l.includes("capsim")) heightClass = "h-6 md:h-10";
                 if (l.includes("drpinnacle")) heightClass = "h-10 md:h-16";
