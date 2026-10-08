@@ -140,16 +140,6 @@ const nextConfig: NextConfig = {
         destination: '/programs/advanced-management/fde',
         permanent: true,
       },
-      {
-        source: '/programs/Advanced-management',
-        destination: '/programs/advanced-management',
-        permanent: true,
-      },
-      {
-        source: '/programs/Advanced-management/:path*',
-        destination: '/programs/advanced-management/:path*',
-        permanent: true,
-      },
     ]
   },
   images: {
