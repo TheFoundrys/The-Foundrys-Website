@@ -36,6 +36,7 @@ export default function VishwanathAkuthotaProfile() {
                                         alt="Vishwanath Akuthota"
                                         fill
                                         priority
+                                        sizes="(max-width: 1024px) 100vw, 450px"
                                         className="object-cover"
                                     />
                                 </div>
@@ -228,6 +229,18 @@ export default function VishwanathAkuthotaProfile() {
                                             venue: "2025 International Conference on Computing Technologies (ICOCT)",
                                             year: "2025",
                                             link: "https://ieeexplore.ieee.org/document/11118670"
+                                        },
+                                        {
+                                            title: "Hybrid Q-Learning with VLMs Reasoning Features",
+                                            venue: "2025 3rd International Conference on Artificial Intelligence and Machine Learning Applications (AIMLA)",
+                                            year: "2025",
+                                            link: "https://ieeexplore.ieee.org/document/11040757"
+                                        },
+                                        {
+                                            title: "Hybrid ML-SLM RAG System for Large Technical PDFs",
+                                            venue: "2025 International Conference on Computing Technologies (ICOCT)",
+                                            year: "2025",
+                                            link: "https://ieeexplore.ieee.org/document/11118759"
                                         },
                                         {
                                             title: "RAG-Enhanced Multi-Model Ensemble for Automated Vulnerability Detection Using SLMs",

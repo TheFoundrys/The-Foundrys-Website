@@ -10,11 +10,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { PackageDetailsModal } from "@/components/programs/PackageDetailsModal";
 
-export default function AdvancedManagementProgramPage() {
+export default function YGPProgramPage() {
     const [selectedPackageId, setSelectedPackageId] = useState<string | null>(null);
 
     useEffect(() => {
-        document.title = "Advanced Management Programs | The Foundry";
+        document.title = "Young Graduate Programs | The Foundry";
     }, []);
 
     return (
@@ -25,14 +25,14 @@ export default function AdvancedManagementProgramPage() {
             <section className="relative w-full h-[260px] md:h-[380px] overflow-hidden mt-16">
                 <style dangerouslySetInnerHTML={{
                     __html: `
-                    .amp-title-white {
+                    .ygp-title-white {
                         color: #ffffff !important;
                     }
                     `
                 }} />
                 <Image
-                    src="/images/amp_suite_banner.jpg"
-                    alt="Advanced Management Suite"
+                    src="/images/ygp_suite_banner.jpg"
+                    alt="YGP Suite"
                     fill
                     priority
                     className="object-cover object-center brightness-[0.7]"
@@ -40,8 +40,8 @@ export default function AdvancedManagementProgramPage() {
                 <div className="absolute inset-0 bg-black/35" />
                 <div className="absolute inset-0 flex items-center">
                     <div className="container mx-auto max-w-8xl px-6">
-                        <h1 className="font-serif text-white text-4xl md:text-6xl font-bold tracking-tight amp-title-white">
-                            Advanced Management Programs
+                        <h1 className="font-serif text-white text-4xl md:text-6xl font-bold tracking-tight ygp-title-white">
+                            YGP Suite
                         </h1>
                     </div>
                 </div>
@@ -55,89 +55,73 @@ export default function AdvancedManagementProgramPage() {
                         Introduction
                     </h2>
                     <p className="mt-6 text-sm md:text-base leading-relaxed text-slate-700 max-w-4xl">
-                        At The Foundry, we shape leaders who thrive amidst complexity, catalyze meaningful change, and redefine success in deep tech. Our diverse portfolio of foundational Advanced Management programmes is designed for professionals and technical leaders to master the core concepts of Artificial Intelligence, Cyber Security, Quantum Computing, Blockchain, and Forward Deployed Engineering (FDE). Each programme unites world-class academic rigour with global perspectives, delivering transformative educational experiences that cultivate resilient, innovative leaders poised to generate significant impact.
+                        At The Foundry, we shape leaders who thrive amidst complexity, catalyze meaningful change, and redefine success in deep tech. Our diverse portfolio of foundational young graduate programmes is designed for beginners and early technical learners to master the core concepts of Artificial Intelligence, Cyber Security, Quantum Computing, and Blockchain. Each programme unites world-class academic rigour with global perspectives, delivering transformative educational experiences that cultivate resilient, innovative leaders poised to generate significant impact.
                     </p>
                 </section>
 
                 {/* Programs List Section with Alternating Backgrounds */}
                 <section className="text-slate-800">
                     {/* Domain 1: Applied AI & GenAI (White bg) */}
-                    <div className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-200/50">
+                    <div className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-100">
                         <ProgramRow
-                            tag="AMP"
-                            title="Advanced Management Program in Forward Deployed Engineering"
-                            description="Master Forward Deployed Engineering to lead mission-critical technology implementations. Bridge cutting-edge systems architecture with high-impact enterprise deployment, rapid solution prototyping, and stakeholder leadership."
+                            tag="YGP"
+                            title="Young Graduate Program in Applied AI & GenAI"
+                            description="Build a strong foundation in Artificial Intelligence. Master Neural Networks, NLP, and Computer Vision from the ground up to design intelligent, autonomous applications."
                             specs={{
                                 mode: "Hybrid (In-Person & Virtual)",
                                 duration: "12 Months",
-                                experience: "Professionals & Engineering Leaders",
+                                experience: "Beginners & Undergraduates",
                                 location: "Hitech City, Hyderabad"
                             }}
-                            learnMoreHref="/programs/advanced-management/fde"
+                            onMoreInfo={() => setSelectedPackageId("entry-level-ai")}
                         />
                     </div>
 
                     {/* Domain 2: Cybersecurity (Alternating Warm bg) */}
                     <div className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-b border-slate-200/50">
                         <ProgramRow
-                            tag="AMP"
-                            title="Advanced Management Program in Cybersecurity Analyst"
+                            tag="YGP"
+                            title="Young Graduate Program in Cybersecurity Analyst"
                             description="Learn the core principles of network defense, digital forensics, and security audits. Master the foundational tools and strategies required to secure modern business infrastructures."
                             specs={{
                                 mode: "Hybrid (In-Person & Virtual)",
                                 duration: "12 Months",
-                                experience: "Professionals & Early Technical Learners",
+                                experience: "Beginners & Undergraduates",
                                 location: "Hitech City, Hyderabad"
                             }}
-                            onMoreInfo={() => setSelectedPackageId("advanced-management-cyber-security")}
+                            onMoreInfo={() => setSelectedPackageId("entry-level-cyber-security")}
                         />
                     </div>
 
                     {/* Domain 3: Quantum Computing (White bg) */}
                     <div className="p-8 sm:p-12 md:p-16 bg-white">
                         <ProgramRow
-                            tag="AMP"
-                            title="Advanced Management Program in Quantum Computing"
+                            tag="YGP"
+                            title="Young Graduate Program in Quantum Computing"
                             description="Introduce yourself to the computing paradigms of the future. Master Qubits, superposition, quantum gates, and algorithm design to prepare for tomorrow's computational shift."
                             specs={{
                                 mode: "Hybrid (In-Person & Virtual)",
                                 duration: "12 Months",
-                                experience: "Professionals & Early Technical Learners",
+                                experience: "Beginners & Undergraduates",
                                 location: "Hitech City, Hyderabad"
                             }}
-                            onMoreInfo={() => setSelectedPackageId("advanced-management-quantum-computing")}
+                            onMoreInfo={() => setSelectedPackageId("entry-level-quantum-computing")}
                         />
                     </div>
 
                     {/* Domain 4: Blockchain (Alternating Warm bg) */}
                     <div className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-slate-200/50">
                         <ProgramRow
-                            tag="AMP"
-                            title="Advanced Management Program in Blockchain & Web3"
+                            tag="YGP"
+                            title="Young Graduate Program in Blockchain & Web3"
                             description="Explore decentralized ledger technology. Learn how blockchain protocols, smart contracts, and Web3 networks structure trust and digital finance."
                             specs={{
                                 mode: "Hybrid (In-Person & Virtual)",
                                 duration: "12 Months",
-                                experience: "Professionals & Early Technical Learners",
+                                experience: "Beginners & Undergraduates",
                                 location: "Hitech City, Hyderabad"
                             }}
-                            onMoreInfo={() => setSelectedPackageId("advanced-management-blockchain")}
-                        />
-                    </div>
-
-                    {/* Domain 5: FDE (White bg) */}
-                    <div className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-100">
-                        <ProgramRow
-                            tag="AMP"
-                            title="Advanced Management Program in Applied AI & GenAI"
-                            description="Build a strong foundation in Artificial Intelligence. Master Neural Networks, NLP, and Computer Vision from the ground up to design intelligent, autonomous applications."
-                            specs={{
-                                mode: "Hybrid (In-Person & Virtual)",
-                                duration: "12 Months",
-                                experience: "Professionals & Early Technical Learners",
-                                location: "Hitech City, Hyderabad"
-                            }}
-                            onMoreInfo={() => setSelectedPackageId("advanced-management-ai")}
+                            onMoreInfo={() => setSelectedPackageId("entry-level-blockchain")}
                         />
                     </div>
                 </section>
@@ -148,7 +132,7 @@ export default function AdvancedManagementProgramPage() {
                 <div className="container mx-auto max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-[#002f86] mb-4">Frequently Asked Questions</h2>
-                        <p className="text-lg text-slate-600">Common queries about the Advanced Management tracks.</p>
+                        <p className="text-lg text-slate-600">Common queries about the Young Graduate foundation tracks.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
@@ -220,15 +204,13 @@ function ProgramRow({
     title,
     description,
     specs,
-    onMoreInfo,
-    learnMoreHref,
+    onMoreInfo
 }: {
     tag: string;
     title: string;
     description: string;
     specs: Specs;
-    onMoreInfo?: () => void;
-    learnMoreHref?: string;
+    onMoreInfo: () => void;
 }) {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
@@ -246,28 +228,16 @@ function ProgramRow({
                 <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3 mt-6">
                     <Link
                         href={`/apply?course=${encodeURIComponent(title)}`}
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#002f86] hover:bg-[#002366] text-white rounded-lg font-bold shadow-md shadow-blue-900/10 transition-all text-sm"
+                    >
+                        Apply for YGP
+                    </Link>
+                    <button
+                        onClick={onMoreInfo}
                         className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-lg font-bold transition-all text-sm"
                     >
-                        Apply Now
-                    </Link>
-                    {learnMoreHref ? (
-                        <Link
-                            href={learnMoreHref}
-                            target={learnMoreHref.startsWith("http") ? "_blank" : undefined}
-                            rel={learnMoreHref.startsWith("http") ? "noopener noreferrer" : undefined}
-                            className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-lg font-bold transition-all text-sm"
-                        >
-                            Learn More
-                        </Link>
-                    ) : onMoreInfo ? (
-                        <button
-                            type="button"
-                            onClick={onMoreInfo}
-                            className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-lg font-bold transition-all text-sm"
-                        >
-                            Learn More
-                        </button>
-                    ) : null}
+                        Explore Curriculum
+                    </button>
                 </div>
             </div>
 

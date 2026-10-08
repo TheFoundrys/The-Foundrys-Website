@@ -36,6 +36,7 @@ export default function VivekRangabhashyamProfile() {
                                         alt="Vivek Rangabhashyam"
                                         fill
                                         priority
+                                        sizes="(max-width: 1024px) 100vw, 450px"
                                         className="object-cover"
                                     />
                                 </div>
@@ -50,7 +51,7 @@ export default function VivekRangabhashyamProfile() {
                             >
                                 <div>
                                     <span className="inline-block px-3 py-1 bg-[#002f86] text-white text-[10px] font-bold uppercase tracking-widest font-mono mb-4">
-                                        Advisory Board Member
+                                        SME In Graphic Design
                                     </span>
                                     <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold tracking-tight text-[#002f86] mb-3 leading-tight">
                                         Vivek Rangabhashyam

@@ -36,6 +36,7 @@ export default function MaruthiPelluriProfile() {
                                         alt="Maruthi Ram Prasad Pelluri"
                                         fill
                                         priority
+                                        sizes="(max-width: 1024px) 100vw, 450px"
                                         className="object-cover"
                                     />
                                 </div>

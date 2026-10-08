@@ -36,6 +36,7 @@ export default function DrSrikanthProfile() {
                                         alt="Dr. Srikanth Itapu"
                                         fill
                                         priority
+                                        sizes="(max-width: 1024px) 100vw, 450px"
                                         className="object-cover"
                                     />
                                 </div>

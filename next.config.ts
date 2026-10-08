@@ -36,43 +36,93 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/programs/entry-level',
+        destination: '/programs/ygp',
+        permanent: true,
+      },
+      {
         source: '/programs/entry-level/ai',
-        destination: '/programs/entry-level',
+        destination: '/programs/ygp',
         permanent: true,
       },
       {
         source: '/programs/entry-level/cyber-security',
-        destination: '/programs/entry-level',
+        destination: '/programs/ygp',
         permanent: true,
       },
       {
         source: '/programs/entry-level/quantum-computing',
-        destination: '/programs/entry-level',
+        destination: '/programs/ygp',
         permanent: true,
       },
       {
         source: '/programs/entry-level/blockchain',
-        destination: '/programs/entry-level',
+        destination: '/programs/ygp',
+        permanent: true,
+      },
+      {
+        source: '/programs/ygp/ai',
+        destination: '/programs/ygp',
+        permanent: true,
+      },
+      {
+        source: '/programs/ygp/cyber-security',
+        destination: '/programs/ygp',
+        permanent: true,
+      },
+      {
+        source: '/programs/ygp/quantum-computing',
+        destination: '/programs/ygp',
+        permanent: true,
+      },
+      {
+        source: '/programs/ygp/blockchain',
+        destination: '/programs/ygp',
+        permanent: true,
+      },
+      {
+        source: '/programs/professional',
+        destination: '/programs/pgp',
         permanent: true,
       },
       {
         source: '/programs/professional/ai',
-        destination: '/programs/professional',
+        destination: '/programs/pgp',
         permanent: true,
       },
       {
         source: '/programs/professional/cyber-security',
-        destination: '/programs/professional',
+        destination: '/programs/pgp',
         permanent: true,
       },
       {
         source: '/programs/professional/quantum-computing',
-        destination: '/programs/professional',
+        destination: '/programs/pgp',
         permanent: true,
       },
       {
         source: '/programs/professional/blockchain',
-        destination: '/programs/professional',
+        destination: '/programs/pgp',
+        permanent: true,
+      },
+      {
+        source: '/programs/pgp/ai',
+        destination: '/programs/pgp',
+        permanent: true,
+      },
+      {
+        source: '/programs/pgp/cyber-security',
+        destination: '/programs/pgp',
+        permanent: true,
+      },
+      {
+        source: '/programs/pgp/quantum-computing',
+        destination: '/programs/pgp',
+        permanent: true,
+      },
+      {
+        source: '/programs/pgp/blockchain',
+        destination: '/programs/pgp',
         permanent: true,
       },
       {
@@ -83,6 +133,11 @@ const nextConfig: NextConfig = {
       {
         source: '/programs/venture-building',
         destination: '/venture-building',
+        permanent: true,
+      },
+      {
+        source: '/programs/fde',
+        destination: '/programs/advanced-management/fde',
         permanent: true,
       },
     ]

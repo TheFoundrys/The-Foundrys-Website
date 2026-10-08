@@ -36,6 +36,7 @@ export default function ThirupathiReddyProfile() {
                                         alt="Thirupathi Reddy"
                                         fill
                                         priority
+                                        sizes="(max-width: 1024px) 100vw, 450px"
                                         className="object-cover object-top"
                                     />
                                 </div>

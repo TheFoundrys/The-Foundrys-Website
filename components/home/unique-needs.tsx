@@ -8,19 +8,19 @@ const programmes = [
   {
     title: "Young Graduate programs",
     description: "Start your journey in emerging technologies with foundational programs designed for beginners.",
-    href: "/programs/entry-level",
+    href: "/programs/ygp",
     imageSrc: "/images/entrepreneur-indian.png",
   },
   {
     title: "Post Graduate Programs",
     description: "Transformative programs for professionals ready to accelerate leadership, innovation, and cross-industry impact.",
-    href: "/programs/professional",
+    href: "/programs/pgp",
     imageSrc: "/images/professional-indian.png",
   },
   {
     title: "Advanced Management Programs",
     description: "Specialized learning for professionals to lead with expertise and drive meaningful organizational change.",
-    href: "/programs/Advanced-management",
+    href: "/programs/advanced-management",
     imageSrc: "/images/executive-indian.png",
   },
   {
@@ -79,47 +79,67 @@ export function UniqueNeeds() {
         </div>
 
         <div className="grid grid-cols-1 gap-y-16 gap-x-6 md:grid-cols-2 lg:grid-cols-3 pb-10">
-          {programmes.map((programme) => (
-            <Link 
-              href={programme.href} 
-              key={programme.title} 
-              className="group relative flex flex-col w-full h-full cursor-pointer no-underline"
-            >
-              {/* Image Container */}
-              <div className="relative w-full h-[280px] overflow-hidden bg-slate-100">
-                <Image
-                  src={programme.imageSrc}
-                  alt={programme.title}
-                  fill
-                  sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 90vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-
-              {/* Overlapping Overlay Box */}
-              <div className="relative z-10 w-[85%] bg-[#F7F7F4] border border-slate-200/80 p-6 -mt-16 ml-0 flex flex-col justify-between flex-1 min-h-[190px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:bg-[#DCE7F1]">
-                <div>
-                  <h3 className="font-serif text-xl font-bold text-brand-purple mb-3">
-                    {programme.title}
-                  </h3>
-                  <p className="text-xs text-slate-800 leading-relaxed font-sans">
-                    {programme.description}
-                  </p>
-                </div>
-
-                <div
-                  className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand-purple transition-colors"
-                >
-                  <span>Learn More</span>
-                  <ChevronRight
-                    size={14}
-                    strokeWidth={2.5}
-                    className="inline-block transition-transform duration-300 group-hover:translate-x-0.5"
+          {programmes.map((programme) => {
+            const isExternal = programme.href.startsWith("http");
+            const cardContent = (
+              <>
+                {/* Image Container */}
+                <div className="relative w-full h-[280px] overflow-hidden bg-slate-100">
+                  <Image
+                    src={programme.imageSrc}
+                    alt={programme.title}
+                    fill
+                    sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 90vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-              </div>
-            </Link>
-          ))}
+
+                {/* Overlapping Overlay Box */}
+                <div className="relative z-10 w-[85%] bg-[#F7F7F4] border border-slate-200/80 p-6 -mt-16 ml-0 flex flex-col justify-between flex-1 min-h-[190px] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:bg-[#DCE7F1]">
+                  <div>
+                    <h3 className="font-serif text-xl font-bold text-brand-purple mb-3">
+                      {programme.title}
+                    </h3>
+                    <p className="text-xs text-slate-800 leading-relaxed font-sans">
+                      {programme.description}
+                    </p>
+                  </div>
+
+                  <div
+                    className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand-purple transition-colors"
+                  >
+                    <span>Learn More</span>
+                    <ChevronRight
+                      size={14}
+                      strokeWidth={2.5}
+                      className="inline-block transition-transform duration-300 group-hover:translate-x-0.5"
+                    />
+                  </div>
+                </div>
+              </>
+            );
+
+            return isExternal ? (
+              <a
+                href={programme.href}
+                key={programme.title}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex flex-col w-full h-full cursor-pointer no-underline"
+              >
+                {cardContent}
+              </a>
+            ) : (
+              <Link 
+                href={programme.href} 
+                prefetch={false}
+                key={programme.title} 
+                className="group relative flex flex-col w-full h-full cursor-pointer no-underline"
+              >
+                {cardContent}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>

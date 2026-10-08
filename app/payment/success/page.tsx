@@ -29,6 +29,19 @@ export default function PaymentSuccessPage() {
     const raw = sessionStorage.getItem("paymentSuccess");
     if (raw) {
       setData(JSON.parse(raw));
+    } else if (typeof window !== "undefined") {
+      const searchParams = new URLSearchParams(window.location.search);
+      const sessionId = searchParams.get("session_id");
+      if (sessionId) {
+        setData({
+          courseName: "Advanced Management in Forward Deployed Engineering",
+          amount: 2500,
+          currency: "USD",
+          paymentId: sessionId,
+          name: "Enrolled Executive",
+          email: "Verified via Stripe",
+        });
+      }
     }
   }, []);
 
@@ -168,7 +181,7 @@ export default function PaymentSuccessPage() {
 
                   <div className="flex flex-col sm:flex-row gap-3 pt-2">
                     <Link
-                      href="/programs/entry-level"
+                      href="/programs/ygp"
                       className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition-colors text-sm"
                     >
                       Explore More Programs

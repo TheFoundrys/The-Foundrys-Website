@@ -520,7 +520,82 @@ const PACKAGE_DETAILS: Record<string, PackageData> = {
                 href: "/apply?course=Certified Professional in Decentralized Systems"
             }
         ]
+    },
+    "advanced-management-fde": {
+        id: "advanced-management-fde",
+        title: "Advanced Management Program in Forward Deployed Engineering",
+        bundleName: "Executive Deep Tech Track",
+        desc: "Master Forward Deployed Engineering to lead mission-critical technology implementations. Bridge cutting-edge systems architecture with high-impact enterprise deployment, rapid solution prototyping, and stakeholder leadership.",
+        gradientClass: "from-slate-900 via-blue-950 to-slate-900",
+        accentClass: "text-blue-600 border-blue-100 bg-blue-50",
+        glowColor: "bg-blue-500/10",
+        pricingKey: "professionalAIPackage",
+        applyCourseName: "Advanced Management Program in Forward Deployed Engineering",
+        bullets: [
+            "12 Months Hybrid Executive Curriculum",
+            "Real-World Enterprise Systems Deployment",
+            "Direct Industry Leadership Mentorship"
+        ],
+        pillars: [
+            "Enterprise Architecture Integration",
+            "Rapid Prototype to Production",
+            "Mission-Critical Deployment & Reliability",
+            "Stakeholder & Client Leadership",
+            "Deep Tech System Scaling"
+        ],
+        courses: [
+            {
+                sku: "FDE 001",
+                title: "Foundations of Forward Deployed Engineering",
+                duration: "8 Weeks",
+                desc: "Principles of embedding with enterprise stakeholders, identifying high-impact problems, and architecting tailored solutions.",
+                href: "/apply?course=Foundations of Forward Deployed Engineering"
+            },
+            {
+                sku: "FDE 002",
+                title: "Production Systems Architecture & Scaling",
+                duration: "8 Weeks",
+                desc: "Designing resilient, high-throughput systems capable of enterprise-scale deployment and integration.",
+                href: "/apply?course=Production Systems Architecture & Scaling"
+            },
+            {
+                sku: "FDE 003",
+                title: "Mission-Critical AI & Data Integration",
+                duration: "8 Weeks",
+                desc: "Deploying enterprise generative AI, predictive models, and secure data pipelines into customer infrastructure.",
+                href: "/apply?course=Mission-Critical AI & Data Integration"
+            },
+            {
+                sku: "FDE 004",
+                title: "Executive Technical Leadership & Delivery",
+                duration: "8 Weeks",
+                desc: "Leading cross-functional teams, stakeholder management, and driving measurable client business outcomes.",
+                href: "/apply?course=Executive Technical Leadership & Delivery"
+            }
+        ]
     }
+};
+
+// Aliases for other Advanced Management domains to their respective curricula
+PACKAGE_DETAILS["advanced-management-ai"] = {
+    ...PACKAGE_DETAILS["professional-ai"],
+    id: "advanced-management-ai",
+    title: "Advanced Management Program in Applied AI & GenAI"
+};
+PACKAGE_DETAILS["advanced-management-cyber-security"] = {
+    ...PACKAGE_DETAILS["professional-cyber-security"],
+    id: "advanced-management-cyber-security",
+    title: "Advanced Management Program in Cybersecurity Analyst"
+};
+PACKAGE_DETAILS["advanced-management-quantum-computing"] = {
+    ...PACKAGE_DETAILS["professional-quantum-computing"],
+    id: "advanced-management-quantum-computing",
+    title: "Advanced Management Program in Quantum Computing"
+};
+PACKAGE_DETAILS["advanced-management-blockchain"] = {
+    ...PACKAGE_DETAILS["professional-blockchain"],
+    id: "advanced-management-blockchain",
+    title: "Advanced Management Program in Blockchain & Web3"
 };
 
 interface PackageDetailsModalProps {

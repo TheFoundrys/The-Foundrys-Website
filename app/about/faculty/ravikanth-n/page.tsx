@@ -36,6 +36,7 @@ export default function RavikanthNProfile() {
                                         alt="Ravikanth N"
                                         fill
                                         priority
+                                        sizes="(max-width: 1024px) 100vw, 450px"
                                         className="object-cover object-top"
                                     />
                                 </div>

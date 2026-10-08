@@ -32,8 +32,8 @@ export default function JayavardhanReddyProfile() {
                             >
                                 <div className="aspect-[3/4] relative overflow-hidden shadow-md bg-white border border-slate-200/80">
                                     <Image
-                                        src="/images/jayavardhan-reddy.jpg"
-                                        alt="Jayavardhan Reddy"
+                                        src="/images/testimonials/jayavardhan-reddy.jpeg"
+                                        alt="Jayavardhan Reddy Pakanati"
                                         fill
                                         priority
                                         className="object-cover object-top"
@@ -53,7 +53,7 @@ export default function JayavardhanReddyProfile() {
                                         Full Stack Developer
                                     </span>
                                     <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold tracking-tight text-[#002f86] mb-3 leading-tight">
-                                        Jayavardhan Reddy
+                                        Jayavardhan Reddy Pakanati
                                     </h1>
                                     <p className="text-base sm:text-lg text-slate-600 font-medium italic">
                                         Full-Stack Systems Engineering, Modern Web Applications & Scalable Software Architecture

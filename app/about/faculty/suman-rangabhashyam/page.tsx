@@ -36,6 +36,7 @@ export default function SumanRangabhashyamProfile() {
                                         alt="Suman Rangabhashyam"
                                         fill
                                         priority
+                                        sizes="(max-width: 1024px) 100vw, 450px"
                                         className="object-cover"
                                     />
                                 </div>

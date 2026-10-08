@@ -117,14 +117,14 @@ export function Navbar() {
         ],
         "programs": [
             {
-                href: "/programs/entry-level",
-                label: "Entry Level Track",
+                href: "/programs/ygp",
+                label: "YGP Track",
                 desc: "Start Your Journey",
                 icon: BookOpen,
             },
             {
-                href: "/programs/professional",
-                label: "Mid Level Track",
+                href: "/programs/pgp",
+                label: "PGP Track",
                 desc: "Advance Your Career",
                 icon: Briefcase,
             },

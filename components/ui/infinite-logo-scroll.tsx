@@ -17,6 +17,7 @@ const LOGOS = [
   "/logos/capsim.png",
   "/logos/hive_link_logo.jpg",
   "/logos/vareon.png",
+  "/logos/zythri.png",
   "OpenVals"
 ];
 
@@ -35,7 +36,8 @@ const LOGO_LINKS: Record<string, string> = {
   "/logos/Faba.png": "https://biofaba.org.in/",
   "/logos/capsim.png": "https://www.capsim.com/",
   "/logos/redshelid1.png": "https://thefoundrys.com",
-  "/logos/vareon.png": ""
+  "/logos/vareon.png": "",
+  "/logos/zythri.png": "https://www.zythri.com"
 };
 
 export function InfiniteLogoScroll() {
@@ -80,6 +82,9 @@ export function InfiniteLogoScroll() {
                 if (l.includes("capsim")) heightClass = "h-6 md:h-10";
                 if (l.includes("drpinnacle")) heightClass = "h-10 md:h-16";
                 if (l.includes("vareon")) heightClass = "h-16 md:h-24";
+                if (l.includes("zythri")) heightClass = "h-11 md:h-16";
+
+                const isDarkTile = l.includes("zythri");
 
                 const inner = (
                   <>
@@ -88,10 +93,10 @@ export function InfiniteLogoScroll() {
                         src={logo.startsWith("/") ? logo : `/${logo}`}
                         alt="Partner"
                         loading="eager"
-                        className={`w-auto object-contain mix-blend-multiply transition-all duration-300 ${heightClass}`}
+                        className={`w-auto object-contain ${isDarkTile ? "rounded-lg" : "mix-blend-multiply"} transition-all duration-300 ${heightClass}`}
                       />
                     ) : (
-                      <span className="text-lg md:text-xl lg:text-2xl font-bold text-slate-800 whitespace-nowrap px-4">
+                      <span className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-800 tracking-tight whitespace-nowrap px-4">
                         {logo}
                       </span>
                     )}

@@ -718,12 +718,12 @@ export default function BrandColoredProgramsDirectoryPage() {
                                 ],
                                 levels: ["Young Graduate", "Post Graduate"],
                                 links: selectedLevel === "entry"
-                                    ? [{ label: "Apply for Young Graduate Program", href: "/programs/entry-level/ai" }]
+                                    ? [{ label: "Apply for Young Graduate Program", href: "/programs/ygp" }]
                                     : selectedLevel === "mid"
-                                        ? [{ label: "Apply for Post Graduate Program", href: "/programs/professional/ai" }]
+                                        ? [{ label: "Apply for Post Graduate Program", href: "/programs/pgp" }]
                                         : [
-                                            { label: "Apply for Young Graduate Program", href: "/programs/entry-level/ai" },
-                                            { label: "Apply for Post Graduate Program", href: "/programs/professional/ai" }
+                                            { label: "Apply for Young Graduate Program", href: "/programs/ygp" },
+                                            { label: "Apply for Post Graduate Program", href: "/programs/pgp" }
                                         ]
                             },
                             {
@@ -750,12 +750,12 @@ export default function BrandColoredProgramsDirectoryPage() {
                                 ],
                                 levels: ["Young Graduate", "Post Graduate"],
                                 links: selectedLevel === "entry"
-                                    ? [{ label: "Apply for Young Graduate Program", href: "/programs/entry-level/cyber-security" }]
+                                    ? [{ label: "Apply for Young Graduate Program", href: "/programs/ygp" }]
                                     : selectedLevel === "mid"
-                                        ? [{ label: "Apply for Post Graduate Program", href: "/programs/professional/cyber-security" }]
+                                        ? [{ label: "Apply for Post Graduate Program", href: "/programs/pgp" }]
                                         : [
-                                            { label: "Apply for Young Graduate Program", href: "/programs/entry-level/cyber-security" },
-                                            { label: "Apply for Post Graduate Program", href: "/programs/professional/cyber-security" }
+                                            { label: "Apply for Young Graduate Program", href: "/programs/ygp" },
+                                            { label: "Apply for Post Graduate Program", href: "/programs/pgp" }
                                         ]
                             },
                             {

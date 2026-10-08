@@ -72,30 +72,37 @@ export async function POST(request: NextRequest) {
     });
     console.log('Razorpay response:', order);
 
-    // Connect to DB and save enrollment record
-    await connectDB();
-
-    const enrollment = await Enrollment.create({
-      name,
-      email,
-      phone,
-      courseId,
-      courseName: course.name,
-      amount,
-      currency: validCurrency,
-      razorpayOrderId: order.id,
-      status: 'pending',
-      couponCode: couponCode?.toUpperCase() || undefined,
-      discountAmount,
-      experienceLevel,
-    });
+    // Connect to DB and save enrollment record if MONGODB_URI is provided
+    let enrollmentId = `temp_${Date.now()}`;
+    if (process.env.MONGODB_URI) {
+      try {
+        await connectDB();
+        const enrollment = await Enrollment.create({
+          name,
+          email,
+          phone,
+          courseId,
+          courseName: course.name,
+          amount,
+          currency: validCurrency,
+          razorpayOrderId: order.id,
+          status: 'pending',
+          couponCode: couponCode?.toUpperCase() || undefined,
+          discountAmount,
+          experienceLevel,
+        });
+        enrollmentId = enrollment._id.toString();
+      } catch (dbError) {
+        console.warn('MongoDB enrollment save skipped/failed:', dbError);
+      }
+    }
 
     return NextResponse.json({
       orderId: order.id,
       amount,
       razorpayAmount: razorpayAmount,
       currency: validCurrency,
-      enrollmentId: enrollment._id,
+      enrollmentId,
       courseName: course.name,
       key: process.env.RAZORPAY_KEY_ID,
     });

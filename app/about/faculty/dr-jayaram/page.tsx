@@ -36,6 +36,7 @@ export default function DrJayaramProfile() {
                                         alt="Dr. Jayaram"
                                         fill
                                         priority
+                                        sizes="(max-width: 1024px) 100vw, 450px"
                                         className="object-cover object-top"
                                     />
                                 </div>

@@ -26,7 +26,7 @@ function getRelatedResults(role: string, goal: string) {
     if (role === "Working Professional") {
       return [
         { label: "Fellow Executive Suite", href: "/programs/fellow-executive" },
-        { label: "Post Graduate Programs", href: "/programs/professional" },
+        { label: "Post Graduate Programs", href: "/programs/pgp" },
         { label: "Explore all Programmes", href: "https://edith.thefoundrys.com/courses" },
       ];
     }

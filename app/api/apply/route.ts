@@ -157,20 +157,35 @@ export async function POST(req: Request) {
             }
         }
 
-        // 4. Try Email to Admin (Fallback/Notification)
-        if (process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD) {
+        // 4. Try Email to Admin & Applicant (via Gmail or SMTP)
+        const hasGmail = !!(process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD);
+        const hasSmtp = !!(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASSWORD);
+
+        if (hasGmail || hasSmtp) {
             try {
-                const transporter = nodemailer.createTransport({
-                    service: "gmail",
-                    auth: {
-                        user: process.env.GMAIL_USER,
-                        pass: process.env.GMAIL_APP_PASSWORD,
-                    },
-                });
+                const transporter = hasGmail
+                    ? nodemailer.createTransport({
+                          service: "gmail",
+                          auth: {
+                              user: process.env.GMAIL_USER,
+                              pass: process.env.GMAIL_APP_PASSWORD,
+                          },
+                      })
+                    : nodemailer.createTransport({
+                          host: process.env.SMTP_HOST,
+                          port: parseInt(process.env.SMTP_PORT || "587"),
+                          secure: process.env.SMTP_SECURE === "true" || parseInt(process.env.SMTP_PORT || "587") === 465,
+                          auth: {
+                              user: process.env.SMTP_USER,
+                              pass: process.env.SMTP_PASSWORD,
+                          },
+                      });
+
+                const senderEmail = process.env.GMAIL_USER || process.env.SMTP_USER;
 
                 const mailOptions: any = {
-                    from: process.env.GMAIL_USER,
-                    to: process.env.GMAIL_USER, // Send to self (Admin)
+                    from: senderEmail,
+                    to: senderEmail, // Send to self (Admin)
                     subject: `New Interest: ${name} - ${program}${duration ? ` (${duration}-Year)` : ""}`,
                     text: `
 New Interest Form Submitted:
@@ -203,6 +218,50 @@ ${message || "N/A"}
 
                 await transporter.sendMail(mailOptions);
                 console.log("Email notification sent to admin");
+
+                // Send Confirmation Email to the Applicant
+                if (email) {
+                    await transporter.sendMail({
+                        from: `"The Foundry's Admissions" <${senderEmail}>`,
+                        to: email,
+                        subject: `Seat Reserved: ${program || "Forward Deployed Engineering"}`,
+                        html: `
+                            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 28px; color: #1e293b; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px;">
+                                <div style="margin-bottom: 24px;">
+                                    <span style="font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; color: #002f86;">The Foundry</span>
+                                    <h2 style="color: #002f86; margin: 8px 0 0 0; font-size: 24px;">Seat Reservation Confirmed!</h2>
+                                </div>
+                                <p style="font-size: 15px; line-height: 1.6; color: #334155;">
+                                    Dear <strong>${name || "Applicant"}</strong>,
+                                </p>
+                                <p style="font-size: 15px; line-height: 1.6; color: #334155;">
+                                    Welcome to the Inaugural DeepTech Finishing Cohort at The Foundry. We have received your application and your seat pass has been provisionally generated.
+                                </p>
+                                <div style="background: #f8fafc; border-left: 4px solid #002f86; padding: 16px 20px; margin: 24px 0; border-radius: 6px;">
+                                    <p style="margin: 0 0 6px 0; font-weight: 700; color: #0f172a; font-size: 16px;">
+                                        ${program}
+                                    </p>
+                                    <p style="margin: 0; font-size: 13px; color: #64748b;">
+                                        <strong>Schedule:</strong> Mon–Fri 8:30–9:30 PM EST • 2 Months Intensive
+                                    </p>
+                                    <p style="margin: 4px 0 0 0; font-size: 13px; color: #64748b;">
+                                        <strong>Tuition:</strong> $2,500 USD (Includes live instruction, private code repo reviews, capstone supervision & finishing school certification)
+                                    </p>
+                                </div>
+                                <p style="font-size: 15px; line-height: 1.6; color: #334155;">
+                                    Our admissions team is reviewing your profile. A formal onboarding kit and corporate syllabus invoice will be dispatched to this email address shortly.
+                                </p>
+                                <p style="font-size: 13px; color: #64748b; margin-top: 32px; border-top: 1px solid #e2e8f0; padding-top: 20px; line-height: 1.5;">
+                                    Have questions? Email us directly at <a href="mailto:info@thefoundrys.com" style="color: #002f86; font-weight: 600;">info@thefoundrys.com</a>.
+                                    <br><br>
+                                    <strong>The Foundry</strong><br>
+                                    <a href="https://thefoundrys.com" style="color: #002f86; text-decoration: none;">thefoundrys.com</a>
+                                </p>
+                            </div>
+                        `,
+                    });
+                    console.log("Confirmation email sent to applicant:", email);
+                }
             } catch (emailError) {
                 console.error("Email Error:", emailError);
             }

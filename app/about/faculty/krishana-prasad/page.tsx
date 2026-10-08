@@ -36,6 +36,7 @@ export default function KrishanaPrasadProfile() {
                                         alt="Krishana Prasad"
                                         fill
                                         priority
+                                        sizes="(max-width: 1024px) 100vw, 450px"
                                         className="object-cover object-top"
                                     />
                                 </div>
@@ -53,7 +54,7 @@ export default function KrishanaPrasadProfile() {
                                         AI Research Engineer
                                     </span>
                                     <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold tracking-tight text-[#002f86] mb-3 leading-tight">
-                                        Krishana Prasad
+                                        Krishana Prasad Avula   
                                     </h1>
                                     <p className="text-base sm:text-lg text-slate-600 font-medium italic">
                                         Artificial Intelligence Research, Machine Learning Systems & Applied Data Science

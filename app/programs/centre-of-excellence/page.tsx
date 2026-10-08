@@ -124,26 +124,6 @@ export default function CentreOfExcellencePage() {
                     <p className="mt-6 text-sm md:text-base leading-relaxed text-slate-700 max-w-4xl">
                         The Foundry&apos;s Centre of Excellence (CoE) model partners with universities, government bodies, and enterprise R&D hubs to build state-of-the-art supercomputing infrastructure, applied industry curriculum, faculty enablement, and multidisciplinary research environments across the 4 Schools of Thought.
                     </p>
-
-                    {/* Metric Stats Cards */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-slate-100">
-                        <div className="p-4 rounded-lg bg-white border border-slate-200/80 text-center">
-                            <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">50+</p>
-                            <p className="text-xs text-slate-600 font-medium mt-1">CoE Hubs Established</p>
-                        </div>
-                        <div className="p-4 rounded-lg bg-white border border-slate-200/80 text-center">
-                            <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">25,000+</p>
-                            <p className="text-xs text-slate-600 font-medium mt-1">Faculty & Students Trained</p>
-                        </div>
-                        <div className="p-4 rounded-lg bg-white border border-slate-200/80 text-center">
-                            <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">$20M+</p>
-                            <p className="text-xs text-slate-600 font-medium mt-1">Supercomputing Equipment</p>
-                        </div>
-                        <div className="p-4 rounded-lg bg-white border border-slate-200/80 text-center">
-                            <p className="text-2xl sm:text-3xl font-sans font-bold text-[#002f86]">100%</p>
-                            <p className="text-xs text-slate-600 font-medium mt-1">Industry Accreditation</p>
-                        </div>
-                    </div>
                 </section>
 
                 {/* Core Research & Excellence Pillars - Row Layout matching Program Rows */}

@@ -28,12 +28,22 @@ const teamMembers = [
         }
     },
     {
-        name: "Pramod J. P.",
-        role: "Head of R&D",
-        image: "/images/pramod-jp.png",
-        profileLink: "/about/faculty/pramod-jp",
+        name: "Ananth Ayyangar",
+        role: "Partner",
+        image: "/images/ananth-ayyangar.jpg",
+        imageClass: "object-[center_14%]",
+        profileLink: "/about/faculty/ananth-ayyangar",
         socials: {
-            linkedin: "https://www.linkedin.com/in/jp-pramod-a710985a/",
+            linkedin: "https://www.linkedin.com/in/ananth-ayyangar-a06b6726/"
+        }
+    },
+    {
+        name: "Sanjeeva Reddy Gaddam",
+        role: "Partner",
+        image: "/images/sanjeeva-reddy-v2.png",
+        profileLink: "/about/faculty/sanjeeva-reddy-gaddam",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/sanjeevareddygaddam/",
         }
     },
     {
@@ -46,27 +56,17 @@ const teamMembers = [
         }
     },
     {
-        name: "Sanjeeva Reddy Gaddam",
-        role: "Partner-runElix",
-        image: "/images/sanjeeva-reddy-v2.png",
-        profileLink: "/about/faculty/sanjeeva-reddy-gaddam",
+        name: "Pramod J. P.",
+        role: "Head of R&D",
+        image: "/images/pramod-jp.png",
+        profileLink: "/about/faculty/pramod-jp",
         socials: {
-            linkedin: "https://www.linkedin.com/in/sanjeevareddygaddam/",
-        }
-    },
-     {
-        name: "Ananth Ayyangar",
-        role: "Partner-Zythri",
-        image: "/images/ananth-ayyangar.jpg",
-        imageClass: "object-[center_14%]",
-        profileLink: "/about/faculty/ananth-ayyangar",
-        socials: {
-            linkedin: "https://www.linkedin.com/in/ananth-ayyangar-a06b6726/"
+            linkedin: "https://www.linkedin.com/in/jp-pramod-a710985a/",
         }
     },
     {
         name: "Soujanya Kanagala",
-        role: "Operations Head",
+        role: "Head of Operations",
         image: "/images/soujanya.jpg",
         profileLink: "/about/faculty/soujanya-kanagala",
         socials: {
@@ -74,7 +74,7 @@ const teamMembers = [
         }
     },
     {
-        name: "Ravikanth N",
+        name: "Ravikanth Nadendla",
         role: "Manager - Sales and Business Development (Enterprises & Products)",
         image: "/images/ravikanth.png",
         profileLink: "/about/faculty/ravikanth-n",
@@ -166,7 +166,7 @@ const teamMembers = [
         }
     },
     {
-        name: "Krishana Prasad",
+        name: "Krishana Prasad Avula",
         role: "AI Research Engineer",
         image: "/images/testimonials/Krishna.jpeg",
         profileLink: "/about/faculty/krishana-prasad",
@@ -184,7 +184,7 @@ const teamMembers = [
         }
     },
     {
-        name: "Sai Pramod",
+        name: "Vedantam Ananda Naga Sai Pramod",
         role: "Software Developer",
         image: "/images/testimonials/saipramod.jpeg",
         profileLink: "/about/faculty/sai-pramod",
@@ -193,7 +193,7 @@ const teamMembers = [
         }
     },
     {
-        name: "Jayavardhan Reddy",
+        name: "Jayavardhan Reddy Pakanati",
         role: "Full Stack Developer",
         image: "/images/testimonials/jayavardhan-reddy.jpeg",
         profileLink: "/about/faculty/jayavardhan-reddy",

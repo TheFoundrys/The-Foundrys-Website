@@ -36,6 +36,7 @@ export default function SaiPramodProfile() {
                                         alt="Sai Pramod"
                                         fill
                                         priority
+                                        sizes="(max-width: 1024px) 100vw, 450px"
                                         className="object-cover object-top"
                                     />
                                 </div>

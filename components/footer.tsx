@@ -60,7 +60,8 @@ export function Footer({ hideCTA = false, isDark = false }: FooterProps) {
                             Programs
                         </h3>
                         <ul className="flex flex-col gap-1">
-                            <FooterLink href="/programs/professional" isDark={isDark}>Professional Learning</FooterLink>
+                            <FooterLink href="/programs/ygp" isDark={isDark}>Young Graduate Program (YGP)</FooterLink>
+                            <FooterLink href="/programs/pgp" isDark={isDark}>Post Graduate Program (PGP)</FooterLink>
                             <FooterLink href="/programs/fellow-executive" isDark={isDark}>Fellow Executive Program</FooterLink>
                             <FooterLink href="/programs/educators" isDark={isDark}>Educators and Faculty</FooterLink>
                         </ul>
