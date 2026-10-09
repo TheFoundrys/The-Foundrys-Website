@@ -47,6 +47,17 @@ const getPostImageUrl = (image: unknown) => {
 
 const STATIC_RESEARCH_POSTS: Post[] = [
     {
+        _id: "res-pharmaco-omics-ml",
+        title: "The Synergistic Convergence of Pharmacogenetics and Pharmacogenomics towards Pharmaco-omics via Machine Learning: A Critical Review Towards Personalized Medicine",
+        slug: { current: "pharmaco-omics-machine-learning-personalized-medicine" },
+        publishedAt: "2025-12-27T00:00:00Z",
+        mainImage: { static: true, url: "/images/research/pharmaco_omics_cover.jpg" },
+        category: "Research",
+        readTime: "Journal",
+        excerpt: "Communications on Applied Nonlinear Analysis (ISSN: 1074-133X) critical review examining the synergistic convergence of Pharmacogenetics, Pharmacogenomics, and Pharmaco-omics through advanced Machine Learning techniques for personalized medicine.",
+        link: "/papers/pharmaco-omics-machine-learning-personalized-medicine.pdf"
+    },
+    {
         _id: "res-fctls-co3o4",
         title: "Co3O4 Nanostructures for Oxygen Evolution Reaction: A Mini Review",
         slug: { current: "co3o4-nanostructures-oxygen-evolution-reaction-mini-review" },
