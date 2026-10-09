@@ -9,6 +9,7 @@ import CompassCourse from '@/lib/models/CompassCourse';
 import CompassEnrollment from '@/lib/models/CompassEnrollment';
 import CompassTransaction from '@/lib/models/CompassTransaction';
 import nodemailer from 'nodemailer';
+import { sendEnrollmentInvoiceEmail } from '@/lib/email';
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -69,141 +70,112 @@ export async function POST(request: NextRequest) {
     }
 
     // --- Compass Synchronization ---
-    try {
-      console.log(`🔄 Syncing enrollment for ${enrollment.email} with Compass...`);
-      
-      // 1. Find or Create Compass User
-      let compassUser = await CompassUser.findOne({ email: enrollment.email });
-      if (!compassUser) {
-        console.log(`👤 Creating new Compass user for ${enrollment.email}...`);
-        const salt = await bcrypt.genSalt(10);
-        const randomPassword = crypto.randomBytes(8).toString('hex');
-        const hashedPassword = await bcrypt.hash(randomPassword, salt);
+    const studentEmail = enrollment?.email || email || body.email;
+    const studentName = enrollment?.name || body.name || 'Enrolled Student';
+    const courseSlug = enrollment?.courseId || body.courseId || 'advanced-management-fde';
+
+    if (studentEmail && process.env.MONGODB_URI) {
+      try {
+        console.log(`🔄 Syncing enrollment for ${studentEmail} with Compass...`);
         
-        // Derive username from email (unique)
-        const usernameBase = enrollment.email.split('@')[0].replace(/[^a-zA-Z0-9]/g, '');
-        const usernameSuffix = Math.floor(Math.random() * 1000);
-        const username = `${usernameBase}${usernameSuffix}`;
+        // 1. Find or Create Compass User
+        let compassUser = await CompassUser.findOne({ email: studentEmail });
+        if (!compassUser) {
+          console.log(`👤 Creating new Compass user for ${studentEmail}...`);
+          const salt = await bcrypt.genSalt(10);
+          const randomPassword = crypto.randomBytes(8).toString('hex');
+          const hashedPassword = await bcrypt.hash(randomPassword, salt);
+          
+          // Derive username from email (unique)
+          const usernameBase = studentEmail.split('@')[0].replace(/[^a-zA-Z0-9]/g, '');
+          const usernameSuffix = Math.floor(Math.random() * 1000);
+          const username = `${usernameBase}${usernameSuffix}`;
 
-        compassUser = await CompassUser.create({
-          name: enrollment.name,
-          email: enrollment.email,
-          username,
-          phoneNumber: enrollment.phone,
-          password: hashedPassword,
-          role: 'learner',
-          status: 'active',
-          isVerified: true
-        });
-      }
-
-      // 2. Find Course in Compass
-      // Mapping: ai-fluency (Foundry) -> ai-fluency (Compass)
-      const compassCourse = await CompassCourse.findOne({ slug: enrollment.courseId });
-      
-      if (compassCourse) {
-        // 3. Create/Update Enrollment
-        await CompassEnrollment.findOneAndUpdate(
-          { userId: compassUser._id, courseId: compassCourse._id },
-          { 
+          compassUser = await CompassUser.create({
+            name: studentName,
+            email: studentEmail,
+            username,
+            phoneNumber: enrollment?.phone || body.phone,
+            password: hashedPassword,
+            role: 'learner',
             status: 'active',
-            lastAccessedAt: new Date(),
-            progress: {} 
-          },
-          { upsert: true, new: true }
-        );
-        console.log(`✅ Compass enrollment synced: User ${compassUser.username} -> Course ${compassCourse.slug}`);
+            isVerified: true
+          });
+        }
 
-        // 4. Create Transaction Record for Purchase History
-        const invoiceId = `INV-${Date.now()}-${Math.random().toString(36).substring(2, 7).toUpperCase()}`;
-        console.log(`🧾 Creating transaction record: ${invoiceId}...`);
+        // 2. Find Course in Compass
+        const compassCourse = await CompassCourse.findOne({ slug: courseSlug });
         
-        await CompassTransaction.create({
-          invoiceId,
-          user: compassUser._id,
-          courses: [compassCourse._id],
-          amount: enrollment.amount,
-          utr: razorpay_payment_id || 'test_payment_id',
-          status: 'successful',
-          paymentDate: new Date()
-        });
-        console.log(`✅ Compass transaction synced: ${invoiceId}`);
-      } else {
-        console.warn(`⚠️ Compass course with slug '${enrollment.courseId}' not found. Skipping auto-enrollment.`);
+        if (compassCourse && compassUser) {
+          // 3. Create/Update Enrollment
+          await CompassEnrollment.findOneAndUpdate(
+            { userId: compassUser._id, courseId: compassCourse._id },
+            { 
+              status: 'active',
+              lastAccessedAt: new Date(),
+              progress: {} 
+            },
+            { upsert: true, new: true }
+          );
+          console.log(`✅ Compass enrollment synced: User ${compassUser.username} -> Course ${compassCourse.slug}`);
+
+          // 4. Create Transaction Record for Purchase History
+          const invoiceId = `INV-${Date.now()}-${Math.random().toString(36).substring(2, 7).toUpperCase()}`;
+          console.log(`🧾 Creating transaction record: ${invoiceId}...`);
+          
+          await CompassTransaction.create({
+            invoiceId,
+            user: compassUser._id,
+            courses: [compassCourse._id],
+            amount: enrollment?.amount || body.amount || 2500,
+            utr: razorpay_payment_id || 'test_payment_id',
+            status: 'successful',
+            paymentDate: new Date()
+          });
+          console.log(`✅ Compass transaction synced: ${invoiceId}`);
+        } else {
+          console.warn(`⚠️ Compass course with slug '${courseSlug}' not found. Skipping auto-enrollment.`);
+        }
+      } catch (syncError) {
+        console.error('❌ Compass sync failed:', syncError);
       }
-    } catch (syncError) {
-      console.error('❌ Compass sync failed:', syncError);
-      // We continue since the payment itself was successful at the Foundry level
     }
 
-    // Send confirmation email
-    try {
-      const currencySymbol = enrollment.currency === 'INR' ? '₹' : '$';
-      await transporter.sendMail({
-        from: `"The Foundry's" <${process.env.SMTP_USER}>`,
-        to: enrollment.email,
-        subject: `✅ Enrollment Confirmed: ${enrollment.courseName}`,
-        html: `
-          <div style="font-family: 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; background: #f8fafc; padding: 40px 20px;">
-            <div style="background: white; border-radius: 16px; padding: 40px; border: 1px solid #e2e8f0;">
-              <div style="text-align: center; margin-bottom: 32px;">
-                <h1 style="color: #0f172a; font-size: 24px; margin: 0;">Enrollment Confirmed! 🎉</h1>
-              </div>
-              
-              <p style="color: #475569; font-size: 16px; line-height: 1.6;">
-                Hi <strong>${enrollment.name}</strong>,
-              </p>
-              <p style="color: #475569; font-size: 16px; line-height: 1.6;">
-                Thank you for enrolling in <strong>${enrollment.courseName}</strong> at The Foundry's. Your payment has been successfully processed.
-              </p>
-              
-              <div style="background: #f1f5f9; border-radius: 12px; padding: 24px; margin: 24px 0;">
-                <h3 style="color: #0f172a; margin: 0 0 16px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Enrollment Details</h3>
-                <table style="width: 100%; border-collapse: collapse;">
-                  <tr>
-                    <td style="color: #64748b; padding: 8px 0; font-size: 14px;">Course</td>
-                    <td style="color: #0f172a; padding: 8px 0; font-size: 14px; font-weight: 600; text-align: right;">${enrollment.courseName}</td>
-                  </tr>
-                  <tr>
-                    <td style="color: #64748b; padding: 8px 0; font-size: 14px;">Amount Paid</td>
-                    <td style="color: #0f172a; padding: 8px 0; font-size: 14px; font-weight: 600; text-align: right;">${currencySymbol}${enrollment.amount.toLocaleString()}</td>
-                  </tr>
-                  <tr>
-                    <td style="color: #64748b; padding: 8px 0; font-size: 14px;">Payment ID</td>
-                    <td style="color: #0f172a; padding: 8px 0; font-size: 14px; font-weight: 600; text-align: right;">${razorpay_payment_id}</td>
-                  </tr>
-                </table>
-              </div>
-              
-              <p style="color: #475569; font-size: 16px; line-height: 1.6;">
-                Our team will reach out to you shortly with the program schedule and onboarding details.
-              </p>
-              
-              <div style="text-align: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid #e2e8f0;">
-                <p style="color: #94a3b8; font-size: 12px; margin: 0;">
-                  The Foundry's Deep Tech School<br/>
-                  Hyderabad, India
-                </p>
-              </div>
-            </div>
-          </div>
-        `,
-      });
-      console.log(`📧 Enrollment confirmation sent to ${enrollment.email}`);
-    } catch (emailError) {
-      console.error('Failed to send confirmation email:', emailError);
-      // Don't fail the payment verification because of email failure
+    // Send official Tax Invoice & Enrollment Receipt email
+    const recipientEmail = enrollment?.email || email || body.email;
+    const recipientName = enrollment?.name || body.name || 'Enrolled Executive';
+    const courseTitle = enrollment?.courseName || body.courseName || 'Advanced Management in Forward Deployed Engineering';
+    const payAmount = enrollment?.amount || body.amount || 2500;
+    const payCurrency = enrollment?.currency || body.currency || 'USD';
+
+    if (recipientEmail) {
+      try {
+        console.log(`📧 Sending official Tax Invoice & Enrollment Receipt to ${recipientEmail}...`);
+        await sendEnrollmentInvoiceEmail({
+          to: recipientEmail,
+          name: recipientName,
+          amount: payAmount,
+          currency: payCurrency,
+          paymentId: razorpay_payment_id,
+          courseName: courseTitle,
+          phone: enrollment?.phone || body.phone,
+          company: body.company,
+        });
+        console.log(`✅ Enrollment invoice & receipt sent to ${recipientEmail}`);
+      } catch (emailError) {
+        console.error('Failed to send invoice email:', emailError);
+      }
     }
 
     return NextResponse.json({
       success: true,
       enrollment: {
         id: enrollment?._id || enrollmentId,
-        name: enrollment?.name || 'Student',
-        email: enrollment?.email || email || '',
-        courseName: enrollment?.courseName || 'Enrolled Course',
-        amount: enrollment?.amount || 0,
-        currency: enrollment?.currency || 'USD',
+        name: recipientName,
+        email: recipientEmail,
+        courseName: courseTitle,
+        amount: payAmount,
+        currency: payCurrency,
         paymentId: razorpay_payment_id,
       },
     });
