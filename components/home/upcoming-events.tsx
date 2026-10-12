@@ -1,0 +1,111 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
+
+const EVENTS = [
+  {
+    title: "Rethinking IP in the Age of AI",
+    description: "AI is transforming how ideas are created, developed, and commercialized. Join Uday Wagh (Founder & CEO, TwinSim AI) in conversation with Vishwanath Akuthota (Founder & CEO, The Foundry's) exploring AI, Intellectual Property, ownership, and innovation.",
+    month: "Oct",
+    day: "02",
+    image: "/images/rethinking-ip-in-the-age-of-ai.png",
+    href: "/events"
+  },
+  {
+    title: "Who Builds India’s Deep Tech Workforce — Enterprises or Institutions?",
+    description: "Join Shalini (Founder & CEO, NineGuide Consulting) in conversation with Vishwanath Akuthota (Founder & CEO, The Foundry's) exploring industry readiness, education, skills, and the future of India's deep-tech workforce.",
+    month: "Sep",
+    day: "24",
+    image: "/images/deep-tech-workforce-podcast.png",
+    href: "/events"
+  },
+  {
+    title: "Leading AI Transformation – Stay In-Step with Technology That Never Stops",
+    description: "How do businesses stay ahead when tech never stops evolving? Join Vishwanath Akuthota (Founder & CEO, The Foundry's) and Shalini (Founder & CEO, NineGuide Consulting) exploring AI transformation, emerging tech, and leadership.",
+    month: "Sep",
+    day: "17",
+    image: "/images/leading-ai-transformation-podcast.jpg",
+    href: "/events"
+  },
+];
+
+export function UpcomingEvents() {
+  return (
+    <section className="bg-transparent px-6 py-12 text-brand-purple sm:px-10 lg:px-16" id="upcoming-events">
+      <div className="mx-auto max-w-6xl">
+        {/* Section Header */}
+        <div className="mb-10">
+          <h2 className="mb-2 font-serif text-3xl font-bold leading-tight text-deep-blue md:text-4xl">
+            Upcoming Events
+          </h2>
+          <Link
+            href="/events"
+            className="inline-flex items-center text-brand-purple hover:text-brand-purple/85 font-bold group"
+          >
+            <span>Browse All Events</span>
+            <ChevronRight size={18} className="ml-1 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+
+        {/* Card Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {EVENTS.map((event) => (
+            <Link
+              href={event.href}
+              key={event.title}
+              className="flex flex-col w-full h-full bg-[#f8fafc] border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group no-underline cursor-pointer"
+            >
+              {/* Image Container with overlay Date Tag */}
+              <div className="relative w-full h-[220px] overflow-hidden bg-slate-100">
+                <Image
+                  src={event.image}
+                  alt={event.title}
+                  fill
+                  sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 90vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                
+                {/* Date Tag Overlay top-left */}
+                <div className="absolute top-4 left-4 z-10 bg-[#5ce1e6] text-[#0f172a] px-3.5 py-2 flex flex-col items-center justify-center shadow-md select-none font-mono">
+                  <span className="text-[10px] font-bold uppercase tracking-wider leading-none">
+                    {event.month}
+                  </span>
+                  <span className="text-lg font-bold leading-none mt-1">
+                    {event.day}
+                  </span>
+                </div>
+              </div>
+
+              {/* Text content area */}
+              <div className="p-6 flex flex-col justify-between flex-1 gap-5">
+                <div className="space-y-4">
+
+                  {/* Title */}
+                  <h3 className="font-serif text-xl font-bold text-slate-900 group-hover:text-brand-purple transition-colors leading-snug">
+                    {event.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-sm text-slate-600 leading-relaxed font-sans line-clamp-4">
+                    {event.description}
+                  </p>
+                </div>
+
+                {/* Read More Link */}
+                <div
+                  className="inline-flex items-center text-brand-purple font-bold text-sm"
+                >
+                  <span>Read More</span>
+                  <ChevronRight size={14} className="ml-0.5 group-hover:translate-x-0.5 transition-transform" />
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -8,6 +8,9 @@ import { Metadata } from "next";
 // import { FaqPreview } from "@/components/home/faq-preview";
 import { TheForging } from "@/components/home/the-forging";
 import { UniqueNeeds } from "@/components/home/unique-needs";
+import { OurStory } from "@/components/home/our-story";
+import { WhatBringsYouHere } from "@/components/home/what-brings-you-here";
+import { UpcomingEvents } from "@/components/home/upcoming-events";
 import { FaqJsonLd } from "@/components/seo/faq-json-ld";
 import { Testimonials } from "@/components/home/testimonials";
 import { AdmissionsOpen } from "@/components/home/admissions-open";
@@ -50,21 +53,23 @@ const homeFaqs = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white select-none">
+    <main className="min-h-screen select-none" style={{ backgroundColor: "#EAEAE5" }}>
       <FaqJsonLd questions={homeFaqs} />
       <Navbar />
       <Hero />
       {/* <AdmissionsOpen /> */}
       {/* <Certifications /> */}
-      <Testimonials />
-      <InfiniteLogoScroll />
       {/* <Triad /> */}
+      <OurStory />
       <UniqueNeeds />
-
+      <WhatBringsYouHere />
+      <UpcomingEvents />
+      <InfiniteLogoScroll />
       {/* <TheForging /> */}
 
       {/* <FaqPreview /> */}
 
+      <Testimonials />
       <Footer />
     </main>
   );

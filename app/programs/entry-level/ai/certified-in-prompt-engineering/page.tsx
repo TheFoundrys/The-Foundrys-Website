@@ -226,7 +226,7 @@ export default function PromptEngineeringCoursePage() {
     }, []);
 
     return (
-        <main className="min-h-screen bg-slate-50 font-sans selection:bg-purple-100">
+        <main className="min-h-screen font-sans selection:bg-purple-100" style={{ backgroundColor: "#DCE7F1" }}>
             <Navbar />
 
             {/* Hero Section */}

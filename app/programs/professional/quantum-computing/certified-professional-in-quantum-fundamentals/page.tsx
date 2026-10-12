@@ -147,7 +147,7 @@ export default function QuantumFundamentalsCoursePage() {
     }, []);
 
     return (
-        <main className="min-h-screen bg-slate-50 font-sans selection:bg-purple-100 overflow-x-hidden">
+        <main className="min-h-screen font-sans selection:bg-purple-100 overflow-x-hidden" style={{ backgroundColor: "#DCE7F1" }}>
             <Navbar />
 
             {/* Hero Section */}

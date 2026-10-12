@@ -142,7 +142,7 @@ export default function AIFluencyPage() {
     }, []);
 
     return (
-        <main className="min-h-screen bg-slate-50 font-sans selection:bg-blue-100">
+        <main className="min-h-screen font-sans selection:bg-blue-100" style={{ backgroundColor: "#DCE7F1" }}>
             <Navbar />
 
             {/* Hero Section */}
@@ -186,7 +186,7 @@ export default function AIFluencyPage() {
                             <div>
                                 <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Fee</p>
                                 <div className="flex items-center gap-2 justify-center lg:justify-start">
-                                    {pricing.original[currency] && pricing.original[currency] !== pricing.twoToFive[currency] && <span className="text-sm text-slate-400 line-through">{symbol}{pricing.original[currency]}</span>}
+                                    {pricing.original[currency] && pricing.original[currency] !== pricing.freshers[currency] && <span className="text-sm text-slate-400 line-through">{symbol}{pricing.original[currency]}</span>}
                                     <span className="text-lg font-bold text-slate-900">{symbol}{pricing.twoToFive[currency]}</span>
                                 </div>
                             </div>

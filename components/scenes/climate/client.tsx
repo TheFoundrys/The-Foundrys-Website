@@ -16,7 +16,7 @@ export function ClimateClient() {
                 alt="Global Climate Solutions" 
                 className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
         </div>
 
         <div className="container mx-auto max-w-4xl text-center relative z-10">
@@ -32,6 +32,7 @@ export function ClimateClient() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
                 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight"
+                style={{ textShadow: '0 2px 24px rgba(0,0,0,0.7)' }}
             >
                 Global Climate Change
             </motion.h1>

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export function Campus() {
   return (
-    <section className="relative py-32 overflow-hidden bg-slate-50 border-y border-slate-100">
+    <section className="relative py-32 overflow-hidden border-y" style={{ backgroundColor: "#F7F7F4", borderColor: "#E8E8E3" }}>
          {/* Background Simulation - Real Image */}
          <div className="absolute inset-0 z-0">
              <Image 

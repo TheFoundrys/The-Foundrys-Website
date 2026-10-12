@@ -7,44 +7,41 @@ const reasons = [
         icon: Server,
         title: "HPC Clusters",
         desc: "Access to High Performance Compute infrastructure for training large models.",
-        color: "bg-blue-100 text-blue-600"
+        color: "bg-blue-50 text-blue-600 border border-blue-100"
     },
     {
         icon: Cpu,
         title: "Research Labs",
         desc: "Direct mentorship from researchers pushing the boundaries of AI & ML.",
-        color: "bg-purple-100 text-purple-600"
+        color: "bg-purple-50 text-purple-600 border border-purple-100"
     },
     {
         icon: Globe,
         title: "Global Standards",
         desc: "Curriculum benchmarked against top AI research institutes like MIT & Stanford.",
-        color: "bg-orange-100 text-orange-600"
+        color: "bg-orange-50 text-orange-600 border border-orange-100"
     },
     {
         icon: Zap,
         title: "Rapid Prototyping",
         desc: "Hardware labs equipped for deploying edge AI and robotics applications.",
-        color: "bg-green-100 text-green-600"
+        color: "bg-emerald-50 text-emerald-600 border border-emerald-100"
     }
 ];
 
 export function WhyUs() {
     return (
-        <section className="py-24 px-4 bg-white relative overflow-hidden">
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0">
-                <div
-                    className="absolute inset-0 bg-cover bg-center opacity-40"
-                    style={{ backgroundImage: "url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=2070&auto=format&fit=crop')" }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-white" />
+        <section className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#DCE7F1] border border-[#c5d8ec] rounded-1xl shadow-lg shadow-black/15 py-16 px-4 md:px-8 mt-[30px] mb-16 overflow-hidden relative">
+            {/* Light background grid pattern */}
+            <div className="absolute inset-0 z-0 opacity-40">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#ffffff_100%)]" />
             </div>
 
             <div className="container mx-auto max-w-6xl relative z-10">
-                <div className="text-center mb-16">
-                    <span className="text-blue-600 font-bold tracking-widest text-sm uppercase mb-4 block">The Advantage</span>
-                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Why is The Foundry the right place?</h2>
+                <div className="text-center mb-20">
+                    <span className="text-[#002f86] font-bold tracking-widest text-xs uppercase mb-4 block">The Advantage</span>
+                    <h2 className="text-4xl md:text-5xl font-bold text-[#031a57] mb-6 tracking-tight font-serif">Why is The Foundry the right place?</h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -54,13 +51,13 @@ export function WhyUs() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.1 }}
-                            className="group p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                            className="group p-8 rounded-3xl bg-slate-50 border border-slate-200/60 hover:border-[#002f86]/30 hover:bg-white hover:shadow-[0_8px_30px_rgba(0,47,134,0.05)] transition-all duration-500"
                         >
-                            <div className={`w-14 h-14 rounded-2xl ${r.color} flex items-center justify-center mb-6`}>
+                            <div className={`w-14 h-14 rounded-2xl ${r.color} flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500`}>
                                 <r.icon size={28} />
                             </div>
-                            <h3 className="text-xl font-bold text-slate-900 mb-3">{r.title}</h3>
-                            <p className="text-slate-500 leading-relaxed font-medium text-sm">{r.desc}</p>
+                            <h3 className="text-xl font-bold text-[#031a57] mb-3 group-hover:text-[#002f86] transition-colors duration-300 font-serif">{r.title}</h3>
+                            <p className="text-slate-600 leading-relaxed font-normal text-sm">{r.desc}</p>
                         </motion.div>
                     ))}
                 </div>

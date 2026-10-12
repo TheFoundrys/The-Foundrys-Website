@@ -48,7 +48,7 @@ export function MBAHero() {
                         transition={{ delay: 0.3 }}
                         className="flex flex-wrap gap-4"
                     >
-                        <Link href="/apply" className="px-10 py-5 bg-indigo-600 text-white font-bold rounded-sm hover:bg-indigo-700 transition-all flex items-center gap-3 group">
+                        <Link href="/apply" className="px-10 py-5 bg-slate-950 text-white font-bold rounded-sm hover:bg-slate-900 transition-all flex items-center gap-3 group shadow-xl hover:shadow-2xl active:scale-95">
                             Secure Your Future
                             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </Link>

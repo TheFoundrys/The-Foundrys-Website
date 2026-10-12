@@ -100,28 +100,27 @@ export function FutureVision({
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    style={{ backgroundColor: accentColor }}
-                    className="p-12 md:p-20 rounded-3xl text-white relative overflow-hidden"
+                    className="p-12 md:p-20 rounded-3xl bg-white border border-slate-200/80 shadow-sm relative overflow-hidden"
                 >
-                    <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
-                        <UserCheck size={400} className="translate-x-1/2 -translate-y-1/4" />
+                    <div className="absolute top-0 right-0 w-1/3 h-full opacity-[0.03] pointer-events-none">
+                        <UserCheck size={400} className="translate-x-1/2 -translate-y-1/4" style={{ color: accentColor }} />
                     </div>
 
                     <div className="relative z-10 max-w-3xl">
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="h-px w-12 bg-white/40" />
-                            <span className="text-sm font-mono tracking-widest uppercase text-white/60">The Outcome</span>
+                            <div className="h-px w-12 bg-slate-300" />
+                            <span className="text-sm font-mono tracking-widest uppercase text-slate-500">The Outcome</span>
                         </div>
-                        <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight text-slate-900">
                             Who you <br />
-                            will <span className="opacity-50">become.</span>
+                            will <span style={{ color: accentColor }}>become.</span>
                         </h2>
-                        <p className="text-xl md:text-2xl font-medium leading-relaxed mb-10 text-white/90">
+                        <p className="text-xl md:text-2xl font-medium leading-relaxed mb-10 text-slate-700">
                             {outcomeStatement}
                         </p>
 
                         <div className="flex flex-wrap gap-4">
-                            <Link href="/apply" className="px-8 py-4 bg-white text-neutral-900 font-bold rounded-lg hover:bg-neutral-100 transition-colors flex items-center gap-2 group">
+                            <Link href="/apply" className="px-8 py-4 bg-slate-950 text-white font-bold rounded-lg hover:bg-slate-900 transition-colors flex items-center gap-2 group">
                                 Apply to {schoolName}
                                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                             </Link>

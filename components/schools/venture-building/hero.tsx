@@ -77,7 +77,7 @@ export function VentureHero() {
                     transition={{ delay: 0.4 }}
                     className="flex justify-center"
                 >
-                    <Link href="/apply" className="px-10 py-5 bg-[#B31B1B] text-white font-bold rounded-lg hover:bg-[#911616] transition-all flex items-center gap-2 group shadow-xl shadow-red-900/20 active:scale-95">
+                    <Link href="/apply" className="px-10 py-5 bg-slate-950 text-white font-bold rounded-lg hover:bg-slate-900 transition-all flex items-center gap-2 group shadow-xl hover:shadow-2xl active:scale-95">
                         Apply to the School
                         <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                     </Link>

@@ -7,6 +7,7 @@ const LOGOS = [
   "/logos/drpinnacle.png",
   "/logos/Faba.png",
   "/logos/redshelid1.png",
+  "/logos/runelix.png",
   "/logos/ApplyuniNow.png",
   "/logos/markitome.png",
   "/logos/image.png",
@@ -16,13 +17,14 @@ const LOGOS = [
   "/logos/capsim.png",
   "/logos/hive_link_logo.jpg",
   "/logos/vareon.png",
-  "/logos/runelix.png",
+  "/logos/zythri.png",
   "OpenVals"
 ];
 
 /* URL map for clickable logos */
 const LOGO_LINKS: Record<string, string> = {
   "/logos/techop.png": "https://techoptima.ai/",
+  "/logos/runelix.png": "https://runelix.com",
   "/logos/ApplyuniNow.png": "https://www.ApplyUniNow.com",
   "/logos/optsearch.png": "https://optsearch.in",
   "/logos/drpinnacle.png": "https://drpinnacle.com/",
@@ -34,24 +36,21 @@ const LOGO_LINKS: Record<string, string> = {
   "/logos/Faba.png": "https://biofaba.org.in/",
   "/logos/capsim.png": "https://www.capsim.com/",
   "/logos/redshelid1.png": "https://thefoundrys.com",
-  "/logos/vareon.png": "/news/thefoundrys-partnered-with-vareon",
-  "/logos/runelix.png": "https://runelix.com"
+  "/logos/vareon.png": "",
+  "/logos/zythri.png": "https://www.zythri.com"
 };
 
 export function InfiniteLogoScroll() {
   const sets = [0, 1, 2, 3];
 
   return (
-    <section className="py-12 bg-white overflow-hidden relative border-y border-slate-50">
+    <section className="py-12 overflow-hidden relative border-y border-slate-200" style={{ backgroundColor: "#F7F7F4" }}>
       <div className="container mx-auto px-4 mb-8 text-center">
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
           Our Alumni Works
         </p>
       </div>
 
-      {/* Gradient Masks */}
-      <div className="absolute top-0 left-0 w-24 md:w-48 h-full bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-24 md:w-48 h-full bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
 
       <div className="flex w-full overflow-hidden">
         <motion.div
@@ -82,7 +81,10 @@ export function InfiniteLogoScroll() {
                 if (l.includes("image")) heightClass = "h-10 md:h-16";
                 if (l.includes("capsim")) heightClass = "h-6 md:h-10";
                 if (l.includes("drpinnacle")) heightClass = "h-10 md:h-16";
-                if (l.includes("runelix")) heightClass = "h-8 md:h-12";
+                if (l.includes("vareon")) heightClass = "h-16 md:h-24";
+                if (l.includes("zythri")) heightClass = "h-11 md:h-16";
+
+                const isDarkTile = l.includes("zythri");
 
                 const inner = (
                   <>
@@ -91,10 +93,10 @@ export function InfiniteLogoScroll() {
                         src={logo.startsWith("/") ? logo : `/${logo}`}
                         alt="Partner"
                         loading="eager"
-                        className={`w-auto object-contain mix-blend-multiply transition-all duration-300 ${heightClass}`}
+                        className={`w-auto object-contain ${isDarkTile ? "rounded-lg" : "mix-blend-multiply"} transition-all duration-300 ${heightClass}`}
                       />
                     ) : (
-                      <span className="text-lg md:text-xl lg:text-2xl font-bold text-slate-800 whitespace-nowrap px-4">
+                      <span className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-800 tracking-tight whitespace-nowrap px-4">
                         {logo}
                       </span>
                     )}

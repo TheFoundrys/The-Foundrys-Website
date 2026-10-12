@@ -18,14 +18,31 @@ export const metadata: Metadata = {
 
 export default function RenewableEnergyPage() {
   return (
-    <main className="min-h-screen bg-white select-none">
+    <main className="min-h-screen font-sans selection:bg-emerald-100 selection:text-emerald-800 overflow-x-hidden" style={{ backgroundColor: "#EAEAE5" }}>
       <Navbar />
       <RenewableEnergyHero />
-      <RenewableEnergyWhyUs />
-      <RenewableEnergyStats />
-      <RenewableEnergySkills />
-      <RenewableEnergyComparison />
-      <RenewableEnergyCurriculumAccordion />
+
+      {/* Consolidated Why Us & Program Mix (Stats) */}
+      <section className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#F0DFDF] border border-[#e2c8c8] rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+        <RenewableEnergyWhyUs />
+        <RenewableEnergyStats />
+      </section>
+
+      {/* Core Competencies (Skills) - Separate Card Container */}
+      <section className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-[#e2c8c8] rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+        <RenewableEnergySkills />
+      </section>
+
+      {/* Comparison block */}
+      <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-[#F0DFDF] border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-8 overflow-hidden relative">
+        <RenewableEnergyComparison />
+      </div>
+
+      {/* Curriculum block */}
+      <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white border border-slate-200/50 rounded-1xl shadow-lg shadow-black/15 mt-[30px] mb-16 overflow-hidden relative">
+        <RenewableEnergyCurriculumAccordion />
+      </div>
+
       <Footer />
     </main>
   );

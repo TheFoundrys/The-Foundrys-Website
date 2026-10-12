@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Ubuntu } from "next/font/google";
+import { Ubuntu, Cinzel } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -7,6 +7,13 @@ const ubuntu = Ubuntu({
   variable: "--font-ubuntu",
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"], // Ubuntu classic weights
+  display: "swap",
+});
+
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -111,7 +118,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${ubuntu.variable} antialiased`}>
+      <body className={`${ubuntu.variable} ${cinzel.variable} antialiased`}>
         <ScrollFix />
         {/* Google Analytics */}
         <Script

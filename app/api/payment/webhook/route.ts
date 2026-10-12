@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
                   <p style="color: #475569;">Hi <strong>${enrollment.name}</strong>, your enrollment in <strong>${enrollment.courseName}</strong> is confirmed.</p>
                   <p style="color: #475569;">Amount: <strong>${currencySymbol}${enrollment.amount.toLocaleString()}</strong></p>
                   <p style="color: #475569;">Payment ID: <strong>${payment.id}</strong></p>
-                  <p style="color: #475569;">Our team will reach out with onboarding details shortly.</p>
+                  <p style="color: #475569ff;">Our team will reach out with onboarding details shortly.</p>
                 </div>
               </div>
             `,

@@ -1,13 +1,54 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: 'Sego';
+    src: url('/fonts/SEGO.ttf') format('truetype'),
+         url('/fonts/SEGO.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 @theme {
     --font-sans: var(--font-ubuntu), ui-sans-serif, system-ui, sans-serif;
+    --font-sego: 'Sego', serif;
+    --font-cinzel: 'Cinzel', serif;
+}
+
+.font-cinzel {
+    font-family: 'Cinzel', Georgia, serif !important;
+}
+
+.font-sego {
+    font-family: 'Sego', serif !important;
+}
+
+@theme {
 
     --color-electric-purple: #7c3aed;
     --color-neon-blue: #0ea5e9;
     --color-sunset-orange: #f97316;
     --color-lime-vibrant: #a3e635;
     --color-deep-blue: #1e3a8a;
+    --color-brand-purple: #0f172a;
+
+    /* Foundry Design System — Master Brand */
+    --color-foundry-white: #FFFFFF;
+    --color-foundry-off-white: #F7F7F4;
+    --color-foundry-black: #0B0B0B;
+    --color-foundry-text: #171717;
+    --color-foundry-muted: #6D6D6D;
+    --color-foundry-border: #E8E8E3;
+
+    /* School Experience Pastels — identify experiences, not decoration */
+    --color-school-deeptech: #DCE7F1;
+    /* Deep Tech → Powder Blue */
+    --color-school-entrepreneurship: #DDE7DE;
+    /* Entrepreneurship → Sage */
+    --color-school-sustainability: #EEE5D7;
+    /* Sustainability → Warm Sand */
+    --color-school-energy: #F0DFDF;
+    /* Energy → Soft Blush */
 
     --animate-aurora: aurora 20s ease infinite alternate;
     --animate-smoke: smoke 15s ease-in-out infinite alternate;
@@ -141,10 +182,8 @@
 }
 
 :root {
-    --background: #f8fafc;
-    /* Slate 50 */
-    --foreground: #0f172a;
-    /* Slate 900 */
+    --background: #FFFFFF;
+    --foreground: #171717;
 }
 
 html {
@@ -173,12 +212,21 @@ body {
 
 /* Global Responsive Safety */
 @media (max-width: 640px) {
-    h1, h2, h3, h4, h5, h6, p, span, a {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    span,
+    a {
         overflow-wrap: break-word;
         word-wrap: break-word;
         max-width: 100%;
     }
-    
+
     .container {
         overflow-x: hidden;
     }
@@ -214,11 +262,14 @@ body {
 
 /* Hide scrollbars globally on mobile and tablet for a cleaner 'inside scroll' look */
 @media (max-width: 1024px) {
-    html, body, * {
+
+    html,
+    body,
+    * {
         -ms-overflow-style: none !important;
         scrollbar-width: none !important;
     }
-    
+
     html::-webkit-scrollbar,
     body::-webkit-scrollbar,
     *::-webkit-scrollbar {
@@ -226,4 +277,137 @@ body {
         width: 0 !important;
         height: 0 !important;
     }
-}
+}
+
+/* ==========================================================================
+   GLOBAL BACKGROUND OVERRIDES (APPLIES TO ALL PAGES)
+   ========================================================================== */
+
+/* Landing page / main wrapper background */
+main {
+    background-color: #EAEAE5 !important;
+    background-image: none !important;
+}
+
+/* ==========================================================================
+   MINIMALIST SWAP BUTTON: WHITE (NORMAL) -> BLACK (HOVER)
+   ========================================================================== */
+
+.minimalist-swap-button {
+    background-color: #ffffff !important;
+    border-color: #000000 !important;
+    color: #000000 !important;
+}
+
+.minimalist-swap-button * {
+    color: #000000 !important;
+}
+
+.minimalist-swap-button:hover {
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+.minimalist-swap-button:hover * {
+    color: #ffffff !important;
+}
+
+/* Programs page: keep the monochrome white conversion readable. */
+.programs-light-page {
+    background-color: #EAEAE5 !important;
+    color: #0f172a !important;
+}
+
+.programs-light-page [class*="bg-slate-900/"],
+.programs-light-page [class*="bg-slate-950/"],
+.programs-light-page [class*="bg-white/5"],
+.programs-light-page [class*="hover:bg-white/10"]:hover,
+.programs-light-page .stark-black-card,
+.programs-light-page .stark-black-pill {
+    background-color: #ffffff !important;
+}
+
+.programs-light-page [class*="bg-slate-950/"],
+.programs-light-page [class*="bg-white/5"],
+.programs-light-page [class*="border-white/"],
+.programs-light-page .stark-black-card,
+.programs-light-page .stark-black-pill {
+    border-color: #e2e8f0 !important;
+}
+
+.programs-light-page .text-white,
+.programs-light-page .text-slate-100,
+.programs-light-page .text-slate-200,
+.programs-light-page .text-transparent,
+.programs-light-page .text-lime-vibrant,
+.programs-light-page .text-neon-blue,
+.programs-light-page .text-sunset-orange,
+.programs-light-page .text-muted,
+.programs-light-page .stark-black-pill-title,
+.programs-light-page .hover\:text-white:hover,
+.programs-light-page .group:hover .group-hover\:text-lime-vibrant,
+.programs-light-page .group:hover .group-hover\:text-neon-blue,
+.programs-light-page .group:hover .group-hover\:text-sunset-orange {
+    color: #0f172a !important;
+    background-image: none !important;
+}
+
+.programs-light-page .text-slate-300,
+.programs-light-page .text-slate-400,
+.programs-light-page .text-slate-500,
+.programs-light-page .stark-black-pill-desc,
+.programs-light-page .group:hover .group-hover\:text-slate-300 {
+    color: #475569 !important;
+}
+
+.programs-light-page .bg-lime-vibrant {
+    background-color: #0f172a !important;
+}
+
+.programs-light-page .bg-black,
+.programs-light-page a.bg-black,
+.programs-light-page button.bg-black {
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+.programs-light-page .bg-black *,
+.programs-light-page a.bg-black *,
+.programs-light-page button.bg-black * {
+    color: #ffffff !important;
+}
+
+/* Force social icons / email icons with bg-slate-800 and rounded-lg to be transparent with border */
+.bg-slate-800.rounded-lg,
+a.bg-slate-800.rounded-lg,
+div.bg-slate-800.rounded-lg,
+.p-2.bg-slate-800 {
+    background-color: transparent !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #334155 !important;
+}
+
+.bg-slate-800.rounded-lg svg,
+a.bg-slate-800.rounded-lg svg,
+.p-2.bg-slate-800 svg {
+    color: #334155 !important;
+}
+
+.bg-slate-800.rounded-lg:hover,
+a.bg-slate-800.rounded-lg:hover,
+.p-2.bg-slate-800:hover {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+}
+
+.bg-slate-800.rounded-lg:hover svg,
+a.bg-slate-800.rounded-lg:hover svg,
+.p-2.bg-slate-800:hover svg {
+    color: #0f172a !important;
+}
+
+#youtube-player-hero {
+    pointer-events: none !important;
+}

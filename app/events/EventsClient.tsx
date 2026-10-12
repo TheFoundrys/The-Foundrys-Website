@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowRight, ArrowUpRight, Calendar, Clock, MapPin, Video, Youtube, ChevronRight } from "lucide-react";
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
-import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, Clock, MapPin, Video, ArrowUpRight, Sparkles, PlayCircle, Filter, Youtube } from "lucide-react";
-import Link from "next/link";
 
 interface EventItem {
     id: string;
@@ -15,166 +16,93 @@ interface EventItem {
     date: string;
     time: string;
     dateTime: string;
+    venue?: string;
+    platform?: string;
+    mapsUrl?: string;
+    link?: string;
+    youtubeUrl?: string;
+    teamsUrl?: string;
     description: string;
     tags: string[];
-    featured?: boolean;
-    venue?: string;
-    mapsUrl?: string;
-    platform?: string;
-    link?: string;
-    ctaText?: string;
-    secondaryLink?: string;
-    secondaryCtaText?: string;
-    meetingLink?: string;
-    meetingCtaText?: string;
-    image?: string;
+    featured: boolean;
+    image: string;
+    status?: "upcoming" | "completed";
 }
 
 const allItems: EventItem[] = [
     {
-        id: "podcast-rethinking-ip-in-the-age-of-ai",
+        id: "webinar-rethinking-ip-in-the-age-of-ai",
         title: "Rethinking IP in the Age of AI",
         type: "Live Podcast",
-        category: "webinar",
+        category: "event",
         date: "Fri, Oct 2, 2026",
         time: "3:00 PM – 4:00 PM IST",
         dateTime: "2026-10-02T15:00:00+05:30",
         platform: "Microsoft Teams & YouTube Live",
         link: "https://tinyurl.com/3vx28rt4",
-        ctaText: "Join Session (Teams)",
-        secondaryLink: "https://tinyurl.com/frdthxnt",
-        secondaryCtaText: "Watch on YouTube",
-        meetingLink: "https://tinyurl.com/3vx28rt4",
-        meetingCtaText: "Direct Meeting Link",
-        description: `AI is transforming the way ideas are created, developed, and commercialized — bringing new questions around Intellectual Property, ownership, attribution, and innovation.
-
-Join us for an engaging conversation on how AI is reshaping the future of IP, featuring:
-
-👤 Uday Wagh — Founder & CEO, TwinSim AI
-🎤 In conversation with Vishwanath Akuthota — Founder & CEO, The Foundry’s
-
-💡 Topics include:
-• How AI is changing Intellectual Property
-• Ownership and attribution of AI-generated innovation
-• The evolving role of creators and organizations
-• Opportunities and challenges for businesses
-• What the future of IP may look like in an AI-driven world
-
-We invite entrepreneurs, innovators, professionals, researchers, and anyone interested in AI, Intellectual Property, and the future of innovation to join the conversation.`,
-        tags: ["Intellectual Property", "AI", "TwinSim AI", "Live Podcast", "Deep Tech", "Innovation"],
-        featured: true,
+        youtubeUrl: "https://tinyurl.com/frdthxnt",
+        teamsUrl: "https://tinyurl.com/3vx28rt4",
+        description:
+            "AI is transforming the way ideas are created, developed, and commercialized — bringing new questions around Intellectual Property, ownership, attribution, and innovation. Join us for an engaging conversation on how AI is reshaping the future of IP, featuring guest Uday Wagh (Founder & CEO, TwinSim AI) in conversation with host Vishwanath Akuthota (Founder & CEO, The Foundry’s). Topics include ownership and attribution of AI-generated innovation, evolving roles of creators and organizations, and what the future of IP looks like in an AI-driven world.",
+        tags: ["Intellectual Property", "Artificial Intelligence", "TwinSim AI", "Innovation", "Live Podcast", "Deep Tech"],
+        featured: false,
+        status: "completed",
         image: "/images/rethinking-ip-in-the-age-of-ai.png",
     },
     {
         id: "webinar-deep-tech-workforce-podcast",
         title: "Who Builds India’s Deep Tech Workforce — Enterprises or Institutions?",
         type: "Live Podcast",
-        category: "webinar",
+        category: "event",
         date: "Thu, Sep 24, 2026",
         time: "8:30 AM – 9:30 AM IST",
         dateTime: "2026-09-24T08:30:00+05:30",
         platform: "Microsoft Teams & YouTube Live",
         link: "https://tinyurl.com/2v2crwex",
-        ctaText: "Register Now",
-        secondaryLink: "https://tinyurl.com/3kk3c9zs",
-        secondaryCtaText: "Watch on YouTube",
-        meetingLink: "https://tinyurl.com/yp5dy2xv",
-        meetingCtaText: "Direct Meeting Link",
-        description: `India’s deep-tech future depends on building talent equipped for AI, Cyber Security, Quantum Computing, and emerging technologies.
-
-But who should take the lead — enterprises, institutions, or a stronger collaboration between both?
-
-Join Shalini, Founder & CEO of NineGuide Consulting, in conversation with Vishwanath Akuthota, Founder & CEO of The Foundry’s, as they explore industry readiness, education, skills, innovation, and the future of India’s deep-tech workforce.`,
+        youtubeUrl: "https://tinyurl.com/3kk3c9zs",
+        teamsUrl: "https://tinyurl.com/yp5dy2xv",
+        description:
+            "India’s deep-tech future depends on building talent equipped for AI, Cyber Security, Quantum Computing, and emerging technologies. But who should take the lead — enterprises, institutions, or a stronger collaboration between both? Join Shalini, Founder & CEO of NineGuide Consulting, in conversation with Vishwanath Akuthota, Founder & CEO of The Foundry’s, as they explore industry readiness, education, skills, innovation, and the future of India’s deep-tech workforce.",
         tags: ["Deep Tech", "Workforce", "AI", "Cyber Security", "Quantum Computing", "Live Podcast", "Higher Education"],
         featured: false,
+        status: "completed",
         image: "/images/deep-tech-workforce-podcast.png",
     },
     {
-        id: "podcast-deep-tech-manufacturing",
-        title: "Live Podcast: Can India Become a Deep-Tech Manufacturing Powerhouse?",
+        id: "webinar-leading-ai-transformation",
+        title: "Leading AI Transformation – Stay In-Step with Technology That Never Stops",
         type: "Live Podcast",
-        category: "webinar",
+        category: "event",
+        date: "Thu, Sep 17, 2026",
+        time: "8:30 AM IST",
+        dateTime: "2026-09-17T08:30:00+05:30",
+        platform: "Microsoft Teams & YouTube Live",
+        link: "https://lnkd.in/gBbeRjrp",
+        youtubeUrl: "https://lnkd.in/g3AWANT7",
+        teamsUrl: "https://lnkd.in/gVPmNk4y",
+        description:
+            "How do businesses stay ahead when technology never stops evolving? Join Vishwanath Akuthota, Founder & CEO – The Foundry's, as he hosts a conversation with Shalini, Founder & CEO – NineGuide Consulting, exploring AI transformation, emerging technologies, business strategy, innovation and leadership.",
+        tags: ["AI Transformation", "Leadership", "Business Strategy", "Emerging Tech", "Live Podcast", "Innovation"],
+        featured: false,
+        status: "completed",
+        image: "/images/leading-ai-transformation-podcast.jpg",
+    },
+    {
+        id: "webinar-deep-tech-manufacturing-podcast",
+        title: "Can India Become a Deep-Tech Manufacturing Powerhouse?",
+        type: "Live Podcast",
+        category: "event",
         date: "Fri, Aug 21, 2026",
         time: "4:00 PM - 5:00 PM IST",
         dateTime: "2026-08-21T16:00:00+05:30",
-        platform: "Microsoft Teams",
+        platform: "Microsoft Teams & YouTube",
         link: "https://events.teams.microsoft.com/event/dd70cce1-367c-46a2-bdce-9d789715747b@9be43f22-3237-4b73-971b-3e664c641aea?source=copyLinkOneEventsShareDialog",
-        ctaText: "Join Session",
-        secondaryLink: "https://youtube.com/live/AiYNjL789D0?feature=share",
-        secondaryCtaText: "Watch on YouTube",
-        description: `Can India Become a Deep-Tech Manufacturing Powerhouse?
-
-Guest Speaker: Col. Merugu Solomon Saneev (Defence Technology, R&D in Weapons, Ammunition and Aerospace Operations Expert)
-Host: Mr. Vishwanath Akuthota (Founder, The Foundry's)
-
-Defence • Aerospace • AI • Robotics • Semiconductors • Cybersecurity • Space
-
-Building Technology. Building India.`,
-        tags: ["Deep Tech", "Manufacturing", "Defence", "Aerospace", "AI", "Robotics", "Semiconductors", "Cybersecurity", "Space", "Podcast"],
+        youtubeUrl: "https://youtube.com/live/AiYNjL789D0?feature=share",
+        description:
+            "Building Technology. Building India. Join us for an exclusive live podcast discussing Defence, Aerospace, AI, Robotics, Semiconductors, Cybersecurity, and Space. Guest Speaker: Col. Merugu Solomon Saneev (Defence Technology, R&D in Weapons, Ammunition and Aerospace Operations Expert). Host: Mr. Vishwanath Akuthota (Founder, The Foundry's).",
+        tags: ["Deep Tech", "Manufacturing", "Podcast", "Defence", "Aerospace", "AI", "Robotics", "Semiconductors", "Cybersecurity", "Space"],
         featured: true,
-        image: "/images/deep-tech-podcast.jpg"
-    },
-    {
-        id: "quantum-computing-podcast",
-        title: "Live Podcast: Quantum Computing and the Next Generation of Emerging Technologies",
-        type: "Live Podcast",
-        category: "webinar",
-        date: "Sat, Aug 22, 2026",
-        time: "4:00 PM - 5:00 PM IST",
-        dateTime: "2026-08-22T16:00:00+05:30",
-        platform: "Microsoft Teams & YouTube Live",
-        link: "https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzhkMmZhYjctYjJhYS00NTVlLTk5MjUtZWU4MjQ5Y2Q0ZDJm%40thread.v2/0?context=%7b%22Tid%22%3a%229be43f22-3237-4b73-971b-3e664c641aea%22%2c%22Oid%22%3a%2244076315-3ad7-4d15-a8d3-3eb81b6ccdeb%22%7d",
-        ctaText: "Join Session (Teams)",
-        secondaryLink: "https://youtube.com/live/cSQhou5nJsQ?feature=share",
-        secondaryCtaText: "Watch on YouTube",
-        description: `Explore the frontier of physics and technology in our upcoming Live Podcast: 'Quantum Computing and the Next Generation of Emerging Technologies — From Physics to Possibilities'.
-
-Guest Speaker: Dr. Ram Soorat (Assistant Professor of Physics, Woxsen University)
-Host: Mr. Vishwanath Akuthota (Founder, The Foundry's)
-
-Live Podcast — One Conversation. Endless Possibilities.`,
-        tags: ["Quantum Computing", "Deep Tech", "Emerging Tech", "Physics", "Podcast"],
-        featured: true,
-        image: "/images/quantum-computing-podcast.jpg"
-    },
-    {
-        id: "quantum-impact",
-        title: "Quantum Impact: Bridging Industry Innovation and Academic Advancement",
-        type: "Independence Day Special",
-        category: "webinar",
-        date: "Sat, Aug 15, 2026",
-        time: "4:00 PM - 5:00 PM IST",
-        dateTime: "2026-08-15T16:00:00+05:30",
-        platform: "Microsoft Teams",
-        link: "https://events.teams.microsoft.com/event/fe3ca870-5222-4377-a228-19265fbd184b@9be43f22-3237-4b73-971b-3e664c641aea?source=copyLinkOneEventsShareDialog",
-        ctaText: "Join Session",
-        description: `Join us for an insightful conversation exploring the applications of Quantum Computing in Industry and Academia and its potential to shape the future of innovation, research, and education.
-
-Guest Speaker: Dr. Dadamiah PMD Shaik (Associate Professor & HoD, Physics at Vardhaman College of Engineering)
-Host: Mr. Vishwanath Akuthota (Founder, The Foundry's)`,
-        tags: ["Quantum Computing", "Deep Tech", "Innovation", "Research", "Education"],
-        featured: true,
-        image: "/images/quantum-impact-webinar.png"
-    },
-    {
-        id: "podcast-self-mastery",
-        title: "Live Podcast: Self-Mastery Is Life Mastery",
-        type: "Live Podcast",
-        category: "webinar",
-        date: "Fri, Aug 7, 2026",
-        time: "4:00 PM IST",
-        dateTime: "2026-08-07T16:00:00+05:30",
-        platform: "The Foundry's Official Channels",
-        link: "https://events.teams.microsoft.com/event/a21b7f98-cf48-4548-a97f-84fdd8bd9dfa@9be43f22-3237-4b73-971b-3e664c641aea",
-        ctaText: "Watch Live",
-        description: `Unlock your true potential in our upcoming Live Podcast: 'Self-Mastery Is Life Mastery' — The Inner Shift That Transforms Everything You Do.
-
-Join our host, Vishwanath Akuthota (Founder of The Foundry's, AI & Cybersecurity Expert, Author, and Global Thought Leader), and our special guest, Swathi Bokka (Transformational Coach & Speaker, dedicated to empowering individuals to rediscover their authentic selves).
-
-This session is designed for learners, for leaders, and for life. Explore the core principles of self-governance, personal growth, and cognitive clarity that will empower you to master your life and inspire the world.`,
-        tags: ["Self-Mastery", "Personal Growth", "Podcast", "Leadership", "Live Stream"],
-        featured: true,
-        image: "/images/self-mastery-podcast.jpg"
+        image: "/images/deeptech-manufacturing-podcast.png",
     },
     {
         id: "event-1",
@@ -186,9 +114,12 @@ This session is designed for learners, for leaders, and for life. Explore the co
         dateTime: "2026-02-28T10:30:00+05:30",
         venue: "Lamakan, Hyderabad",
         mapsUrl: "https://maps.google.com/?q=Lamakan+Hyderabad",
-        description: "Bridging the gap between analogue and AI. Join us for an exciting event designed for the GenZ generation, exploring how AI is transforming the way we live, learn, and create.",
+        description:
+            "Bridging the gap between analogue and AI. Join us for an exciting event designed for the GenZ generation, exploring how AI is transforming the way we live, learn, and create.",
         tags: ["AI", "GenZ", "Community", "Innovation"],
         featured: true,
+        image: "/images/ai-genz-event.png",
+        link: "https://luma.com/cp4d1w4b",
     },
     {
         id: "webinar-1",
@@ -200,504 +131,301 @@ This session is designed for learners, for leaders, and for life. Explore the co
         dateTime: "2026-04-26T16:00:00+05:30",
         platform: "EduCRM Live",
         link: "https://crm.thefoundrys.com/webinars/58beca00-00b2-459b-ae80-5d7ca202f01b/register",
-        description: `The future belongs to Artificial Intelligence — and the right decision after Intermediate can shape a student’s entire career. Join this exclusive webinar led by Vishwanath Akuthota, an AI entrepreneur and deep-tech expert with extensive experience in Artificial Intelligence, Cybersecurity, Quantum Computing, and Enterprise Transformation. With strong industry exposure and academic leadership at The Foundrys, he has mentored students into AI professionals and guided them toward future-ready careers in emerging technologies.
-
-What You’ll Learn in This Webinar
-• Future career opportunities in AI
-• What students should choose after Intermediate
-• Traditional degrees vs future-ready AI programs
-• Skills required to succeed in AI careers
-• Career roadmap from student to AI professional
-• Live Q&A with industry expert
-
-Programs Covered
-Hyderabad
-• BCA AI Professional
-
-Hanamkonda / Warangal
-• BSc in Artificial Intelligence
-• BSc in Data Sciences
-• BSc in MPCS
-
-This session is ideal for:
-• Intermediate passed students
-• Parents planning career decisions
-• Students interested in AI and future technologies
-
-Limited Seats Available Register Now and Build a Future-Ready Career in AI`,
+        description:
+            "The future belongs to Artificial Intelligence — and the right decision after Intermediate can shape a student's entire career. Join this exclusive webinar led by Vishwanath Akuthota, an AI entrepreneur and deep-tech expert.",
         tags: ["AI", "Future Tech", "Career Guidance", "Webinar"],
         featured: true,
-    }
+        image: "/quantum-computer.jpg",
+    },
+    {
+        id: "webinar-quantum-impact",
+        title: "Quantum Impact: Bridging Industry Innovation and Academic Advancement",
+        type: "Independence Day Special",
+        category: "event",
+        date: "Sat, Aug 15, 2026",
+        time: "4:00 PM - 5:00 PM IST",
+        dateTime: "2026-08-15T16:00:00+05:30",
+        platform: "Microsoft Teams",
+        link: "https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzhkMmZhYjctYjJhYS00NTVlLTk5MjUtZWU4MjQ5Y2Q0ZDJm%40thread.v2/0?context=%7b%22Tid%22%3a%229be43f22-3237-4b73-971b-3e664c641aea%22%2c%22Oid%22%3a%2244076315-3ad7-4d15-a8d3-3eb81b6ccdeb%22%7d",
+        description:
+            "Join us for an insightful conversation exploring the applications of Quantum Computing in Industry and Academia and its potential to shape the future of innovation, research, and education. Guest Speaker: Dr. Dadamiah PMD Shaik (Associate Professor & HoD, Physics at Vardhaman College of Engineering). Host: Mr. Vishwanath Akuthota (Founder, The Foundry's).",
+        tags: ["Quantum Computing", "Deep Tech", "Innovation", "Research", "Education"],
+        featured: false,
+        image: "/quantum-impact.png",
+    },
+    {
+        id: "webinar-quantum-computing-podcast",
+        title: "Quantum Computing and the Next Generation of Emerging Technologies",
+        type: "Live Podcast",
+        category: "event",
+        date: "Sat, Aug 22, 2026",
+        time: "4:00 PM - 5:00 PM IST",
+        dateTime: "2026-08-22T16:00:00+05:30",
+        platform: "Microsoft Teams | Youtube",
+        link: "https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzhkMmZhYjctYjJhYS00NTVlLTk5MjUtZWU4MjQ5Y2Q0ZDJm%40thread.v2/0?context=%7b%22Tid%22%3a%229be43f22-3237-4b73-971b-3e664c641aea%22%2c%22Oid%22%3a%2244076315-3ad7-4d15-a8d3-3eb81b6ccdeb%22%7d",
+        youtubeUrl: "https://youtube.com/live/cSQhou5nJsQ?feature=share",
+        description:
+            "From Physics to Possibilities. Join us for a live podcast exploring Quantum Computing and the Next Generation of Emerging Technologies. Guest Speaker: Dr. Ram Soorat (Assistant Professor of Physics at Woxsen University). Host: Mr. Vishwanath Akuthota (Founder, The Foundry's).",
+        tags: ["Quantum Computing", "Deep Tech", "Podcast", "Physics", "Emerging Tech"],
+        featured: true,
+        image: "/quantum-computing-podcast.jpg",
+    },
 ];
 
-export function EventsClient() {
-    const [activeFilter, setActiveFilter] = useState<"all" | "event" | "webinar">("all");
-    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+const isUpcoming = (item: EventItem) => {
+    if (item.status === "completed") return false;
+    const bufferTime = 2 * 60 * 60 * 1000;
+    const isPastByDate = new Date(item.dateTime).getTime() + bufferTime <= Date.now();
+    if (isPastByDate) return false;
+    if (item.status === "upcoming") return true;
+    return true;
+};
 
-    const now = new Date();
-    const bufferTime = 2 * 60 * 60 * 1000; // 2 hours buffer
-
-    // Filter by date (Upcoming vs Past)
-    const upcomingItems = allItems.filter(
-        (item) => new Date(item.dateTime).getTime() + bufferTime > now.getTime()
-    );
-    const pastItems = allItems.filter(
-        (item) => new Date(item.dateTime).getTime() + bufferTime <= now.getTime()
-    );
-
-    // Apply category filter (All, Events, Webinars)
-    const filteredUpcoming = upcomingItems.filter(
-        (item) => activeFilter === "all" || item.category === activeFilter
-    );
-    const filteredPast = pastItems.filter(
-        (item) => activeFilter === "all" || item.category === activeFilter
-    );
+function EventCard({ item, idx }: { item: EventItem; idx: number }) {
+    const upcoming = isUpcoming(item);
+    const href = item.link || item.mapsUrl || "/contact";
 
     return (
-        <main className="min-h-screen bg-slate-50 selection:bg-blue-100 selection:text-blue-900">
+        <motion.article
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.05 }}
+            className="overflow-hidden border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:border-[#002f86] hover:shadow-md"
+        >
+            <div className="flex flex-col md:flex-row">
+                <div className="relative h-60 w-full shrink-0 md:h-auto md:w-80 lg:w-96 bg-[#F1F1EC] flex items-center justify-center p-3">
+                    <img
+                        src={item.image}
+                        alt={item.title}
+                        className="max-h-full max-w-full object-contain object-center"
+                    />
+                    {!upcoming && (
+                        <span className="absolute top-4 left-4 bg-slate-900/85 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white font-mono">
+                            Completed
+                        </span>
+                    )}
+                    {item.featured && upcoming && (
+                        <span className="absolute top-4 left-4 bg-[#002f86] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white font-mono">
+                            Featured
+                        </span>
+                    )}
+                </div>
+
+                <div className="flex flex-1 flex-col justify-between p-6 md:p-8">
+                    <div>
+                        <span className="mb-3 inline-flex items-center gap-1.5 bg-[#DCE7F1] text-[#002f86] px-3 py-1 text-[10px] font-bold uppercase tracking-wider font-mono">
+                            {item.category === "event" ? <Calendar size={12} /> : <Video size={12} />}
+                            {item.type}
+                        </span>
+
+                        <h3 className="mb-3 font-serif text-xl sm:text-2xl font-bold tracking-tight text-slate-900 leading-snug">
+                            {item.title}
+                        </h3>
+
+                        <p className="mb-6 max-w-3xl text-sm leading-relaxed text-slate-600 font-sans">
+                            {item.description}
+                        </p>
+
+                        <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                            <div className="flex items-start gap-3 border border-slate-200/80 p-3">
+                                <Calendar size={16} className="mt-0.5 shrink-0 text-[#002f86]" />
+                                <div>
+                                    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-mono">Date</p>
+                                    <p className="text-xs font-semibold text-slate-900 mt-0.5">{item.date}</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-3 border border-slate-200/80 p-3">
+                                <Clock size={16} className="mt-0.5 shrink-0 text-[#002f86]" />
+                                <div>
+                                    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-mono">Time</p>
+                                    <p className="text-xs font-semibold text-slate-900 mt-0.5">{item.time}</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-3 border border-slate-200/80 p-3">
+                                {item.category === "event" ? (
+                                    <MapPin size={16} className="mt-0.5 shrink-0 text-[#002f86]" />
+                                ) : (
+                                    <Video size={16} className="mt-0.5 shrink-0 text-[#002f86]" />
+                                )}
+                                <div>
+                                    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-mono">
+                                        {item.venue ? "Venue" : "Platform"}
+                                    </p>
+                                    <p className="text-xs font-semibold text-slate-900 mt-0.5">
+                                        {item.venue || item.platform}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-wrap gap-2">
+                            {item.tags.map((tag) => (
+                                <span
+                                    key={tag}
+                                    className="bg-slate-100 border border-slate-200/60 px-2.5 py-0.5 text-[11px] font-medium text-slate-600 font-mono"
+                                >
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                        {upcoming && item.link && (
+                            <a
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 bg-[#002f86] hover:bg-[#002266] px-6 py-3 text-xs font-bold text-white transition-all shadow-sm"
+                            >
+                                Register to Join
+                                <ArrowUpRight size={14} />
+                            </a>
+                        )}
+                        {!upcoming && item.youtubeUrl && (
+                            <a
+                                href={item.youtubeUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 px-6 py-3 text-xs font-bold text-white transition-all shadow-sm"
+                            >
+                                <Youtube size={14} className="text-white" />
+                                Watch Recording
+                            </a>
+                        )}
+                        {!upcoming && !item.youtubeUrl && item.link && (
+                            <a
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 bg-[#002f86] hover:bg-[#002266] px-6 py-3 text-xs font-bold text-white transition-all shadow-sm"
+                            >
+                                View Details
+                                <ArrowUpRight size={14} />
+                            </a>
+                        )}
+                        {upcoming && item.youtubeUrl && (
+                            <a
+                                href={item.youtubeUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 border border-red-200 bg-red-50 px-6 py-3 text-xs font-bold text-red-700 transition-all hover:border-red-300 hover:bg-red-100"
+                            >
+                                <Youtube size={14} className="text-red-600" />
+                                YouTube Live
+                            </a>
+                        )}
+                        {upcoming && item.teamsUrl && (
+                            <a
+                                href={item.teamsUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 border border-blue-200 bg-blue-50 px-6 py-3 text-xs font-bold text-blue-700 transition-all hover:border-blue-300 hover:bg-blue-100"
+                            >
+                                <Video size={14} className="text-[#002f86]" />
+                                Direct MS Teams
+                            </a>
+                        )}
+                        {item.mapsUrl && (
+                            <a
+                                href={item.mapsUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 border border-slate-200 bg-white px-6 py-3 text-xs font-bold text-slate-700 transition-all hover:bg-slate-50"
+                            >
+                                <MapPin size={14} />
+                                View on Maps
+                            </a>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </motion.article>
+    );
+}
+
+export function EventsClient() {
+    const [selectedTab, setSelectedTab] = useState<"all" | "event" | "webinar">("all");
+
+    const filteredItems = useMemo(() => {
+        let items = allItems;
+        if (selectedTab !== "all") {
+            items = items.filter((item) => item.category === selectedTab);
+        }
+        return items.sort((a, b) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime());
+    }, [selectedTab]);
+
+    const upcomingItems = useMemo(
+        () =>
+            filteredItems
+                .filter((item) => isUpcoming(item))
+                .sort((a, b) => new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime()),
+        [filteredItems]
+    );
+
+    const pastItems = useMemo(
+        () =>
+            filteredItems
+                .filter((item) => !isUpcoming(item))
+                .sort((a, b) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime()),
+        [filteredItems]
+    );
+
+    const renderFeedSection = (title: string, items: EventItem[]) => {
+        if (items.length === 0) return null;
+
+        return (
+            <div className="mb-8 last:mb-0">
+                {title ? (
+                    <div className="mb-4">
+                        <span className="text-slate-400 font-mono text-xs uppercase tracking-widest font-bold">{title}</span>
+                    </div>
+                ) : null}
+
+                <div className="flex flex-col gap-6">
+                    {items.map((item, idx) => (
+                        <EventCard key={item.id} item={item} idx={idx} />
+                    ))}
+                </div>
+            </div>
+        );
+    };
+
+    return (
+        <main className="min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden pt-24 pb-0" style={{ backgroundColor: "#EAEAE5" }}>
             <Navbar />
 
-            {/* Hero Section */}
-            <section className="pt-36 pb-24 px-6 relative overflow-hidden bg-slate-900 text-white">
-                {/* Subtle animated gradient background */}
-                <div className="absolute inset-0 opacity-30">
-                    <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/30 rounded-full blur-[120px]" />
-                    <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-[120px]" />
-                </div>
+            {/* Master Centered Card Container */}
+            <div className="mx-4 sm:mx-6 md:mx-auto max-w-[1400px] bg-white shadow-lg shadow-black/15 border border-slate-200/50 mb-16 overflow-hidden">
 
-                <div className="container mx-auto max-w-5xl relative z-10 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-700 bg-slate-800/50 text-slate-300 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
-                            <Sparkles size={14} className="text-amber-400 animate-pulse" />
-                            Events & Expert Webinars
-                        </div>
-                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter mb-8 leading-tight">
-                            Moments That Spark <br className="hidden md:block" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">
-                                Action, Learning & Change.
-                            </span>
-                        </h1>
-                        <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-                            From interactive expert-led webinars and tech masterclasses to high-energy founder talks and hackathons — join our community to turn ambition into action.
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Filter Tabs Section */}
-            <section className="py-8 bg-white border-b border-slate-100 relative z-10">
-                <div className="container mx-auto max-w-5xl px-6 flex flex-wrap items-center justify-between gap-4">
-                    <div className="flex items-center gap-2 text-slate-500 font-semibold text-sm">
-                        <Filter size={16} />
-                        Filter Sessions:
-                    </div>
-                    <div className="flex gap-2">
-                        {(["all", "event", "webinar"] as const).map((filter) => (
-                            <button
-                                key={filter}
-                                onClick={() => setActiveFilter(filter)}
-                                className={`px-5 py-2 rounded-full text-xs font-bold transition-all uppercase tracking-wider ${activeFilter === filter
-                                        ? "bg-blue-600 text-white shadow-md shadow-blue-200"
-                                        : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                                    }`}
-                            >
-                                {filter === "all" ? "All Sessions" : filter === "event" ? "Events" : "Webinars"}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Upcoming Events/Webinars Section */}
-            {upcomingItems.length > 0 && (
-                <section className="py-20 px-6 bg-slate-50">
-                    <div className="container mx-auto max-w-5xl">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                            className="mb-12"
-                        >
-                            <div className="text-blue-600 font-bold uppercase tracking-widest text-xs mb-3">
-                                Coming Up Next
-                            </div>
-                            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
-                                Upcoming Sessions
-                            </h2>
-                            <p className="text-slate-500 mt-3 text-lg max-w-2xl">
-                                Register for our upcoming live sessions and get a chance to interact with experts in real-time.
+                {/* Introduction Section */}
+                <section className="text-slate-800 p-6 sm:p-10 md:p-12 pb-5 sm:pb-6 md:pb-6 bg-white">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                        <div>
+                            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-[#002f86] mb-4">
+                                Upcoming & Past Events
+                            </h1>
+                            <p className="text-sm md:text-base leading-relaxed text-slate-700 max-w-3xl font-sans">
+                                Discover community meetups, expert-led podcasts, live webinars, and hands-on deep tech workshops hosted by The Foundry. Connect with leaders, founders, and fellow builders on the ground.
                             </p>
-                        </motion.div>
-
-                        <AnimatePresence mode="wait">
-                            {filteredUpcoming.length > 0 ? (
-                                <div className="flex flex-col gap-8">
-                                    {filteredUpcoming.map((item, i) => (
-                                        <motion.div
-                                            key={item.id}
-                                            initial={{ opacity: 0, y: 30 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: -30 }}
-                                            transition={{ duration: 0.5, delay: i * 0.1 }}
-                                        >
-                                            <div
-                                                className={`relative rounded-3xl overflow-hidden border ${item.featured
-                                                        ? "border-blue-200 bg-gradient-to-br from-blue-50/80 via-white to-indigo-50/50 shadow-xl shadow-blue-100/50"
-                                                        : "border-slate-200 bg-white shadow-sm"
-                                                    }`}
-                                            >
-
-
-                                                <div className="flex flex-col gap-0">
-                                                    {item.image && (
-                                                        <div className="relative w-full h-[250px] sm:h-[350px] md:h-[400px] lg:h-[480px] bg-slate-950 flex items-center justify-center overflow-hidden group">
-                                                            {/* Blurred backdrop background */}
-                                                            <img
-                                                                src={item.image}
-                                                                alt=""
-                                                                className="absolute inset-0 w-full h-full object-cover filter blur-3xl opacity-70 scale-150 pointer-events-none"
-                                                            />
-                                                            {/* Main foreground image */}
-                                                            <img
-                                                                src={item.image}
-                                                                alt={item.title}
-                                                                onClick={() => setSelectedImage(item.image || null)}
-                                                                className="relative z-10 h-full w-auto object-contain transition-all duration-500 hover:scale-[1.02] cursor-zoom-in"
-                                                            />
-                                                        </div>
-                                                    )}
-                                                    <div className="p-8 md:p-10">
-                                                        <div>
-                                                            <div className="flex items-center gap-2 mb-5">
-                                                                <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${item.category === "event"
-                                                                        ? "bg-orange-100 text-orange-800"
-                                                                        : "bg-blue-100 text-blue-800"
-                                                                    }`}>
-                                                                    {item.category === "event" ? <Calendar size={12} /> : <Video size={12} />}
-                                                                    {item.type}
-                                                                </span>
-                                                            </div>
-
-                                                            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight mb-4 max-w-4xl">
-                                                                {item.title}
-                                                            </h3>
-
-                                                            <p className="text-slate-500 text-base md:text-lg leading-relaxed mb-8 max-w-5xl whitespace-pre-line">
-                                                                {item.description}
-                                                            </p>
-
-                                                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                                                                <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
-                                                                    <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
-                                                                        <Calendar size={20} />
-                                                                    </div>
-                                                                    <div>
-                                                                        <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
-                                                                            Date
-                                                                        </div>
-                                                                        <div className="font-bold text-slate-900">
-                                                                            {item.date}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
-                                                                    <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 shrink-0">
-                                                                        <Clock size={20} />
-                                                                    </div>
-                                                                    <div>
-                                                                        <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
-                                                                            Time
-                                                                        </div>
-                                                                        <div className="font-bold text-slate-900">
-                                                                            {item.time}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/80 border border-slate-100">
-                                                                    <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0">
-                                                                        {item.category === "event" ? <MapPin size={20} /> : <Video size={20} />}
-                                                                    </div>
-                                                                    <div>
-                                                                        <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">
-                                                                            {item.category === "event" ? "Venue" : "Platform"}
-                                                                        </div>
-                                                                        <div className="font-bold text-slate-900">
-                                                                            {item.category === "event" ? item.venue : item.platform}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="flex flex-wrap gap-2 mb-8">
-                                                                {item.tags.map((tag: string) => (
-                                                                    <span
-                                                                        key={tag}
-                                                                        className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-bold"
-                                                                    >
-                                                                        {tag}
-                                                                    </span>
-                                                                ))}
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-                                                            {"link" in item && item.link ? (
-                                                                <a
-                                                                    href={item.link}
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                    className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
-                                                                >
-                                                                    {item.ctaText || "Register Now"}
-                                                                    <ArrowUpRight size={16} />
-                                                                </a>
-                                                            ) : (
-                                                                <a
-                                                                    href="https://luma.com/cp4d1w4b"
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                    className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
-                                                                >
-                                                                    Register Now
-                                                                    <ArrowUpRight size={16} />
-                                                                </a>
-                                                            )}
-                                                            {item.secondaryLink && (
-                                                                <a
-                                                                    href={item.secondaryLink}
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                    className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-red-600 text-white rounded-full font-bold hover:bg-red-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
-                                                                >
-                                                                    <Youtube size={18} />
-                                                                    {item.secondaryCtaText || "Watch Live Stream on YouTube"}
-                                                                    <ArrowUpRight size={16} />
-                                                                </a>
-                                                            )}
-                                                            {item.meetingLink && (
-                                                                <a
-                                                                    href={item.meetingLink}
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                    className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-indigo-600 text-white rounded-full font-bold hover:bg-indigo-700 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
-                                                                >
-                                                                    <Video size={18} />
-                                                                    {item.meetingCtaText || "Direct Meeting Link"}
-                                                                    <ArrowUpRight size={16} />
-                                                                </a>
-                                                            )}
-                                                            {"mapsUrl" in item && (
-                                                                <a
-                                                                    href={item.mapsUrl}
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                    className="inline-flex justify-center items-center gap-2 px-8 py-3.5 bg-slate-900 text-white rounded-full font-bold hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
-                                                                >
-                                                                    <MapPin size={16} />
-                                                                    View on Google Maps
-                                                                </a>
-                                                            )}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            ) : (
-                                <motion.div
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    className="text-center py-20 bg-white rounded-3xl border border-dashed border-slate-300 shadow-sm"
-                                >
-                                    <Calendar size={48} className="mx-auto text-slate-300 mb-4" />
-                                    <h3 className="text-xl font-bold text-slate-900 mb-2">Something Big is Coming!</h3>
-                                    <p className="text-slate-500">We're finalizing our next interactive sessions. Stay tuned for updates.</p>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                        </div>
                     </div>
                 </section>
-            )}
 
-            {/* Past Events/Webinars Section */}
-            <section className="py-20 px-6 bg-white border-t border-slate-100">
-                <div className="container mx-auto max-w-5xl">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="mb-12"
-                    >
-                        <div className="text-slate-500 font-bold uppercase tracking-widest text-xs mb-3">
-                            Looking Back & Watch On-Demand
+                {/* Events Feed Section */}
+                <section id="events-feed" className="p-6 sm:p-10 md:p-12 pt-5 sm:pt-6 md:pt-6 border-t border-slate-200/50">
+                    {filteredItems.length === 0 ? (
+                        <div className="text-center py-20 text-slate-500 bg-white border border-dashed border-slate-200">
+                            <p>No sessions found for this filter.</p>
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
-                            Past Sessions & Highlights
-                        </h2>
-                        <p className="text-slate-500 mt-3 text-lg max-w-2xl">
-                            Missed a live session? Relive our community experiences and catch up on foundational expert insights.
-                        </p>
-                    </motion.div>
-
-                    <AnimatePresence mode="wait">
-                        {filteredPast.length > 0 ? (
-                            <div className="flex flex-col gap-8">
-                                {filteredPast.map((item, i) => (
-                                    <motion.div
-                                        key={item.id}
-                                        initial={{ opacity: 0, y: 30 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: -30 }}
-                                        transition={{ duration: 0.5, delay: i * 0.1 }}
-                                    >
-                                        <div className="group relative rounded-3xl overflow-hidden border border-slate-200 bg-white hover:border-blue-200 transition-all duration-300 hover:shadow-xl shadow-sm">
-                                            <div className="flex flex-col gap-0">
-                                                {item.image && (
-                                                    <div className="relative w-full h-[250px] sm:h-[350px] md:h-[400px] lg:h-[480px] bg-slate-950 flex items-center justify-center overflow-hidden group">
-                                                        {/* Blurred backdrop background */}
-                                                        <img
-                                                            src={item.image}
-                                                            alt=""
-                                                            className="absolute inset-0 w-full h-full object-cover filter blur-3xl opacity-70 scale-150 pointer-events-none"
-                                                        />
-                                                        {/* Main foreground image */}
-                                                        <img
-                                                            src={item.image}
-                                                            alt={item.title}
-                                                            onClick={() => setSelectedImage(item.image || null)}
-                                                            className="relative z-10 h-full w-auto object-contain transition-all duration-500 hover:scale-[1.02] cursor-zoom-in"
-                                                        />
-                                                    </div>
-                                                )}
-                                                <div className="p-8 md:p-10">
-                                                    <div>
-                                                        <div className="flex items-center justify-between gap-3 mb-6">
-                                                            <div className="flex items-center gap-3">
-                                                                <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${item.category === "event"
-                                                                        ? "bg-orange-50 text-orange-700"
-                                                                        : "bg-blue-50 text-blue-700"
-                                                                    }`}>
-                                                                    {item.category === "event" ? <Calendar size={10} /> : <Video size={10} />}
-                                                                    {item.type}
-                                                                </span>
-                                                                <span className="text-slate-400 text-sm font-semibold">{item.date}</span>
-                                                            </div>
-                                                            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-bold uppercase tracking-wider">
-                                                                <Sparkles size={12} />
-                                                                Completed
-                                                            </div>
-                                                        </div>
-
-                                                        <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">
-                                                            {item.title}
-                                                        </h3>
-
-                                                        <p className="text-slate-500 text-base leading-relaxed mb-6 whitespace-pre-line">
-                                                            {item.description}
-                                                        </p>
-
-                                                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                                                            <div className="flex items-center gap-2 text-slate-600 text-sm">
-                                                                <Clock size={16} className="text-slate-400" />
-                                                                <span>Time: {item.time}</span>
-                                                            </div>
-                                                            <div className="flex items-center gap-2 text-slate-600 text-sm">
-                                                                {item.category === "event" ? (
-                                                                    <MapPin size={16} className="text-slate-400" />
-                                                                ) : (
-                                                                    <Video size={16} className="text-slate-400" />
-                                                                )}
-                                                                <span>
-                                                                    {item.category === "event" ? "Venue" : "Platform"}: {item.category === "event" ? item.venue : item.platform}
-                                                                </span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="flex flex-wrap gap-2 mb-6">
-                                                            {item.tags.map((tag: string) => (
-                                                                <span key={tag} className="px-2 py-1 rounded bg-slate-50 text-slate-400 text-[10px] font-bold uppercase">
-                                                                    #{tag}
-                                                                </span>
-                                                            ))}
-                                                        </div>
-                                                    </div>
-
-                                                    <div className="flex flex-col sm:flex-row gap-3">
-                                                        {"mapsUrl" in item && (
-                                                            <a
-                                                                href={item.mapsUrl}
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                                className="inline-flex justify-center items-center gap-2 px-6 py-2.5 bg-slate-900 text-white rounded-full text-sm font-bold hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 shadow-sm"
-                                                            >
-                                                                <MapPin size={14} />
-                                                                View on Google Maps
-                                                            </a>
-                                                        )}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                ))}
-                            </div>
-                        ) : (
-                            <div className="text-center py-20 bg-slate-50 rounded-3xl border border-dashed border-slate-300">
-                                <PlayCircle size={48} className="mx-auto text-slate-300 mb-4" />
-                                <h3 className="text-xl font-bold text-slate-900 mb-2">Recordings Coming Soon!</h3>
-                                <p className="text-slate-500">Our past sessions are being processed. They will be available here soon.</p>
-                            </div>
-                        )}
-                    </AnimatePresence>
-                </div>
-            </section>
-
-            {/* Stay Connected CTA */}
-            <section className="py-20 md:py-28 px-6 bg-slate-900 text-white relative overflow-hidden">
-                <div className="absolute inset-0 opacity-20">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/30 rounded-full blur-[150px]" />
-                </div>
-                <div className="container mx-auto max-w-3xl text-center relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-                            Stay Updated on New Sessions.
-                        </h2>
-                        <p className="text-lg text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-                            Be the first to know about our next masterclass or workshop. Join our community and get exclusive access to resources and recordings.
-                        </p>
-                        <div className="flex flex-col sm:flex-row justify-center gap-4">
-                            <Link
-                                href="/contact"
-                                className="inline-flex justify-center items-center gap-2 px-8 py-4 bg-white text-slate-900 rounded-full font-bold text-lg hover:bg-slate-100 transition-all hover:scale-105 active:scale-95 shadow-xl"
-                            >
-                                Get in Touch
-                                <ArrowUpRight size={20} />
-                            </Link>
-                            <Link
-                                href="/apply"
-                                className="inline-flex justify-center items-center gap-2 px-8 py-4 border border-slate-700 text-slate-300 rounded-full font-bold text-lg hover:bg-slate-800 hover:text-white transition-all"
-                            >
-                                Apply Now
-                            </Link>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
+                    ) : (
+                        <>
+                            {renderFeedSection("Upcoming Sessions", upcomingItems)}
+                            {renderFeedSection("", pastItems)}
+                        </>
+                    )}
+                </section>
+            </div>
 
             <Footer />
 

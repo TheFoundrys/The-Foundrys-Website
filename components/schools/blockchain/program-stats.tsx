@@ -11,7 +11,7 @@ const STATS = [
 
 export function BlockchainStats() {
     return (
-        <section className="py-20 bg-white border-y border-slate-100">
+        <section className="py-20 border-y" style={{ backgroundColor: "#DCE7F1", borderColor: "#c5d8ec" }}>
             <div className="container mx-auto px-6">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                     {STATS.map((stat, index) => (

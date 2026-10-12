@@ -166,7 +166,7 @@ export default function ZeroToOneLLMCoursePage() {
     }, []);
 
     return (
-        <main className="min-h-screen bg-slate-50 font-sans selection:bg-blue-100">
+        <main className="min-h-screen font-sans selection:bg-blue-100" style={{ backgroundColor: "#DCE7F1" }}>
             <Navbar />
 
             {/* Hero Section */}

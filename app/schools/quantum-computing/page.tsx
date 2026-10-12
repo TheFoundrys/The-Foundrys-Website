@@ -9,7 +9,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Bachelors of Quantum Computing | The Foundrys",
     description: "The future of computing is here. Learn Qubits, Superposition, and Quantum Algorithms.",
-    images: ["/quantum-computer.jpg"],
   },
 };
 

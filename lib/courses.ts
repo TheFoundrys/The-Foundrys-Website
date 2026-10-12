@@ -11,6 +11,16 @@ export interface CourseInfo {
 }
 
 export const COURSE_CATALOG: Record<string, CourseInfo> = {
+  'advanced-management-fde': {
+    id: 'advanced-management-fde',
+    name: 'Advanced Management in Forward Deployed Engineering',
+    sku: 'FDE 001',
+    duration: '2 Months',
+    prices: {
+      INR: 215000,
+      USD: 2500,
+    },
+  },
   'certified-in-prompt-engineering': {
     id: 'certified-in-prompt-engineering',
     name: 'Certified Prompt Engineering',
@@ -153,9 +163,9 @@ export const COUPONS: Record<string, Coupon> = {
     discountPercent: 99.9,
     active: true,
     validCourses: [
-      'ai-fluency', 
-      'certified-in-prompt-engineering', 
-      'certified-in-ai-engineering', 
+      'ai-fluency',
+      'certified-in-prompt-engineering',
+      'certified-in-ai-engineering',
       'certified-professional-in-ai-engineering',
       'certified-professional-in-ai-research',
       'certified-in-cybersecurity',

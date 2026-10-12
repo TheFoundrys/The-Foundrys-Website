@@ -34,7 +34,7 @@ export function FaqPreview() {
                 </h2>
             </div>
             
-            <Link href="/faq" className="group flex items-center gap-2 px-6 py-3 bg-white border border-slate-200 rounded-full font-bold text-slate-700 hover:border-blue-500 hover:text-blue-600 transition-all shadow-sm hover:shadow-md">
+            <Link href="/faq" className="group flex items-center gap-2 px-6 py-3 bg-white border border-slate-200 font-bold text-slate-700 hover:border-blue-500 hover:text-blue-600 transition-all shadow-sm hover:shadow-md">
                 View all FAQs <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
          </div>
@@ -54,13 +54,13 @@ function FaqItem({ question, answer }: { question: string, answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg hover:border-blue-200 transition-all duration-300">
+    <div className="bg-white border border-slate-200 overflow-hidden hover:shadow-lg hover:border-blue-200 transition-all duration-300">
       <button 
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-6 md:p-8 text-left"
       >
         <span className="font-bold text-slate-800 text-lg md:text-xl">{question}</span>
-        <span className={`flex-shrink-0 ml-4 w-8 h-8 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 transition-all duration-300 ${isOpen ? 'rotate-180 bg-blue-50 text-blue-600' : ''}`}>
+        <span className={`flex-shrink-0 ml-4 w-8 h-8 flex items-center justify-center bg-slate-50 text-slate-500 transition-all duration-300 ${isOpen ? 'rotate-180 bg-blue-50 text-blue-600' : ''}`}>
             {isOpen ? <Minus size={20} /> : <Plus size={20} />}
         </span>
       </button>

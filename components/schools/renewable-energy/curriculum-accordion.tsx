@@ -8,14 +8,14 @@ export function RenewableEnergyCurriculumAccordion() {
     const [openYear, setOpenYear] = useState<number | null>(0); // Default Year 1 open
 
     return (
-        <section id="syllabus" className="py-24 px-4 bg-white relative overflow-hidden">
+        <section id="syllabus" className="py-20 px-6 bg-white relative overflow-hidden">
              {/* Background Image */}
-             <div className="absolute inset-0 z-0">
+             <div className="absolute inset-0 z-0 opacity-20">
                 <div 
-                    className="absolute inset-0 bg-cover bg-center opacity-30"
+                    className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: "url('https://images.unsplash.com/photo-1541462608143-67571c6738dd?q=80&w=2070&auto=format&fit=crop')" }} 
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/60 to-white/90" />
+                <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-white/95" />
             </div>
 
             <div className="container mx-auto max-w-4xl relative z-10">
@@ -26,12 +26,12 @@ export function RenewableEnergyCurriculumAccordion() {
 
                 <div className="space-y-8">
                     {renewableEnergyCurriculum.years.map((year, yearIdx) => (
-                        <div key={yearIdx} className="border border-slate-200 rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
+                        <div key={yearIdx} className="border border-[#e2c8c8] rounded-3xl overflow-hidden bg-[#F0DFDF] shadow-sm hover:shadow-md transition-shadow">
                             
                             {/* Year Header - Toggle */}
                             <button 
                                 onClick={() => setOpenYear(openYear === yearIdx ? null : yearIdx)}
-                                className="w-full flex items-center justify-between p-6 md:p-8 bg-slate-50 hover:bg-slate-100 transition-colors text-left"
+                                className="w-full flex items-center justify-between p-6 md:p-8 bg-[#F0DFDF] hover:bg-[#e8d5d5] transition-colors text-left"
                             >
                                 <div>
                                     <div className="text-xs font-bold uppercase tracking-widest text-green-600 mb-1">{year.title}</div>

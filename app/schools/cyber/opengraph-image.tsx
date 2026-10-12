@@ -5,7 +5,7 @@ export const revalidate = 60;
 
 export default async function Image() {
   return GenerateOgImage({
-    title: "School of Cyber Security",
+    title: "Deep Tech in Cyber Security",
     category: "School of Deep Tech",
     slug: "schools/cyber",
   });

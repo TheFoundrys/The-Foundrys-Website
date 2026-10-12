@@ -14,7 +14,7 @@ export function ProgramInvestment({
     const { isIndia } = useRegionalPricing();
 
     return (
-        <section className="py-24 px-6 bg-neutral-50">
+        <section className="py-24 px-6" style={{ backgroundColor: "#F7F7F4" }}>
             <div className="container mx-auto max-w-4xl">
                 <div className="bg-white border border-neutral-200 rounded-2xl p-8 md:p-12 shadow-sm relative overflow-hidden text-center">
                     <div className="absolute top-0 inset-x-0 h-1" style={{ backgroundColor: accentColor }} />
