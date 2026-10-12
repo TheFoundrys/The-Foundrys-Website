@@ -69,7 +69,7 @@ export default function AdvancedManagementProgramPage() {
                             description="Master Forward Deployed Engineering to lead mission-critical technology implementations. Bridge cutting-edge systems architecture with high-impact enterprise deployment, rapid solution prototyping, and stakeholder leadership."
                             specs={{
                                 mode: "Hybrid (In-Person & Virtual)",
-                                duration: "12 Months",
+                                duration: "2 Months",
                                 experience: "Professionals & Engineering Leaders",
                                 location: "Hitech City, Hyderabad"
                             }}
@@ -89,7 +89,6 @@ export default function AdvancedManagementProgramPage() {
                                 experience: "Professionals & Early Technical Learners",
                                 location: "Hitech City, Hyderabad"
                             }}
-                            onMoreInfo={() => setSelectedPackageId("advanced-management-cyber-security")}
                         />
                     </div>
 
@@ -105,7 +104,6 @@ export default function AdvancedManagementProgramPage() {
                                 experience: "Professionals & Early Technical Learners",
                                 location: "Hitech City, Hyderabad"
                             }}
-                            onMoreInfo={() => setSelectedPackageId("advanced-management-quantum-computing")}
                         />
                     </div>
 
@@ -121,7 +119,6 @@ export default function AdvancedManagementProgramPage() {
                                 experience: "Professionals & Early Technical Learners",
                                 location: "Hitech City, Hyderabad"
                             }}
-                            onMoreInfo={() => setSelectedPackageId("advanced-management-blockchain")}
                         />
                     </div>
 
@@ -137,7 +134,6 @@ export default function AdvancedManagementProgramPage() {
                                 experience: "Professionals & Early Technical Learners",
                                 location: "Hitech City, Hyderabad"
                             }}
-                            onMoreInfo={() => setSelectedPackageId("advanced-management-ai")}
                         />
                     </div>
                 </section>
@@ -244,12 +240,6 @@ function ProgramRow({
                 </div>
 
                 <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3 mt-6">
-                    <Link
-                        href={`/apply?course=${encodeURIComponent(title)}`}
-                        className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-lg font-bold transition-all text-sm"
-                    >
-                        Apply Now
-                    </Link>
                     {learnMoreHref ? (
                         <Link
                             href={learnMoreHref}
@@ -257,17 +247,16 @@ function ProgramRow({
                             rel={learnMoreHref.startsWith("http") ? "noopener noreferrer" : undefined}
                             className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-lg font-bold transition-all text-sm"
                         >
-                            Learn More
+                            Explore Program
                         </Link>
-                    ) : onMoreInfo ? (
-                        <button
-                            type="button"
-                            onClick={onMoreInfo}
+                    ) : (
+                        <Link
+                            href={`/apply?course=${encodeURIComponent(title)}`}
                             className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-lg font-bold transition-all text-sm"
                         >
-                            Learn More
-                        </button>
-                    ) : null}
+                            Apply Now
+                        </Link>
+                    )}
                 </div>
             </div>
 

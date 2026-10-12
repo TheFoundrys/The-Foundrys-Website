@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { X, CheckCircle2, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { useRegionalPricing, COURSE_PRICING } from "@/lib/useRegionalPricing";
 
 interface CourseInfo {
     sku: string;
@@ -532,7 +531,7 @@ const PACKAGE_DETAILS: Record<string, PackageData> = {
         pricingKey: "professionalAIPackage",
         applyCourseName: "Advanced Management Program in Forward Deployed Engineering",
         bullets: [
-            "12 Months Hybrid Executive Curriculum",
+            "2 Months Hybrid Executive Curriculum",
             "Real-World Enterprise Systems Deployment",
             "Direct Industry Leadership Mentorship"
         ],
@@ -605,7 +604,6 @@ interface PackageDetailsModalProps {
 }
 
 export function PackageDetailsModal({ isOpen, onClose, packageId }: PackageDetailsModalProps) {
-    const { currency, symbol } = useRegionalPricing();
     const pkg = PACKAGE_DETAILS[packageId];
 
     useEffect(() => {
@@ -620,8 +618,6 @@ export function PackageDetailsModal({ isOpen, onClose, packageId }: PackageDetai
     }, [isOpen]);
 
     if (!isOpen || !pkg) return null;
-
-    const originalPrice = COURSE_PRICING[pkg.pricingKey]?.original[currency] || "";
 
     // Determine badge / border accent colors based on package
     const badgeColor = pkg.id.includes("ai") ? "text-blue-600 border-blue-100 bg-blue-50" :
@@ -686,16 +682,10 @@ export function PackageDetailsModal({ isOpen, onClose, packageId }: PackageDetai
                                 </div>
                             </div>
 
-                            <div className="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 w-full lg:w-auto min-w-[260px] shrink-0 text-center lg:text-left flex flex-col justify-between shadow-sm">
-                                <div>
-                                    <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">Package Price</span>
-                                    <div className="flex items-baseline justify-center lg:justify-start gap-2 mb-6">
-                                        <span className="text-3xl md:text-4xl font-black text-slate-900">{symbol}{originalPrice}</span>
-                                    </div>
-                                </div>
+                            <div className="w-full lg:w-auto shrink-0 flex items-center">
                                 <Link
                                     href={`/apply?course=${encodeURIComponent(pkg.applyCourseName)}`}
-                                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold transition-all shadow-lg active:scale-95 text-center"
+                                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold transition-all shadow-lg active:scale-95 text-center"
                                 >
                                     Apply for Package <ArrowUpRight size={18} />
                                 </Link>

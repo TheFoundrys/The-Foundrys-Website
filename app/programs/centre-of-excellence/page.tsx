@@ -24,59 +24,63 @@ import Image from "next/image";
 const excellencePillars = [
     {
         id: "01",
-        title: "High-Performance Supercomputing",
-        shortDesc: "Infrastructure for AI, simulation, cybersecurity, data, and advanced research workloads.",
-        badge: "Pillar 01",
-        fullDesc: "Deploying physical liquid-cooled GPU clusters, sub-millisecond InfiniBand fabrics, and sovereign air-gapped sandboxes for academic institutions and enterprise R&D centers.",
+        title: "COE in AI & Data Science",
+        shortDesc: "Infrastructure and applied research for Generative AI, foundational models, neural compute, and sovereign data intelligence.",
+        badge: "COE 01",
+        fullDesc: "Deploying high-performance GPU superclusters, sub-millisecond vector and graph database fabrics, multimodal LLM pipelines, and sovereign air-gapped sandboxes for academic institutions and enterprise R&D centers.",
         highlights: [
             "NVIDIA H100 / A100 Supercomputer Cluster Deployment",
-            "Liquid-Cooled Green Compute Architecture & Data Metrics",
+            "Generative AI, Multimodal LLMs & Autonomous Agent Swarm Labs",
             "High-Throughput Vector & Graph Database Acceleration",
             "Sovereign Air-Gapped AI Sandbox Environments"
         ],
-        stats: { metrics: "50+", label: "CoE Superclusters Deployed" }
+        stats: { metrics: "50+", label: "Superclusters Deployed" },
+        exploreHref: "https://edith.thefoundrys.com/courses/coe-ai-data-science"
     },
     {
         id: "02",
-        title: "Multidisciplinary Integrated Labs",
-        shortDesc: "Applied labs connecting Deeptech, entrepreneurship, sustainability, and renewable energy.",
-        badge: "Pillar 02",
-        fullDesc: "Bridging core academic research with real-world applications. We equip institutions with specialized hardware, sensor suites, and physical testbeds across the 4 Schools of Thought.",
+        title: "COE in Blockchain",
+        shortDesc: "Decentralized ledger testbeds, Zero-Knowledge proof acceleration, and enterprise smart contract security labs.",
+        badge: "COE 02",
+        fullDesc: "Advancing cryptographic research and decentralized systems. We equip institutions with high-throughput consensus testbeds, parallel EVM execution environments, formal verification tooling, and sovereign digital asset architectures.",
         highlights: [
-            "Hardware-in-the-Loop Microgrid Power Simulators",
-            "SCADA & Industrial IoT Cyber Security Testbeds",
-            "Material Informatics & Bio-Synthetic Polymer Labs",
-            "Autonomous Multi-Agent Enterprise Operations Hubs"
+            "Zero-Knowledge Proofs (zk-SNARKs) & Layer-2 Rollup Sandbox",
+            "Parallel EVM Execution & High-Throughput Consensus Testbeds",
+            "Formal Smart Contract Verification & Automated Bytecode Auditing",
+            "Enterprise Tokenomics, Decentralized Identity & Web3 Protocols"
         ],
-        stats: { metrics: "120+", label: "Startups Incubated via CoE" }
+        stats: { metrics: "15,000+", label: "Simulated TPS Capacity" },
+        exploreHref: "https://edith.thefoundrys.com/courses/coe-blockchain"
     },
     {
         id: "03",
-        title: "Curriculum & Faculty Enablement",
-        shortDesc: "Industry-aligned curriculum, train-the-trainer programs, and execution frameworks.",
-        badge: "Pillar 03",
-        fullDesc: "Empowering educators with world-class courseware. We provide turn-key syllabus modules, certified Train-the-Trainer (FDP) bootcamps, and continuous pedagogical support.",
+        title: "COE in Cybersecurity",
+        shortDesc: "Next-gen threat intelligence, Zero-Trust network defense, ethical hacking testbeds, and automated VAPT labs.",
+        badge: "COE 03",
+        fullDesc: "Fortifying institutional and enterprise digital infrastructure. Our cybersecurity centre establishes advanced cyber ranges, automated SLM vulnerability scanners, reverse engineering environments, and SCADA/IoT operational security testbeds.",
         highlights: [
-            "Accredited Industry-Aligned Deep Tech Courseware",
-            "Faculty Development Programs (FDP) & Masterclasses",
-            "Hands-On Sandbox Lab Assignments & Capstone Projects",
-            "Global Research Exchange & Co-Authoring Pathways"
+            "Next-Gen Cyber Range & Adversarial Threat Simulation Sandboxes",
+            "AI-Powered Automated Vulnerability Auditing & Penetration Testing",
+            "Zero-Trust Architecture, Micro-Segmentation & Identity Vaults",
+            "SCADA, Industrial IoT & Critical Infrastructure Defense Testbeds"
         ],
-        stats: { metrics: "25,000+", label: "Trained Faculty & Students" }
+        stats: { metrics: "2.4M+", label: "Lines Audited / Sec" },
+        exploreHref: "https://edith.thefoundrys.com/courses/coe-cybersecurity"
     },
     {
         id: "04",
-        title: "Innovation & Industry Collaboration",
-        shortDesc: "Project studios, research pathways, startup support, and enterprise engagement.",
-        badge: "Pillar 04",
-        fullDesc: "Connecting campus labs with global venture capital and corporate R&D. We establish campus venture studios, assist with patent commercialization, and run enterprise hackathons.",
+        title: "COE in Quantum",
+        shortDesc: "Quantum algorithms, variational eigensolvers, cryogenic QPU simulation, and Post-Quantum Cryptography labs.",
+        badge: "COE 04",
+        fullDesc: "Pioneering the next computational paradigm. We deliver quantum-classical hybrid computing infrastructure, circuit simulators, quantum key distribution (QKD) testbeds, and Post-Quantum Cryptography transition frameworks.",
         highlights: [
-            "On-Campus Deep Tech Startup Incubators & Seed Capital",
-            "IP Licensing, Patent Translation & Commercialization",
-            "Enterprise Corporate R&D Sponsorship & Hackathons",
-            "IEEE Peer-Reviewed Co-Publication & Research Grants"
+            "Superconducting Qubit & Trapped-Ion Emulation Platforms",
+            "Variational Quantum Eigensolver (VQE) & QAOA Algorithm Labs",
+            "Post-Quantum Cryptography (PQC) & Quantum-Safe Encryption",
+            "Quantum Key Distribution (QKD) & Quantum Communication Links"
         ],
-        stats: { metrics: "$20M+", label: "Equipment & Lab Funding" }
+        stats: { metrics: "128+", label: "Simulated Qubit Capacity" },
+        exploreHref: "https://edith.thefoundrys.com/courses/coe-quantum"
     }
 ];
 
@@ -130,10 +134,10 @@ export default function CentreOfExcellencePage() {
                 <section className="text-slate-800 border-t border-slate-200/50" id="pillars">
                     <div className="p-8 sm:p-12 md:p-16 pb-4 bg-[#F7F7F4]">
                         <h2 className="font-serif text-3xl font-bold leading-tight text-[#002f86] md:text-4xl mb-2">
-                            CoE Institutional Pillars
+                            Centres of Excellence
                         </h2>
                         <p className="text-sm text-slate-600 max-w-3xl">
-                            Our Centre of Excellence framework empowers institutions through 4 comprehensive operational pillars.
+                            Our Centre of Excellence framework empowers academic and research institutions across 4 frontier technology domains.
                         </p>
                     </div>
 
@@ -161,10 +165,10 @@ export default function CentreOfExcellencePage() {
 
                                     <div className="flex flex-wrap gap-3 mt-4">
                                         <Link
-                                            href="/contact"
+                                            href={pillar.exploreHref || "/contact"}
                                             className="inline-flex items-center gap-2 px-6 py-3 bg-[#002f86] hover:bg-[#002266] text-white rounded-lg font-bold text-sm transition-all shadow-sm cursor-pointer"
                                         >
-                                            <span>Discuss CoE Partnership</span>
+                                            <span>Explore Program</span>
                                             <ChevronRight size={16} />
                                         </Link>
                                     </div>

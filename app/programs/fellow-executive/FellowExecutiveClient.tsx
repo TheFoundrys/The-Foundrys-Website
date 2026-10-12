@@ -70,8 +70,8 @@ export default function FellowExecutiveClient() {
                                 experience: "Aspiring Founders & Tech Leaders",
                                 location: "Hitech City, Hyderabad"
                             }}
-                            actionLink="/apply?course=MBA in AI"
-                            actionLabel="Apply for AI Path"
+                            actionLink="https://edith.thefoundrys.com/courses/mba-applied-ai-genai"
+                            actionLabel="Explore Program"
                         />
                     </div>
 
@@ -87,8 +87,8 @@ export default function FellowExecutiveClient() {
                                 experience: "Aspiring Founders & Security Leaders",
                                 location: "Hitech City, Hyderabad"
                             }}
-                            actionLink="/apply?course=MBA in Cybersecurity Venture Building"
-                            actionLabel="Apply for Security Path"
+                            actionLink="https://edith.thefoundrys.com/courses/mba-cybersecurity-venture-building"
+                            actionLabel="Explore Program"
                         />
                     </div>
 
@@ -104,8 +104,8 @@ export default function FellowExecutiveClient() {
                                 experience: "Senior Managers, Directors & VPs",
                                 location: "Hitech City, Hyderabad"
                             }}
-                            actionLink="/programs/fellow-executive/delivering-in-age-of-ai"
-                            actionLabel="View Program"
+                            actionLink="https://edith.thefoundrys.com/courses/delivering-in-the-age-of-ai"
+                            actionLabel="Explore Program"
                         />
                     </div>
                 </section>

@@ -964,7 +964,6 @@ export default function BrandColoredProgramsDirectoryPage() {
             <AnimatePresence>
                 {activePackagePath && PACKAGE_DETAILS[activePackagePath] && (() => {
                     const pkg = PACKAGE_DETAILS[activePackagePath];
-                    const originalPrice = COURSE_PRICING[pkg.priceKey].original[currency];
                     const isTeal = pkg.theme === "teal";
                     
                     return (
@@ -1024,14 +1023,10 @@ export default function BrandColoredProgramsDirectoryPage() {
                                     </div>
                                     
                                     {/* Stats grid */}
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div className="bg-slate-950/40 p-4 rounded-2xl border border-white/5 flex flex-col">
                                             <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Duration</span>
                                             <span className="text-white text-xs sm:text-sm font-semibold">6 Weeks per track</span>
-                                        </div>
-                                        <div className="bg-slate-950/40 p-4 rounded-2xl border border-white/5 flex flex-col">
-                                            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Pricing Package</span>
-                                            <span className="text-white text-xs sm:text-sm font-semibold">{symbol}{originalPrice}</span>
                                         </div>
                                         <div className="bg-slate-950/40 p-4 rounded-2xl border border-white/5 flex flex-col">
                                             <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Format</span>
@@ -1071,11 +1066,7 @@ export default function BrandColoredProgramsDirectoryPage() {
                                 </div>
                                 
                                 {/* Bottom CTA bar */}
-                                <div className="p-6 bg-slate-950/60 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-                                    <div className="text-left hidden sm:block">
-                                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-0.5">Package Price</span>
-                                        <span className="text-xl font-black text-white">{symbol}{originalPrice}</span>
-                                    </div>
+                                <div className="p-6 bg-slate-950/60 border-t border-white/5 flex flex-col sm:flex-row items-center justify-end gap-4">
                                     <Link
                                         href={pkg.applyHref}
                                         className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-black hover:bg-neutral-800 text-white rounded-xl font-bold text-sm transition-all duration-200 hover:scale-[1.02] active:scale-95 shadow-lg border border-black text-center"

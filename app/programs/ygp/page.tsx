@@ -74,6 +74,7 @@ export default function YGPProgramPage() {
                                 location: "Hitech City, Hyderabad"
                             }}
                             onMoreInfo={() => setSelectedPackageId("entry-level-ai")}
+                            exploreHref="https://edith.thefoundrys.com/courses/ygp-applied-ai-genai"
                         />
                     </div>
 
@@ -90,6 +91,7 @@ export default function YGPProgramPage() {
                                 location: "Hitech City, Hyderabad"
                             }}
                             onMoreInfo={() => setSelectedPackageId("entry-level-cyber-security")}
+                            exploreHref="https://edith.thefoundrys.com/courses/ygp-cybersecurity-analyst"
                         />
                     </div>
 
@@ -106,6 +108,7 @@ export default function YGPProgramPage() {
                                 location: "Hitech City, Hyderabad"
                             }}
                             onMoreInfo={() => setSelectedPackageId("entry-level-quantum-computing")}
+                            exploreHref="https://edith.thefoundrys.com/courses/ygp-quantum-computing"
                         />
                     </div>
 
@@ -122,6 +125,7 @@ export default function YGPProgramPage() {
                                 location: "Hitech City, Hyderabad"
                             }}
                             onMoreInfo={() => setSelectedPackageId("entry-level-blockchain")}
+                            exploreHref="https://edith.thefoundrys.com/courses/ygp-blockchain-web3"
                         />
                     </div>
                 </section>
@@ -204,13 +208,15 @@ function ProgramRow({
     title,
     description,
     specs,
-    onMoreInfo
+    onMoreInfo,
+    exploreHref,
 }: {
     tag: string;
     title: string;
     description: string;
     specs: Specs;
-    onMoreInfo: () => void;
+    onMoreInfo?: () => void;
+    exploreHref?: string;
 }) {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
@@ -226,18 +232,21 @@ function ProgramRow({
                 </div>
 
                 <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3 mt-6">
-                    <Link
-                        href={`/apply?course=${encodeURIComponent(title)}`}
-                        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#002f86] hover:bg-[#002366] text-white rounded-lg font-bold shadow-md shadow-blue-900/10 transition-all text-sm"
-                    >
-                        Apply for YGP
-                    </Link>
-                    <button
-                        onClick={onMoreInfo}
-                        className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-lg font-bold transition-all text-sm"
-                    >
-                        Explore Curriculum
-                    </button>
+                    {exploreHref ? (
+                        <Link
+                            href={exploreHref}
+                            className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-lg font-bold transition-all text-sm"
+                        >
+                            Explore Curriculum
+                        </Link>
+                    ) : onMoreInfo ? (
+                        <button
+                            onClick={onMoreInfo}
+                            className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-lg font-bold transition-all text-sm"
+                        >
+                            Explore Curriculum
+                        </button>
+                    ) : null}
                 </div>
             </div>
 

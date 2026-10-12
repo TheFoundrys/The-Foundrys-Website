@@ -324,7 +324,7 @@ export function Navbar() {
                     {/* Right CTA Area */}
                     <div className="hidden md:flex items-center gap-6">
                         <Link
-                            href="https://compass.thefoundrys.com/login"
+                            href="https://edith.thefoundrys.com/login"
                             onClick={handleHaptic}
                             className="px-6 py-2 rounded-full text-xs font-bold transition-all hover:scale-105 active:scale-95 shadow-sm bg-black text-white hover:bg-neutral-800"
                         >

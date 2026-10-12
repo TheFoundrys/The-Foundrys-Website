@@ -74,6 +74,7 @@ export default function PGPProgramPage() {
                                 location: "Hitech City, Hyderabad"
                             }}
                             onMoreInfo={() => setSelectedPackageId("professional-ai")}
+                            exploreHref="https://edith.thefoundrys.com/courses/pgp-applied-ai-genai"
                         />
                     </div>
 
@@ -90,6 +91,7 @@ export default function PGPProgramPage() {
                                 location: "Hitech City, Hyderabad"
                             }}
                             onMoreInfo={() => setSelectedPackageId("professional-cyber-security")}
+                            exploreHref="https://edith.thefoundrys.com/courses/pgp-cybersecurity-analyst"
                         />
                     </div>
 
@@ -106,11 +108,12 @@ export default function PGPProgramPage() {
                                 location: "Hitech City, Hyderabad"
                             }}
                             onMoreInfo={() => setSelectedPackageId("professional-quantum-computing")}
+                            exploreHref="https://edith.thefoundrys.com/courses/pgp-quantum-computing"
                         />
                     </div>
 
                     {/* Domain 4: Blockchain (Alternating Warm bg) */}
-                    <div className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-b border-slate-200/50">
+                    <div className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-slate-200/50">
                         <ProgramRow 
                             tag="PGP"
                             title="Post Graduate Program in Blockchain & Web3"
@@ -122,6 +125,7 @@ export default function PGPProgramPage() {
                                 location: "Hitech City, Hyderabad"
                             }}
                             onMoreInfo={() => setSelectedPackageId("professional-blockchain")}
+                            exploreHref="https://edith.thefoundrys.com/courses/pgp-blockchain-web3"
                         />
                     </div>
                 </section>
@@ -204,16 +208,18 @@ function ProgramRow({
     title,
     description,
     specs,
-    onMoreInfo
+    onMoreInfo,
+    exploreHref,
 }: {
     tag: string;
     title: string;
     description: string;
     specs: Specs;
-    onMoreInfo: () => void;
+    onMoreInfo?: () => void;
+    exploreHref?: string;
 }) {
     return (
-        <div className="border-t border-slate-200 pt-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
             {/* Left Column */}
             <div className="lg:col-span-5 flex flex-col justify-between">
                 <div>
@@ -226,12 +232,21 @@ function ProgramRow({
                 </div>
                 
                 <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3 mt-6">
-                    <Link
-                        href={`/apply?course=${encodeURIComponent(title)}`}
-                        className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-lg font-bold transition-all text-sm"
-                    >
-                        Apply Now
-                    </Link>
+                    {exploreHref ? (
+                        <Link
+                            href={exploreHref}
+                            className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-lg font-bold transition-all text-sm"
+                        >
+                            Explore Curriculum
+                        </Link>
+                    ) : onMoreInfo ? (
+                        <button
+                            onClick={onMoreInfo}
+                            className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-lg font-bold transition-all text-sm"
+                        >
+                            Explore Curriculum
+                        </button>
+                    ) : null}
                 </div>
             </div>
             

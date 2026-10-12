@@ -45,8 +45,8 @@ const allItems: EventItem[] = [
         description:
             "AI is transforming the way ideas are created, developed, and commercialized — bringing new questions around Intellectual Property, ownership, attribution, and innovation. Join us for an engaging conversation on how AI is reshaping the future of IP, featuring guest Uday Wagh (Founder & CEO, TwinSim AI) in conversation with host Vishwanath Akuthota (Founder & CEO, The Foundry’s). Topics include ownership and attribution of AI-generated innovation, evolving roles of creators and organizations, and what the future of IP looks like in an AI-driven world.",
         tags: ["Intellectual Property", "Artificial Intelligence", "TwinSim AI", "Innovation", "Live Podcast", "Deep Tech"],
-        featured: true,
-        status: "upcoming",
+        featured: false,
+        status: "completed",
         image: "/images/rethinking-ip-in-the-age-of-ai.png",
     },
     {
@@ -173,10 +173,12 @@ const allItems: EventItem[] = [
 ];
 
 const isUpcoming = (item: EventItem) => {
-    if (item.status === "upcoming") return true;
     if (item.status === "completed") return false;
     const bufferTime = 2 * 60 * 60 * 1000;
-    return new Date(item.dateTime).getTime() + bufferTime > Date.now();
+    const isPastByDate = new Date(item.dateTime).getTime() + bufferTime <= Date.now();
+    if (isPastByDate) return false;
+    if (item.status === "upcoming") return true;
+    return true;
 };
 
 function EventCard({ item, idx }: { item: EventItem; idx: number }) {
