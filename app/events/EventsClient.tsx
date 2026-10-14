@@ -181,7 +181,7 @@ const isUpcoming = (item: EventItem) => {
     return true;
 };
 
-function EventCard({ item, idx }: { item: EventItem; idx: number }) {
+function EventCard({ item, idx, onSelectImage }: { item: EventItem; idx: number; onSelectImage?: (image: string) => void }) {
     const upcoming = isUpcoming(item);
     const href = item.link || item.mapsUrl || "/contact";
 
@@ -193,11 +193,14 @@ function EventCard({ item, idx }: { item: EventItem; idx: number }) {
             className="overflow-hidden border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:border-[#002f86] hover:shadow-md"
         >
             <div className="flex flex-col md:flex-row">
-                <div className="relative h-60 w-full shrink-0 md:h-auto md:w-80 lg:w-96 bg-[#F1F1EC] flex items-center justify-center p-3">
+                <div
+                    className="relative h-60 w-full shrink-0 md:h-auto md:w-80 lg:w-96 bg-[#F1F1EC] flex items-center justify-center p-3 cursor-zoom-in group"
+                    onClick={() => item.image && onSelectImage?.(item.image)}
+                >
                     <img
                         src={item.image}
                         alt={item.title}
-                        className="max-h-full max-w-full object-contain object-center"
+                        className="max-h-full max-w-full object-contain object-center transition-transform duration-300 group-hover:scale-[1.02]"
                     />
                     {!upcoming && (
                         <span className="absolute top-4 left-4 bg-slate-900/85 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white font-mono">
@@ -346,6 +349,7 @@ function EventCard({ item, idx }: { item: EventItem; idx: number }) {
 
 export function EventsClient() {
     const [selectedTab, setSelectedTab] = useState<"all" | "event" | "webinar">("all");
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
     const filteredItems = useMemo(() => {
         let items = allItems;
@@ -384,7 +388,7 @@ export function EventsClient() {
 
                 <div className="flex flex-col gap-6">
                     {items.map((item, idx) => (
-                        <EventCard key={item.id} item={item} idx={idx} />
+                        <EventCard key={item.id} item={item} idx={idx} onSelectImage={setSelectedImage} />
                     ))}
                 </div>
             </div>
