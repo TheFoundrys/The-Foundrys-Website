@@ -59,7 +59,7 @@ export default function FellowExecutiveClient() {
                 {/* Programs List Section with Alternating Backgrounds */}
                 <section className="text-slate-800">
                     {/* Program 1: MBA in AI (White bg) */}
-                    <div className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-100">
+                    {/* <div className="p-8 sm:p-12 md:p-16 bg-white border-t border-slate-100">
                         <ProgramRow
                             tag="Integrated MBA Path"
                             title="MBA in Applied AI & GenAI"
@@ -73,10 +73,10 @@ export default function FellowExecutiveClient() {
                             actionLink="https://edith.thefoundrys.com/courses/mba-applied-ai-genai"
                             actionLabel="Explore Program"
                         />
-                    </div>
+                    </div> */}
 
                     {/* Program 2: MBA in Cybersecurity Venture Building (Alternating Warm bg) */}
-                    <div className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-b border-slate-200/50">
+                    {/* <div className="p-8 sm:p-12 md:p-16 bg-[#F7F7F4] border-t border-b border-slate-200/50">
                         <ProgramRow
                             tag="Integrated MBA Path"
                             title="MBA in Cybersecurity Venture Building"
@@ -90,7 +90,7 @@ export default function FellowExecutiveClient() {
                             actionLink="https://edith.thefoundrys.com/courses/mba-cybersecurity-venture-building"
                             actionLabel="Explore Program"
                         />
-                    </div>
+                    </div> */}
 
                     {/* Program 3: Delivering in the Age of AI (White bg) */}
                     <div className="p-8 sm:p-12 md:p-16 bg-white">
