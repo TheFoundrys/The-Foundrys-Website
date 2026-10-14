@@ -47,6 +47,17 @@ const getPostImageUrl = (image: unknown) => {
 
 const STATIC_RESEARCH_POSTS: Post[] = [
     {
+        _id: "res-schottky-diodes-gan",
+        title: "Electrical Transport Characteristics of Au/SiO₂/n-GaN MIS Schottky Diodes across a Wide Temperature Range",
+        slug: { current: "electrical-transport-characteristics-ausio2-ngan-mis-schottky-diodes" },
+        publishedAt: "2026-10-02T00:00:00Z",
+        mainImage: { static: true, url: "/images/research/schottky_diode_cover.jpg" },
+        category: "Research",
+        readTime: "Patent / Research",
+        excerpt: "Investigation of temperature-dependent electrical transport properties of Au/SiO₂/n-GaN Metal–Insulator–Semiconductor (MIS) Schottky diodes over 120 K to 390 K using I–V and C–V measurements for wide-temperature semiconductor applications.",
+        link: "/papers/electrical-transport-characteristics-ausio2-ngan-mis-schottky-diodes.pdf"
+    },
+    {
         _id: "res-pharmaco-omics-ml",
         title: "The Synergistic Convergence of Pharmacogenetics and Pharmacogenomics towards Pharmaco-omics via Machine Learning: A Critical Review Towards Personalized Medicine",
         slug: { current: "pharmaco-omics-machine-learning-personalized-medicine" },
