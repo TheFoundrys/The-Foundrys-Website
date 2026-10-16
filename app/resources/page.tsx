@@ -46,17 +46,6 @@ const getPostImageUrl = (image: unknown) => {
 
 const STATIC_RESEARCH_POSTS: Post[] = [
     {
-        _id: "res-xai-healthcare-clinical-trust",
-        title: "Explainable Artificial Intelligence in Healthcare: Building Trust in AI-Assisted Clinical Decision Making",
-        slug: { current: "explainable-ai-in-healthcare-clinical-decision-making" },
-        publishedAt: "2024-10-15T00:00:00Z",
-        mainImage: { static: true, url: "/images/research/xai_healthcare_cover.jpg" },
-        category: "Research",
-        readTime: "Journal",
-        excerpt: "Journal of Computational Analysis and Applications (VOL. 33, NO. 7, 2024) research paper investigating Explainable AI (XAI) frameworks, SHAP, LIME, Grad-CAM, and regulatory benchmarks to build calibrated clinician trust in clinical decision support.",
-        link: "/papers/explainable-ai-in-healthcare-clinical-decision-making.pdf"
-    },
-    {
         _id: "res-schottky-diodes-gan",
         title: "Electrical Transport Characteristics of Au/SiO₂/n-GaN MIS Schottky Diodes across a Wide Temperature Range",
         slug: { current: "electrical-transport-characteristics-ausio2-ngan-mis-schottky-diodes" },
@@ -264,6 +253,17 @@ const STATIC_RESEARCH_POSTS: Post[] = [
         readTime: "10 min",
         excerpt: "An automated auditing pipeline leveraging Large Vision Models and domain-specific financial LLMs to process, extract, and reconcile physical receipts.",
         link: "https://ieeexplore.ieee.org/document/11118347"
+    },
+    {
+        _id: "res-xai-healthcare-clinical-trust",
+        title: "Explainable Artificial Intelligence in Healthcare: Building Trust in AI-Assisted Clinical Decision Making",
+        slug: { current: "explainable-ai-in-healthcare-clinical-decision-making" },
+        publishedAt: "2024-10-15T00:00:00Z",
+        mainImage: { static: true, url: "/images/research/xai_healthcare_cover.jpg" },
+        category: "Research",
+        readTime: "Journal",
+        excerpt: "Journal of Computational Analysis and Applications (VOL. 33, NO. 7, 2024) research paper investigating Explainable AI (XAI) frameworks, SHAP, LIME, Grad-CAM, and regulatory benchmarks to build calibrated clinician trust in clinical decision support.",
+        link: "/papers/explainable-ai-in-healthcare-clinical-decision-making.pdf"
     },
 ];
 
