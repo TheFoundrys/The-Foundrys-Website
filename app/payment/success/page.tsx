@@ -193,19 +193,23 @@ export default function PaymentSuccessPage() {
                       </div>
                       <div className="flex-1">
                         <h4 className="font-bold text-blue-950 text-sm mb-1 flex items-center gap-2">
-                          <span>Invoice & Enrollment Receipt Dispatched</span>
+                          <span>Payment Receipt & Slot Confirmation Dispatched</span>
                           <span className="text-[10px] bg-emerald-100 text-emerald-800 font-mono px-2 py-0.5 rounded-full uppercase font-bold">
-                            Sent to Mail
+                            2 Emails Sent
                           </span>
                         </h4>
                         <p className="text-blue-900 text-xs sm:text-sm leading-relaxed">
-                          A detailed PDF-ready tax invoice, transaction receipt, and syllabus onboarding guide have been dispatched to:
+                          We have sent two confirmation emails to your registered address:
                         </p>
-                        <div className="mt-2 font-mono text-xs sm:text-sm font-bold text-blue-900 bg-white/80 px-3 py-1.5 rounded-lg border border-blue-200 inline-block">
+                        <ul className="mt-2 text-xs sm:text-sm text-blue-950 font-medium space-y-1 list-disc list-inside">
+                          <li><strong>Email 1:</strong> Official Payment Receipt &amp; Tax Invoice</li>
+                          <li><strong>Email 2:</strong> Cohort Slot Confirmation &amp; Course Syllabus Details</li>
+                        </ul>
+                        <div className="mt-2.5 font-mono text-xs sm:text-sm font-bold text-blue-900 bg-white/80 px-3 py-1.5 rounded-lg border border-blue-200 inline-block">
                           {data.email}
                         </div>
                         <p className="text-[11px] text-blue-700 mt-2">
-                          Please check your inbox (and spam/promotions folder).
+                          Our admissions team will notify you shortly for further details and orientation onboarding.
                         </p>
                       </div>
                     </div>

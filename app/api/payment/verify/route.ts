@@ -9,7 +9,7 @@ import CompassCourse from '@/lib/models/CompassCourse';
 import CompassEnrollment from '@/lib/models/CompassEnrollment';
 import CompassTransaction from '@/lib/models/CompassTransaction';
 import nodemailer from 'nodemailer';
-import { sendEnrollmentInvoiceEmail } from '@/lib/email';
+import { sendEnrollmentInvoiceEmail, sendSlotConfirmationEmail } from '@/lib/email';
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -150,7 +150,7 @@ export async function POST(request: NextRequest) {
 
     if (recipientEmail) {
       try {
-        console.log(`📧 Sending official Tax Invoice & Enrollment Receipt to ${recipientEmail}...`);
+        console.log(`📧 [1/2] Sending official Tax Invoice & Enrollment Receipt to ${recipientEmail}...`);
         await sendEnrollmentInvoiceEmail({
           to: recipientEmail,
           name: recipientName,
@@ -161,9 +161,22 @@ export async function POST(request: NextRequest) {
           phone: enrollment?.phone || body.phone,
           company: body.company,
         });
-        console.log(`✅ Enrollment invoice & receipt sent to ${recipientEmail}`);
+
+        console.log(`📧 [2/2] Sending slot confirmation & course details to ${recipientEmail}...`);
+        await sendSlotConfirmationEmail({
+          to: recipientEmail,
+          name: recipientName,
+          courseName: courseTitle,
+          schedule: enrollment?.schedule || body.schedule || "Mon–Fri 6:00–7:00 AM IST (8:30–9:30 PM EST)",
+          amount: payAmount,
+          currency: payCurrency,
+          paymentId: razorpay_payment_id,
+          phone: enrollment?.phone || body.phone,
+          company: body.company,
+        });
+        console.log(`✅ Both invoice and slot confirmation emails sent to ${recipientEmail}`);
       } catch (emailError) {
-        console.error('Failed to send invoice email:', emailError);
+        console.error('Failed to send enrollment emails:', emailError);
       }
     }
 

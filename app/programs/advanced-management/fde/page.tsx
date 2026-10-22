@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Navbar } from "@/components/ui/navbar";
@@ -10,9 +10,11 @@ import {
   Calendar,
   Users,
   Award,
+  Check,
   CheckCircle2,
   XCircle,
   ArrowRight,
+  ArrowLeft,
   ChevronDown,
   ShieldCheck,
   Cpu,
@@ -37,29 +39,61 @@ import {
   GraduationCap
 } from "lucide-react";
 
-declare global {
-  interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    Razorpay: any;
-  }
-}
+
+const SCHEDULE_OPTIONS = [
+  { id: "6-7-am", label: "6:00 – 7:00 AM IST", ist: "6:00 – 7:00 AM IST", est: "8:30 – 9:30 PM EST", tag: "Morning" },
+  { id: "7-8-am", label: "7:00 – 8:00 AM IST", ist: "7:00 – 8:00 AM IST", est: "9:30 – 10:30 PM EST", tag: "Morning" },
+  { id: "8-9-pm", label: "8:00 – 9:00 PM IST", ist: "8:00 – 9:00 PM IST", est: "10:30 – 11:30 AM EST", tag: "Evening" },
+  { id: "9-10-pm", label: "9:00 – 10:00 PM IST", ist: "9:00 – 10:00 PM IST", est: "11:30 AM – 12:30 PM EST", tag: "Night" },
+];
 
 export default function FDEProgramPage() {
   const router = useRouter();
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
   const [selectedModule, setSelectedModule] = useState<number>(1);
+  const [selectedSchedule, setSelectedSchedule] = useState(SCHEDULE_OPTIONS[0]);
+  const [isHeroDropdownOpen, setIsHeroDropdownOpen] = useState(false);
+  const [isSpecsDropdownOpen, setIsSpecsDropdownOpen] = useState(false);
+  const heroDropdownRef = useRef<HTMLDivElement>(null);
+  const specsDropdownRef = useRef<HTMLDivElement>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [modalStep, setModalStep] = useState<1 | 2>(1);
+  const [paymentPlan, setPaymentPlan] = useState<"full" | "installment">("full");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (typeof window !== "undefined" && !window.Razorpay) {
-      const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/checkout.js";
-      script.async = true;
-      document.body.appendChild(script);
+  const openReservationModal = (scheduleOverride?: typeof SCHEDULE_OPTIONS[0]) => {
+    if (scheduleOverride) {
+      setSelectedSchedule(scheduleOverride);
+      setFormData((prev) => ({ ...prev, schedule: scheduleOverride.label }));
     }
+    setModalStep(1);
+    setPaymentError(null);
+    setIsModalOpen(true);
+  };
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (heroDropdownRef.current && !heroDropdownRef.current.contains(event.target as Node)) {
+        setIsHeroDropdownOpen(false);
+      }
+      if (specsDropdownRef.current && !specsDropdownRef.current.contains(event.target as Node)) {
+        setIsSpecsDropdownOpen(false);
+      }
+    }
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setIsHeroDropdownOpen(false);
+        setIsSpecsDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
 
   const [formData, setFormData] = useState({
@@ -68,14 +102,30 @@ export default function FDEProgramPage() {
     company: "",
     experience: "8 – 12 Years",
     aiUsage: "Using Claude / Copilot for code completion & debugging",
-    phone: ""
+    phone: "",
+    schedule: SCHEDULE_OPTIONS[0].label
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleStep1Submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name.trim() || !formData.email.trim() || !formData.company.trim()) {
+      setPaymentError("Please fill in all required fields (Name, Work Email, Company).");
+      return;
+    }
+    setPaymentError(null);
+    setModalStep(2);
+  };
+
+  const handleFinalCheckout = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setPaymentError(null);
     try {
+      const isInstallment = paymentPlan === "installment";
+      const totalAmount = isInstallment ? 1437.5 : 2875;
+      const coursePrice = isInstallment ? 1250 : 2500;
+      const fee = isInstallment ? 187.5 : 375;
+
       // 1. Submit lead details to CRM, Google Sheets, and Admin email
       await fetch("/api/apply", {
         method: "POST",
@@ -88,122 +138,66 @@ export default function FDEProgramPage() {
           occupation: `${formData.company || "Not specified"} (${formData.experience || "N/A"})`,
           experience: formData.experience,
           aiUsage: formData.aiUsage,
-          message: `Company: ${formData.company}\nIT Experience: ${formData.experience}\nAI Usage: ${formData.aiUsage}\nTuition: $2,500 USD\nSchedule: Mon–Fri 6:00 AM – 7:00 AM IST (8:30 PM – 9:30 PM EST)`,
+          paymentPlan: isInstallment ? "Two-Part Installment (50% Now, 50% Later)" : "Full Payment (100% Upfront)",
+          message: `Company: ${formData.company}\nIT Experience: ${formData.experience}\nAI Usage: ${formData.aiUsage}\nPayment Plan: ${isInstallment ? "Installment (50% Now = $1,437.50 USD, 50% Later = $1,437.50 USD)" : "Full Payment ($2,875 USD)"}\nSchedule: Mon–Fri ${formData.schedule || selectedSchedule.ist} (${selectedSchedule.est})`,
           program: "Advanced Management Program in Forward Deployed Engineering",
           source: "FDE Reserve Seat Modal"
         })
-      });
+      }).catch((err) => console.warn("CRM notification non-fatal:", err));
 
-      // 2. Create Razorpay Order
-      const orderRes = await fetch("/api/payment/create-order", {
+      // 2. Create Stripe Checkout Session
+      const sessionRes = await fetch("/api/payment/stripe-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          courseId: "advanced-management-fde",
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
-          experienceLevel: formData.experience,
-          currency: "USD",
-        })
+          company: formData.company,
+          experience: formData.experience,
+          schedule: `${selectedSchedule.label} (${selectedSchedule.est})`,
+          paymentPlan: paymentPlan,
+        }),
       });
 
-      if (!orderRes.ok) {
-        const errData = await orderRes.json().catch(() => ({}));
-        throw new Error(errData.error || "Unable to initialize Razorpay order.");
+      if (!sessionRes.ok) {
+        const errData = await sessionRes.json().catch(() => ({}));
+        throw new Error(errData.error || "Unable to initialize Stripe checkout.");
       }
 
-      const orderData = await orderRes.json();
+      const sessionData = await sessionRes.json();
 
-      if (typeof window === "undefined" || !window.Razorpay) {
-        throw new Error("Razorpay payment gateway is loading. Please try again in a few moments.");
+      if (!sessionData.url) {
+        throw new Error("Stripe checkout URL was not returned. Please try again.");
       }
 
-      const options = {
-        key: orderData.key || process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_SFhhEv00tCaHqt",
-        amount: orderData.razorpayAmount,
-        currency: orderData.currency || "USD",
-        name: "The Foundry's",
-        description: "Advanced Management in Forward Deployed Engineering",
-        order_id: orderData.orderId,
-        prefill: {
-          name: formData.name,
-          email: formData.email,
-          contact: formData.phone,
-        },
-        theme: {
-          color: "#002f86",
-        },
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        handler: async function (response: any) {
-          try {
-            // Verify payment signature and automatically dispatch Tax Invoice & Receipt email
-            const verifyRes = await fetch("/api/payment/verify", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                razorpay_order_id: response.razorpay_order_id,
-                razorpay_payment_id: response.razorpay_payment_id,
-                razorpay_signature: response.razorpay_signature,
-                enrollmentId: orderData.enrollmentId,
-                name: formData.name,
-                email: formData.email,
-                phone: formData.phone,
-                company: formData.company,
-                courseName: "Advanced Management Program in Forward Deployed Engineering",
-                amount: 2500,
-                currency: "USD",
-              }),
-            });
+      // Store lead data temporarily in sessionStorage for the success page fallback
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem(
+          "fde_checkout_data",
+          JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            company: formData.company,
+            experience: formData.experience,
+            schedule: `${selectedSchedule.label} (${selectedSchedule.est})`,
+            paymentPlan: paymentPlan,
+            coursePrice: coursePrice,
+            convenienceFee: fee,
+            amount: totalAmount,
+            currency: "USD",
+          })
+        );
+      }
 
-            const verifyData = await verifyRes.json();
-
-            if (verifyData.success) {
-              if (typeof window !== "undefined") {
-                sessionStorage.setItem(
-                  "paymentSuccess",
-                  JSON.stringify({
-                    courseName: "Advanced Management in Forward Deployed Engineering",
-                    amount: 2500,
-                    currency: "USD",
-                    paymentId: response.razorpay_payment_id,
-                    name: formData.name,
-                    email: formData.email,
-                    company: formData.company,
-                    phone: formData.phone,
-                    verified: true,
-                  })
-                );
-              }
-              setIsSubmitting(false);
-              setIsSubmitted(true);
-              setIsModalOpen(false);
-              router.push(`/payment/success?payment_id=${encodeURIComponent(response.razorpay_payment_id)}`);
-            } else {
-              setPaymentError("Payment verification failed. Please contact admissions support.");
-              setIsSubmitting(false);
-            }
-          } catch (verifyErr) {
-            console.error("Verification error:", verifyErr);
-            setPaymentError("Payment verification error. Your payment may have been processed. Please contact admissions support.");
-            setIsSubmitting(false);
-          }
-        },
-        modal: {
-          ondismiss: function () {
-            setIsSubmitting(false);
-          },
-        },
-      };
-
-      const rzp = new window.Razorpay(options);
-      rzp.open();
+      // 3. Redirect to Stripe Checkout
+      window.location.href = sessionData.url;
     } catch (err: unknown) {
       console.error("Submission/Payment error:", err);
       const errMsg = err instanceof Error ? err.message : "Something went wrong. Please try again.";
       setPaymentError(errMsg);
       setIsSubmitting(false);
-      return;
     }
   };
 
@@ -261,7 +255,7 @@ export default function FDEProgramPage() {
   const faqs = [
     {
       q: "What is the daily schedule and time commitment?",
-      a: "Live classes run Monday through Friday, 6:00 AM – 7:00 AM IST (which corresponds to 8:30 PM – 9:30 PM EST). This 60-minute daily rhythm is specifically engineered so working professionals can learn distraction-free before their workday begins (in India) or right after work hours (in the US) without missing standups or meetings."
+      a: "Live classes run Monday through Friday with 4 cohort time slots to accommodate global professionals: 6:00–7:00 AM IST (8:30–9:30 PM EST), 7:00–8:00 AM IST (9:30–10:30 PM EST), 8:00–9:00 PM IST (10:30–11:30 AM EST), and 9:00–10:00 PM IST (11:30 AM–12:30 PM EST). This 60-minute daily rhythm is specifically engineered so working professionals can learn distraction-free before their workday begins or in the evening without missing standups or meetings."
     },
     {
       q: "What are the eligibility and admission screening criteria?",
@@ -336,26 +330,122 @@ export default function FDEProgramPage() {
               </p>
 
               {/* Quick Specs Cards */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2 max-w-2xl">
-                <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm">
+              <div className="grid grid-cols-2 lg:grid-cols-[1fr_1.45fr_0.85fr_1.05fr] gap-3 py-2 w-full max-w-3xl">
+                <div className="bg-white p-3.5 sm:p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between min-h-[96px]">
                   <div className="text-[10px] uppercase font-mono font-semibold text-slate-400">Duration</div>
                   <div className="text-base sm:text-lg font-bold text-slate-900 mt-1">2 Months</div>
                   <div className="text-[10px] text-slate-500 mt-0.5">8 Weeks Intensive</div>
                 </div>
 
-                <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm">
-                  <div className="text-[10px] uppercase font-mono font-semibold text-slate-400">Schedule</div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-900 mt-1 font-mono leading-tight">6:00–7:00 AM IST</div>
-                  <div className="text-[10px] text-slate-500 mt-0.5">8:30–9:30 PM EST</div>
+                <div
+                  ref={heroDropdownRef}
+                  className={`col-span-2 sm:col-span-1 lg:col-span-1 bg-white p-3.5 sm:p-4 rounded-xl border transition-all duration-200 relative flex flex-col justify-between min-h-[96px] cursor-pointer select-none ${
+                    isHeroDropdownOpen
+                      ? "border-blue-600 shadow-md ring-2 ring-blue-500/20 z-30"
+                      : "border-slate-200 shadow-sm hover:border-blue-400 z-10"
+                  }`}
+                  onClick={() => setIsHeroDropdownOpen((prev) => !prev)}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] uppercase font-mono font-semibold text-slate-400">Schedule</span>
+                    <span className="text-[9px] text-[#002f86] font-semibold bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200/60 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                      {selectedSchedule.tag} Slot
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-1 mt-1">
+                    <span className="text-xs sm:text-sm font-bold text-slate-900 font-mono tracking-tight">
+                      {selectedSchedule.label}
+                    </span>
+                    <ChevronDown
+                      size={15}
+                      className={`text-slate-500 transition-transform duration-200 shrink-0 ${
+                        isHeroDropdownOpen ? "rotate-180 text-blue-600" : ""
+                      }`}
+                    />
+                  </div>
+
+                  <div className="text-[10px] text-slate-500 mt-0.5 font-mono">
+                    {selectedSchedule.est}
+                  </div>
+
+                  {/* Custom Dropdown Popover */}
+                  {isHeroDropdownOpen && (
+                    <div
+                      className="absolute top-[calc(100%+6px)] left-0 w-[295px] sm:w-[320px] bg-white rounded-2xl shadow-2xl border border-slate-200/95 p-1.5 z-50 animate-in fade-in zoom-in-95 duration-150"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <div className="px-2.5 py-1.5 border-b border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-700 mb-1">
+                        <div className="flex items-center gap-1.5">
+                          <Clock size={13} className="text-[#002f86]" />
+                          <span>All 4 Cohort Timings</span>
+                        </div>
+                        <span className="text-[10px] font-mono text-slate-400">Mon–Fri</span>
+                      </div>
+
+                      <div className="space-y-0.5">
+                        {SCHEDULE_OPTIONS.map((opt) => {
+                          const isSelected = selectedSchedule.id === opt.id;
+                          return (
+                            <button
+                              key={opt.id}
+                              type="button"
+                              onClick={() => {
+                                setSelectedSchedule(opt);
+                                setFormData((prev) => ({ ...prev, schedule: opt.label }));
+                                setIsHeroDropdownOpen(false);
+                              }}
+                              className={`w-full text-left px-2.5 py-1.5 rounded-xl transition-all flex items-center justify-between group cursor-pointer ${
+                                isSelected
+                                  ? "bg-blue-50 text-[#002f86] ring-1 ring-blue-300/80 font-semibold"
+                                  : "hover:bg-slate-50 text-slate-700"
+                              }`}
+                            >
+                              <div className="leading-tight">
+                                <div className="flex items-center gap-1.5">
+                                  <span
+                                    className={`text-xs font-bold font-mono ${
+                                      isSelected ? "text-[#002f86]" : "text-slate-900 group-hover:text-blue-900"
+                                    }`}
+                                  >
+                                    {opt.label}
+                                  </span>
+                                  <span
+                                    className={`text-[9px] px-1.5 py-0.2 rounded font-medium ${
+                                      isSelected
+                                        ? "bg-blue-100/90 text-blue-700 font-semibold"
+                                        : "bg-slate-100 text-slate-500"
+                                    }`}
+                                  >
+                                    {opt.tag}
+                                  </span>
+                                </div>
+                                <div className="text-[10px] text-slate-500 font-mono mt-0.5">
+                                  US Time: {opt.est}
+                                </div>
+                              </div>
+
+                              {isSelected && (
+                                <div className="w-4 h-4 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 ml-2 shadow-sm shadow-blue-500/30">
+                                  <Check size={11} strokeWidth={3} />
+                                </div>
+                              )}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm">
+                <div className="bg-white p-3.5 sm:p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between min-h-[96px]">
                   <div className="text-[10px] uppercase font-mono font-semibold text-slate-400">Audience</div>
                   <div className="text-base sm:text-lg font-bold text-slate-900 mt-1">5+ Years</div>
                   <div className="text-[10px] text-slate-500 mt-0.5">IT Professionals</div>
                 </div>
 
-                <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm">
+                <div className="bg-white p-3.5 sm:p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between min-h-[96px]">
                   <div className="text-[10px] uppercase font-mono font-semibold text-slate-400">Tuition Fee</div>
                   <div className="text-base sm:text-lg font-bold text-emerald-600 font-mono mt-1">$2,500</div>
                   <div className="text-[10px] text-slate-600 font-medium mt-0.5 leading-tight">
@@ -369,10 +459,10 @@ export default function FDEProgramPage() {
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <button
                   type="button"
-                  onClick={() => setIsModalOpen(true)}
+                  onClick={() => openReservationModal()}
                   className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#002f86] hover:bg-[#002366] text-white font-bold rounded-xl shadow-lg shadow-blue-900/20 transition-all text-base cursor-pointer"
                 >
-                  Reserve Your Seat for Batch #1
+                  Reserve Your Seat
                   <ArrowRight size={18} />
                 </button>
 
@@ -434,7 +524,7 @@ export default function FDEProgramPage() {
                     </div>
                     <div className="flex items-center justify-between py-2 border-b border-slate-800">
                       <span className="text-slate-400">Schedule</span>
-                      <span className="font-semibold text-slate-200 font-mono">Mon–Fri | 6:00–7:00 AM IST (8:30–9:30 PM EST)</span>
+                      <span className="font-semibold text-slate-200 font-mono">Mon–Fri | {selectedSchedule.ist} ({selectedSchedule.est})</span>
                     </div>
                     <div className="flex items-center justify-between py-2 border-b border-slate-800">
                       <span className="text-slate-400">Audience</span>
@@ -455,7 +545,7 @@ export default function FDEProgramPage() {
 
                   <button
                     type="button"
-                    onClick={() => setIsModalOpen(true)}
+                    onClick={() => openReservationModal()}
                     className="w-full inline-flex items-center justify-center gap-2 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg transition-colors text-sm cursor-pointer"
                   >
                     Apply for Candidate Screening
@@ -526,7 +616,7 @@ export default function FDEProgramPage() {
               </div>
               <button
                 type="button"
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => openReservationModal()}
                 className="px-6 py-2.5 bg-white text-[#001D4A] hover:bg-blue-50 font-bold rounded-lg text-sm transition-colors shrink-0 cursor-pointer shadow-md"
               >
                 Apply for Screening →
@@ -568,20 +658,105 @@ export default function FDEProgramPage() {
             </div>
 
             {/* Schedule */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div
+              ref={specsDropdownRef}
+              className={`bg-white p-6 rounded-2xl border transition-all duration-200 shadow-sm flex flex-col justify-between relative cursor-pointer select-none ${
+                isSpecsDropdownOpen ? "border-blue-600 shadow-md ring-2 ring-blue-500/20 z-30" : "border-slate-200 hover:border-blue-400 z-10"
+              }`}
+              onClick={() => setIsSpecsDropdownOpen((prev) => !prev)}
+            >
               <div>
                 <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">
                   <Clock size={20} />
                 </div>
-                <div className="text-xs uppercase font-mono font-semibold text-slate-400">Schedule</div>
-                <div className="font-mono text-sm sm:text-base font-bold text-slate-900 mt-1 leading-tight">
-                  Mon–Fri <br />
-                  6:00–7:00 AM IST
+                <div className="flex items-center justify-between">
+                  <div className="text-xs uppercase font-mono font-semibold text-slate-400">Schedule</div>
+                  <span className="text-[10px] text-blue-600 font-semibold bg-blue-50 px-2 py-0.5 rounded-full">4 Cohort Slots</span>
+                </div>
+                <div className="flex items-center justify-between gap-2 mt-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
+                  <span className="font-mono text-sm font-bold text-slate-900">
+                    {selectedSchedule.label}
+                  </span>
+                  <ChevronDown
+                    size={16}
+                    className={`text-slate-500 transition-transform duration-200 shrink-0 ${
+                      isSpecsDropdownOpen ? "rotate-180 text-blue-600" : ""
+                    }`}
+                  />
                 </div>
               </div>
-              <div className="text-xs text-slate-500 mt-3 pt-3 border-t border-slate-100 font-mono">
-                8:30–9:30 PM EST
+              <div className="text-xs text-slate-500 mt-3 pt-3 border-t border-slate-100 font-mono flex items-center justify-between">
+                <span>Mon–Fri</span>
+                <span>{selectedSchedule.est}</span>
               </div>
+
+              {/* Specs Custom Dropdown Popover */}
+              {isSpecsDropdownOpen && (
+                <div
+                  className="absolute top-[calc(100%+6px)] left-0 w-full sm:w-[320px] bg-white rounded-2xl shadow-2xl border border-slate-200/95 p-1.5 z-50 animate-in fade-in zoom-in-95 duration-150"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="px-2.5 py-1.5 border-b border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-700 mb-1">
+                    <div className="flex items-center gap-1.5">
+                      <Clock size={13} className="text-[#002f86]" />
+                      <span>All 4 Cohort Timings</span>
+                    </div>
+                    <span className="text-[10px] font-mono text-slate-400">Mon–Fri</span>
+                  </div>
+
+                  <div className="space-y-0.5">
+                    {SCHEDULE_OPTIONS.map((opt) => {
+                      const isSelected = selectedSchedule.id === opt.id;
+                      return (
+                        <button
+                          key={opt.id}
+                          type="button"
+                          onClick={() => {
+                            setSelectedSchedule(opt);
+                            setFormData((prev) => ({ ...prev, schedule: opt.label }));
+                            setIsSpecsDropdownOpen(false);
+                          }}
+                          className={`w-full text-left px-2.5 py-1.5 rounded-xl transition-all flex items-center justify-between group cursor-pointer ${
+                            isSelected
+                              ? "bg-blue-50 text-[#002f86] ring-1 ring-blue-300/80 font-semibold"
+                              : "hover:bg-slate-50 text-slate-700"
+                          }`}
+                        >
+                          <div className="leading-tight">
+                            <div className="flex items-center gap-1.5">
+                              <span
+                                className={`text-xs font-bold font-mono ${
+                                  isSelected ? "text-[#002f86]" : "text-slate-900 group-hover:text-blue-900"
+                                }`}
+                              >
+                                {opt.label}
+                              </span>
+                              <span
+                                className={`text-[9px] px-1.5 py-0.2 rounded font-medium ${
+                                  isSelected
+                                    ? "bg-blue-100/90 text-blue-700 font-semibold"
+                                    : "bg-slate-100 text-slate-500"
+                                }`}
+                              >
+                                {opt.tag}
+                              </span>
+                            </div>
+                            <div className="text-[10px] text-slate-500 font-mono mt-0.5">
+                              US Time: {opt.est}
+                            </div>
+                          </div>
+
+                          {isSelected && (
+                            <div className="w-4 h-4 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 ml-2 shadow-sm shadow-blue-500/30">
+                              <Check size={11} strokeWidth={3} />
+                            </div>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Audience */}
@@ -1066,7 +1241,7 @@ export default function FDEProgramPage() {
             Direct Admissions Line
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#002f86] mb-3">
-            Register Now
+            Contact Now
           </h2>
           <p className="text-sm sm:text-base text-slate-600 max-w-xl mx-auto mb-8">
             Focused, high-touch learning for experienced professionals. Speak directly with our admissions and program leads.
@@ -1200,7 +1375,7 @@ export default function FDEProgramPage() {
               <div className="pt-4 flex justify-center items-center">
                 <button
                   type="button"
-                  onClick={() => setIsModalOpen(true)}
+                  onClick={() => openReservationModal()}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#002f86] hover:bg-blue-50 font-bold rounded-xl shadow-lg transition-all text-base cursor-pointer"
                 >
                   Reserve Your Seat ($2,500 USD)
@@ -1232,8 +1407,10 @@ export default function FDEProgramPage() {
               onClick={() => {
                 setIsModalOpen(false);
                 setIsSubmitted(false);
+                setModalStep(1);
+                setPaymentError(null);
               }}
-              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors cursor-pointer"
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors cursor-pointer z-10"
             >
               <X size={18} />
             </button>
@@ -1253,6 +1430,7 @@ export default function FDEProgramPage() {
                     onClick={() => {
                       setIsSubmitted(false);
                       setIsModalOpen(false);
+                      setModalStep(1);
                     }}
                     className="px-8 py-3 bg-[#0A1628] hover:bg-[#15253F] text-white font-bold rounded-xl text-sm transition-all"
                   >
@@ -1262,153 +1440,478 @@ export default function FDEProgramPage() {
               </div>
             ) : (
               <div>
-                <h3 className="font-serif text-3xl font-bold text-[#001D4A]">
-                  Reserve Your Seat
-                </h3>
-                <p className="text-sm text-slate-600 mt-2 leading-relaxed">
-                  FDE Training for Working IT Professionals • Mon–Fri 6:00–7:00 AM IST (8:30–9:30 PM EST) • 2 Months Intensive
-                </p>
-
-                <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-                  {/* Full Name */}
-                  <div>
-                    <label className="block text-xs font-bold text-slate-800 mb-1.5">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Maya Sharma"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 text-sm bg-white"
-                    />
-                  </div>
-
-                  {/* Work Email */}
-                  <div>
-                    <label className="block text-xs font-bold text-slate-800 mb-1.5">
-                      Work Email *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="e.g. maya@company.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 text-sm bg-white"
-                    />
-                  </div>
-
-                  {/* Company & Experience Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-800 mb-1.5">
-                        Current Company *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. Microsoft / Cisco / FinTech"
-                        value={formData.company}
-                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 text-sm bg-white"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-slate-800 mb-1.5">
-                        Years of IT Experience *
-                      </label>
-                      <select
-                        value={formData.experience}
-                        onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 text-sm bg-white"
-                      >
-                        <option value="5 – 8 Years">5 – 8 Years</option>
-                        <option value="8 – 12 Years">8 – 12 Years</option>
-                        <option value="12+ Years">12+ Years</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  {/* AI Usage */}
-                  <div>
-                    <label className="block text-xs font-bold text-slate-800 mb-1.5">
-                      How do you currently use AI in your daily work?
-                    </label>
-                    <select
-                      value={formData.aiUsage}
-                      onChange={(e) => setFormData({ ...formData, aiUsage: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 text-sm bg-white"
-                    >
-                      <option value="Using Claude / Copilot for code completion & debugging">
-                        Using Claude / Copilot for code completion & debugging
-                      </option>
-                      <option value="Built basic RAG / prototype workflows">
-                        Built basic RAG / prototype workflows
-                      </option>
-                      <option value="Leading team AI adoption initiatives">
-                        Leading team AI adoption initiatives
-                      </option>
-                      <option value="None / exploring for the first time">
-                        None / exploring for the first time
-                      </option>
-                    </select>
-                  </div>
-
-                  {/* Mobile Number */}
-                  <div>
-                    <label className="block text-xs font-bold text-slate-800 mb-1.5">
-                      Mobile Number (with country code)
-                    </label>
-                    <input
-                      type="tel"
-                      placeholder="+91 98765 43210"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 text-sm bg-white"
-                    />
-                  </div>
-
-                  {/* Tuition Fee Card */}
-                  <div className="bg-[#F8FAFC] border border-slate-200/90 rounded-xl p-4 space-y-1.5">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-slate-700">Tuition Fee:</span>
-                      <span className="text-base font-bold text-slate-900 font-mono">$2,500 USD</span>
-                    </div>
-                    <div className="flex items-center justify-between text-xs text-slate-500">
-                      <span>Convenience Fee:</span>
-                      <span className="font-mono font-medium text-slate-700">+15%</span>
-                    </div>
-                    <p className="text-xs text-slate-500 pt-1.5 border-t border-slate-200/60 leading-relaxed">
-                      Includes 8 weeks live instruction, private code repo reviews, capstone supervision, and finishing school certification. Corporate invoice provided.
-                    </p>
-                  </div>
-
-                  {/* Contact Help */}
-                  <div className="text-xs text-slate-500 space-y-1 bg-slate-50 p-3 rounded-lg border border-slate-200">
-                    <div><strong>Need assistance?</strong> Call US: +1 5404146956 | IN: +91 7981171474</div>
-                    <div>WhatsApp: +91 9704448853 | +91 7032917578 | +91 99664 68249</div>
-                  </div>
-
-                  {/* Error Alert */}
-                  {paymentError && (
-                    <div className="bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl p-3 flex items-start gap-2">
-                      <span className="font-bold">⚠️</span>
-                      <span>{paymentError}</span>
-                    </div>
-                  )}
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full py-4 bg-[#0A1628] hover:bg-[#15253F] text-white font-bold rounded-xl shadow-lg transition-all text-sm flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 mt-2"
+                {/* Step Progress Indicator */}
+                <div className="flex items-center gap-2 pb-4 mb-4 border-b border-slate-100">
+                  <span
+                    className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold ${
+                      modalStep === 1 ? "bg-[#002f86] text-white" : "bg-emerald-100 text-emerald-800"
+                    }`}
                   >
-                    {isSubmitting ? "Connecting to Payment Gateway..." : "Lock In Admission & Pay $2,500 USD →"}
-                  </button>
-                </form>
+                    {modalStep === 1 ? "1" : "✓"}
+                  </span>
+                  <span
+                    className={`text-xs font-semibold ${
+                      modalStep === 1 ? "text-slate-900 font-bold" : "text-slate-500 cursor-pointer"
+                    }`}
+                    onClick={() => setModalStep(1)}
+                  >
+                    1. Candidate Details
+                  </span>
+                  <span className="text-slate-300">/</span>
+                  <span
+                    className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold ${
+                      modalStep === 2 ? "bg-[#002f86] text-white" : "bg-slate-100 text-slate-400"
+                    }`}
+                  >
+                    2
+                  </span>
+                  <span
+                    className={`text-xs font-semibold ${
+                      modalStep === 2 ? "text-slate-900 font-bold" : "text-slate-400"
+                    }`}
+                  >
+                    2. Slot Availability & Payment
+                  </span>
+                </div>
+
+                {modalStep === 1 ? (
+                  /* STEP 1: Candidate Details Form */
+                  <div>
+                    <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#001D4A]">
+                      Reserve Your Seat
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed">
+                      FDE Training for Working IT Professionals • 2 Months Intensive Executive School
+                    </p>
+
+                    <form onSubmit={handleStep1Submit} className="mt-5 space-y-4">
+                      {/* Full Name */}
+                      <div>
+                        <label className="block text-xs font-bold text-slate-800 mb-1.5">
+                          Full Name *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          placeholder="e.g. Maya Sharma"
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 text-sm bg-white"
+                        />
+                      </div>
+
+                      {/* Work Email */}
+                      <div>
+                        <label className="block text-xs font-bold text-slate-800 mb-1.5">
+                          Work Email *
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          placeholder="e.g. maya@company.com"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 text-sm bg-white"
+                        />
+                      </div>
+
+                      {/* Company & Experience Grid */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-xs font-bold text-slate-800 mb-1.5">
+                            Current Company *
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            placeholder="e.g. Microsoft / Cisco / FinTech"
+                            value={formData.company}
+                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                            className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 text-sm bg-white"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-xs font-bold text-slate-800 mb-1.5">
+                            Years of IT Experience *
+                          </label>
+                          <select
+                            value={formData.experience}
+                            onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
+                            className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 text-sm bg-white"
+                          >
+                            <option value="5 – 8 Years">5 – 8 Years</option>
+                            <option value="8 – 12 Years">8 – 12 Years</option>
+                            <option value="12+ Years">12+ Years</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      {/* Preferred Batch Timing */}
+                      <div>
+                        <label className="block text-xs font-bold text-slate-800 mb-1.5">
+                          Preferred Batch Schedule (Mon–Fri) *
+                        </label>
+                        <select
+                          value={selectedSchedule.id}
+                          onChange={(e) => {
+                            const opt =
+                              SCHEDULE_OPTIONS.find((s) => s.id === e.target.value) ||
+                              SCHEDULE_OPTIONS[0];
+                            setSelectedSchedule(opt);
+                            setFormData((prev) => ({ ...prev, schedule: opt.label }));
+                          }}
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 text-sm bg-white font-medium"
+                        >
+                          {SCHEDULE_OPTIONS.map((opt) => (
+                            <option key={opt.id} value={opt.id}>
+                              {opt.label} ({opt.est})
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* AI Usage */}
+                      <div>
+                        <label className="block text-xs font-bold text-slate-800 mb-1.5">
+                          How do you currently use AI in your daily work?
+                        </label>
+                        <select
+                          value={formData.aiUsage}
+                          onChange={(e) => setFormData({ ...formData, aiUsage: e.target.value })}
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 text-sm bg-white"
+                        >
+                          <option value="Using Claude / Copilot for code completion & debugging">
+                            Using Claude / Copilot for code completion & debugging
+                          </option>
+                          <option value="Built basic RAG / prototype workflows">
+                            Built basic RAG / prototype workflows
+                          </option>
+                          <option value="Leading team AI adoption initiatives">
+                            Leading team AI adoption initiatives
+                          </option>
+                          <option value="None / exploring for the first time">
+                            None / exploring for the first time
+                          </option>
+                        </select>
+                      </div>
+
+                      {/* Mobile Number */}
+                      <div>
+                        <label className="block text-xs font-bold text-slate-800 mb-1.5">
+                          Mobile Number (with country code)
+                        </label>
+                        <input
+                          type="tel"
+                          placeholder="+91 98765 43210"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 text-sm bg-white"
+                        />
+                      </div>
+
+                      {/* Program Overview Banner */}
+                      <div className="bg-[#F8FAFC] border border-slate-200/90 rounded-xl p-3.5 space-y-1.5">
+                        <div className="flex items-center justify-between text-xs sm:text-sm">
+                          <span className="text-slate-600 font-medium">Standard Tuition Fee:</span>
+                          <span className="font-bold text-slate-900 font-mono">$2,500 USD</span>
+                        </div>
+                        <p className="text-[11px] text-slate-500 leading-relaxed">
+                          Flexible payment options (Full upfront or 2-part 50% installments) available on the next screen. Includes 8 weeks live instruction, private code repo reviews, capstone supervision, and finishing school certification.
+                        </p>
+                      </div>
+
+                      {/* Assistance Box */}
+                      <div className="text-xs text-slate-500 space-y-1 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                        <div>
+                          <strong>Need assistance?</strong> Call US: +1 5404146956 | IN: +91 7981171474
+                        </div>
+                        <div>
+                          WhatsApp: +91 9704448853 | +91 7032917578 | +91 99664 68249
+                        </div>
+                      </div>
+
+                      {/* Error Alert */}
+                      {paymentError && (
+                        <div className="bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl p-3 flex items-start gap-2">
+                          <span className="font-bold">⚠️</span>
+                          <span>{paymentError}</span>
+                        </div>
+                      )}
+
+                      {/* Step 1 Submit Button */}
+                      <button
+                        type="submit"
+                        className="w-full py-4 bg-[#002f86] hover:bg-[#002266] text-white font-bold rounded-xl shadow-lg transition-all text-sm flex items-center justify-center gap-2 cursor-pointer mt-2"
+                      >
+                        Continue to Slot Review & Payment Options
+                        <ArrowRight size={16} />
+                      </button>
+                    </form>
+                  </div>
+                ) : (
+                  /* STEP 2: Slot Availability, 2 Payment Options, and Cancellation Policy */
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <button
+                        type="button"
+                        onClick={() => setModalStep(1)}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-[#002f86] transition-colors cursor-pointer"
+                      >
+                        <ArrowLeft size={14} /> Back to Candidate Details
+                      </button>
+                      <span className="text-xs text-slate-500">
+                        Candidate: <strong className="text-slate-800">{formData.name || "Executive"}</strong>
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#001D4A]">
+                      Confirm Schedule & Payment Option
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                      Check your preferred batch slot availability and select your payment structure.
+                    </p>
+
+                    <form onSubmit={handleFinalCheckout} className="mt-5 space-y-4">
+                      {/* 1. Time Slot Availability Card */}
+                      <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-4 space-y-2.5">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <div className="flex items-center gap-2">
+                            <Clock className="w-4 h-4 text-[#002f86]" />
+                            <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                              Selected Batch Schedule
+                            </span>
+                          </div>
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-xs">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            Slot Available (Confirmed)
+                          </span>
+                        </div>
+
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-white rounded-xl p-3 border border-slate-200">
+                          <div>
+                            <div className="text-sm font-bold text-slate-900">
+                              Mon–Fri: {selectedSchedule.label}
+                            </div>
+                            <div className="text-xs text-slate-500 mt-0.5">
+                              {selectedSchedule.est} • 8 Weeks Live Online (Mon–Fri)
+                            </div>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => setModalStep(1)}
+                            className="text-xs font-semibold text-[#002f86] hover:underline self-start sm:self-auto cursor-pointer"
+                          >
+                            Change Slot
+                          </button>
+                        </div>
+
+                        <div className="flex items-center gap-1.5 text-[11px] text-slate-500">
+                          <Users className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                          <span>
+                            Strictly capped at 25 participants per cohort for rigorous code reviews &amp; capstone defense.
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* 2. Payment Options: Two Ways (Full Amount vs Installment) */}
+                      <div>
+                        <label className="block text-xs font-bold text-slate-800 mb-2">
+                          Select Payment Way *
+                        </label>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {/* Option 1: Full Amount */}
+                          <div
+                            onClick={() => setPaymentPlan("full")}
+                            className={`cursor-pointer rounded-2xl p-4 border-2 transition-all relative ${
+                              paymentPlan === "full"
+                                ? "border-[#002f86] bg-blue-50/50 shadow-md ring-1 ring-[#002f86]/20"
+                                : "border-slate-200 bg-white hover:border-slate-300"
+                            }`}
+                          >
+                            <div className="flex items-start justify-between">
+                              <div className="flex items-center gap-2">
+                                <input
+                                  type="radio"
+                                  name="paymentPlanOption"
+                                  checked={paymentPlan === "full"}
+                                  onChange={() => setPaymentPlan("full")}
+                                  className="w-4 h-4 text-[#002f86] focus:ring-[#002f86]"
+                                />
+                                <span className="text-sm font-bold text-slate-900">Full Amount</span>
+                              </div>
+                              <span className="text-[10px] font-bold uppercase tracking-wider bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">
+                                100% Upfront
+                              </span>
+                            </div>
+
+                            <div className="mt-3">
+                              <div className="text-xl font-extrabold text-[#002f86] font-mono">
+                                $2,875 <span className="text-xs font-normal text-slate-600 font-sans">USD</span>
+                              </div>
+                              <div className="text-[11px] text-slate-500 mt-0.5">
+                                $2,500 course + $375 convenience fee
+                              </div>
+                            </div>
+
+                            <div className="mt-2.5 pt-2 border-t border-slate-200/70 text-[11px] text-slate-600">
+                              ✓ Single payment, instant seat confirmation
+                            </div>
+                          </div>
+
+                          {/* Option 2: 2 Installments */}
+                          <div
+                            onClick={() => setPaymentPlan("installment")}
+                            className={`cursor-pointer rounded-2xl p-4 border-2 transition-all relative ${
+                              paymentPlan === "installment"
+                                ? "border-[#002f86] bg-blue-50/50 shadow-md ring-1 ring-[#002f86]/20"
+                                : "border-slate-200 bg-white hover:border-slate-300"
+                            }`}
+                          >
+                            <div className="flex items-start justify-between">
+                              <div className="flex items-center gap-2">
+                                <input
+                                  type="radio"
+                                  name="paymentPlanOption"
+                                  checked={paymentPlan === "installment"}
+                                  onChange={() => setPaymentPlan("installment")}
+                                  className="w-4 h-4 text-[#002f86] focus:ring-[#002f86]"
+                                />
+                                <span className="text-sm font-bold text-slate-900">In Installments</span>
+                              </div>
+                              <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">
+                                50% + 50%
+                              </span>
+                            </div>
+
+                            <div className="mt-3">
+                              <div className="text-xl font-extrabold text-[#002f86] font-mono">
+                                $1,437.50 <span className="text-xs font-normal text-slate-600 font-sans">USD</span>
+                              </div>
+                              <div className="text-[11px] text-slate-500 mt-0.5">
+                                1st Installment (50%) due today
+                              </div>
+                            </div>
+
+                            <div className="mt-2.5 pt-2 border-t border-slate-200/70 text-[11px] text-slate-600">
+                              ✓ Remaining 50% ($1,437.50 USD) at Week 4
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Payment Breakdown Summary */}
+                      <div className="bg-[#F8FAFC] border border-slate-200/90 rounded-xl p-3.5 space-y-1.5 text-xs">
+                        <div className="flex justify-between text-slate-600">
+                          <span>
+                            {paymentPlan === "installment"
+                              ? "Course Tuition (1st Installment - 50%):"
+                              : "Course Tuition Price:"}
+                          </span>
+                          <span className="font-semibold text-slate-900 font-mono">
+                            {paymentPlan === "installment" ? "$1,250.00 USD" : "$2,500.00 USD"}
+                          </span>
+                        </div>
+                        <div className="flex justify-between text-slate-600">
+                          <span>Convenience Fee (15%):</span>
+                          <span className="font-semibold text-slate-900 font-mono">
+                            {paymentPlan === "installment" ? "+$187.50 USD" : "+$375.00 USD"}
+                          </span>
+                        </div>
+                        <div className="flex justify-between text-sm font-bold pt-2 border-t border-slate-200">
+                          <span className="text-slate-900">Total Payable Today:</span>
+                          <span className="text-[#002f86] font-mono text-base font-extrabold">
+                            {paymentPlan === "installment" ? "$1,437.50 USD" : "$2,875.00 USD"}
+                          </span>
+                        </div>
+                        {paymentPlan === "installment" && (
+                          <div className="flex justify-between items-center text-xs text-amber-900 bg-amber-50/80 rounded-lg p-2.5 border border-amber-200/60 mt-1">
+                            <span className="font-medium">2nd Installment (50%):</span>
+                            <span className="font-mono font-bold">$1,437.50 USD (Due at Week 4 midpoint)</span>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* 3. Cancellation Policy & Contact Details */}
+                      <div className="bg-amber-50/80 border border-amber-200 rounded-2xl p-4 text-xs space-y-2.5">
+                        <div className="flex items-center gap-2 text-amber-900 font-bold text-sm">
+                          <ShieldCheck className="w-4 h-4 text-amber-700" />
+                          <span>Cancellation &amp; Refund Policy</span>
+                        </div>
+
+                        <ul className="space-y-1.5 text-amber-950/90 leading-relaxed list-disc list-inside">
+                          <li>
+                            <strong>Cancellation Notice:</strong> If you want to cancel your enrollment, you must inform us at least <strong>two (2) days before the session starts</strong>.
+                          </li>
+                          <li>
+                            <strong>Refund Settlement:</strong> The eligible refund amount will be settled and credited back to your original payment method in <strong>1 to 2 weeks</strong>.
+                          </li>
+                        </ul>
+
+                        <div className="pt-2 border-t border-amber-200/80 text-slate-700 space-y-1">
+                          <div className="font-bold text-slate-800">For Cancellations &amp; Queries, Contact Us:</div>
+                          <div className="flex flex-wrap gap-x-3 gap-y-1">
+                            <span>
+                              <strong>US Helpline:</strong>{" "}
+                              <a href="tel:+15404146956" className="text-blue-700 hover:underline">
+                                +1 5404146956
+                              </a>
+                            </span>
+                            <span>
+                              <strong>IN Helpline:</strong>{" "}
+                              <a href="tel:+917981171474" className="text-blue-700 hover:underline">
+                                +91 7981171474
+                              </a>
+                            </span>
+                          </div>
+                          <div>
+                            <span>
+                              <strong>WhatsApp:</strong>{" "}
+                              <a href="https://wa.me/919704448853" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">+91 9704448853</a> |{" "}
+                              <a href="https://wa.me/917032917578" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">+91 7032917578</a> |{" "}
+                              <a href="https://wa.me/919966468249" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">+91 99664 68249</a>
+                            </span>
+                          </div>
+                          <div>
+                            <span>
+                              <strong>Email:</strong>{" "}
+                              <a href="mailto:info@thefoundrys.com" className="text-blue-700 underline font-medium">
+                                info@thefoundrys.com
+                              </a>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Error Alert */}
+                      {paymentError && (
+                        <div className="bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl p-3 flex items-start gap-2">
+                          <span className="font-bold">⚠️</span>
+                          <span>{paymentError}</span>
+                        </div>
+                      )}
+
+                      {/* Final Checkout Button */}
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full py-4 bg-[#0A1628] hover:bg-[#15253F] text-white font-bold rounded-xl shadow-lg transition-all text-sm flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 mt-2"
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                            Connecting to Stripe Checkout...
+                          </>
+                        ) : paymentPlan === "installment" ? (
+                          "Proceed to Pay 1st Installment ($1,437.50 USD) →"
+                        ) : (
+                          "Proceed to Secure Stripe Checkout ($2,875 USD) →"
+                        )}
+                      </button>
+                    </form>
+                  </div>
+                )}
               </div>
             )}
           </div>
