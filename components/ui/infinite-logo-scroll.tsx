@@ -7,14 +7,19 @@ const LOGOS = [
   "/logos/drpinnacle.png",
   "/logos/Faba.png",
   "/logos/redshelid1.png",
+  "/logos/arrietty.png",
   "/logos/runelix.png",
   "/logos/ApplyuniNow.png",
+  "/logos/lanasa.png",
   "/logos/markitome.png",
   "/logos/image.png",
+  "/logos/alovie.png",
   "/logos/techop.png",
   "/logos/optsearch.png",
+  "/logos/dasherz.png",
   "/logos/csi.jpg",
   "/logos/capsim.png",
+  "/logos/universal-surgicals.png",
   "/logos/hive_link_logo.jpg",
   "/logos/vareon.png",
   "/logos/zythri.png",
@@ -37,7 +42,12 @@ const LOGO_LINKS: Record<string, string> = {
   "/logos/capsim.png": "https://www.capsim.com/",
   "/logos/redshelid1.png": "https://thefoundrys.com",
   "/logos/vareon.png": "",
-  "/logos/zythri.png": "https://www.zythri.com"
+  "/logos/zythri.png": "https://www.zythri.com",
+  "/logos/arrietty.png": "https://arriettysolutions.com/",
+  "/logos/lanasa.png": "https://lanasasolutions.com/",
+  "/logos/alovie.png": "https://alovie.com/",
+  "/logos/dasherz.png": "https://dasherz.in/",
+  "/logos/universal-surgicals.png": "https://universalsurgicals.com/"
 };
 
 export function InfiniteLogoScroll() {
@@ -58,7 +68,7 @@ export function InfiniteLogoScroll() {
           initial={{ x: 0 }}
           animate={{ x: ["0%", "-25%"] }}
           transition={{
-            duration: 35,
+            duration: 45,
             ease: "linear",
             repeat: Infinity,
             repeatType: "loop",
@@ -83,15 +93,23 @@ export function InfiniteLogoScroll() {
                 if (l.includes("drpinnacle")) heightClass = "h-10 md:h-16";
                 if (l.includes("vareon")) heightClass = "h-16 md:h-24";
                 if (l.includes("zythri")) heightClass = "h-11 md:h-16";
+                if (l.includes("lanasa")) heightClass = "h-11 md:h-16";
+                if (l.includes("universal")) heightClass = "h-10 md:h-15";
+                if (l.includes("alovie")) heightClass = "h-7 md:h-10";
+                if (l.includes("arrietty")) heightClass = "h-8 md:h-12";
+                if (l.includes("dasherz")) heightClass = "h-8 md:h-12";
 
                 const isDarkTile = l.includes("zythri");
+                const altText = logo.includes(".")
+                  ? logo.split("/").pop()?.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ") || "Partner"
+                  : logo;
 
                 const inner = (
                   <>
                     {logo.includes(".") ? (
                       <img
                         src={logo.startsWith("/") ? logo : `/${logo}`}
-                        alt="Partner"
+                        alt={altText}
                         loading="eager"
                         className={`w-auto object-contain ${isDarkTile ? "rounded-lg" : "mix-blend-multiply"} transition-all duration-300 ${heightClass}`}
                       />
