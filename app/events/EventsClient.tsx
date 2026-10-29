@@ -31,6 +31,25 @@ interface EventItem {
 
 const allItems: EventItem[] = [
     {
+        id: "webinar-beyond-the-seed-podcast",
+        title: "Beyond the Seed: How AI Can Transform HR, Workforce Productivity, and Business Growth in India’s Seed Industry",
+        type: "Live Podcast",
+        category: "event",
+        date: "Fri, Oct 30, 2026",
+        time: "3:00 PM – 4:00 PM IST",
+        dateTime: "2026-10-30T15:00:00+05:30",
+        platform: "Microsoft Teams & YouTube Live",
+        link: "https://tinyurl.com/53bvfput",
+        youtubeUrl: "https://tinyurl.com/muxe2nym",
+        teamsUrl: "https://events.teams.microsoft.com/event/d70ad090-7901-4d4d-9262-4a86682bd779@9be43f22-3237-4b73-971b-3e664c641aea?source=copyLinkOneEventsShareDialog",
+        description:
+            "Join us for an insightful conversation exploring how AI can revolutionize HR practices, improve workforce productivity, enhance talent management, and drive business growth in the seed industry. Host: Mr. Vishwanath Akuthota (Founder & CEO, The Foundry’s). Guest: Mr. Dilip Kumar MN (HR Leader & Agri/Seed Industry Expert).",
+        tags: ["Artificial Intelligence", "HR Tech", "Seed Industry", "AgriTech", "Workforce Productivity", "Live Podcast", "The Foundry’s Podcast"],
+        featured: true,
+        status: "upcoming",
+        image: "/images/beyond-the-seed-podcast.jpg",
+    },
+    {
         id: "webinar-rethinking-ip-in-the-age-of-ai",
         title: "Rethinking IP in the Age of AI",
         type: "Live Podcast",

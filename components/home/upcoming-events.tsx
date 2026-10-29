@@ -7,6 +7,14 @@ import { ChevronRight } from "lucide-react";
 
 const EVENTS = [
   {
+    title: "Beyond the Seed: How AI Can Transform HR, Workforce Productivity, and Business Growth in India’s Seed Industry",
+    description: "Join us for an insightful conversation exploring how AI can revolutionize HR practices, improve workforce productivity, enhance talent management, and drive business growth in the seed industry with host Vishwanath Akuthota and guest Dilip Kumar MN.",
+    month: "Oct",
+    day: "30",
+    image: "/images/beyond-the-seed-podcast.jpg",
+    href: "/events"
+  },
+  {
     title: "Rethinking IP in the Age of AI",
     description: "AI is transforming how ideas are created, developed, and commercialized. Join Uday Wagh (Founder & CEO, TwinSim AI) in conversation with Vishwanath Akuthota (Founder & CEO, The Foundry's) exploring AI, Intellectual Property, ownership, and innovation.",
     month: "Oct",
@@ -20,14 +28,6 @@ const EVENTS = [
     month: "Sep",
     day: "24",
     image: "/images/deep-tech-workforce-podcast.png",
-    href: "/events"
-  },
-  {
-    title: "Leading AI Transformation – Stay In-Step with Technology That Never Stops",
-    description: "How do businesses stay ahead when tech never stops evolving? Join Vishwanath Akuthota (Founder & CEO, The Foundry's) and Shalini (Founder & CEO, NineGuide Consulting) exploring AI transformation, emerging tech, and leadership.",
-    month: "Sep",
-    day: "17",
-    image: "/images/leading-ai-transformation-podcast.jpg",
     href: "/events"
   },
 ];
@@ -52,7 +52,7 @@ export function UpcomingEvents() {
 
         {/* Card Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {EVENTS.map((event) => (
+          {EVENTS.slice(0, 3).map((event) => (
             <Link
               href={event.href}
               key={event.title}
