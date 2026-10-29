@@ -274,3 +274,224 @@ export const sendEnrollmentInvoiceEmail = async (data: InvoiceEmailData) => {
     return { success: false, error: errMsg };
   }
 };
+
+export interface SlotConfirmationEmailData {
+  to: string;
+  name: string;
+  courseName: string;
+  schedule: string;
+  paymentPlan?: string;
+  amount?: number;
+  currency?: string;
+  paymentId?: string;
+  company?: string;
+  phone?: string;
+}
+
+export const sendSlotConfirmationEmail = async (data: SlotConfirmationEmailData) => {
+  const {
+    to,
+    name,
+    courseName,
+    schedule,
+    paymentPlan,
+    amount,
+    currency = 'USD',
+    paymentId,
+    company,
+    phone,
+  } = data;
+
+  const currencySymbol = currency.toUpperCase() === 'INR' ? '₹' : '$';
+  const senderEmail = process.env.SMTP_USER || process.env.GMAIL_USER || 'noreply@thefoundrys.com';
+  const transporter = getTransporter();
+
+  const html = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Cohort Slot Confirmed - The Foundry's</title>
+</head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8fafc; margin: 0; padding: 32px 16px; color: #1e293b;">
+  <div style="max-width: 640px; margin: 0 auto; background: #ffffff; border-radius: 16px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+    
+    <!-- Header Banner -->
+    <div style="background: linear-gradient(135deg, #001D4A 0%, #002f86 100%); padding: 32px; color: #ffffff;">
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td>
+            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #93c5fd; font-weight: 700; margin-bottom: 4px;">
+              The Foundry's DeepTech Finishing School
+            </div>
+            <div style="font-size: 22px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px;">
+              Your Cohort Slot is Confirmed! 🎉
+            </div>
+            <div style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">
+              Official Batch Reservation & Program Curriculum Guide
+            </div>
+          </td>
+          <td style="text-align: right; vertical-align: top;">
+            <span style="display: inline-block; background-color: #10b981; color: #ffffff; font-size: 11px; font-weight: 700; padding: 6px 14px; border-radius: 9999px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">
+              SLOT CONFIRMED
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Main Content -->
+    <div style="padding: 32px;">
+      
+      <!-- Greeting -->
+      <div style="margin-bottom: 24px;">
+        <h2 style="font-size: 18px; color: #0f172a; margin: 0 0 8px 0;">Dear ${name},</h2>
+        <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0;">
+          Congratulations! Your enrollment has been verified and your slot has been formally locked for the <strong>${courseName}</strong>.
+        </p>
+      </div>
+
+      <!-- Time Slot & Batch Availability Box -->
+      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 20px; margin-bottom: 24px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #15803d; font-weight: 700;">
+            Confirmed Batch Schedule
+          </div>
+          <span style="background: #dcfce7; color: #166534; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 9999px;">
+            ● Active Seat Locked
+          </span>
+        </div>
+
+        <table style="width: 100%; border-collapse: collapse; font-size: 13px; color: #14532d;">
+          <tr>
+            <td style="padding: 6px 0; font-weight: 600; width: 35%;">Batch Timing:</td>
+            <td style="padding: 6px 0; font-weight: 700; font-size: 14px; color: #0f172a;">${schedule}</td>
+          </tr>
+          <tr>
+            <td style="padding: 6px 0; font-weight: 600;">Program Cadence:</td>
+            <td style="padding: 6px 0; color: #334155;">Monday through Friday (Daily Live Cohort Sessions)</td>
+          </tr>
+          <tr>
+            <td style="padding: 6px 0; font-weight: 600;">Duration:</td>
+            <td style="padding: 6px 0; color: #334155;">8 Weeks (2 Months Intensive Finishing School)</td>
+          </tr>
+          <tr>
+            <td style="padding: 6px 0; font-weight: 600;">Cohort Cap:</td>
+            <td style="padding: 6px 0; color: #334155;">Strictly limited to 25 fellows (Guarantees 1:1 code review ratio)</td>
+          </tr>
+          ${paymentPlan ? `
+          <tr>
+            <td style="padding: 6px 0; font-weight: 600;">Payment Structure:</td>
+            <td style="padding: 6px 0; color: #334155; font-weight: 600;">${paymentPlan}</td>
+          </tr>
+          ` : ''}
+          ${amount ? `
+          <tr>
+            <td style="padding: 6px 0; font-weight: 600;">Amount Paid:</td>
+            <td style="padding: 6px 0; font-weight: 700; color: #047857;">${currencySymbol}${amount.toLocaleString()} ${currency}</td>
+          </tr>
+          ` : ''}
+        </table>
+      </div>
+
+      <!-- CRUCIAL TEAM NOTIFICATION CALLOUT -->
+      <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1.5px solid #93c5fd; border-radius: 12px; padding: 22px; margin-bottom: 24px;">
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="vertical-align: top; width: 28px; padding-right: 12px;">
+              <span style="font-size: 20px;">🔔</span>
+            </td>
+            <td>
+              <div style="font-size: 15px; font-weight: 800; color: #1e3a8a; margin-bottom: 6px;">
+                Our Team Will Notify You For Further Details
+              </div>
+              <p style="font-size: 13px; color: #1e40af; line-height: 1.6; margin: 0 0 12px 0;">
+                Our admissions and academic operations team is actively setting up your fellowship onboarding profile. You will be contacted directly with the following next steps:
+              </p>
+              <ul style="margin: 0; padding-left: 18px; font-size: 13px; color: #1e40af; line-height: 1.6;">
+                <li><strong>Live Session Calendar Invites:</strong> Google Calendar &amp; Zoom/Meet links sent directly to your registered email (${to}).</li>
+                <li><strong>Student Portal &amp; LMS Credentials:</strong> Access to our private portal, curriculum repos, and pre-reading materials.</li>
+                <li><strong>Private GitHub Organization:</strong> Collaboration invite for code submissions, PR reviews, and capstone work.</li>
+                <li><strong>Cohort Community Channel:</strong> Invitation to our private fellow network on Slack/Discord.</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Program & Course Details -->
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 15px; font-weight: 800; color: #0f172a; margin: 0 0 12px 0; text-transform: uppercase; letter-spacing: 0.5px;">
+          Course Highlights &amp; Syllabus Modules
+        </h3>
+        
+        <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+          <tr style="border-bottom: 1px solid #f1f5f9;">
+            <td style="padding: 10px 0; font-weight: 700; color: #002f86; width: 30%;">Module 1</td>
+            <td style="padding: 10px 0; color: #334155;"><strong>AI Solution Foundations:</strong> Deconstruct enterprise workflows into deterministic vs stochastic components. Cost-per-inference metrics & model topology.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #f1f5f9;">
+            <td style="padding: 10px 0; font-weight: 700; color: #002f86;">Module 2</td>
+            <td style="padding: 10px 0; color: #334155;"><strong>Practical LLM Application Design:</strong> Low-latency streaming SSE microservices, model cascading (frontier vs local router).</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #f1f5f9;">
+            <td style="padding: 10px 0; font-weight: 700; color: #002f86;">Module 3</td>
+            <td style="padding: 10px 0; color: #334155;"><strong>Structured Output & Orchestration:</strong> Pydantic schema enforcement, multi-step state graph execution engine.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #f1f5f9;">
+            <td style="padding: 10px 0; font-weight: 700; color: #002f86;">Module 4</td>
+            <td style="padding: 10px 0; color: #334155;"><strong>Enterprise Hybrid RAG:</strong> Chunking heuristics, dense vector embeddings, BM25 sparse hybrid search, and cross-encoder re-ranking.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #f1f5f9;">
+            <td style="padding: 10px 0; font-weight: 700; color: #002f86;">Module 5</td>
+            <td style="padding: 10px 0; color: #334155;"><strong>Agents, Tools & ReAct Loops:</strong> Function-calling patterns, deterministic tool execution, and human-in-the-loop audit barriers.</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 0; font-weight: 700; color: #002f86;">Module 6</td>
+            <td style="padding: 10px 0; color: #334155;"><strong>Evaluation & Responsible AI:</strong> Synthetic evaluation harnesses, LLM-as-a-judge pipelines, and security guardrails against prompt injection.</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Admissions & Support Contact -->
+      <div style="font-size: 12px; color: #64748b; line-height: 1.6; border-top: 1px solid #e2e8f0; padding-top: 18px;">
+        <p style="margin: 0 0 6px 0; font-weight: 700; color: #0f172a;">Questions or Schedule Adjustments?</p>
+        <p style="margin: 0;">
+          <strong>Email:</strong> <a href="mailto:info@thefoundrys.com" style="color: #002f86; text-decoration: none;">info@thefoundrys.com</a><br/>
+          <strong>US Helpline:</strong> +1 5404146956 &bull; <strong>India Helpline:</strong> +91 7981171474<br/>
+          <strong>WhatsApp:</strong> +91 9704448853 / +91 7032917578 / +91 99664 68249
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div style="background: #f1f5f9; padding: 20px; text-align: center; font-size: 11px; color: #64748b; border-top: 1px solid #e2e8f0;">
+      <div>&copy; ${new Date().getFullYear()} The Foundry's. All rights reserved.</div>
+      <div style="margin-top: 4px;">A Premium Finishing School in DeepTech &bull; Hyderabad, India &bull; www.thefoundrys.com</div>
+    </div>
+
+  </div>
+</body>
+</html>
+  `;
+
+  const mailOptions = {
+    from: `"The Foundry's Admissions" <${senderEmail}>`,
+    to,
+    bcc: senderEmail,
+    subject: `Cohort Slot Confirmed: ${courseName} | The Foundry's`,
+    html,
+  };
+
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log(`✅ Slot confirmation email sent successfully to ${to}. MessageId: ${info.messageId}`);
+    return { success: true, messageId: info.messageId };
+  } catch (error: unknown) {
+    const errMsg = error instanceof Error ? error.message : 'Unknown error';
+    console.error(`❌ Error sending slot confirmation email to ${to}:`, errMsg);
+    return { success: false, error: errMsg };
+  }
+};
+

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { sendEnrollmentInvoiceEmail } from "@/lib/email";
+import { sendEnrollmentInvoiceEmail, sendSlotConfirmationEmail } from "@/lib/email";
 
 export const dynamic = "force-dynamic";
 
@@ -19,7 +19,20 @@ export async function POST(req: NextRequest) {
 
     const stripe = new Stripe(stripeSecretKey);
     const body = await req.json();
-    const { name, email, phone, company, experience } = body;
+    const { name, email, phone, company, experience, schedule, paymentPlan } = body;
+    const isInstallment = paymentPlan === "installment";
+
+    const courseAmount = isInstallment ? 125000 : 250000; // $1,250 or $2,500 in cents
+    const feeAmount = isInstallment ? 18750 : 37500;       // $187.50 or $375 in cents
+    const courseTitle = isInstallment
+      ? "Advanced Management Program in Forward Deployed Engineering (1st Installment - 50%)"
+      : "Advanced Management Program in Forward Deployed Engineering (Full Payment)";
+    const courseDesc = isInstallment
+      ? `2 Months Executive Finishing School - 1st Installment (50%). Balance ($1,437.50 USD) due at Week 4 (${schedule || "Mon–Fri 6:00–7:00 AM IST"})`
+      : `2 Months Executive Finishing School (${schedule || "Mon–Fri 6:00–7:00 AM IST"})`;
+    const coursePriceDisplay = isInstallment ? "$1,250 USD (50%)" : "$2,500 USD";
+    const feeDisplay = isInstallment ? "+$187.50 USD (15%)" : "+$375 USD (15%)";
+    const totalPayableDisplay = isInstallment ? "$1,437.50 USD (1st of 2 Installments)" : "$2,875 USD";
 
     const origin = req.headers.get("origin") || "http://localhost:3000";
 
@@ -37,6 +50,8 @@ export async function POST(req: NextRequest) {
           studentPhone: phone || "",
           company: company || "N/A",
           experience: experience || "N/A",
+          schedule: schedule || "Mon–Fri 6:00–7:00 AM IST",
+          paymentPlan: isInstallment ? "Installment (50% Now, 50% Later)" : "Full Payment",
           program: "Forward Deployed Engineering",
         },
       },
@@ -45,11 +60,22 @@ export async function POST(req: NextRequest) {
           price_data: {
             currency: "usd",
             product_data: {
-              name: "Advanced Management Program in Forward Deployed Engineering",
-              description: "2 Months Executive Finishing School (Mon–Fri 6:00–7:00 AM IST / 8:30–9:30 PM EST)",
+              name: courseTitle,
+              description: courseDesc,
               images: ["https://thefoundrys.com/logo.png"],
             },
-            unit_amount: 250000, // $2,500.00 in cents
+            unit_amount: courseAmount,
+          },
+          quantity: 1,
+        },
+        {
+          price_data: {
+            currency: "usd",
+            product_data: {
+              name: isInstallment ? "Convenience Fee (15%) - 1st Installment" : "Convenience Fee (15%)",
+              description: "Platform & payment processing convenience fee",
+            },
+            unit_amount: feeAmount,
           },
           quantity: 1,
         },
@@ -60,6 +86,11 @@ export async function POST(req: NextRequest) {
         studentPhone: phone || "",
         company: company || "N/A",
         experience: experience || "N/A",
+        schedule: schedule || "Mon–Fri 6:00–7:00 AM IST",
+        paymentPlan: isInstallment ? "Installment (50% Now, 50% Later)" : "Full Payment",
+        coursePrice: coursePriceDisplay,
+        convenienceFee: feeDisplay,
+        totalPayable: totalPayableDisplay,
         program: "Forward Deployed Engineering",
       },
       success_url: `${origin}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
@@ -101,7 +132,7 @@ export async function GET(req: NextRequest) {
         found: false,
         paymentId: sessionId,
         courseName: "Advanced Management in Forward Deployed Engineering",
-        amount: 2500,
+        amount: 2875,
         currency: "USD",
         name: "Enrolled Executive",
         email: "Verified via Stripe",
@@ -120,7 +151,7 @@ export async function GET(req: NextRequest) {
       metadata.studentName ||
       "Enrolled Executive";
 
-    const amount = (session.amount_total ? session.amount_total / 100 : 2500);
+    const amount = (session.amount_total ? session.amount_total / 100 : 2875);
     const currency = (session.currency || "USD").toUpperCase();
     const courseName = "Advanced Management in Forward Deployed Engineering";
 
@@ -139,7 +170,7 @@ export async function GET(req: NextRequest) {
     const cacheKey = `${sessionId}_${customerEmail}`;
 
     if (isPaid && customerEmail && customerEmail !== "Verified via Stripe" && !sentEmailsCache.has(cacheKey)) {
-      console.log(`📧 Sending payment receipt & invoice to ${customerEmail} for session ${sessionId}...`);
+      console.log(`📧 [1/2] Sending payment receipt & tax invoice to ${customerEmail} for session ${sessionId}...`);
       const emailResult = await sendEnrollmentInvoiceEmail({
         to: customerEmail,
         name: customerName,
@@ -152,11 +183,25 @@ export async function GET(req: NextRequest) {
         invoiceUrl,
       });
 
-      emailSent = emailResult.success;
-      if (emailResult.success) {
+      console.log(`📧 [2/2] Sending slot confirmation & course details to ${customerEmail} for session ${sessionId}...`);
+      const slotResult = await sendSlotConfirmationEmail({
+        to: customerEmail,
+        name: customerName,
+        courseName,
+        schedule: metadata.schedule || "Mon–Fri 6:00–7:00 AM IST (8:30–9:30 PM EST)",
+        paymentPlan: metadata.paymentPlan,
+        amount,
+        currency,
+        paymentId: session.id,
+        company: metadata.company,
+        phone: metadata.studentPhone,
+      });
+
+      emailSent = emailResult.success || slotResult.success;
+      if (emailResult.success || slotResult.success) {
         sentEmailsCache.add(cacheKey);
       } else {
-        emailError = emailResult.error;
+        emailError = emailResult.error || slotResult.error;
       }
     } else if (sentEmailsCache.has(cacheKey)) {
       emailSent = true;
