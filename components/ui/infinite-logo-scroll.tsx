@@ -23,6 +23,7 @@ const LOGOS = [
   "/logos/hive_link_logo.jpg",
   "/logos/vareon.png",
   "/logos/zythri.png",
+  "/logos/plugscale.png",
   "OpenVals"
 ];
 
@@ -47,7 +48,8 @@ const LOGO_LINKS: Record<string, string> = {
   "/logos/lanasa.png": "https://lanasasolutions.com/",
   "/logos/alovie.png": "https://alovie.com/",
   "/logos/dasherz.png": "https://dasherz.in/",
-  "/logos/universal-surgicals.png": "https://universalsurgicals.com/"
+  "/logos/universal-surgicals.png": "https://universalsurgicals.com/",
+  "/logos/plugscale.png": "https://www.plugscale.com/"
 };
 
 export function InfiniteLogoScroll() {
@@ -98,6 +100,7 @@ export function InfiniteLogoScroll() {
                 if (l.includes("alovie")) heightClass = "h-7 md:h-10";
                 if (l.includes("arrietty")) heightClass = "h-8 md:h-12";
                 if (l.includes("dasherz")) heightClass = "h-8 md:h-12";
+                if (l.includes("plugscale")) heightClass = "h-14 md:h-20";
 
                 const isDarkTile = l.includes("zythri");
                 const altText = logo.includes(".")
