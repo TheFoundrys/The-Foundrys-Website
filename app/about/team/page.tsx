@@ -166,6 +166,17 @@ const teamMembers = [
         }
     },
     {
+        name: "Vishwanadh Raju",
+        role: "Advisory Member",
+        image: "/images/vishwanadh-raju.png",
+        imageClass: "object-top",
+        profileLink: "/about/faculty/vishwanadh-raju",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/vishwanadh-ceo-chro/",
+            website: "https://www.plugscale.com/"
+        }
+    },
+    {
         name: "Krishana Prasad Avula",
         role: "AI Research Engineer",
         image: "/images/testimonials/Krishna.jpeg",
