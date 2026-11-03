@@ -47,6 +47,17 @@ const teamMembers = [
         }
     },
     {
+        name: "Vishwanadh Raju",
+        role: "Partner",
+        image: "/images/vishwanadh-raju.png",
+        imageClass: "object-top",
+        profileLink: "/about/faculty/vishwanadh-raju",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/vishwanadh-ceo-chro/",
+            website: "https://www.plugscale.com/"
+        }
+    },
+    {
         name: "Srinivas Sadasyula",
         role: "Vice President",
         image: "/images/srinivas-sadasyula.jpg",
@@ -163,17 +174,6 @@ const teamMembers = [
         profileLink: "/about/faculty/dr-jayaram",
         socials: {
             linkedin: "#",
-        }
-    },
-    {
-        name: "Vishwanadh Raju",
-        role: "Advisory Member",
-        image: "/images/vishwanadh-raju.png",
-        imageClass: "object-top",
-        profileLink: "/about/faculty/vishwanadh-raju",
-        socials: {
-            linkedin: "https://www.linkedin.com/in/vishwanadh-ceo-chro/",
-            website: "https://www.plugscale.com/"
         }
     },
     {
