@@ -51,7 +51,7 @@ export default function AnanthAyyangarProfile() {
                             >
                                 <div>
                                     <span className="inline-block px-3 py-1 bg-[#002f86] text-white text-[10px] font-bold uppercase tracking-widest font-mono mb-4">
-                                        Partner
+                                        Executive partner
                                     </span>
                                     <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold tracking-tight text-[#002f86] mb-3 leading-tight">
                                         Ananth Ayyangar

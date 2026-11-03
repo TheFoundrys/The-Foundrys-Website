@@ -28,16 +28,6 @@ const teamMembers = [
         }
     },
     {
-        name: "Ananth Ayyangar",
-        role: "Partner",
-        image: "/images/ananth-ayyangar.jpg",
-        imageClass: "object-[center_14%]",
-        profileLink: "/about/faculty/ananth-ayyangar",
-        socials: {
-            linkedin: "https://www.linkedin.com/in/ananth-ayyangar-a06b6726/"
-        }
-    },
-    {
         name: "Sanjeeva Reddy Gaddam",
         role: "Partner",
         image: "/images/sanjeeva-reddy-v2.png",
@@ -47,14 +37,23 @@ const teamMembers = [
         }
     },
     {
+        name: "Ananth Ayyangar",
+        role: "Executive partner",
+        image: "/images/ananth-ayyangar.jpg",
+        imageClass: "object-[center_14%]",
+        profileLink: "/about/faculty/ananth-ayyangar",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/ananth-ayyangar-a06b6726/"
+        }
+    },
+    {
         name: "Vishwanadh Raju",
-        role: "Partner",
-        image: "/images/vishwanadh-raju.png",
+        role: "Executive partner",
+        image: "/images/vishwanadh-raju-partner.png",
         imageClass: "object-top",
         profileLink: "/about/faculty/vishwanadh-raju",
         socials: {
             linkedin: "https://www.linkedin.com/in/vishwanadh-ceo-chro/",
-            website: "https://www.plugscale.com/"
         }
     },
     {
