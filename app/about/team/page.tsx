@@ -92,6 +92,16 @@ const teamMembers = [
             linkedin: "https://www.linkedin.com/in/ravikanth-n-5973ba164/"
         }
     },
+    {
+        name: "Dasaradhi Bendi",
+        role: "Solution Architect",
+        image: "/images/dasaradhi-bendi-architect.jpg",
+        imageClass: "object-top",
+        profileLink: "/about/faculty/dasaradhi-bendi",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/dasaradhi-bendi-1534b313/",
+        }
+    },
      {
         name: "Akuthota Aravind",
         role: "Business Development Executive",
