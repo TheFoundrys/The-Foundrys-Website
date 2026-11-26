@@ -57,6 +57,17 @@ const teamMembers = [
         }
     },
     {
+        name: "Francis Daniel Reyes",
+        role: "Executive partner",
+        image: "/images/francis-daniel-reyes.jpg",
+        imageClass: "object-top",
+        profileLink: "/about/faculty/francis-daniel-reyes",
+        socials: {
+            linkedin: "https://www.linkedin.com/in/francis-daniel-reyes/",
+            website: "https://studiobananas.com/francis",
+        }
+    },
+    {
         name: "Srinivas Sadasyula",
         role: "Vice President",
         image: "/images/srinivas-sadasyula.jpg",
