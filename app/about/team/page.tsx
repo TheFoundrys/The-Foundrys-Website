@@ -85,15 +85,15 @@ const teamMembers = [
             linkedin: "https://www.linkedin.com/in/jp-pramod-a710985a/",
         }
     },
-    {
-        name: "Soujanya Kanagala",
-        role: "Head of Operations",
-        image: "/images/soujanya.jpg",
-        profileLink: "/about/faculty/soujanya-kanagala",
-        socials: {
-            linkedin: "https://www.linkedin.com/in/soujanya-kanagala-07304833/"
-        }
-    },
+    // {
+    //     name: "Soujanya Kanagala",
+    //     role: "Head of Operations",
+    //     image: "/images/soujanya.jpg",
+    //     profileLink: "/about/faculty/soujanya-kanagala",
+    //     socials: {
+    //         linkedin: "https://www.linkedin.com/in/soujanya-kanagala-07304833/"
+    //     }
+    // },
     {
         name: "Ravikanth Nadendla",
         role: "Head of Partnerships & Alliances",
