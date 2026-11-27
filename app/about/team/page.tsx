@@ -96,7 +96,7 @@ const teamMembers = [
     },
     {
         name: "Ravikanth Nadendla",
-        role: "Manager - Sales and Business Development (Enterprises & Products)",
+        role: "Head of Partnerships & Alliances",
         image: "/images/ravikanth.png",
         profileLink: "/about/faculty/ravikanth-n",
         socials: {
