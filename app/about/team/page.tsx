@@ -39,8 +39,8 @@ const teamMembers = [
     {
         name: "Ananth Ayyangar",
         role: "Executive partner",
-        image: "/images/ananth-ayyangar.jpg",
-        imageClass: "object-[center_14%]",
+        image: "/images/ananth-ayyangar-v2.jpg",
+        imageClass: "object-top",
         profileLink: "/about/faculty/ananth-ayyangar",
         socials: {
             linkedin: "https://www.linkedin.com/in/ananth-ayyangar-a06b6726/"

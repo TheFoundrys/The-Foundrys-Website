@@ -4,7 +4,7 @@ import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowLeft, MapPin, Briefcase, Target, TrendingUp, Award, Linkedin, Handshake, Users, Globe, Cpu, Layers } from "lucide-react";
+import { ArrowLeft, MapPin, Briefcase, Target, Linkedin, Handshake, Users, Globe, Cpu, Layers } from "lucide-react";
 import Link from "next/link";
 
 export default function AnanthAyyangarProfile() {
@@ -19,7 +19,7 @@ export default function AnanthAyyangarProfile() {
                 <section className="bg-white p-6 sm:p-10 md:p-12 pb-5 sm:pb-6 md:pb-6 border-b border-slate-200/50 relative overflow-hidden">
                     <div className="relative z-10">
                         <Link href="/about/team" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors mb-8 text-xs font-bold uppercase tracking-wider font-mono">
-                            <ArrowLeft size={14} /> Back to Team
+                            <ArrowLeft size={14} /><span>Back to Team</span>
                         </Link>
 
                         <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-start">
@@ -30,14 +30,14 @@ export default function AnanthAyyangarProfile() {
                                 transition={{ duration: 0.5 }}
                                 className="w-full lg:w-1/3 shrink-0"
                             >
-                                <div className="aspect-[3/4] relative overflow-hidden shadow-md bg-white border border-slate-200/80">
+                                <div className="aspect-[3/4] relative overflow-hidden shadow-md bg-white border border-slate-200/80 max-w-[320px] mx-auto lg:max-w-none">
                                     <Image
-                                        src="/images/ananth-ayyangar.jpg"
+                                        src="/images/ananth-ayyangar-v2.jpg"
                                         alt="Ananth Ayyangar"
                                         fill
                                         priority
                                         sizes="(max-width: 1024px) 100vw, 450px"
-                                        className="object-cover object-[center_15%]"
+                                        className="object-cover object-top"
                                     />
                                 </div>
                             </motion.div>
@@ -69,23 +69,23 @@ export default function AnanthAyyangarProfile() {
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center gap-2 px-4 py-2 bg-[#002f86] hover:bg-[#002266] text-white text-xs font-bold transition-colors cursor-pointer shadow-xs"
                                     >
-                                        <Linkedin size={15} /> LinkedIn Profile
+                                        <Linkedin size={15} /><span>LinkedIn Profile</span>
                                     </a>
                                 </div>
 
                                 {/* Key Badges */}
                                 <div className="flex flex-wrap gap-2.5 pt-2">
                                     <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F1F1EC] border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
-                                        <Briefcase size={14} className="text-[#002f86]" /> Enterprise IT
+                                        <Briefcase size={14} className="text-[#002f86]" /><span>Enterprise IT</span>
                                     </div>
                                     <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F1F1EC] border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
-                                        <Layers size={14} className="text-[#002f86]" /> Digital Transformation
+                                        <Layers size={14} className="text-[#002f86]" /><span>Digital Transformation</span>
                                     </div>
                                     <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F1F1EC] border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
-                                        <Handshake size={14} className="text-[#002f86]" /> Strategic Alliances
+                                        <Handshake size={14} className="text-[#002f86]" /><span>Strategic Alliances</span>
                                     </div>
                                     <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F1F1EC] border border-slate-200/80 text-xs font-mono text-slate-700 shadow-xs">
-                                        <Cpu size={14} className="text-[#002f86]" /> Cloud &amp; AI Frameworks
+                                        <Cpu size={14} className="text-[#002f86]" /><span>Cloud &amp; AI Frameworks</span>
                                     </div>
                                 </div>
                             </motion.div>
@@ -113,7 +113,7 @@ export default function AnanthAyyangarProfile() {
                     <div className="max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
                             <h3 className="font-serif text-xl font-bold text-[#002f86] mb-4 flex items-center gap-2">
-                                <Briefcase className="text-[#002f86]" size={22} /> What He Does
+                                <Briefcase className="text-[#002f86]" size={22} /><span>What He Does</span>
                             </h3>
                             <div className="space-y-2.5 text-xs md:text-sm text-slate-700 font-sans">
                                 <p className="p-3.5 bg-white border border-slate-200/80 shadow-xs">Fostering strategic enterprise collaborations between Zythri and The Foundry’s</p>
@@ -124,7 +124,7 @@ export default function AnanthAyyangarProfile() {
                         </div>
                         <div>
                             <h3 className="font-serif text-xl font-bold text-[#002f86] mb-4 flex items-center gap-2">
-                                <Target className="text-[#002f86]" size={22} /> Core Focus Areas
+                                <Target className="text-[#002f86]" size={22} /><span>Core Focus Areas</span>
                             </h3>
                             <div className="space-y-2.5 text-xs md:text-sm text-slate-700 font-sans">
                                 <p className="p-3.5 bg-white border border-slate-200/80 shadow-xs">Digital Transformation &amp; Cloud Migration Strategy</p>
@@ -141,7 +141,7 @@ export default function AnanthAyyangarProfile() {
                     <div className="max-w-4xl space-y-8">
                         <div>
                             <h3 className="font-serif text-xl font-bold text-[#002f86] mb-4 flex items-center gap-2">
-                                <Globe className="text-[#002f86]" size={22} /> Professional Philosophy
+                                <Globe className="text-[#002f86]" size={22} /><span>Professional Philosophy</span>
                             </h3>
                             <p className="font-serif italic text-base md:text-xl text-slate-700 leading-relaxed">
                                 &quot;True technological innovation occurs at the intersection of robust digital architecture and agile human capability. Cultivating future-ready talent alongside scalable cloud infrastructure is the cornerstone of sustainable enterprise success.&quot;
@@ -151,11 +151,11 @@ export default function AnanthAyyangarProfile() {
                         <div className="p-6 bg-[#F7F7F4] border border-slate-200/80 grid grid-cols-1 sm:grid-cols-3 gap-6">
                             <div>
                                 <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#002f86] block mb-1">Affiliation</span>
-                                <span className="text-xs text-slate-700 flex items-center gap-1.5"><Users size={14} /> Partner, Zythri</span>
+                                <span className="text-xs text-slate-700 flex items-center gap-1.5"><Users size={14} /><span>Partner, Zythri</span></span>
                             </div>
                             <div>
                                 <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#002f86] block mb-1">Location</span>
-                                <span className="text-xs text-slate-700 flex items-center gap-1.5"><MapPin size={14} /> Hyderabad, India</span>
+                                <span className="text-xs text-slate-700 flex items-center gap-1.5"><MapPin size={14} /><span>Hyderabad, India</span></span>
                             </div>
                             <div>
                                 <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#002f86] block mb-1">LinkedIn</span>
@@ -165,7 +165,7 @@ export default function AnanthAyyangarProfile() {
                                     rel="noopener noreferrer"
                                     className="text-xs text-[#002f86] hover:underline flex items-center gap-1.5 truncate"
                                 >
-                                    <Linkedin size={14} /> ananth-ayyangar-a06b6726
+                                    <Linkedin size={14} /><span>ananth-ayyangar-a06b6726</span>
                                 </a>
                             </div>
                         </div>
